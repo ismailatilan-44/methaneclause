@@ -2,7 +2,7 @@
 // Every hash and signature check on this page runs in the browser: RFC 8785 (JCS) + SHA-256, EIP-712 ECDSA recovery
 // (viem), ML-DSA-44 / FIPS 204 verification (@noble/post-quantum). Pinned versions, no build step.
 import { createPublicClient, hashTypedData, http, recoverTypedDataAddress } from "https://cdn.jsdelivr.net/npm/viem@2.57.1/+esm";
-import { ml_dsa44 } from "https://cdn.jsdelivr.net/npm/@noble/post-quantum@0.7.1/ml-dsa.js/+esm";
+import { ml_dsa44 } from "https://cdn.jsdelivr.net/npm/@noble/post-quantum@0.7.1/ml-dsa.js";  // published file; SRI in index.html
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, attrs = {}, ...kids) => {
@@ -102,7 +102,35 @@ async function sha256bytes(bytes) {
 // registry): every signature check on this page compares with it, never with the signer field of the same entry.
 let REG = {};
 const regAddr = (org) => REG[org]?.address || "";
-const pqAnchored = async (org, pk) => REG[org] && (await sha256bytes(hexBytes(pk))) === REG[org].pqPubKeyHash;
+// Pinned in the page's code, not read from data/app.json: the ML-DSA-44 context string every witness signs under
+// (pipeline/observer/pq.py CONTEXT) and the KeyRegistry anchor the signature checks compare with (the registry the demo
+// read and each witness's SHA-256 of its ML-DSA-44 public key). scripts/tests/test_page_data.py keeps them equal to the
+// committed record; a data file that disagrees turns the self-check red, and a key that differs from the pin fails.
+const PINNED = Object.freeze({
+  mldsaContext: "MethaneClause/v1",
+  registry: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  pqPubKeyHash: Object.freeze({
+    OBS_A: "0xa77d19b75a58b39932f09bae95f581460844d99e3ec21a3a165500665ed99a4b",
+    OBS_B: "0xb1304231290fe7a99217580669b7f0adfa432062d5fdaef18287cc90fd68d4ca",
+  }),
+});
+const PQ_CTX = enc.encode(PINNED.mldsaContext);
+const pqAnchored = async (org, pk) => {
+  const h = await sha256bytes(hexBytes(pk));
+  return !!REG[org] && h === REG[org].pqPubKeyHash && h === PINNED.pqPubKeyHash[org];
+};
+// what in data/app.json differs from the pins (empty = all equal)
+function pinMismatches(d) {
+  const bad = [], reg = d.hybrid.registeredKeys || {};
+  const ctx = [...d.hybrid.entries, ...d.cleanPassDemo.entries].map((e) => e.mldsa44?.context);
+  if (ctx.some((c) => c !== PINNED.mldsaContext)) bad.push("the ML-DSA-44 context of a signed entry");
+  for (const [org, h] of Object.entries(PINNED.pqPubKeyHash)) {
+    if (reg[org]?.pqPubKeyHash !== h) bad.push(`${org}'s anchored key hash`);
+    if (reg[org]?.registry !== PINNED.registry) bad.push(`${org}'s registry`);
+  }
+  for (const org of Object.keys(reg)) if (!(org in PINNED.pqPubKeyHash)) bad.push("a witness the page does not pin");
+  return bad;
+}
 
 // ---------------------------------------------------------------- EIP-712 (byte-compatible with Attestation.sol)
 const TYPES = {
@@ -249,7 +277,7 @@ function renderCovenant(d, live) {
   body.append(el("div", { class: "chips" },
     el("span", { class: "chip" }, `Bond sizing: the persistence rule is enough — the ML model did not beat it on held-out data (BSS ${bss > 0 ? "+" : ""}${bss})`),
     el("span", { class: "chip" }, `Bond = P90 annual rebate exposure: ${d.bond.recommended_bond_eth} ETH`),
-    el("span", { class: "chip" }, `Lead-case stake, not abatement: at least ${d.stake.kt_ch4_per_yr.low} kt CH₄/yr`)));
+    el("span", { class: "chip" }, `Lead-case stake, not abatement: ${d.stake.kt_ch4_per_yr.low} kt CH₄/yr, the low bound of the band`)));
 }
 
 // ---------------------------------------------------------------- 3. episodes
@@ -257,6 +285,16 @@ const REJECT_WHY = {
   reject_tamper: "bundle edited 2,548 → 548, signatures kept", reject_self_attestation: "the seller's key signs as a witness",
   reject_not_covered: "keyed by a Carbon Mapper twin, not the facility", reject_replay: "the same attestation twice",
 };
+// the clause's rebate tier of a rate: 1-based, the first tier whose minimum the rate reaches (policy.tierMinKgH, highest first)
+const tierOf = (policy, kgH) => policy.tierMinKgH.findIndex((m) => kgH >= m) + 1;
+// make demo's linked detection: the next Carbon Mapper scene at TKM_S_276 after the paid one, inside the link window
+function linkedPlume(d) {
+  const t0 = Date.parse(d.hybrid.entries[0].bundle.sceneTimestamp);
+  const next = d.cases.TKM_S_276.cmPlumes.map((p) => Date.parse(p.scene_timestamp))
+    .filter((t) => t > t0 && new Date(t).toISOString().slice(0, 10) !== new Date(t0).toISOString().slice(0, 10)
+      && t - t0 <= d.policy.linkWindow * 1000).sort((a, b) => a - b)[0];
+  return { day: new Date(next).toISOString().slice(0, 10), days: Math.round((next - t0) / 864e5) };
+}
 function renderEpisodes(d, live) {
   const s = d.sepolia, run = s.run;
   const prop = run.steps.find((x) => x.step === "proposeEpisode");
@@ -275,11 +313,11 @@ function renderEpisodes(d, live) {
       el("td", {}, el("span", { class: "state REVERTED" }, "REVERTED")), el("td", {}, "—"),
       el("td", {}, `${r.reason}; bond unchanged`), el("td", {}, link(r.tx, "failed tx (status 0)"))));
   }
-  const demo = d.demo;
+  const demo = d.demo, lk = linkedPlume(d);
   t.append(el("tr", {}, el("td", {}, "Local demo #1 · TKM_S_276 (", el("code", {}, "make demo"), ")"),
     el("td", {}, el("span", { class: "state CONFIRMED" }, "CONFIRMED")), el("td", {}, `${fmt.format(lead.emissionKgH)} kg/h`),
-    el("td", {}, `tier 2 · ${demo.rebate_eth} ETH withdrawn by the buyer`), el("td", {}, el("code", {}, short(demo.evidenceHash)))));
-  t.append(el("tr", { class: "child" }, el("td", {}, "↳ #2 · plume 9 days later (2026-06-20)"),
+    el("td", {}, `tier ${tierOf(d.policy, lead.emissionKgH)} · ${demo.rebate_eth} ETH withdrawn by the buyer`), el("td", {}, el("code", {}, short(demo.evidenceHash)))));
+  t.append(el("tr", { class: "child" }, el("td", {}, `↳ #2 · plume ${lk.days} days later (${lk.day})`),
     el("td", {}, el("span", { class: "state LINKED" }, "LINKED")), el("td", {}, "—"),
     el("td", {}, "recorded under #1, not paid twice"), el("td", {}, el("code", {}, short(demo.linkedEvidenceHash)))));
   const sb = s.sandbox;
@@ -350,7 +388,7 @@ async function setupTamper(d) {
       allOk = check(list, ok, ok ? `${e.org} · ECDSA secp256k1 (EIP-712) recovers to ${e.org}'s key in the KeyRegistry record <code>${short(want)}</code>`
         : `${e.org} · ECDSA recovers to <code>${short(rec)}</code>, not ${e.org}'s registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
       const m = e.mldsa44;
-      const pqOk = (await pqAnchored(e.org, m.publicKey)) && ml_dsa44.verify(hexBytes(m.sig), enc.encode(canon), hexBytes(m.publicKey), { context: enc.encode(m.context) });
+      const pqOk = (await pqAnchored(e.org, m.publicKey)) && ml_dsa44.verify(hexBytes(m.sig), enc.encode(canon), hexBytes(m.publicKey), { context: PQ_CTX });
       allOk = check(list, pqOk, pqOk ? `${e.org} · ML-DSA-44 (FIPS 204) verifies over the same bytes with the key whose SHA-256 the registry anchors (checked here with @noble/post-quantum)`
         : `${e.org} · ML-DSA-44 signature does not verify over the edited bytes`) && allOk;
     }
@@ -519,6 +557,10 @@ async function selfChecks(d, live, liveErr, tamperOk) {
     if ((await sha256hex(jcs(v))) === want.evidenceHash) n++;
   }
   check(list, n === Object.keys(exp).length, `RFC 8785 parity: ${n}/${Object.keys(exp).length} Python test vectors hash identically in this browser`);
+  const pins = pinMismatches(d);
+  check(list, pins.length === 0, pins.length === 0
+    ? `Pinned in this page's code and equal to data/app.json: the ML-DSA-44 context <code>${PINNED.mldsaContext}</code> and the KeyRegistry anchor of ${d.hybrid.chainId === 31337 ? `the local demo chain (Anvil, chainId ${d.hybrid.chainId}; not the Sepolia registry)` : `chainId ${d.hybrid.chainId}`}: registry <code>${short(PINNED.registry)}</code>, ${Object.keys(PINNED.pqPubKeyHash).length} witnesses' anchored key hashes`
+    : `Pinned constants differ from data/app.json: ${pins.join(", ")}; signatures are checked against the pins`);
   check(list, tamperOk, "JS ↔ Python: ML-DSA-44 signatures made in Python verify here against the registry's anchored key hashes; ECDSA recovers to the witness addresses in the KeyRegistry record");
   if (live) {
     check(list, true, `Live read from Ethereum Sepolia at block ${fmt.format(live.block)}: covenant bond ${ethOf(live.covenant.remaining)} remaining, episode ${d.sepolia.run.episodeId} ${live.episode.stateName}`);
@@ -770,7 +812,7 @@ async function observerSteps(d) {
   const msg = asMessage(e.attestation);
   const digest = hashTypedData({ domain, types: TYPES, primaryType: "Attestation", message: msg });
   const signer = await recoverTypedDataAddress({ domain, types: TYPES, primaryType: "Attestation", message: msg, signature: e.signature });
-  const pqOk = (await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: enc.encode(e.mldsa44.context) });
+  const pqOk = (await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX });
   const dist = haversineKm(m.lat, m.lon, b.plumeLat, b.plumeLon);
   const minRate = d.observerReplay.minRateKgH, start = d.observerReplay.covenantStart;
   const linked = c.cmPlumes.some((p) => p.source_name === b.cmSourceName);
@@ -924,7 +966,7 @@ async function setupCloud(d) {
       const ok = rec.toLowerCase() === want.toLowerCase();
       allOk = check(list, ok, ok ? `${e.org} <span class="sim">[SIM]</span> · CleanPass ECDSA (EIP-712) recovers to ${e.org}'s key in the KeyRegistry record <code>${short(want)}</code>`
         : `${e.org} <span class="sim">[SIM]</span> · ECDSA recovers to <code>${short(rec)}</code>, not ${e.org}'s registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
-      const pqOk = (await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: enc.encode(e.mldsa44.context) });
+      const pqOk = (await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX });
       allOk = check(list, pqOk, pqOk ? `${e.org} · ML-DSA-44 over the scene bytes verifies` : `${e.org} · ML-DSA-44 does not verify over the edited scene`) && allOk;
     }
     const v = $("cloud-verdict");
@@ -980,7 +1022,7 @@ function personaSummary(name, d, live, box) {
       stat("What to file", "the IEA Annex D export, round-trip checked in the drawer below"));
   } else if (name === "seller") {
     title = "Seller: what I owe, what I earned back, what is near the floor";
-    lede = "Read-only. The seller cannot hold back a rebate on its own, and earns part of it back only from clean passes that independent witnesses sign.";
+    lede = "Read-only. The seller cannot delete a signed sighting; it can only appeal it, and then the independent witnesses must confirm it again. It earns part of a rebate back only from clean passes that independent witnesses sign.";
     const near = Object.values(d.cases).map((c) => {
       const q = c.cmPlumes.filter((p) => p.emission_auto != null);
       const last = q[q.length - 1];
@@ -1197,7 +1239,7 @@ function setupVerificationTime(d) {
       results.push([(await sha256hex(canon)) === e.evidenceHash, `${e.org}: bundle hashes to the attested evidenceHash`]);
       const r = await recoverTypedDataAddress({ domain, types: TYPES, primaryType: "Attestation", message: asMessage(e.attestation), signature: e.signature });
       results.push([r.toLowerCase() === regAddr(e.org).toLowerCase(), `${e.org}: ECDSA recovers to the key in the KeyRegistry record`]);
-      results.push([(await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: enc.encode(e.mldsa44.context) }), `${e.org}: ML-DSA-44 verifies with the registry-anchored key`]);
+      results.push([(await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX }), `${e.org}: ML-DSA-44 verifies with the registry-anchored key`]);
     }
     results.push([rec.every((x) => x.contentSha256 === H.entries[0].bundle.providerContentSha256), "re-fetch receipts match the bundle's provider content hash"]);
     const ms = performance.now() - t0;
@@ -1317,7 +1359,24 @@ function renderJudgePath(d, live) {
     ["Repository: ", code("data/derived/export/TKM_S_276.annex_d.json"), "; command: ", code("make export")]);
 }
 
+// each tamper's own buttons: after its Reset the page no longer says that tamper is applied (body[data-tamper], the
+// deep-link note); tampering again hides the note, the verdict under the tamper speaks for itself
+const TAMPER_BUTTONS = { A: ["tamper-btn", "reset-btn"], B: ["miss-btn", "miss-reset"], C: ["cloud-btn", "cloud-reset"] };
+function watchTamperResets() {
+  const note = $("deeplink-note");
+  for (const [key, [edit, reset]] of Object.entries(TAMPER_BUTTONS)) {
+    $(reset).addEventListener("click", () => {
+      if (document.body.dataset.tamper === key) delete document.body.dataset.tamper;
+      if (note.dataset.key !== key || note.hidden) return;
+      note.textContent = `Reset: tamper ${key} is undone and its checks are green again. The link (?tamper=${key}) applied it when the page opened; the button below applies it again.`;
+      note.dataset.state = "reset";
+    });
+    $(edit).addEventListener("click", () => { if (note.dataset.key === key) note.hidden = true; });
+  }
+}
+
 async function applyDeepLink() {
+  watchTamperResets();
   const q = new URLSearchParams(location.search).get("tamper");
   if (!q) return;
   const key = { a: "A", rate: "A", b: "B", missing: "B", c: "C", cloud: "C" }[q.toLowerCase()];
@@ -1329,6 +1388,8 @@ async function applyDeepLink() {
   }
   await TAMPER_ACTIONS[key]();
   document.body.dataset.tamper = key;
+  note.dataset.key = key;
+  note.dataset.state = "applied";
   note.textContent = `Opened with ?tamper=${key}: tamper ${key} is applied below and its checks are red. The self-checks at the bottom ran first, on the untouched data. Reset restores it.`;
   const h = $(`tamper-${key.toLowerCase()}`);
   h.after(note);  // the note sits under the tamper it describes, where the page scrolls to
@@ -1416,7 +1477,7 @@ function chapters(d, live) {
     body: [`Since MARS's last plume, Carbon Mapper looked at the sources within ${T.postMars.radiusKm} km of the facility on ${T.postMars.passes} satellite passes and saw a plume on ${T.postMars.detected}.`],
     facts: [F("Carbon Mapper", `a plume on ${T.postMars.detected} of ${T.postMars.passes} passes since ${tkmSince}`),
       F("Latest quantified plumes", recent.slice(-3).reverse().map((p) => `${p.scene_timestamp.slice(0, 10)} ${fmt.format(Math.round(p.emission_auto))} kg/h`).join(" · ")),
-      F("At stake", `at least ${d.stake.kt_ch4_per_yr.low} kt CH₄ a year at this source — a stake, never a measured cut`)],
+      F("At stake", `${d.stake.kt_ch4_per_yr.low} kt CH₄ a year at this source, the low bound of the band — a stake, never a measured cut`)],
     map: tkmMap(leakDay, { sky: "both" }), card: () => moneyCard("tkm", 0, d) });
   ch.push({ arc: "tkm", short: "The clause", head: "A buyer writes methane into the deal.",
     body: ["The ", simw("buyer"), " and the ", simw("seller"), ` agree: if ${k} of ${n} independent witnesses confirm a leak at a named source, the seller's bond pays the buyer a rebate. The seller posts the bond on Ethereum Sepolia.`],
@@ -1639,6 +1700,7 @@ function goCheat() {
   if (!TAMPER_ACTIONS.A) return;
   TAMPER_ACTIONS.A();
   document.body.dataset.tamper = "A";
+  if ($("deeplink-note").dataset.key === "A") $("deeplink-note").hidden = true;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   $("tamper").scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
   $("rate-input").focus({ preventScroll: true });

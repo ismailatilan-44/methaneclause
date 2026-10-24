@@ -45,6 +45,7 @@ const proposeAt = deadline - S.policy.challengeWindow * 1000;
 const finT = steps.finalize.blockTime * 1000, payT = steps.withdraw_buyer.blockTime * 1000;
 const pubT = D(S.episode.publishedAt);
 const startT = S.policy.start * 1000;
+const backdated = created > startT;                                     // the Sepolia covenant was created after its term start
 const marsLast = marsPl.at(-1);
 const days = (arr) => new Set(arr.map(p => p.date)).size;
 const seen2025 = plumes.filter(p => p.t > marsLast.t && p.t < Date.UTC(2026, 0, 1));
@@ -71,7 +72,7 @@ const CH = [
     body: `Carbon Mapper records plumes within ${S.facility.radiusKm} km on ${days(seen2025)} more days in 2025. The registry still says “${S.mars.persistency}”.` },
   { id: "clause", short: "The clause", tiny: "Clause", from: Date.UTC(2026, 0, 1), to: Date.UTC(2026, 5, 1), at: startT, view: "contract", w: 0.9, act: ["seller", "buyer"], sim: true,
     head: "A buyer writes methane into the deal.",
-    body: `${W(startT)} — an ${sim("EU importer")} and the ${sim("seller")} sign a methane clause: if independent witnesses confirm a leak, the seller's bond pays the buyer a rebate.` },
+    body: `${W(startT)} — an ${sim("EU importer")} and the ${sim("seller")} sign a methane clause and the seller locks a ${bondEth} ETH bond: if independent witnesses confirm a leak, the bond pays the buyer a rebate.${backdated ? ` On Sepolia the clause was created on ${W(created)} with its ${sim("start backdated")} to this day, so the sightings below fall inside its term.` : ""}` },
   { id: "caught", short: "Caught again", tiny: "Caught", from: Date.UTC(2026, 5, 1), to: created - 60e3, at: lead.t, view: "satellites", w: 1.15, act: ["sat", "cm", "fac"],
     head: `Caught again: ${fmt.format(lead.rate)} kg/h.`,
     body: `${W(lead.t)} — Tanager-1 sees ${fmt.format(lead.rate)} ± ${fmt.format(lead.unc)} kg/h, ${Math.round(lead.distKm * 1000)} m from the MARS source point: its ${ORD[days(plumes.filter(p => p.t >= startT && p.t <= lead.t)) - 1]} plume day since the clause began. Carbon Mapper publishes it on ${dfmt(pubT)}; this run settles that one.` },
@@ -80,7 +81,7 @@ const CH = [
     body: `${W(proposeAt, true)} — ${S.policy.k} of ${S.policy.n} ${sim("witnesses")} sign the record and the clause records a proposed leak. We also sent ${rejects.length} bad proposals: the contract refused each one.`, tamper: true },
   { id: "window", short: `${WIN_H} h to appeal`, tiny: `${WIN_H} h`, from: proposeAt + 60e3, to: deadline + 60e3, at: deadline, view: "contract", w: 0.85, act: ["contract"],
     head: `Anyone can appeal for ${WIN_H} hours.`,
-    body: `Until ${W(deadline, true)}, anyone may appeal with a bond and a reason; the ${sim("seller")} may contest, and then the rebate needs ${S.policy.k + 1} of ${S.policy.n} witnesses; if neither resolves in time, the held rebate stays in the bond and no one is slashed. Neither was filed.` },
+    body: `Until ${W(deadline, true)}, anyone may appeal with a deposit and an objective reason; the ${sim("seller")} may contest, and then the rebate needs ${S.policy.k + 1} of ${S.policy.n} witnesses; if neither resolves in time, the held rebate stays in the bond and no one is slashed. Neither was filed.` },
   { id: "paid", short: "Paid", tiny: "Paid", from: deadline + 60e3, to: payT + 10 * 60e3, at: payT, view: "contract", w: 0.8, act: ["buyer", "seller", "contract"],
     head: "The contract pays the buyer.",
     body: `${W(finT, true)} — the confirmed leak is final and the ${sim("buyer")} withdraws ${rebateEth} test ETH from the ${sim("seller")}'s bond. No bank, registry or court had to approve it.` },
@@ -137,12 +138,12 @@ const PLAYERS = () => [
   { id: "obs", icon: "eye", name: `Witnesses × ${S.policy.n}`, role: "independent organisations; sign the record", sim: true,
     st: after("propose") ? `${S.policy.k} of ${S.policy.n} signed the record` : after("deploy") ? "Checking the public record" : "Not yet engaged", light: after("propose") ? "chain" : "" },
   { id: "seller", icon: "seller", name: "Seller", role: "gas exporter", sim: true,
-    st: after("paid") ? `Bond paid ${rebateEth} ETH rebate` : after("deploy") ? `Bond ${bondEth} ETH locked` : after("start") ? "Signed the clause" : "—", light: after("deploy") ? "money" : "" },
+    st: after("paid") ? `Bond paid ${rebateEth} ETH rebate` : after("start") ? `Bond ${bondEth} ETH locked` : "—", light: after("start") ? "money" : "" },
   { id: "buyer", icon: "buyer", name: "Buyer", role: "EU gas importer", sim: true,
     st: after("paid") ? `Received ${rebateEth} ETH rebate` : after("start") ? "Signed the clause" : "—", light: after("paid") ? "money" : "" },
   { id: "contract", icon: "contract", name: "The clause", role: "MethaneCovenant on Ethereum Sepolia",
-    st: after("paid") ? "Paid out" : after("final") ? "Leak confirmed" : after("propose") ? `Leak proposed · ${WIN_H} h appeal window` : after("rejects") ? `Rejected ${rejects.length} bad proposals` : after("deploy") ? "Deployed · holding the bond" : "Not deployed yet",
-    light: after("deploy") ? "chain" : "" },
+    st: after("paid") ? "Paid out" : after("final") ? "Leak confirmed" : after("propose") ? `Leak proposed · ${WIN_H} h appeal window` : after("rejects") ? `Rejected ${rejects.length} bad proposals` : after("deploy") ? "Deployed · holding the bond" : after("start") ? `Holding the bond${backdated ? ` · on chain ${dfmt(created)}, ${sim("start backdated")}` : ""}` : "Not deployed yet",
+    light: after("start") ? "chain" : "" },
 ];
 let lastSt = {};
 
@@ -489,7 +490,7 @@ function drawFlow() {
   const tok = (d, col) => RM ? "" : `<circle r="5" fill="${col}"><animateMotion dur="1.8s" repeatCount="indefinite" path="${d}"/></circle>`;
   const P = { s2c: "M150,76 L218,76", c2o: "M370,76 L438,76", o2k: "M590,76 L640,76 L640,150", s2k: "M150,206 L560,206", k2b: "M720,206 L760,206" };
   const id = c.id;
-  const sk = ci >= 5;                                    // bond locked from the proof chapter on
+  const sk = ci >= 3;                                    // bond locked from the clause chapter on (the main page's "Bond posted")
   const extra = id === "proof" ? `<g transform="translate(560,118)"><rect width="160" height="24" rx="12" fill="#fbe4e1"/><text x="80" y="16" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c33a2c">✕ ${rejects.length} bad attempts rejected</text></g>`
     : id === "window" ? `<g transform="translate(560,118)"><rect width="160" height="24" rx="12" fill="#e4ecfd"/><text x="80" y="16" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2457d6">⏱ ${S.policy.challengeWindow / 3600} h · no appeal</text></g>`
     : id === "paid" ? `<g transform="translate(560,118)"><rect width="160" height="24" rx="12" fill="#e0f3e7"/><text x="80" y="16" text-anchor="middle" font-size="11.5" font-weight="600" fill="#157a42">✓ CONFIRMED · paid</text></g>` : "";
@@ -508,14 +509,14 @@ function drawFlow() {
     ${E(P.s2c, id === "caught", "", "image", 184, 68)}
     ${E(P.c2o, id === "caught" || id === "proof", "", "record", 404, 68)}
     ${E(P.o2k, id === "proof", "sig", `${S.policy.k}-of-${S.policy.n} signatures`, 712, 112)}
-    ${E(P.s2k, sk || id === "clause", "money", id === "clause" ? "clause signed" : `bond ${bondEth} ETH`, 300, 198)}
+    ${E(P.s2k, sk, "money", id === "clause" ? `clause signed · bond ${bondEth} ETH` : `bond ${bondEth} ETH`, 300, 198)}
     ${E(P.k2b, id === "paid", "money", "", 0, 0)}
     <path class="edge" d="M514,250 L514,104" stroke-dasharray="4 4"/>
     <text class="elab" x="526" y="232" text-anchor="start">an input, not a judge</text>
     ${N("sat", 10, 50, 140, "Satellites", "EMIT · Tanager-1")}
     ${N("cm", 220, 50, 150, "Carbon Mapper", `${plumes.length} plume records`)}
     ${N("obs", 440, 50, 150, `Witnesses × ${S.policy.n}`, "independent organisations", "simn")}
-    ${N("seller", 10, 180, 140, "Seller", ci >= 5 ? `bond ${bondEth} ETH` : "gas exporter", "simn")}
+    ${N("seller", 10, 180, 140, "Seller", sk ? `bond ${bondEth} ETH` : "gas exporter", "simn")}
     ${N("k", 560, 150, 160, "The clause", "MethaneCovenant · Sepolia", "chainn")}
     ${N("buyer", 762, 180, 108, "Buyer", id === "paid" ? `+${rebateEth} ETH` : "EU importer", "simn")}
     ${N("mars", 440, 250, 150, "UNEP IMEO MARS", `says “${S.mars.persistency}”`)}
@@ -639,7 +640,7 @@ function sideContract() {
     <div>${label[s.step]}${s.reason ? ` <span class="badge bad">${s.reason}</span>` : ""}<br><a class="h" href="${s.tx}" target="_blank" rel="noopener">${tx(s).slice(0, 10)}…${tx(s).slice(-6)}</a></div>
     <span class="h">${fmt.format(s.gasUsed)} gas</span></li>`).join("");
   const tiers = S.policy.tierMinKgH.map((m, i) => `<dt>≥ ${fmt.format(m)} kg/h</dt><dd>${ETH(S.policy.tierAmountsWei[i])} ETH</dd>`).join("");
-  const kp = `<div class="kpis"><div><b>${after("deploy") ? bondEth : "—"}</b><small>bond ETH</small></div><div><b>${after("paid") ? rebateEth : after("propose") ? WIN_H + " h" : "—"}</b><small>${!after("paid") && after("propose") ? "until rebate" : "rebate ETH"}</small></div><div><b>${S.sepolia.steps.length}</b><small>transactions</small></div><div><b style="color:var(--bad)">${rejects.length}</b><small>rejected</small></div></div>
+  const kp = `<div class="kpis"><div><b>${after("start") ? bondEth : "—"}</b><small>bond ETH</small></div><div><b>${after("paid") ? rebateEth : after("propose") ? WIN_H + " h" : "—"}</b><small>${!after("paid") && after("propose") ? "until rebate" : "rebate ETH"}</small></div><div><b>${S.sepolia.steps.length}</b><small>transactions</small></div><div><b style="color:var(--bad)">${rejects.length}</b><small>rejected</small></div></div>
     <p class="hint">Every row below is a real Sepolia transaction. Red rows are attacks we sent; the contract refused each.</p>`;
   return `
   <div class="card"><h3>On chain <span class="r">Ethereum Sepolia</span></h3>${kp}</div>
@@ -726,7 +727,7 @@ function NOTPROVE() { return `<div class="card"><h3>What this does not prove</h3
     <li class="simt"><b>Back-dated term.</b> The clause was deployed on ${dfmt(created)} with its term back-dated to ${dfmt(startT)}, after this plume was public: the run proves the mechanism, not the absence of foreknowledge.</li>
     <li class="simt"><b>Sky positions.</b> Satellites are drawn close to the scene; pass dates and images are real.</li>
   </ul></div>`; }
-const castMini = () => `<div class="card"><h3>Players <span class="r">chapter ${chOf(T) + 1}</span></h3><div class="mini">${PLAYERS().map(p => `<span class="${p.sim ? "simr" : ""} ${CH[chOf(T)].act.includes(p.id) ? "act" : ""}" title="${p.st}">${ICON[p.icon]}${p.name.split(" ·")[0]}</span>`).join("")}</div></div>`;
+const castMini = () => `<div class="card"><h3>Players <span class="r">chapter ${chOf(T) + 1}</span></h3><div class="mini">${PLAYERS().map(p => `<span class="${p.sim ? "simr" : ""} ${CH[chOf(T)].act.includes(p.id) ? "act" : ""}" title="${p.st.replace(/<[^>]*>/g, "")}">${ICON[p.icon]}${p.name.split(" ·")[0]}</span>`).join("")}</div></div>`;
 function renderSide() {
   $("side").innerHTML = view === "incident" ? sideIncident() : view === "satellites" ? castMini() + sideSatellites() + NOTPROVE() : view === "contract" ? sideContract() + NOTPROVE() : castMini() + sideVerify() + NOTPROVE();
   const fl = $("fleet");
@@ -839,7 +840,7 @@ function chartMoney() {
   const svg = $("c3"), Wd = svg.clientWidth || 300, H = svg.clientHeight || 110;
   $("moneysrc").textContent = inZ9(T) ? `${Z9.replayA.chain.replace(/ \(.*\)$/, "")} replay · test ETH` : "Sepolia test ETH";
   const now9 = z9Real(T), eth9 = (w) => Number(BigInt(w)) / 1e18, cnt9 = z9Scenes.filter(z => z.qualified && !z.afterRelapse && z.t <= now9).length;
-  const rows = inZ9(T) ? [["Rebate (DZA leak)", eth9(z9Sp.openedByBuyerWei), true, "#1d1b18"], ["Back to the seller", eth9(z9Sp.releasedWei) * Math.min(1, Z9C.installments.filter(([k]) => cnt9 >= k).reduce((a, [, bp]) => a + bp, 0) / z9Out.paidBp), cnt9 >= Z9C.installments[0][0], "#157a42"], ["Forfeited", eth9(z9Sp.forfeitedWei), now9 >= z9Relapse, "#c33a2c"]] : [["Seller bond locked", bondEth, after("deploy"), "#1d1b18"], ["Rebate to buyer", rebateEth, after("paid"), "#157a42"], ["Proposer bond back", proposerEth, after("paid"), "#2457d6"]];
+  const rows = inZ9(T) ? [["Rebate (DZA leak)", eth9(z9Sp.openedByBuyerWei), true, "#1d1b18"], ["Back to the seller", eth9(z9Sp.releasedWei) * Math.min(1, Z9C.installments.filter(([k]) => cnt9 >= k).reduce((a, [, bp]) => a + bp, 0) / z9Out.paidBp), cnt9 >= Z9C.installments[0][0], "#157a42"], ["Forfeited", eth9(z9Sp.forfeitedWei), now9 >= z9Relapse, "#c33a2c"]] : [["Seller bond locked", bondEth, after("start"), "#1d1b18"], ["Rebate to buyer", rebateEth, after("paid"), "#157a42"], ["Proposer bond back", proposerEth, after("paid"), "#2457d6"]];
   const max = inZ9(T) ? eth9(z9Sp.openedByBuyerWei) : bondEth, rh = (H - 8) / 3;
   const wide = Wd - 186 >= 48, bx = wide ? 118 : 0, bw = wide ? Wd - 186 : Wd;   // narrow chart: each bar runs full width under its label
   svg.innerHTML = rows.map(([l, v, on, c], i) => {
@@ -868,9 +869,17 @@ const tierOf = (r) => S.policy.tierMinKgH.findIndex(m => r >= m);
 const PREMISE = "Two-sided: a confirmed leak pays the buyer; clean passes earn the seller money back.";
 let tamperOn = false;
 $("nsat").textContent = SATS.length; $("ntx").textContent = S.sepolia.steps.length;
-let imgTiles = false;   // map tiles come from Esri, AWS and Carbon Mapper: if none arrive, say so instead of showing an empty map
-map.on("sourcedata", (e) => { if (e.sourceId === "img" && e.tile) imgTiles = true; });
-setTimeout(() => { if (!imgTiles) { const n = document.createElement("div"); n.className = "offline"; n.textContent = "Map tiles could not load (they need internet). The story, numbers and contract view still work."; $("mapwrap").appendChild(n); } }, 15000);
+// map tiles come from Esri, AWS and Carbon Mapper: if none has arrived after 15 s, say so instead of showing an empty
+// map; the note goes away as soon as an imagery tile arrives (a slow network must not leave it over a working map)
+let imgTiles = false, tileNote = null;
+function tileCheck() {
+  if (imgTiles || tileNote) return;
+  tileNote = document.createElement("div"); tileNote.className = "offline";
+  tileNote.textContent = "Map tiles could not load (they need internet). The story, numbers and contract view still work.";
+  $("mapwrap").appendChild(tileNote);
+}
+map.on("sourcedata", (e) => { if (e.sourceId === "img" && e.tile) { imgTiles = true; tileNote?.remove(); tileNote = null; } });
+setTimeout(tileCheck, 15000);
 if (q_debug()) {
   const d = document.createElement("div"); d.className = "debug";
   const rows = [
@@ -1107,6 +1116,6 @@ setTimeout(() => {
 
 
 /* a small handle for tests (scripts/tests) and for anyone checking the page from the console */
-window.story = { CH, goChapter, setView, chOf, get T() { return T; }, get view() { return view; }, get prologue() { return prologue; } };
+window.story = { CH, goChapter, setView, chOf, tileCheck,get T() { return T; }, get view() { return view; }, get prologue() { return prologue; } };
 document.documentElement.dataset.storyReady = "1";
 }

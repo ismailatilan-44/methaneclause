@@ -3,14 +3,14 @@
  "files": {
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "WALLET.md": "28186601ba3ddedc42a1bf0e46b6dc9709033e36e91612e27fce16fcfb1ca19c",
-  "app.js": "358b7ace4294923c012371a375beae95ac25a5d80c2ff5a372d069d34b061ebb",
+  "app.js": "5e6015c690b7cb15a602d27ce459d55063aa2aa67ca6785b36f773eca4184f97",
   "data/TKM_S_276.annex_c.example.csv": "ea92b46937152b45bcd605e3b318016545a92868046dd3da9f8fab1bd7f467ef",
   "data/TKM_S_276.annex_c.example.json": "6f4742cbe14e8c00b12317cf6ed5d7e1eabe0ea295fa6c9e79a650440cca1d32",
   "data/TKM_S_276.annex_d.csv": "3dae5f61d4b9688f1beaa8648b36870b3b2653b5eff10d62950059f85b2a080a",
   "data/TKM_S_276.annex_d.json": "e79059421a1a30dc3dad29bddea192c977da45c32501dd2e82a9950339f9aa19",
   "data/TKM_S_276.credit_note.csv": "0dd465a10127d67d20b8bb24d120b051c9b65c177271cde102eab9a78f4c2ae3",
   "data/TKM_S_276.credit_note.json": "bd0dad70dde4357283a8ed1c8d745eef3fe3995b842dee3510d1f71936e5c4ae",
-  "data/app.json": "5dfd4f6a8f415f56f692d19e0e2c71001eeaa990be0d96f73f414c958f89923e",
+  "data/app.json": "411e41659ccf18ee00bcadfb30ae214bcc0b45fd8d22d9754bafc212c9e7f704",
   "data/story.json": "915305bd9329ac36546e4e2f2d00b6b0a26a8ef7b3eaaa8f6c6688d555286c07",
   "data/vectors/cleanpass_v1.json": "af753a1d6afdb783e931f176fba503317961c499e00855e0dff9aea167fd589f",
   "data/vectors/expected.json": "6ba7d5685e7b5bc7cf9c853d5410fd480fdc8c803bf63c9c0ff3321bee72fc82",
@@ -20,12 +20,12 @@
   "data/vectors/v2_rfc8785_example.json": "495d6082445c97c4b30583d9035fa969e535730271ee1c53fbeb0c59ca605a05",
   "data/vectors/v3_unicode_nesting.json": "0c63f1bafe5260f05e472ebd4a9d7d95d7b065df5571d191e2ffdc669a59d433",
   "data/wallet.json": "2cae4c66a42660b974cf2033053e43efe98b481fa4b792df6b9e9df86052f33f",
-  "index.html": "11fbf5dc737172c668daef630cb9157bab39f0b62f4d75c016b2f8729b7ead0e",
+  "index.html": "803f778e052010068db77ad2823b79596ac0fa9a57cec403e0efbd5b0ab2b0a1",
   "story.html": "35cb5d2a17de489281dfdd426ae4ef9608c6ced9b65524e9e11f2449647502d2",
-  "story.js": "07a59330bf5e2f31fa0e3e8ac902ba23ff99c3566a0ad1e3f8f04311b751a98f",
-  "style.css": "da49b79f33bc1fb3c43afb11b02e8330e5eea72b678b0a5b31f7ad6c42283983",
+  "story.js": "e8ccac0a36767f48f3f84a34a12847f2836b841c689cb7ef8719b1bfe5ba65c9",
+  "style.css": "35f394baf3aa8c123cc9a2c24bb1e1414077d5c24a34b939844d9c9fc3c35834",
   "wallet.js": "b944fbbf1a119abc80240e20142864145b178c76b82e7251eaccef502a7b8679"
  },
- "sourceCommit": "cf01a0957491df1baa570cb78d47891b38183faf",
+ "sourceCommit": "bb47319c17f9b968c09a7233634668186077fbe1",
  "sourceDirty": false
 }

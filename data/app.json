@@ -6687,7 +6687,7 @@
   "idempotent_resubmission": "evidenceSeen[evidenceHash] -> DuplicateEvidence (make demo step 'Resubmit')",
   "latency_blocks": [
    {
-    "label": "measured 2026-10-15, raw samples lost with a deleted worktree",
+    "label": "measured 2026-10-15, raw samples not kept",
     "measuredAt": "2026-10-15T01:00:28Z",
     "n": 43,
     "p50": 11.18,
@@ -6709,7 +6709,7 @@
    }
   ],
   "latency_seconds": {
-   "label": "measured 2026-10-15, raw samples lost with a deleted worktree",
+   "label": "measured 2026-10-15, raw samples not kept",
    "n": 43,
    "p50": 11.18,
    "p90": 13.63,

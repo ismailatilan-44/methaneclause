@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MethaneClause</title>
-  <meta name="description" content="A speed camera for methane, written into the gas contract. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's). Once enough witnesses sign a sighting, no one — the seller included — can delete it or hold back the rebate on their own.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <meta name="description" content="A speed camera for methane, written into the gas contract. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's). Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
       <h1 id="hero-h">
         <span class="l red">Satellites confirm a leak → the seller's bond pays the buyer.</span>
         <span class="l green">No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's).</span>
-        <span class="l">Once enough witnesses sign a sighting, no one — the seller included — can delete it or hold back the rebate on their own.</span>
+        <span class="l">Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.</span>
       </h1>
       <p class="analogy">Public satellite records are the cameras; independent witnesses (separate organisations) each fetch the record and sign it; when enough of them sign the same leak and the appeal window passes, the seller's bond pays the buyer — the ticket goes to the buyer, not to a state. A clean pass never undoes a paid rebate or proves a repair; it only earns money back from the sponsor's pool.</p>
       <div class="cta">
@@ -464,7 +464,26 @@
   </footer>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script type="importmap">
+{
+ "imports": {
+  "@noble/hashes/": "https://cdn.jsdelivr.net/npm/@noble/hashes@2.4.0/",
+  "@noble/curves/": "https://cdn.jsdelivr.net/npm/@noble/curves@2.4.0/"
+ },
+ "integrity": {
+  "https://cdn.jsdelivr.net/npm/@noble/curves@2.4.0/abstract/fft.js": "sha384-BhhrVK9q8Q/ZSggdCXKcsDdWI95d1YMTRlhDT/+x3xiTKgWWWw2ird6lgr+1oJ1u",
+  "https://cdn.jsdelivr.net/npm/@noble/curves@2.4.0/abstract/modular.js": "sha384-xR7s2u9uY85mOtRdE4RBg4QC7mI1CUwjMWOLGFwxx+LGd9Xzg6T8c5/u/3K/x6fk",
+  "https://cdn.jsdelivr.net/npm/@noble/curves@2.4.0/utils.js": "sha384-yxyxAjWSOk1k91XdLdph2I73SDcpeqSnrkUr5ru3cOL6csP8uAhQ0qgD2y7s85BT",
+  "https://cdn.jsdelivr.net/npm/@noble/hashes@2.4.0/_u64.js": "sha384-SPLtaj6mblQ3NtLCy4eidRByUQWvhD8+J1MpyW8ejRRfwyGrzdElsKxcrcBmGjZY",
+  "https://cdn.jsdelivr.net/npm/@noble/hashes@2.4.0/sha3.js": "sha384-IT/CA0UQxCI3fLDdZcqKlKmr/XVBDPGkB4SxGvCqwmzqdmr35J4qqRxH5WsqYYtB",
+  "https://cdn.jsdelivr.net/npm/@noble/hashes@2.4.0/utils.js": "sha384-YFMR8BWPimRHARZs0bAtgjKOWPQL0ND/lZk6QwHVzhzx71FWSqzQb1ToPgVtqapB",
+  "https://cdn.jsdelivr.net/npm/@noble/post-quantum@0.7.1/_crystals.js": "sha384-Bfh7z4BRC7JaTs8oJ+RLORtqNz6zaxvoeKd50h3PqLlO29xDyGfsqKB5BLLvNhf3",
+  "https://cdn.jsdelivr.net/npm/@noble/post-quantum@0.7.1/ml-dsa.js": "sha384-UrSJV+yZJDzkTcFGm/b4MTupcQ6vKYxOO53hOx41rTcuJRJLylX3Wy87bBH8ZTbf",
+  "https://cdn.jsdelivr.net/npm/@noble/post-quantum@0.7.1/utils.js": "sha384-cFZnN6r3eHUtLySj3b6/nvGwOkseylmRhBU8ARPSwnHxqn5qe+uEdTYQ4kFpRTNF"
+ }
+}
+</script>
 <script type="module" src="app.js"></script>
 </body>
 </html>
