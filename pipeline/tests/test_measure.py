@@ -98,8 +98,10 @@ def test_latency_history_is_copied_verbatim_and_never_merged():
     hist = load("sepolia_latency_history.json")["blocks"][0]
     m = load("measurements.json")
     first = m["latency_blocks"][0]
-    assert (first["n"], first["p50"], first["p90"], first["label"]) == (hist["n"], hist["p50"], hist["p90"],
-                                                                        hist["label"])
+    assert (first["n"], first["p50"], first["p90"], first["measuredAt"]) == (hist["n"], hist["p50"], hist["p90"],
+                                                                             hist["measuredAt"])
+    assert first["label"] == f"measured {hist['measuredAt'][:10]}, raw samples not kept"
+    assert "worktree" not in json.dumps(m), "the label states what is kept, not an internal cause"
     assert m["latency_seconds"]["n"] == max(b["n"] for b in m["latency_blocks"])
 
 
@@ -168,3 +170,17 @@ def test_readme_testnet_block_names_the_pool_and_the_latency_provenance():
     assert fund["to"] == dep["incentivePool"].lower() and f"{int(fund['valueWei']) / 1e18:g} ETH" in row
     lat = load("measurements.json")["latency_seconds"]
     assert "raw samples" in lat["label"] and "raw samples not kept" in block
+
+
+def test_readme_latency_leads_with_the_samples_logged_in_the_repository():
+    """The README's latency figure is the block anyone can recompute from data/derived/sepolia_txlog.jsonl; the dated
+    15 Oct block, whose raw samples are gone, comes second. Without a logged block the headline block leads."""
+    m = load("measurements.json")
+    lead, rest = readme_testnet.latency_lead(m)
+    assert "sepolia_txlog.jsonl" in lead["label"] and "raw samples" not in lead["label"]
+    assert any("raw samples" in b["label"] for b in rest)
+    line = next(x for x in readme_testnet.render().splitlines() if "Latency" in x)
+    assert line.index(f"**p50 {lead['p50']} s, p90 {lead['p90']} s**") < line.index("raw samples not kept")
+    assert f"n = {lead['n']} logged since" in line
+    dated = {**m, "latency_blocks": [b for b in m["latency_blocks"] if "raw samples" in b["label"]]}
+    assert readme_testnet.latency_lead(dated)[0] == m["latency_seconds"]

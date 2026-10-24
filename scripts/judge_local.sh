@@ -39,13 +39,19 @@ done
 # runs this script moves the Anvil clock forward [SIM]. The first pool funding is swept from the published BUYER key
 # (simulated) to test that message; the next run resumes and succeeds.
 echo; echo "######## make judge-cure (exit-and-resume, as on a public chain)"
-advance() {  # forward-only clock move on this Anvil, labelled [SIM]
+advance() {  # forward-only clock move on this Anvil, labelled [SIM]; counted in run.json's skippedSeconds
   (cd pipeline && RPC_URL="$RPC" .venv/bin/python -c "
-import os
+import json, os
+from common import ROOT
 from observer.chain import Chain
 from observer.demo import advance_clock
 ch = Chain(os.environ['RPC_URL'], sandbox=True)
-advance_clock(ch, ch.now() + $1, '$2')")
+secs = advance_clock(ch, ch.now() + $1, '$2')
+p = ROOT / 'out' / 'judge' / 'run.json'
+run = json.loads(p.read_text()) if p.exists() else {'chainId': ch.chain_id}
+sk = run.setdefault('skippedSeconds', {})
+sk['$2'] = sk.get('$2', 0) + secs
+p.write_text(json.dumps(run, indent=1, sort_keys=True) + '\n')")
 }
 cure() {  # returns the cure command's own exit status (not tee's)
   set +e
@@ -56,14 +62,14 @@ cure() {  # returns the cure command's own exit status (not tee's)
   return $rc
 }
 cure 0; grep -q "challenge window closes" out/judge/cure.out || { echo "   FAIL  cure did not stop at the challenge window"; exit 1; }
-echo "   ok    cure stopped at the challenge window (as on Sepolia)"; advance 601 "challenge window"
+echo "   ok    cure stopped at the challenge window (as on Sepolia); moving the Anvil clock past it [SIM]"; advance 601 "challenge window"
 rc=0; cure 1 || rc=$?
 if [ "$rc" != 3 ] || ! grep -q "stopped as expected \[SIM sweep\]" out/judge/cure.out; then
   echo "   FAIL  a swept BUYER transfer [SIM sweep] should stop the cure with exit 3 and its message"; exit 1
 fi
 echo "   ok    a swept transfer to the published BUYER key [SIM sweep] stops the cure with a clear message"
 cure 0; grep -q "clean window closes" out/judge/cure.out || { echo "   FAIL  cure did not stop at the clean window"; exit 1; }
-echo "   ok    cure resumed: pool opened, claim, pass attested; stopped at the clean window"; advance 601 "clean window"
+echo "   ok    cure resumed: pool opened, claim, pass attested; stopped at the clean window; moving the Anvil clock past it [SIM]"; advance 601 "clean window"
 cure 0; grep -q "The cure arc ran with your key" out/judge/cure.out || { echo "   FAIL  cure did not finish"; exit 1; }
 echo "   ok    cure finished on the third resume: 1 qualified clean pass counted"
 

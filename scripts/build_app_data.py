@@ -589,7 +589,7 @@ PDF = ROOT / "docs" / "pdf" / "methaneclause.md"  # the submission PDF's source:
 SPEC_PUBLIC = ROOT / "docs" / "spec-public.md"  # the public specification: spec_blocks() (exported as docs/spec.md)
 COUNTS_BLOCK = "counts"
 README_ONLY = "readme:"  # a block key with this prefix replaces that block in README.md only (25 KB budget)
-DEVPOST_ONLY = ("deploy", "stake", "loop", "cure", "projectionHeadline")  # Devpost carries these, README does not
+DEVPOST_ONLY = ("deploy", "stake", "loop", "cure", "projectionHeadline", "learned")  # Devpost carries these, README does not
 # (README.md's first screen folds the loop into its status-0 line: README_ONLY "status0")
 CHAIN_TABLE = "\n".join([  # the organizer's four-question blockchain test; README and Devpost share it
     "| Question | Answer |", "|---|---|",
@@ -614,6 +614,125 @@ def _without_selection(sentence: str) -> str:
         if form in sentence:
             return sentence.replace(form, "", 1)
     fail(f"backtest card sentence no longer names its selection: {sentence[:60]}…")
+
+
+def _pm3(x: float) -> str:
+    """A signed difference at three decimals with a typographic minus (-0.0202 -> "−0.020")."""
+    return f"{x:+.3f}".replace("-", "−")
+
+
+FORWARD_KEYS = ("headlineSentence", "stakeSentence", "intervalSentence", "rollingSentence", "comparisonSentence",
+                "limitsSentence", "hazardSentence", "costSentence")
+
+
+def forward_card(pj: dict) -> dict:
+    """The carbon projection's lead: projection.json's pre-registered forward hold-out card (P1). Exit 1 if a sentence
+    is missing or if any credit falls on the plume that selected a member (zero by construction)."""
+    card = (pj.get("forward") or {}).get("card") or {}
+    missing = [k for k in FORWARD_KEYS if not isinstance(card.get(k), str) or not card[k].strip()]
+    if missing:
+        fail(f"data/derived/projection.json forward.card lacks {missing}: run make projection")
+    if card.get("selectingShareOfCredit") != 0:
+        fail("projection.json forward hold-out credits the plume that selected a member: it is not a forward hold-out")
+    return card
+
+
+FORWARD_LIMIT_SPLIT = ("; today's 'absent' label is decided inside the credit window;",
+                       ". Today's 'absent' label is decided inside the credit window;")
+
+
+def _forward_limits(sentence: str) -> str:
+    """The forward card's limits line is one long sentence: split it in two at the label clause (same words, same
+    numbers). Exit 1 if the clause is no longer there exactly once."""
+    a, b = FORWARD_LIMIT_SPLIT
+    if sentence.count(a) != 1:
+        fail(f"projection.json forward limitsSentence changed its form: {sentence[:60]}…")
+    return sentence.replace(a, b, 1)
+
+
+METHODS_FUTURE = ", and a forward hold-out (members chosen before a date, credit only after it) is future work."
+METHODS_MEMBER = "Each member is credited over its window since MARS's first plume there"
+
+
+def _methods_with_forward(sentence: str, fwd: dict) -> str:
+    """The methods paragraph was written before the forward hold-out ran: it describes the whole-window crediting and
+    calls the hold-out future work. Name the comparison and point to the hold-out, from projection.json. Exit 1 if the
+    paragraph changed its form or the hold-out credits a selecting plume."""
+    if sentence.count(METHODS_FUTURE) != 1 or sentence.count(METHODS_MEMBER) != 1:
+        fail(f"projection.json methodsSentence changed its form: {sentence[:60]}…")
+    if fwd["card"]["selectingShareOfCredit"] != 0:
+        fail("projection.json forward hold-out credits the plume that selected a member")
+    d = fwd["preRegistration"]["D"]
+    return (sentence.replace(METHODS_MEMBER, "In the whole-window comparison, each member is credited over its window "
+                                             "since MARS's first plume there", 1)
+            .replace(METHODS_FUTURE, f"; the forward hold-out above (members chosen with what was known on {d}, credit "
+                                     "only for faults first detected after it) credits none of it. "
+                                     f"{fwd['card']['hazardSentence']}", 1))
+
+
+WHOLE_WINDOW = ("projected at the central action share", "projected at the central action share over each member's "
+                "whole window")
+
+
+def _whole_window(sentence: str) -> str:
+    """The ledger cost per tonne is computed on the whole-window projection: say so where the forward hold-out leads.
+    Exit 1 if the sentence no longer has that phrase."""
+    if WHOLE_WINDOW[0] not in sentence:
+        fail(f"projection.json cost sentence changed its form: {sentence[:60]}…")
+    return sentence.replace(*WHOLE_WINDOW, 1)
+
+
+ALERTS_SOURCE = "un-news-2026-07-23"  # data/derived/projection_sources.json: the newest MARS alert and response figures
+
+
+def alerts_block(ps: dict, pj: dict) -> str:
+    """The problem's opening (README, Devpost, PDF): UNEP MARS's alert and response figures quoted from the committed
+    source record (UN News, 23 Jul 2026, [V]) and our MARS event study's null (projection.json, all notified sources,
+    primary specification): sources whose operator or government answered an alert show no measurable change in
+    Carbon Mapper's detection rate against sources that did not. Exit 1 if the quotes or the study no longer say so."""
+    import re
+
+    src = ps["sources"].get(ALERTS_SOURCE)
+    if not src or not src["url"].startswith("https://"):
+        fail(f"data/derived/projection_sources.json has no {ALERTS_SOURCE} source with a link")
+    q = " ".join(src["quotes"])
+    alerts = re.search(r"issued more than ([\d,]+) alerts across (\d+) countries", q)
+    repairs = re.search(r"more than (\d+) verified repairs", q)
+    resp = re.search(r"only (\d+) per cent of alerts currently receive a response", q)
+    if not (alerts and repairs and resp):
+        fail(f"{ALERTS_SOURCE}: the quoted alert, repair or response figure changed its wording")
+    did = pj["evidence"]["line2"]["coverageSets"]["allNotified"]["primary"]
+    d, g = did["did"], did["groups"]
+    lo, hi = d["ci"]
+    if not lo < 0 < hi:
+        fail("projection.json: the event study's interval no longer includes zero; the problem's null sentence is wrong")
+    day = datetime.fromisoformat(src["date"]).strftime("%-d %b %Y")
+    return (f"UNEP's Methane Alert and Response System has issued more than {alerts.group(1)} satellite alerts across "
+            f"{alerts.group(2)} countries and helped trigger more than {repairs.group(1)} verified repairs, yet only "
+            f"{resp.group(1)} % of alerts receive a response ([UN News, {day}]({src['url']})). Answering an alert moved "
+            "nothing we can measure: in our event study over MARS's notified sources, Carbon Mapper's detection rate "
+            f"changed by {_pm3(d['yesMinusNo'])} where the operator or government answered, relative to "
+            f"where nobody did (95 % CI {_pm3(lo)} to {_pm3(hi)}; {g['Yes']['sources']} and {g['No']['sources']} "
+            f"sources; the design detects changes of {d['minimumDetectableEffect']:.3f} or more). For most alerts no one "
+            "answers, and the alert itself pays no one. Two public datasets also disagree about the same gas "
+            "facility:")
+
+
+def quorum_lines(core: dict) -> tuple[str, str]:
+    """The first screen's quorum and its Limits line. A production clause names at least k + 2 observer organisations
+    (docs/PRODUCTION.md item 8): a challenge is answered by k of them, a contest by k + 1, so one is spare. The
+    prototype policy's own k of n (POLICY_V2, run by make demo and on Sepolia) is said once, in Limits. Exit 1 if the
+    prototype already meets the production margin (then there is no limit to state: reword both lines)."""
+    k, n = core["k"], core["n"]
+    if n >= k + 2:
+        fail(f"POLICY_V2 core is {k} of {n}: it meets n >= k + 2, so README Limits must not call it a prototype shortcut")
+    seen = (f"- **Seen → confirmed → paid.** {k} of {k + 2} witnesses (the clause's quorum k of n, with n ≥ k + 2 so an "
+            "appeal still has a spare witness) sign the same detection; after the appeal window the buyer withdraws "
+            "the rebate.")
+    limit = (f"- **Prototype quorum.** `make demo` and the Sepolia deployments run the prototype policy's {k} of {n} "
+             "(`POLICY_V2`); a production clause names at least k + 2 observer organisations, so a contest, which needs "
+             "k + 1 of them, keeps a spare ([`PRODUCTION`](docs/PRODUCTION.md), item 8).")
+    return seen, limit
 
 
 def _lower_first(sentence: str) -> str:
@@ -752,7 +871,7 @@ def spec_blocks(app: dict) -> dict[str, str]:
                 f"({', '.join(f'{d:g}' for d, _ in far)} km from the MARS point) recorded a plume."
                 if extra and far else "it adds no date."))
     return {"specProblem": (
-        f"- **Problem:** two public datasets disagree about the same pipeline. UNEP IMEO MARS labels source TKM_S_276 "
+        f"- **Problem:** two public datasets disagree about the same gas facility. UNEP IMEO MARS labels source TKM_S_276 "
         f"({tkm['mars_source']['country']}) *{tkm['mars_source']['persistency_category']}* — no plume in its own "
         f"six-month window. {tkm_count_sentence(tkm)}, including {_n(lead['emissionKgH'])} kg/h on "
         f"{lead['sceneTimestamp'][:10]} (`cases.TKM_S_276` and `lead` in `data/derived/audit_numbers.json`; counting "
@@ -821,21 +940,29 @@ def readme_blocks(app: dict) -> dict[str, str]:
     if w0.day != w1.day or months < 1:
         fail(f"join window {j['window']} is not a whole number of months: reword whyNow")
     words = {3: "three", 6: "six", 12: "twelve"}
-    stake_floor = math.floor(sb["kt_ch4_per_yr"]["low"] / 100) / 10  # "at least": round down, never up
+    stake_floor = math.floor(sb["kt_ch4_per_yr"]["low"] / 100) / 10  # the band's low bound, rounded down, never up
+    # the stake is not over the join candidates: it is the backtest's, over every one of the absent sources whose
+    # passes quantify it (the stake band's facilitiesQuantified, a subset of the n_mars_target_sources)
+    if not 0 < sb["facilitiesQuantified"] <= j["n_mars_target_sources"]:
+        fail("backtest.json stake_band.facilitiesQuantified is not a subset of the join's absent sources: reword whyNow")
     b["whyNow"] = (f"**Why now.** Carbon Mapper saw a methane plume within {j['radius_km']:g} km of "
                    f"{_n(j['n_candidates'])} oil and gas sources that the UN's alert system (UNEP MARS) had listed as "
                    f"quiet (*absent*: no MARS plume in {words.get(months, str(months))} months), out of "
                    f"{_n(j['n_mars_target_sources'])} such sources ([`CRITERION`](pipeline/join/CRITERION.md)). "
-                   f"Across them the stake is at least {stake_floor:g} Mt CH₄/yr (stake, not abatement).")
+                   f"Across the {_n(sb['facilitiesQuantified'])} of those {_n(j['n_mars_target_sources'])} with a "
+                   f"quantified stake (a Carbon Mapper plume any time after MARS's first plume there, not only inside "
+                   f"the {words.get(months, str(months))} quiet months), the low bound of the stake band is ~{stake_floor:g} Mt CH₄/yr "
+                   "(stake, not abatement).")
+    b["alerts"] = alerts_block(load(DERIVED / "projection_sources.json"), load(DERIVED / "projection.json"))
     core = policy_mod.POLICY_V2["core"]
     b["paths"] = "\n".join([
         "- **Who.** The seller posts a bond for named sources; the buyer, an EU gas importer, gets the rebate; "
         "witnesses (separate organisations) fetch and sign the public record; the sponsor (a lender, as a "
         "sustainability-linked margin step, or the buyer, to keep a clean supplier) funds the earn-back pool.",
-        f"- **Seen → confirmed → paid.** {core['k']} of {core['n']} witnesses (the clause's quorum k of n) sign the "
-        "same detection; after the appeal window the buyer withdraws the rebate.",
+        quorum_lines(core)[0],
         "- **Clean passes → earn-back in steps.** k witnesses sign each clean pass; the sponsor's pool pays in steps.",
         "- **New leak → the earn-back stops.** The next confirmed leak cancels every unpaid step."])
+    b["quorumLimit"] = quorum_lines(core)[1]  # README Limits (said once); the PDF's Limits quote it
     # README (first screen carries the join numbers): its problem section keeps the TKM_S_276 bullet only
     b[README_ONLY + "problem"] = b["problem"].split("\n")[0]
     if not b[README_ONLY + "problem"].startswith("- UNEP MARS labels source"):
@@ -937,6 +1064,7 @@ def readme_blocks(app: dict) -> dict[str, str]:
         "",
         "A fresh clone skips the DZA observer's Re-check step: no raw cache (`LIVE=1` or `METHANECLAUSE_RAW` enables "
         "it)."])
+    fwd = forward_card(load(DERIVED / "projection.json"))
     b["numbers"] = "\n".join([
         f"- **AI vs the rule.** A gradient-boosted next-pass forecast measured against the frozen persistence rule on "
         f"region- and time-held-out sets: BSS {_signed(m['test_a']['model']['bss_vs_B1'])} and "
@@ -952,10 +1080,25 @@ def readme_blocks(app: dict) -> dict[str, str]:
         f"  - **Refunds.** {_without_selection(bt['refundsSentence'])}",
         f"  - **Stake.** {_without_selection(bt['stakeSentence'])}",
         f"- {pf}",
-        f"- {load(DERIVED / 'projection.json')['card']['headlineSentence']} Method and output: "
-        "[`pipeline/projection.py`](pipeline/projection.py), [`data/derived/projection.json`](data/derived/projection.json).",
+        # one headline line (the reviewed forward headline, its interval included), then four labelled sub-bullets
+        f"- {fwd['headlineSentence']}",
+        f"  - **Uncertainty.** {fwd['intervalSentence']}",
+        f"  - **Robustness.** {fwd['rollingSentence']}",
+        f"  - **Comparison.** {fwd['comparisonSentence']}",
+        f"  - **Stake.** {fwd['stakeSentence']}",
+        "  - Method and output: [`pipeline/projection.py`](pipeline/projection.py), "
+        "[`data/derived/projection.json`](data/derived/projection.json) (`forward`); what was fixed before computing, "
+        "with its hashes: [`docs/preregistration.md`](docs/preregistration.md).",
         f"- **Footprint.** The model that lost to the rule: {fp['train_plus_inference_kgCO2e']} kg CO₂e; chain side: "
         "[`FOOTPRINT`](docs/FOOTPRINT.md)."])
+    # Devpost's "What we learned": the README's model wording, the same generated values
+    bss = (m["test_a"]["model"]["bss_vs_B1"], m["test_b"]["model"]["bss_vs_B1"])
+    if m["decision"] != "RULE_IS_ENOUGH" or min(bss) >= 0:
+        fail("audit_numbers.json model: the rule is no longer enough on a held-out set; reword the learned block")
+    b["learned"] = (f"A gradient-boosted next-pass forecast, measured against the frozen persistence rule on region- and "
+                    f"time-held-out sets, scored BSS {_signed(bss[0])} and {_signed(bss[1])}: it did not beat the rule "
+                    "on both, so the product uses the rule ([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)). The chain "
+                    "earns its place only for the multi-party verdict and the money that follows it.")
     # the bond-sizing bullets (v1 covenant, portfolio) moved to docs/SCALING.md's scToday and scPays; README.md keeps
     # the demo's portfolio row (25 KB budget)
     bond_line = next(x for x in b["numbers"].splitlines() if x.startswith("- **Bond of the v1 covenant:**"))
@@ -974,7 +1117,11 @@ def readme_blocks(app: dict) -> dict[str, str]:
     b["loop"] = loop_block(run)
     # the refund side on Sepolia, run by a judge test wallet in the judge sandbox [SIM] (pipeline/cure_arc.py)
     b["cure"] = cure_arc.loop_sentence(cure_arc.arc(), policy_mod.POLICY_V2_SANDBOX["pool"]["installments"][0][0])
-    b["projectionHeadline"] = load(DERIVED / "projection.json")["card"]["headlineSentence"]
+    # Devpost: the forward hold-out's headline, stake and interval, then the whole-window figure as context
+    b["projectionHeadline"] = "\n\n".join([" ".join(fwd[k] for k in ("headlineSentence", "stakeSentence",
+                                                                     "intervalSentence")), fwd["comparisonSentence"]])
+    # README Limits (said once; the PDF's Limits too): the forward hold-out's limits line, split in two
+    b["forwardLimit"] = f"- **Carbon projection, forward hold-out.** {_forward_limits(fwd['limitsSentence'])}"
     v = load(DERIVED / "verification_time.json")
     t, mt = v["tool"], v["manual"]
     b["open"] = "\n".join([
@@ -1045,7 +1192,10 @@ def pdf_blocks(app: dict) -> dict[str, str]:
                 sb["kt_ch4_per_yr"]["low"] * gwp[g]["value"], 1):
             fail(f"data/derived/backtest.json: the {key} conversion of the stake does not match pipeline/floors.py")
     meas = load(DERIVED / "measurements.json")
-    fn, lat = meas["functions"], meas["latency_seconds"]
+    fn = meas["functions"]
+    import readme_testnet  # the README's latency order: the samples logged in the repository first
+
+    lat_lead, lat_rest = readme_testnet.latency_lead(meas)
     fp = load(DERIVED / "model" / "model_metrics.json")["footprint"]
     port = app["portfolio"]
     pf = load(DERIVED / "model" / "bond_sizing_v3.json")["card"]["portfolioSentence"]
@@ -1091,8 +1241,9 @@ def pdf_blocks(app: dict) -> dict[str, str]:
         "prices new state far above that schedule, so the Sepolia figures are the upper line.",
         f"- **Data on chain.** A canonical evidence bundle is {_n(meas['bundle_bytes_jcs'])} bytes off chain; the chain "
         "stores only its SHA-256 hash.",
-        f"- **Latency.** Send to receipt through a public RPC on Sepolia: p50 {lat['p50']} s, p90 {lat['p90']} s "
-        f"(n = {lat['n']}{', raw samples not kept' if 'raw samples' in lat.get('label', '') else ''}).",
+        f"- **Latency.** Send to receipt through a public RPC on Sepolia: p50 {lat_lead['p50']} s, p90 "
+        f"{lat_lead['p90']} s ({readme_testnet.latency_words(lat_lead)}"
+        + "".join(f"; earlier, {readme_testnet.latency_words(x)}: p50 {x['p50']} s" for x in lat_rest) + ").",
         f"- {load(DERIVED / 'scale.json')['sentence']}"])
     b.update(projection_blocks())
     import clause  # adoption: precedents and pilot, from docs/clause/clause_sources.json + the committed policy
@@ -1248,7 +1399,8 @@ def scaling_blocks(app: dict) -> dict[str, str]:
     pool = policy_mod.POLICY_V2["pool"]
     dep = load(ROOT / "contracts" / "deployments" / "11155111.json")
     v1_bond = load(DERIVED / "audit_numbers.json")["numbers"]["bond_sizing"]["recommended_bond_eth"]
-    cost = load(DERIVED / "projection.json")["card"]["costSentence"]
+    pj = load(DERIVED / "projection.json")  # the ledger: the forward basis first, the whole-window comparison second
+    cost = f"{forward_card(pj)['costSentence']} {_whole_window(pj['card']['costSentence'])}"
     b["scPays"] = "\n".join([
         f"- **The seller** posts the bond the rebates come from, sized by a rule committed in `policyHash`: "
         f"{v1_bond} ETH for the single-source v1 covenant, the P90 of simulated annual rebate exposure under the "
@@ -1293,6 +1445,10 @@ def _two_sig(x: float) -> str:
     return f"{x:.{max(0, 1 - math.floor(math.log10(x)))}f}"
 
 
+PREREG_POINTER = ("What was fixed before computing, with its SHA-256 and commits: "
+                  "[`docs/preregistration.md`](docs/preregistration.md).")
+
+
 def projection_blocks() -> dict[str, str]:
     """The PDF's carbon projection (section 4), read from data/derived/projection.json and projection_sources.json
     (pipeline/projection.py): the vision-first lead (headline, scale, floor, cost, then one "How we estimated this"
@@ -1303,6 +1459,7 @@ def projection_blocks() -> dict[str, str]:
     if pj["parameters"] != ps["parameters"]:
         fail("data/derived/projection.json is older than projection_sources.json: run make projection")
     card, sc = pj["card"], pj["scopes"]
+    fwd = forward_card(pj)
     names = {"portfolio_v3": "Portfolio [SIM]", "backtest_set": "Backtest set"}
     # the table follows projection.json's headline kind: "central" (board T4d option d) prints the measured-hazard
     # figure with the no-recurrence end in brackets; "range" (the reviewed interim) prints the two ends of the stop share
@@ -1366,10 +1523,15 @@ def projection_blocks() -> dict[str, str]:
     return {
         # vision first (user decision 2026-10-16): headline ([PROJECTION] once), scale, floor, cost, then the
         # ASSUMPTIONs, the null and "not a measured reduction" once, in the methods paragraph; the table last
-        "projection": "\n\n".join([card["headlineSentence"], card["scaleSentence"], card["floorLineSentence"],
-                                   card["costLineSentence"], card["methodsSentence"], "\n".join(rows)]),
+        # the pre-registered forward hold-out leads (B1, reviewed REWORD → P1c); the whole-window figures follow as the
+        # comparison, with the ledger cost and the methods that both share, then the whole-window table
+        "projection": "\n\n".join([fwd["headlineSentence"], f"{fwd['stakeSentence']} {fwd['intervalSentence']} "
+                                   f"{fwd['rollingSentence']} {PREREG_POINTER}", fwd["comparisonSentence"],
+                                   f"{fwd['costSentence']} {_whole_window(card['costLineSentence'])}",
+                                   _methods_with_forward(card["methodsSentence"], pj["forward"]),
+                                   "Whole-window comparison (not the headline):\n\n" + "\n".join(rows)]),
         "projectionLimit": f"- **Carbon projection.** {card['limitSentence']}",
-        "projectionCost": card["costSentence"],
+        "projectionCost": _whole_window(card["costSentence"]),
         "projectionFinding": card["negativeFindingSentence"],
         "projectionEvidence": "\n\n".join([card["line1Sentence"], card["line2Sentence"], "\n".join(es_rows)]),
         "projectionAdoption": card["adoptionSentence"],

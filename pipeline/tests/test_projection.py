@@ -587,26 +587,39 @@ def test_cards_say_what_they_are():
 
 
 def test_the_pdf_draft_carries_the_projection_blocks():
-    """Vision first (user decision 2026-10-16): headline ([PROJECTION] once) -> scale -> floor -> cost line -> one
-    "How we estimated this" paragraph that holds the ASSUMPTIONs, the null and "not a measured reduction", once each."""
+    """Vision first (user decision 2026-10-16), forward hold-out leading (G2, after the B1 review): headline
+    ([PROJECTION] once) -> forward stake, interval and rolling origins -> the whole-window comparison -> cost line ->
+    one "How we estimated this" paragraph that holds the ASSUMPTIONs, the null and "not a measured reduction", once
+    each; the whole-window headline is no longer quoted. The cost and methods sentences are the card's, with the
+    whole-window comparison named and the forward hold-out no longer called future work."""
     pdf = ROOT / "docs" / "pdf" / "methaneclause.md"
     if not pdf.exists():
         pytest.skip("docs/pdf/methaneclause.md is not in this checkout")
     t = pdf.read_text(encoding="utf-8")
     for name in ("projection", "projectionCost", "projectionFinding", "projectionEvidence", "projectionAdoption",
-                 "projectionSources", "projectionLimit"):
+                 "projectionSources", "projectionLimit", "forwardLimit"):
         assert f"<!-- gen:{name}:begin -->" in t, name
     sec = t.split("## 4. ")[1].split("## 5. ")[0]
     assert sec.index("gen:projection:begin") < sec.index("gen:stake:begin"), "section 4 leads with the projection"
-    card = committed()["card"]
-    for k in ("headlineSentence", "scaleSentence", "floorLineSentence", "costLineSentence", "methodsSentence",
-              "costSentence", "negativeFindingSentence", "adoptionSentence", "line1Sentence", "line2Sentence"):
+    out = committed()
+    card, fwd = out["card"], out["forward"]["card"]
+    assert card["headlineSentence"] not in sec, "the whole-window headline is no longer the lead"
+    ww = ("projected at the central action share", "projected at the central action share over each member's whole "
+          "window")
+    for k in ("costLineSentence", "costSentence"):
+        assert card[k].replace(*ww, 1) in sec, f"{k} is not current in the PDF draft: run make readme"
+    m = card["methodsSentence"]
+    head_m, tail_m = m.split("Each member is credited over its window", 1)[0], m.split("is future work.", 1)[1]
+    assert head_m in sec and tail_m in sec and "is future work" not in sec, "methods: run make readme"
+    assert f"members chosen with what was known on {out['forward']['preRegistration']['D']}" in sec
+    for k in ("negativeFindingSentence", "adoptionSentence", "line1Sentence", "line2Sentence"):
         assert card[k] in sec, f"{k} is not current in the PDF draft: run make readme"
-    lead = [sec.index(card[k]) for k in ("headlineSentence", "scaleSentence", "floorLineSentence", "costLineSentence",
-                                         "methodsSentence")]
-    assert lead == sorted(lead), "the lead is headline, scale, floor, cost, then how we estimated it"
-    assert sec.index(card["evidenceSentence"]) > sec.index(card["methodsSentence"]) - 1
-    assert card["evidenceSentence"] in card["methodsSentence"], "the null sits in the methods paragraph"
+    lead = [sec.index(fwd[k]) for k in ("headlineSentence", "stakeSentence", "intervalSentence", "rollingSentence",
+                                        "comparisonSentence")]
+    lead += [sec.index(card["costLineSentence"].replace(*ww, 1)), sec.index(head_m)]
+    assert lead == sorted(lead), "the lead is the forward hold-out, the comparison, cost, then how we estimated it"
+    assert sec.index(card["evidenceSentence"]) > sec.index(head_m) - 1
+    assert card["evidenceSentence"] in m, "the null sits in the methods paragraph"
     assert sec.count("[PROJECTION]") == 1, "the projection is labelled once, at the headline"
     assert sec.count("not a measured reduction") == 1, "said once, in the methods paragraph"
     assert sec.count(card["evidenceSentence"]) == 1, "the null is said once"
@@ -615,25 +628,24 @@ def test_the_pdf_draft_carries_the_projection_blocks():
     assert "capped" not in sec, "the evidence-capped figure is withdrawn"
     limits = t.split("## 7. ")[1].split("## 8. ")[0]
     assert card["limitSentence"] in limits
+    split = ("; today's 'absent' label is decided inside the credit window;",
+             ". Today's 'absent' label is decided inside the credit window;")
+    assert fwd["limitsSentence"].replace(*split, 1) in limits and fwd["limitsSentence"].count(split[0]) == 1
 
 
 def test_the_readme_headline_is_the_generated_one():
-    """The README quotes the generated headline verbatim, and its two tonnages are projection.json's range ends at the
-    central action share (no hand-typed range)."""
+    """The README quotes the forward hold-out's generated headline verbatim (G2) and no longer the whole-window one;
+    its central figure is projection.json's forward central figure (no hand-typed number)."""
     readme = ROOT / "README.md"
     if not readme.exists():
         pytest.skip("README.md is not in this checkout")
     out = committed()
-    head = out["card"]["headlineSentence"]
-    assert head in readme.read_text(encoding="utf-8"), "run make readme"
-    kt = next(r for r in out["scopes"]["portfolio_v3"]["scenarios"]
-              if r["responseShare"] == out["headline"]["atActionShare"])["kt_ch4_per_yr"]
-    if out["headline"]["kind"] == "central":  # board T4d option d: central (measured hazard) and no-recurrence ends
-        m = re.search(r"would stop ~(\d+) kt CH₄/yr at the central [\d]+ % action share \(up to ~(\d+) kt", head)
-        assert m.groups() == (f"{kt['low']:.0f}", f"{kt['high']:.0f}")
-        assert out["headline"]["central"] == kt["low"] and out["headline"]["upToNoRecurrence"] == kt["high"]
-    else:
-        assert re.search(r"would stop ~(\d+)–~(\d+) kt", head).groups() == (f"{kt['low']:.0f}", f"{kt['high']:.0f}")
+    text = readme.read_text(encoding="utf-8")
+    fwd = out["forward"]["card"]
+    assert fwd["headlineSentence"] in text, "run make readme"
+    assert out["card"]["headlineSentence"] not in text
+    m = re.search(r"would stop ~([\d.]+) kt CH₄/yr at the central", fwd["headlineSentence"])
+    assert m.group(1) == f"{fwd['centralKtCh4PerYr']:.1f}"
 
 
 def hi_pf(scope: dict) -> dict:

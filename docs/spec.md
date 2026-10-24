@@ -26,11 +26,12 @@ files it lists) or from a test; values below name the file they are read from. R
 - **Honesty line (two-sided):** non-detection never cancels a rebate or counts as repair. It can release a capped
   refund that the next attested detection cancels.
 <!-- gen:specProblem:begin -->
-- **Problem:** two public datasets disagree about the same pipeline. UNEP IMEO MARS labels source TKM_S_276 (Turkmenistan) *absent* — no plume in its own six-month window. Carbon Mapper observed the sources within 1.5 km of TKM_S_276 on 9 passes since MARS's last plume (13 Jun 2025) and recorded a plume on 9, including 2,548 kg/h on 2026-06-11 (`cases.TKM_S_276` and `lead` in `data/derived/audit_numbers.json`; counting rule: `facility_post` in `pipeline/cases.py`). The union over all 5 linked Carbon Mapper sources (10 of 10) stays in the case file as `post_mars_last_plume_all_linked`, labelled secondary: it adds 2026-04-17, a date on which only linked sources centred beyond 1.5 km (1.774 km from the MARS point) recorded a plume.
+- **Problem:** two public datasets disagree about the same gas facility. UNEP IMEO MARS labels source TKM_S_276 (Turkmenistan) *absent* — no plume in its own six-month window. Carbon Mapper observed the sources within 1.5 km of TKM_S_276 on 9 passes since MARS's last plume (13 Jun 2025) and recorded a plume on 9, including 2,548 kg/h on 2026-06-11 (`cases.TKM_S_276` and `lead` in `data/derived/audit_numbers.json`; counting rule: `facility_post` in `pipeline/cases.py`). The union over all 5 linked Carbon Mapper sources (10 of 10) stays in the case file as `post_mars_last_plume_all_linked`, labelled secondary: it adds 2026-04-17, a date on which only linked sources centred beyond 1.5 km (1.774 km from the MARS point) recorded a plume.
 <!-- gen:specProblem:end -->
 - **The wider gap:** across the join of the two datasets about 203 *absent* sources are contradiction candidates
-  (`join_v1.n_candidates`). UNEP reports 3,500+ alerts with about 12 % operator response; the alert notifies, it does
-  not pay anyone. A buyer who contracted "no super-emitters" has no executable remedy.
+  (`join_v1.n_candidates`). UNEP's MARS has sent more than 5,000 alerts across 33 countries and only 13 % receive a
+  response ([UN News, Jul 2026](https://news.un.org/en/story/2026/07/1168007)); the alert notifies, it does not pay
+  anyone. A buyer who contracted "no super-emitters" has no executable remedy.
 
 ## 2. User, the Monday decision, and the operator gap
 
@@ -53,8 +54,9 @@ certify and notify but cannot move a seller's money; a bank can move money but c
 court can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the
 other, so the decision has to come from k independent observers plus an open challenge window — which is what the
 contract executes. The registries stay inputs. A signed database owned by any one of these parties can drop a
-re-detection or hold the rebate; here a detection, once attested by k independent keys, cannot be suppressed, the
-seller cannot hold back the rebate on its own, and no administrator can touch the funds.
+re-detection or hold the rebate; here a detection, once attested by k independent keys, cannot be suppressed; the
+seller can only appeal it, and then the independent witnesses must confirm it again; and no administrator can touch the
+funds.
 
 ## 3. Mechanism: the covenant
 
@@ -93,7 +95,9 @@ PROPOSED ──(challenge window passes)─────────────�
 - **Status is dated, never green:** "no positive re-detection attested since <date>", never "clean".
 
 Main-covenant values (k = 2 of n = 3, challenge window 1 day, contest window 2 days, link window 30 days, minRate
-100 kg/h, tier amounts) are in the `core` block of [`data/derived/policy_v2.json`](../data/derived/policy_v2.json).
+100 kg/h, tier amounts) are in the `core` block of [`data/derived/policy_v2.json`](../data/derived/policy_v2.json). A
+production clause names at least k + 2 observer organisations, so a contest (k + 1) keeps a spare
+([`PRODUCTION.md`](PRODUCTION.md), item 8).
 
 ## 4. Data pipeline
 

@@ -207,10 +207,31 @@ def _projection(d: dict) -> dict:
                     "postResult": {r["id"]: r.get("ktCh4PerYrCentralAction") for r in d["t4d"]["postResultSensitivity"]},
                     "postHoc": {r["id"]: r["ktCh4PerYrCentralAction"] for r in d["t4d"]["postHocSensitivity"]},
                     "diagnostics": {n: {k: s[k] for k in ("reonsetHazardSingleMissMerged", "denominatorOverEventLength",
-                                                         "selectingShareOfCredit")}
+                                                         "selectingShareOfCredit", "nonSelecting")}
                                     for n, s in d["t4d"]["scopes"].items()},
                     "notMarsNotifiedSample": {k: v for k, v in d["t4d"]["notMarsNotifiedSample"].items()
                                               if k != "population"}},
+            # board B1: the forward hold-out (pre-registered in projection_time.FORWARD), reported next to t4d
+            "forward": {"scopes": {n: {k: v for k, v in s.items() if k not in ("memberNames", "scenarios")}
+                                   | {"scenarios": {str(r["responseShare"]): {k: r[k] for k in (
+                                       "kt_ch4_per_yr", "mt_co2e_per_yr_gwp100", "mt_co2e_per_yr_gwp20", "shareOfStake")}
+                                       for r in s["scenarios"]}}
+                                   for n, s in d["forward"]["scopes"].items()},
+                        "sensitivity": {r["id"]: {k: r[k] for k in ("members", "membersQuantified", "creditEnd",
+                                                                     "ktCh4PerYrCentralAction", "reonsetHazardPerYear",
+                                                                     "postResult", "detectionsDropped", "origin",
+                                                                     "shortWindowExplainsMost", "clause",
+                                                                     "shareOfStakeCentralAction",
+                                                                     "stakeLowKtCh4PerYrCredited") if k in r}
+                                        for r in d["forward"]["sensitivity"]},
+                        "bootstrap": {k: v for k, v in d["forward"]["bootstrap"].items() if k != "rule"},
+                        "rolling": {"origins": {r["origin"]: {k: v for k, v in r.items() if k != "origin"}
+                                                for r in d["forward"]["rolling"]["origins"]},
+                                    "pooled": d["forward"]["rolling"]["pooled"]},
+                        "universeLeak": {k: v for k, v in d["forward"]["leaks"]["universe"].items() if k != "rule"},
+                        "detectionPublicationLeak": {k: v for k, v in d["forward"]["leaks"]["detectionPublication"]
+                                                     .items() if k != "rule"},
+                        "card": d["forward"]["card"]},
             "card": d["card"]}
 
 

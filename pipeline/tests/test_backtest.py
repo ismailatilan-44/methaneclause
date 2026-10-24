@@ -258,7 +258,10 @@ def test_committed_output_labels():
     assert f"{t['episodes']:,} episodes" in card["episodesSentence"]
     assert f"{t['rebatePolicyUnits']:,.2f} policy units" in card["episodesSentence"]
     low = bt["stake_band"]["kt_ch4_per_yr"]["low"] / 1000
-    assert f"at least ~{low:.1f} Mt CH₄/yr" in card["stakeSentence"] and "tasked" in card["stakeSentence"]
+    assert card["stakeSentence"].startswith(f"Stake, not abatement: ~{low:.1f} Mt CH₄/yr, the low bound of the band, ")
+    assert "at least" not in card["stakeSentence"], "the figure is the band's low bound, not a floor"
+    assert card["stakeSentence"].endswith("which biases the seen duty cycle upward (roadmap: a duty cycle measured on "
+                                          "un-targeted EMIT passes).") and "tasked" in card["stakeSentence"]
     n_below = bt["stake_band"]["facilitiesQuantified"] - t["facilitiesWithEpisode"]  # why 428 is not 425
     assert (f"across {bt['stake_band']['facilitiesQuantified']:,} facilities" in card["stakeSentence"]
             and f"the {t['facilitiesWithEpisode']:,} with an episode plus {n_below:,} whose plumes all fell below"

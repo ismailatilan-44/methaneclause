@@ -51,6 +51,22 @@ def _multiyear_note() -> str:
         note += f"; on Ethereum Sepolia as covenant {int(run['covenantId'], 16)}, its pool opened under this policy"
     return note + ")"
 
+# The pilot's observer organisations (docs/PRODUCTION.md item 8): a contest is confirmed by k + 1 signatures and the
+# clause keeps one spare organisation for it, so the pilot names n = k + CONTEST_EXTRA + SPARE_ORGS. POLICY_V2's
+# deployed core.n stays the demo setting; the pilot's n is rendered from core.k.
+CONTEST_EXTRA, SPARE_ORGS = 1, 1
+NUMBER_WORDS = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+PILOT_ORGS = ((2, "two licensed satellite-data providers (each holds its own commercial data agreement)"),
+              (1, "a university remote-sensing lab"), (1, "an NGO methane analyst"))
+
+
+def pilot_n(k: int) -> int:
+    n = k + CONTEST_EXTRA + SPARE_ORGS
+    if sum(c for c, _ in PILOT_ORGS) != n:
+        fail(f"the pilot lists {sum(c for c, _ in PILOT_ORGS)} observer organisations, the quorum rule needs {n}")
+    return n
+
+
 def fail(msg: str) -> None:
     sys.exit(f"clause: {msg}")
 
@@ -269,6 +285,9 @@ def pdf_blocks(doc: dict | None = None, src: dict | None = None) -> dict[str, st
     def cite(e: dict) -> str:
         return f"{e['tag']}, [source]({e['url']})"
 
+    n_pilot = pilot_n(core["k"])
+    n_word = NUMBER_WORDS[n_pilot]
+    orgs = ", ".join(t for _, t in PILOT_ORGS[:-1]) + " and " + PILOT_ORGS[-1][1]
     pilot = "\n".join([
         f"**Pilot (proposed, not run).** One EU importer [SIM] writes the model clause into one supply contract "
         f"concluded or renewed on or after {d['art28Scope']['date']}, the contracts Art. 28 of Regulation (EU) "
@@ -277,13 +296,13 @@ def pdf_blocks(doc: dict | None = None, src: dict | None = None) -> dict[str, st
         f"([`data/derived/sourceset_v3.json`](data/derived/sourceset_v3.json)), bonded at "
         f"{bond['recommended_bond_eth']:g} ETH [SIM], the P90 of one year's rebate exposure.",
         "",
-        f"- **Observers.** Three organisations with a quorum of {core['k']} of {core['n']} (`core.k`, `core.n`): a "
-        "licensed satellite-data provider (it holds the commercial data agreement), a university remote-sensing lab "
-        "and an NGO methane analyst. None is the seller or the buyer or controlled by either; each holds its own keys.",
+        f"- **Observers.** {n_word.capitalize()} organisations with a quorum of {core['k']} of {n_pilot} (`core.k`; "
+        f"n = k + 2, so a contest, which needs k + 1, keeps a spare organisation): {orgs}. None is the seller or the "
+        "buyer or controlled by either; each holds its own keys.",
         "- **Sponsor.** The lender whose sustainability-linked margin already moves on methane intensity (rows above), "
         "or the buyer itself. Its pool pays the capped refund and the observer fee for each counted pass.",
         f"- **Timeline.** Before {d['art28Applies']['date']}, when Art. 28 applies ({cite(d['art28Applies'])}): sign, "
-        "register the three organisations, open the covenant and the pool, run beside the importer's systems. Year one "
+        f"register the {n_word} organisations, open the covenant and the pool, run beside the importer's systems. Year one "
         f"is the covenant term ({_days(core['term'])}, `core.term`); each record is exported as IEA Annex D and "
         f"attached as evidence to the importer's yearly Art. 27 report due {d['art27Report']['date']} "
         f"({cite(d['art27Report'])}); {d['penaltyPause']['what']} ("

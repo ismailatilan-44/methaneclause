@@ -15,6 +15,9 @@
 //   export (make pages). Needs the network for the pinned CDN modules (viem, noble, Leaflet), so it is not part of
 //   make check. The live Sepolia receipts are read through the public endpoints in app.json (primary, then keyless
 //   fallbacks); the run logs which path served them, and E2E_LIVE=1 requires every receipt read live.
+//   Pinned code: the import map's sha384 list equals the ML-DSA-44 module graph the CDN serves, an edited module is
+//   refused, and a data file that differs from the pinned ML-DSA context or registry anchor turns its self-check red.
+//   E2E_HEADED=1 runs the same checks in a visible browser window.
 //   Exit status 1 on the first failure.
 import { createRequire } from "node:module";
 import { createServer } from "node:http";
@@ -41,13 +44,50 @@ const server = createServer(async (req, res) => {
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const BASE = `http://127.0.0.1:${server.address().port}/`;
 
+// Subresource integrity of the ML-DSA-44 verifier: app.js imports @noble/post-quantum as published package files (not a
+// CDN-generated +esm bundle, which jsDelivr does not keep byte-stable), the import map in index.html maps its bare
+// @noble/* imports to exact versions and lists the sha384 of every module in that graph. sriGraph() walks the graph from
+// the CDN and hashes it; `E2E_SRI=print node scripts/tests/e2e.mjs` prints the import map to paste into index.html, and
+// the run below requires the committed map to equal it.
+const PQ_ENTRY = /from "(https:\/\/cdn\.jsdelivr\.net\/npm\/@noble\/post-quantum@[^"]+)"/;
+async function sriGraph(entry, prefixes) {
+  const { createHash } = await import("node:crypto");
+  const seen = new Map(), todo = [entry];
+  const resolveSpec = (spec, base) => {
+    if (spec.startsWith("./") || spec.startsWith("../")) return new URL(spec, base).href;
+    const p = Object.keys(prefixes).find((k) => spec.startsWith(k));
+    if (!p) throw new Error(`sriGraph: bare import ${spec} in ${base} has no import-map prefix`);
+    return prefixes[p] + spec.slice(p.length);
+  };
+  while (todo.length) {
+    const url = todo.pop();
+    if (seen.has(url)) continue;
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`sriGraph: ${url} ${r.status}`);
+    const body = Buffer.from(await r.arrayBuffer());
+    seen.set(url, "sha384-" + createHash("sha384").update(body).digest("base64"));
+    const code = body.toString("utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    for (const m of code.matchAll(/(?:^|[;\s])(?:import|export)\s*(?:[\w*{}\s,$]+\sfrom\s*)?["']([^"']+)["']/g)) todo.push(resolveSpec(m[1], url));
+    if (/\bimport\s*\(/.test(code)) throw new Error(`sriGraph: dynamic import in ${url}`);
+  }
+  return Object.fromEntries([...seen].sort(([a], [b]) => a.localeCompare(b)));
+}
+const IMPORT_MAP = (html) => JSON.parse(html.match(/<script type="importmap">([\s\S]*?)<\/script>/)?.[1] || "{}");
+if (process.env.E2E_SRI === "print") {
+  const map = IMPORT_MAP(await readFile(join(APP, "index.html"), "utf8"));
+  const entry = (await readFile(join(APP, "app.js"), "utf8")).match(PQ_ENTRY)[1];
+  console.log(JSON.stringify({ imports: map.imports, integrity: await sriGraph(entry, map.imports || {}) }, null, 2));
+  server.close();
+  process.exit(0);
+}
+
 let n = 0;
 const ok = (cond, msg) => {
   if (!cond) { console.log(`   FAIL  ${msg}`); throw new Error(msg); }
   n++; console.log(`   ok    ${msg}`);
 };
 const channel = process.env.E2E_CHANNEL === undefined ? "chrome" : process.env.E2E_CHANNEL || undefined;
-const browser = await chromium.launch({ channel, headless: true });
+const browser = await chromium.launch({ channel, headless: process.env.E2E_HEADED !== "1" });  // E2E_HEADED=1: a visible run
 const t0 = Date.now();
 const D = JSON.parse(await readFile(join(APP, "data", "app.json"), "utf8")), S = D.sepolia;
 const eth = (wei) => { const w = BigInt(wei), f = (w % 10n ** 18n).toString().padStart(18, "0").replace(/0+$/, "");
@@ -71,11 +111,16 @@ const openDrawer = async (page) => {
 
 try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const cdnReqs = [];
+  page.on("request", (r) => { if (r.url().startsWith("https://cdn.jsdelivr.net/")) cdnReqs.push(r.url()); });
   const errors = await ready(page);
   console.log(`== desktop 1280 px (${BASE})`);
   ok(errors.length === 0, `no uncaught page errors and no same-origin 4xx (BUILD.json included)${errors.length ? ": " + errors[0] : ""}`);
   ok((await count(page, "#self-checks li.fail")) === 0, "self-checks: 0 failed");
   ok((await count(page, "#self-checks li.pass")) >= 6, `self-checks: ${await count(page, "#self-checks li.pass")} passed`);
+  const pinLine = (await page.locator("#self-checks li.pass").allInnerTexts()).find((t) => t.includes("KeyRegistry anchor")) || "";
+  ok(D.hybrid.chainId === 31337 && pinLine.includes("KeyRegistry anchor of the local demo chain (Anvil, chainId 31337; not the Sepolia registry)"),
+    "the drawer's pin check names its registry as the local demo chain's (Anvil), not Sepolia's");
   const pill0 = await page.locator("#check-pill").innerText();
   ok(/^(✓ \d+ checks passed in your browser|Checks running in your browser…)$/.test(pill0), `header pill: a final count or "running", never a partial count (${pill0})`);
 
@@ -87,12 +132,15 @@ try {
     `no "[SIM" text or attribute on the page; ${sim.marks} purple dashed marks; one legend (real data / simulated)`);
 
   console.log("== layer 0: the first view");
+  const HEADLINE_V3 = "Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.";
   const h1 = await page.locator("#hero-h").innerText();
   const line = (k) => page.locator(`#hero-h .l:nth-child(${k})`).innerText();
   ok((await page.locator("#hero-lead").innerText()) === 'A speed camera for methane, written into the gas contract.'
     && (await line(1)) === "Satellites confirm a leak → the seller's bond pays the buyer."
     && (await line(2)) === "No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's)."
-    && (await line(3)) === 'Once enough witnesses sign a sighting, no one — the seller included — can delete it or hold back the rebate on their own.', "the lead line and the three-line headline, verbatim (canonical v2)");
+    && (await line(3)) === HEADLINE_V3, "the lead line and the three-line headline, verbatim (canonical v3)");
+  ok((await page.getAttribute('meta[name="description"]', "content")).endsWith(` ${HEADLINE_V3}`),
+    "the meta description ends on the same headline sentence (canonical v3)");
   ok((await page.locator(".analogy").innerText()) === "Public satellite records are the cameras; independent witnesses (separate organisations) each fetch the record and sign it; when enough of them sign the same leak and the appeal window passes, the seller's bond pays the buyer — the ticket goes to the buyer, not to a state. A clean pass never undoes a paid rebate or proves a repair; it only earns money back from the sponsor's pool.",
     "the body line, verbatim (canonical v2)");
   ok((await page.locator("#money-fig figcaption").innerText()).includes("a sponsor (the seller's lender, as a sustainability-linked margin step, or the buyer)"),
@@ -159,6 +207,55 @@ try {
     ok((await count(page, `${checks} li.fail`)) === 0 && h2 === c2, `tamper ${name}: Reset restores green and the committed hash`);
   }
 
+  console.log("== pinned code: subresource integrity and the ML-DSA / registry pins");
+  const html = await readFile(join(APP, "index.html"), "utf8"), imap = IMPORT_MAP(html);
+  const pqEntry = (await readFile(join(APP, "app.js"), "utf8")).match(PQ_ENTRY)?.[1];
+  const graph = await sriGraph(pqEntry, imap.imports || {});
+  ok(pqEntry && !pqEntry.includes("+esm") && JSON.stringify(imap.integrity) === JSON.stringify(graph),
+    `import map: the sha384 of all ${Object.keys(graph).length} modules of the ML-DSA-44 verifier, as the CDN serves them now, equal index.html's integrity list`);
+  // viem's own +esm bundle pulls @noble 1.x as +esm too (generated by the CDN, so no SRI there); the published files are ours
+  const noble = [...new Set(cdnReqs.filter((u) => u.includes("/npm/@noble/") && !u.endsWith("/+esm")))];
+  ok(noble.length === Object.keys(graph).length && noble.every((u) => u in imap.integrity),
+    `every published @noble file the page loaded (${noble.length}) has an integrity entry`);
+  const tags = [...html.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)="https:\/\/cdn\.jsdelivr\.net[^>]*>/g)].map((m) => m[0]);
+  ok(tags.length >= 2 && tags.every((x) => /integrity="sha384-[A-Za-z0-9+/=]+"/.test(x) && /crossorigin="anonymous"/.test(x)) && (await page.evaluate(() => !!window.L)),
+    `every CDN <script>/<link> in index.html carries integrity + crossorigin (${tags.length}) and Leaflet loaded under it`);
+  {
+    const sri = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const msgs = [];
+    sri.on("console", (m) => msgs.push(m.text()));
+    sri.on("pageerror", (e) => msgs.push(String(e)));
+    await sri.route(pqEntry, async (route) => {
+      const r = await route.fetch();
+      await route.fulfill({ response: r, body: (await r.text()) + "\n// one line more than the published file\n" });
+    });
+    await sri.goto(BASE);
+    const readyAnyway = await sri.waitForSelector("body[data-ready='1']", { timeout: 8_000 }).then(() => true, () => false);
+    ok(!readyAnyway && msgs.some((x) => /integrity/i.test(x)),
+      `an ML-DSA module edited in transit is refused by the browser (integrity), so the page claims no check: ${(msgs.find((x) => /integrity/i.test(x)) || "").slice(0, 90)}…`);
+    await sri.close();
+  }
+  const pinCheck = (pg) => pg.locator("#self-checks li").filter({ hasText: /^Pinned/ });
+  ok((await pinCheck(page).count()) === 1 && (await pinCheck(page).evaluate((x) => x.classList.contains("pass"))),
+    "self-check: the pinned ML-DSA context and registry anchor equal app.json");
+  for (const [what, edit, alsoRed] of [
+    ["ML-DSA context", (j) => { j.hybrid.entries[0].mldsa44.context = "MethaneClause/v2"; }, null],
+    ["registry anchor", (j) => { j.hybrid.registeredKeys.OBS_A.pqPubKeyHash = "0x" + "11".repeat(32); }, "#sig-checks"],
+  ]) {
+    const pg = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await pg.route(/\/data\/app\.json$/, async (route) => {
+      const r = await route.fetch(), j = await r.json();
+      edit(j);
+      await route.fulfill({ response: r, body: JSON.stringify(j) });
+    });
+    await ready(pg);
+    const li = pinCheck(pg);
+    ok((await li.count()) === 1 && /^Pinned constants differ from data\/app\.json/.test(await li.innerText())
+      && (await li.evaluate((x) => x.classList.contains("fail"))) && (!alsoRed || (await count(pg, `${alsoRed} li.fail`)) > 0),
+      `a data file whose ${what} differs from the page's pin turns the self-check red${alsoRed ? " and the signature checks fail" : ""}: ${(await li.innerText()).slice(0, 100)}`);
+    await pg.close();
+  }
+
   console.log("== layer 1: actors and the two stories");
   ok((await count(page, "#actors > li.actor")) === 4, "four actors: seller, buyer, witnesses, sponsor");
   ok((await page.locator(".paths li").allInnerTexts()).length === 3, "three paths");
@@ -172,12 +269,19 @@ try {
   ok(want.every((x) => sv.includes(x)) && /sponsorWithdraw/.test(sv) && /look-ahead/.test(sv) && !/pending —/.test(sv),
     `the sponsor's view shows the replay's pool: top-up, balance, released, forfeited, witness fees, remainder (${want.length} amounts)`);
   ok(/Fetch → Validate → Seal → Sign → Re-check/.test(await page.locator("#view-observer").textContent()), "the witnesses' view names the five steps");
+  ok((await page.locator("#view-seller").textContent()).includes("it can only appeal it, and then the independent witnesses must confirm it again."),
+    "the seller's view repeats the headline's appeal clause (canonical v3)");
+  const lowKt = D.stake.kt_ch4_per_yr.low;
+  ok((await page.locator("#covenant-body").textContent()).includes(`Lead-case stake, not abatement: ${lowKt} kt CH₄/yr, the low bound of the band`)
+    && !/at least [\d.,]+ kt/.test(await page.evaluate(() => document.body.textContent)),
+    `the stake chip names the band's low bound (${lowKt} kt CH₄/yr from app.json), never "at least"`);
 
-  const heads = [], links = new Set(), codes = new Set();
+  const heads = [], links = new Set(), codes = new Set(), factTexts = [];
   await page.locator(".arc-btn[data-arc='tkm']").click();
   let total = 0;
   for (let i = 0; i < 20; i++) {
     heads.push(await page.locator("#ds-head").innerText());
+    factTexts.push(await page.locator("#ds-facts").innerText());
     for (const h of await page.locator("#ds-facts a[href^='https://']").evaluateAll((as) => as.map((a) => a.href))) links.add(h);
     for (const c of await page.locator("#ds-facts code[title]").evaluateAll((cs) => cs.map((c) => c.title))) codes.add(c);
     total++;
@@ -186,6 +290,8 @@ try {
   }
   ok(total >= 10 && new Set(heads).size === total && heads.every((h) => h.length > 8),
     `every story chapter reachable with Next: ${total} chapters, each with its own headline`);
+  ok(factTexts.some((t) => t.includes(`${D.stake.kt_ch4_per_yr.low} kt CH₄ a year at this source, the low bound of the band — a stake, never a measured cut`))
+    && !factTexts.some((t) => /at least [\d.,]+ kt/.test(t)), "the \"Still seen\" chapter's stake is the band's low bound from app.json, never \"at least\"");
   const st = Object.fromEntries(S.run.steps.map((x) => [x.step, x]));
   const sepWant = ["createCovenant", "proposeEpisode", "finalize", "withdraw_buyer"].map((k) => st[k].tx)
     .concat(S.run.steps.filter((x) => x.status === 0).map((x) => x.tx));
@@ -228,6 +334,14 @@ try {
     "without a browser wallet the button explains itself once, as a neutral note naming make judge-local");
 
   console.log("== layer 2: the drawer");
+  {
+    const ep = await page.locator("#episode-body table.ep").innerText();
+    const prop = S.run.steps.find((x) => x.step === "proposeEpisode");
+    const m = ep.match(/plume (\d+) days later \((\d{4}-\d\d-\d\d)\)/), lead0 = Date.parse(D.hybrid.entries[0].bundle.sceneTimestamp);
+    const days = m ? D.cases.TKM_S_276.cmPlumes.filter((p) => p.scene_timestamp.startsWith(m[2])).map((p) => Math.round((Date.parse(p.scene_timestamp) - lead0) / 864e5)) : [];
+    ok(ep.includes(`tier ${prop.tier} · ${D.demo.rebate_eth} ETH withdrawn`) && days.length > 0 && days.every((x) => x === Number(m[1])),
+      `episodes: the local demo's tier equals the tier Sepolia computed for the same rate (${prop.tier}); its linked plume is a TKM_S_276 scene in app.json (${m?.[2]}, ${m?.[1]} days later)`);
+  }
   ok(await page.locator("#trust-body").isHidden(), "the drawer starts closed");
   await openDrawer(page);
   ok((await page.getAttribute("#trust-toggle", "aria-expanded")) === "true", "Why you can trust it opens (aria-expanded)");
@@ -298,6 +412,21 @@ try {
     ok(errs.length === 0 && red && fails.some((t) => expect.test(t)) && (await count(dl, "#self-checks li.fail")) === 0
       && (await dl.getAttribute("body", "data-tamper")) === key && !(await dl.locator("#deeplink-note").isHidden()),
       `?tamper=${key} opens red (${fails.length} checks fail, ${expect.source}) with 0 failed self-checks`);
+    const [editBtn, resetBtn] = { A: ["#tamper-btn", "#reset-btn"], B: ["#miss-btn", "#miss-reset"], C: ["#cloud-btn", "#cloud-reset"] }[key];
+    const before = await dl.locator("#deeplink-note").innerText();
+    await dl.locator(resetBtn).click();
+    await dl.waitForFunction((s) => !document.querySelector(s).classList.contains("bad"), verdict);
+    const after = await dl.locator("#deeplink-note").innerText();
+    const tone = await dl.evaluate(() => { const n = document.querySelector("#deeplink-note"), s = getComputedStyle(n);
+      return [n.dataset.state, s.color === getComputedStyle(document.querySelector("#self-checks li.pass")).color || s.backgroundColor === getComputedStyle(document.querySelector("#self-checks li.pass")).backgroundColor]; });
+    const below = await dl.evaluate(([n, b]) => !!(document.querySelector(n).compareDocumentPosition(document.querySelector(b)) & Node.DOCUMENT_POSITION_FOLLOWING), ["#deeplink-note", editBtn]);
+    ok(/^Opened with/.test(before) && after.startsWith(`Reset: tamper ${key} is undone`) && /the button below/.test(after) && below
+      && (await dl.getAttribute("body", "data-tamper")) === null
+      && (await count(dl, `${checks} li.fail`)) === 0 && tone[0] === "reset" && tone[1],
+      `?tamper=${key} then Reset: the banner says the tamper is undone (green, no longer red) and body[data-tamper] is cleared`);
+    await dl.locator(editBtn).click();
+    await dl.waitForFunction((s) => document.querySelector(s).classList.contains("bad"), verdict);
+    ok(await dl.locator("#deeplink-note").isHidden(), `?tamper=${key}, Reset, then its tamper button again: the stale banner is hidden`);
     await dl.close();
   }
   const pp = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -316,6 +445,15 @@ try {
   await ph.close();
 
   console.log("== phone 375 px");
+  {
+    const pa = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
+    await ready(pa, `${BASE}?tamper=A`);
+    await pa.waitForTimeout(1500);   // late layout (maps, tiles, fonts) must not push the tamper out of view
+    const pos = await pa.evaluate(() => { const r = document.querySelector("#tamper-a").getBoundingClientRect(); return [Math.round(r.top), innerHeight, Math.round(scrollY)]; });
+    ok(pos[2] > 0 && pos[0] >= -2 && pos[0] < pos[1] / 2 && (await hasClass(pa, "#tamper-verdict", "bad")),
+      `?tamper=A at 375 px scrolls to tamper A: its heading sits at ${pos[0]} px of ${pos[1]} (scrollY ${pos[2]}) and the verdict is red`);
+    await pa.close();
+  }
   const phone = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
   await ready(phone);
   const w = await phone.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]); w[1] = Math.min(w[1], 375);
@@ -384,13 +522,41 @@ try {
   }
   ok(cut.length === 0, `story at 1280×800: the Demo story and side panels are filled, they and the chart row fit, and no two chart texts overlap, in every chapter and view${cut.length ? ": " + cut.join(", ") : ""}`);
   ok(nCh === 9, `story: ${nCh} chapters, each reachable in all four views`);
+  {
+    const create = S.run.steps.find((x) => x.step === "createCovenant"), bondTxt = eth(create.bondWei);   // the main page's "Bond posted"
+    const seen = await sp.evaluate(() => [3, 4].map((i) => { window.story.goChapter(i); window.story.setView("incident");
+      return [document.getElementById("side").innerText, document.getElementById("story").innerText,
+        [...document.querySelectorAll("#c3 text")].map((t) => t.textContent),
+        [...document.querySelectorAll("#side .st .simw")].map((s) => s.textContent)]; }));
+    const backdated = S.run.createdAt > D.policy.start, num = bondTxt.replace(/ ETH$/, "");
+    ok(seen.every(([side, , c3, marks]) => side.includes(`Bond ${bondTxt} locked`) && c3[0] === "Seller bond locked" && c3[1] === num
+        && (backdated ? marks.includes("start backdated") : !/start backdated/.test(side)))
+      && (!backdated || /created on .+ with its start backdated/.test(seen[0][1])),
+      `story ch4–5: the seller's bond (${bondTxt}, the main page's "Bond posted") is locked from the clause chapter on, in the players and the money chart${backdated ? "; the clause player marks the backdated start purple; ch4 says the Sepolia clause was created later with its start backdated" : ""}`);
+  }
   const hc = await sp.evaluate(async () => { location.hash = "#ch=3&view=contract"; await new Promise(r => setTimeout(r, 150)); return [window.story.chOf(window.story.T), window.story.view]; });
   ok(hc[0] === 2 && hc[1] === "contract", `story: a typed #ch=3&view=contract moves the page (chapter ${hc[0] + 1}, ${hc[1]})`);
   ok(!/\[SIM/.test(sTxt), "story: no \"[SIM\" text in any chapter or view (simulated = purple, dashed, one legend)");
+  ok(sTxt.includes("anyone may appeal with a deposit and an objective reason") && !/appeal with a bond/.test(sTxt),
+    "story: an appeal is made with a deposit and an objective reason (the main page's words; \"bond\" stays the seller's)");
   ok(sErr.length === 0, `story: no uncaught page errors and no same-origin 4xx${sErr.length ? ": " + sErr[0] : ""}`);
   const hdr = await sp.evaluate(() => [document.getElementById("live").getBoundingClientRect().right, innerWidth]);
   ok(hdr[0] <= hdr[1], `story at 1280 px: the header fits, the Sepolia link is reachable (${Math.round(hdr[0])} ≤ ${hdr[1]})`);
   await sp.close();
+  {   // a slow network: no imagery tile by the 15-s check shows the note; the first tile that arrives later removes it
+    const IMG = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/**";
+    const sl = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+    await sl.route(IMG, (r) => r.abort());
+    await sl.goto(BASE + "story.html");
+    await sl.waitForSelector("html[data-story-ready='1']", { timeout: 90_000 });
+    await sl.evaluate(() => window.story.tileCheck());   // what the 15-s timer runs
+    const shown = await sl.locator("#mapwrap .offline").count();
+    await sl.unroute(IMG);
+    await sl.evaluate(() => { window.story.goChapter(window.story.CH.length - 1); window.story.goChapter(0); });   // new views ask for new tiles
+    const gone = await sl.waitForFunction(() => !document.querySelector("#mapwrap .offline"), null, { timeout: 30_000 }).then(() => true, () => false);
+    ok(shown === 1 && gone, `story: the "tiles could not load" note shows when no imagery tile has arrived (${shown}) and goes away when one arrives later (${gone})`);
+    await sl.close();
+  }
   const [s10, s10Err] = await openStory({ width: 1024, height: 768 });   // the smallest desktop: money bars and chart captions
   await s10.waitForFunction(() => window.story.prologue, null, { timeout: 10_000 });
   const narrow = await s10.evaluate((f) => {

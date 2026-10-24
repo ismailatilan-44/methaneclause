@@ -37,7 +37,7 @@ from pathlib import Path
 
 import projection_evidence as evidence
 import projection_time as ptime
-from common import DERIVED, RADIUS_KM, ROOT, sha256_file, write_json
+from common import DERIVED, RADIUS_KM, ROOT, haversine_km, sha256_file, write_json
 
 SOURCES = DERIVED / "projection_sources.json"
 OUT = DERIVED / "projection.json"
@@ -425,7 +425,9 @@ def build(inp: dict) -> dict:
     end = date.fromisoformat(bt["catalogueEnd"])
 
     def ledger(facs: list[dict]) -> dict:
-        epy = _episodes_per_year(facs, end)
+        return ledger_at(_episodes_per_year(facs, end))
+
+    def ledger_at(epy: float) -> dict:
         return {"episodesPerYear": epy, "usdPerEpisode": round(per_ep, 4), "usdPerCovenantYear": round(per_cov, 4),
                 "usdPerYear": round(epy * per_ep + per_cov, 2), "calls": calls,
                 "statedGwei": meas["usd_assumption"]["stated_gwei"], "ethUsd": meas["usd_assumption"]["eth_usd"],
@@ -481,6 +483,8 @@ def build(inp: dict) -> dict:
             "scopes": pub_scopes, "negativeFinding": neg, "t4d": t4d,
             "interim": {"headline": interim_head, "scopes": scopes, "card": interim_card},
             "evidence": evd, "card": card,
+            "forward": _forward(inp, prm, bt, gwp, t4d["scopes"]["portfolio_v3"], pub_scopes["portfolio_v3"],
+                                ledger_at),
             "generatedFrom": [{"path": f"data/derived/{n}", "sha256": sha256_file(DERIVED / n)} for n in INPUTS]
             + [{"path": f"pipeline/{n}", "sha256": sha256_file(Path(__file__).resolve().parent / n)} for n in CODE]}
 
@@ -565,7 +569,7 @@ def _t4d(inp: dict, prm: dict, scope_facs: dict[str, list[dict]], scopes: dict, 
                 use_lag: bool = True, dl: list | None = None, rflat: float | None = None, r_minus: float = 0,
                 r_minus_censored: float = 0, nat: float = 0, denom: dict | None = None) -> dict:
             hz = lam["perYear"] if hazard is None else hazard
-            kt = cens = credit = marked = 0.0
+            kt = cens = credit = marked = kt_ns = 0.0
             capped = 0
             for f in q:
                 n = f["name"]
@@ -577,10 +581,12 @@ def _t4d(inp: dict, prm: dict, scope_facs: dict[str, list[dict]], scopes: dict, 
                 ti = cr["credit"] / dn if dn > 0 else 0.0
                 capped += ti > 1
                 kt += f["stake"]["kt_ch4_per_yr"]["low"] * min(1.0, ti)
+                kt_ns += f["stake"]["kt_ch4_per_yr"]["low"] * min(1.0, (cr["credit"] - cr["markedCredit"]) / dn
+                                                                  if dn > 0 else 0.0)
                 cens += cr["censoredCredit"]
                 credit += cr["credit"]
                 marked += cr["markedCredit"]
-            return {"kt": round(kt, 2), "capped": capped,
+            return {"kt": round(kt, 2), "capped": capped, "ktNonSelecting": round(kt_ns, 2),
                     "censoredShareOfCredit": round(cens / credit, ptime.T_DIGITS) if credit else 0.0,
                     "selectingShareOfCredit": round(marked / credit, ptime.T_DIGITS) if credit else 0.0}
 
@@ -605,7 +611,17 @@ def _t4d(inp: dict, prm: dict, scope_facs: dict[str, list[dict]], scopes: dict, 
                             "events": sum(len(v) for v in evs.values()),
                             "censoredEvents": sum(e["censored"] for v in evs.values() for e in v),
                             "denominatorOverEventLength": round(sum(emit.values()) / sum(ev_len.values()), 2),
-                            "selectingShareOfCredit": base_run["selectingShareOfCredit"]}
+                            "selectingShareOfCredit": base_run["selectingShareOfCredit"],
+                            # P1b: the same credit without the events containing a selecting plume, and both as a
+                            # share of the scope's stake low bound (portfolios of different size compare)
+                            "nonSelecting": {
+                                "ktCh4PerYrCentral": base_run["ktNonSelecting"],
+                                "centralShareOfStake": round(base_run["ktNonSelecting"]
+                                                             / scopes[name]["stakeLowKtCh4PerYr"], ptime.T_DIGITS),
+                                "allCreditKtCh4PerYrCentral": base_run["kt"],
+                                "allCreditCentralShareOfStake": round(base_run["kt"] / scopes[name]["stakeLowKtCh4PerYr"],
+                                                                      ptime.T_DIGITS),
+                                "denominator": STAKE_DENOMINATOR}}
         stake = scopes[name]["stakeLowKtCh4PerYr"]
 
         def t4c_rev(hazard: float = 0, cap: float | None = None, censored: bool = False) -> float:
@@ -1047,6 +1063,467 @@ def _cards(scopes: dict, p: dict, gwp: dict, neg: dict, selection: str, rule: di
             "their own are spanned by the range, not modelled); it assumes no new satellite and counts no clean pass "
             "as a stop."),
         "negativeFindingSentence": neg["sentence"],
+    }
+
+
+# ===================================================== board B1: the forward hold-out (projection_time.FORWARD)
+def _forward_scope(inp: dict, prm: dict, bt_by: dict, gwp: dict, members: dict[str, set], credit_end: str,
+                   stake_from: str = "atD", published_by_d: bool = False, bootstrap: dict | None = None,
+                   origin: str | None = None) -> dict:
+    """T4d option d on members chosen at D, credited only for events whose first detection is after D, up to
+    credit_end (projection_time.FORWARD). stake_from 'atD' = the stake known at D; 'backtest' = backtest.json's.
+    published_by_d (FORWARD_POST_RESULT): drop the detections dated up to D that were published only on or after D.
+    bootstrap (FORWARD_POST_RESULT.bootstrap): the design's draws, seed and confidence -> out['bootstrap']."""
+    from stake import band_from
+
+    fw, p = ptime.FORWARD, prm["parameters"]
+    d0 = origin or fw["D"]  # origin: FORWARD_ROLLING's other D dates
+    fac, inc = inp["facilities"]["byName"], inp["carbSummary"]
+    delays, rcls = ptime.response_delays(inc, prm), ptime.r_by_plume_class(inc, prm)
+    central = p["responseScenarios"]["central"]
+    pre_evs, pre_lps, rows, no_pass_after, quantified, parts = [], [], {}, [], {}, {}
+    dropped = 0
+    for n in sorted(members):
+        s = fac[n]
+        if published_by_d:
+            s, late = ptime.without_late_published(s, d0)
+            dropped += len(late)
+        pre = ptime.truncated(s, d0)
+        if ptime.has_pass_after_start(pre):
+            pre_evs.append(ptime.censored_events(pre))
+            pre_lps.append(ptime.last_pass(pre))
+            parts[n] = ptime.reonset_parts(pre_evs[-1], pre_lps[-1])
+        if stake_from == "atD":
+            after = [x for x in pre["passes"] if x["date"] > s["start"]]
+            st = band_from(len(after), sum(x["detected"] for x in after),
+                           [r for day, r in s["rates"] if s["start"] < day <= d0])
+        else:
+            st = bt_by[n]["stake"]
+        post = ptime.truncated(s, credit_end)
+        after_d = [x["date"] for x in post["passes"] if x["date"] > d0]
+        if not after_d:
+            no_pass_after.append(n)
+        if st.get("status") == "quantified":
+            quantified[n] = st["kt_ch4_per_yr"]["low"]
+        if st.get("status") != "quantified" or not after_d:
+            continue
+        evs = [e for e in ptime.censored_events(post) if e["f"] > d0]
+        lags = ptime.publication_lags(s)
+        if any(e["f"] not in lags for e in evs):
+            raise ValueError(f"forward: detections without a published plume at {n}")
+        window = date.fromisoformat(max(after_d)).toordinal() - date.fromisoformat(d0).toordinal()
+        rows[n] = {"post": post, "evs": evs, "lags": lags, "stake": st, "emit": st["duty_cycle"] * window,
+                   "windowDays": window}
+    lam = ptime.reonset_hazard(pre_evs, pre_lps, DAYS_PER_YEAR)
+    if lam["perYear"] is None:
+        raise ValueError("forward: the re-onset hazard on the members' passes up to D is undefined (FORWARD.hazard)")
+
+    def run(scale: float, hazard: float) -> dict:
+        kt = credit = marked = cens = 0.0
+        capped = 0
+        for n, r in rows.items():
+            r_of = {c: rcls[c]["share"] * scale for c in rcls}
+            cr = ptime.facility_credit(r["post"], r["evs"], r["lags"], delays, r_of, hazard, "central", DAYS_PER_YEAR,
+                                       mark_dates=members[n])
+            ti = cr["credit"] / r["emit"] if r["emit"] > 0 else 0.0
+            capped += ti > 1
+            kt += r["stake"]["kt_ch4_per_yr"]["low"] * min(1.0, ti)
+            credit += cr["credit"]
+            marked += cr["markedCredit"]
+            cens += cr["censoredCredit"]
+        return {"kt": round(kt, 2), "capped": capped,
+                "selecting": round(marked / credit, ptime.T_DIGITS) if credit else 0.0,
+                "censored": round(cens / credit, ptime.T_DIGITS) if credit else 0.0}
+
+    scen = []
+    stake_cr = round(sum(r["stake"]["kt_ch4_per_yr"]["low"] for r in rows.values()), 2)
+    for s in sorted(p["responseScenarios"]["values"]):
+        lo, hi = run(s / central, lam["perYear"]), run(s / central, 0)
+        kt = {"low": lo["kt"], "high": hi["kt"]}
+        scen.append({"responseShare": s, "kt_ch4_per_yr": kt,
+                     "mt_co2e_per_yr_gwp100": {b: round(v * gwp["gwp100"] / KT_PER_MT, 3) for b, v in kt.items()},
+                     "mt_co2e_per_yr_gwp20": {b: round(v * gwp["gwp20"] / KT_PER_MT, 3) for b, v in kt.items()},
+                     "shareOfStake": {b: round(v / stake_cr, ptime.T_DIGITS) if stake_cr else 0.0
+                                      for b, v in kt.items()},
+                     "facilitiesAtCap": {"low": lo["capped"], "high": hi["capped"]},
+                     "censoredShareOfCredit": {"low": lo["censored"], "high": hi["censored"]},
+                     "selectingShareOfCredit": {"low": lo["selecting"], "high": hi["selecting"]}})
+    base = run(1, lam["perYear"])
+    if base["selecting"] or any(r["selectingShareOfCredit"]["high"] for r in scen):
+        raise ValueError("forward: credit falls on an event containing a selecting plume (FORWARD.selectingShare)")
+    out = {"creditWindow": [d0, credit_end], "stakeFrom": stake_from, "members": len(members),
+            "memberNames": sorted(members), "membersQuantified": len(quantified),
+            "membersWithoutPassAfterD": len(no_pass_after), "membersCredited": len(rows),
+            "stakeLowKtCh4PerYr": round(sum(quantified.values()), 2),
+            "stakeLowKtCh4PerYrCredited": stake_cr,
+            "reonsetHazard": lam, "creditedEvents": sum(len(r["evs"]) for r in rows.values()),
+            "censoredEvents": sum(e["censored"] for r in rows.values() for e in r["evs"]),
+            "selectingShareOfCredit": base["selecting"], "scenarios": scen}
+    if published_by_d:
+        out["detectionsPublishedOnOrAfterDDropped"] = dropped
+    if bootstrap:
+        r_of = {c: rcls[c]["share"] for c in rcls}
+        terms = {n: ptime.credit_terms(r["post"], r["evs"], r["lags"], delays, r_of) for n, r in rows.items()}
+        out["bootstrap"] = _forward_bootstrap(sorted(members), parts, rows, terms, bootstrap,
+                                              _row(out, central)["kt_ch4_per_yr"]["low"])
+    return out
+
+
+def _forward_bootstrap(names: list[str], parts: dict, rows: dict, terms: dict, design: dict, point: float) -> dict:
+    """Members resampled with replacement (FORWARD_POST_RESULT.bootstrap): each draw re-measures the re-onset hazard on
+    the drawn members' passes up to D and recomputes the central figure (central action share, that hazard) and its
+    share of the drawn credited members' stake. Fails closed unless the undrawn sample reproduces the point figure."""
+    import random
+
+    import numpy as np
+
+    def figure(sample: list[str]) -> tuple[float, float]:
+        restarts = sum(parts[n][0] for n in sample if n in parts)
+        off = sum(parts[n][1] for n in sample if n in parts)
+        if off <= 0:
+            raise ValueError("forward bootstrap: a draw without event-free time (hazard undefined)")
+        lam = restarts / (off / DAYS_PER_YEAR)
+        kt = stake = 0.0
+        for n in sample:
+            if n in rows:
+                r = rows[n]
+                c = ptime.credit_at(terms[n], lam, DAYS_PER_YEAR)
+                kt += r["stake"]["kt_ch4_per_yr"]["low"] * min(1.0, c / r["emit"] if r["emit"] > 0 else 0.0)
+                stake += r["stake"]["kt_ch4_per_yr"]["low"]
+        return kt, (kt / stake if stake else 0.0)
+
+    kt0, _ = figure(names)
+    if round(kt0, 2) != point:
+        raise ValueError(f"forward bootstrap: the undrawn sample gives {kt0:.2f}, not the scope's {point}")
+    rng = random.Random(design["seed"])
+    draws = [figure([rng.choice(names) for _ in names]) for _ in range(design["draws"])]
+    conf = design["confidence"]
+    q = [(1 - conf) / 2, (1 + conf) / 2]
+    kt_ci = np.quantile([k for k, _ in draws], q)
+    sh_ci = np.quantile([s for _, s in draws], q)
+    return {"draws": design["draws"], "seed": design["seed"], "confidence": conf, "unit": "member",
+            "ktCh4PerYrCentral": {"point": point, "ci": [round(float(v), 2) for v in kt_ci]},
+            "shareOfStakeCentral": {"ci": [round(float(v), ptime.T_DIGITS) for v in sh_ci]},
+            "rule": design["rule"]}
+
+
+def _forward_members(inp: dict, bt: dict, join_rule: bool = False, origin: str | None = None) -> dict[str, set]:
+    """FORWARD.members over the universe (the backtest's evaluated facilities): absent at D and a Carbon Mapper plume
+    published before D (join_rule: its scene inside [D - WINDOW_MONTHS, D]). Values: the selecting plumes' scene dates."""
+    from common import WINDOW_MONTHS, minus_months
+
+    d0 = origin or ptime.FORWARD["D"]
+    ws = minus_months(d0, WINDOW_MONTHS)
+    fac = inp["facilities"]["byName"]
+    out = {}
+    for f in bt["facilities"]:
+        if not f.get("evaluated") or not ptime.absent_at(fac[f["name"]]["mars_dates"], d0, ws):
+            continue
+        sel = {r["scene_timestamp"][:10] for r in ptime.facility_plumes(fac[f["name"]])
+               if r["published_at"] and r["published_at"][:10] < d0
+               and (not join_rule or ws <= r["scene_timestamp"][:10] <= d0)}
+        if sel:
+            out[f["name"]] = sel
+    return out
+
+
+def _forward_universe_leak(inp: dict) -> dict:
+    """FORWARD.leaks.universe, counted: notified oil and gas MARS sources outside today's targets (not labelled absent
+    today) that meet absentAtD, and how many have a cm_timelines_notified.json source within RADIUS_KM detected before
+    D (their plume rows, rates and publication times are not committed)."""
+    import numpy as np
+
+    from common import WINDOW_MONTHS, minus_months
+
+    d0 = ptime.FORWARD["D"]
+    ws = minus_months(d0, WINDOW_MONTHS)
+    dates: dict[str, list[str]] = {}
+    for r in inp["marsPlumes"]:
+        dates.setdefault(r["source_name"], []).append(r["tile_date"])
+    notified = [r for r in inp["mars"] if r["sector"] == "Oil and Gas" and r["notified"] == "Yes"]
+    outside = [r for r in notified if r["persistency_category"] != "absent"]
+    absent = [r for r in outside if ptime.absent_at(dates.get(r["source_name"], []), d0, ws)]
+    cm = [(t["lat"], t["lon"]) for t in inp["cmTimelinesNotified"].values() if t["det"] and min(t["det"]) < d0]
+    lat, lon = np.array([a for a, _ in cm]), np.array([b for _, b in cm])
+    near = sum(haversine_km(float(r["lat"]), float(r["lon"]), lat, lon).min() <= RADIUS_KM for r in absent) if cm else 0
+    return {"notifiedOutsideUniverse": len(outside), "absentAtDOutsideUniverse": len(absent),
+            "withCarbonMapperDetectionBeforeD": int(near), "rule": ptime.FORWARD["leaks"]["universe"]}
+
+
+def _forward(inp: dict, prm: dict, bt: dict, gwp: dict, pv3: dict, pv3_pub: dict, ledger_at) -> dict:
+    """Board B1 (projection_time.FORWARD): the forward scope, its registered sensitivity rows, the counted universe
+    leak, the twelve-month control (FORWARD_CONTROL_LENGTH), the forward-basis ledger cost and its card. Fails closed
+    if D or the credit end no longer match their stated sources. pv3: T4d's portfolio_v3 scope; pv3_pub: the published
+    portfolio_v3 scope (its ledger and per-t cost are the whole-window comparison); ledger_at(episodes a year)."""
+    fw = ptime.FORWARD
+    d0, cend = fw["D"], fw["creditEnd"]
+    as_of = date.fromisoformat(inp["join"]["summary"]["mars_as_of"])
+    if as_of.replace(year=as_of.year - 1).isoformat() != d0 or bt["catalogueEnd"] != cend:
+        raise ValueError("FORWARD.D / creditEnd no longer match the MARS as-of date and the catalogue end")
+    bt_by = {f["name"]: f for f in bt["facilities"]}
+    members = _forward_members(inp, bt)
+    ev = prm["parameters"]["evidence"]
+    bd = ptime.FORWARD_POST_RESULT["bootstrap"]
+    design = {"draws": ev[bd["drawsFrom"]], "seed": ev[bd["seedFrom"]], "confidence": ev[bd["confidenceFrom"]],
+              "rule": bd["rule"]}
+    sc = _forward_scope(inp, prm, bt_by, gwp, members, cend, bootstrap=design)
+    win0 = date.fromisoformat(inp["join"]["summary"]["window"][0])
+    early_end = date.fromordinal(win0.toordinal() - 1).isoformat()
+    join_m = _forward_members(inp, bt, join_rule=True)
+    post = ptime.FORWARD_POST_RESULT
+    ctl = post["controlShortWindow"]
+    variants = {"fwd_stake_backtest": (members, cend, "backtest", False, None),
+                "fwd_join_rule": (join_m, cend, "atD", False, None),
+                "fwd_credit_before_absent_window": (members, early_end, "atD", False, None),
+                "fwd_stake_published_by_D": (members, cend, "atD", True, None),
+                "fwd_control_short_window": (_forward_members(inp, bt, origin=ctl["origin"]), ctl["creditEnd"], "atD",
+                                             False, ctl["origin"])}
+    central = prm["parameters"]["responseScenarios"]["central"]
+    sens = []
+    for sid, rule, post_result in [*((k, v, False) for k, v in fw["sensitivity"].items()),
+                                   *((k, v, True) for k, v in post["sensitivity"].items())]:
+        m, end, sf, pub, origin = variants[sid]
+        v = _forward_scope(inp, prm, bt_by, gwp, m, end, sf, published_by_d=pub, origin=origin)
+        row = _row(v, central)
+        sens.append({"id": sid, "rule": rule, "setsValue": False, "postResult": post_result, "members": v["members"],
+                     "membersQuantified": v["membersQuantified"], "origin": origin or fw["D"], "creditEnd": end,
+                     "ktCh4PerYrCentralAction": row["kt_ch4_per_yr"], "shareOfStakeCentralAction": row["shareOfStake"],
+                     "stakeLowKtCh4PerYrCredited": v["stakeLowKtCh4PerYrCredited"],
+                     "reonsetHazardPerYear": v["reonsetHazard"]["perYear"],
+                     "selectingShareOfCredit": v["selectingShareOfCredit"]}
+                    | ({"detectionsDropped": v["detectionsPublishedOnOrAfterDDropped"]} if pub else {}))
+    _control_reading(sens, _row(sc, central)["shareOfStake"]["low"], ctl)
+    full = _control_full_length(inp, prm, bt, bt_by, gwp, central, early_end, _row(sc, central)["shareOfStake"]["low"],
+                                {r["id"]: r for r in sens}["fwd_credit_before_absent_window"], sc["bootstrap"])
+    led = _forward_ledger(bt_by, sc, central, gwp, ledger_at, _row(pv3_pub, central))
+    leak = _forward_universe_leak(inp)
+    late = _forward_late_published(inp, members)
+    boot = sc.pop("bootstrap")
+    rolling = _forward_rolling(inp, prm, bt, bt_by, gwp, sc, central)
+    return {"preRegistration": fw, "postResult": post, "scopes": {fw["id"]: sc}, "bootstrap": boot, "rolling": rolling,
+            "sensitivity": sens, "controlFullLength": full, "ledger": led,
+            "leaks": {"universe": leak, "marsPublication": fw["leaks"]["marsPublication"],
+                      "passPublication": fw["leaks"]["passPublication"],
+                      "detectionPublication": late | {"rule": post["leaks"]["detectionPublication"]}},
+            "card": _forward_card(sc, central, gwp, pv3, {"universe": leak, "detectionPublication": late}, boot,
+                                  {r["id"]: r for r in sens}, rolling, full, led)}
+
+
+def _control_reading(sens: list[dict], primary_share: float, ctl: dict) -> None:
+    """FORWARD_POST_RESULT.controlShortWindow.reads, applied: adds shortWindowExplainsMost and a generated clause to
+    the control row."""
+    by = {r["id"]: r for r in sens}
+    c, cut = by["fwd_control_short_window"], by["fwd_credit_before_absent_window"]
+    cs, xs = c["shareOfStakeCentralAction"]["low"], cut["shareOfStakeCentralAction"]["low"]
+    short = abs(cs - xs) < abs(cs - primary_share)
+    c["shortWindowExplainsMost"] = short
+    c["clause"] = (
+        f"the same six-month credit length from {c['origin']} to {c['creditEnd']}, also before the label window, gives "
+        f"~{c['ktCh4PerYrCentralAction']['low']:.2f} kt ({cs * PERCENT:.2f} % of stake, against "
+        f"{xs * PERCENT:.2f} % for the credit ending before the label and {primary_share * PERCENT:.2f} % over the full "
+        "window), so " + ("the short window, not the label, explains most of that drop" if short else
+                          "the short window explains little of that drop"))
+
+
+def _control_full_length(inp: dict, prm: dict, bt: dict, bt_by: dict, gwp: dict, central: float, early_end: str,
+                         primary_share: float, cut: dict, boot: dict) -> dict:
+    """projection_time.FORWARD_CONTROL_LENGTH: FORWARD's rules at its origin with credit up to its creditEnd, read by
+    its rule against the full-window share and the credit ending before the label window. Reported only. Fails closed
+    if its creditEnd is no longer the day before today's absent window or its length is not FORWARD's."""
+    rule = ptime.FORWARD_CONTROL_LENGTH
+    o0, end = rule["origin"], rule["creditEnd"]
+    if end != early_end:
+        raise ValueError("FORWARD_CONTROL_LENGTH.creditEnd is not the day before today's absent window")
+
+    def months(a: str, b: str) -> int:  # the window's length in months, to the nearest month
+        return round((date.fromisoformat(b) - date.fromisoformat(a)).days / (DAYS_PER_YEAR / len(MONTH_WORDS[1:])))
+
+    n, n_fw = months(o0, end), months(ptime.FORWARD["D"], ptime.FORWARD["creditEnd"])
+    if n != n_fw:
+        raise ValueError(f"FORWARD_CONTROL_LENGTH covers {n} months, FORWARD {n_fw}")
+    v = _forward_scope(inp, prm, bt_by, gwp, _forward_members(inp, bt, origin=o0), end, origin=o0)
+    row = _row(v, central)
+    cs, xs = row["shareOfStake"]["low"], cut["shareOfStakeCentralAction"]["low"]
+    ci = boot["shareOfStakeCentral"]["ci"]
+    near = ci[0] <= cs <= ci[1] and abs(cs - primary_share) < abs(cs - xs)
+    reading = rule["readsIfNear"] if near else rule["readsOtherwise"]
+    clause = (f"a {MONTH_WORDS[n]}-month credit window from {o0} to {end}, also before the label window, gives "
+              f"~{row['kt_ch4_per_yr']['low']:.2f} kt ({cs * PERCENT:.2f} % of stake, against "
+              f"{xs * PERCENT:.2f} % for the credit ending before the label and {primary_share * PERCENT:.2f} % over "
+              "the full window), " + (f"so {reading}" if near else f"but {reading}"))
+    return {"id": rule["id"], "preRegistration": rule, "setsValue": False, "origin": o0, "creditEnd": end, "months": n,
+            "members": v["members"], "membersCredited": v["membersCredited"],
+            "stakeLowKtCh4PerYrCredited": v["stakeLowKtCh4PerYrCredited"],
+            "reonsetHazardPerYear": v["reonsetHazard"]["perYear"],
+            "ktCh4PerYrCentralAction": row["kt_ch4_per_yr"], "shareOfStakeCentralAction": row["shareOfStake"],
+            "selectingShareOfCredit": v["selectingShareOfCredit"],
+            "fullWindowShare": primary_share, "cutRowShare": xs, "bootstrapShareCi": ci,
+            "nearFullWindow": near, "reading": reading, "clause": clause}
+
+
+def _forward_ledger(bt_by: dict, sc: dict, central: float, gwp: dict, ledger_at, pv3_row: dict) -> dict:
+    """The ledger cost on the forward basis: the members' own backtest episodes dated after D up to creditEnd, per
+    year of that window, priced as the portfolio's ledger (one createCovenant a year), over the forward scope's
+    projected t CO2e; the published whole-window per-t cost is kept as the comparison."""
+    fw = ptime.FORWARD
+    d0, end = fw["D"], fw["creditEnd"]
+    eps = sum(1 for n in sc["memberNames"] for e in bt_by[n].get("episodes", []) if d0 < e["date"] <= end)
+    years = (date.fromisoformat(end) - date.fromisoformat(d0)).days / DAYS_PER_YEAR
+    led = ledger_at(round(eps / years, 3))
+    per_t = [_sig4(led["usdPerYear"] / (v * T_PER_KT * gwp["gwp100"]))
+             for r in sc["scenarios"] for v in r["kt_ch4_per_yr"].values()]
+    t_central = _row(sc, central)["kt_ch4_per_yr"]["low"] * T_PER_KT * gwp["gwp100"]
+    return {"basis": ("the forward members' backtest episodes dated after D up to creditEnd, per year of that window, "
+                      "plus one createCovenant a year"),
+            "window": [d0, end], "episodes": eps, "windowYears": round(years, 4)} | led | {
+            "usdPerTco2eGwp100Central": _sig4(led["usdPerYear"] / t_central),
+            "usdPerTco2eGwp100Range": [min(per_t), max(per_t)],
+            "usdPerTco2eGwp100WholeWindow": pv3_row["ledgerUsdPerTco2eGwp100"]["low"]}
+
+
+def _forward_rolling(inp: dict, prm: dict, bt: dict, bt_by: dict, gwp: dict, primary: dict, central: float) -> dict:
+    """projection_time.FORWARD_ROLLING: FORWARD's rules at each other origin, per origin and pooled with FORWARD.D,
+    as kt CH4/yr and as a share of the credited stake. Reported only."""
+    rr = ptime.FORWARD_ROLLING
+    if rr["creditEnd"] != ptime.FORWARD["creditEnd"]:
+        raise ValueError("FORWARD_ROLLING.creditEnd is not FORWARD's")
+
+    def summary(d0: str, sc: dict) -> dict:
+        row = _row(sc, central)
+        return {"origin": d0, "members": sc["members"], "membersCredited": sc["membersCredited"],
+                "stakeLowKtCh4PerYrCredited": sc["stakeLowKtCh4PerYrCredited"],
+                "reonsetHazardPerYear": sc["reonsetHazard"]["perYear"],
+                "ktCh4PerYrCentralAction": row["kt_ch4_per_yr"], "shareOfStakeCentralAction": row["shareOfStake"],
+                "selectingShareOfCredit": sc["selectingShareOfCredit"]}
+
+    rows = [summary(ptime.FORWARD["D"], primary)]
+    for d0 in rr["origins"]:
+        m = _forward_members(inp, bt, origin=d0)
+        rows.append(summary(d0, _forward_scope(inp, prm, bt_by, gwp, m, rr["creditEnd"], origin=d0)))
+    rows.sort(key=lambda r: r["origin"])
+    if any(r["selectingShareOfCredit"] for r in rows):
+        raise ValueError("forward rolling: credit falls on an event containing a selecting plume")
+    stake = sum(r["stakeLowKtCh4PerYrCredited"] for r in rows)
+    pooled = {b: round(sum(r["ktCh4PerYrCentralAction"][b] for r in rows) / stake, ptime.T_DIGITS) for b in ("low", "high")}
+    return {"preRegistration": rr, "origins": rows,
+            "pooled": {"origins": len(rows), "shareOfStakeCentralAction": pooled,
+                       "ktCh4PerYrCentralActionSum": {b: round(sum(r["ktCh4PerYrCentralAction"][b] for r in rows), 2)
+                                                     for b in ("low", "high")},
+                       "stakeLowKtCh4PerYrCreditedSum": round(stake, 2)}}
+
+
+def _forward_late_published(inp: dict, members: dict[str, set]) -> dict:
+    """FORWARD_POST_RESULT.leaks.detectionPublication, counted on the members: detections dated after the start and
+    up to D that no plume published before D shows."""
+    fac, d0 = inp["facilities"]["byName"], ptime.FORWARD["D"]
+    late = {n: ptime.without_late_published(fac[n], d0)[1] for n in members}
+    return {"detections": sum(len(v) for v in late.values()), "members": sum(bool(v) for v in late.values())}
+
+
+# The share-of-stake denominator every scope uses (forward rows and the T4d nonSelecting field): T4d credits every
+# quantified facility (each has a pass after its start); the forward scope credits the members quantified at D with a
+# pass after D (stakeLowKtCh4PerYrCredited).
+STAKE_DENOMINATOR = ("the stake low bound of the facilities the scope credits: quantified, with a satellite pass in the "
+                     "credit window")
+MONTH_WORDS = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+               "twelve")
+
+
+def _kt1(x: float) -> str:
+    """One decimal for the forward scope's small tonnages."""
+    return f"{x:,.1f}"
+
+
+def _forward_card(sc: dict, central: float, gwp: dict, pv3: dict, leaks: dict, boot: dict, rows: dict,
+                  rolling: dict, full: dict, led: dict) -> dict:
+    """The forward scope's sentences and figures, read from the scope (vision first: [PROJECTION] once). The headline
+    is the reviewed sentence (task P1b, 2026-10-24) with its fields generated; the band runs from the lowest action
+    scenario with the measured re-onset hazard to the highest with no recurrence."""
+    from common import WINDOW_MONTHS
+
+    fw = ptime.FORWARD
+    row = _row(sc, central)
+    kt = row["kt_ch4_per_yr"]
+    lo = min(sc["scenarios"], key=lambda r: r["responseShare"])
+    hi = max(sc["scenarios"], key=lambda r: r["responseShare"])
+    band = (lo["kt_ch4_per_yr"]["low"], hi["kt_ch4_per_yr"]["high"])
+    pv_row = _row(pv3, central)
+    ci = boot["ktCh4PerYrCentral"]["ci"]
+    uni, late = leaks["universe"], leaks["detectionPublication"]
+    pub_row, cut_row = rows["fwd_stake_published_by_D"], rows["fwd_credit_before_absent_window"]
+    lam, whole = sc["reonsetHazard"], pv3["reonsetHazard"]
+    more = [r["shareOfStakeCentralAction"]["low"] for r in rolling["origins"] if r["origin"] != fw["D"]]
+    months = MONTH_WORDS[WINDOW_MONTHS]
+    return {
+        "centralKtCh4PerYr": kt["low"], "upToNoRecurrenceKtCh4PerYr": kt["high"],
+        "lowKtCh4PerYr": band[0], "highKtCh4PerYr": band[1],
+        "bandNote": ("central = the central action share with the measured re-onset hazard; low = the lowest action "
+                     "scenario with it; high = the highest action scenario with no recurrence"),
+        "bootstrapKtCh4PerYrCentralCi": ci, "bootstrapConfidence": boot["confidence"],
+        "members": sc["members"], "membersQuantified": sc["membersQuantified"],
+        "membersCredited": sc["membersCredited"], "stakeLowKtCh4PerYrCredited": sc["stakeLowKtCh4PerYrCredited"],
+        "selectingShareOfCredit": sc["selectingShareOfCredit"],
+        "shareOfStakeCentral": row["shareOfStake"]["low"],
+        "shareOfStakeAllQuantifiedCentral": round(kt["low"] / sc["stakeLowKtCh4PerYr"], ptime.T_DIGITS),
+        "stakeLowKtCh4PerYrAllQuantified": sc["stakeLowKtCh4PerYr"],
+        "comparedWith": {"scope": "portfolio_v3", "denominator": STAKE_DENOMINATOR,
+                         "forwardCentralShareOfStake": row["shareOfStake"]["low"],
+                         "centralKtCh4PerYr": pv_row["kt_ch4_per_yr"]["low"],
+                         "allCreditCentralShareOfStake": pv3["nonSelecting"]["allCreditCentralShareOfStake"],
+                         "nonSelectingKtCh4PerYrCentral": pv3["nonSelecting"]["ktCh4PerYrCentral"],
+                         "nonSelectingCentralShareOfStake": pv3["nonSelecting"]["centralShareOfStake"],
+                         "selectingShareOfCredit": pv3["selectingShareOfCredit"]},
+        "headlineSentence": (
+            f"[PROJECTION] Pre-registered forward hold-out: a {sc['members']}-facility portfolio covenant [SIM], "
+            f"chosen with Carbon Mapper plumes published before {fw['D']} at sources MARS had not seen for {months} "
+            "months and lists as absent today, and credited only for faults first detected after that date up to "
+            f"{fw['creditEnd']}, would stop ~{_kt1(kt['low'])} kt CH₄/yr at the central {_pct(central)} action share "
+            f"({boot['confidence'] * PERCENT:.0f} % member bootstrap ~{_kt1(ci[0])}–{_kt1(ci[1])} kt; "
+            f"~{_kt1(band[0])}–{_kt1(band[1])} kt across action and recurrence scenarios), "
+            f"{_mt(row['mt_co2e_per_yr_gwp100']['low'])} CO₂e/yr at GWP-100, none of it on the plume that selected a "
+            f"member — {HEADLINE_END}"),
+        "stakeSentence": (
+            f"Stake, not abatement: ~{sc['stakeLowKtCh4PerYrCredited']:,.0f} kt CH₄/yr across the "
+            f"{sc['membersCredited']} members with a stake known on {fw['D']} and a satellite pass after it; the "
+            f"projection credits {row['shareOfStake']['low'] * PERCENT:.1f} % of it "
+            f"({kt['low'] / sc['stakeLowKtCh4PerYr'] * PERCENT:.1f} % of the ~{sc['stakeLowKtCh4PerYr']:,.0f} kt stake "
+            f"of all {sc['membersQuantified']} quantified members)."),
+        "intervalSentence": (
+            f"Resampling the members ({boot['draws']:,} draws, the re-onset hazard re-measured in each) puts the "
+            f"central figure between ~{_kt1(ci[0])} and ~{_kt1(ci[1])} kt CH₄/yr "
+            f"({boot['confidence'] * PERCENT:.0f} % interval)."),
+        "rollingShareOfStakeRange": [min(more), max(more)],
+        "rollingSentence": (
+            f"At {MONTH_WORDS[len(more)]} more origins registered after this result, with overlapping credit windows, "
+            f"the share is {min(more) * PERCENT:.1f}–{max(more) * PERCENT:.1f} %."),
+        "comparisonSentence": (
+            f"Credited over each member's whole window instead, the same model gives {_kt(pv_row['kt_ch4_per_yr']['low'])} "
+            f"CH₄/yr for the portfolio covenant set v3, {_pct(pv3['selectingShareOfCredit'])} of it on events containing "
+            "the plume that selected the member; the forward hold-out credits none."),
+        "hazardSentence": (
+            f"In the forward hold-out the re-onset hazard is measured on the members' own passes up to {fw['D']} "
+            f"only, {lam['perYear']:.2f} a year: {lam['restarts']} restarts over {lam['eventFreeYears']} event-free "
+            f"facility-years (over each member's whole window, {whole['perYear']:.2f} a year: {whole['restarts']} "
+            f"restarts over {whole['eventFreeYears']}); each fix is credited until the fault's observed end, the last "
+            f"pass on or before {fw['creditEnd']} or a new fault."),
+        "costSentence": (
+            f"Ledger cost only, not the cost of the work on site: on the forward basis the {sc['members']} members had "
+            f"{led['episodes']} episodes from {fw['D']} to {fw['creditEnd']}; at USD {led['usdPerEpisode']:.2f} an "
+            f"episode plus one createCovenant that is USD {led['usdPerYear']:,.0f} a year, or "
+            f"{_usd_small(led['usdPerTco2eGwp100Central'])} per t CO₂e projected at the central action "
+            f"share ({_rusd(led['usdPerTco2eGwp100Range'])} across scenarios and with no recurrence); credited over "
+            f"each member's whole window instead, the portfolio covenant set v3 costs "
+            f"{_usd_small(led['usdPerTco2eGwp100WholeWindow'])} per t CO₂e."),
+        "limitsSentence": (
+            f"The forward members come from today's MARS targets (notified and labelled absent today; "
+            f"{uni['absentAtDOutsideUniverse']} other notified oil and gas sources MARS had not seen for {months} "
+            f"months on {fw['D']} lie outside them because their Carbon Mapper plume rows are not committed), and "
+            "both catalogues are read as they stand today: MARS rows and Carbon Mapper passes without a detection "
+            f"carry no publication date, and {late['detections']} detections dated up to {fw['D']} were published "
+            f"only on or after it (without them, ~{_kt1(pub_row['ktCh4PerYrCentralAction']['low'])} kt); today's "
+            "'absent' label is decided inside the credit window; credit ending before it (to "
+            f"{cut_row['creditEnd']}) gives ~{_kt1(cut_row['ktCh4PerYrCentralAction']['low'])} kt; "
+            f"{full['clause']}."),
     }
 
 

@@ -4,8 +4,8 @@
     make verify-evidence            # live: read-only JSON-RPC on a public Sepolia endpoint
     OFFLINE=1 make verify-evidence  # replay the recorded RPC answers (scripts/tests/fixtures/verify_evidence/rpc.json)
 
-Chain (every answer from a public RPC: eth_chainId, eth_getCode, eth_getTransactionReceipt, eth_getTransactionByHash,
-eth_call; nothing is signed or sent):
+Chain (every answer from a public RPC: eth_chainId, eth_blockNumber, eth_getCode, eth_getTransactionReceipt,
+eth_getTransactionByHash, eth_getLogs, eth_call; nothing is signed or sent):
   - every address in contracts/deployments/11155111.json holds code; the v1 core (MethaneCovenant, KeyRegistry) and the
     IncentivePool with its five libraries equal this repository's compiled code (contracts/out) outside the masked
     bytes, and every masked byte is read back and checked: MethaneCovenant's immutables = the recorded registry,
@@ -13,6 +13,14 @@ eth_call; nothing is signed or sent):
     recorded covenant, registry, chain id and domain separator (covenant() and registry() agree); its link slots =
     the recorded library addresses; each library's call guard = its own address; each covenant's registry() is the
     recorded KeyRegistry;
+  - every live contract (main and judge-sandbox core, both pools, the five libraries) has public verified source under
+    its own name and this build's compiler version: Sourcify's API first, Blockscout's when Sourcify does not answer or
+    does not hold it (keyless GETs, recorded with the RPC answers). The five pool libraries are verified on Sourcify
+    only (Blockscout does not hold them), so in a live run a Sourcify outage fails this row for them: an unreachable
+    source, not evidence of unverified code (OFFLINE=1 replays the recorded answers);
+  - every pool opened on the two live IncentivePools (their PoolFunded logs, from the record's first block to the
+    latest) names its opener (the covenant's seller or buyer; the contract accepts either) and carries the policyHash,
+    paramsHash and mode of a recorded policy in data/derived/policy_v2.json; a pool on any other terms fails;
   - every transaction in data/derived/sepolia_txs.json exists with the recorded status, sender, target, block and gas
     used, and every step of data/derived/testnet_run.json with its recorded status, target and gas used;
   - every recorded failed transaction fails for the recorded reason: OutOfGas used its whole gas limit; any other is
@@ -26,7 +34,9 @@ Evidence (the code the observers and the contract use, imported from pipeline/):
   - the accepted proposeEpisode calldata commits to that hash, its attestations carry the bundle's rate, uncertainty,
     detection time and provider, and its Merkle proof reaches the committed covered-source root;
   - each EIP-712 signature (secp256k1 ECDSA, domain bound to chain 11155111 and the covenant) recovers to a recorded
-    observer key of a distinct organisation, registered as OBSERVER in the recorded KeyRegistry at the proposal block;
+    observer key of a distinct organisation, registered as OBSERVER in the recorded KeyRegistry at the proposal block,
+    valid at the proposal's time, of neither the covenant's seller's nor its buyer's organisation, k organisations at
+    least (key_rules: the rules MethaneCovenant applies; scripts/verify_bundle.py --rpc applies the same);
   - the covenant and episode state on chain hold the committed root, the recorded policy hash and the bundle's hash;
   - when data/derived/multiyear_run.json exists: its transactions succeeded from the recorded seller / buyer, its
     covenant has POLICY_MULTIYEAR's three-year term over the committed root, and the main pool holds it under
@@ -61,6 +71,7 @@ from merkle import leaf, verify as merkle_verify  # noqa: E402
 from observer import attest  # noqa: E402
 from observer.bundle import INSTRUMENTS, build_bundle  # noqa: E402
 from observer.service import load_facility  # noqa: E402
+from common import UA  # noqa: E402
 from sepolia_txs import RPCS, Rpc, _sig, load_abis  # noqa: E402
 
 CHAIN = 11155111
@@ -71,6 +82,7 @@ DEFAULTS = {"txs": DERIVED / "sepolia_txs.json", "run": DERIVED / "testnet_run.j
             "deployments": ROOT / "contracts" / "deployments" / f"{CHAIN}.json", "readme": ROOT / "README.md",
             "multiyear": DERIVED / "multiyear_run.json"}
 LIBS = ("PoolVerify", "PoolSetup", "PoolEpisodes", "PoolCorroboration", "PoolInstallments")
+LOG_CHUNK = 40_000  # blocks per eth_getLogs; the keyless endpoints cap the range (publicnode: 50,000)
 
 
 @dataclass
@@ -93,7 +105,46 @@ def _slim(method: str, result):
                                            "blockNumber", "gasUsed")}
     if method == "eth_getTransactionByHash" and isinstance(result, dict):
         return {k: result.get(k) for k in ("hash", "from", "to", "input", "value", "gas", "blockNumber")}
+    if method == "eth_getBlockByNumber" and isinstance(result, dict):
+        return {k: result.get(k) for k in ("number", "hash", "timestamp")}
+    if method == "eth_getLogs" and isinstance(result, list):
+        return [{k: x.get(k) for k in ("address", "topics", "data", "blockNumber", "transactionHash")} for x in result]
     return result
+
+
+SOURCIFY = "https://sourcify.dev/server/v2/contract/{chain}/{address}?fields=compilation.name,compilation.compilerVersion"
+BLOCKSCOUT = "https://eth-sepolia.blockscout.com/api/v2/smart-contracts/{address}"
+BLOCKSCOUT_KEYS = ("is_verified", "is_fully_verified", "name", "compiler_version", "verified_at")
+
+
+def http_get(url: str, session=None) -> dict:
+    """GET a keyless explorer API (source verification): {"status": HTTP status, "json": body or None}. Blockscout's
+    answer carries the whole source; only the fields the check reads are kept, so live and recorded answers match."""
+    import requests
+
+    s = session or requests.Session()
+    last: Exception | None = None
+    for attempt in range(3):
+        try:
+            r = s.get(url, timeout=30, headers={"User-Agent": UA})
+            try:
+                body = r.json()
+            except ValueError:
+                body = None
+            if isinstance(body, dict) and url.startswith(BLOCKSCOUT.split("{")[0]):
+                body = {k: body.get(k) for k in BLOCKSCOUT_KEYS}
+            return {"status": r.status_code, "json": body}
+        except requests.RequestException as e:
+            last = e
+            time.sleep(1 + attempt)
+    raise RuntimeError(f"GET {url}: {type(last).__name__}: {last}")
+
+
+def unreachable(e: Exception) -> str:
+    """The exception class an unanswered GET reports ("ConnectionError", "ReadTimeout", ...), or the reason itself
+    when it names none (a replay without a recorded answer)."""
+    m = re.search(r"\b([A-Z]\w*(?:Error|Exception|Timeout))\b", str(e))
+    return m.group(1) if m else str(e)[:60]
 
 
 def _key(method: str, params: list) -> str:
@@ -109,6 +160,13 @@ class LiveRpc:
 
     def __call__(self, method: str, params: list, allow_error: bool = False):
         k = _key(method, params)
+        if method == "GET":  # a keyless explorer API, not JSON-RPC: recorded and replayed the same way
+            try:
+                self.calls[k] = http_get(params[0])
+            except RuntimeError as e:
+                self.calls[k] = {"__rpc_error__": str(e)[:300]}
+                raise RpcError(str(e)) from e
+            return self.calls[k]
         last: Exception | None = None
         for attempt in range(3):  # public endpoints rate-limit bursts: the endpoint list is retried twice
             for inner in self.inners:
@@ -137,10 +195,11 @@ class LiveRpc:
         self.calls[k] = res
         return res
 
-    def save(self, path: Path) -> None:
+    def save(self, path: Path, note: str | None = None) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        doc = {"note": "recorded public JSON-RPC answers for scripts/verify_evidence.py --offline (read-only calls; "
-                       "receipts and transactions trimmed to the fields the checks read)",
+        doc = {"note": note or ("recorded public JSON-RPC answers for scripts/verify_evidence.py --offline (read-only "
+                                "calls; receipts, transactions, blocks and logs trimmed to the fields the checks read; "
+                                "GET = keyless source-verification answers from Sourcify / Blockscout)"),
                "rpc": self.urls[0], "recordedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                "calls": dict(sorted(self.calls.items()))}
         path.write_text(json.dumps(doc, indent=0, sort_keys=False) + "\n")
@@ -221,6 +280,13 @@ def eth_call(rpc, to: str, contract: str, name: str, args: list, block: str = "l
     return decode([_t(o) for o in e["outputs"]], bytes.fromhex(res[2:]))
 
 
+def struct_call(rpc, to: str, contract: str, name: str, args: list, block: str = "latest") -> list[dict]:
+    """eth_call of a getter whose outputs are structs: one dict per output, keyed by the ABI component names."""
+    vals = eth_call(rpc, to, contract, name, args, block)
+    return [dict(zip([c["name"] for c in o["components"]], v))
+            for o, v in zip(function(contract, name)["outputs"], vals)]
+
+
 def decode_propose(inp: str) -> dict:
     e = function("MethaneCovenant", "proposeEpisode")
     raw = bytes.fromhex(inp[2:])
@@ -232,11 +298,71 @@ def decode_propose(inp: str) -> dict:
     return out
 
 
+def enum_members(contract: str, enum: str) -> list[str]:
+    """Members of a Solidity enum in declaration order, read from the contract source (the ABI carries enums as
+    uint8). Comments after a member are dropped."""
+    src = (ROOT / "contracts" / "src" / f"{contract}.sol").read_text()
+    body = re.sub(r"//[^\n]*", "", re.search(rf"enum {enum}\s*\{{([^}}]*)\}}", src).group(1))
+    return [m.strip() for m in body.split(",") if m.strip()]
+
+
 def role_index(name: str) -> int:
-    """Position of a KeyRegistry.Role member, read from the contract source (the ABI carries enums as uint8)."""
-    src = (ROOT / "contracts" / "src" / "KeyRegistry.sol").read_text()
-    members = [m.strip() for m in re.search(r"enum Role\s*\{([^}]*)\}", src).group(1).split(",") if m.strip()]
-    return members.index(name)
+    """Position of a KeyRegistry.Role member."""
+    return enum_members("KeyRegistry", "Role").index(name)
+
+
+def decode_log(contract: str, log: dict) -> tuple[str, dict] | None:
+    """(event name, arguments) of a log emitted by `contract`, from the compiled ABI; None if no event matches."""
+    for e in artifact(contract)["abi"]:
+        if e["type"] != "event" or "0x" + keccak(text=_sig(e)).hex() != log["topics"][0].lower():
+            continue
+        idx = [i for i in e["inputs"] if i["indexed"]]
+        rest = [i for i in e["inputs"] if not i["indexed"]]
+        args = dict(zip([i["name"] for i in idx], [decode([_t(i)], bytes.fromhex(t[2:]))[0]
+                                                   for i, t in zip(idx, log["topics"][1:])]))
+        args |= dict(zip([i["name"] for i in rest], decode([_t(i) for i in rest], bytes.fromhex(log["data"][2:]))))
+        return e["name"], args
+    return None
+
+
+def org_label(org: bytes) -> str:
+    """An orgId as printed: its text when the bytes32 is a right-padded ASCII name (as the deploy scripts register),
+    else the first bytes in hex."""
+    name = org.rstrip(b"\0")
+    if name and all(32 <= b < 127 for b in name):
+        return f'"{name.decode()}"'
+    return "0x" + org.hex()[:10] + "…"
+
+
+def key_rules(keys: dict[str, tuple], when: int, seller_org: bytes, buyer_org: bytes, k: int) -> list[tuple[bool, str]]:
+    """What MethaneCovenant._checkAttestation and _verifyQuorum check for each signer, at the proposal's block time
+    `when`, from KeyRegistry.getKey(signer) = (orgId, role, algId, validFrom, validUntil, ...). One (ok, line) per
+    signer, then the quorum line; each failure names the error the contract reverts with. Keys are never reused and
+    rotation / revocation only close `validUntil` at the time they happen, so a key read now answers for any past
+    time."""
+    roles = enum_members("KeyRegistry", "Role")
+    out, orgs = [], set()
+    for s, key in keys.items():
+        org, role, _alg, vfrom, vuntil = key[:5]
+        why = []
+        if org == bytes(32):
+            why.append("no organisation in the registry (InvalidSignature)")
+        elif org in (seller_org, buyer_org):
+            why.append("its organisation is the covenant's seller or buyer (SelfAttestation)")
+        if role != roles.index("OBSERVER"):
+            why.append(f"role {roles[role] if role < len(roles) else role}, not OBSERVER (AttestorNotIndependent)")
+        if not (vfrom <= when and (vuntil == 0 or when < vuntil)):
+            why.append(f"not valid at the proposal: validFrom {vfrom}, validUntil {vuntil}, proposal block time {when} "
+                       "(RevokedKey)")
+        if not why:
+            orgs.add(org)
+        until = "open" if vuntil == 0 else str(vuntil)
+        out.append((not why, f"{s[:10]}…: " + ("; ".join(why) if why else
+                   f"OBSERVER of org {org_label(org)} (not the seller's or buyer's), valid at the proposal "
+                   f"(validFrom {vfrom} <= {when} < validUntil {until})")))
+    out.append((len(orgs) >= k, f"{len(orgs)} distinct observer organisations with valid keys, covenant k = {k}"
+                + ("" if len(orgs) >= k else " (QuorumNotMet)")))
+    return out
 
 
 def tx_hash(link: str) -> str:
@@ -424,6 +550,55 @@ def run_checks(rpc, txs: dict, run: dict, dep: dict, readme: str, multiyear: dic
             "own address; sizes as recorded" if not bad else "; ".join(bad))
     row("pool-code", "IncentivePool and its libraries are this repository's code", pool_code)
 
+    def source_verified():
+        """Each live contract (main and judge-sandbox core, both pools, the shared libraries; not the replaced
+        `sandboxPrevious` pair) has public verified source under its own name and this build's compiler: Sourcify
+        first, Blockscout when Sourcify does not answer or does not hold it. Keyless GETs."""
+        live: dict[str, str] = {}
+        for d in (dep, dep.get("sandbox") or {}):
+            for k, name in (("keyRegistry", "KeyRegistry"), ("methaneCovenant", "MethaneCovenant"),
+                            ("incentivePool", "IncentivePool")):
+                if d.get(k):
+                    live[to_checksum_address(d[k])] = name
+            for name, a in (d.get("incentivePoolLibraries") or {}).items():
+                live[to_checksum_address(a)] = name
+        via, bad = {}, []
+        for a, name in live.items():
+            compiler = artifact(name)["metadata"]["compiler"]["version"]
+            why = []
+            try:
+                ans = rpc("GET", [SOURCIFY.format(chain=CHAIN, address=a)])
+                j = ans.get("json") or {}
+                comp = j.get("compilation") or {}
+                if ans.get("status") == 200 and j.get("match") in ("exact_match", "match") and \
+                        comp.get("name") == name and comp.get("compilerVersion") == compiler:
+                    via[a] = {"exact_match": "Sourcify full match",
+                              "match": "Sourcify partial match (bytecode equal, metadata hash differs)"}[j["match"]]
+                    continue
+                why.append(f"Sourcify {ans.get('status')} match={j.get('match')} name={comp.get('name')}")
+            except RpcError as e:
+                why.append(f"Sourcify unreachable ({unreachable(e)})")
+            try:
+                ans = rpc("GET", [BLOCKSCOUT.format(address=a)])
+                j = ans.get("json") or {}
+                if ans.get("status") == 200 and j.get("is_verified") and j.get("name") == name and \
+                        j.get("compiler_version") == compiler:
+                    via[a] = "Blockscout" + (" (full)" if j.get("is_fully_verified") else "")
+                    continue
+                why.append(f"Blockscout {ans.get('status')} verified={j.get('is_verified')} name={j.get('name')}"
+                           + (" (Blockscout does not hold this contract — not evidence of unverified source)"
+                              if j.get("name") is None else ""))
+            except RpcError as e:
+                why.append(f"Blockscout unreachable ({unreachable(e)})")
+            bad.append(f"{name} {a[:10]}: " + "; ".join(why))
+        tally = ", ".join(f"{sum(v == w for v in via.values())} {w}" for w in sorted(set(via.values())))
+        compilers = sorted({artifact(n)["metadata"]["compiler"]["version"] for n in live.values()})
+        return bool(live) and not bad, (
+            f"{len(live)} live contracts have public verified source under their own name, compiler "
+            f"{', '.join(compilers)} = contracts/out: {tally} (keyless GET; Blockscout only where Sourcify does not "
+            "hold it)" if not bad else "; ".join(bad))
+    row("source-verified", "every live contract's source is publicly verified (Sourcify, Blockscout)", source_verified)
+
     def registry():
         bad = []
         for scope, d in (("main", dep), ("sandbox", dep.get("sandbox", {})), ("sandboxPrevious", dep.get("sandboxPrevious", {}))):
@@ -594,17 +769,14 @@ def run_checks(rpc, txs: dict, run: dict, dep: dict, readme: str, multiyear: dic
             return False, "no recovered signers"
         block = hex(prop_block[0])
         when = next(t["timestamp"] for t in txs["transactions"] if t["tx"] == proposal)
-        observer, orgs, bad = role_index("OBSERVER"), set(), []
-        for s in signers:
-            (k,) = eth_call(rpc, to_checksum_address(reg), "KeyRegistry", "getKey", [s], block)
-            org, role, _alg, vfrom, vuntil = k[0], k[1], k[2], k[3], k[4]
-            if role != observer or org == bytes(32) or not (vfrom <= when and (vuntil == 0 or when < vuntil)):
-                bad.append(f"{s[:10]} role {role}, validFrom {vfrom}, validUntil {vuntil}")
-            orgs.add(org)
-        ok = not bad and len(orgs) == len(signers)
+        (c,) = struct_call(rpc, to_checksum_address(cov), "MethaneCovenant", "getCovenant", [attest.b32(run["covenantId"])])
+        keys = {s: eth_call(rpc, to_checksum_address(reg), "KeyRegistry", "getKey", [s], block)[0] for s in signers}
+        rules = key_rules(keys, when, c["sellerOrg"], c["buyerOrg"], c["k"])
+        ok = all(r for r, _ in rules) and len({k[0] for k in keys.values()}) == len(signers)
         return ok, (f"KeyRegistry {reg[:10]}… at block {prop_block[0]}: {len(signers)} keys role OBSERVER, "
-                    f"{len(orgs)} distinct organisations, valid at the proposal" if ok else
-                    "; ".join(bad) or "signers share an organisation")
+                    f"{len(signers)} distinct organisations (covenant k = {c['k']}), none the seller's or buyer's, "
+                    "valid at the proposal" if ok else
+                    "; ".join(m for r, m in rules if not r) or "signers share an organisation")
     row("registered", "signers registered in the recorded KeyRegistry", registered)
 
     def state():
@@ -683,6 +855,53 @@ def run_checks(rpc, txs: dict, run: dict, dep: dict, readme: str, multiyear: dic
                              f"{pol['onchainParamsHash'][:12]}…): final installment reachable for episodes up to day "
                              f"{reach['lastDetectionDay']}" if not bad else "differs: " + ", ".join(bad))
         row("multiyear", "three-year covenant and its pool on chain match the record", multiyear_term)
+
+    def pool_terms():
+        """Every pool opened on the live IncentivePools (found by their PoolFunded logs, from the record's first block
+        to the latest): who opened it (the covenant's seller or buyer; the contract accepts either) and whether its
+        policyHash, paramsHash and mode are one of the recorded policies in data/derived/policy_v2.json. A seller may
+        open the pool first on terms it chose; a pool whose terms are not a recorded policy fails here."""
+        recorded = json.loads((DERIVED / "policy_v2.json").read_text())["policies"]
+        by_hash = {v["policyHash"].lower(): (n, v) for n, v in recorded.items()}
+        modes = enum_members("IncentivePool", "Mode")
+        topic = "0x" + keccak(text=_sig(next(e for e in artifact("IncentivePool")["abi"]
+                                              if e["type"] == "event" and e["name"] == "PoolFunded"))).hex()
+        pools = {to_checksum_address(d["incentivePool"]): (scope, to_checksum_address(d["methaneCovenant"]))
+                 for scope, d in (("main", dep), ("sandbox", dep.get("sandbox") or {})) if d.get("incentivePool")}
+        first = min(t["block"] for t in txs["transactions"])
+        latest = _hex_int(rpc("eth_blockNumber", []))
+        opened: dict[tuple[str, bytes], str] = {}  # (pool, covenantId) -> sponsor of its first PoolFunded
+        for lo in range(first, latest + 1, LOG_CHUNK):
+            for lg in rpc("eth_getLogs", [{"address": sorted(pools), "fromBlock": hex(lo),
+                                           "toBlock": hex(min(lo + LOG_CHUNK - 1, latest)), "topics": [topic]}]):
+                _, args = decode_log("IncentivePool", lg)
+                opened.setdefault((to_checksum_address(lg["address"]), args["covenantId"]), args["sponsor"])
+        lines, bad = [], []
+        for (pool, cid), sponsor in sorted(opened.items(), key=lambda x: (pools[x[0][0]][0], x[0][1])):
+            scope, cov_addr = pools[pool]
+            pl, _params = struct_call(rpc, pool, "IncentivePool", "getPool", [cid])
+            (c,) = struct_call(rpc, cov_addr, "MethaneCovenant", "getCovenant", [cid])
+            role = {c["seller"].lower(): "seller", c["buyer"].lower(): "buyer"}.get(pl["opener"].lower(), "neither party")
+            name, pol = by_hash.get("0x" + pl["policyHash"].hex(), (None, None))
+            mode = modes[pl["mode"]] if pl["mode"] < len(modes) else str(pl["mode"])
+            where = f"{scope} pool, covenant {int.from_bytes(cid, 'big')}"
+            if pol is None:
+                bad.append(f"{where}: opened by the {role}, policyHash 0x{pl['policyHash'].hex()[:12]}… is no recorded "
+                           "policy")
+                continue
+            why = [w for w, failed in (
+                (f"paramsHash 0x{pl['paramsHash'].hex()[:12]}… != {name}.onchainParamsHash",
+                 "0x" + pl["paramsHash"].hex() != pol["onchainParamsHash"].lower()),
+                (f"mode {mode} != {pol['settlementMode']}", mode != pol["settlementMode"]),
+                (f"opened by {role}", role == "neither party"),
+                ("opener != first PoolFunded sponsor", pl["opener"].lower() != sponsor.lower())) if failed]
+            if why:
+                bad.append(f"{where}: " + ", ".join(why))
+            lines.append(f"{where} opened by the {role}, {name} ({mode})")
+        return bool(opened) and not bad, (
+            f"{len(opened)} pools (PoolFunded logs, blocks {first}-{latest}): " + "; ".join(lines)
+            + "; policyHash, paramsHash and mode = data/derived/policy_v2.json" if not bad else "; ".join(bad))
+    row("pool-terms", "every pool's opener, and its terms = a recorded policy", pool_terms)
     return rows
 
 

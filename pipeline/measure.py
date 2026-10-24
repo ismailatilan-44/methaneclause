@@ -4,12 +4,12 @@ Runs offline from tracked files only (the Chainlink price read is the one networ
   data/derived/sepolia_txs.json              every Sepolia transaction our addresses sent, rebuilt from the chain by
                                              `make sepolia-txs` (pipeline/sepolia_txs.py): status, gas, label, revert
   data/derived/sepolia_txlog.jsonl           what our scripts logged as they sent (submit -> receipt seconds)
-  data/derived/sepolia_latency_history.json  latency blocks whose raw samples are gone, copied verbatim
+  data/derived/sepolia_latency_history.json  latency blocks whose raw samples are gone (figures copied verbatim)
   data/derived/demo_run.json                 the same functions on Anvil (Cancun gas schedule)
 
 The only hand-written text is the cause noted for each unintended failure in CAUSES; status, gas and the revert reason
 come from the chain. Latency cannot be rebuilt from the chain (it needs the submit time), so it is reported in dated
-blocks: the 15 Oct block (its raw samples were lost with a deleted worktree) and the samples logged in the tracked file
+blocks: the 15 Oct block (its raw samples were not kept) and the samples logged in the tracked file
 since; a block is never merged with another or estimated.
 
 USD is a stated what-if: gas units x STATED_GWEI x ETH/USD read at run time from the Chainlink ETH/USD feed on
@@ -39,6 +39,8 @@ OUT = DERIVED / "measurements.json"
 TXS = DERIVED / "sepolia_txs.json"
 TXLOG = DERIVED / "sepolia_txlog.jsonl"
 HISTORY = DERIVED / "sepolia_latency_history.json"
+# Every block of HISTORY is one whose raw samples are gone; its label says so and nothing more.
+HISTORY_LABEL = "measured {day}, raw samples not kept"
 # Why each unintended failure happened (status and gas are read from the chain; only this text is written by hand).
 CAUSES = {
     "0xcfeabcf63c9663279bb547bfc1c46d0778a2aaf13eee097ecbcd1d507f76018b":
@@ -201,8 +203,8 @@ def latency(txs: list[dict], log: list[dict], history: dict) -> tuple[dict, list
     after = epoch(hist[-1]["measuredAt"]) if hist else 0
     secs = [r["seconds"] for r in log if r.get("seconds") is not None and r["tx"] in on_chain
             and on_chain[r["tx"]]["timestamp"] > after]
-    blocks = [{k: b[k] for k in ("label", "measuredAt", "n", "p50", "p90", "what")} | {"source": b["source"]}
-              for b in hist]
+    blocks = [{"label": HISTORY_LABEL.format(day=b["measuredAt"][:10])}
+              | {k: b[k] for k in ("measuredAt", "n", "p50", "p90", "what")} | {"source": b["source"]} for b in hist]
     if secs:
         blocks.append({"label": f"logged since {hist[-1]['measuredAt'][:10]} in data/derived/sepolia_txlog.jsonl"
                        if hist else "logged in data/derived/sepolia_txlog.jsonl",
@@ -266,16 +268,19 @@ def main() -> None:
         sample(a.sample, a.rpc)
     if not TXS.exists():
         raise SystemExit(f"{TXS.relative_to(ROOT)} missing: run `make sepolia-txs` (network, keyless)")
-    if a.offline:
-        prev = json.loads(OUT.read_text())["usd_assumption"] if OUT.exists() else {}
+    measured_at = now_utc()
+    if a.offline:  # the ETH/USD read is the last one, so is its time
+        last = json.loads(OUT.read_text()) if OUT.exists() else {}
+        prev = last.get("usd_assumption", {})
         usd = prev or {"stated_gwei": STATED_GWEI, "eth_usd": None, "eth_usd_round": None, "error": "offline"}
+        measured_at = last.get("measuredAt", measured_at) if prev else measured_at
     else:
         price, rnd, err = chainlink_price()
         usd = {"stated_gwei": STATED_GWEI, "eth_usd": price, "eth_usd_round": rnd, "error": err,
                "eth_usd_source": f"Chainlink ETH/USD {CHAINLINK_ETH_USD} (Ethereum mainnet)"}
     out = summarise(json.loads(TXS.read_text()), jsonl(TXLOG), json.loads(HISTORY.read_text()),
                     json.loads((DERIVED / "demo_run.json").read_text())["gas_rounded_1k"], usd, lead_bundle_bytes(),
-                    now_utc())
+                    measured_at)
     write_json(OUT, out)
     print(json.dumps({k: out[k] for k in ("latency_blocks", "transactions", "reconciliation", "bundle_bytes_jcs")},
                      indent=1))

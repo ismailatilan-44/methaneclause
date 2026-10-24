@@ -17,9 +17,10 @@ the numbers after an adversarial review of the backtest:
   counted where scene data was fetched (below). It names both selections (the join candidates inside the MARS-absent
   set), the passes and scenes, released / cancelled / pending installments, the released claims that saw a plume the
   clause does not count as a relapse, and the claims that were not fetched;
-- `stakeSentence` — "stake, not abatement — at least ~X Mt CH₄/yr … assuming what satellites saw on their passes holds
-  between them", with the tasking bias named (the duty-cycle concentration stays in `stake_band.dutyCycleConcentration`,
-  off the card); mid and high stay in the JSON as sums of
+- `stakeSentence` — "stake, not abatement — ~X Mt CH₄/yr, the low bound of the band, … assuming what satellites saw on
+  their passes holds between them", with the tasking bias named and the measurement that removes it (roadmap: a duty
+  cycle measured on un-targeted EMIT passes); the duty-cycle concentration stays in `stake_band.dutyCycleConcentration`,
+  off the card; mid and high stay in the JSON as sums of
   per-facility bounds, not quantiles, and are not quoted;
 - `l2Sentence` — L2 counts only MARS plumes from satellites other than EMIT and Tanager, the start row excluded;
 - `l1Sentence` — L1 is a cadence badge, not corroboration quality.

@@ -1,0 +1,28 @@
+{
+  "buyer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+  "chainId": 31337,
+  "challengerBond": 200000000000000,
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "keyRegistry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "methaneCovenant": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "observerA": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+  "observerB": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+  "observerC": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+  "proposerBond": 100000000000000,
+  "registryAdmin": "0x0000000000000000000000000000000000000000",
+  "sandbox": {
+    "buyer": "0x2f4a34d6D13b734c03f80784Cf830e92e9F220eC",
+    "challengerBond": 40000000000000,
+    "independentController": "0x7a0103710C45f844E9e5F5d62604274BA5179A2a",
+    "judgeController": "0xD10155920CC2163E4925163552F5d15569507838",
+    "keyDerivation": "keccak256(\"MethaneClause judge sandbox v1 [SIM] testnet-only / <ROLE>\")",
+    "keyRegistry": "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+    "methaneCovenant": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+    "observer1": "0x91E2f912B5c4aCE570460Ec795a54baa8a228A39",
+    "observer2": "0x75BE5bf57FFBD707D189F808F63e9A56b848C776",
+    "proposerBond": 20000000000000,
+    "registryAdmin": "0x0000000000000000000000000000000000000000",
+    "seller": "0x934e10Af23194BBd6D02ec8e3Bb2EDe7BD618b47"
+  },
+  "seller": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

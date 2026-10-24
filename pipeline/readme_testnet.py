@@ -71,6 +71,27 @@ def pool_txs(dep: dict) -> dict:
     return out
 
 
+def latency_lead(m: dict) -> tuple[dict, list[dict]]:
+    """The latency figure a reader sees first, and the others. Lead: the largest block whose samples are logged in the
+    repository (data/derived/sepolia_txlog.jsonl), so anyone can recompute it; then the dated blocks whose raw samples
+    are gone (measurements.json says so in their label). Without a logged block the headline block leads."""
+    blocks = [b for b in m.get("latency_blocks") or [] if b.get("n")]
+    logged = [b for b in blocks if "raw samples" not in b["label"] and "sepolia_txlog.jsonl" in b["label"]]
+    if not logged:
+        head = m["latency_seconds"]
+        return head, [b for b in blocks if b["label"] != head.get("label")]
+    lead = max(logged, key=lambda b: b["n"])
+    return lead, [b for b in blocks if b is not lead]
+
+
+def latency_words(b: dict, link_prefix: str = "") -> str:
+    """"n = 21 logged since 2026-10-15 in [`sepolia_txlog.jsonl`](data/derived/sepolia_txlog.jsonl)" for a logged
+    block; "n = 43, measured 2026-10-15, raw samples not kept" for a dated one."""
+    if "raw samples" in b["label"]:
+        return f"n = {b['n']}, {b['label'].split(',')[0]}, raw samples not kept"
+    return f"n = {b['n']} " + re.sub(r"data/derived/([\w.]+)", rf"[`\1`]({link_prefix}data/derived/\1)", b["label"])
+
+
 def render() -> str:
     dep = json.loads((ROOT / "contracts" / "deployments" / f"{CHAIN}.json").read_text())
     run = json.loads((DERIVED / "testnet_run.json").read_text())
@@ -109,21 +130,19 @@ def render() -> str:
         else:
             res = f"bond {int(s['bondWei']) / 1e18:g} ETH" if "bondWei" in s else "ok"
         out.append(f"| {LABELS.get(s['step'], s['step'])} | {res} | {short(s['tx'])} |")
-    lat, tx, usd = m["latency_seconds"], m["transactions"], m["usd_assumption"]
+    tx, usd = m["transactions"], m["usd_assumption"]
     if not run.get("recoveredFromChain") and run.get("observerReceipts"):
         modes = sorted({r["mode"] for r in run["observerReceipts"]})
         out += ["", f"Observer fetch mode in this run: {', '.join(modes)} (receipts in the record)."]
     out += ["", cure_arc.readme_line(cure_arc.arc(), policy.POLICY_V2_SANDBOX["pool"]["installments"][0][0])]
-    since = [b for b in m.get("latency_blocks", []) if b["n"] and b["label"] != lat.get("label")]
-    when = f", {lat['label'].split(',')[0]}" if lat.get("label") else ""
-    if "raw samples" in lat.get("label", ""):  # the dated block's samples are gone; measurements.json says so
-        when += ", raw samples not kept"
-    more = "".join(f"; {b['n']} logged since: p50 {b['p50']} s" for b in since)
+    # lead with the samples logged in the repository; a dated block whose raw samples are gone comes second
+    lead, rest = latency_lead(m)
+    more = "".join(f"; earlier, {latency_words(b)}: p50 {b['p50']} s" for b in rest)
     out += ["", f"**Measured** (`make measure` → [`data/derived/measurements.json`](data/derived/measurements.json)): "
             f"{tx['logged']} Sepolia transactions from our addresses (`make sepolia-txs`); "
             f"{tx['expected_reverts']} intended reverts, {tx['unexpected_failures']} unintended "
             f"failure{'s' if tx['unexpected_failures'] != 1 else ''}, causes in the file. Latency, send → receipt (public "
-            f"RPC): **p50 {lat['p50']} s, p90 {lat['p90']} s** (n = {lat['n']}{when}{more}). Evidence bundle: "
+            f"RPC): **p50 {lead['p50']} s, p90 {lead['p90']} s** ({latency_words(lead)}{more}). Evidence bundle: "
             f"{m['bundle_bytes_jcs']} bytes off-chain, only its 32-byte hash on chain."]
     calls = []
     for f in FUNCS:

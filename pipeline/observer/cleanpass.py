@@ -330,8 +330,11 @@ def recheck(doc: dict, rec: dict, *, covenant_id: str, claim_id: str, live: bool
     base = {"mode": mode, "sceneHashCommitted": bundle_hash(signed)}
     try:
         fresh = _rebuild(doc["case"], live)
-    except OfflineMiss as e:
-        return {**base, "mode": "skipped", "equal": None, "why": f"skipped: no raw cache ({e}); LIVE=1 re-fetches, METHANECLAUSE_RAW=<dir> reads a cache outside this checkout"}
+    except OfflineMiss:  # the default re-check reads the raw cache only (_rebuild sets OFFLINE=1 itself)
+        return {**base, "mode": "skipped", "equal": None,
+                "why": "this checkout holds no raw Carbon Mapper responses to rebuild the scene from (a fresh clone "
+                       "has none; step 2 checked the committed case file); LIVE=1 fetches Carbon Mapper now, "
+                       "METHANECLAUSE_RAW=<dir> reads a cache outside this checkout"}
     except ValueError as e:
         return {**base, "equal": False, "why": f"raw-response cache corrupted: {e}", "differences": ["cache"]}
     try:
@@ -373,7 +376,8 @@ class CleanPassObserver:
         except CleanPassRefused as e:
             self._say(2, f"REFUSED {e.code} ({e.detail}); all failing: {', '.join(e.refusals)} — nothing signed")
             raise
-        self._say(2, "rules 1-6 pass: " + ", ".join(f"{c['code']} ok" for c in checks.values()))
+        self._say(2, f"{len(checks)} checks pass (spec-v2 §2 rules 1-6): "
+                     + ", ".join(f"{c['code']} ok" for c in checks.values()))
         jcs = bundle_bytes(b)
         self._say(3, f"bundle {SCHEMA_VERSION}, {len(jcs)} B JCS -> sceneHash {bundle_hash(b)}")
         s = sign(b, org=self.org, chain_id=self.chain_id, pool=self.pool, ctx=ctx, nonce=nonce, expiry=expiry,

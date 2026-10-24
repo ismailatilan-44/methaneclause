@@ -679,10 +679,12 @@ def card(out: dict) -> dict:
         "refundsSentence": refunds_sentence(out),
         "refundsShortSentence": refunds_short_sentence(out),
         "stakeSentence": (
-            f"Stake, not abatement: at least ~{low_mt:.1f} Mt CH₄/yr across {sb['facilitiesQuantified']:,} "
+            f"Stake, not abatement: ~{low_mt:.1f} Mt CH₄/yr, the low bound of the band, across "
+            f"{sb['facilitiesQuantified']:,} "
             f"facilities (of {SELECTION}), the {len(with_ep):,} with an episode plus {len(below):,} whose plumes all "
             f"fell below {CORE['minRateKgH']} kg/h, assuming what satellites saw on their passes holds between them; "
-            "passes are partly tasked toward expected plumes, which biases the seen duty cycle upward."),
+            "passes are partly tasked toward expected plumes, which biases the seen duty cycle upward (roadmap: a "
+            "duty cycle measured on un-targeted EMIT passes)."),
         "l2Sentence": (
             f"{round(t['L2Share'] * 100)} % of episodes had a MARS plume from a satellite other than EMIT or Tanager "
             f"within 7 days ({t['L2Episodes']:,} of {t['episodes']:,}; over {SELECTION}; MARS rows on the start date "

@@ -684,10 +684,763 @@
   }
  },
  "formula": "kt CH4/yr = sum over quantified facilities of stake low bound x the fixed share of its emitting time (action share by plume count x credited days / emitting days, board T4d option d)",
+ "forward": {
+  "bootstrap": {
+   "confidence": 0.95,
+   "draws": 2000,
+   "ktCh4PerYrCentral": {
+    "ci": [
+     0.92,
+     6.49
+    ],
+    "point": 3.38
+   },
+   "rule": "members resampled with replacement, as many as there are, each draw re-measuring the re-onset hazard on the drawn members' passes up to D and recomputing the central figure (central action share) and its share of the drawn credited members' stake; percentile interval. Draws, seed and confidence are the projection's existing bootstrap design (projection_sources.json parameters.evidence)",
+   "seed": 7,
+   "shareOfStakeCentral": {
+    "ci": [
+     0.0126,
+     0.0703
+    ]
+   },
+   "unit": "member"
+  },
+  "card": {
+   "bandNote": "central = the central action share with the measured re-onset hazard; low = the lowest action scenario with it; high = the highest action scenario with no recurrence",
+   "bootstrapConfidence": 0.95,
+   "bootstrapKtCh4PerYrCentralCi": [
+    0.92,
+    6.49
+   ],
+   "centralKtCh4PerYr": 3.38,
+   "comparedWith": {
+    "allCreditCentralShareOfStake": 0.0971,
+    "centralKtCh4PerYr": 30.25,
+    "denominator": "the stake low bound of the facilities the scope credits: quantified, with a satellite pass in the credit window",
+    "forwardCentralShareOfStake": 0.0401,
+    "nonSelectingCentralShareOfStake": 0.0254,
+    "nonSelectingKtCh4PerYrCentral": 7.93,
+    "scope": "portfolio_v3",
+    "selectingShareOfCredit": 0.6552
+   },
+   "comparisonSentence": "Credited over each member's whole window instead, the same model gives ~30 kt CH₄/yr for the portfolio covenant set v3, 66 % of it on events containing the plume that selected the member; the forward hold-out credits none.",
+   "costSentence": "Ledger cost only, not the cost of the work on site: on the forward basis the 220 members had 129 episodes from 2025-09-12 to 2026-09-13; at USD 4.29 an episode plus one createCovenant that is USD 555 a year, or USD 0.0055 per t CO₂e projected at the central action share (USD 0.0038–0.0067 across scenarios and with no recurrence); credited over each member's whole window instead, the portfolio covenant set v3 costs USD 0.0015 per t CO₂e.",
+   "hazardSentence": "In the forward hold-out the re-onset hazard is measured on the members' own passes up to 2025-09-12 only, 1.01 a year: 75 restarts over 74.05 event-free facility-years (over each member's whole window, 2.10 a year: 136 restarts over 64.89); each fix is credited until the fault's observed end, the last pass on or before 2026-09-13 or a new fault.",
+   "headlineSentence": "[PROJECTION] Pre-registered forward hold-out: a 220-facility portfolio covenant [SIM], chosen with Carbon Mapper plumes published before 2025-09-12 at sources MARS had not seen for six months and lists as absent today, and credited only for faults first detected after that date up to 2026-09-13, would stop ~3.4 kt CH₄/yr at the central 39 % action share (95 % member bootstrap ~0.9–6.5 kt; ~2.8–5.0 kt across action and recurrence scenarios), ~0.10 Mt CO₂e/yr at GWP-100, none of it on the plume that selected a member — assumptions: paper §4.",
+   "highKtCh4PerYr": 4.95,
+   "intervalSentence": "Resampling the members (2,000 draws, the re-onset hazard re-measured in each) puts the central figure between ~0.9 and ~6.5 kt CH₄/yr (95 % interval).",
+   "limitsSentence": "The forward members come from today's MARS targets (notified and labelled absent today; 135 other notified oil and gas sources MARS had not seen for six months on 2025-09-12 lie outside them because their Carbon Mapper plume rows are not committed), and both catalogues are read as they stand today: MARS rows and Carbon Mapper passes without a detection carry no publication date, and 53 detections dated up to 2025-09-12 were published only on or after it (without them, ~3.3 kt); today's 'absent' label is decided inside the credit window; credit ending before it (to 2026-03-11) gives ~0.6 kt; a twelve-month credit window from 2025-03-12 to 2026-03-11, also before the label window, gives ~1.61 kt (1.87 % of stake, against 0.85 % for the credit ending before the label and 4.01 % over the full window), but the control differs by period and members as well as length, so it does not separate the window's length from the label.",
+   "lowKtCh4PerYr": 2.77,
+   "members": 220,
+   "membersCredited": 115,
+   "membersQuantified": 143,
+   "rollingSentence": "At three more origins registered after this result, with overlapping credit windows, the share is 2.6–2.9 %.",
+   "rollingShareOfStakeRange": [
+    0.0262,
+    0.0295
+   ],
+   "selectingShareOfCredit": 0.0,
+   "shareOfStakeAllQuantifiedCentral": 0.034,
+   "shareOfStakeCentral": 0.0401,
+   "stakeLowKtCh4PerYrAllQuantified": 99.37,
+   "stakeLowKtCh4PerYrCredited": 84.33,
+   "stakeSentence": "Stake, not abatement: ~84 kt CH₄/yr across the 115 members with a stake known on 2025-09-12 and a satellite pass after it; the projection credits 4.0 % of it (3.4 % of the ~99 kt stake of all 143 quantified members).",
+   "upToNoRecurrenceKtCh4PerYr": 4.02
+  },
+  "controlFullLength": {
+   "bootstrapShareCi": [
+    0.0126,
+    0.0703
+   ],
+   "clause": "a twelve-month credit window from 2025-03-12 to 2026-03-11, also before the label window, gives ~1.61 kt (1.87 % of stake, against 0.85 % for the credit ending before the label and 4.01 % over the full window), but the control differs by period and members as well as length, so it does not separate the window's length from the label",
+   "creditEnd": "2026-03-11",
+   "cutRowShare": 0.0085,
+   "fullWindowShare": 0.0401,
+   "id": "fwd_control_full_length",
+   "ktCh4PerYrCentralAction": {
+    "high": 1.99,
+    "low": 1.61
+   },
+   "members": 182,
+   "membersCredited": 101,
+   "months": 12,
+   "nearFullWindow": false,
+   "origin": "2025-03-12",
+   "preRegistration": {
+    "creditEnd": "2026-03-11",
+    "id": "fwd_control_full_length",
+    "near": "the control's share of the credited stake (central action share, measured hazard) is near the full-window share when it lies inside FORWARD's member-bootstrap interval of that share (forward.bootstrap.shareOfStakeCentral.ci, both ends inclusive) and is nearer FORWARD's share than fwd_credit_before_absent_window's share",
+    "origin": "2025-03-12",
+    "readsIfNear": "the window's length explains the share of the credit ending before the label window",
+    "readsOtherwise": "the control differs by period and members as well as length, so it does not separate the window's length from the label",
+    "rule": "FORWARD's member, stake, credit, denominator, hazard and band rules unchanged, with D replaced by origin and creditEnd by this creditEnd (as fwd_control_short_window); no bootstrap",
+    "sentence": "the forward limits sentence carries this control's figure and its reading in place of the six-month control's reading; the six-month row stays reported in forward.sensitivity",
+    "status": "added 2026-10-24 after the forward result was known and before this control was computed; reported only, the registered figure (FORWARD) is unchanged",
+    "why": "a credit window as long as FORWARD's (twelve months) that ends, like fwd_credit_before_absent_window, the day before today's absent window starts (join_v1.json window[0] minus one day): it keeps the length and drops the label window, where the six-month control drops both"
+   },
+   "reading": "the control differs by period and members as well as length, so it does not separate the window's length from the label",
+   "reonsetHazardPerYear": 1.2597,
+   "selectingShareOfCredit": 0.0,
+   "setsValue": false,
+   "shareOfStakeCentralAction": {
+    "high": 0.0231,
+    "low": 0.0187
+   },
+   "stakeLowKtCh4PerYrCredited": 86.13
+  },
+  "leaks": {
+   "detectionPublication": {
+    "detections": 53,
+    "members": 39,
+    "rule": "the stake and the hazard at D count detections dated up to D whose plumes Carbon Mapper published only on or after D (today's catalogue); found after the result, so it is reported as the sensitivity row fwd_stake_published_by_D and does not change the registered figure"
+   },
+   "marsPublication": "MARS plume rows carry no publication date: absentAtD reads today's MARS catalogue, which may hold plumes imaged before D but published after it, and has lost re-processed ones",
+   "passPublication": "a Carbon Mapper pass without a detection carries no publication date: the stake and the hazard read today's catalogue of scenes dated up to D",
+   "universe": {
+    "absentAtDOutsideUniverse": 135,
+    "notifiedOutsideUniverse": 967,
+    "rule": "the universe is today's MARS targets: 'notified' is today's flag (common.py mars_target; MARS publishes no notification date) and 'absent today' means no MARS plume in join_v1.json's window, which lies inside the credit window. Removing it needs Carbon Mapper plume rows for the other notified sources' neighbourhoods (network). Reported: the notified oil and gas MARS sources outside the universe that meet absentAtD, and how many of them have a Carbon Mapper source of cm_timelines_notified.json within RADIUS_KM with a detection dated before D",
+    "withCarbonMapperDetectionBeforeD": 54
+   }
+  },
+  "ledger": {
+   "basis": "the forward members' backtest episodes dated after D up to creditEnd, per year of that window, plus one createCovenant a year",
+   "calls": {
+    "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+    "perCovenantYear": [
+     "createCovenant"
+    ],
+    "perEpisode": [
+     "proposeEpisode",
+     "finalize",
+     "withdraw"
+    ],
+    "sources": [
+     "measurements-json"
+    ],
+    "status": "read"
+   },
+   "episodes": 129,
+   "episodesPerYear": 128.736,
+   "ethUsd": 2424.39,
+   "measuredAt": "2026-10-22T08:13:56Z",
+   "statedGwei": 1.0,
+   "usdPerCovenantYear": 3.0422,
+   "usdPerEpisode": 4.2903,
+   "usdPerTco2eGwp100Central": 0.005514,
+   "usdPerTco2eGwp100Range": [
+    0.003765,
+    0.006728
+   ],
+   "usdPerTco2eGwp100WholeWindow": 0.001475,
+   "usdPerYear": 555.36,
+   "window": [
+    "2025-09-12",
+    "2026-09-13"
+   ],
+   "windowYears": 1.0021
+  },
+  "postResult": {
+   "bootstrap": {
+    "confidenceFrom": "confidence",
+    "drawsFrom": "bootstrapDraws",
+    "rule": "members resampled with replacement, as many as there are, each draw re-measuring the re-onset hazard on the drawn members' passes up to D and recomputing the central figure (central action share) and its share of the drawn credited members' stake; percentile interval. Draws, seed and confidence are the projection's existing bootstrap design (projection_sources.json parameters.evidence)",
+    "seedFrom": "seed"
+   },
+   "controlShortWindow": {
+    "creditEnd": "2025-09-11",
+    "origin": "2025-03-12",
+    "reads": "the short window explains most of the drop of fwd_credit_before_absent_window when the control's share of stake is nearer that row's share than FORWARD's own share"
+   },
+   "leaks": {
+    "detectionPublication": "the stake and the hazard at D count detections dated up to D whose plumes Carbon Mapper published only on or after D (today's catalogue); found after the result, so it is reported as the sensitivity row fwd_stake_published_by_D and does not change the registered figure"
+   },
+   "sensitivity": {
+    "fwd_control_short_window": "FORWARD's rules at origin controlShortWindow.origin with credit up to controlShortWindow.creditEnd: the same six-month credit length as fwd_credit_before_absent_window, also ending before today's absent window",
+    "fwd_stake_published_by_D": "as FORWARD, with every detection dated after the start and up to D that no plume published before D shows dropped (its pass and its rates) from the series the stake, the hazard and the events read"
+   },
+   "status": "added 2026-10-24 after the forward result was known (adversarial review): reported only; the registered figure (FORWARD) is unchanged"
+  },
+  "preRegistration": {
+   "D": "2025-09-12",
+   "band": "low = with that lambda, high = lambda 0 (no recurrence), at each action scenario; the headline figure is the low end at the central action share",
+   "credit": "T4d option d otherwise unchanged (central convention, r by CARB plume-count class scaled by each action scenario, every CARB Type A notification-to-mitigation delay, each detection's own publication lag, survival weighting): Cusworth events on the facility's passes up to creditEnd, each censored at the last pass on or before creditEnd; only events whose first detection is after D are credited",
+   "creditEnd": "2026-09-13",
+   "creditEndWhy": "the Carbon Mapper catalogue end of the committed timelines (backtest.json catalogueEnd)",
+   "dWhy": "one year before the MARS snapshot's as-of date (join_v1.json summary.mars_as_of = 2026-09-12)",
+   "denominator": "D_i x W_i with W_i = days from D to the facility's last pass on or before creditEnd; a member with no pass after D is credited 0 and counted",
+   "hazard": "lambda measured on the members' own passes up to and including D (reonset_hazard, central convention, events censored at the last pass on or before D); refuse to run if it is undefined",
+   "id": "portfolio_forward",
+   "leaks": {
+    "marsPublication": "MARS plume rows carry no publication date: absentAtD reads today's MARS catalogue, which may hold plumes imaged before D but published after it, and has lost re-processed ones",
+    "passPublication": "a Carbon Mapper pass without a detection carries no publication date: the stake and the hazard read today's catalogue of scenes dated up to D",
+    "universe": "the universe is today's MARS targets: 'notified' is today's flag (common.py mars_target; MARS publishes no notification date) and 'absent today' means no MARS plume in join_v1.json's window, which lies inside the credit window. Removing it needs Carbon Mapper plume rows for the other notified sources' neighbourhoods (network). Reported: the notified oil and gas MARS sources outside the universe that meet absentAtD, and how many of them have a Carbon Mapper source of cm_timelines_notified.json within RADIUS_KM with a detection dated before D"
+   },
+   "members": {
+    "absentAtD": "MARS knew the source at D and saw no plume in the six calendar months before it: at least one mars_plumes_og.csv row (tile_date, UTC date) before D minus WINDOW_MONTHS (common.py, the join's own absent window) and none in [D minus WINDOW_MONTHS, D], both ends inclusive",
+    "plumeBeforeD": "at least one Carbon Mapper plume at the facility, counted as the backtest counts a detection (an owned source, origin within RADIUS_KM of the MARS source, de-duplicated by plume_id), whose published_at UTC date is before D"
+   },
+   "question": "If members are chosen only with what was known on a date D and credited only for events that start after D, what would the clause stop? No credit can fall on the plume that selected a member.",
+   "reporting": "the forward figures are written next to portfolio_v3's; no threshold here decides which one a headline carries (an adversarial review does)",
+   "selectingShare": "the share of credit on events containing a member's selecting plume (the scene dates of the plumes that meet plumeBeforeD) is 0 by construction, as those plumes are dated before D; it is computed and checked",
+   "sensitivity": {
+    "fwd_credit_before_absent_window": "creditEnd moved to the day before today's MARS absent window starts (join_v1.json window[0] minus one day), so the credit window does not overlap the period today's absent label is decided on",
+    "fwd_join_rule": "plumeBeforeD replaced by the join criterion run at D: a plume with scene date in [D minus WINDOW_MONTHS, D] and published before D",
+    "fwd_stake_backtest": "S_i and D_i from backtest.json (passes from the start to the catalogue end, as portfolio_v3): reads passes after D"
+   },
+   "stake": "S_i = stake.band_from over the facility's passes after its start (the first MARS plume) up to and including D and the rates of its plumes dated in that window: the low bound, quantified members only; duty D_i = that window's detected passes / passes. The stake is known at D (no pass after D is read)",
+   "status": "pre-registered 2026-10-24, before any forward value was computed",
+   "universe": "the backtest's evaluated facilities (backtest.json): today's MARS oil and gas targets (notified, labelled absent today), each with the Carbon Mapper sources it owns; the only sources whose Carbon Mapper plume rows, rates and publication times are committed"
+  },
+  "rolling": {
+   "origins": [
+    {
+     "ktCh4PerYrCentralAction": {
+      "high": 3.85,
+      "low": 2.64
+     },
+     "members": 182,
+     "membersCredited": 106,
+     "origin": "2025-03-12",
+     "reonsetHazardPerYear": 1.2597,
+     "selectingShareOfCredit": 0.0,
+     "shareOfStakeCentralAction": {
+      "high": 0.0423,
+      "low": 0.029
+     },
+     "stakeLowKtCh4PerYrCredited": 91.01
+    },
+    {
+     "ktCh4PerYrCentralAction": {
+      "high": 3.69,
+      "low": 3.02
+     },
+     "members": 192,
+     "membersCredited": 118,
+     "origin": "2025-06-12",
+     "reonsetHazardPerYear": 1.0928,
+     "selectingShareOfCredit": 0.0,
+     "shareOfStakeCentralAction": {
+      "high": 0.036,
+      "low": 0.0295
+     },
+     "stakeLowKtCh4PerYrCredited": 102.53
+    },
+    {
+     "ktCh4PerYrCentralAction": {
+      "high": 4.02,
+      "low": 3.38
+     },
+     "members": 220,
+     "membersCredited": 115,
+     "origin": "2025-09-12",
+     "reonsetHazardPerYear": 1.0128,
+     "selectingShareOfCredit": 0.0,
+     "shareOfStakeCentralAction": {
+      "high": 0.0477,
+      "low": 0.0401
+     },
+     "stakeLowKtCh4PerYrCredited": 84.33
+    },
+    {
+     "ktCh4PerYrCentralAction": {
+      "high": 3.7,
+      "low": 3.21
+     },
+     "members": 301,
+     "membersCredited": 135,
+     "origin": "2025-12-12",
+     "reonsetHazardPerYear": 1.2188,
+     "selectingShareOfCredit": 0.0,
+     "shareOfStakeCentralAction": {
+      "high": 0.0301,
+      "low": 0.0262
+     },
+     "stakeLowKtCh4PerYrCredited": 122.73
+    }
+   ],
+   "pooled": {
+    "ktCh4PerYrCentralActionSum": {
+     "high": 15.26,
+     "low": 12.25
+    },
+    "origins": 4,
+    "shareOfStakeCentralAction": {
+     "high": 0.0381,
+     "low": 0.0306
+    },
+    "stakeLowKtCh4PerYrCreditedSum": 400.6
+   },
+   "preRegistration": {
+    "creditEnd": "2026-09-13",
+    "id": "portfolio_forward_rolling",
+    "origins": [
+     "2025-03-12",
+     "2025-06-12",
+     "2025-12-12"
+    ],
+    "originsWhy": "three more origins three months apart around FORWARD.D, the latest leaving nine months of credit",
+    "perOrigin": "members, credited members, credited stake, central figure (central action share, measured hazard) and its no-recurrence end, each as kt CH4/yr and as a share of the credited stake",
+    "pooled": "over the four origins (these three and FORWARD.D): the sum of the central figures over the sum of the credited stakes, and the same at no recurrence; a facility can be a member at several origins, so the pooled share is a summary across origins, not a larger sample",
+    "rule": "FORWARD's member, stake, credit, denominator, hazard and band rules unchanged, with D replaced by each origin (absentAtD, plumeBeforeD, the stake and hazard up to the origin, events first detected after it, credit up to creditEnd); no bootstrap and no post-result rows",
+    "status": "pre-registered 2026-10-24 after the D = 2025-09-12 result was known; reported only"
+   }
+  },
+  "scopes": {
+   "portfolio_forward": {
+    "censoredEvents": 23,
+    "creditWindow": [
+     "2025-09-12",
+     "2026-09-13"
+    ],
+    "creditedEvents": 55,
+    "memberNames": [
+     "ARG_S_002",
+     "AZE_S_015",
+     "BHR_S_008",
+     "CHN_S_002",
+     "CHN_S_014",
+     "DZA_S_009",
+     "DZA_S_012",
+     "DZA_S_013",
+     "DZA_S_015",
+     "DZA_S_017",
+     "DZA_S_030",
+     "DZA_S_039",
+     "DZA_S_053",
+     "DZA_S_070",
+     "DZA_S_080",
+     "DZA_S_088",
+     "DZA_S_096",
+     "DZA_S_103",
+     "DZA_S_110",
+     "DZA_S_119",
+     "DZA_S_120",
+     "DZA_S_124",
+     "DZA_S_133",
+     "DZA_S_134",
+     "DZA_S_140",
+     "DZA_S_141",
+     "DZA_S_218",
+     "EGY_S_003",
+     "EGY_S_007",
+     "EGY_S_014",
+     "EGY_S_031",
+     "IND_S_016",
+     "IND_S_047",
+     "IRN_S_024",
+     "IRN_S_033",
+     "IRN_S_041",
+     "IRN_S_042",
+     "IRN_S_051",
+     "IRN_S_053",
+     "IRN_S_061",
+     "IRN_S_116",
+     "IRQ_S_025",
+     "IRQ_S_030",
+     "IRQ_S_032",
+     "IRQ_S_033",
+     "IRQ_S_037",
+     "IRQ_S_041",
+     "KAZ_S_007",
+     "KAZ_S_011",
+     "KAZ_S_014",
+     "KAZ_S_015",
+     "KAZ_S_026",
+     "KWT_S_002",
+     "KWT_S_007",
+     "KWT_S_008",
+     "KWT_S_010",
+     "LBY_S_021",
+     "LBY_S_042",
+     "LBY_S_043",
+     "LBY_S_065",
+     "MEX_S_011",
+     "MEX_S_093",
+     "OMN_S_002",
+     "OMN_S_003",
+     "OMN_S_004",
+     "OMN_S_006",
+     "PAK_S_002",
+     "SAU_S_002",
+     "SYR_S_002",
+     "SYR_S_028",
+     "SYR_S_034",
+     "TKM_S_001",
+     "TKM_S_003",
+     "TKM_S_006",
+     "TKM_S_007",
+     "TKM_S_008",
+     "TKM_S_014",
+     "TKM_S_015",
+     "TKM_S_023",
+     "TKM_S_030",
+     "TKM_S_032",
+     "TKM_S_034",
+     "TKM_S_043",
+     "TKM_S_049",
+     "TKM_S_051",
+     "TKM_S_060",
+     "TKM_S_062",
+     "TKM_S_063",
+     "TKM_S_066",
+     "TKM_S_067",
+     "TKM_S_070",
+     "TKM_S_081",
+     "TKM_S_082",
+     "TKM_S_084",
+     "TKM_S_086",
+     "TKM_S_090",
+     "TKM_S_092",
+     "TKM_S_093",
+     "TKM_S_117",
+     "TKM_S_125",
+     "TKM_S_127",
+     "TKM_S_129",
+     "TKM_S_134",
+     "TKM_S_138",
+     "TKM_S_140",
+     "TKM_S_201",
+     "TKM_S_285",
+     "USA_S_002",
+     "USA_S_004",
+     "USA_S_009",
+     "USA_S_011",
+     "USA_S_013",
+     "USA_S_014",
+     "USA_S_015",
+     "USA_S_016",
+     "USA_S_018",
+     "USA_S_019",
+     "USA_S_020",
+     "USA_S_022",
+     "USA_S_023",
+     "USA_S_024",
+     "USA_S_025",
+     "USA_S_026",
+     "USA_S_030",
+     "USA_S_032",
+     "USA_S_033",
+     "USA_S_035",
+     "USA_S_038",
+     "USA_S_040",
+     "USA_S_041",
+     "USA_S_043",
+     "USA_S_054",
+     "USA_S_056",
+     "USA_S_057",
+     "USA_S_063",
+     "USA_S_065",
+     "USA_S_066",
+     "USA_S_067",
+     "USA_S_071",
+     "USA_S_073",
+     "USA_S_074",
+     "USA_S_075",
+     "USA_S_077",
+     "USA_S_078",
+     "USA_S_079",
+     "USA_S_083",
+     "USA_S_093",
+     "USA_S_095",
+     "USA_S_099",
+     "USA_S_105",
+     "USA_S_106",
+     "USA_S_107",
+     "USA_S_108",
+     "USA_S_111",
+     "USA_S_112",
+     "USA_S_136",
+     "USA_S_137",
+     "USA_S_138",
+     "USA_S_144",
+     "USA_S_148",
+     "USA_S_151",
+     "USA_S_152",
+     "USA_S_163",
+     "USA_S_180",
+     "USA_S_182",
+     "USA_S_187",
+     "USA_S_191",
+     "USA_S_192",
+     "USA_S_200",
+     "USA_S_295",
+     "USA_S_297",
+     "USA_S_298",
+     "USA_S_300",
+     "USA_S_301",
+     "USA_S_302",
+     "USA_S_303",
+     "USA_S_305",
+     "USA_S_306",
+     "USA_S_308",
+     "USA_S_309",
+     "USA_S_310",
+     "USA_S_311",
+     "USA_S_312",
+     "USA_S_313",
+     "USA_S_314",
+     "USA_S_315",
+     "USA_S_316",
+     "USA_S_318",
+     "USA_S_319",
+     "USA_S_320",
+     "USA_S_321",
+     "USA_S_322",
+     "USA_S_371",
+     "USA_S_825",
+     "USA_S_909",
+     "UZB_S_004",
+     "UZB_S_005",
+     "UZB_S_007",
+     "UZB_S_011",
+     "UZB_S_012",
+     "UZB_S_014",
+     "UZB_S_020",
+     "UZB_S_024",
+     "UZB_S_032",
+     "UZB_S_035",
+     "UZB_S_036",
+     "UZB_S_037",
+     "UZB_S_039",
+     "UZB_S_048",
+     "UZB_S_051",
+     "UZB_S_052",
+     "UZB_S_053",
+     "UZB_S_054",
+     "VEN_S_004",
+     "VEN_S_010",
+     "VEN_S_014",
+     "VEN_S_015",
+     "VEN_S_016",
+     "VEN_S_093",
+     "YEM_S_010"
+    ],
+    "members": 220,
+    "membersCredited": 115,
+    "membersQuantified": 143,
+    "membersWithoutPassAfterD": 60,
+    "reonsetHazard": {
+     "eventFreeYears": 74.05,
+     "perYear": 1.0128,
+     "restarts": 75
+    },
+    "scenarios": [
+     {
+      "censoredShareOfCredit": {
+       "high": 0.4783,
+       "low": 0.464
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 3.3,
+       "low": 2.77
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 0.098,
+       "low": 0.083
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 0.272,
+       "low": 0.229
+      },
+      "responseShare": 0.32,
+      "selectingShareOfCredit": {
+       "high": 0.0,
+       "low": 0.0
+      },
+      "shareOfStake": {
+       "high": 0.0391,
+       "low": 0.0328
+      }
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.4783,
+       "low": 0.464
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 4.02,
+       "low": 3.38
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 0.12,
+       "low": 0.101
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 0.332,
+       "low": 0.279
+      },
+      "responseShare": 0.39,
+      "selectingShareOfCredit": {
+       "high": 0.0,
+       "low": 0.0
+      },
+      "shareOfStake": {
+       "high": 0.0477,
+       "low": 0.0401
+      }
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.4783,
+       "low": 0.464
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 4.95,
+       "low": 4.16
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 0.148,
+       "low": 0.124
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 0.408,
+       "low": 0.343
+      },
+      "responseShare": 0.48,
+      "selectingShareOfCredit": {
+       "high": 0.0,
+       "low": 0.0
+      },
+      "shareOfStake": {
+       "high": 0.0587,
+       "low": 0.0493
+      }
+     }
+    ],
+    "selectingShareOfCredit": 0.0,
+    "stakeFrom": "atD",
+    "stakeLowKtCh4PerYr": 99.37,
+    "stakeLowKtCh4PerYrCredited": 84.33
+   }
+  },
+  "sensitivity": [
+   {
+    "creditEnd": "2026-09-13",
+    "id": "fwd_stake_backtest",
+    "ktCh4PerYrCentralAction": {
+     "high": 8.36,
+     "low": 6.2
+    },
+    "members": 220,
+    "membersQuantified": 158,
+    "origin": "2025-09-12",
+    "postResult": false,
+    "reonsetHazardPerYear": 1.0128,
+    "rule": "S_i and D_i from backtest.json (passes from the start to the catalogue end, as portfolio_v3): reads passes after D",
+    "selectingShareOfCredit": 0.0,
+    "setsValue": false,
+    "shareOfStakeCentralAction": {
+     "high": 0.0706,
+     "low": 0.0523
+    },
+    "stakeLowKtCh4PerYrCredited": 118.46
+   },
+   {
+    "creditEnd": "2026-09-13",
+    "id": "fwd_join_rule",
+    "ktCh4PerYrCentralAction": {
+     "high": 2.66,
+     "low": 1.64
+    },
+    "members": 49,
+    "membersQuantified": 46,
+    "origin": "2025-09-12",
+    "postResult": false,
+    "reonsetHazardPerYear": 2.4701,
+    "rule": "plumeBeforeD replaced by the join criterion run at D: a plume with scene date in [D minus WINDOW_MONTHS, D] and published before D",
+    "selectingShareOfCredit": 0.0,
+    "setsValue": false,
+    "shareOfStakeCentralAction": {
+     "high": 0.0686,
+     "low": 0.0423
+    },
+    "stakeLowKtCh4PerYrCredited": 38.77
+   },
+   {
+    "creditEnd": "2026-03-11",
+    "id": "fwd_credit_before_absent_window",
+    "ktCh4PerYrCentralAction": {
+     "high": 0.64,
+     "low": 0.6
+    },
+    "members": 220,
+    "membersQuantified": 143,
+    "origin": "2025-09-12",
+    "postResult": false,
+    "reonsetHazardPerYear": 1.0128,
+    "rule": "creditEnd moved to the day before today's MARS absent window starts (join_v1.json window[0] minus one day), so the credit window does not overlap the period today's absent label is decided on",
+    "selectingShareOfCredit": 0.0,
+    "setsValue": false,
+    "shareOfStakeCentralAction": {
+     "high": 0.009,
+     "low": 0.0085
+    },
+    "stakeLowKtCh4PerYrCredited": 70.88
+   },
+   {
+    "creditEnd": "2026-09-13",
+    "detectionsDropped": 53,
+    "id": "fwd_stake_published_by_D",
+    "ktCh4PerYrCentralAction": {
+     "high": 3.81,
+     "low": 3.28
+    },
+    "members": 220,
+    "membersQuantified": 135,
+    "origin": "2025-09-12",
+    "postResult": true,
+    "reonsetHazardPerYear": 0.8806,
+    "rule": "as FORWARD, with every detection dated after the start and up to D that no plume published before D shows dropped (its pass and its rates) from the series the stake, the hazard and the events read",
+    "selectingShareOfCredit": 0.0,
+    "setsValue": false,
+    "shareOfStakeCentralAction": {
+     "high": 0.0494,
+     "low": 0.0426
+    },
+    "stakeLowKtCh4PerYrCredited": 77.08
+   },
+   {
+    "clause": "the same six-month credit length from 2025-03-12 to 2025-09-11, also before the label window, gives ~0.03 kt (0.04 % of stake, against 0.85 % for the credit ending before the label and 4.01 % over the full window), so the short window, not the label, explains most of that drop",
+    "creditEnd": "2025-09-11",
+    "id": "fwd_control_short_window",
+    "ktCh4PerYrCentralAction": {
+     "high": 0.03,
+     "low": 0.03
+    },
+    "members": 182,
+    "membersQuantified": 125,
+    "origin": "2025-03-12",
+    "postResult": true,
+    "reonsetHazardPerYear": 1.2597,
+    "rule": "FORWARD's rules at origin controlShortWindow.origin with credit up to controlShortWindow.creditEnd: the same six-month credit length as fwd_credit_before_absent_window, also ending before today's absent window",
+    "selectingShareOfCredit": 0.0,
+    "setsValue": false,
+    "shareOfStakeCentralAction": {
+     "high": 0.0004,
+     "low": 0.0004
+    },
+    "shortWindowExplainsMost": true,
+    "stakeLowKtCh4PerYrCredited": 85.32
+   }
+  ]
+ },
  "generatedFrom": [
   {
    "path": "data/derived/backtest.json",
-   "sha256": "05344c8d8abb59bf0602fed8c72f5dc15f82838dd01a14c98b2729112d65328d"
+   "sha256": "5cbdfd9d949084646084cc6d00d5807d1f85871a3b2fd7364a8baf6fb50f20ca"
   },
   {
    "path": "data/derived/sourceset_v3.json",
@@ -699,7 +1452,7 @@
   },
   {
    "path": "data/derived/measurements.json",
-   "sha256": "38000c029c102953731442a7be841c07e843a67a1b76403878b3d3aecbbcf2a8"
+   "sha256": "f2dcf4dc10da6e6d0fd8c01395e3088987bfae34d2502803501e80a92edab3c2"
   },
   {
    "path": "data/derived/mars_sources.csv",
@@ -751,7 +1504,7 @@
   },
   {
    "path": "pipeline/projection.py",
-   "sha256": "9cca85428847e23e4eb96d47e800db341933423fb58af09f697b4e0546f17e00"
+   "sha256": "edf17f52f3fc3a8846ddafbf3d98261501c026ecdcc03499e1bd3ad3be38a620"
   },
   {
    "path": "pipeline/projection_evidence.py",
@@ -759,11 +1512,11 @@
   },
   {
    "path": "pipeline/projection_time.py",
-   "sha256": "26f1823d436016f49516a0de6a68001fc32473027a6aec523c2d8a5819440d21"
+   "sha256": "36ea10f0520ca7f1d17656269ffbae7d7d70fc15787fb3225022fd4f0ba29057"
   },
   {
    "path": "pipeline/backtest.py",
-   "sha256": "591018ef5a45eedce5f3273890fbecfda53599a7f5aa8850843372957d67302f"
+   "sha256": "12ab81651ab1f22a1879d1af640216f8f20b2273dd6d3ad73ec7e3029dd6206b"
   }
  ],
  "gwp": {
@@ -1993,6 +2746,13 @@
      "perYear": 1.4767,
      "sourcesWithEvents": 402
     },
+    "nonSelecting": {
+     "allCreditCentralShareOfStake": 0.1193,
+     "allCreditKtCh4PerYrCentral": 61.93,
+     "centralShareOfStake": 0.0634,
+     "denominator": "the stake low bound of the facilities the scope credits: quantified, with a satellite pass in the credit window",
+     "ktCh4PerYrCentral": 32.91
+    },
     "reonsetHazard": {
      "eventFreeYears": 233.64,
      "perYear": 1.1642,
@@ -2098,6 +2858,13 @@
      "observedEnds": 168,
      "perYear": 0.9926,
      "sourcesWithEvents": 164
+    },
+    "nonSelecting": {
+     "allCreditCentralShareOfStake": 0.0971,
+     "allCreditKtCh4PerYrCentral": 30.25,
+     "centralShareOfStake": 0.0254,
+     "denominator": "the stake low bound of the facilities the scope credits: quantified, with a satellite pass in the credit window",
+     "ktCh4PerYrCentral": 7.93
     },
     "reonsetHazard": {
      "eventFreeYears": 64.89,

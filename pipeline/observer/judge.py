@@ -9,7 +9,8 @@ and two observer keys are published (observer/sandbox.py), so a fresh wallet can
              your machine fetches Carbon Mapper now (LIVE=0: committed snapshot), builds the canonical bundle, and
              it is signed by YOUR key (org OBS_JUDGE) and by published sandbox observer 1 [SIM]: one of the two
              signatures in the quorum is yours
-  propose    your wallet submits the 2-of-2 episode -> PROPOSED, rebate held from the seller's bond
+  propose    your wallet submits the episode (k signatures of the n sandbox observer orgs, both read from the chain
+             and printed) -> PROPOSED, rebate held from the seller's bond
   tamper     fresh signatures, then 2,548 -> 548 kg/h in the bundle -> the chain reverts (InvalidSignature, status 0)
   challenge  a seeded bogus episode [SIM] (rate inflated at another facility, signed with the published keys) ->
              you recompute the hash from provider data, it differs -> challenge HASH_MISMATCH -> observers WITHDRAW
@@ -83,6 +84,24 @@ def eth(wei: int) -> str:
     return f"{Web3.from_wei(wei, 'ether'):f}".rstrip("0").rstrip(".") + " ETH"
 
 
+def window_stop_message(window: str, deadline: int, wait: int, network: str, *, local: bool) -> str:
+    """What the cure prints when it stops at a window. A public chain waits it out in real time; on Anvil
+    (JUDGE_NO_SKIP=1, make judge-local) the command stops the same way and the local script then moves the clock."""
+    if not local:
+        return (f"   the {window} closes {utc(deadline)} ({wait} s from now; real time, nothing is skipped on "
+                f"{network}). Run `make judge-cure` again after that.")
+    return (f"   the {window} closes {utc(deadline)} ({wait} s from now). The cure stops here as on Sepolia, where "
+            f"you wait the window out in real time; on {network}, `make judge-local` next moves the chain clock "
+            f"past it [SIM] and runs `make judge-cure` again.")
+
+
+def quorum_line(k: int, signer_orgs: list[str], registered_orgs: list[str], network: str) -> str:
+    """The propose header: k from the covenant, n = observer orgs with a valid key in the sandbox registry now."""
+    return (f"== Your wallet proposes the episode on {network}: the covenant's quorum is k = {k} distinct observer "
+            f"orgs of the n = {len(registered_orgs)} registered in the sandbox ({', '.join(registered_orgs)}); "
+            f"signed by {' + '.join(signer_orgs)}")
+
+
 class Run:
     def __init__(self, rpc: str):
         self.ch = Chain(rpc, sandbox=True)
@@ -121,6 +140,15 @@ class Run:
                                                live=self.live, pk=self.pk),
                          "OBS_1": self.published_observer("OBS_1")}
         return self._obs
+
+    def registered_observer_orgs(self) -> list[str]:
+        """Sandbox observer orgs that hold a valid OBSERVER key now: the published SANDBOX_OBS_* orgs (any generation)
+        and OBS_JUDGE (your wallet's org, once `judge-attest` registered it)."""
+        orgs = [sandbox.ORGS[r] for r in ("OBS_1", "OBS_2") if sandbox.current(self.ch.reg, r) is not None]
+        org, role, valid = self.ch.read(self.ch.reg.functions.keyStatus(self.me, self.ch.now()))
+        if role == 1 and valid and bytes(org).rstrip(b"\0") == sandbox.JUDGE_ORG.encode():
+            orgs.append(sandbox.JUDGE_ORG)
+        return orgs
 
     @property
     def bogus_obs(self) -> dict:
@@ -269,7 +297,8 @@ class Run:
         signed = [_load(s) for s in self.state["signed"]]
         if min(s["attestation"]["expiry"] for s in signed) <= ch.now():
             fail("the attestations expired (1 hour); run `make judge-attest` again")
-        say(f"== Your wallet proposes the 2-of-2 episode on {ch.network}")
+        say(quorum_line(ch.covenant(attest.b32(cid))["k"], [o.org for o in self.obs.values()],
+                        self.registered_observer_orgs(), ch.network))
         if ch.read(ch.cov.functions.evidenceSeen(attest.b32(signed[0]["evidenceHash"]))):
             fail("this exact evidence was already proposed on your covenant — by someone else, since the sandbox keys "
                  "are public. The chain would answer DuplicateEvidence. `make judge-reset` starts a fresh covenant.")
@@ -392,9 +421,11 @@ class Run:
         eid = self.state.get("episodeId") or fail("run `make judge-propose` first")
         e = ch.episode(eid)
         if e["stateName"] == "CONTESTED":
+            k, orgs = ch.covenant(attest.b32(self.cid()))["k"], self.registered_observer_orgs()
             say(f"   episode {eid} was CONTESTED with the published seller key. Confirming a contested episode needs "
-                "k+1 = 3 observer orgs and the sandbox has 2, so it can only EXPIRE after the window: rebate back "
-                "to the bond, nobody slashed. That is the contract working as designed.")
+                f"k+1 = {k + 1} of the n = {len(orgs)} sandbox observer orgs; this walk-through does not gather "
+                "them, so it EXPIRES after the window: rebate back to the bond, nobody slashed. That is the "
+                "contract working as designed.")
             return
         if e["stateName"] != "PROPOSED":
             say(f"   episode {eid} is {e['stateName']}")
@@ -451,8 +482,7 @@ class Run:
             return
         # JUDGE_NO_SKIP=1 (Anvil only, used by make judge-local) behaves like a public chain: exit and resume
         if not self.ch.local or os.environ.get("JUDGE_NO_SKIP") == "1":
-            say(f"   the {window} closes {utc(deadline)} ({wait} s from now; real time, nothing is skipped on "
-                f"{self.ch.network}). Run `make judge-cure` again after that.")
+            say(window_stop_message(window, deadline, wait, self.ch.network, local=self.ch.local))
             sys.exit(0)
         from observer.demo import advance_clock
         skipped = advance_clock(self.ch, deadline, window, log=say)

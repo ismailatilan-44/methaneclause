@@ -121,6 +121,20 @@ def test_pdf_blocks_name_every_source_and_the_no_price_term_line():
     assert f"{ss['n']}-facility" in b["pilot"] and "[SIM]" in b["pilot"]
 
 
+def test_pilot_names_k_plus_two_organisations_so_a_contest_keeps_a_spare():
+    """docs/PRODUCTION.md item 8: a contest needs k + 1 signatures; the pilot names n = k + 2 organisations (2 of 4 for
+    k = 2), rendered from core.k, not from POLICY_V2's deployed n, which stays the demo setting."""
+    b = clause.pdf_blocks()["pilot"]
+    k = _policy()["policies"][clause.ONCHAIN]["policy"]["core"]["k"]
+    n = clause.pilot_n(k)
+    assert n == k + 2
+    word = clause.NUMBER_WORDS[n]
+    assert f"**Observers.** {word.capitalize()} organisations with a quorum of {k} of {n}" in b
+    assert "a contest, which needs k + 1, keeps a spare" in b and f"register the {word} organisations" in b
+    assert sum(c for c, _ in clause.PILOT_ORGS) == n
+    assert "Three organisations" not in b and "register the three" not in b
+
+
 def _policy() -> dict:
     return json.loads(clause.POLICY_FILE.read_text())
 
