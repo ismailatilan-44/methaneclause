@@ -1,0 +1,32 @@
+part,label,answer
+,schema,methaneclause.annex_c/1
+,template,"IEA, Annex C: MARS Feedback Form (Responding to Satellite Notifications from MARS, May 2026)"
+0,Date of Completion of Feedback Form (DD-MM-YYYY),"""20-03-2026"""
+1,Source ID,"""TKM_S_276"""
+1,Plume(s) ID(s),"""fccdd146-9e59-4c01-b55f-567f07631aa7"""
+1,Operator,"""[SIM] seller (the real operator is not named in public data)"""
+1,Emissions cause,"""[SIM] seller's claim: unplanned venting during a compressor trip"""
+1,Did the MARS notification alert you to the emissions?,"""[SIM] Yes"""
+1,Have the emissions ceased? Was mitigation action taken to address the emissions?,"""[SIM] seller's claim: ceased; a relief valve was replaced"""
+1,What date did the mitigation action occur?,"""15-03-2026"""
+1,Executed or planned operator efforts,"""[SIM] valve replaced; quarterly LDAR survey planned"""
+2,Facility Name,"""[SIM] facility at MARS source TKM_S_276"""
+2,Facility Type,"""Transmission Pipelines"""
+2,Facility Contact Information,null
+2,Corporate Contact Information,null
+2,OGMP 2.0 Asset Name,null
+3,Emission Source Category,"""[SIM] Venting"""
+3,"Emission Source Category - If other, please specify",null
+3,"Details of the specific point source within the facility (e.g. specific tank, compressor, flare)",null
+3,Briefly describe the root cause of the emissions event,null
+3,Operational situation or activity that led to the emission,null
+3,"Operational situation or activity that led to the emission - If other, please specify",null
+3,Has the emission ceased or been mitigated or is it ongoing?,"""[SIM] Ceased"""
+3,"If ceased/mitigated, describe the actions taken","""[SIM] relief valve replaced"""
+3,"If ongoing, do you have plans to mitigate?",null
+3,"If yes, describe the mitigation plans",null
+3,Timeline by which you expect to mitigate the emission (date),null
+3,Are you able to quantify the emissions from this event?,"""[SIM] No"""
+3,"If yes, estimate of total emissions released (kg methane if possible)",null
+3,Duration of the event (hours or days),null
+,x-methaneclause,"{""case"": ""TKM_S_276"", ""label"": ""[SIM] example: a simulated seller's claim; recorded on chain by hash, changes no state""}"

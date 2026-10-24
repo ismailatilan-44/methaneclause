@@ -1,0 +1,19 @@
+{
+ "challengeWindow": 86400,
+ "cleanWindow": 86400,
+ "contestWindow": 172800,
+ "cureTerm": 46656000,
+ "finalReach": {
+  "lastDetectionDay": 522,
+  "minTermDays": 573,
+  "nonFinalShareBp": 6000
+ },
+ "holdWindow": 5529600,
+ "linkWindow": 2592000,
+ "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+ "policy": "POLICY_V2_MULTIYEAR",
+ "policyHash": "0xda782c5b3911b90e4beadd6233836315041d71dc15b5979e24fb65a9837442cc",
+ "publicationLag": 5184000,
+ "schema": "methaneclause.policy_v2_multiyear_vector/1",
+ "term": 94608000
+}

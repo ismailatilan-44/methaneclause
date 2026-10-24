@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "TKM_S_276",
+  "providerId": "carbonmapper",
+  "plumeId": "tan20260611t083132c23s4001-AB",
+  "instrument": "tan",
+  "detectedAt": "2026-06-11T08:31:32.230000Z",
+  "emissionKgH": 2548.2483082628996,
+  "uncertaintyKgH": null,
+  "emissionVersion": "v3",
+  "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+  "rawResponseSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "retrievedAt": "2026-10-14T00:00:00Z"
+}
