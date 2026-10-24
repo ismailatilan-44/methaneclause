@@ -1,0 +1,28 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.37"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+# test EVM gas cap (2^32): the deterministic invariant walk runs ~3,000 handler steps in one test. No compiler setting.
+gas_limit = 4294967296
+fs_permissions = [
+    { access = "read-write", path = "./deployments" },
+    { access = "read", path = "../pipeline/tests/vectors" },
+    { access = "read", path = "./out" }, # DeployPool reads the pool artifact's linkReferences to record library addresses
+]
+
+[invariant]
+runs = 128
+depth = 128
+fail_on_revert = false
+
+[fmt]
+line_length = 120
+
+[lint]
+# Deadlines are hours/days long, so validator timestamp drift is irrelevant; reverting inside the attestation
+# loop is the intended fail-closed behaviour.
+exclude_lints = ["block-timestamp", "require-revert-in-loop"]

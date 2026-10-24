@@ -1,0 +1,93 @@
+{
+ "case": "DZA_S_012",
+ "note": "MOCK \u2014 placeholder for the page, not a measurement",
+ "scenes": [
+  {
+   "cloudCoverPct": 0,
+   "cloudCoverPctAssessed": 0,
+   "instrument": "tan",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": true,
+   "originIntersect": true,
+   "perSourceQueries": [
+    {
+     "cmSource": "MOCK",
+     "params": {},
+     "plumeCount": 0,
+     "responseSha256": "0x0000000000000000000000000000000000000000000000000000000000000000",
+     "url": "MOCK"
+    }
+   ],
+   "plumeOnScene": false,
+   "publishedAt": 1735000000,
+   "qualified": true,
+   "refusal": null,
+   "sceneAt": 1732000000,
+   "sceneId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+   "sceneProviderId": "mock-scene-1"
+  },
+  {
+   "cloudCoverPct": 0,
+   "cloudCoverPctAssessed": 0,
+   "instrument": "emi",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": true,
+   "originIntersect": true,
+   "perSourceQueries": [
+    {
+     "cmSource": "MOCK",
+     "params": {},
+     "plumeCount": 0,
+     "responseSha256": "0x0000000000000000000000000000000000000000000000000000000000000000",
+     "url": "MOCK"
+    }
+   ],
+   "plumeOnScene": false,
+   "publishedAt": 1737000000,
+   "qualified": true,
+   "refusal": null,
+   "sceneAt": 1734000000,
+   "sceneId": "0x0000000000000000000000000000000000000000000000000000000000000002",
+   "sceneProviderId": "mock-scene-2"
+  },
+  {
+   "cloudCoverPct": 0,
+   "cloudCoverPctAssessed": 0,
+   "instrument": "tan",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": false,
+   "originIntersect": true,
+   "perSourceQueries": [
+    {
+     "cmSource": "MOCK",
+     "params": {},
+     "plumeCount": 0,
+     "responseSha256": "0x0000000000000000000000000000000000000000000000000000000000000000",
+     "url": "MOCK"
+    }
+   ],
+   "plumeOnScene": false,
+   "publishedAt": 1739000000,
+   "qualified": false,
+   "refusal": "CLOUD_FLAG",
+   "sceneAt": 1736000000,
+   "sceneId": "0x0000000000000000000000000000000000000000000000000000000000000003",
+   "sceneProviderId": "mock-scene-3"
+  }
+ ],
+ "schema": "methaneclause.clean_passes/1",
+ "since": 1730160000,
+ "sourceId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}

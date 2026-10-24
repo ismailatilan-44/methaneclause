@@ -1,0 +1,274 @@
+{
+ "case_evidence_hash": "0x537bfa39dace9598ced4641e84d744b40d0b2fba84e91554d4d6e8f7f773ba4c",
+ "cm_plumes_within_radius": [
+  {
+   "emission_auto": 1970.8628007635436,
+   "emission_uncertainty_auto": 473.6896586141453,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 32.51481312499482,
+   "lon": -101.52256282601466,
+   "modified": "2025-03-25T22:55:32.317515Z",
+   "origin_dist_km": 0.095,
+   "platform": "ISS",
+   "plume_id": "emi20230624t175855p12021-B",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-12-08T16:58:17.562797Z",
+   "scene_timestamp": "2023-06-24T17:58:55Z",
+   "source_name": "CH4_1B2_1000m_-101.52270_32.51483"
+  },
+  {
+   "emission_auto": 4708.768146762659,
+   "emission_uncertainty_auto": 509.028605110956,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 32.51489208692087,
+   "lon": -101.52272921450383,
+   "modified": "2025-03-25T22:55:05.155227Z",
+   "origin_dist_km": 0.082,
+   "platform": "ISS",
+   "plume_id": "emi20230731t191846p13016-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-12-08T16:58:17.515565Z",
+   "scene_timestamp": "2023-07-31T19:18:46Z",
+   "source_name": "CH4_1B2_1000m_-101.52270_32.51483"
+  },
+  {
+   "emission_auto": 5051.181744758699,
+   "emission_uncertainty_auto": 554.6762192118277,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 32.51460841702537,
+   "lon": -101.52274592563005,
+   "modified": "2025-03-25T22:40:31.871911Z",
+   "origin_dist_km": 0.078,
+   "platform": "ISS",
+   "plume_id": "emi20240224t165801p11015-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-03-27T18:16:06.658866Z",
+   "scene_timestamp": "2024-02-24T16:58:01Z",
+   "source_name": "CH4_1B2_1000m_-101.52270_32.51483"
+  },
+  {
+   "emission_auto": 3642.9744565402066,
+   "emission_uncertainty_auto": 894.2289720748769,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 32.51498654183119,
+   "lon": -101.52275512859141,
+   "modified": "2025-03-25T22:54:03.685973Z",
+   "origin_dist_km": 0.083,
+   "platform": "ISS",
+   "plume_id": "emi20240816t200144p13032-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-08-28T23:48:42.571987Z",
+   "scene_timestamp": "2024-08-16T20:01:44Z",
+   "source_name": "CH4_1B2_1000m_-101.52270_32.51483"
+  }
+ ],
+ "cm_source_ids": {
+  "CH4_1B2_1000m_-101.52270_32.51483": "0xbd495a5fd66b2a52e73fedd80b65d0dfee0a5155168872c8855b3015030bcf65"
+ },
+ "cm_sources": {
+  "CH4_1B2_1000m_-101.52270_32.51483": {
+   "content_sha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+   "dist_km": 0.083,
+   "fetchedAt": "2026-10-14T03:05:16Z",
+   "lat": 32.51482504269305,
+   "lon": -101.52269827368504,
+   "n_det": 4,
+   "n_obs": 9,
+   "post_mars_last_plume": {
+    "detections": [],
+    "n_detected": 0,
+    "n_passes": 2,
+    "passes": [
+     "2025-08-08",
+     "2026-08-25"
+    ]
+   },
+   "raw_sha256": "d7f2bfb3a06be4df8af71d528aee6f1ade02c0ab9a612549f3698e65fc025fb8",
+   "within_radius": true
+  }
+ },
+ "cm_timeline_union": [
+  {
+   "date": "2023-02-14",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-06-08",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-06-24",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-07-31",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-02-24",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-08-16",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-10-13",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2025-08-08",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2026-08-25",
+   "detected": false,
+   "instruments": "tan"
+  }
+ ],
+ "join_v1_candidate": false,
+ "licence": [
+  "Carbon Mapper Terms of Use: non-commercial, attribution ('Data by Carbon Mapper®'), redistribution under the same terms — Data by Carbon Mapper",
+  "UNEP IMEO MARS, CC BY-NC-SA 4.0"
+ ],
+ "mars_plumes": [
+  {
+   "ch4_fluxrate": 3772.0,
+   "ch4_fluxrate_std": 1392.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "98a2cd3f-c505-42a0-8cd2-b2a032c7924d",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-07-31T19:18:46"
+  },
+  {
+   "ch4_fluxrate": 3377.0,
+   "ch4_fluxrate_std": 1057.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5bf83b38-c6c2-4374-a8ef-8db6a887e439",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-28T17:27:31"
+  },
+  {
+   "ch4_fluxrate": 7007.0,
+   "ch4_fluxrate_std": 1670.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8ae8624e-2a77-4444-a3ea-3a65b7574c0e",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-01-15T17:21:01"
+  },
+  {
+   "ch4_fluxrate": 8535.0,
+   "ch4_fluxrate_std": 3498.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0e97a7ca-256a-491c-8e4f-d0eca5e72b55",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-17T17:26:41"
+  },
+  {
+   "ch4_fluxrate": 4560.0,
+   "ch4_fluxrate_std": 1755.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "04bf59e4-754b-4203-bd7c-fbec88e3b308",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-02-24T16:58:01"
+  },
+  {
+   "ch4_fluxrate": 14468.0,
+   "ch4_fluxrate_std": 5472.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "56bc5924-9f5c-4ee9-8627-d5f944f343bd",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-03-11T17:20:36"
+  },
+  {
+   "ch4_fluxrate": 5358.0,
+   "ch4_fluxrate_std": 1799.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7e07cb6d-6386-4437-9952-c75e727a5aab",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-19T17:18:59"
+  },
+  {
+   "ch4_fluxrate": 709.0,
+   "ch4_fluxrate_std": 212.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "31060ef5-8dc7-459f-83a1-854330ff4985",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-10-08T17:21:29"
+  },
+  {
+   "ch4_fluxrate": 1434.0,
+   "ch4_fluxrate_std": 441.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "87e8bc4b-817e-4e35-8a4d-d214d1878679",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-10-23T17:24:01"
+  },
+  {
+   "ch4_fluxrate": 13290.0,
+   "ch4_fluxrate_std": 5341.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2b41cc33-7063-405a-b3e8-d2466993846f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-11-06T17:20:45"
+  }
+ ],
+ "mars_snapshot_sha256": "978464740cc903433b104e9f65dd7bd56838e7839dca0fa2605aeb34bbd40095",
+ "mars_source": {
+  "country": "United States of America",
+  "emission_status": null,
+  "feedback": "Yes",
+  "feedback_government": "Yes",
+  "feedback_operator": "No",
+  "id_last_plume": "2b41cc33-7063-405a-b3e8-d2466993846f",
+  "last_plume_date": "2024-11-06T17:20:45",
+  "lat": 32.51469,
+  "lon": -101.52357,
+  "n_plumes_detected": 10,
+  "notified": "Yes",
+  "persistency": 0.0,
+  "persistency_category": "absent",
+  "persistency_std": 0.0,
+  "sector": "Oil and Gas",
+  "source_name": "USA_S_077",
+  "source_type": "Gathering and boosting facilities"
+ },
+ "post_mars_last_plume": {
+  "basis": "facility radius: linked Carbon Mapper sources whose centre is within 1.5 km of the MARS point; a pass or detection counts only on a date in those sources' own observation lists",
+  "cm_sources": [
+   "CH4_1B2_1000m_-101.52270_32.51483"
+  ],
+  "detections": [],
+  "n_cm_detected": 0,
+  "n_cm_passes": 2,
+  "radius_km": 1.5,
+  "since": "2024-11-06"
+ },
+ "post_mars_last_plume_all_linked": {
+  "cm_sources": [
+   "CH4_1B2_1000m_-101.52270_32.51483"
+  ],
+  "detections": [],
+  "label": "secondary, not the headline: union over every linked Carbon Mapper source, including centres beyond 1.5 km of the MARS point",
+  "n_cm_detected": 0,
+  "n_cm_passes": 2,
+  "since": "2024-11-06"
+ },
+ "sourceId": "0x39cd1bb61a41f58002e7b09b3b9550cbfaabe00daa748d52898465bfc1fa2211"
+}

@@ -1,0 +1,11 @@
+--- a/src/lib/PoolInstallments.sol
++++ b/src/lib/PoolInstallments.sol
+@@ -112,7 +112,7 @@
+             if (st == IncentivePool.InstState.PENDING) {
+                 uint256 amount = it.amount;
+                 c.reserved -= amount;
+-                if (onchain) pl.reserved -= amount;
++                // MUTANT: the pool's reserve is not freed
+                 releasedReserve += amount;
+             } else if (st != IncentivePool.InstState.UNFUNDED) {
+                 continue; // RELEASED stays released (D1)

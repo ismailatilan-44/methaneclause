@@ -1,0 +1,2539 @@
+{
+ "card": {
+  "adoptionSentence": "The scenario assumes importers covering the 205-facility portfolio [SIM] write the clause into their supply contracts, their sellers post the bond and act on attested episodes at the scenario's rate, the stake's low bound holds, and a fixed fault stays stopped until the fault's observed end, the facility's last pass or a new fault; it assumes no new satellite and counts no clean pass as a stop.",
+  "costLineSentence": "The ledger is cheap: USD 4.29 of Ethereum Sepolia calls per episode, USD 1,330 a year for the portfolio, USD 0.0015 per t CO₂e projected at the central action share: the cost of the records, not the work on site.",
+  "costSentence": "Ledger cost only, not the cost of the work on site: one episode costs USD 4.29 on Ethereum Sepolia (proposeEpisode + finalize + withdraw at the stated 1 gwei and ETH/USD 2,424, measured 2026-10-22); at the portfolio's backtest rate of 309 episodes a year plus one createCovenant that is USD 1,330 a year, or USD 0.0015 per t CO₂e projected at the central action share (USD 0.00059–0.0018 across scenarios and with no recurrence). It excludes the refund-side calls and the cost of posting the bond.",
+  "evidenceSentence": "Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band.",
+  "floorLineSentence": "Stake, not abatement: the clause puts a price on at least ~312 kt CH₄ a year across the 174 of the portfolio's 205 facilities with a quantified stake [SIM].",
+  "floorSentence": "Stake, not abatement: at least ~312 kt CH₄/yr across the portfolio's 174 quantified facilities [SIM] (members chosen because each showed a Carbon Mapper plume MARS did not see) and ~519 kt across 428 (of the 1,122 sources MARS labels absent today — a label decided after the window), assuming what satellites saw on their passes holds between them; it is the methane the clause puts a price on, not a change in emissions.",
+  "headlineSentence": "[PROJECTION] The clause makes each attested super-emitter a priced event the seller pays for and earns back by staying clean: one 205-facility portfolio covenant [SIM] (members chosen for a Carbon Mapper plume not in MARS, credited over each member's window from MARS's first plume there as if the covenant began then; stake quantified at 174) whose sellers act on episodes would stop ~30 kt CH₄/yr at the central 39 % action share (up to ~62 kt with no recurrence), ~0.90 Mt CO₂e/yr at GWP-100, each fix credited until the fault's observed end, the last pass or a new fault — assumptions: paper §4.",
+  "limitSentence": "The carbon figures are a projection resting on two ASSUMPTIONs, the action share and the time share, which our own checks neither support nor bound; section 4, 'How we estimated this', states both and the checks.",
+  "line1Sentence": "MARS outcome by response: MARS documents a per-source emission_status, but neither its committed nor its current public file carries it, so the outcome is the 'absent' label (no MARS detection over the last six months; a non-detection label, not a stop): 166 of 285 notified oil and gas sources with feedback = Yes (operator or government) against 737 of 1,227 with feedback = No, a difference of -1.8 points (95 % CI -8.2 to +4.4); +2.3 within plume-count strata; 46 and 286 sources with an undetermined label are left out.",
+  "line2Sentence": "Event study: Carbon Mapper per-pass detection rates in the year before and after each source's first notified MARS plume (a proxy date: MARS publishes no notification date; it is also the first plume for 188 of the 437 sources used), feedback = Yes (operator or government) minus No: -0.020 (95 % CI -0.105 to +0.066) over 83 and 354 sources, -0.025 (-0.135 to +0.084) on the committed set conditioned on today's 'absent' label; every interval of the 6 specifications on both sets includes zero; minimum detectable effect 0.125 (30 % of the responders' starting rate). T0 precedes MARS's feedback tracking (November 2024) for 40 of 83 responders and 97 of 354 non-responders; the post window runs past the catalogue end for 9 and 105; responders start from a higher rate, so regression to the mean pushes toward a drop; both groups' rates rise after T0, as tasking toward expected plumes would make them.",
+  "methodsSentence": "How we estimated this. Projected tonnes = for each facility with a quantified stake, the stake's low bound × the fixed share of its emitting time. The action share is an ASSUMPTION (32 %, 39 % central, 48 %) informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024); the scenarios are that share and its 95 % sampling interval (147 California incidences), which does not cover the move from a regulator's notice to a rebate under a contract; per event it is CARB's Type A share by persistence (44 % at 1 plume, n = 68; 39 % at 2 plumes, n = 28; 37 % at 3 or more plumes, n = 19), counted by incidence, as CARB publishes no emission rate per incidence. The time share is an ASSUMPTION built from the stake's own satellite passes: following Cusworth et al. 2026, a detection after a non-detection starts an event and a non-detection after a detection ends it; a fixable event is credited from its fix (its first detection plus Carbon Mapper's publication lag, median 30 days, plus the seller's response, every California Type A notification-to-mitigation delay, median 4 days) until the fault's observed end or the facility's last pass, weighted by the chance that no new fault has started (re-onset hazard 2.10 a year: 136 restarts over 64.89 event-free facility-years on the stake's own passes; the bias runs both ways: sparse passes miss restarts, and a single missed detection of a persistent source creates a false one); time before the fix, after the last pass and after a new fault is never credited. The credited days are divided by the facility's emitting days as the stake counts them (duty cycle × days to its last pass), 1.15 times the summed event lengths, so the time share errs low. Each member is credited over its window since MARS's first plume there, as if the covenant had started then: 66 % of the credit is for events containing the plume that selected the member, and a forward hold-out (members chosen before a date, credit only after it) is future work. The action share and the response delay are California's, under a regulator; 72 % of the portfolio's stake is in Turkmenistan and Venezuela, where a buyer, not a regulator, would ask. The stake assumes what satellites saw on their passes holds between them. Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band. These figures are a projection of what the clause could change if adopted, not a measured reduction.",
+  "negativeFindingSentence": "In MARS's own cross-section the answered sources are not the cleaner ones: of the 2,089 notified oil and gas sources, the 331 with feedback = Yes (operator or government) have a mean persistency of 0.140 and 16.31 plumes on average (61 persistent or frequent), against 0.083 and 5.72 (150) for the 1,513 with feedback = No; a cross-section cannot separate what a reply changes from which sources get replies (recurring sources draw more alerts). MARS publishes no notification or response date for a source, so no before/after estimate can be built from MARS alone: our event study needs a proxy date, and the projection's stop share is an ASSUMPTION informed by published figures.",
+  "projectionSentence": "[PROJECTION] A scenario, not a measurement: if importers covering the 205-facility portfolio [SIM] wrote the clause, their sellers acted on 39 % of attested episodes (ASSUMPTION, informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024)), and a fix were assumed to stop its fault until the fault's observed end, the facility's last pass or a new fault (ASSUMPTION: events on the stake's own passes by Cusworth et al. 2026's definition, California's response delays; not measured after a satellite notification), ~30 kt CH₄/yr (up to ~62 kt with no recurrence) of the stake's low bound of ~312 kt (stake, not abatement) would stop, ~0.90 Mt CO₂e/yr at GWP-100 (~2.50 Mt at GWP-20) — a projection of what the clause could change if adopted, not a measured reduction.",
+  "scaleSentence": "Scaled to the backtest set (428 facilities with a quantified stake, of the 1,122 sources MARS labels absent today — a label decided after the window), the same arithmetic gives ~62 kt CH₄ a year (up to ~97 kt with no recurrence; ~1.85 Mt CO₂e/yr at GWP-100, ~5.11 Mt at GWP-20), rising to ~76 kt (up to ~120 kt) at the top of the interval for the share of episodes sellers act on (48 %).",
+  "scenariosSentence": "[PROJECTION] By action scenario (ASSUMPTION), portfolio [SIM], of the stake's low bound of ~312 kt (stake, not abatement): 32 % acted on → ~25 kt CH₄/yr (up to ~51 kt with no recurrence), 39 % acted on → ~30 kt CH₄/yr (up to ~62 kt with no recurrence), 48 % acted on → ~37 kt CH₄/yr (up to ~76 kt with no recurrence); every value is in data/derived/projection.json — a projection of what the clause could change if adopted, not a measured reduction.",
+  "widerSetSentence": "[PROJECTION] Over all 428 facilities with a quantified stake (of the 1,122 sources MARS labels absent today — a label decided after the window), the same assumptions (ASSUMPTION) give ~62 kt CH₄/yr (up to ~97 kt with no recurrence) at the central action share of the stake's low bound of ~519 kt (stake, not abatement), ~1.85 Mt CO₂e/yr at GWP-100 — a projection of what the clause could change if adopted, not a measured reduction."
+ },
+ "evidence": {
+  "line1": {
+   "byFeedback": {
+    "No": {
+     "absent": 737,
+     "ci": [
+      0.573,
+      0.6277
+     ],
+     "determined": 1227,
+     "share": 0.6007,
+     "sources": 1513,
+     "undeterminedLeftOut": 286
+    },
+    "Yes": {
+     "absent": 166,
+     "ci": [
+      0.5245,
+      0.6382
+     ],
+     "determined": 285,
+     "share": 0.5825,
+     "sources": 331,
+     "undeterminedLeftOut": 46
+    }
+   },
+   "byPlumeStratum": {
+    "1": {
+     "No": {
+      "absent": 341,
+      "determined": 504
+     },
+     "Yes": {
+      "absent": 73,
+      "determined": 99
+     }
+    },
+    "10+": {
+     "No": {
+      "absent": 55,
+      "determined": 166
+     },
+     "Yes": {
+      "absent": 22,
+      "determined": 72
+     }
+    },
+    "2-3": {
+     "No": {
+      "absent": 200,
+      "determined": 309
+     },
+     "Yes": {
+      "absent": 42,
+      "determined": 58
+     }
+    },
+    "4-9": {
+     "No": {
+      "absent": 141,
+      "determined": 248
+     },
+     "Yes": {
+      "absent": 29,
+      "determined": 56
+     }
+    }
+   },
+   "confidence": 0.95,
+   "difference": {
+    "ci": [
+     -0.0822,
+     0.0441
+    ],
+    "yesMinusNo": -0.0182
+   },
+   "mantelHaenszelDifference": {
+    "ci": [
+     -0.0374,
+     0.0812
+    ],
+    "ciMethod": "bootstrap over sources within group and stratum",
+    "yesMinusNo": 0.0227
+   },
+   "outcome": "persistency_category == 'absent' (no MARS detection over the last six months; a non-detection label, not a confirmed stop); emission_status is documented by MARS but absent from the data",
+   "population": "notified oil and gas sources with feedback Yes (operator or government) or No and a determined persistency category ('Undetermined' left out, counted per group)"
+  },
+  "line2": {
+   "coverageSets": {
+    "allNotified": {
+     "allCiIncludeZero": true,
+     "catalogueEnd": "2026-09-13",
+     "coverage": "every notified oil and gas source with feedback Yes or No: cm_timelines.json plus cm_timelines_notified.json",
+     "primary": {
+      "did": {
+       "bootstrapSe": 0.0447,
+       "ci": [
+        -0.1054,
+        0.0656
+       ],
+       "minimumDetectableEffect": 0.1253,
+       "minimumDetectableShareOfPreRate": 0.3004,
+       "yesMinusNo": -0.0202
+      },
+      "funnel": {
+       "No: fewer passes than the minimum on a side": 488,
+       "No: no Carbon Mapper source within the radius": 671,
+       "No: used": 354,
+       "Yes: fewer passes than the minimum on a side": 76,
+       "Yes: no Carbon Mapper source within the radius": 172,
+       "Yes: used": 83
+      },
+      "groups": {
+       "No": {
+        "postRate": 0.4658,
+        "postWindowTruncated": 105,
+        "preRate": 0.3267,
+        "proxyDatesAgree": 163,
+        "sources": 354,
+        "t0BeforeFeedbackTracking": 97
+       },
+       "Yes": {
+        "postRate": 0.536,
+        "postWindowTruncated": 9,
+        "preRate": 0.4172,
+        "proxyDatesAgree": 25,
+        "sources": 83,
+        "t0BeforeFeedbackTracking": 40
+       }
+      },
+      "spec": {
+       "gapDays": 30,
+       "minPassesEachSide": 2,
+       "proxy": "firstNotifiedPlume",
+       "windowDays": 365
+      }
+     },
+     "rangeOfEstimates": [
+      -0.0648,
+      0.0195
+     ],
+     "variants": [
+      {
+       "did": {
+        "bootstrapSe": 0.0465,
+        "ci": [
+         -0.1508,
+         0.0295
+        ],
+        "minimumDetectableEffect": 0.1301,
+        "minimumDetectableShareOfPreRate": 0.3245,
+        "yesMinusNo": -0.0596
+       },
+       "funnel": {
+        "No: fewer passes than the minimum on a side": 353,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 489,
+        "Yes: fewer passes than the minimum on a side": 48,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 111
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.5012,
+         "postWindowTruncated": 162,
+         "preRate": 0.339,
+         "proxyDatesAgree": 243,
+         "sources": 489,
+         "t0BeforeFeedbackTracking": 127
+        },
+        "Yes": {
+         "postRate": 0.5037,
+         "postWindowTruncated": 21,
+         "preRate": 0.401,
+         "proxyDatesAgree": 37,
+         "sources": 111,
+         "t0BeforeFeedbackTracking": 51
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 1,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 365
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0398,
+        "ci": [
+         -0.128,
+         0.0289
+        ],
+        "minimumDetectableEffect": 0.1116,
+        "minimumDetectableShareOfPreRate": 0.3091,
+        "yesMinusNo": -0.0466
+       },
+       "funnel": {
+        "No: fewer passes than the minimum on a side": 414,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 428,
+        "Yes: fewer passes than the minimum on a side": 66,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 93
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4992,
+         "postWindowTruncated": 336,
+         "preRate": 0.266,
+         "proxyDatesAgree": 198,
+         "sources": 428,
+         "t0BeforeFeedbackTracking": 121
+        },
+        "Yes": {
+         "postRate": 0.5477,
+         "postWindowTruncated": 60,
+         "preRate": 0.3611,
+         "proxyDatesAgree": 26,
+         "sources": 93,
+         "t0BeforeFeedbackTracking": 48
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 2,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 730
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0512,
+        "ci": [
+         -0.0798,
+         0.1231
+        ],
+        "minimumDetectableEffect": 0.1435,
+        "minimumDetectableShareOfPreRate": 0.7201,
+        "yesMinusNo": 0.0195
+       },
+       "funnel": {
+        "No: fewer passes than the minimum on a side": 537,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 305,
+        "Yes: fewer passes than the minimum on a side": 100,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 59
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4027,
+         "postWindowTruncated": 72,
+         "preRate": 0.219,
+         "proxyDatesAgree": 163,
+         "sources": 305,
+         "t0BeforeFeedbackTracking": 130
+        },
+        "Yes": {
+         "postRate": 0.4026,
+         "postWindowTruncated": 5,
+         "preRate": 0.1993,
+         "proxyDatesAgree": 25,
+         "sources": 59,
+         "t0BeforeFeedbackTracking": 30
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 2,
+        "proxy": "firstPlume",
+        "windowDays": 365
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.057,
+        "ci": [
+         -0.1727,
+         0.0467
+        ],
+        "minimumDetectableEffect": 0.1596,
+        "minimumDetectableShareOfPreRate": 0.3664,
+        "yesMinusNo": -0.0628
+       },
+       "funnel": {
+        "No: fewer passes than the minimum on a side": 463,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 379,
+        "Yes: fewer passes than the minimum on a side": 78,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 81
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4576,
+         "postWindowTruncated": 64,
+         "preRate": 0.3736,
+         "proxyDatesAgree": 189,
+         "sources": 379,
+         "t0BeforeFeedbackTracking": 84
+        },
+        "Yes": {
+         "postRate": 0.4569,
+         "postWindowTruncated": 6,
+         "preRate": 0.4357,
+         "proxyDatesAgree": 26,
+         "sources": 81,
+         "t0BeforeFeedbackTracking": 31
+        }
+       },
+       "spec": {
+        "gapDays": 15,
+        "minPassesEachSide": 1,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 180
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0404,
+        "ci": [
+         -0.1425,
+         0.0138
+        ],
+        "minimumDetectableEffect": 0.1131,
+        "minimumDetectableShareOfPreRate": 0.3186,
+        "yesMinusNo": -0.0648
+       },
+       "funnel": {
+        "No: fewer passes than the minimum on a side": 519,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 323,
+        "Yes: fewer passes than the minimum on a side": 77,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 82
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.5019,
+         "postWindowTruncated": 322,
+         "preRate": 0.2476,
+         "proxyDatesAgree": 138,
+         "sources": 323,
+         "t0BeforeFeedbackTracking": 105
+        },
+        "Yes": {
+         "postRate": 0.5444,
+         "postWindowTruncated": 81,
+         "preRate": 0.3549,
+         "proxyDatesAgree": 21,
+         "sources": 82,
+         "t0BeforeFeedbackTracking": 46
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 3,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 1000
+       }
+      }
+     ]
+    },
+    "joinNeighbourhood": {
+     "allCiIncludeZero": true,
+     "catalogueEnd": "2026-09-13",
+     "coverage": "cm_timelines.json only: the neighbourhood of the sources MARS labels absent today, a label decided after the window",
+     "primary": {
+      "did": {
+       "bootstrapSe": 0.0575,
+       "ci": [
+        -0.1352,
+        0.0841
+       ],
+       "minimumDetectableEffect": 0.1612,
+       "minimumDetectableShareOfPreRate": 0.4553,
+       "yesMinusNo": -0.0252
+      },
+      "funnel": {
+       "No: an owned Carbon Mapper source has no committed timeline": 298,
+       "No: fewer passes than the minimum on a side": 279,
+       "No: no Carbon Mapper source within the radius": 671,
+       "No: used": 265,
+       "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+       "Yes: fewer passes than the minimum on a side": 45,
+       "Yes: no Carbon Mapper source within the radius": 172,
+       "Yes: used": 60
+      },
+      "groups": {
+       "No": {
+        "postRate": 0.4363,
+        "postWindowTruncated": 65,
+        "preRate": 0.3111,
+        "proxyDatesAgree": 124,
+        "sources": 265,
+        "t0BeforeFeedbackTracking": 66
+       },
+       "Yes": {
+        "postRate": 0.454,
+        "postWindowTruncated": 7,
+        "preRate": 0.3541,
+        "proxyDatesAgree": 20,
+        "sources": 60,
+        "t0BeforeFeedbackTracking": 25
+       }
+      },
+      "spec": {
+       "gapDays": 30,
+       "minPassesEachSide": 2,
+       "proxy": "firstNotifiedPlume",
+       "windowDays": 365
+      }
+     },
+     "rangeOfEstimates": [
+      -0.0658,
+      0.0281
+     ],
+     "variants": [
+      {
+       "did": {
+        "bootstrapSe": 0.0561,
+        "ci": [
+         -0.1595,
+         0.057
+        ],
+        "minimumDetectableEffect": 0.1573,
+        "minimumDetectableShareOfPreRate": 0.4512,
+        "yesMinusNo": -0.0524
+       },
+       "funnel": {
+        "No: an owned Carbon Mapper source has no committed timeline": 298,
+        "No: fewer passes than the minimum on a side": 190,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 354,
+        "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+        "Yes: fewer passes than the minimum on a side": 24,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 81
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4675,
+         "postWindowTruncated": 98,
+         "preRate": 0.3236,
+         "proxyDatesAgree": 182,
+         "sources": 354,
+         "t0BeforeFeedbackTracking": 84
+        },
+        "Yes": {
+         "postRate": 0.4402,
+         "postWindowTruncated": 14,
+         "preRate": 0.3486,
+         "proxyDatesAgree": 27,
+         "sources": 81,
+         "t0BeforeFeedbackTracking": 35
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 1,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 365
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.045,
+        "ci": [
+         -0.1314,
+         0.0418
+        ],
+        "minimumDetectableEffect": 0.1262,
+        "minimumDetectableShareOfPreRate": 0.4142,
+        "yesMinusNo": -0.045
+       },
+       "funnel": {
+        "No: an owned Carbon Mapper source has no committed timeline": 298,
+        "No: fewer passes than the minimum on a side": 229,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 315,
+        "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+        "Yes: fewer passes than the minimum on a side": 35,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 70
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4654,
+         "postWindowTruncated": 257,
+         "preRate": 0.2528,
+         "proxyDatesAgree": 151,
+         "sources": 315,
+         "t0BeforeFeedbackTracking": 79
+        },
+        "Yes": {
+         "postRate": 0.4722,
+         "postWindowTruncated": 50,
+         "preRate": 0.3046,
+         "proxyDatesAgree": 21,
+         "sources": 70,
+         "t0BeforeFeedbackTracking": 33
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 2,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 730
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0619,
+        "ci": [
+         -0.0966,
+         0.1474
+        ],
+        "minimumDetectableEffect": 0.1735,
+        "minimumDetectableShareOfPreRate": 0.7811,
+        "yesMinusNo": 0.0281
+       },
+       "funnel": {
+        "No: an owned Carbon Mapper source has no committed timeline": 298,
+        "No: fewer passes than the minimum on a side": 320,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 224,
+        "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+        "Yes: fewer passes than the minimum on a side": 60,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 45
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.3839,
+         "postWindowTruncated": 40,
+         "preRate": 0.2144,
+         "proxyDatesAgree": 124,
+         "sources": 224,
+         "t0BeforeFeedbackTracking": 91
+        },
+        "Yes": {
+         "postRate": 0.4196,
+         "postWindowTruncated": 4,
+         "preRate": 0.2221,
+         "proxyDatesAgree": 20,
+         "sources": 45,
+         "t0BeforeFeedbackTracking": 19
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 2,
+        "proxy": "firstPlume",
+        "windowDays": 365
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0661,
+        "ci": [
+         -0.1915,
+         0.0663
+        ],
+        "minimumDetectableEffect": 0.1851,
+        "minimumDetectableShareOfPreRate": 0.4621,
+        "yesMinusNo": -0.0607
+       },
+       "funnel": {
+        "No: an owned Carbon Mapper source has no committed timeline": 298,
+        "No: fewer passes than the minimum on a side": 279,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 265,
+        "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+        "Yes: fewer passes than the minimum on a side": 47,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 58
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.4286,
+         "postWindowTruncated": 13,
+         "preRate": 0.3457,
+         "proxyDatesAgree": 133,
+         "sources": 265,
+         "t0BeforeFeedbackTracking": 53
+        },
+        "Yes": {
+         "postRate": 0.4227,
+         "postWindowTruncated": 3,
+         "preRate": 0.4006,
+         "proxyDatesAgree": 18,
+         "sources": 58,
+         "t0BeforeFeedbackTracking": 20
+        }
+       },
+       "spec": {
+        "gapDays": 15,
+        "minPassesEachSide": 1,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 180
+       }
+      },
+      {
+       "did": {
+        "bootstrapSe": 0.0471,
+        "ci": [
+         -0.1583,
+         0.0267
+        ],
+        "minimumDetectableEffect": 0.132,
+        "minimumDetectableShareOfPreRate": 0.4459,
+        "yesMinusNo": -0.0658
+       },
+       "funnel": {
+        "No: an owned Carbon Mapper source has no committed timeline": 298,
+        "No: fewer passes than the minimum on a side": 293,
+        "No: no Carbon Mapper source within the radius": 671,
+        "No: used": 251,
+        "Yes: an owned Carbon Mapper source has no committed timeline": 54,
+        "Yes: fewer passes than the minimum on a side": 44,
+        "Yes: no Carbon Mapper source within the radius": 172,
+        "Yes: used": 61
+       },
+       "groups": {
+        "No": {
+         "postRate": 0.469,
+         "postWindowTruncated": 251,
+         "preRate": 0.232,
+         "proxyDatesAgree": 111,
+         "sources": 251,
+         "t0BeforeFeedbackTracking": 72
+        },
+        "Yes": {
+         "postRate": 0.4672,
+         "postWindowTruncated": 60,
+         "preRate": 0.2959,
+         "proxyDatesAgree": 17,
+         "sources": 61,
+         "t0BeforeFeedbackTracking": 32
+        }
+       },
+       "spec": {
+        "gapDays": 30,
+        "minPassesEachSide": 3,
+        "proxy": "firstNotifiedPlume",
+        "windowDays": 1000
+       }
+      }
+     ]
+    }
+   },
+   "mdeNote": "minimum detectable effect = (z at the confidence level + z at the power) x the bootstrap standard error of the difference; it is a detection-rate difference and says nothing about a partial cut in emitted mass",
+   "outcome": "Carbon Mapper per-pass detection rate (a pass with any plume of the owned sources counts as a detection), mean over sources, before vs after the proxy notification date",
+   "population": "notified oil and gas MARS sources with feedback Yes (operator or government) or No; Carbon Mapper sources owned by the nearest notified source within the join radius",
+   "threats": [
+    "T0 is a proxy (the first notified plume), not the notification or the response date; for the sources used, `proxyDatesAgree` counts where the first plume is the first notified one",
+    "feedback is tracked only for sources whose latest plume is from November 2024 or later (MARS definitions); `t0BeforeFeedbackTracking` counts used sources whose T0 is earlier",
+    "post windows that run past the catalogue end are shorter (`postWindowTruncated`), and more so for one group",
+    "Carbon Mapper passes are partly tasked toward expected plumes, more so after Tanager's launch: both groups' rates rise after T0",
+    "responders start from a higher detection rate: regression to the mean pushes the difference toward a drop",
+    "non-responders may repair without replying, and a reply may come after the window: both push the difference toward zero",
+    "detection is binary above an instrument floor: a partial cut in emitted mass is invisible to it, so the design cannot bound a mass share"
+   ]
+  }
+ },
+ "formula": "kt CH4/yr = sum over quantified facilities of stake low bound x the fixed share of its emitting time (action share by plume count x credited days / emitting days, board T4d option d)",
+ "generatedFrom": [
+  {
+   "path": "data/derived/backtest.json",
+   "sha256": "05344c8d8abb59bf0602fed8c72f5dc15f82838dd01a14c98b2729112d65328d"
+  },
+  {
+   "path": "data/derived/sourceset_v3.json",
+   "sha256": "e1246d74c3453f5876b2106bd4f6e680bde7b928ca8dae52acb5a62cb6e162c1"
+  },
+  {
+   "path": "data/derived/floors.json",
+   "sha256": "a461f410e4a4a7650ef9690b16c1ba677a3a5e9ebc70df2244ce9f467008ac0f"
+  },
+  {
+   "path": "data/derived/measurements.json",
+   "sha256": "38000c029c102953731442a7be841c07e843a67a1b76403878b3d3aecbbcf2a8"
+  },
+  {
+   "path": "data/derived/mars_sources.csv",
+   "sha256": "3573b9b5f11e1ebf09a3bcc6b5d085d07aeace10f1da7e8e81b663ec3106f10f"
+  },
+  {
+   "path": "data/derived/projection_sources.json",
+   "sha256": "0d31ee3b3ad5d40caf0a962994a70baad039f1aeab6e7315a9b81ed4cec5f074"
+  },
+  {
+   "path": "data/derived/mars_notified.json",
+   "sha256": "b21c41ce2006e645384c8b040d9c0b2f2ffdab5cf5de9a7b320ebc8fdb48d6ea"
+  },
+  {
+   "path": "data/derived/mars_plumes_og.csv",
+   "sha256": "8e369ece38a44bac621407ebcbb2d02bbc048cda43d95284a2a04a04eebce28b"
+  },
+  {
+   "path": "data/derived/cm_sources.csv",
+   "sha256": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335"
+  },
+  {
+   "path": "data/derived/cm_timelines.json",
+   "sha256": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c"
+  },
+  {
+   "path": "data/derived/cm_timelines_notified.json",
+   "sha256": "bf8edad5308771d058725f0c4f53ce0463fd350ff86bbb26513917c4268bf4d7"
+  },
+  {
+   "path": "data/derived/carb_summary.json",
+   "sha256": "067b1af2bbf802e473f3056881d3a580746316287e3d1c7f31bead0815800151"
+  },
+  {
+   "path": "data/derived/cm_plumes.csv",
+   "sha256": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69"
+  },
+  {
+   "path": "data/derived/cm_sources.csv",
+   "sha256": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335"
+  },
+  {
+   "path": "data/derived/cm_timelines_not_mars_notified.json",
+   "sha256": "69f995d382a29a9e740461cb668797b9394e36e355d7238ff937f992873db9c2"
+  },
+  {
+   "path": "data/derived/join_v1.json",
+   "sha256": "b5662f399cb6ff9a390a38d66daad2f930f50668c6a89fe306678e490a7051cf"
+  },
+  {
+   "path": "pipeline/projection.py",
+   "sha256": "9cca85428847e23e4eb96d47e800db341933423fb58af09f697b4e0546f17e00"
+  },
+  {
+   "path": "pipeline/projection_evidence.py",
+   "sha256": "0807fcc9d77b062a2f17915b9b67c13117f46239ad90a239da7013284584146e"
+  },
+  {
+   "path": "pipeline/projection_time.py",
+   "sha256": "26f1823d436016f49516a0de6a68001fc32473027a6aec523c2d8a5819440d21"
+  },
+  {
+   "path": "pipeline/backtest.py",
+   "sha256": "591018ef5a45eedce5f3273890fbecfda53599a7f5aa8850843372957d67302f"
+  }
+ ],
+ "gwp": {
+  "gwp100": 29.8,
+  "gwp20": 82.5
+ },
+ "headline": {
+  "atActionShare": 0.39,
+  "central": 30.25,
+  "kind": "central",
+  "model": "t4d",
+  "note": "headlineKind 'central' publishes option d's low end ('with the measured re-onset hazard') as the central figure with its no-recurrence end, the selection clause and the credit clause, and the methods paragraph carries the evidence sentence and 'not a measured reduction' once.",
+  "option": "d",
+  "upToNoRecurrence": 61.79
+ },
+ "interim": {
+  "card": {
+   "adoptionSentence": "The scenario assumes importers covering the 205-facility portfolio [SIM] write the clause into their supply contracts, their sellers post the bond and act on attested episodes at the scenario's rate, the stake's low bound holds, and a fixed source stops a share of its yearly emissions between the two ends of the stop share (the time from detection to repair, new faults and sources that stop on their own are spanned by the range, not modelled); it assumes no new satellite and counts no clean pass as a stop.",
+   "costLineSentence": "The ledger is cheap: USD 4.29 of Ethereum Sepolia calls per episode, USD 1,330 a year for the portfolio, USD 0.00061–0.0025 per t CO₂e projected at the central action share: the cost of the records, not the work on site.",
+   "costSentence": "Ledger cost only, not the cost of the work on site: one episode costs USD 4.29 on Ethereum Sepolia (proposeEpisode + finalize + withdraw at the stated 1 gwei and ETH/USD 2,424, measured 2026-10-22); at the portfolio's backtest rate of 309 episodes a year plus one createCovenant that is USD 1,330 a year, or USD 0.00061–0.0025 per t CO₂e projected at the central action share (USD 0.00045–0.0034 across scenarios and the two ends of the stop share). It excludes the refund-side calls and the cost of posting the bond.",
+   "evidenceSentence": "Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band.",
+   "floorLineSentence": "Stake, not abatement: the clause puts a price on at least ~312 kt CH₄ a year across the 174 of the portfolio's 205 facilities with a quantified stake [SIM].",
+   "floorSentence": "Stake, not abatement: at least ~312 kt CH₄/yr across the portfolio's 174 quantified facilities [SIM] (members chosen because each showed a Carbon Mapper plume MARS did not see) and ~519 kt across 428 (of the 1,122 sources MARS labels absent today — a label decided after the window), assuming what satellites saw on their passes holds between them; it is the methane the clause puts a price on, not a change in emissions.",
+   "headlineSentence": "[PROJECTION] The clause turns each attested super-emitter into a priced event the seller pays for and can earn back by staying clean: one 205-facility portfolio covenant [SIM] (members chosen because each showed a Carbon Mapper plume MARS did not see; stake quantified at 174: 4 own no Carbon Mapper source, 27 no quantified plume in the window) whose sellers act on episodes would stop ~18–~73 kt CH₄/yr at the central 39 % action share, from one repair round net of new faults (Ravikumar 2020: 22 %) to every fix holding all year; ~0.53–2.17 Mt CO₂e/yr at GWP-100 — assumptions: paper §4.",
+   "limitSentence": "The carbon figures are a projection resting on two ASSUMPTIONs, the action share and the stop share, which our own checks neither support nor bound; section 4, 'How we estimated this', states both and the checks.",
+   "line1Sentence": "MARS outcome by response: MARS documents a per-source emission_status, but neither its committed nor its current public file carries it, so the outcome is the 'absent' label (no MARS detection over the last six months; a non-detection label, not a stop): 166 of 285 notified oil and gas sources with feedback = Yes (operator or government) against 737 of 1,227 with feedback = No, a difference of -1.8 points (95 % CI -8.2 to +4.4); +2.3 within plume-count strata; 46 and 286 sources with an undetermined label are left out.",
+   "line2Sentence": "Event study: Carbon Mapper per-pass detection rates in the year before and after each source's first notified MARS plume (a proxy date: MARS publishes no notification date; it is also the first plume for 188 of the 437 sources used), feedback = Yes (operator or government) minus No: -0.020 (95 % CI -0.105 to +0.066) over 83 and 354 sources, -0.025 (-0.135 to +0.084) on the committed set conditioned on today's 'absent' label; every interval of the 6 specifications on both sets includes zero; minimum detectable effect 0.125 (30 % of the responders' starting rate). T0 precedes MARS's feedback tracking (November 2024) for 40 of 83 responders and 97 of 354 non-responders; the post window runs past the catalogue end for 9 and 105; responders start from a higher rate, so regression to the mean pushes toward a drop; both groups' rates rise after T0, as tasking toward expected plumes would make them.",
+   "methodsSentence": "How we estimated this. Projected tonnes = the stake's low bound × the share of attested episodes sellers act on, each a fixable fault fixed, above today's 13 % reply rate (a reply, not an action) to MARS alerts (UNEP via UN News 2026), which bounds the fixes replies already drive, × the share of a fixed source's yearly emissions that stops. The action share is an ASSUMPTION (32 %, 39 % central, 48 %) informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024); the scenarios are that share and its 95 % sampling interval (147 California incidences), which does not cover the move from a regulator's notice to a rebate under a contract; it counts incidences, as CARB publishes no emission rate per incidence. The stop share is an ASSUMPTION with two ends from Ravikumar et al. 2020's re-survey of repaired leaks at Alberta facilities 6 to 13 months later: 22 % at the low end, the fall in leak emissions after one repair round net of new leaks; 90 % at the high end, the share of the found leaks' emissions that was fixed (a repair rate), with fixed leaks not re-appearing, read as every fix holding all year; neither end was measured after a satellite notification. Time is not yet modelled: the delay from detection to repair, how long an event lasts, new faults and sources that stop on their own are not separated, and the range spans them, so there is no central tonnage. The stake assumes what satellites saw on their passes holds between them. Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band. These figures are a projection of what the clause could change if adopted, not a measured reduction.",
+   "negativeFindingSentence": "In MARS's own cross-section the answered sources are not the cleaner ones: of the 2,089 notified oil and gas sources, the 331 with feedback = Yes (operator or government) have a mean persistency of 0.140 and 16.31 plumes on average (61 persistent or frequent), against 0.083 and 5.72 (150) for the 1,513 with feedback = No; a cross-section cannot separate what a reply changes from which sources get replies (recurring sources draw more alerts). MARS publishes no notification or response date for a source, so no before/after estimate can be built from MARS alone: our event study needs a proxy date, and the projection's stop share is an ASSUMPTION informed by published figures.",
+   "projectionSentence": "[PROJECTION] A scenario, not a measurement: if importers covering the 205-facility portfolio [SIM] wrote the clause, their sellers acted on 39 % of attested episodes (ASSUMPTION, informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024); today's MARS reply rate is 13 %, UNEP via UN News 2026), and a fixed source were assumed to stop 22 %–90 % of its yearly emissions (ASSUMPTION, two ends informed by Ravikumar et al. 2020's re-survey of repaired leaks: one repair round net of new faults, every fix holding all year; neither measured after a satellite notification), ~18–~73 kt CH₄/yr of the stake's low bound of ~312 kt (stake, not abatement) would stop, ~0.53–2.17 Mt CO₂e/yr at GWP-100 (~1.47–6.02 Mt at GWP-20), with no central value until time is modelled, counting only action above the 13 % reply rate — a projection of what the clause could change if adopted, not a measured reduction.",
+   "scaleSentence": "Scaled to the backtest set (428 facilities with a quantified stake, of the 1,122 sources MARS labels absent today — a label decided after the window), the same arithmetic gives ~30–~121 kt CH₄ a year (~0.89–3.62 Mt CO₂e/yr at GWP-100, ~2.45–10.02 Mt at GWP-20), rising to ~40–~164 kt (~1.19–4.87 Mt CO₂e/yr at GWP-100) at the top of the interval for the share of episodes sellers act on (48 %).",
+   "scenariosSentence": "[PROJECTION] By action scenario (ASSUMPTION), portfolio [SIM], over the two ends of the stop share, of the stake's low bound of ~312 kt (stake, not abatement): 32 % acted on → ~13–~53 kt CH₄/yr (~0.39–1.59 Mt CO₂e at GWP-100), 39 % acted on → ~18–~73 kt CH₄/yr (~0.53–2.17 Mt CO₂e at GWP-100), 48 % acted on → ~24–~98 kt CH₄/yr (~0.71–2.93 Mt CO₂e at GWP-100); every edge is in data/derived/projection.json — a projection of what the clause could change if adopted, not a measured reduction.",
+   "widerSetSentence": "[PROJECTION] Over all 428 facilities with a quantified stake (of the 1,122 sources MARS labels absent today — a label decided after the window), the same assumptions (ASSUMPTION) give ~30–~121 kt CH₄/yr at the central action share of the stake's low bound of ~519 kt (stake, not abatement), ~0.89–3.62 Mt CO₂e/yr at GWP-100 — a projection of what the clause could change if adopted, not a measured reduction."
+  },
+  "headline": {
+   "atActionShare": 0.39,
+   "central": null,
+   "ends": {
+    "high": "b",
+    "low": "c"
+   },
+   "kind": "range",
+   "note": "No option meets clause (3): the headline is the range from option (c) to option (b) at the central action share, with no single central tonnage, until board T4c builds the time factor."
+  },
+  "scopes": {
+   "backtest_set": {
+    "facilities": 673,
+    "facilitiesEvaluated": 673,
+    "facilitiesQuantified": 428,
+    "ledger": {
+     "calls": {
+      "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+      "perCovenantYear": [
+       "createCovenant"
+      ],
+      "perEpisode": [
+       "proposeEpisode",
+       "finalize",
+       "withdraw"
+      ],
+      "sources": [
+       "measurements-json"
+      ],
+      "status": "read"
+     },
+     "episodesPerYear": 577.705,
+     "ethUsd": 2424.39,
+     "measuredAt": "2026-10-22T08:13:56Z",
+     "statedGwei": 1.0,
+     "usdPerCovenantYear": 3.0422,
+     "usdPerEpisode": 4.2903,
+     "usdPerYear": 2481.57
+    },
+    "scenarios": [
+     {
+      "aboveBaseline": 0.19,
+      "kt_ch4_per_yr": {
+       "high": 88.77,
+       "low": 21.7
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0009381,
+       "low": 0.003838
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.645,
+       "low": 0.647
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 7.324,
+       "low": 1.79
+      },
+      "responseShare": 0.32
+     },
+     {
+      "aboveBaseline": 0.26,
+      "kt_ch4_per_yr": {
+       "high": 121.48,
+       "low": 29.7
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0006855,
+       "low": 0.002804
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 3.62,
+       "low": 0.885
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 10.022,
+       "low": 2.45
+      },
+      "responseShare": 0.39
+     },
+     {
+      "aboveBaseline": 0.35,
+      "kt_ch4_per_yr": {
+       "high": 163.53,
+       "low": 39.97
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0005092,
+       "low": 0.002083
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 4.873,
+       "low": 1.191
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 13.491,
+       "low": 3.298
+      },
+      "responseShare": 0.48
+     }
+    ],
+    "stakeLowKtCh4PerYr": 519.15
+   },
+   "portfolio_v3": {
+    "facilities": 205,
+    "facilitiesEvaluated": 201,
+    "facilitiesQuantified": 174,
+    "ledger": {
+     "calls": {
+      "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+      "perCovenantYear": [
+       "createCovenant"
+      ],
+      "perEpisode": [
+       "proposeEpisode",
+       "finalize",
+       "withdraw"
+      ],
+      "sources": [
+       "measurements-json"
+      ],
+      "status": "read"
+     },
+     "episodesPerYear": 309.202,
+     "ethUsd": 2424.39,
+     "measuredAt": "2026-10-22T08:13:56Z",
+     "statedGwei": 1.0,
+     "usdPerCovenantYear": 3.0422,
+     "usdPerEpisode": 4.2903,
+     "usdPerYear": 1329.61
+    },
+    "scenarios": [
+     {
+      "aboveBaseline": 0.19,
+      "kt_ch4_per_yr": {
+       "high": 53.3,
+       "low": 13.03
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0008371,
+       "low": 0.003424
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 1.588,
+       "low": 0.388
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 4.397,
+       "low": 1.075
+      },
+      "responseShare": 0.32
+     },
+     {
+      "aboveBaseline": 0.26,
+      "kt_ch4_per_yr": {
+       "high": 72.93,
+       "low": 17.83
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0006118,
+       "low": 0.002502
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.173,
+       "low": 0.531
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 6.017,
+       "low": 1.471
+      },
+      "responseShare": 0.39
+     },
+     {
+      "aboveBaseline": 0.35,
+      "kt_ch4_per_yr": {
+       "high": 98.18,
+       "low": 24.0
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0004544,
+       "low": 0.001859
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.926,
+       "low": 0.715
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 8.1,
+       "low": 1.98
+      },
+      "responseShare": 0.48
+     }
+    ],
+    "stakeLowKtCh4PerYr": 311.68
+   }
+  }
+ },
+ "label": "[PROJECTION] projection of what the clause could change if adopted, not a measured reduction; counterfactual inputs (the backtest), scenario parameters (ASSUMPTION) and published evidence (projection_sources.json)",
+ "model": {
+  "choice": "range",
+  "criterion": "Each emission is removed by exactly one factor, and each factor is measured on the population it multiplies. The stake is the mass of plume-detected emissions at a contracted source, whatever their cause, and an attested episode prices any such detection; so (1) the factor that removes what a repair cannot touch must be measured on plume-detected emissions after a notification, and (2) the factor after it must be measured on repaired faults only, so that it removes nothing the first factor already removed and credits nothing a repair did not cause. (3) The second factor's time base is a year at the stake's sources: it must say what share of a fixed source's yearly emissions stops, counting new faults, the emissions before detection and during repair, and sources that stop on their own. The option whose factors meet (1), (2) and (3) is chosen. If none meets (3), the projection is a range over the options that meet (1) and (2), with no single central tonnage, until the time factor is built (board T4c).",
+  "emissionClasses": {
+   "allowed operation (Type B)": "r",
+   "emissions before detection and during repair": "spanned by the interim range",
+   "maintenance (Type C)": "r",
+   "natural stops": "spanned by the interim range",
+   "new faults": "spanned by the interim range",
+   "no response": "r",
+   "not found": "r",
+   "reply-driven fixes": "b"
+  },
+  "range": {
+   "high": "b",
+   "low": "c"
+  },
+  "violations": {
+   "a": [
+    "d is measured on 'total facility emissions, ground survey', not the required population 'leak emissions re-surveyed after a repair round'",
+    "d credits 'vent change without repair', a change a repair did not cause",
+    "r does not remove 'allowed operation (Type B)', which a repair cannot touch",
+    "r does not remove 'maintenance (Type C)', which a repair cannot touch"
+   ],
+   "b": [],
+   "c": [],
+   "t4": [
+    "removes 'allowed operation (Type B)' twice (r and d)",
+    "removes 'maintenance (Type C)' twice (r and d)",
+    "d is measured on 'total facility emissions, ground survey', not the required population 'leak emissions re-surveyed after a repair round'",
+    "d credits 'vent change without repair', a change a repair did not cause"
+   ]
+  }
+ },
+ "modelSensitivity": [
+  {
+   "aboveBaseline": 0.26,
+   "computable": true,
+   "d": 0.22,
+   "id": "c_count",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 29.7,
+    "portfolio_v3": 17.83
+   },
+   "label": "option (c) end of the range: Type A share x 22 % (one repair round net of new faults)",
+   "pairing": "c",
+   "r": 0.39,
+   "rangeEnd": "low"
+  },
+  {
+   "aboveBaseline": 0.26,
+   "computable": true,
+   "d": 0.9,
+   "id": "b_count",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 121.48,
+    "portfolio_v3": 72.93
+   },
+   "label": "option (b) end of the range: Type A share x 90 % (every fix holding all year)",
+   "pairing": "b",
+   "r": 0.39,
+   "rangeEnd": "high"
+  },
+  {
+   "aboveBaseline": 0.25,
+   "computable": true,
+   "d": 0.22,
+   "id": "c_plumes",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 28.55,
+    "portfolio_v3": 17.14
+   },
+   "label": "option (c), weighted by plume detections, 2021 and 2023 (detections, not mass)",
+   "pairing": "c",
+   "r": 0.38,
+   "rangeEnd": null
+  },
+  {
+   "aboveBaseline": 0.25,
+   "computable": true,
+   "d": 0.9,
+   "id": "b_plumes",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 116.81,
+    "portfolio_v3": 70.13
+   },
+   "label": "option (b), weighted by plume detections, 2021 and 2023 (detections, not mass)",
+   "pairing": "b",
+   "r": 0.38,
+   "rangeEnd": null
+  },
+  {
+   "computable": false,
+   "id": "b_mass",
+   "label": "either end, weighted by mass: not computable (no published per-incidence rate)",
+   "pairing": "b",
+   "rangeEnd": null,
+   "reason": "no emission rate, location or plume identifier per incidence (none is published in the appendix), so the rows cannot weight the action share by mass"
+  },
+  {
+   "aboveBaseline": 0.86,
+   "computable": true,
+   "d": 0.44,
+   "id": "a_count",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 196.45,
+    "portfolio_v3": 117.94
+   },
+   "label": "option (a), answered share x 44% of total emissions",
+   "pairing": "a",
+   "r": 0.99,
+   "rangeEnd": null
+  },
+  {
+   "aboveBaseline": 0.26,
+   "computable": true,
+   "d": 0.44,
+   "id": "t4",
+   "ktCh4PerYrCentral": {
+    "backtest_set": 59.39,
+    "portfolio_v3": 35.66
+   },
+   "label": "the T4 model (Type A share x 44%); it removes allowed operation and maintenance twice",
+   "pairing": "t4",
+   "r": 0.39,
+   "rangeEnd": null
+  }
+ ],
+ "negativeFinding": {
+  "byFeedback": {
+   "No": {
+    "meanPersistency": 0.083,
+    "meanPlumes": 5.72,
+    "medianPersistency": 0.0,
+    "medianPlumes": 2,
+    "persistentOrFrequent": 150,
+    "plumesTotal": 8651,
+    "sources": 1513,
+    "withPersistency": 1227
+   },
+   "Yes": {
+    "meanPersistency": 0.14,
+    "meanPlumes": 16.31,
+    "medianPersistency": 0.0,
+    "medianPlumes": 3,
+    "persistentOrFrequent": 61,
+    "plumesTotal": 5399,
+    "sources": 331,
+    "withPersistency": 285
+   }
+  },
+  "feedbackYesShareNote": "sources with feedback = Yes over notified sources; UNEP's rate counts alerts, not sources, so the two differ",
+  "feedbackYesShareOfNotified": 0.158,
+  "file": "data/derived/mars_sources.csv",
+  "notified": 2089,
+  "sector": "Oil and Gas",
+  "sentence": "In MARS's own cross-section the answered sources are not the cleaner ones: of the 2,089 notified oil and gas sources, the 331 with feedback = Yes (operator or government) have a mean persistency of 0.140 and 16.31 plumes on average (61 persistent or frequent), against 0.083 and 5.72 (150) for the 1,513 with feedback = No; a cross-section cannot separate what a reply changes from which sources get replies (recurring sources draw more alerts). MARS publishes no notification or response date for a source, so no before/after estimate can be built from MARS alone: our event study needs a proxy date, and the projection's stop share is an ASSUMPTION informed by published figures."
+ },
+ "parameters": {
+  "baselineResponseShare": {
+   "note": "Today's baseline, without the clause: the most recent published share of UNEP IMEO MARS alerts that received a response (13 % in UN News, July 2026; 12 % in the year to October 2025). A response is detailed information on the event, not an action and not a confirmed stop; it is the nearest published analogue to a seller acting on an attested episode. The projection counts only the action share above it: it bounds the reply-driven fixes, not sources that stop on their own (natural stops), which the interim range spans. Subtracting a reply rate from an outcome rate is conservative: MARS outcomes are far rarer than replies (more than 40 verified repairs after more than 5,000 alerts), so the share of reply-driven fixes that would happen anyway is smaller than the baseline subtracted; it says nothing about sources that stop on their own.",
+   "rule": {
+    "candidates": [
+     {
+      "cite": "UNEP 2025",
+      "quote": 0,
+      "source": "unep-pr-2025-10-22"
+     },
+     {
+      "cite": "UNEP via UN News 2026",
+      "quote": 1,
+      "source": "un-news-2026-07-23"
+     }
+    ],
+    "text": "the most recent published MARS response share: of the candidates below, the source with the latest date; the value is the per-cent figure in its quote. pipeline/projection.py re-reads it and refuses to run if the value differs."
+   },
+   "sources": [
+    "un-news-2026-07-23",
+    "unep-pr-2025-10-22",
+    "unep-highlight-2025-07-23"
+   ],
+   "status": "read",
+   "unit": "share of MARS alerts that received a response (the nearest published analogue to acting on an episode)",
+   "value": 0.13
+  },
+  "ceasedShare": {
+   "high": 0.9,
+   "informedBy": [
+    "ravikumar-2020-erl"
+   ],
+   "low": 0.22,
+   "note": "ASSUMPTION, the two ends of an interim range informed by the one published re-survey of repaired leaks we found: Ravikumar et al. 2020 surveyed 36 Alberta facilities from the ground and re-surveyed 8 of them 6 to 13 months later. Low end: fugitive emissions fell only 22 % after one repair round, because of new leaks (one round, net of new faults). High end: 93 % of the leaks, carrying 90 % of the fugitive emissions found, were fixed before the re-survey and the fixed ones did not re-appear, read as every fix holding all year; 0.90 is a repair rate, used only as this upper-end assumption. Time is not yet modelled: the delay from detection to repair, how long an event lasts, new faults and sources that stop on their own are spanned by the range, not separated (board T4c). Not measured after a satellite notification, on super-emitters, or over a full year; one operator's sites. The study's 44 % fall in total emissions is not used: it is measured on all of a facility's emissions and is mostly a vent change the paper reports 'despite near-zero repair' (model.options.a). Our own checks (projection_evidence.py) neither support nor bound it.",
+   "rule": {
+    "bands": {
+     "high": {
+      "quote": 3,
+      "regex": "corresponding to (\\d+)% of fugitive emissions",
+      "with": {
+       "phrase": "leaks that were fixed did not re-appear",
+       "quote": 4
+      }
+     },
+     "low": {
+      "quote": 1,
+      "regex": "fugitive emissions reduced by only (\\d+)% because of new leaks"
+     }
+    },
+    "source": "ravikumar-2020-erl",
+    "text": "model.rules.d: each end is the per-cent figure matched by its regex in its quote; the high end also needs its 'with' quote to state that fixed leaks did not re-appear. pipeline/projection.py re-reads the quotes and refuses to run if a value differs."
+   },
+   "sources": [],
+   "status": "ASSUMPTION",
+   "unit": "share of a fixed source's yearly emissions that stops: the two ends of the interim range (no central value until board T4c)"
+  },
+  "costScale": {
+   "note": "Kept as a source, not used in the card (projection review, spec-v2 §15): the IEA's GHG price below which nearly all options to cut oil, gas and coal methane can be deployed is a price for the work on site; the ledger cost is the cost of the clause's records, a different quantity.",
+   "sources": [
+    "iea-gmt-2024-1p5"
+   ],
+   "status": "read",
+   "usdPerTco2e": 20
+  },
+  "evidence": {
+   "bootstrapDraws": 2000,
+   "confidence": 0.95,
+   "eventStudy": {
+    "primary": {
+     "gapDays": 30,
+     "minPassesEachSide": 2,
+     "proxy": "firstNotifiedPlume",
+     "windowDays": 365
+    },
+    "variants": [
+     {
+      "gapDays": 30,
+      "minPassesEachSide": 1,
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 365
+     },
+     {
+      "gapDays": 30,
+      "minPassesEachSide": 2,
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 730
+     },
+     {
+      "gapDays": 30,
+      "minPassesEachSide": 2,
+      "proxy": "firstPlume",
+      "windowDays": 365
+     },
+     {
+      "gapDays": 15,
+      "minPassesEachSide": 1,
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 180
+     },
+     {
+      "gapDays": 30,
+      "minPassesEachSide": 3,
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 1000
+     }
+    ]
+   },
+   "feedbackTrackingStart": "2024-11-01",
+   "minSourcesPerGroup": 10,
+   "note": "Design choices of the two empirical checks (pipeline/projection_evidence.py), not data. The primary event-study specification is the first one that was run; every specification that was run is reported as a variant, none was dropped. The checks are reported next to the published parameters; they do not set them.",
+   "plumeStrata": [
+    1,
+    2,
+    4,
+    10
+   ],
+   "power": 0.8,
+   "seed": 7,
+   "sources": [
+    "mars-definitions",
+    "mars-current-zip-2026-10-15"
+   ],
+   "status": "DESIGN",
+   "statusProxy": {
+    "absentCategory": "absent"
+   }
+  },
+  "ledgerCalls": {
+   "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+   "perCovenantYear": [
+    "createCovenant"
+   ],
+   "perEpisode": [
+    "proposeEpisode",
+    "finalize",
+    "withdraw"
+   ],
+   "sources": [
+    "measurements-json"
+   ],
+   "status": "read"
+  },
+  "responseScenarios": {
+   "central": 0.39,
+   "informedBy": [
+    "carb-2024-airborne",
+    "carb-2024-appendix",
+    "un-news-2026-07-23"
+   ],
+   "note": "ASSUMPTION, informed by the published share of notified incidences that were fixable faults, all fixed. California's air regulator (CARB) sent operators airborne plume detections and asked them to find the source, repair it if possible and report; operators answered nearly every oil and gas incidence, and the Type A ones (a fault unknown to the operator before the notice) were every one stopped or repaired; the rule above turns the oil and gas rows into the scenarios. In the model (model.factors.r) this is the only factor that removes emissions a repair cannot touch (Type B allowed operation, Type C maintenance, not found, no response). Counted by incidence: CARB publishes no emission rate per incidence (model.rules.massWeighting). Not observed under the clause: a seller who pays a rebate on every attested episode is not an operator answering a regulator, aerial notices are not satellite ones, and California is one jurisdiction; the interval is sampling uncertainty only and does not cover that move. The move can err either way: Type B emissions (normal operation) were classified as allowable, while under the clause each one still costs the seller a rebate; a contract counterparty has less reach than a regulator. Voluntary satellite alerts sit far lower (MARS: responses, not actions, to 13 % of alerts and more than 40 verified repairs after more than 5,000 alerts), which is why only the share above today's MARS response share counts.",
+   "rule": {
+    "acted": "typeA",
+    "columns": [
+     "sent",
+     "didNotRespond",
+     "notFound",
+     "typeA",
+     "typeB",
+     "typeC"
+    ],
+    "confidence": 0.95,
+    "incidences": {
+     "file": "data/derived/carb_summary.json",
+     "source": "carb-2024-appendix",
+     "text": "CARB Appendix Tables A1 (2021) and A2 (2023), oil and gas rows, one per incidence, committed as aggregates (counts by year, outcome and plume count, the join-key count, the Type A delays); make fetch-published rebuilds the rows locally and checks that they reproduce the aggregates. pipeline/projection.py refuses to run unless their outcome counts equal the 2021 and 2023 rows above, and uses them for the plume-weighted sensitivity row, the join-key count and the time factor's delays and plume classes (model.t4c, model.t4d). They carry no emission rate, so r stays counted by incidence (model.rules.massWeighting)."
+    },
+    "of": "sent",
+    "rows": [
+     {
+      "didNotRespond": 0,
+      "notFound": 9,
+      "sent": 32,
+      "typeA": 10,
+      "typeB": 3,
+      "typeC": 10,
+      "year": 2020
+     },
+     {
+      "didNotRespond": 1,
+      "notFound": 5,
+      "sent": 40,
+      "typeA": 19,
+      "typeB": 5,
+      "typeC": 10,
+      "year": 2021
+     },
+     {
+      "didNotRespond": 1,
+      "notFound": 14,
+      "sent": 75,
+      "typeA": 29,
+      "typeB": 21,
+      "typeC": 10,
+      "year": 2023
+     }
+    ],
+    "sector": "Oil & Gas",
+    "sensitivity": [
+     {
+      "denominator": [
+       "sent"
+      ],
+      "id": "typeA_of_sent",
+      "label": "Type A / incidences sent (the rule)",
+      "numerator": [
+       "typeA"
+      ],
+      "subtract": [],
+      "years": null
+     },
+     {
+      "denominator": [
+       "sent"
+      ],
+      "id": "typeA_of_responded",
+      "label": "Type A / incidences answered",
+      "numerator": [
+       "typeA"
+      ],
+      "subtract": [
+       "didNotRespond"
+      ],
+      "years": null
+     },
+     {
+      "denominator": [
+       "sent"
+      ],
+      "id": "typeA_of_sent_2021_2023",
+      "label": "Type A / incidences sent, 2021 and 2023 (all identified operators)",
+      "numerator": [
+       "typeA"
+      ],
+      "subtract": [],
+      "years": [
+       2021,
+       2023
+      ]
+     },
+     {
+      "denominator": [
+       "sent"
+      ],
+      "id": "typeA_of_located",
+      "label": "Type A / incidences answered and located (sent - not found - no response)",
+      "numerator": [
+       "typeA"
+      ],
+      "subtract": [
+       "notFound",
+       "didNotRespond"
+      ],
+      "years": null
+     },
+     {
+      "denominator": [
+       "sent"
+      ],
+      "id": "typeA_or_C_of_sent",
+      "label": "Type A or C (maintenance, short-lived) / incidences sent",
+      "numerator": [
+       "typeA",
+       "typeC"
+      ],
+      "subtract": [],
+      "years": null
+     },
+     {
+      "denominator": [
+       "typeA",
+       "typeB"
+      ],
+      "id": "typeA_of_A_or_B",
+      "label": "Type A / (Type A + Type B, persistent emissions)",
+      "numerator": [
+       "typeA"
+      ],
+      "subtract": [],
+      "years": null
+     }
+    ],
+    "source": "carb-2024-airborne",
+    "text": "central = the share of oil and gas incidences sent to operators that were Type A (a fault unknown to the operator before the notice; every one was stopped or repaired), summed over every campaign year in CARB's Table 3; low and high = the Wilson interval of that share at rule.confidence; each rounded to two decimals. Chosen after reading Table 3, as the lowest of the definitions in rule.sensitivity (projection.json -> responseSensitivity gives each one's share and projected kt). The landfill rows are left out because every contracted source is oil and gas. pipeline/projection.py recomputes the three values from these rows and refuses to run if the values above differ. The previous scenarios (0.3, 0.5, 0.7) had no source."
+   },
+   "sources": [],
+   "status": "ASSUMPTION",
+   "unit": "share of attested episodes at contracted sources that the seller acts on",
+   "values": [
+    0.32,
+    0.39,
+    0.48
+   ]
+  }
+ },
+ "responseRule": {
+  "acted": 58,
+  "answered": 145,
+  "baselineCite": "UNEP via UN News 2026",
+  "confidence": 0.95,
+  "interval": [
+   0.3192,
+   0.4753
+  ],
+  "of": 147,
+  "share": 0.3946,
+  "source": "carb-2024-airborne"
+ },
+ "responseSensitivity": [
+  {
+   "denominator": 147,
+   "id": "typeA_of_sent",
+   "isRule": true,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 123.61,
+     "low": 30.22
+    },
+    "portfolio_v3": {
+     "high": 74.21,
+     "low": 18.14
+    }
+   },
+   "label": "Type A / incidences sent (the rule)",
+   "numerator": 58,
+   "share": 0.3946
+  },
+  {
+   "denominator": 145,
+   "id": "typeA_of_responded",
+   "isRule": false,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 126.15,
+     "low": 30.84
+    },
+    "portfolio_v3": {
+     "high": 75.74,
+     "low": 18.51
+    }
+   },
+   "label": "Type A / incidences answered",
+   "numerator": 58,
+   "share": 0.4
+  },
+  {
+   "denominator": 115,
+   "id": "typeA_of_sent_2021_2023",
+   "isRule": false,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 134.28,
+     "low": 32.82
+    },
+    "portfolio_v3": {
+     "high": 80.62,
+     "low": 19.71
+    }
+   },
+   "label": "Type A / incidences sent, 2021 and 2023 (all identified operators)",
+   "numerator": 48,
+   "share": 0.4174
+  },
+  {
+   "denominator": 117,
+   "id": "typeA_of_located",
+   "isRule": false,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 170.88,
+     "low": 41.77
+    },
+    "portfolio_v3": {
+     "high": 102.59,
+     "low": 25.08
+    }
+   },
+   "label": "Type A / incidences answered and located (sent - not found - no response)",
+   "numerator": 58,
+   "share": 0.4957
+  },
+  {
+   "denominator": 147,
+   "id": "typeA_or_C_of_sent",
+   "isRule": false,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 218.96,
+     "low": 53.52
+    },
+    "portfolio_v3": {
+     "high": 131.46,
+     "low": 32.13
+    }
+   },
+   "label": "Type A or C (maintenance, short-lived) / incidences sent",
+   "numerator": 88,
+   "share": 0.5986
+  },
+  {
+   "denominator": 87,
+   "id": "typeA_of_A_or_B",
+   "isRule": false,
+   "ktCh4PerYrByStopEnd": {
+    "backtest_set": {
+     "high": 250.75,
+     "low": 61.29
+    },
+    "portfolio_v3": {
+     "high": 150.54,
+     "low": 36.8
+    }
+   },
+   "label": "Type A / (Type A + Type B, persistent emissions)",
+   "numerator": 58,
+   "share": 0.6667
+  }
+ ],
+ "schema": "methaneclause.projection/1",
+ "scopes": {
+  "backtest_set": {
+   "facilities": 673,
+   "facilitiesEvaluated": 673,
+   "facilitiesQuantified": 428,
+   "ledger": {
+    "calls": {
+     "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+     "perCovenantYear": [
+      "createCovenant"
+     ],
+     "perEpisode": [
+      "proposeEpisode",
+      "finalize",
+      "withdraw"
+     ],
+     "sources": [
+      "measurements-json"
+     ],
+     "status": "read"
+    },
+    "episodesPerYear": 577.705,
+    "ethUsd": 2424.39,
+    "measuredAt": "2026-10-22T08:13:56Z",
+    "statedGwei": 1.0,
+    "usdPerCovenantYear": 3.0422,
+    "usdPerEpisode": 4.2903,
+    "usdPerYear": 2481.57
+   },
+   "scenarios": [
+    {
+     "censoredShareOfCredit": {
+      "high": 0.5964,
+      "low": 0.544
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 79.76,
+      "low": 50.81
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.001044,
+      "low": 0.001639
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 2.377,
+      "low": 1.514
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 6.58,
+      "low": 4.192
+     },
+     "responseShare": 0.32
+    },
+    {
+     "censoredShareOfCredit": {
+      "high": 0.5964,
+      "low": 0.544
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 97.2,
+      "low": 61.93
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.0008567,
+      "low": 0.001345
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 2.897,
+      "low": 1.846
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 8.019,
+      "low": 5.109
+     },
+     "responseShare": 0.39
+    },
+    {
+     "censoredShareOfCredit": {
+      "high": 0.5964,
+      "low": 0.544
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 119.63,
+      "low": 76.22
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.0006961,
+      "low": 0.001093
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 3.565,
+      "low": 2.271
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 9.869,
+      "low": 6.288
+     },
+     "responseShare": 0.48
+    }
+   ],
+   "stakeLowKtCh4PerYr": 519.15
+  },
+  "portfolio_v3": {
+   "facilities": 205,
+   "facilitiesEvaluated": 201,
+   "facilitiesQuantified": 174,
+   "ledger": {
+    "calls": {
+     "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer.",
+     "perCovenantYear": [
+      "createCovenant"
+     ],
+     "perEpisode": [
+      "proposeEpisode",
+      "finalize",
+      "withdraw"
+     ],
+     "sources": [
+      "measurements-json"
+     ],
+     "status": "read"
+    },
+    "episodesPerYear": 309.202,
+    "ethUsd": 2424.39,
+    "measuredAt": "2026-10-22T08:13:56Z",
+    "statedGwei": 1.0,
+    "usdPerCovenantYear": 3.0422,
+    "usdPerEpisode": 4.2903,
+    "usdPerYear": 1329.61
+   },
+   "scenarios": [
+    {
+     "censoredShareOfCredit": {
+      "high": 0.6396,
+      "low": 0.5831
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 50.7,
+      "low": 24.82
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.00088,
+      "low": 0.001798
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 1.511,
+      "low": 0.74
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 4.183,
+      "low": 2.048
+     },
+     "responseShare": 0.32
+    },
+    {
+     "censoredShareOfCredit": {
+      "high": 0.6396,
+      "low": 0.5831
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 61.79,
+      "low": 30.25
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.0007221,
+      "low": 0.001475
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 1.841,
+      "low": 0.901
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 5.098,
+      "low": 2.496
+     },
+     "responseShare": 0.39
+    },
+    {
+     "censoredShareOfCredit": {
+      "high": 0.6396,
+      "low": 0.5831
+     },
+     "facilitiesAtCap": {
+      "high": 0,
+      "low": 0
+     },
+     "kt_ch4_per_yr": {
+      "high": 76.05,
+      "low": 37.23
+     },
+     "ledgerUsdPerTco2eGwp100": {
+      "high": 0.0005867,
+      "low": 0.001198
+     },
+     "mt_co2e_per_yr_gwp100": {
+      "high": 2.266,
+      "low": 1.109
+     },
+     "mt_co2e_per_yr_gwp20": {
+      "high": 6.274,
+      "low": 3.071
+     },
+     "responseShare": 0.48
+    }
+   ],
+   "stakeLowKtCh4PerYr": 311.68
+  }
+ },
+ "selection": {
+  "backtest_set": "the 1,122 sources MARS labels absent today — a label decided after the window",
+  "portfolio_v3": "the portfolio covenant set v3 [SIM], members chosen because each showed a Carbon Mapper plume MARS did not see"
+ },
+ "t4d": {
+  "carbFirstPlumeToMitigationDays": {
+   "median": 8,
+   "n": 45,
+   "p10": 3.6,
+   "p90": 24.4
+  },
+  "challengeWindowDays": 1.0,
+  "diagnostics": {
+   "backtest_set": {
+    "eventsPerFacility": 1.636,
+    "lagDays": {
+     "median": 30.03,
+     "n": 700,
+     "p10": 30.0,
+     "p90": 166.93
+    }
+   },
+   "portfolio_v3": {
+    "eventsPerFacility": 1.782,
+    "lagDays": {
+     "median": 30.03,
+     "n": 310,
+     "p10": 30.0,
+     "p90": 117.17
+    }
+   },
+   "topCountries": {
+    "countries": [
+     "Turkmenistan",
+     "Venezuela"
+    ],
+    "stakeShare": 0.722
+   }
+  },
+  "headline": {
+   "central": 30.25,
+   "kind": "central",
+   "upToNoRecurrence": 61.79
+  },
+  "minEventMinutes": 8.3,
+  "model": {
+   "atTheNoRecurrenceEnd": [
+    "new faults"
+   ],
+   "choice": "d",
+   "emissionClasses": {
+    "allowed operation (Type B)": "r",
+    "emissions after the last pass": "T",
+    "emissions before detection and during repair": "T",
+    "maintenance (Type C)": "r",
+    "natural stops": "T",
+    "new faults": "T",
+    "no response": "r",
+    "not found": "r",
+    "reply-driven fixes": "T"
+   },
+   "headlineKind": "central"
+  },
+  "notMarsNotifiedSample": {
+   "airborneShareOfObservations": 0.628,
+   "eligibleCount": 11298,
+   "emittingYears": 259.76,
+   "fetchedAt": "2026-10-21T09:42:14Z",
+   "observedEnds": 412,
+   "perYear": 1.5861,
+   "population": "not a never-notified population in general: Carbon Mapper sources farther than 1.5 km from every MARS notification, which is US airborne-heavy (projection.json -> t4d.notMarsNotifiedSample gives the share of sampled sources in the contiguous-US box and the share of their observations by the airborne instruments). A satellite-only, country-stratified redraw is future work.",
+   "seed": 20261021,
+   "size": 400,
+   "sourcesWithEvents": 370,
+   "usBoxShareOfSources": 0.7275,
+   "usable": true
+  },
+  "postHocSensitivity": [
+   {
+    "hazardPerYear": 0.7615,
+    "id": "d_hazard_reviewer",
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 70.88,
+     "portfolio_v3": 45.07
+    },
+    "note": "POST HOC, not pre-registered: option d with the re-onset hazard the reviewer measured for T4d (136 restarts over 178.6 event-free facility-years). The pre-registered rule counts the same kind of restarts but measures event-free time from the central end of an event to the central start of the next (or to the last pass), which gives fewer event-free years; this row shows what the other measurement would give. It sets no value."
+   }
+  ],
+  "postResultSensitivity": [
+   {
+    "computable": true,
+    "id": "e",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 47.07,
+     "portfolio_v3": 24.05
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "POST RESULT (registered after d's result was known): as d, and a censored event's credited time is also weighted by the survival of no natural stop, with h_nat from the not MARS-notified sample",
+    "postResult": true,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "e_norec",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 66.66,
+     "portfolio_v3": 42.7
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "POST RESULT: as e with lambda = 0",
+    "postResult": true,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "d_lambda_singlemiss",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 74.59,
+     "portfolio_v3": 38.38
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "POST RESULT: as d with lambda measured after merging two events separated by exactly one pass without a detection (a single missed detection of a persistent source no longer counts as a restart)",
+    "postResult": true,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_eventdenom",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 68.77,
+     "portfolio_v3": 33.65
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "POST RESULT: as d with T's denominator = the facility's summed event lengths (central convention) in place of duty cycle x days to the last pass",
+    "postResult": true,
+    "variantOf": "d"
+   }
+  ],
+  "rByPlumeClass": {
+   "1": {
+    "n": 68,
+    "share": 0.4412,
+    "typeA": 30
+   },
+   "2": {
+    "n": 28,
+    "share": 0.3929,
+    "typeA": 11
+   },
+   "3+": {
+    "n": 19,
+    "share": 0.3684,
+    "typeA": 7
+   }
+  },
+  "responseDelaysDays": {
+   "median": 4,
+   "n": 45,
+   "p10": 0.0,
+   "p90": 18.8
+  },
+  "scopes": {
+   "backtest_set": {
+    "censoredEvents": 244,
+    "denominatorOverEventLength": 1.15,
+    "events": 700,
+    "facilitiesQuantified": 428,
+    "naturalStopHazardOwnPasses": {
+     "emittingYears": 308.8,
+     "observedEnds": 456,
+     "perYear": 1.4767,
+     "sourcesWithEvents": 402
+    },
+    "reonsetHazard": {
+     "eventFreeYears": 233.64,
+     "perYear": 1.1642,
+     "restarts": 272
+    },
+    "reonsetHazardSingleMissMerged": {
+     "eventFreeYears": 205.72,
+     "perYear": 0.6222,
+     "restarts": 128
+    },
+    "scenarios": [
+     {
+      "censoredShareOfCredit": {
+       "high": 0.5964,
+       "low": 0.544
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 79.76,
+       "low": 50.81
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.001044,
+       "low": 0.001639
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.377,
+       "low": 1.514
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 6.58,
+       "low": 4.192
+      },
+      "responseShare": 0.32
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.5964,
+       "low": 0.544
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 97.2,
+       "low": 61.93
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0008567,
+       "low": 0.001345
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.897,
+       "low": 1.846
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 8.019,
+       "low": 5.109
+      },
+      "responseShare": 0.39
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.5964,
+       "low": 0.544
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 119.63,
+       "low": 76.22
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0006961,
+       "low": 0.001093
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 3.565,
+       "low": 2.271
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 9.869,
+       "low": 6.288
+      },
+      "responseShare": 0.48
+     }
+    ],
+    "selectingShareOfCredit": 0.3913
+   },
+   "portfolio_v3": {
+    "censoredEvents": 142,
+    "denominatorOverEventLength": 1.15,
+    "events": 310,
+    "facilitiesQuantified": 174,
+    "naturalStopHazardOwnPasses": {
+     "emittingYears": 169.25,
+     "observedEnds": 168,
+     "perYear": 0.9926,
+     "sourcesWithEvents": 164
+    },
+    "reonsetHazard": {
+     "eventFreeYears": 64.89,
+     "perYear": 2.0959,
+     "restarts": 136
+    },
+    "reonsetHazardSingleMissMerged": {
+     "eventFreeYears": 49.12,
+     "perYear": 1.2419,
+     "restarts": 61
+    },
+    "scenarios": [
+     {
+      "censoredShareOfCredit": {
+       "high": 0.6396,
+       "low": 0.5831
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 50.7,
+       "low": 24.82
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.00088,
+       "low": 0.001798
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 1.511,
+       "low": 0.74
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 4.183,
+       "low": 2.048
+      },
+      "responseShare": 0.32
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.6396,
+       "low": 0.5831
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 61.79,
+       "low": 30.25
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0007221,
+       "low": 0.001475
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 1.841,
+       "low": 0.901
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 5.098,
+       "low": 2.496
+      },
+      "responseShare": 0.39
+     },
+     {
+      "censoredShareOfCredit": {
+       "high": 0.6396,
+       "low": 0.5831
+      },
+      "facilitiesAtCap": {
+       "high": 0,
+       "low": 0
+      },
+      "kt_ch4_per_yr": {
+       "high": 76.05,
+       "low": 37.23
+      },
+      "ledgerUsdPerTco2eGwp100": {
+       "high": 0.0005867,
+       "low": 0.001198
+      },
+      "mt_co2e_per_yr_gwp100": {
+       "high": 2.266,
+       "low": 1.109
+      },
+      "mt_co2e_per_yr_gwp20": {
+       "high": 6.274,
+       "low": 3.071
+      },
+      "responseShare": 0.48
+     }
+    ],
+    "selectingShareOfCredit": 0.6552
+   }
+  },
+  "sensitivity": [
+   {
+    "computable": true,
+    "id": "d",
+    "isChoice": true,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 61.93,
+     "portfolio_v3": 30.25
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "S x T, T with r by plume count, the measured lambda, the central convention, lag + CARB delay",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "d_norec",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 97.2,
+     "portfolio_v3": 61.79
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "as d with lambda = 0",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_shortest",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 56.0,
+     "portfolio_v3": 28.16
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d, shortest convention",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_longest",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 68.86,
+     "portfolio_v3": 32.66
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d, longest convention",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_rflat",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 64.81,
+     "portfolio_v3": 31.72
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d with r = the rule's flat share",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_lag0",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 78.14,
+     "portfolio_v3": 35.96
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d with publication lag 0",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_lagcw",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 61.62,
+     "portfolio_v3": 30.12
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d with publication lag + the core's challenge window",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_carb",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 76.47,
+     "portfolio_v3": 35.29
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d with CARB first plume -> mitigation and no publication lag",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "d_rminusb",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 40.32,
+     "portfolio_v3": 19.67
+    },
+    "meets": [
+     true,
+     false,
+     true
+    ],
+    "model": "S x (r - b) x T on the stake's own passes",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "d_bcensored",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 46.68,
+     "portfolio_v3": 22.81
+    },
+    "meets": [
+     true,
+     true,
+     true
+    ],
+    "model": "as d, b subtracted on censored events only",
+    "postResult": false,
+    "variantOf": "d"
+   },
+   {
+    "computable": true,
+    "id": "t_nmn",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 38.27,
+     "portfolio_v3": 16.82
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "S x T_nn with r - b: T_nn = the T4d time factor (measured re-onset hazard of the stake, central convention, censored at the last observation) pooled over the not MARS-notified sample, each source's emitting days = its detected / observed dates x days from its first to its last observation, with the portfolio's median publication lag (the sample has no plume records committed)",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "rev_t4c_censored",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 112.12,
+     "portfolio_v3": 71.49
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "T4c with every event censored at the last pass (reviewer, report only)",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "rev_t4c_hazard",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 85.92,
+     "portfolio_v3": 52.49
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "T4c with re-onset hazard 0.814 / yr (reviewer, report only)",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "rev_t4c_cap365",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 106.47,
+     "portfolio_v3": 65.63
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "T4c with each event's credit capped at 365 days (reviewer, report only)",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "rev_t4c_cap182",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 74.69,
+     "portfolio_v3": 45.86
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "T4c with each event's credit capped at 182 days (reviewer, report only)",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "c",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 29.7,
+     "portfolio_v3": 17.83
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "interim low end, (r - b) x 0.22",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "b",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 121.48,
+     "portfolio_v3": 72.93
+    },
+    "meets": [
+     true,
+     true,
+     false
+    ],
+    "model": "interim high end, (r - b) x 0.90",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "a",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 196.45,
+     "portfolio_v3": 117.94
+    },
+    "meets": [
+     false,
+     false,
+     false
+    ],
+    "model": "answered share x 44 %",
+    "postResult": false,
+    "variantOf": null
+   },
+   {
+    "computable": true,
+    "id": "t4",
+    "isChoice": false,
+    "ktCh4PerYrCentralAction": {
+     "backtest_set": 59.39,
+     "portfolio_v3": 35.66
+    },
+    "meets": [
+     true,
+     false,
+     false
+    ],
+    "model": "Type A share x 44 %",
+    "postResult": false,
+    "variantOf": null
+   }
+  ]
+ },
+ "weighting": {
+  "decision": "Mass weighting needs an emission rate per incidence. If a published per-incidence rate exists (CARB's own tables first, a Carbon Mapper plume rate joined by an identifier second), r is the mass-weighted share of 2021 and 2023 and its interval a percentile bootstrap over incidences (seed and draws written before running). If none exists, r stays counted by incidence, the per-incidence rows are committed with their source, SHA-256 and readOn and re-checked against Table 3, and the gap and what would close it are written down. Read on 2026-10-20: CARB Appendix Tables A1 (2021) and A2 (2023) give, per incidence, sector, outcome, earliest plume date, number of plumes and dates, but no emission rate, location or plume identifier; Carbon Mapper's 2023 plume list (CARB contract 22RD001, Appendix B) gives rates and locations but no incidence identifier, and a date-and-plume-count key identifies the incidence for few rows. So r stays counted by incidence.",
+  "incidences": 115,
+  "joinKey": "year, earliest plume date and number of plumes: the only fields CARB's rows share with a Carbon Mapper plume list",
+  "mass": {
+   "computable": false,
+   "reason": "no emission rate, location or plume identifier per incidence (none is published in the appendix), so the rows cannot weight the action share by mass"
+  },
+  "source": "carb-2024-appendix",
+  "uniqueJoinKey": 14,
+  "years": [
+   2021,
+   2023
+  ]
+ }
+}

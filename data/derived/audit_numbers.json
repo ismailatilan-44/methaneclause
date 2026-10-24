@@ -1,0 +1,2587 @@
+{
+ "generatedAt": "2026-10-22T08:27:36Z",
+ "numbers": {
+  "adversarial": {
+   "by_layer": {
+    "hash": {
+     "caught": 5,
+     "n": 5
+    },
+    "re-check": {
+     "caught": 1,
+     "n": 1
+    },
+    "validation": {
+     "caught": 36,
+     "n": 36
+    }
+   },
+   "caught": 42,
+   "detection_rate": 1.0,
+   "n": 42
+  },
+  "backtest": {
+   "card": {
+    "episodesSentence": "Counterfactual walk over the 673 sources that own a Carbon Mapper source (of the 1,122 sources MARS labels absent today — a label decided after the window), from the first MARS plume's tile date (a backdated start) to the catalogue end (2026-09-13), policy frozen: 1,204 episodes at 425 facilities (tier 1 94, tier 2 356, tier 3 754); 277 detections refused (below 100 kg/h or no rate) and 372 linked; rebates 2,292.00 policy units (a parameter, not a price).",
+    "l1Sentence": "L1 is a cadence badge, not corroboration quality: 0.8% of episodes had another Carbon Mapper instrument detect within ±7 days, over the 1,122 sources MARS labels absent today — a label decided after the window.",
+    "l2Sentence": "11 % of episodes had a MARS plume from a satellite other than EMIT or Tanager within 7 days (132 of 1,204; over the 1,122 sources MARS labels absent today — a label decided after the window; MARS rows on the start date excluded).",
+    "refundsSentence": "Counterfactual (no clause existed): refunds count only qualified passes (cloud flag, origin intersect without look-ahead, per-source query and no plume within 1.5 km, MARS ±7 d, 60-day publication lag). Scene data covers 174 facilities (the join candidates, which had a Tanager plume within 1.5 km in Mar–Sep 2026 and open a claim, plus two demo cases, among the 1,122 sources MARS labels absent today — a label decided after the window). Of their 628 claims, 49 had a counted pass (124 passes on 111 scenes): installments 17 released, 4 cancelled, 0 pending (14.70 / 3.00 / 0.00 policy units); 5 released claims (3.00 units) had a plume at the facility that the clause does not count as a relapse (rate hidden, or a neighbour's source). The other 576 claims were not fetched and count nothing.",
+    "refundsShortSentence": "Counterfactual, qualified passes only, at the 174 join-candidate and demo facilities, among the 1,122 sources MARS labels absent today — a label decided after the window: 49 of 628 claims had a counted pass; 17 installments released (14.70 policy units), 4 cancelled; 5 released claims saw a plume not counted as a relapse; 576 claims not fetched.",
+    "stakeSentence": "Stake, not abatement: at least ~0.5 Mt CH₄/yr across 428 facilities (of the 1,122 sources MARS labels absent today — a label decided after the window), the 425 with an episode plus 3 whose plumes all fell below 100 kg/h, assuming what satellites saw on their passes holds between them; passes are partly tasked toward expected plumes, which biases the seen duty cycle upward."
+   },
+   "catalogueEnd": "2026-09-13",
+   "exporter": {
+    "episodes": 113,
+    "facilitiesEvaluated": 75,
+    "rebatePolicyUnits": 169.0,
+    "upper_bound": {
+     "claims": 113,
+     "claimsWithCountedPass": 31,
+     "countedPasses": 127,
+     "finalBlocked": {
+      "MARS plume in the corroboration window": 1
+     },
+     "installments": {
+      "cancelled": 3,
+      "pending": 7,
+      "released": 19
+     },
+     "label": "cloud and footprint unchecked; not an estimate; JSON only, never quoted",
+     "passesRefused": {
+      "before_since": 21,
+      "counts_after_catalogue_end": 16,
+      "floor_above_rate": 36,
+      "mars_nearby": 8,
+      "voided_by_relapse": 8
+     },
+     "refundPolicyUnits": {
+      "cancelled": 2.4,
+      "pending": 3.3,
+      "released": 9.3
+     }
+    }
+   },
+   "inputs": {
+    "data/derived/cm_plumes.csv": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69",
+    "data/derived/cm_sources.csv": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335",
+    "data/derived/cm_timelines.json": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c",
+    "data/derived/mars_plumes_og.csv": "8e369ece38a44bac621407ebcbb2d02bbc048cda43d95284a2a04a04eebce28b",
+    "data/derived/mars_sources.csv": "3573b9b5f11e1ebf09a3bcc6b5d085d07aeace10f1da7e8e81b663ec3106f10f",
+    "data/derived/projection_sources.json": "0d31ee3b3ad5d40caf0a962994a70baad039f1aeab6e7315a9b81ed4cec5f074",
+    "data/derived/scenes_v1/INDEX.json": "e09b35d587e4780681f847adab512ab34e427b9957129574be7b009171cb871d",
+    "pipeline/backtest.py": "591018ef5a45eedce5f3273890fbecfda53599a7f5aa8850843372957d67302f",
+    "pipeline/cleanpass_rules.py": "4c14b1730721ea747abc2086c7251193eca1dd6dbdaa7c9d2851fecf9b3f74a5"
+   },
+   "label": "counterfactual: if these sources had been under the clause; no clause existed; amounts in policy units, never a currency",
+   "policyHash": "0x4a39d3fbbd1cb21d5fee728e8227e0445526df44380618c9cc429b7a477500e8",
+   "stake_band": {
+    "co2e": {
+     "gwp100": {
+      "factor": 29.8,
+      "kt_co2e_per_yr": {
+       "high": 209301.8,
+       "low": 15470.7,
+       "mid": 90139.6
+      }
+     },
+     "gwp20": {
+      "factor": 82.5,
+      "kt_co2e_per_yr": {
+       "high": 579442.9,
+       "low": 42829.9,
+       "mid": 249547.7
+      }
+     }
+    },
+    "dutyCycleConcentration": {
+     "facilitiesWithDutyOne": 95,
+     "shareOfMid": 0.4932
+    },
+    "facilitiesQuantified": 428,
+    "kt_ch4_per_yr": {
+     "high": 7023.55,
+     "low": 519.15,
+     "mid": 3024.82
+    }
+   },
+   "targets": {
+    "evaluated": 673,
+    "mars_targets": 1122,
+    "with_cm_source": 673
+   },
+   "totals": {
+    "L1Share": 0.0083,
+    "L2Share": 0.1096,
+    "attestedKgH": {
+     "max": 55252.5,
+     "median": 1038.9,
+     "p10": 274.0,
+     "p90": 4143.3
+    },
+    "detectionsBelowMinOrUnquantified": 277,
+    "episodes": 1204,
+    "facilitiesEvaluated": 673,
+    "facilitiesWithEpisode": 425,
+    "linkedDetections": 372,
+    "qualified": {
+     "claims": 1204,
+     "claimsWithCountedPass": 49,
+     "claimsWithSceneData": 628,
+     "claimsWithoutSceneData": {
+      "outside the fetch scope (not a join candidate or demo case): scene data not fetched": 576
+     },
+     "countedPasses": 124,
+     "facilitiesWithSceneData": 174,
+     "finalBlocked": {
+      "one instrument": 1
+     },
+     "installments": {
+      "cancelled": 4,
+      "pending": 0,
+      "released": 17
+     },
+     "label": "qualified passes (cloud flag, origin intersect without look-ahead, per-source query and no plume within 1.5 km, MARS ±7 d, 60-day publication lag); counted only at facilities with committed scene data (data/derived/scenes_v1/: the join candidates and the three demo cases that open a claim); elsewhere not fetched, not counted",
+     "passesRefused": {
+      "before_since": 151,
+      "counts_after_catalogue_end": 2,
+      "floor_above_rate": 152,
+      "no_floor": 18,
+      "no_scene_data": 636,
+      "scene_refused:BEFORE_PUBLICATION_LAG": 20,
+      "scene_refused:CLOUD_FLAG": 16,
+      "scene_refused:MARS_PLUME_NEARBY": 11,
+      "scene_refused:NO_ORIGIN_INTERSECT": 5,
+      "scene_refused:PLUME_ON_SCENE": 14,
+      "scene_refused:SCENE_NOT_PUBLISHED": 1,
+      "voided_by_relapse": 33
+     },
+     "refundPolicyUnits": {
+      "cancelled": 3.0,
+      "pending": 0,
+      "released": 14.7
+     }
+    },
+    "rebatePolicyUnits": 2292.0,
+    "tierMix": {
+     "tier 1": 94,
+     "tier 2": 356,
+     "tier 3": 754
+    },
+    "upper_bound": {
+     "claims": 1204,
+     "claimsWithCountedPass": 221,
+     "countedPasses": 653,
+     "finalBlocked": {
+      "MARS plume in the corroboration window": 2,
+      "one instrument": 2
+     },
+     "installments": {
+      "cancelled": 10,
+      "pending": 20,
+      "released": 97
+     },
+     "label": "cloud and footprint unchecked; not an estimate; JSON only, never quoted",
+     "passesRefused": {
+      "before_since": 151,
+      "counts_after_catalogue_end": 94,
+      "floor_above_rate": 152,
+      "mars_nearby": 47,
+      "no_floor": 18,
+      "voided_by_relapse": 68
+     },
+     "refundPolicyUnits": {
+      "cancelled": 9.9,
+      "pending": 9.6,
+      "released": 62.2
+     }
+    }
+   }
+  },
+  "baseline": {
+   "test_a": {
+    "B0_climatology": {
+     "auc": 0.5,
+     "brier": 0.2353,
+     "bss_vs_B1": -0.4498,
+     "false_zero_rate": null,
+     "n": 4875
+    },
+    "B1_persistence": {
+     "auc": 0.8408,
+     "brier": 0.1623,
+     "false_zero_rate": 0.0722,
+     "n": 4875
+    },
+    "B1s_smoothed": {
+     "auc": 0.8515,
+     "brier": 0.151,
+     "bss_vs_B1": 0.0695,
+     "false_zero_rate": null,
+     "n": 4875
+    },
+    "B2_mars_absent_zero": {
+     "auc": 0.7524,
+     "brier": 0.1925,
+     "bss_vs_B1": -0.1862,
+     "false_zero_rate": 0.0722,
+     "n": 4875
+    }
+   },
+   "test_b": {
+    "B0_climatology": {
+     "auc": 0.5,
+     "brier": 0.2563,
+     "bss_vs_B1": -0.6052,
+     "false_zero_rate": null,
+     "n": 2757
+    },
+    "B1_persistence": {
+     "auc": 0.8454,
+     "brier": 0.1597,
+     "false_zero_rate": 0.0916,
+     "n": 2757
+    },
+    "B1s_smoothed": {
+     "auc": 0.8615,
+     "brier": 0.1541,
+     "bss_vs_B1": 0.0352,
+     "false_zero_rate": null,
+     "n": 2757
+    },
+    "B2_mars_absent_zero": {
+     "auc": 0.799,
+     "brier": 0.2081,
+     "bss_vs_B1": -0.3028,
+     "false_zero_rate": 0.0916,
+     "n": 2757
+    }
+   },
+   "train": {
+    "B0_climatology": {
+     "auc": 0.5,
+     "brier": 0.2185,
+     "bss_vs_B1": -0.0636,
+     "false_zero_rate": null,
+     "n": 8848
+    },
+    "B1_persistence": {
+     "auc": 0.7531,
+     "brier": 0.2054,
+     "false_zero_rate": 0.1065,
+     "n": 8848
+    },
+    "B1s_smoothed": {
+     "auc": 0.7628,
+     "brier": 0.1748,
+     "bss_vs_B1": 0.1491,
+     "false_zero_rate": 0.0,
+     "n": 8848
+    },
+    "B2_mars_absent_zero": {
+     "auc": 0.6598,
+     "brier": 0.2019,
+     "bss_vs_B1": 0.0173,
+     "false_zero_rate": 0.1065,
+     "n": 8848
+    }
+   }
+  },
+  "bond_sizing": {
+   "forecaster_used": "B1s",
+   "p_pass": {
+    "DZA_S_012": {
+     "B1": 0.0,
+     "B1s": 0.1731,
+     "model": 0.8085
+    },
+    "TKM_S_276": {
+     "B1": 1.0,
+     "B1s": 0.75,
+     "model": 0.9176
+    },
+    "USA_S_077": {
+     "B1": 0.0,
+     "B1s": 0.1731,
+     "model": 0.2159
+    }
+   },
+   "recommended_bond_eth": 0.015,
+   "set_annual_exposure": {
+    "B1": {
+     "mean_eth": 0.005095,
+     "p90_eth": 0.009
+    },
+    "B1s": {
+     "mean_eth": 0.008456,
+     "p90_eth": 0.015
+    },
+    "model": {
+     "mean_eth": 0.020489,
+     "p90_eth": 0.029
+    }
+   },
+   "set_backtest": {
+    "forecast_B1": {
+     "mean_eth": 0.003402,
+     "p10_eth": 0.0,
+     "p90_eth": 0.007
+    },
+    "forecast_B1s": {
+     "mean_eth": 0.005644,
+     "p10_eth": 0.001,
+     "p90_eth": 0.01
+    },
+    "forecast_model": {
+     "mean_eth": 0.013674,
+     "p10_eth": 0.007,
+     "p90_eth": 0.02
+    },
+    "realised_rebate_eth": 0.009,
+    "window": "2026-01-01..2026-09-13"
+   }
+  },
+  "cases": {
+   "DZA_S_012": {
+    "all_linked_secondary": {
+     "n_cm_detected": 1,
+     "n_cm_passes": 14
+    },
+    "case_evidence_hash": "0xc18d4f142e5a3c43df876591cfb085a1b5176d6b5aaf07ef1a45d7769eb17cd2",
+    "join_v1_candidate": false,
+    "n_cm_detected": 1,
+    "n_cm_passes": 14,
+    "n_cm_sources_counted": 2,
+    "radius_km": 1.5,
+    "since": "2024-10-12"
+   },
+   "TKM_S_276": {
+    "all_linked_secondary": {
+     "n_cm_detected": 10,
+     "n_cm_passes": 10
+    },
+    "case_evidence_hash": "0x4d2e09b9367d585c4c9a1bc75ec303dc154d6d374e8423c5d99f3eb0fdc5bfb1",
+    "join_v1_candidate": true,
+    "n_cm_detected": 9,
+    "n_cm_passes": 9,
+    "n_cm_sources_counted": 4,
+    "radius_km": 1.5,
+    "since": "2025-06-13"
+   },
+   "USA_S_077": {
+    "all_linked_secondary": {
+     "n_cm_detected": 0,
+     "n_cm_passes": 2
+    },
+    "case_evidence_hash": "0x537bfa39dace9598ced4641e84d744b40d0b2fba84e91554d4d6e8f7f773ba4c",
+    "join_v1_candidate": false,
+    "n_cm_detected": 0,
+    "n_cm_passes": 2,
+    "n_cm_sources_counted": 1,
+    "radius_km": 1.5,
+    "since": "2024-11-06"
+   }
+  },
+  "clean_passes": {
+   "DZA_S_012": {
+    "candidates": 19,
+    "countIsLowerBound": true,
+    "countedAtCloudBp2500": 3,
+    "episode": "emi20240929t113148p08006-B",
+    "firstRefusal": {
+     "CLOUD_FLAG": 5,
+     "NO_ORIGIN_INTERSECT": 2,
+     "SCENE_BEFORE_SINCE": 3
+    },
+    "generatedFrom": {
+     "data/derived/cases/DZA_S_012.json": "c40c48095675e6897f0507c2118e9eab0b4b93495dd256777497f85ba5d2596c",
+     "pipeline/clean_passes.py": "52f044c480599d338f966bba41b4bd55cca7bb17c9881cf28095a6186f6b7d41",
+     "pipeline/cleanpass_rules.py": "4c14b1730721ea747abc2086c7251193eca1dd6dbdaa7c9d2851fecf9b3f74a5",
+     "pipeline/policy.py": "8b059d16f7bc2427c66b37e335578041d0ddae46cf1e94d1738db6a1b861e8b0",
+     "scene_plumes/071289b4-e4cc-4c53-96f9-390e9e691141": "ef3212cc1983b4d994e6cdaf88a570ea57f65408fb2c7977c64444ce228ba3be",
+     "scene_plumes/098d3770-7864-47fb-875e-4599f4725ebf": "24ac2f9da4096d475b18273492e00484e9f3eeb7f356eabc9169a5f0ec43de27",
+     "scene_plumes/1ac04386-5d9e-4c7a-bcb7-8c10a51d2ecb": "f90081e271230078e0dc8795b8a7cc1c4512d9a2928c218ee04b2692a2d6a12e",
+     "scene_plumes/337891ca-0244-4a13-99c8-5d35063d2a7f": "b40662d1c1c0c19519b425e4b830e4f96995780a88f1ef820da001fa8f024966",
+     "scene_plumes/3414fc64-0158-4821-abe9-58b554e76a0b": "85a67a3569403624257b5738e2fdd4b1fdf0b6a0ce80fcd992d36cfd6db43b77",
+     "scene_plumes/4c9abee3-2ba4-4b32-a011-31df4fc9f05b": "6edce8946c022825a8e198f561f62c01c045bc491b2eed6beae40ebb07c7e698",
+     "scene_plumes/59661fa9-fcb4-49b3-b1c5-d00960e72d09": "84d5045193190f6469f03c0662bf368c2609fa358c51f51c8d74ed8548dea55d",
+     "scene_plumes/60cd514c-98a2-499c-a65e-18e21c32f809": "de8db37ce56c6b984fdb61fc196ae96fb80c2af490338fc89b95346b957e624c",
+     "scene_plumes/6ab6a339-6688-451a-b7a8-1200002e824d": "3b0ae904de6d28d715af237eb10ecbe7e6887527d8d62905029e137b1ad5260c",
+     "scene_plumes/6f197dca-c097-4c7b-a473-d2d3ea457697": "108961be13b6b93c4b03a513b3331295db1a6016d29e88a197bf0b678a82117a",
+     "scene_plumes/736c631d-2b6e-4aeb-9e4f-31ac54c5c910": "bf810193226c071b286ab263b2dcd0f09e0482cda6cfcf93d9a362e3464a352b",
+     "scene_plumes/7e6dd872-892d-405b-b377-e04428ddc150": "a9bc5a332992823736b7a67a17aedbbfffee42b40650b7af1733a18d00fcc870",
+     "scene_plumes/9d60cfcd-87a7-431a-b9c0-bf788b8caefc": "8b497ff5c5535bf33094136281c54a875c47aceee3efe7b51e8068a9373afa15",
+     "scene_plumes/c5555ac0-1867-40c4-a0a1-29db093a666b": "c1adcd9ba899d7dfa68dbe37ebd8735c0c98d150ada73800e8a46a35c91e0446",
+     "scene_plumes/cc6489a3-1a4f-4dde-a501-369d1760cf38": "13c2cb4d7cf3ba1d0cea14c3b097ea43953308c854df1aefbf81225e486663c8",
+     "scene_plumes/d5e56d9d-028a-434c-8e01-b9ac004b3808": "b1a2001b573ef93cfcd7511e550e6c501599a0d3b91f7ab9dc6f6ef514764055",
+     "scene_plumes/d7d6eeca-fb90-4fa8-b3bf-1b18e88a1ebd": "32e92d062e2be1cc0fe954ac93ecba72c3d1f85574bc4c11459e269a5444f702",
+     "scene_plumes/fd25d2e8-7750-4f72-aa8d-e197df5dddfc": "20bf5a9acdbdefa6fe10fa34ff9356d4dd003b30ea06611a133424d8438bbaca",
+     "scenes/DZA_S_012": "43dddfba8eafd147f12011483731fc66fc1147bab06bc06ad36fbc6cfef50b0f",
+     "scenes/DZA_S_012_pt00": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt01": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt02": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt03": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt04": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt05": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt06": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt07": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt08": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt09": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt10": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt11": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt12": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt13": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt14": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt15": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt16": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt17": "d04753ad5be1f2b390ce365b925d5db12fa1e0f89e3d482904570606f4111e6e",
+     "scenes/DZA_S_012_pt18": "43dddfba8eafd147f12011483731fc66fc1147bab06bc06ad36fbc6cfef50b0f",
+     "source/CH4_1B2_1000m_5.99636_31.77708": "58fae8455d3ff3ff2df80673f3558d201798038db5cd3c7d6c3347ea0fd0a177",
+     "source/CH4_1B2_250m_5.99640_31.77781": "ba8658e0ba6ed3575796c863934d034746ee5fc654a94528ed09a0a647363f9d"
+    },
+    "maxCountedFloorKgH": 700,
+    "policyHash": "0x1776f04368519d5ca5da9e88a5e4be782a5069a3837d0be0585095c0448b5bd9",
+    "qualified": 9,
+    "qualifiedBeforeFirstPlume": 8,
+    "qualifiedBeforeFirstPlumeAllOriginsToday": 10,
+    "qualifiedBeforeFirstPlumeByInstrument": {
+     "emi": 4,
+     "tan": 4
+    },
+    "qualifiedScenes": "2024-11-11 tan, 2024-12-16 tan, 2025-01-31 emi, 2025-02-12 emi, 2025-04-22 tan, 2025-06-19 emi, 2025-06-24 tan, 2025-10-02 emi, 2026-07-13 tan",
+    "rateKgH": 2674,
+    "since": "2024-10-29T11:31:48Z",
+    "statusLabel": "8 qualified clean passes (a lower bound)"
+   },
+   "TKM_S_276": {
+    "candidates": 3,
+    "countIsLowerBound": true,
+    "countedAtCloudBp2500": 0,
+    "episode": "tan20260611t083132c23s4001-AB",
+    "firstRefusal": {
+     "CLOUD_FLAG": 1,
+     "SCENE_BEFORE_SINCE": 2
+    },
+    "generatedFrom": {
+     "data/derived/cases/TKM_S_276.json": "ba7a832224d804590b3687c497e88e58fc0c7354b8a4c87e1f269c1f2e088324",
+     "pipeline/clean_passes.py": "52f044c480599d338f966bba41b4bd55cca7bb17c9881cf28095a6186f6b7d41",
+     "pipeline/cleanpass_rules.py": "4c14b1730721ea747abc2086c7251193eca1dd6dbdaa7c9d2851fecf9b3f74a5",
+     "pipeline/policy.py": "8b059d16f7bc2427c66b37e335578041d0ddae46cf1e94d1738db6a1b861e8b0",
+     "scene_plumes/34cea615-78dd-4844-bc2d-9ebd2446ad06": "26b4ae709f99eb8f28f3bfcd7719427770c196579722e636880a0a4ebe59f230",
+     "scene_plumes/417ea14d-32a8-4724-8c24-10eab75694f4": "75d9d8d1a5de172bcd86d7396f760a41a2d35d17fe40c0c78db9113abfe5b4f9",
+     "scene_plumes/9e0a31c0-6487-47d1-8567-187dcffcf4bd": "196fdb44104d402dfc0a5e025e109daed5085c50bcab7cd7385df9df18fa526d",
+     "scenes/TKM_S_276": "05f2cf929741f6c825d39be474b457cd067b8a8c4f5da1d170344c5e156bc856",
+     "source/CH4_1B2_1000m_53.71356_39.47100": "3998bff1c8d489913e105997c41788856b0733b79a368d76999cd1e013bce84d",
+     "source/CH4_1B2_250m_53.70692_39.48765": "504f2ed47f21527b24f45c8d47ec52a956dd1a8e72e53744a86e6ab2a67ffc05",
+     "source/CH4_1B2_250m_53.70979_39.48786": "d2604d65ebfb42caab2ff24296955917fcf57011d8c04c53251cedb324f5466b",
+     "source/CH4_1B2_250m_53.71782_39.48437": "c5309f98b0ddb9cea3ab2aa5624a3504bb680dee25504adf4c213317bd1a7252",
+     "source/CH4_1B2_250m_53.72906_39.47848": "67e81ae734481980d947c078898c0e30b7b461f48f2666d72944190005ab6506"
+    },
+    "maxCountedFloorKgH": null,
+    "policyHash": "0x934a217b3e5ad942226be99f70ae46c0fe8d274c967cd6d256084bcc17f367ff",
+    "qualified": 0,
+    "qualifiedBeforeFirstPlume": 0,
+    "qualifiedBeforeFirstPlumeAllOriginsToday": 0,
+    "qualifiedBeforeFirstPlumeByInstrument": {},
+    "qualifiedScenes": "",
+    "rateKgH": 2548,
+    "since": "2026-07-11T08:31:32Z",
+    "statusLabel": "no attestable clean pass yet"
+   },
+   "USA_S_077": {
+    "candidates": 5,
+    "countIsLowerBound": true,
+    "countedAtCloudBp2500": 1,
+    "episode": "emi20240816t200144p13032-A",
+    "firstRefusal": {
+     "BEFORE_PUBLICATION_LAG": 1,
+     "CLOUD_FLAG": 1,
+     "MARS_PLUME_NEARBY": 1,
+     "SCENE_BEFORE_SINCE": 1
+    },
+    "generatedFrom": {
+     "data/derived/cases/USA_S_077.json": "2520e0adbbc4c43ef9a94271c10a9233d3118900f034074020ff99830bb839e3",
+     "pipeline/clean_passes.py": "52f044c480599d338f966bba41b4bd55cca7bb17c9881cf28095a6186f6b7d41",
+     "pipeline/cleanpass_rules.py": "4c14b1730721ea747abc2086c7251193eca1dd6dbdaa7c9d2851fecf9b3f74a5",
+     "pipeline/policy.py": "8b059d16f7bc2427c66b37e335578041d0ddae46cf1e94d1738db6a1b861e8b0",
+     "scene_plumes/accd113e-f13e-40cd-aa63-df93a96f4ce3": "691d4051292441ccb2ccc965a02802c57ffed43a577b7793fe5c9f3cadf2c9f4",
+     "scene_plumes/afe170be-4525-49d5-95c6-abc62f7c5b79": "12c19c3b92ec75e4cb9dd9f7d2a5fc390da389d30db0ee33c2aa87a476843484",
+     "scene_plumes/caf50ccf-cd7e-4f64-be38-55982d90fd0e": "5cf1ae5c81471a8fd00400974b175ca2a1f24ff71429dd3cf397a10596d0d58a",
+     "scene_plumes/d2393c0f-a92a-4f28-a0ae-a204cf7f4611": "7d472642f24da9954e68f77435946bebfd001a718b0496581d4dc6257825f49b",
+     "scenes/USA_S_077": "d9f47d4255f8266f3b627425edbbb69e0caaf643a42c025f75de9c1bd3108b62",
+     "source/CH4_1B2_1000m_-101.52270_32.51483": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea"
+    },
+    "maxCountedFloorKgH": 700,
+    "policyHash": "0x934a217b3e5ad942226be99f70ae46c0fe8d274c967cd6d256084bcc17f367ff",
+    "qualified": 1,
+    "qualifiedBeforeFirstPlume": 1,
+    "qualifiedBeforeFirstPlumeAllOriginsToday": 1,
+    "qualifiedBeforeFirstPlumeByInstrument": {
+     "emi": 1
+    },
+    "qualifiedScenes": "2025-08-08 emi",
+    "rateKgH": 3642,
+    "since": "2024-09-15T20:01:44Z",
+    "statusLabel": "1 qualified clean pass (a lower bound)"
+   }
+  },
+  "cleanruns": {
+   "by_instrument_cell": {
+    "GAO": {
+     "next_pass_detected": 11,
+     "next_pass_detection_rate": 0.2157,
+     "with_next_pass": 51,
+     "with_run": 56
+    },
+    "ang": {
+     "next_pass_detected": 1,
+     "next_pass_detection_rate": 0.1667,
+     "with_next_pass": 6,
+     "with_run": 7
+    },
+    "av3": {
+     "next_pass_detected": 0,
+     "next_pass_detection_rate": null,
+     "with_next_pass": 0,
+     "with_run": 0
+    },
+    "emi": {
+     "next_pass_detected": 7,
+     "next_pass_detection_rate": 0.125,
+     "with_next_pass": 56,
+     "with_run": 71
+    },
+    "tan": {
+     "next_pass_detected": 5,
+     "next_pass_detection_rate": 0.2632,
+     "with_next_pass": 19,
+     "with_run": 28
+    }
+   },
+   "by_unit": {
+    "cell": {
+     "base_rate_before_run": {
+      "ci95": [
+       0.3125,
+       0.3498
+      ],
+      "detected": 828,
+      "passes": 2502,
+      "rate": 0.3309
+     },
+     "base_rate_before_run_excl_eligibility": {
+      "ci95": [
+       0.163,
+       0.1968
+      ],
+      "detected": 366,
+      "passes": 2040,
+      "rate": 0.1794
+     },
+     "hazard_after_run": {
+      "1": "47/210",
+      "10": "3/11",
+      "2": "27/145",
+      "3": "21/108",
+      "4": "19/80",
+      "5": "10/52",
+      "6": "4/38",
+      "7": "2/29",
+      "8": "3/23",
+      "9": "2/15"
+     },
+     "next_pass_detected": 47,
+     "next_pass_detection_ci95": [
+      0.1693,
+      0.2863
+     ],
+     "next_pass_detection_rate": 0.2238,
+     "no_next_pass": 21,
+     "redetected_by_follow_up": {
+      "0": "0/21",
+      "1": "1/19",
+      "11+": "59/63",
+      "2": "12/22",
+      "3-5": "28/48",
+      "6-10": "42/58"
+     },
+     "redetected_later": 142,
+     "redetected_later_right_censored": true,
+     "redetected_later_share": 0.6147,
+     "run_length_median": 5,
+     "units": 897,
+     "units_ge2_detections": 544,
+     "with_next_pass": 210,
+     "with_run": 231
+    },
+    "source": {
+     "base_rate_before_run": {
+      "ci95": [
+       0.3039,
+       0.3312
+      ],
+      "detected": 1435,
+      "passes": 4521,
+      "rate": 0.3174
+     },
+     "base_rate_before_run_excl_eligibility": {
+      "ci95": [
+       0.149,
+       0.173
+      ],
+      "detected": 591,
+      "passes": 3677,
+      "rate": 0.1607
+     },
+     "hazard_after_run": {
+      "1": "75/375",
+      "10": "4/22",
+      "2": "40/266",
+      "3": "39/208",
+      "4": "37/152",
+      "5": "10/99",
+      "6": "7/83",
+      "7": "6/64",
+      "8": "5/45",
+      "9": "2/28"
+     },
+     "next_pass_detected": 75,
+     "next_pass_detection_ci95": [
+      0.1607,
+      0.2441
+     ],
+     "next_pass_detection_rate": 0.2,
+     "no_next_pass": 47,
+     "redetected_by_follow_up": {
+      "0": "0/47",
+      "1": "2/36",
+      "11+": "80/91",
+      "2": "21/39",
+      "3-5": "50/89",
+      "6-10": "79/120"
+     },
+     "redetected_later": 232,
+     "redetected_later_right_censored": true,
+     "redetected_later_share": 0.5498,
+     "run_length_median": 5,
+     "units": 2026,
+     "units_ge2_detections": 1105,
+     "with_next_pass": 375,
+     "with_run": 422
+    }
+   },
+   "card": {
+    "all_instruments": {
+     "cells_with_run": 231,
+     "hazard_k2_to_k4": [
+      {
+       "at_risk": 145,
+       "ci95": [
+        0.1264,
+        0.2592
+       ],
+       "detected": 27,
+       "k": 2,
+       "rate": 0.1862
+      },
+      {
+       "at_risk": 108,
+       "ci95": [
+        0.1246,
+        0.2817
+       ],
+       "detected": 21,
+       "k": 3,
+       "rate": 0.1944
+      },
+      {
+       "at_risk": 80,
+       "ci95": [
+        0.1495,
+        0.3458
+       ],
+       "detected": 19,
+       "k": 4,
+       "rate": 0.2375
+      }
+     ],
+     "next_pass": {
+      "ci95": [
+       0.1693,
+       0.2863
+      ],
+      "detected": 47,
+      "passes": 210,
+      "rate": 0.2238
+     }
+    },
+    "note": "a reason for the cap, not evidence of repair; no 'usual rate' comparator is quoted (spec-v2 §15 after B1-fix)",
+    "sentence": "A quiet run is weak evidence: in Carbon Mapper's catalogue (897 cells; all instruments, unqualified passes) the pass after three non-detections still saw a plume 22 % of the time (47/210, 95 % CI 17–29 %), and the passes after longer quiet runs saw one 19–24 % of the time. That is why the refund is capped at the rebate, paid in installments, and cancelled by the next attested detection.",
+    "tanager_emit": {
+     "cells_with_run": 137,
+     "hazard_k2_to_k4": [
+      {
+       "at_risk": 75,
+       "ci95": [
+        0.1271,
+        0.3232
+       ],
+       "detected": 16,
+       "k": 2,
+       "rate": 0.2133
+      },
+      {
+       "at_risk": 53,
+       "ci95": [
+        0.0944,
+        0.3197
+       ],
+       "detected": 10,
+       "k": 3,
+       "rate": 0.1887
+      },
+      {
+       "at_risk": 39,
+       "ci95": [
+        0.1304,
+        0.4213
+       ],
+       "detected": 10,
+       "k": 4,
+       "rate": 0.2564
+      }
+     ],
+     "next_pass": {
+      "ci95": [
+       0.1786,
+       0.3426
+      ],
+      "detected": 30,
+      "passes": 118,
+      "rate": 0.2542
+     }
+    },
+    "unitLabel": "catalogue cells, not facilities; all instruments; unqualified passes"
+   },
+   "cells": 897,
+   "cells_with_run": 231,
+   "inputs": {
+    "data/derived/cm_plumes.csv": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69",
+    "data/derived/cm_timelines.json": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c",
+    "pipeline/cleanruns.py": "bdd79897d95258396ada7368aa475539c1fcefdd2775d89bee1b62040e8e5860"
+   },
+   "max_cell_diameter_km": 1.492,
+   "selection_windows_not_base_rates": {
+    "all_instruments": {
+     "before_run_start": {
+      "ci95": [
+       0.3125,
+       0.3498
+      ],
+      "detected": 828,
+      "passes": 2502,
+      "rate": 0.3309
+     },
+     "before_run_start_excl_eligibility": {
+      "ci95": [
+       0.163,
+       0.1968
+      ],
+      "detected": 366,
+      "passes": 2040,
+      "rate": 0.1794
+     }
+    },
+    "label": "selection window, not a base rate: every candidate 'usual rate' depends on the definition (13-35 %) because eligibility and the run are defined by detections; not quoted",
+    "tanager_emit": {
+     "before_run_start": {
+      "ci95": [
+       0.3023,
+       0.3536
+      ],
+      "detected": 433,
+      "passes": 1322,
+      "rate": 0.3275
+     },
+     "before_run_start_excl_eligibility": {
+      "ci95": [
+       0.1305,
+       0.1749
+      ],
+      "detected": 159,
+      "passes": 1048,
+      "rate": 0.1517
+     }
+    }
+   },
+   "sources_with_run": 422,
+   "subset_tanager_emit": {
+    "cell": {
+     "base_rate_before_run": {
+      "ci95": [
+       0.3023,
+       0.3536
+      ],
+      "detected": 433,
+      "passes": 1322,
+      "rate": 0.3275
+     },
+     "base_rate_before_run_excl_eligibility": {
+      "ci95": [
+       0.1305,
+       0.1749
+      ],
+      "detected": 159,
+      "passes": 1048,
+      "rate": 0.1517
+     },
+     "hazard_after_run": {
+      "1": "30/118",
+      "10": "1/2",
+      "2": "16/75",
+      "3": "10/53",
+      "4": "10/39",
+      "5": "3/22",
+      "6": "1/17",
+      "7": "2/14",
+      "8": "1/10",
+      "9": "2/5"
+     },
+     "next_pass_detected": 30,
+     "next_pass_detection_ci95": [
+      0.1786,
+      0.3426
+     ],
+     "next_pass_detection_rate": 0.2542,
+     "no_next_pass": 19,
+     "redetected_by_follow_up": {
+      "0": "0/19",
+      "1": "1/14",
+      "11+": "18/18",
+      "2": "10/16",
+      "3-5": "20/33",
+      "6-10": "27/37"
+     },
+     "redetected_later": 76,
+     "redetected_later_right_censored": true,
+     "redetected_later_share": 0.5547,
+     "run_length_median": 4,
+     "units": 897,
+     "units_ge2_detections": 450,
+     "with_next_pass": 118,
+     "with_run": 137
+    },
+    "source": {
+     "base_rate_before_run": {
+      "ci95": [
+       0.2984,
+       0.3343
+      ],
+      "detected": 832,
+      "passes": 2632,
+      "rate": 0.3161
+     },
+     "base_rate_before_run_excl_eligibility": {
+      "ci95": [
+       0.1282,
+       0.1586
+      ],
+      "detected": 300,
+      "passes": 2100,
+      "rate": 0.1429
+     },
+     "hazard_after_run": {
+      "1": "50/226",
+      "10": "1/6",
+      "2": "27/149",
+      "3": "19/109",
+      "4": "15/78",
+      "5": "5/52",
+      "6": "2/43",
+      "7": "5/34",
+      "8": "2/22",
+      "9": "3/11"
+     },
+     "next_pass_detected": 50,
+     "next_pass_detection_ci95": [
+      0.1689,
+      0.2811
+     ],
+     "next_pass_detection_rate": 0.2212,
+     "no_next_pass": 40,
+     "redetected_by_follow_up": {
+      "0": "0/40",
+      "1": "2/29",
+      "11+": "33/35",
+      "2": "16/29",
+      "3-5": "35/62",
+      "6-10": "44/71"
+     },
+     "redetected_later": 130,
+     "redetected_later_right_censored": true,
+     "redetected_later_share": 0.4887,
+     "run_length_median": 4,
+     "units": 2026,
+     "units_ge2_detections": 903,
+     "with_next_pass": 226,
+     "with_run": 266
+    }
+   },
+   "unitLabel": "catalogue cells, not facilities; all instruments; unqualified passes",
+   "upper_bound_bp": "9750,8419,7076,6024,5218,4593,4096,3694,3363,3085,2849,2646,2471,2316,2180,2059,1951,1853,1765,1684,1611,1544,1482,1425,1372,1323,1277,1234,1194,1157,1122,1089"
+  },
+  "data_quality": {
+   "cases": {
+    "DZA_S_012": {
+     "emission_version": {
+      "v3": 17,
+      "v3c": 2
+     },
+     "hidden_emission": 0,
+     "plumes": 19,
+     "uncertainty_exceeds_rate": 0
+    },
+    "TKM_S_276": {
+     "emission_version": {
+      "v3": 11,
+      "v3b": 2,
+      "v3c": 4,
+      "v3d": 11,
+      "v3e": 6
+     },
+     "hidden_emission": 6,
+     "plumes": 34,
+     "uncertainty_exceeds_rate": 1
+    },
+    "USA_S_077": {
+     "emission_version": {
+      "v3": 4
+     },
+     "hidden_emission": 0,
+     "plumes": 4,
+     "uncertainty_exceeds_rate": 0
+    }
+   },
+   "inputs": {
+    "data/MANIFEST.json": "b902da81be1d1b6fbc93af29698151d497e1cc5260f8510fbb02ee6d14d4c192",
+    "data/derived/cm_plumes.csv": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69",
+    "data/derived/cm_sources.csv": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335",
+    "data/derived/join_v1.json": "b5662f399cb6ff9a390a38d66daad2f930f50668c6a89fe306678e490a7051cf",
+    "data/derived/mars_sources.csv": "3573b9b5f11e1ebf09a3bcc6b5d085d07aeace10f1da7e8e81b663ec3106f10f",
+    "pipeline/data_quality.py": "42b3cecaf2b84da7c857833b91c9008777288dd760a82372465528c6fe19d0ab",
+    "pipeline/join/CRITERION.md": "866ea4e28764d2c7494d2ab165b0951b2c8dae6d07d0eec0199e8fed042d7345"
+   },
+   "joinCandidates": {
+    "emission_version": {
+     "v3c": 111,
+     "v3d": 307,
+     "v3e": 205
+    },
+    "hidden_emission": 142,
+    "plumes": 623,
+    "uncertainty_exceeds_rate": 11
+   },
+   "joinCriterionHash": {
+    "currentFile": "866ea4e28764d2c7494d2ab165b0951b2c8dae6d07d0eec0199e8fed042d7345",
+    "equal": false,
+    "freezeTimeText": true,
+    "provenanceAtFreeze": "Derived from [a research script, private path] plus the fixes asked for in [an internal review, private path] (twin dedup, plume level).",
+    "provenanceNow": "Derived from an exploratory join scan written during idea selection, plus the fixes an internal security review asked for (twin de-duplication, plume-level matching).",
+    "recordedInJoin": "c2f01726c73ae87aedf78b7317e051a6b89fce72d8920c5a74e64f7c160a8b2c",
+    "rulesSectionSha256": "0c6b5a8199fed974d3919ed5507727b04c4f15df337df0f076d499923122e869",
+    "why": "join_v1.json keeps its frozen bytes because the Sepolia covenant's policy commits to its SHA-256 (spec-v2 §15 'after B5'); the recorded criterion hash is the freeze-time text. A later edit changed only the provenance sentence; rules 1-6 are byte-identical (see pipeline/join/README.md)"
+   },
+   "joinRadiusSensitivity": {
+    "1.0": {
+     "n_candidate_plumes": 487,
+     "n_candidates": 179,
+     "n_cm_sources_within_radius": 1567,
+     "n_cm_sources_without_plume_records": 0
+    },
+    "1.5": {
+     "n_candidate_plumes": 623,
+     "n_candidates": 203,
+     "n_cm_sources_within_radius": 2026,
+     "n_cm_sources_without_plume_records": 0
+    },
+    "2.0": {
+     "n_candidate_plumes": 634,
+     "n_candidates": 205,
+     "n_cm_sources_within_radius": 2407,
+     "n_cm_sources_without_plume_records": 381
+    }
+   },
+   "neighbourhood": {
+    "emission_version": {
+     "jpl": 669,
+     "v1": 540,
+     "v3": 2392,
+     "v3a": 128,
+     "v3b": 155,
+     "v3c": 388,
+     "v3d": 334,
+     "v3e": 257
+    },
+    "hidden_emission": 705,
+    "plumes": 4863,
+    "uncertainty_exceeds_rate": 14
+   }
+  },
+  "demo_run": {
+   "bond_eth": 0.015,
+   "chain": "anvil-31337",
+   "checks": 33,
+   "evidenceHash": "0x07865dea25bb7bae8b367a23d636359a58d6b9ca8d784289dbf5e36dd31ec2c9",
+   "gas_rounded_1k": {
+    "createCovenant": 339000,
+    "finalize": 118000,
+    "proposeEpisode": 368000,
+    "proposeEpisode_linked": 322000,
+    "withdraw": 30000
+   },
+   "linkedEvidenceHash": "0xd3c27f3007a43b29a0a2a521cfa0ebf8485667cb5f81958517313511d6afdbdd",
+   "mode": "snapshot",
+   "rebate_eth": 0.003
+  },
+  "floors": {
+   "floorKgH": {
+    "emi": 700,
+    "tan": 180
+   },
+   "floorStatus": {
+    "emi": "read-secondary",
+    "tan": "read"
+   },
+   "gwp": {
+    "gwp100_fossil_ch4": {
+     "status": "read",
+     "value": 29.8
+    },
+    "gwp20_fossil_ch4": {
+     "status": "read",
+     "value": 82.5
+    }
+   }
+  },
+  "inputs": {
+   "cm_source_responses_aggregate_sha256": "d96683acfb569b501c3f85aecdaabfba4a09dfcb9bad7973cc29ef74df356cee",
+   "cm_sources_csv_sha256": "f6acfe8c913a6720bc7c1e9a2664032b96ac9cde66692f26a75c968ae2214f30",
+   "mars_zip_sha256": "978464740cc903433b104e9f65dd7bd56838e7839dca0fa2605aeb34bbd40095"
+  },
+  "join_v1": {
+   "candidates_peak_below_735kgh": 64,
+   "candidates_peak_ge_1000kgh": 100,
+   "candidates_with_tanager": 203,
+   "cm_source_responses_aggregate_sha256": "d96683acfb569b501c3f85aecdaabfba4a09dfcb9bad7973cc29ef74df356cee",
+   "cm_sources_csv_sha256": "f6acfe8c913a6720bc7c1e9a2664032b96ac9cde66692f26a75c968ae2214f30",
+   "criterion_sha256": "c2f01726c73ae87aedf78b7317e051a6b89fce72d8920c5a74e64f7c160a8b2c",
+   "join_version": "v1",
+   "mars_as_of": "2026-09-12",
+   "mars_zip_sha256": "978464740cc903433b104e9f65dd7bd56838e7839dca0fa2605aeb34bbd40095",
+   "n_candidate_cm_sources": 229,
+   "n_candidate_detection_days": 420,
+   "n_candidate_plumes": 623,
+   "n_candidates": 203,
+   "n_cm_sources_within_radius": 2026,
+   "n_mars_target_sources": 1122,
+   "n_mars_targets_with_cm_source": 673,
+   "n_twin_duplicate_plume_rows_removed": 4422,
+   "radius_km": 1.5,
+   "window": "2026-03-12..2026-09-12"
+  },
+  "lead": {
+   "lead": "TKM_S_276",
+   "matched_rate_kgh_on_date": 2548.2,
+   "reproduced": true
+  },
+  "measurements": {
+   "bundle_bytes_jcs": 754,
+   "eth_usd": 2424.39,
+   "gas_sepolia_median": {
+    "challenge": 151470,
+    "createCovenant": 1254826,
+    "deploy_IncentivePool": 34584829,
+    "deploy_KeyRegistry": 6242107,
+    "deploy_MethaneCovenant": 25075377,
+    "deploy_PoolCorroboration": 3482702,
+    "deploy_PoolEpisodes": 3586409,
+    "deploy_PoolInstallments": 5197540,
+    "deploy_PoolSetup": 4664440,
+    "deploy_PoolVerify": 10328856,
+    "deploy_registerKey": 467921,
+    "deploy_renounceAdmin": 23129,
+    "deploy_setOrgController": 130117,
+    "finalize": 397954,
+    "fund": 248387,
+    "pool_attestCleanPass": 1569642,
+    "pool_countPass": 578574,
+    "pool_fund": 2452902,
+    "pool_openClaim": 721912,
+    "proposeEpisode": 1340989,
+    "proposeEpisode_reverted": 113416,
+    "registerKey": 470069,
+    "submitResolution": 485563,
+    "transfer": 21000,
+    "transfer_new_account": 204600,
+    "withdraw": 30689
+   },
+   "latency_seconds": {
+    "n": 43,
+    "p50": 11.18,
+    "p90": 13.63
+   },
+   "transactions": {
+    "by_kind": {
+     "deploy_scripts": 58,
+     "eth_transfers": 19,
+     "latency_samples": 12,
+     "protocol_calls": 49
+    },
+    "expected_reverts": 7,
+    "logged": 138,
+    "unexpected_failures": 2,
+    "unexpected_failures_detail": [
+     {
+      "cause": "first deploy attempt, KeyRegistry create: out of gas on Foundry's local Cancun-schedule estimate (fixed: higher limit)",
+      "label": "deploy_KeyRegistry",
+      "revert": "OutOfGas",
+      "tx": "0xe3206db767a05bd4aea02fa470d1a721ed99830e3e47e4a8dc33f52bdf019569"
+     },
+     {
+      "cause": "judge test wallet's first sandbox-seller funding: fixed 21,000 gas, below Sepolia's fresh-account price (fixed: transfers now use eth_estimateGas)",
+      "label": "transfer_new_account",
+      "revert": "OutOfGas",
+      "tx": "0xcfeabcf63c9663279bb547bfc1c46d0778a2aaf13eee097ecbcd1d507f76018b"
+     }
+    ],
+    "what": "every transaction our addresses sent on Sepolia, rebuilt from the chain (data/derived/sepolia_txs.json)"
+   }
+  },
+  "model": {
+   "decision": "RULE_IS_ENOUGH",
+   "featureSpecHash": "0x351f2c82c5ec5e253813518b9b314597e89de0afa64af0aca9a92c9fd91816df",
+   "modelHash": "0x141ccbbff2f58b66e3597209c7181ce7110e1b7185cb3d51b11301b3c624a289",
+   "test_a": {
+    "B1_persistence": {
+     "auc": 0.8408,
+     "brier": 0.1623,
+     "ece": 0.0927,
+     "false_zero_rate": 0.0722,
+     "n": 4875,
+     "n_forecast_below_5pct": 1718
+    },
+    "B1s_smoothed": {
+     "auc": 0.8515,
+     "brier": 0.151,
+     "bss_ci95_cell_bootstrap": [
+      0.0207,
+      0.1064
+     ],
+     "bss_vs_B1": 0.0695,
+     "ece": 0.0489,
+     "false_zero_rate": null,
+     "n": 4875,
+     "n_forecast_below_5pct": 0
+    },
+    "ablation_no_instrument": {
+     "auc": 0.8471,
+     "brier": 0.1504,
+     "bss_ci95_cell_bootstrap": [
+      0.0053,
+      0.1317
+     ],
+     "bss_vs_B1": 0.0733,
+     "ece": 0.0272,
+     "false_zero_rate": 0.0388,
+     "n": 4875,
+     "n_forecast_below_5pct": 464
+    },
+    "model": {
+     "auc": 0.8414,
+     "brier": 0.1563,
+     "bss_ci95_cell_bootstrap": [
+      -0.0415,
+      0.1116
+     ],
+     "bss_vs_B1": 0.037,
+     "bss_vs_B1s": -0.0351,
+     "bss_vs_B1s_ci95_cell_bootstrap": [
+      -0.1093,
+      0.0384
+     ],
+     "ece": 0.0472,
+     "false_zero_rate": 0.0669,
+     "n": 4875,
+     "n_forecast_below_5pct": 329
+    }
+   },
+   "test_a_Algeria": {
+    "B1_persistence": {
+     "auc": 0.799,
+     "brier": 0.154,
+     "ece": 0.0983,
+     "false_zero_rate": 0.0635,
+     "n": 1889,
+     "n_forecast_below_5pct": 834
+    },
+    "B1s_smoothed": {
+     "auc": 0.8024,
+     "brier": 0.1404,
+     "bss_ci95_cell_bootstrap": [
+      0.0402,
+      0.1323
+     ],
+     "bss_vs_B1": 0.0881,
+     "ece": 0.0475,
+     "false_zero_rate": null,
+     "n": 1889,
+     "n_forecast_below_5pct": 0
+    },
+    "ablation_no_instrument": {
+     "auc": 0.8124,
+     "brier": 0.1435,
+     "bss_ci95_cell_bootstrap": [
+      -0.0513,
+      0.1772
+     ],
+     "bss_vs_B1": 0.0677,
+     "ece": 0.0515,
+     "false_zero_rate": 0.0294,
+     "n": 1889,
+     "n_forecast_below_5pct": 272
+    },
+    "model": {
+     "auc": 0.816,
+     "brier": 0.1558,
+     "bss_ci95_cell_bootstrap": [
+      -0.1827,
+      0.1406
+     ],
+     "bss_vs_B1": -0.0119,
+     "bss_vs_B1s": -0.1097,
+     "bss_vs_B1s_ci95_cell_bootstrap": [
+      -0.2833,
+      0.0538
+     ],
+     "ece": 0.1055,
+     "false_zero_rate": 0.0636,
+     "n": 1889,
+     "n_forecast_below_5pct": 173
+    }
+   },
+   "test_a_Turkmenistan": {
+    "B1_persistence": {
+     "auc": 0.8406,
+     "brier": 0.1676,
+     "ece": 0.0941,
+     "false_zero_rate": 0.0803,
+     "n": 2986,
+     "n_forecast_below_5pct": 884
+    },
+    "B1s_smoothed": {
+     "auc": 0.8593,
+     "brier": 0.1577,
+     "bss_ci95_cell_bootstrap": [
+      -0.0024,
+      0.1168
+     ],
+     "bss_vs_B1": 0.0587,
+     "ece": 0.0808,
+     "false_zero_rate": null,
+     "n": 2986,
+     "n_forecast_below_5pct": 0
+    },
+    "ablation_no_instrument": {
+     "auc": 0.8576,
+     "brier": 0.1547,
+     "bss_ci95_cell_bootstrap": [
+      -0.0001,
+      0.1537
+     ],
+     "bss_vs_B1": 0.0765,
+     "ece": 0.0597,
+     "false_zero_rate": 0.0521,
+     "n": 2986,
+     "n_forecast_below_5pct": 192
+    },
+    "model": {
+     "auc": 0.8493,
+     "brier": 0.1566,
+     "bss_ci95_cell_bootstrap": [
+      -0.0255,
+      0.1485
+     ],
+     "bss_vs_B1": 0.0654,
+     "bss_vs_B1s": 0.007,
+     "bss_vs_B1s_ci95_cell_bootstrap": [
+      -0.0689,
+      0.0705
+     ],
+     "ece": 0.0376,
+     "false_zero_rate": 0.0705,
+     "n": 2986,
+     "n_forecast_below_5pct": 156
+    }
+   },
+   "test_b": {
+    "B1_persistence": {
+     "auc": 0.8454,
+     "brier": 0.1597,
+     "ece": 0.0997,
+     "false_zero_rate": 0.0916,
+     "n": 2757,
+     "n_forecast_below_5pct": 939
+    },
+    "B1s_smoothed": {
+     "auc": 0.8615,
+     "brier": 0.1541,
+     "bss_ci95_cell_bootstrap": [
+      -0.0277,
+      0.0891
+     ],
+     "bss_vs_B1": 0.0352,
+     "ece": 0.0886,
+     "false_zero_rate": null,
+     "n": 2757,
+     "n_forecast_below_5pct": 0
+    },
+    "ablation_no_instrument": {
+     "auc": 0.8871,
+     "brier": 0.1346,
+     "bss_ci95_cell_bootstrap": [
+      0.0907,
+      0.2171
+     ],
+     "bss_vs_B1": 0.157,
+     "ece": 0.0348,
+     "false_zero_rate": 0.0268,
+     "n": 2757,
+     "n_forecast_below_5pct": 224
+    },
+    "model": {
+     "auc": 0.8807,
+     "brier": 0.1712,
+     "bss_ci95_cell_bootstrap": [
+      -0.1715,
+      0.0162
+     ],
+     "bss_vs_B1": -0.0721,
+     "bss_vs_B1s": -0.111,
+     "bss_vs_B1s_ci95_cell_bootstrap": [
+      -0.2329,
+      -0.0021
+     ],
+     "ece": 0.1576,
+     "false_zero_rate": 0.0375,
+     "n": 2757,
+     "n_forecast_below_5pct": 80
+    }
+   },
+   "test_b_without_test_a_countries": {
+    "B1_persistence": {
+     "auc": 0.7893,
+     "brier": 0.193,
+     "ece": 0.1381,
+     "false_zero_rate": 0.1183,
+     "n": 1249,
+     "n_forecast_below_5pct": 355
+    },
+    "B1s_smoothed": {
+     "auc": 0.7999,
+     "brier": 0.1835,
+     "bss_ci95_cell_bootstrap": [
+      -0.0313,
+      0.1157
+     ],
+     "bss_vs_B1": 0.0496,
+     "ece": 0.1054,
+     "false_zero_rate": null,
+     "n": 1249,
+     "n_forecast_below_5pct": 0
+    },
+    "ablation_no_instrument": {
+     "auc": 0.8576,
+     "brier": 0.1574,
+     "bss_ci95_cell_bootstrap": [
+      0.0829,
+      0.2806
+     ],
+     "bss_vs_B1": 0.1845,
+     "ece": 0.0779,
+     "false_zero_rate": 0.0167,
+     "n": 1249,
+     "n_forecast_below_5pct": 60
+    },
+    "model": {
+     "auc": 0.8684,
+     "brier": 0.2088,
+     "bss_ci95_cell_bootstrap": [
+      -0.2303,
+      0.0499
+     ],
+     "bss_vs_B1": -0.0819,
+     "bss_vs_B1s": -0.1379,
+     "bss_vs_B1s_ci95_cell_bootstrap": [
+      -0.3001,
+      0.0294
+     ],
+     "ece": 0.2136,
+     "false_zero_rate": 0.0,
+     "n": 1249,
+     "n_forecast_below_5pct": 29
+    }
+   }
+  },
+  "policy_v2": {
+   "POLICY_V2": {
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "policyHash": "0x934a217b3e5ad942226be99f70ae46c0fe8d274c967cd6d256084bcc17f367ff",
+    "settlementMode": "ONCHAIN"
+   },
+   "POLICY_V2_MULTIYEAR": {
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "policyHash": "0xda782c5b3911b90e4beadd6233836315041d71dc15b5979e24fb65a9837442cc",
+    "settlementMode": "ONCHAIN"
+   },
+   "POLICY_V2_REPLAY": {
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "policyHash": "0x1776f04368519d5ca5da9e88a5e4be782a5069a3837d0be0585095c0448b5bd9",
+    "settlementMode": "ONCHAIN"
+   },
+   "POLICY_V2_SANDBOX": {
+    "onchainParamsHash": "0xd8614929f00117a344fa149ba957f74b924d1aff70bff6da34bd8ed67f7fbd12",
+    "policyHash": "0x4df82d5b5bd420ae7642b05d7c8939029f51abf5c21c40771ba0e0b1926fe5d0",
+    "settlementMode": "ONCHAIN"
+   },
+   "POLICY_V2_VERDICT_ONLY": {
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "policyHash": "0x4a39d3fbbd1cb21d5fee728e8227e0445526df44380618c9cc429b7a477500e8",
+    "settlementMode": "VERDICT_ONLY"
+   }
+  },
+  "portfolio": {
+   "bond": {
+    "pool_eth": 0.768,
+    "portfolioSentence": "Portfolio [SIM]: 205 facilities — 203 join candidates, each chosen because it showed a Carbon Mapper plume that MARS did not see, plus the 2 other demo cases; 201 of 205 are sized: ARG_S_055, TKM_S_395, TKM_S_426, USA_S_053 own no Carbon Mapper source (the join matches plumes, ownership uses source centroids; their plumes belong to a nearer target's source) and cannot open an episode; bond = pool = 0.768 ETH, the P90 of one year's rebate exposure.",
+    "recommended_bond_eth": 0.768,
+    "set_annual_exposure_eth": {
+     "mean": 0.716527,
+     "p90": 0.768
+    },
+    "set_annual_exposure_policy_units": {
+     "mean": 716.44,
+     "p90": 769.0
+    },
+    "sourceset_root": "0xd931a93116008a9e46d921b88e549907d1d05302b88163a694d6fff611c8408f"
+   },
+   "sourceset_v3_root": "0xd931a93116008a9e46d921b88e549907d1d05302b88163a694d6fff611c8408f"
+  },
+  "projection": {
+   "card": {
+    "adoptionSentence": "The scenario assumes importers covering the 205-facility portfolio [SIM] write the clause into their supply contracts, their sellers post the bond and act on attested episodes at the scenario's rate, the stake's low bound holds, and a fixed fault stays stopped until the fault's observed end, the facility's last pass or a new fault; it assumes no new satellite and counts no clean pass as a stop.",
+    "costLineSentence": "The ledger is cheap: USD 4.29 of Ethereum Sepolia calls per episode, USD 1,330 a year for the portfolio, USD 0.0015 per t CO₂e projected at the central action share: the cost of the records, not the work on site.",
+    "costSentence": "Ledger cost only, not the cost of the work on site: one episode costs USD 4.29 on Ethereum Sepolia (proposeEpisode + finalize + withdraw at the stated 1 gwei and ETH/USD 2,424, measured 2026-10-22); at the portfolio's backtest rate of 309 episodes a year plus one createCovenant that is USD 1,330 a year, or USD 0.0015 per t CO₂e projected at the central action share (USD 0.00059–0.0018 across scenarios and with no recurrence). It excludes the refund-side calls and the cost of posting the bond.",
+    "evidenceSentence": "Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band.",
+    "floorLineSentence": "Stake, not abatement: the clause puts a price on at least ~312 kt CH₄ a year across the 174 of the portfolio's 205 facilities with a quantified stake [SIM].",
+    "floorSentence": "Stake, not abatement: at least ~312 kt CH₄/yr across the portfolio's 174 quantified facilities [SIM] (members chosen because each showed a Carbon Mapper plume MARS did not see) and ~519 kt across 428 (of the 1,122 sources MARS labels absent today — a label decided after the window), assuming what satellites saw on their passes holds between them; it is the methane the clause puts a price on, not a change in emissions.",
+    "headlineSentence": "[PROJECTION] The clause makes each attested super-emitter a priced event the seller pays for and earns back by staying clean: one 205-facility portfolio covenant [SIM] (members chosen for a Carbon Mapper plume not in MARS, credited over each member's window from MARS's first plume there as if the covenant began then; stake quantified at 174) whose sellers act on episodes would stop ~30 kt CH₄/yr at the central 39 % action share (up to ~62 kt with no recurrence), ~0.90 Mt CO₂e/yr at GWP-100, each fix credited until the fault's observed end, the last pass or a new fault — assumptions: paper §4.",
+    "limitSentence": "The carbon figures are a projection resting on two ASSUMPTIONs, the action share and the time share, which our own checks neither support nor bound; section 4, 'How we estimated this', states both and the checks.",
+    "line1Sentence": "MARS outcome by response: MARS documents a per-source emission_status, but neither its committed nor its current public file carries it, so the outcome is the 'absent' label (no MARS detection over the last six months; a non-detection label, not a stop): 166 of 285 notified oil and gas sources with feedback = Yes (operator or government) against 737 of 1,227 with feedback = No, a difference of -1.8 points (95 % CI -8.2 to +4.4); +2.3 within plume-count strata; 46 and 286 sources with an undetermined label are left out.",
+    "line2Sentence": "Event study: Carbon Mapper per-pass detection rates in the year before and after each source's first notified MARS plume (a proxy date: MARS publishes no notification date; it is also the first plume for 188 of the 437 sources used), feedback = Yes (operator or government) minus No: -0.020 (95 % CI -0.105 to +0.066) over 83 and 354 sources, -0.025 (-0.135 to +0.084) on the committed set conditioned on today's 'absent' label; every interval of the 6 specifications on both sets includes zero; minimum detectable effect 0.125 (30 % of the responders' starting rate). T0 precedes MARS's feedback tracking (November 2024) for 40 of 83 responders and 97 of 354 non-responders; the post window runs past the catalogue end for 9 and 105; responders start from a higher rate, so regression to the mean pushes toward a drop; both groups' rates rise after T0, as tasking toward expected plumes would make them.",
+    "methodsSentence": "How we estimated this. Projected tonnes = for each facility with a quantified stake, the stake's low bound × the fixed share of its emitting time. The action share is an ASSUMPTION (32 %, 39 % central, 48 %) informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024); the scenarios are that share and its 95 % sampling interval (147 California incidences), which does not cover the move from a regulator's notice to a rebate under a contract; per event it is CARB's Type A share by persistence (44 % at 1 plume, n = 68; 39 % at 2 plumes, n = 28; 37 % at 3 or more plumes, n = 19), counted by incidence, as CARB publishes no emission rate per incidence. The time share is an ASSUMPTION built from the stake's own satellite passes: following Cusworth et al. 2026, a detection after a non-detection starts an event and a non-detection after a detection ends it; a fixable event is credited from its fix (its first detection plus Carbon Mapper's publication lag, median 30 days, plus the seller's response, every California Type A notification-to-mitigation delay, median 4 days) until the fault's observed end or the facility's last pass, weighted by the chance that no new fault has started (re-onset hazard 2.10 a year: 136 restarts over 64.89 event-free facility-years on the stake's own passes; the bias runs both ways: sparse passes miss restarts, and a single missed detection of a persistent source creates a false one); time before the fix, after the last pass and after a new fault is never credited. The credited days are divided by the facility's emitting days as the stake counts them (duty cycle × days to its last pass), 1.15 times the summed event lengths, so the time share errs low. Each member is credited over its window since MARS's first plume there, as if the covenant had started then: 66 % of the credit is for events containing the plume that selected the member, and a forward hold-out (members chosen before a date, credit only after it) is future work. The action share and the response delay are California's, under a regulator; 72 % of the portfolio's stake is in Turkmenistan and Venezuela, where a buyer, not a regulator, would ask. The stake assumes what satellites saw on their passes holds between them. Our two checks (MARS 'absent' label by feedback; Carbon Mapper detection rates around 437 notified sources) find no difference between answered and unanswered sources; the design cannot detect a drop smaller than 30 % of the detection rate and cannot see a partial mass cut at all, so they neither support nor bound this band. These figures are a projection of what the clause could change if adopted, not a measured reduction.",
+    "negativeFindingSentence": "In MARS's own cross-section the answered sources are not the cleaner ones: of the 2,089 notified oil and gas sources, the 331 with feedback = Yes (operator or government) have a mean persistency of 0.140 and 16.31 plumes on average (61 persistent or frequent), against 0.083 and 5.72 (150) for the 1,513 with feedback = No; a cross-section cannot separate what a reply changes from which sources get replies (recurring sources draw more alerts). MARS publishes no notification or response date for a source, so no before/after estimate can be built from MARS alone: our event study needs a proxy date, and the projection's stop share is an ASSUMPTION informed by published figures.",
+    "projectionSentence": "[PROJECTION] A scenario, not a measurement: if importers covering the 205-facility portfolio [SIM] wrote the clause, their sellers acted on 39 % of attested episodes (ASSUMPTION, informed by the published share of notified incidences that were fixable faults, all fixed: when California's air regulator sent operators airborne plume detections and asked them to find the source, repair it if possible and report, operators answered 145 of 147 oil and gas incidences; 58 were faults unknown to the operator, and every one was stopped or repaired (CARB 2024)), and a fix were assumed to stop its fault until the fault's observed end, the facility's last pass or a new fault (ASSUMPTION: events on the stake's own passes by Cusworth et al. 2026's definition, California's response delays; not measured after a satellite notification), ~30 kt CH₄/yr (up to ~62 kt with no recurrence) of the stake's low bound of ~312 kt (stake, not abatement) would stop, ~0.90 Mt CO₂e/yr at GWP-100 (~2.50 Mt at GWP-20) — a projection of what the clause could change if adopted, not a measured reduction.",
+    "scaleSentence": "Scaled to the backtest set (428 facilities with a quantified stake, of the 1,122 sources MARS labels absent today — a label decided after the window), the same arithmetic gives ~62 kt CH₄ a year (up to ~97 kt with no recurrence; ~1.85 Mt CO₂e/yr at GWP-100, ~5.11 Mt at GWP-20), rising to ~76 kt (up to ~120 kt) at the top of the interval for the share of episodes sellers act on (48 %).",
+    "scenariosSentence": "[PROJECTION] By action scenario (ASSUMPTION), portfolio [SIM], of the stake's low bound of ~312 kt (stake, not abatement): 32 % acted on → ~25 kt CH₄/yr (up to ~51 kt with no recurrence), 39 % acted on → ~30 kt CH₄/yr (up to ~62 kt with no recurrence), 48 % acted on → ~37 kt CH₄/yr (up to ~76 kt with no recurrence); every value is in data/derived/projection.json — a projection of what the clause could change if adopted, not a measured reduction.",
+    "widerSetSentence": "[PROJECTION] Over all 428 facilities with a quantified stake (of the 1,122 sources MARS labels absent today — a label decided after the window), the same assumptions (ASSUMPTION) give ~62 kt CH₄/yr (up to ~97 kt with no recurrence) at the central action share of the stake's low bound of ~519 kt (stake, not abatement), ~1.85 Mt CO₂e/yr at GWP-100 — a projection of what the clause could change if adopted, not a measured reduction."
+   },
+   "evidence": {
+    "line1": {
+     "byFeedback": {
+      "No": {
+       "absent": 737,
+       "ci": [
+        0.573,
+        0.6277
+       ],
+       "determined": 1227,
+       "share": 0.6007,
+       "sources": 1513,
+       "undeterminedLeftOut": 286
+      },
+      "Yes": {
+       "absent": 166,
+       "ci": [
+        0.5245,
+        0.6382
+       ],
+       "determined": 285,
+       "share": 0.5825,
+       "sources": 331,
+       "undeterminedLeftOut": 46
+      }
+     },
+     "difference": {
+      "ci": [
+       -0.0822,
+       0.0441
+      ],
+      "yesMinusNo": -0.0182
+     },
+     "mantelHaenszelDifference": {
+      "ci": [
+       -0.0374,
+       0.0812
+      ],
+      "ciMethod": "bootstrap over sources within group and stratum",
+      "yesMinusNo": 0.0227
+     }
+    },
+    "line2": {
+     "allNotified": {
+      "runs": {
+       "firstNotifiedPlume_1000_30_3": {
+        "did": {
+         "bootstrapSe": 0.0404,
+         "ci": [
+          -0.1425,
+          0.0138
+         ],
+         "minimumDetectableEffect": 0.1131,
+         "minimumDetectableShareOfPreRate": 0.3186,
+         "yesMinusNo": -0.0648
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.5019,
+          "postWindowTruncated": 322,
+          "preRate": 0.2476,
+          "proxyDatesAgree": 138,
+          "sources": 323,
+          "t0BeforeFeedbackTracking": 105
+         },
+         "Yes": {
+          "postRate": 0.5444,
+          "postWindowTruncated": 81,
+          "preRate": 0.3549,
+          "proxyDatesAgree": 21,
+          "sources": 82,
+          "t0BeforeFeedbackTracking": 46
+         }
+        }
+       },
+       "firstNotifiedPlume_180_15_1": {
+        "did": {
+         "bootstrapSe": 0.057,
+         "ci": [
+          -0.1727,
+          0.0467
+         ],
+         "minimumDetectableEffect": 0.1596,
+         "minimumDetectableShareOfPreRate": 0.3664,
+         "yesMinusNo": -0.0628
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4576,
+          "postWindowTruncated": 64,
+          "preRate": 0.3736,
+          "proxyDatesAgree": 189,
+          "sources": 379,
+          "t0BeforeFeedbackTracking": 84
+         },
+         "Yes": {
+          "postRate": 0.4569,
+          "postWindowTruncated": 6,
+          "preRate": 0.4357,
+          "proxyDatesAgree": 26,
+          "sources": 81,
+          "t0BeforeFeedbackTracking": 31
+         }
+        }
+       },
+       "firstNotifiedPlume_365_30_1": {
+        "did": {
+         "bootstrapSe": 0.0465,
+         "ci": [
+          -0.1508,
+          0.0295
+         ],
+         "minimumDetectableEffect": 0.1301,
+         "minimumDetectableShareOfPreRate": 0.3245,
+         "yesMinusNo": -0.0596
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.5012,
+          "postWindowTruncated": 162,
+          "preRate": 0.339,
+          "proxyDatesAgree": 243,
+          "sources": 489,
+          "t0BeforeFeedbackTracking": 127
+         },
+         "Yes": {
+          "postRate": 0.5037,
+          "postWindowTruncated": 21,
+          "preRate": 0.401,
+          "proxyDatesAgree": 37,
+          "sources": 111,
+          "t0BeforeFeedbackTracking": 51
+         }
+        }
+       },
+       "firstNotifiedPlume_365_30_2": {
+        "did": {
+         "bootstrapSe": 0.0447,
+         "ci": [
+          -0.1054,
+          0.0656
+         ],
+         "minimumDetectableEffect": 0.1253,
+         "minimumDetectableShareOfPreRate": 0.3004,
+         "yesMinusNo": -0.0202
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4658,
+          "postWindowTruncated": 105,
+          "preRate": 0.3267,
+          "proxyDatesAgree": 163,
+          "sources": 354,
+          "t0BeforeFeedbackTracking": 97
+         },
+         "Yes": {
+          "postRate": 0.536,
+          "postWindowTruncated": 9,
+          "preRate": 0.4172,
+          "proxyDatesAgree": 25,
+          "sources": 83,
+          "t0BeforeFeedbackTracking": 40
+         }
+        }
+       },
+       "firstNotifiedPlume_730_30_2": {
+        "did": {
+         "bootstrapSe": 0.0398,
+         "ci": [
+          -0.128,
+          0.0289
+         ],
+         "minimumDetectableEffect": 0.1116,
+         "minimumDetectableShareOfPreRate": 0.3091,
+         "yesMinusNo": -0.0466
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4992,
+          "postWindowTruncated": 336,
+          "preRate": 0.266,
+          "proxyDatesAgree": 198,
+          "sources": 428,
+          "t0BeforeFeedbackTracking": 121
+         },
+         "Yes": {
+          "postRate": 0.5477,
+          "postWindowTruncated": 60,
+          "preRate": 0.3611,
+          "proxyDatesAgree": 26,
+          "sources": 93,
+          "t0BeforeFeedbackTracking": 48
+         }
+        }
+       },
+       "firstPlume_365_30_2": {
+        "did": {
+         "bootstrapSe": 0.0512,
+         "ci": [
+          -0.0798,
+          0.1231
+         ],
+         "minimumDetectableEffect": 0.1435,
+         "minimumDetectableShareOfPreRate": 0.7201,
+         "yesMinusNo": 0.0195
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4027,
+          "postWindowTruncated": 72,
+          "preRate": 0.219,
+          "proxyDatesAgree": 163,
+          "sources": 305,
+          "t0BeforeFeedbackTracking": 130
+         },
+         "Yes": {
+          "postRate": 0.4026,
+          "postWindowTruncated": 5,
+          "preRate": 0.1993,
+          "proxyDatesAgree": 25,
+          "sources": 59,
+          "t0BeforeFeedbackTracking": 30
+         }
+        }
+       }
+      }
+     },
+     "joinNeighbourhood": {
+      "runs": {
+       "firstNotifiedPlume_1000_30_3": {
+        "did": {
+         "bootstrapSe": 0.0471,
+         "ci": [
+          -0.1583,
+          0.0267
+         ],
+         "minimumDetectableEffect": 0.132,
+         "minimumDetectableShareOfPreRate": 0.4459,
+         "yesMinusNo": -0.0658
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.469,
+          "postWindowTruncated": 251,
+          "preRate": 0.232,
+          "proxyDatesAgree": 111,
+          "sources": 251,
+          "t0BeforeFeedbackTracking": 72
+         },
+         "Yes": {
+          "postRate": 0.4672,
+          "postWindowTruncated": 60,
+          "preRate": 0.2959,
+          "proxyDatesAgree": 17,
+          "sources": 61,
+          "t0BeforeFeedbackTracking": 32
+         }
+        }
+       },
+       "firstNotifiedPlume_180_15_1": {
+        "did": {
+         "bootstrapSe": 0.0661,
+         "ci": [
+          -0.1915,
+          0.0663
+         ],
+         "minimumDetectableEffect": 0.1851,
+         "minimumDetectableShareOfPreRate": 0.4621,
+         "yesMinusNo": -0.0607
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4286,
+          "postWindowTruncated": 13,
+          "preRate": 0.3457,
+          "proxyDatesAgree": 133,
+          "sources": 265,
+          "t0BeforeFeedbackTracking": 53
+         },
+         "Yes": {
+          "postRate": 0.4227,
+          "postWindowTruncated": 3,
+          "preRate": 0.4006,
+          "proxyDatesAgree": 18,
+          "sources": 58,
+          "t0BeforeFeedbackTracking": 20
+         }
+        }
+       },
+       "firstNotifiedPlume_365_30_1": {
+        "did": {
+         "bootstrapSe": 0.0561,
+         "ci": [
+          -0.1595,
+          0.057
+         ],
+         "minimumDetectableEffect": 0.1573,
+         "minimumDetectableShareOfPreRate": 0.4512,
+         "yesMinusNo": -0.0524
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4675,
+          "postWindowTruncated": 98,
+          "preRate": 0.3236,
+          "proxyDatesAgree": 182,
+          "sources": 354,
+          "t0BeforeFeedbackTracking": 84
+         },
+         "Yes": {
+          "postRate": 0.4402,
+          "postWindowTruncated": 14,
+          "preRate": 0.3486,
+          "proxyDatesAgree": 27,
+          "sources": 81,
+          "t0BeforeFeedbackTracking": 35
+         }
+        }
+       },
+       "firstNotifiedPlume_365_30_2": {
+        "did": {
+         "bootstrapSe": 0.0575,
+         "ci": [
+          -0.1352,
+          0.0841
+         ],
+         "minimumDetectableEffect": 0.1612,
+         "minimumDetectableShareOfPreRate": 0.4553,
+         "yesMinusNo": -0.0252
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4363,
+          "postWindowTruncated": 65,
+          "preRate": 0.3111,
+          "proxyDatesAgree": 124,
+          "sources": 265,
+          "t0BeforeFeedbackTracking": 66
+         },
+         "Yes": {
+          "postRate": 0.454,
+          "postWindowTruncated": 7,
+          "preRate": 0.3541,
+          "proxyDatesAgree": 20,
+          "sources": 60,
+          "t0BeforeFeedbackTracking": 25
+         }
+        }
+       },
+       "firstNotifiedPlume_730_30_2": {
+        "did": {
+         "bootstrapSe": 0.045,
+         "ci": [
+          -0.1314,
+          0.0418
+         ],
+         "minimumDetectableEffect": 0.1262,
+         "minimumDetectableShareOfPreRate": 0.4142,
+         "yesMinusNo": -0.045
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.4654,
+          "postWindowTruncated": 257,
+          "preRate": 0.2528,
+          "proxyDatesAgree": 151,
+          "sources": 315,
+          "t0BeforeFeedbackTracking": 79
+         },
+         "Yes": {
+          "postRate": 0.4722,
+          "postWindowTruncated": 50,
+          "preRate": 0.3046,
+          "proxyDatesAgree": 21,
+          "sources": 70,
+          "t0BeforeFeedbackTracking": 33
+         }
+        }
+       },
+       "firstPlume_365_30_2": {
+        "did": {
+         "bootstrapSe": 0.0619,
+         "ci": [
+          -0.0966,
+          0.1474
+         ],
+         "minimumDetectableEffect": 0.1735,
+         "minimumDetectableShareOfPreRate": 0.7811,
+         "yesMinusNo": 0.0281
+        },
+        "groups": {
+         "No": {
+          "postRate": 0.3839,
+          "postWindowTruncated": 40,
+          "preRate": 0.2144,
+          "proxyDatesAgree": 124,
+          "sources": 224,
+          "t0BeforeFeedbackTracking": 91
+         },
+         "Yes": {
+          "postRate": 0.4196,
+          "postWindowTruncated": 4,
+          "preRate": 0.2221,
+          "proxyDatesAgree": 20,
+          "sources": 45,
+          "t0BeforeFeedbackTracking": 19
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "headline": {
+    "atActionShare": 0.39,
+    "central": 30.25,
+    "kind": "central",
+    "model": "t4d",
+    "note": "headlineKind 'central' publishes option d's low end ('with the measured re-onset hazard') as the central figure with its no-recurrence end, the selection clause and the credit clause, and the methods paragraph carries the evidence sentence and 'not a measured reduction' once.",
+    "option": "d",
+    "upToNoRecurrence": 61.79
+   },
+   "inputs": {
+    "data/derived/backtest.json": "05344c8d8abb59bf0602fed8c72f5dc15f82838dd01a14c98b2729112d65328d",
+    "data/derived/carb_summary.json": "067b1af2bbf802e473f3056881d3a580746316287e3d1c7f31bead0815800151",
+    "data/derived/cm_plumes.csv": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69",
+    "data/derived/cm_sources.csv": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335",
+    "data/derived/cm_timelines.json": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c",
+    "data/derived/cm_timelines_not_mars_notified.json": "69f995d382a29a9e740461cb668797b9394e36e355d7238ff937f992873db9c2",
+    "data/derived/cm_timelines_notified.json": "bf8edad5308771d058725f0c4f53ce0463fd350ff86bbb26513917c4268bf4d7",
+    "data/derived/floors.json": "a461f410e4a4a7650ef9690b16c1ba677a3a5e9ebc70df2244ce9f467008ac0f",
+    "data/derived/join_v1.json": "b5662f399cb6ff9a390a38d66daad2f930f50668c6a89fe306678e490a7051cf",
+    "data/derived/mars_notified.json": "b21c41ce2006e645384c8b040d9c0b2f2ffdab5cf5de9a7b320ebc8fdb48d6ea",
+    "data/derived/mars_plumes_og.csv": "8e369ece38a44bac621407ebcbb2d02bbc048cda43d95284a2a04a04eebce28b",
+    "data/derived/mars_sources.csv": "3573b9b5f11e1ebf09a3bcc6b5d085d07aeace10f1da7e8e81b663ec3106f10f",
+    "data/derived/measurements.json": "38000c029c102953731442a7be841c07e843a67a1b76403878b3d3aecbbcf2a8",
+    "data/derived/projection_sources.json": "0d31ee3b3ad5d40caf0a962994a70baad039f1aeab6e7315a9b81ed4cec5f074",
+    "data/derived/sourceset_v3.json": "e1246d74c3453f5876b2106bd4f6e680bde7b928ca8dae52acb5a62cb6e162c1",
+    "pipeline/backtest.py": "591018ef5a45eedce5f3273890fbecfda53599a7f5aa8850843372957d67302f",
+    "pipeline/projection.py": "9cca85428847e23e4eb96d47e800db341933423fb58af09f697b4e0546f17e00",
+    "pipeline/projection_evidence.py": "0807fcc9d77b062a2f17915b9b67c13117f46239ad90a239da7013284584146e",
+    "pipeline/projection_time.py": "26f1823d436016f49516a0de6a68001fc32473027a6aec523c2d8a5819440d21"
+   },
+   "label": "[PROJECTION] projection of what the clause could change if adopted, not a measured reduction; counterfactual inputs (the backtest), scenario parameters (ASSUMPTION) and published evidence (projection_sources.json)",
+   "model": {
+    "choice": "range",
+    "emissionClasses": {
+     "allowed operation (Type B)": "r",
+     "emissions before detection and during repair": "spanned by the interim range",
+     "maintenance (Type C)": "r",
+     "natural stops": "spanned by the interim range",
+     "new faults": "spanned by the interim range",
+     "no response": "r",
+     "not found": "r",
+     "reply-driven fixes": "b"
+    },
+    "range": {
+     "high": "b",
+     "low": "c"
+    },
+    "sensitivity": {
+     "a_count": {
+      "d": 0.44,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 196.45,
+       "portfolio_v3": 117.94
+      },
+      "r": 0.99,
+      "rangeEnd": null
+     },
+     "b_count": {
+      "d": 0.9,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 121.48,
+       "portfolio_v3": 72.93
+      },
+      "r": 0.39,
+      "rangeEnd": "high"
+     },
+     "b_mass": {
+      "rangeEnd": null
+     },
+     "b_plumes": {
+      "d": 0.9,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 116.81,
+       "portfolio_v3": 70.13
+      },
+      "r": 0.38,
+      "rangeEnd": null
+     },
+     "c_count": {
+      "d": 0.22,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 29.7,
+       "portfolio_v3": 17.83
+      },
+      "r": 0.39,
+      "rangeEnd": "low"
+     },
+     "c_plumes": {
+      "d": 0.22,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 28.55,
+       "portfolio_v3": 17.14
+      },
+      "r": 0.38,
+      "rangeEnd": null
+     },
+     "t4": {
+      "d": 0.44,
+      "ktCh4PerYrCentral": {
+       "backtest_set": 59.39,
+       "portfolio_v3": 35.66
+      },
+      "r": 0.39,
+      "rangeEnd": null
+     }
+    },
+    "violations": {
+     "a": [
+      "d is measured on 'total facility emissions, ground survey', not the required population 'leak emissions re-surveyed after a repair round'",
+      "d credits 'vent change without repair', a change a repair did not cause",
+      "r does not remove 'allowed operation (Type B)', which a repair cannot touch",
+      "r does not remove 'maintenance (Type C)', which a repair cannot touch"
+     ],
+     "b": [],
+     "c": [],
+     "t4": [
+      "removes 'allowed operation (Type B)' twice (r and d)",
+      "removes 'maintenance (Type C)' twice (r and d)",
+      "d is measured on 'total facility emissions, ground survey', not the required population 'leak emissions re-surveyed after a repair round'",
+      "d credits 'vent change without repair', a change a repair did not cause"
+     ]
+    },
+    "weighting": {
+     "incidences": 115,
+     "uniqueJoinKey": 14,
+     "years": [
+      2021,
+      2023
+     ]
+    }
+   },
+   "negativeFinding": {
+    "byFeedback": {
+     "No": {
+      "meanPersistency": 0.083,
+      "meanPlumes": 5.72,
+      "medianPersistency": 0.0,
+      "medianPlumes": 2,
+      "persistentOrFrequent": 150,
+      "plumesTotal": 8651,
+      "sources": 1513,
+      "withPersistency": 1227
+     },
+     "Yes": {
+      "meanPersistency": 0.14,
+      "meanPlumes": 16.31,
+      "medianPersistency": 0.0,
+      "medianPlumes": 3,
+      "persistentOrFrequent": 61,
+      "plumesTotal": 5399,
+      "sources": 331,
+      "withPersistency": 285
+     }
+    },
+    "notified": 2089
+   },
+   "parameters": {
+    "baselineResponseShare": 0.13,
+    "ceasedShare": {
+     "high": 0.9,
+     "low": 0.22
+    },
+    "responseRule": {
+     "acted": 58,
+     "answered": 145,
+     "baselineCite": "UNEP via UN News 2026",
+     "confidence": 0.95,
+     "interval": [
+      0.3192,
+      0.4753
+     ],
+     "of": 147,
+     "share": 0.3946,
+     "source": "carb-2024-airborne"
+    },
+    "responseScenarios": "0.32, 0.39, 0.48"
+   },
+   "scopes": {
+    "backtest_set": {
+     "facilities": 673,
+     "facilitiesQuantified": 428,
+     "ledger": {
+      "episodesPerYear": 577.705,
+      "usdPerEpisode": 4.2903,
+      "usdPerYear": 2481.57
+     },
+     "scenarios": {
+      "0.32": {
+       "kt_ch4_per_yr": {
+        "high": 79.76,
+        "low": 50.81
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.001044,
+        "low": 0.001639
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 2.377,
+        "low": 1.514
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 6.58,
+        "low": 4.192
+       }
+      },
+      "0.39": {
+       "kt_ch4_per_yr": {
+        "high": 97.2,
+        "low": 61.93
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.0008567,
+        "low": 0.001345
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 2.897,
+        "low": 1.846
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 8.019,
+        "low": 5.109
+       }
+      },
+      "0.48": {
+       "kt_ch4_per_yr": {
+        "high": 119.63,
+        "low": 76.22
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.0006961,
+        "low": 0.001093
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 3.565,
+        "low": 2.271
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 9.869,
+        "low": 6.288
+       }
+      }
+     },
+     "stakeLowKtCh4PerYr": 519.15
+    },
+    "portfolio_v3": {
+     "facilities": 205,
+     "facilitiesQuantified": 174,
+     "ledger": {
+      "episodesPerYear": 309.202,
+      "usdPerEpisode": 4.2903,
+      "usdPerYear": 1329.61
+     },
+     "scenarios": {
+      "0.32": {
+       "kt_ch4_per_yr": {
+        "high": 50.7,
+        "low": 24.82
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.00088,
+        "low": 0.001798
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 1.511,
+        "low": 0.74
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 4.183,
+        "low": 2.048
+       }
+      },
+      "0.39": {
+       "kt_ch4_per_yr": {
+        "high": 61.79,
+        "low": 30.25
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.0007221,
+        "low": 0.001475
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 1.841,
+        "low": 0.901
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 5.098,
+        "low": 2.496
+       }
+      },
+      "0.48": {
+       "kt_ch4_per_yr": {
+        "high": 76.05,
+        "low": 37.23
+       },
+       "ledgerUsdPerTco2eGwp100": {
+        "high": 0.0005867,
+        "low": 0.001198
+       },
+       "mt_co2e_per_yr_gwp100": {
+        "high": 2.266,
+        "low": 1.109
+       },
+       "mt_co2e_per_yr_gwp20": {
+        "high": 6.274,
+        "low": 3.071
+       }
+      }
+     },
+     "stakeLowKtCh4PerYr": 311.68
+    }
+   },
+   "t4d": {
+    "diagnostics": {
+     "backtest_set": {
+      "denominatorOverEventLength": 1.15,
+      "reonsetHazardSingleMissMerged": {
+       "eventFreeYears": 205.72,
+       "perYear": 0.6222,
+       "restarts": 128
+      },
+      "selectingShareOfCredit": 0.3913
+     },
+     "portfolio_v3": {
+      "denominatorOverEventLength": 1.15,
+      "reonsetHazardSingleMissMerged": {
+       "eventFreeYears": 49.12,
+       "perYear": 1.2419,
+       "restarts": 61
+      },
+      "selectingShareOfCredit": 0.6552
+     }
+    },
+    "headline": {
+     "central": 30.25,
+     "kind": "central",
+     "upToNoRecurrence": 61.79
+    },
+    "notMarsNotifiedSample": {
+     "airborneShareOfObservations": 0.628,
+     "eligibleCount": 11298,
+     "emittingYears": 259.76,
+     "fetchedAt": "2026-10-21T09:42:14Z",
+     "observedEnds": 412,
+     "perYear": 1.5861,
+     "seed": 20261021,
+     "size": 400,
+     "sourcesWithEvents": 370,
+     "usBoxShareOfSources": 0.7275,
+     "usable": true
+    },
+    "postHoc": {
+     "d_hazard_reviewer": {
+      "backtest_set": 70.88,
+      "portfolio_v3": 45.07
+     }
+    },
+    "postResult": {
+     "d_eventdenom": {
+      "backtest_set": 68.77,
+      "portfolio_v3": 33.65
+     },
+     "d_lambda_singlemiss": {
+      "backtest_set": 74.59,
+      "portfolio_v3": 38.38
+     },
+     "e": {
+      "backtest_set": 47.07,
+      "portfolio_v3": 24.05
+     },
+     "e_norec": {
+      "backtest_set": 66.66,
+      "portfolio_v3": 42.7
+     }
+    },
+    "rByPlumeClass": {
+     "1": {
+      "n": 68,
+      "share": 0.4412,
+      "typeA": 30
+     },
+     "2": {
+      "n": 28,
+      "share": 0.3929,
+      "typeA": 11
+     },
+     "3+": {
+      "n": 19,
+      "share": 0.3684,
+      "typeA": 7
+     }
+    },
+    "scopes": {
+     "backtest_set": {
+      "reonsetHazard": {
+       "eventFreeYears": 233.64,
+       "perYear": 1.1642,
+       "restarts": 272
+      },
+      "scenarios": {
+       "0.32": {
+        "kt_ch4_per_yr": {
+         "high": 79.76,
+         "low": 50.81
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.001044,
+         "low": 0.001639
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 2.377,
+         "low": 1.514
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 6.58,
+         "low": 4.192
+        }
+       },
+       "0.39": {
+        "kt_ch4_per_yr": {
+         "high": 97.2,
+         "low": 61.93
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.0008567,
+         "low": 0.001345
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 2.897,
+         "low": 1.846
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 8.019,
+         "low": 5.109
+        }
+       },
+       "0.48": {
+        "kt_ch4_per_yr": {
+         "high": 119.63,
+         "low": 76.22
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.0006961,
+         "low": 0.001093
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 3.565,
+         "low": 2.271
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 9.869,
+         "low": 6.288
+        }
+       }
+      }
+     },
+     "portfolio_v3": {
+      "reonsetHazard": {
+       "eventFreeYears": 64.89,
+       "perYear": 2.0959,
+       "restarts": 136
+      },
+      "scenarios": {
+       "0.32": {
+        "kt_ch4_per_yr": {
+         "high": 50.7,
+         "low": 24.82
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.00088,
+         "low": 0.001798
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 1.511,
+         "low": 0.74
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 4.183,
+         "low": 2.048
+        }
+       },
+       "0.39": {
+        "kt_ch4_per_yr": {
+         "high": 61.79,
+         "low": 30.25
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.0007221,
+         "low": 0.001475
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 1.841,
+         "low": 0.901
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 5.098,
+         "low": 2.496
+        }
+       },
+       "0.48": {
+        "kt_ch4_per_yr": {
+         "high": 76.05,
+         "low": 37.23
+        },
+        "ledgerUsdPerTco2eGwp100": {
+         "high": 0.0005867,
+         "low": 0.001198
+        },
+        "mt_co2e_per_yr_gwp100": {
+         "high": 2.266,
+         "low": 1.109
+        },
+        "mt_co2e_per_yr_gwp20": {
+         "high": 6.274,
+         "low": 3.071
+        }
+       }
+      }
+     }
+    },
+    "sensitivity": {
+     "a": {
+      "backtest_set": 196.45,
+      "portfolio_v3": 117.94
+     },
+     "b": {
+      "backtest_set": 121.48,
+      "portfolio_v3": 72.93
+     },
+     "c": {
+      "backtest_set": 29.7,
+      "portfolio_v3": 17.83
+     },
+     "d": {
+      "backtest_set": 61.93,
+      "portfolio_v3": 30.25
+     },
+     "d_bcensored": {
+      "backtest_set": 46.68,
+      "portfolio_v3": 22.81
+     },
+     "d_carb": {
+      "backtest_set": 76.47,
+      "portfolio_v3": 35.29
+     },
+     "d_lag0": {
+      "backtest_set": 78.14,
+      "portfolio_v3": 35.96
+     },
+     "d_lagcw": {
+      "backtest_set": 61.62,
+      "portfolio_v3": 30.12
+     },
+     "d_longest": {
+      "backtest_set": 68.86,
+      "portfolio_v3": 32.66
+     },
+     "d_norec": {
+      "backtest_set": 97.2,
+      "portfolio_v3": 61.79
+     },
+     "d_rflat": {
+      "backtest_set": 64.81,
+      "portfolio_v3": 31.72
+     },
+     "d_rminusb": {
+      "backtest_set": 40.32,
+      "portfolio_v3": 19.67
+     },
+     "d_shortest": {
+      "backtest_set": 56.0,
+      "portfolio_v3": 28.16
+     },
+     "rev_t4c_cap182": {
+      "backtest_set": 74.69,
+      "portfolio_v3": 45.86
+     },
+     "rev_t4c_cap365": {
+      "backtest_set": 106.47,
+      "portfolio_v3": 65.63
+     },
+     "rev_t4c_censored": {
+      "backtest_set": 112.12,
+      "portfolio_v3": 71.49
+     },
+     "rev_t4c_hazard": {
+      "backtest_set": 85.92,
+      "portfolio_v3": 52.49
+     },
+     "t4": {
+      "backtest_set": 59.39,
+      "portfolio_v3": 35.66
+     },
+     "t_nmn": {
+      "backtest_set": 38.27,
+      "portfolio_v3": 16.82
+     }
+    }
+   }
+  },
+  "sourceset_v2_root": "0xcf8d4841f473c3b4e92556ddff53293ff242fd7196b449e8d3d0e0a8ab8591b0",
+  "splits_hash": "0x129b74cb5f666b9ea270e24c4a41bcc2ad6b61b383e62b9bf0f3ff0b60777cb6",
+  "stake_band": {
+   "case": "TKM_S_276",
+   "detected": 9,
+   "duty_cycle_ci95": [
+    0.6637,
+    1.0
+   ],
+   "kt_ch4_per_yr": {
+    "high": 25.59,
+    "low": 2.45,
+    "mid": 9.14
+   },
+   "kt_co2e_per_yr_gwp100": {
+    "high": 762.5,
+    "low": 73.0,
+    "mid": 272.3
+   },
+   "passes": 9,
+   "plumes": 23
+  },
+  "testnet_run": {
+   "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+   "episodeId": 1,
+   "evidenceHash": "0x07865dea25bb7bae8b367a23d636359a58d6b9ca8d784289dbf5e36dd31ec2c9",
+   "keyRegistry": "0x8f96340b051ac19D92976cC14aAEA0461Eaf0fc7",
+   "methaneCovenant": "0xcAcBD7E8d995EFeB70a8b82Aa525726A3797f5f8",
+   "network": "Ethereum Sepolia",
+   "steps": {
+    "createCovenant": {
+     "reason": null,
+     "status": 1,
+     "tx": "https://sepolia.etherscan.io/tx/0x74edf31d45da1e0898da678122d51e16f3274f37e83f1aa94eb110be9ea377fd"
+    },
+    "finalize": {
+     "reason": null,
+     "status": 1,
+     "tx": "https://sepolia.etherscan.io/tx/0x470bcc95bfc58a9eb316c1da588f6628156ba51c6330bf078acfaa71029a43cd"
+    },
+    "proposeEpisode": {
+     "reason": null,
+     "status": 1,
+     "tx": "https://sepolia.etherscan.io/tx/0x263e9321e985bee7086c4da45bbb57c0059c8853716c5905e31a2dcf09af7508"
+    },
+    "reject_not_covered": {
+     "reason": "NotCovered",
+     "status": 0,
+     "tx": "https://sepolia.etherscan.io/tx/0x870a90465b135054579dfa6d7f6e306ac3af0f0919896fdc734ddfe69af78a60"
+    },
+    "reject_replay": {
+     "reason": "Replay",
+     "status": 0,
+     "tx": "https://sepolia.etherscan.io/tx/0x52a71355fda3924772f714a4b493f45c1faaeba9964d96ca20c569d880971dc7"
+    },
+    "reject_self_attestation": {
+     "reason": "SelfAttestation",
+     "status": 0,
+     "tx": "https://sepolia.etherscan.io/tx/0x8a2fb0deed561c3319b913e4ab181db0f995a29c235efeab06ad50a4fa28e3f1"
+    },
+    "reject_tamper": {
+     "reason": "InvalidSignature",
+     "status": 0,
+     "tx": "https://sepolia.etherscan.io/tx/0x93a4c8bffda75e6b2ddedc37619e98ab1457d6038ac0872d66b49751b7a85a3f"
+    },
+    "withdraw_buyer": {
+     "reason": null,
+     "status": 1,
+     "tx": "https://sepolia.etherscan.io/tx/0xe15306ee30432c7e92f9ccfec14ee9ea4f799cd6324f704723694159e4a819e4"
+    },
+    "withdraw_proposer": {
+     "reason": null,
+     "status": 1,
+     "tx": "https://sepolia.etherscan.io/tx/0xb635c75065fd018354e9cda1679774ffdc07f247cfa9429f9f1030d5046ef75e"
+    }
+   }
+  }
+ }
+}

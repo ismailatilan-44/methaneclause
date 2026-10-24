@@ -1,0 +1,2454 @@
+{
+ "by_instrument": {
+  "GAO": {
+   "cell": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.4163,
+      0.5144
+     ],
+     "detected": 193,
+     "passes": 415,
+     "rate": 0.4651
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.2183,
+      0.3209
+     ],
+     "detected": 81,
+     "passes": 303,
+     "rate": 0.2673
+    },
+    "followed": 51,
+    "hazard_after_run": [
+     {
+      "at_risk": 51,
+      "ci95": [
+       0.1129,
+       0.3532
+      ],
+      "detected": 11,
+      "k": 1,
+      "rate": 0.2157
+     },
+     {
+      "at_risk": 32,
+      "ci95": [
+       0.0528,
+       0.3279
+      ],
+      "detected": 5,
+      "k": 2,
+      "rate": 0.1562
+     },
+     {
+      "at_risk": 26,
+      "ci95": [
+       0.0655,
+       0.3935
+      ],
+      "detected": 5,
+      "k": 3,
+      "rate": 0.1923
+     },
+     {
+      "at_risk": 15,
+      "ci95": [
+       0.0433,
+       0.4809
+      ],
+      "detected": 3,
+      "k": 4,
+      "rate": 0.2
+     },
+     {
+      "at_risk": 11,
+      "ci95": [
+       0.0023,
+       0.4128
+      ],
+      "detected": 1,
+      "k": 5,
+      "rate": 0.0909
+     },
+     {
+      "at_risk": 7,
+      "ci95": [
+       0.0,
+       0.4096
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 5,
+      "ci95": [
+       0.0,
+       0.5218
+      ],
+      "detected": 0,
+      "k": 7,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 3,
+      "ci95": [
+       0.0,
+       0.7076
+      ],
+      "detected": 0,
+      "k": 8,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 3,
+      "ci95": [
+       0.0,
+       0.7076
+      ],
+      "detected": 0,
+      "k": 9,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 10,
+      "rate": 0.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "GAO": {
+      "detected": 11,
+      "n": 51
+     }
+    },
+    "next_pass_detected": 11,
+    "next_pass_detection_ci95": [
+     0.1129,
+     0.3532
+    ],
+    "next_pass_detection_rate": 0.2157,
+    "no_next_pass": 5,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 5
+     },
+     {
+      "passes_after": "1",
+      "redetected": 3,
+      "units": 11
+     },
+     {
+      "passes_after": "2",
+      "redetected": 1,
+      "units": 2
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 7,
+      "units": 17
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 10,
+      "units": 15
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 4,
+      "units": 6
+     }
+    ],
+    "redetected_later": 25,
+    "redetected_later_ci95": [
+     0.3134,
+     0.5853
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.4464,
+    "redetected_share_of_followed": 0.4902,
+    "run_length_median": 4,
+    "units": 897,
+    "units_ge2_detections": 104,
+    "with_next_pass": 51,
+    "with_run": 56
+   },
+   "source": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.4221,
+      0.4908
+     ],
+     "detected": 381,
+     "passes": 835,
+     "rate": 0.4563
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.2251,
+      0.296
+     ],
+     "detected": 159,
+     "passes": 613,
+     "rate": 0.2594
+    },
+    "followed": 101,
+    "hazard_after_run": [
+     {
+      "at_risk": 101,
+      "ci95": [
+       0.1254,
+       0.2891
+      ],
+      "detected": 20,
+      "k": 1,
+      "rate": 0.198
+     },
+     {
+      "at_risk": 66,
+      "ci95": [
+       0.0341,
+       0.1874
+      ],
+      "detected": 6,
+      "k": 2,
+      "rate": 0.0909
+     },
+     {
+      "at_risk": 56,
+      "ci95": [
+       0.0762,
+       0.2833
+      ],
+      "detected": 9,
+      "k": 3,
+      "rate": 0.1607
+     },
+     {
+      "at_risk": 33,
+      "ci95": [
+       0.0898,
+       0.3891
+      ],
+      "detected": 7,
+      "k": 4,
+      "rate": 0.2121
+     },
+     {
+      "at_risk": 24,
+      "ci95": [
+       0.0103,
+       0.27
+      ],
+      "detected": 2,
+      "k": 5,
+      "rate": 0.0833
+     },
+     {
+      "at_risk": 16,
+      "ci95": [
+       0.0,
+       0.2059
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 11,
+      "ci95": [
+       0.0023,
+       0.4128
+      ],
+      "detected": 1,
+      "k": 7,
+      "rate": 0.0909
+     },
+     {
+      "at_risk": 5,
+      "ci95": [
+       0.0,
+       0.5218
+      ],
+      "detected": 0,
+      "k": 8,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 5,
+      "ci95": [
+       0.0,
+       0.5218
+      ],
+      "detected": 0,
+      "k": 9,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 3,
+      "ci95": [
+       0.0,
+       0.7076
+      ],
+      "detected": 0,
+      "k": 10,
+      "rate": 0.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "GAO": {
+      "detected": 20,
+      "n": 101
+     }
+    },
+    "next_pass_detected": 20,
+    "next_pass_detection_ci95": [
+     0.1254,
+     0.2891
+    ],
+    "next_pass_detection_rate": 0.198,
+    "no_next_pass": 10,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 10
+     },
+     {
+      "passes_after": "1",
+      "redetected": 6,
+      "units": 21
+     },
+     {
+      "passes_after": "2",
+      "redetected": 2,
+      "units": 6
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 11,
+      "units": 33
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 21,
+      "units": 33
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 5,
+      "units": 8
+     }
+    ],
+    "redetected_later": 45,
+    "redetected_later_ci95": [
+     0.3132,
+     0.5027
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.4054,
+    "redetected_share_of_followed": 0.4455,
+    "run_length_median": 5,
+    "units": 2026,
+    "units_ge2_detections": 205,
+    "with_next_pass": 101,
+    "with_run": 111
+   }
+  },
+  "ang": {
+   "cell": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.3474,
+      0.7091
+     ],
+     "detected": 17,
+     "passes": 32,
+     "rate": 0.5312
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.0358,
+      0.4142
+     ],
+     "detected": 3,
+     "passes": 18,
+     "rate": 0.1667
+    },
+    "followed": 6,
+    "hazard_after_run": [
+     {
+      "at_risk": 6,
+      "ci95": [
+       0.0042,
+       0.6412
+      ],
+      "detected": 1,
+      "k": 1,
+      "rate": 0.1667
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.0,
+       0.975
+      ],
+      "detected": 0,
+      "k": 2,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.025,
+       1.0
+      ],
+      "detected": 1,
+      "k": 3,
+      "rate": 1.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "ang": {
+      "detected": 1,
+      "n": 6
+     }
+    },
+    "next_pass_detected": 1,
+    "next_pass_detection_ci95": [
+     0.0042,
+     0.6412
+    ],
+    "next_pass_detection_rate": 0.1667,
+    "no_next_pass": 1,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 1
+     },
+     {
+      "passes_after": "1",
+      "redetected": 0,
+      "units": 4
+     },
+     {
+      "passes_after": "2",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 2,
+      "units": 2
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 2,
+    "redetected_later_ci95": [
+     0.0367,
+     0.7096
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.2857,
+    "redetected_share_of_followed": 0.3333,
+    "run_length_median": 4,
+    "units": 897,
+    "units_ge2_detections": 36,
+    "with_next_pass": 6,
+    "with_run": 7
+   },
+   "source": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.4089,
+      0.7296
+     ],
+     "detected": 23,
+     "passes": 40,
+     "rate": 0.575
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.0782,
+      0.4537
+     ],
+     "detected": 5,
+     "passes": 22,
+     "rate": 0.2273
+    },
+    "followed": 8,
+    "hazard_after_run": [
+     {
+      "at_risk": 8,
+      "ci95": [
+       0.0319,
+       0.6509
+      ],
+      "detected": 2,
+      "k": 1,
+      "rate": 0.25
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 2,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.1581,
+       1.0
+      ],
+      "detected": 2,
+      "k": 3,
+      "rate": 1.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "ang": {
+      "detected": 2,
+      "n": 8
+     }
+    },
+    "next_pass_detected": 2,
+    "next_pass_detection_ci95": [
+     0.0319,
+     0.6509
+    ],
+    "next_pass_detection_rate": 0.25,
+    "no_next_pass": 1,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 1
+     },
+     {
+      "passes_after": "1",
+      "redetected": 0,
+      "units": 4
+     },
+     {
+      "passes_after": "2",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 4,
+      "units": 4
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 4,
+    "redetected_later_ci95": [
+     0.137,
+     0.788
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.4444,
+    "redetected_share_of_followed": 0.5,
+    "run_length_median": 4,
+    "units": 2026,
+    "units_ge2_detections": 59,
+    "with_next_pass": 8,
+    "with_run": 9
+   }
+  },
+  "av3": {
+   "cell": {
+    "base_rate_before_run": {
+     "ci95": null,
+     "detected": 0,
+     "passes": 0,
+     "rate": null
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": null,
+     "detected": 0,
+     "passes": 0,
+     "rate": null
+    },
+    "followed": 0,
+    "hazard_after_run": [],
+    "next_pass_by_instrument": {},
+    "next_pass_detected": 0,
+    "next_pass_detection_ci95": null,
+    "next_pass_detection_rate": null,
+    "no_next_pass": 0,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "1",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "2",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 0,
+    "redetected_later_ci95": null,
+    "redetected_later_right_censored": true,
+    "redetected_later_share": null,
+    "redetected_share_of_followed": null,
+    "run_length_median": null,
+    "units": 897,
+    "units_ge2_detections": 36,
+    "with_next_pass": 0,
+    "with_run": 0
+   },
+   "source": {
+    "base_rate_before_run": {
+     "ci95": null,
+     "detected": 0,
+     "passes": 0,
+     "rate": null
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": null,
+     "detected": 0,
+     "passes": 0,
+     "rate": null
+    },
+    "followed": 0,
+    "hazard_after_run": [],
+    "next_pass_by_instrument": {},
+    "next_pass_detected": 0,
+    "next_pass_detection_ci95": null,
+    "next_pass_detection_rate": null,
+    "no_next_pass": 0,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "1",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "2",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 0,
+      "units": 0
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 0,
+    "redetected_later_ci95": null,
+    "redetected_later_right_censored": true,
+    "redetected_later_share": null,
+    "redetected_share_of_followed": null,
+    "run_length_median": null,
+    "units": 2026,
+    "units_ge2_detections": 69,
+    "with_next_pass": 0,
+    "with_run": 0
+   }
+  },
+  "emi": {
+   "cell": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.3967,
+      0.4825
+     ],
+     "detected": 235,
+     "passes": 535,
+     "rate": 0.4393
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.1955,
+      0.2818
+     ],
+     "detected": 93,
+     "passes": 393,
+     "rate": 0.2366
+    },
+    "followed": 56,
+    "hazard_after_run": [
+     {
+      "at_risk": 56,
+      "ci95": [
+       0.0518,
+       0.2407
+      ],
+      "detected": 7,
+      "k": 1,
+      "rate": 0.125
+     },
+     {
+      "at_risk": 39,
+      "ci95": [
+       0.1113,
+       0.3933
+      ],
+      "detected": 9,
+      "k": 2,
+      "rate": 0.2308
+     },
+     {
+      "at_risk": 20,
+      "ci95": [
+       0.0123,
+       0.317
+      ],
+      "detected": 2,
+      "k": 3,
+      "rate": 0.1
+     },
+     {
+      "at_risk": 14,
+      "ci95": [
+       0.0839,
+       0.581
+      ],
+      "detected": 4,
+      "k": 4,
+      "rate": 0.2857
+     },
+     {
+      "at_risk": 7,
+      "ci95": [
+       0.0036,
+       0.5787
+      ],
+      "detected": 1,
+      "k": 5,
+      "rate": 0.1429
+     },
+     {
+      "at_risk": 5,
+      "ci95": [
+       0.0,
+       0.5218
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 5,
+      "ci95": [
+       0.0051,
+       0.7164
+      ],
+      "detected": 1,
+      "k": 7,
+      "rate": 0.2
+     },
+     {
+      "at_risk": 3,
+      "ci95": [
+       0.0,
+       0.7076
+      ],
+      "detected": 0,
+      "k": 8,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.025,
+       1.0
+      ],
+      "detected": 1,
+      "k": 9,
+      "rate": 1.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "emi": {
+      "detected": 7,
+      "n": 56
+     }
+    },
+    "next_pass_detected": 7,
+    "next_pass_detection_ci95": [
+     0.0518,
+     0.2407
+    ],
+    "next_pass_detection_rate": 0.125,
+    "no_next_pass": 15,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 15
+     },
+     {
+      "passes_after": "1",
+      "redetected": 1,
+      "units": 11
+     },
+     {
+      "passes_after": "2",
+      "redetected": 4,
+      "units": 14
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 7,
+      "units": 15
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 12,
+      "units": 15
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 1,
+      "units": 1
+     }
+    ],
+    "redetected_later": 25,
+    "redetected_later_ci95": [
+     0.2424,
+     0.4746
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.3521,
+    "redetected_share_of_followed": 0.4464,
+    "run_length_median": 4,
+    "units": 897,
+    "units_ge2_detections": 188,
+    "with_next_pass": 56,
+    "with_run": 71
+   },
+   "source": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.3888,
+      0.4507
+     ],
+     "detected": 422,
+     "passes": 1006,
+     "rate": 0.4195
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.186,
+      0.2463
+     ],
+     "detected": 160,
+     "passes": 744,
+     "rate": 0.2151
+    },
+    "followed": 103,
+    "hazard_after_run": [
+     {
+      "at_risk": 103,
+      "ci95": [
+       0.0617,
+       0.1947
+      ],
+      "detected": 12,
+      "k": 1,
+      "rate": 0.1165
+     },
+     {
+      "at_risk": 74,
+      "ci95": [
+       0.1181,
+       0.3122
+      ],
+      "detected": 15,
+      "k": 2,
+      "rate": 0.2027
+     },
+     {
+      "at_risk": 38,
+      "ci95": [
+       0.0441,
+       0.2809
+      ],
+      "detected": 5,
+      "k": 3,
+      "rate": 0.1316
+     },
+     {
+      "at_risk": 28,
+      "ci95": [
+       0.1069,
+       0.4487
+      ],
+      "detected": 7,
+      "k": 4,
+      "rate": 0.25
+     },
+     {
+      "at_risk": 14,
+      "ci95": [
+       0.0018,
+       0.3387
+      ],
+      "detected": 1,
+      "k": 5,
+      "rate": 0.0714
+     },
+     {
+      "at_risk": 11,
+      "ci95": [
+       0.0,
+       0.2849
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 10,
+      "ci95": [
+       0.0252,
+       0.5561
+      ],
+      "detected": 2,
+      "k": 7,
+      "rate": 0.2
+     },
+     {
+      "at_risk": 6,
+      "ci95": [
+       0.0042,
+       0.6412
+      ],
+      "detected": 1,
+      "k": 8,
+      "rate": 0.1667
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0126,
+       0.9874
+      ],
+      "detected": 1,
+      "k": 9,
+      "rate": 0.5
+     }
+    ],
+    "next_pass_by_instrument": {
+     "emi": {
+      "detected": 12,
+      "n": 103
+     }
+    },
+    "next_pass_detected": 12,
+    "next_pass_detection_ci95": [
+     0.0617,
+     0.1947
+    ],
+    "next_pass_detection_rate": 0.1165,
+    "no_next_pass": 28,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 28
+     },
+     {
+      "passes_after": "1",
+      "redetected": 2,
+      "units": 19
+     },
+     {
+      "passes_after": "2",
+      "redetected": 6,
+      "units": 27
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 11,
+      "units": 25
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 23,
+      "units": 30
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 2,
+      "units": 2
+     }
+    ],
+    "redetected_later": 44,
+    "redetected_later_ci95": [
+     0.2558,
+     0.4236
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.3359,
+    "redetected_share_of_followed": 0.4272,
+    "run_length_median": 4,
+    "units": 2026,
+    "units_ge2_detections": 357,
+    "with_next_pass": 103,
+    "with_run": 131
+   }
+  },
+  "tan": {
+   "cell": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.5672,
+      0.7379
+     ],
+     "detected": 84,
+     "passes": 128,
+     "rate": 0.6562
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.2762,
+      0.5111
+     ],
+     "detected": 28,
+     "passes": 72,
+     "rate": 0.3889
+    },
+    "followed": 19,
+    "hazard_after_run": [
+     {
+      "at_risk": 19,
+      "ci95": [
+       0.0915,
+       0.512
+      ],
+      "detected": 5,
+      "k": 1,
+      "rate": 0.2632
+     },
+     {
+      "at_risk": 8,
+      "ci95": [
+       0.0319,
+       0.6509
+      ],
+      "detected": 2,
+      "k": 2,
+      "rate": 0.25
+     },
+     {
+      "at_risk": 6,
+      "ci95": [
+       0.0,
+       0.4593
+      ],
+      "detected": 0,
+      "k": 3,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 6,
+      "ci95": [
+       0.0042,
+       0.6412
+      ],
+      "detected": 1,
+      "k": 4,
+      "rate": 0.1667
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 5,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.0,
+       0.975
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.0,
+       0.975
+      ],
+      "detected": 0,
+      "k": 7,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.0,
+       0.975
+      ],
+      "detected": 0,
+      "k": 8,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 1,
+      "ci95": [
+       0.0,
+       0.975
+      ],
+      "detected": 0,
+      "k": 9,
+      "rate": 0.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "tan": {
+      "detected": 5,
+      "n": 19
+     }
+    },
+    "next_pass_detected": 5,
+    "next_pass_detection_ci95": [
+     0.0915,
+     0.512
+    ],
+    "next_pass_detection_rate": 0.2632,
+    "no_next_pass": 9,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 9
+     },
+     {
+      "passes_after": "1",
+      "redetected": 2,
+      "units": 8
+     },
+     {
+      "passes_after": "2",
+      "redetected": 3,
+      "units": 3
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 2,
+      "units": 6
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 1,
+      "units": 2
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 8,
+    "redetected_later_ci95": [
+     0.1322,
+     0.4867
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.2857,
+    "redetected_share_of_followed": 0.4211,
+    "run_length_median": 4,
+    "units": 897,
+    "units_ge2_detections": 333,
+    "with_next_pass": 19,
+    "with_run": 28
+   },
+   "source": {
+    "base_rate_before_run": {
+     "ci95": [
+      0.5754,
+      0.6879
+     ],
+     "detected": 188,
+     "passes": 297,
+     "rate": 0.633
+    },
+    "base_rate_before_run_excl_eligibility": {
+     "ci95": [
+      0.2515,
+      0.4011
+     ],
+     "detected": 52,
+     "passes": 161,
+     "rate": 0.323
+    },
+    "followed": 45,
+    "hazard_after_run": [
+     {
+      "at_risk": 45,
+      "ci95": [
+       0.08,
+       0.3205
+      ],
+      "detected": 8,
+      "k": 1,
+      "rate": 0.1778
+     },
+     {
+      "at_risk": 21,
+      "ci95": [
+       0.0305,
+       0.3634
+      ],
+      "detected": 3,
+      "k": 2,
+      "rate": 0.1429
+     },
+     {
+      "at_risk": 14,
+      "ci95": [
+       0.0,
+       0.2316
+      ],
+      "detected": 0,
+      "k": 3,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 12,
+      "ci95": [
+       0.0209,
+       0.4841
+      ],
+      "detected": 2,
+      "k": 4,
+      "rate": 0.1667
+     },
+     {
+      "at_risk": 4,
+      "ci95": [
+       0.0,
+       0.6024
+      ],
+      "detected": 0,
+      "k": 5,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 6,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 7,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 8,
+      "rate": 0.0
+     },
+     {
+      "at_risk": 2,
+      "ci95": [
+       0.0,
+       0.8419
+      ],
+      "detected": 0,
+      "k": 9,
+      "rate": 0.0
+     }
+    ],
+    "next_pass_by_instrument": {
+     "tan": {
+      "detected": 8,
+      "n": 45
+     }
+    },
+    "next_pass_detected": 8,
+    "next_pass_detection_ci95": [
+     0.08,
+     0.3205
+    ],
+    "next_pass_detection_rate": 0.1778,
+    "no_next_pass": 23,
+    "redetected_by_follow_up": [
+     {
+      "passes_after": "0",
+      "redetected": 0,
+      "units": 23
+     },
+     {
+      "passes_after": "1",
+      "redetected": 1,
+      "units": 17
+     },
+     {
+      "passes_after": "2",
+      "redetected": 7,
+      "units": 11
+     },
+     {
+      "passes_after": "3-5",
+      "redetected": 3,
+      "units": 13
+     },
+     {
+      "passes_after": "6-10",
+      "redetected": 2,
+      "units": 4
+     },
+     {
+      "passes_after": "11+",
+      "redetected": 0,
+      "units": 0
+     }
+    ],
+    "redetected_later": 13,
+    "redetected_later_ci95": [
+     0.1059,
+     0.3047
+    ],
+    "redetected_later_right_censored": true,
+    "redetected_later_share": 0.1912,
+    "redetected_share_of_followed": 0.2889,
+    "run_length_median": 4,
+    "units": 2026,
+    "units_ge2_detections": 656,
+    "with_next_pass": 45,
+    "with_run": 68
+   }
+  }
+ },
+ "by_unit": {
+  "cell": {
+   "base_rate_before_run": {
+    "ci95": [
+     0.3125,
+     0.3498
+    ],
+    "detected": 828,
+    "passes": 2502,
+    "rate": 0.3309
+   },
+   "base_rate_before_run_excl_eligibility": {
+    "ci95": [
+     0.163,
+     0.1968
+    ],
+    "detected": 366,
+    "passes": 2040,
+    "rate": 0.1794
+   },
+   "followed": 210,
+   "hazard_after_run": [
+    {
+     "at_risk": 210,
+     "ci95": [
+      0.1693,
+      0.2863
+     ],
+     "detected": 47,
+     "k": 1,
+     "rate": 0.2238
+    },
+    {
+     "at_risk": 145,
+     "ci95": [
+      0.1264,
+      0.2592
+     ],
+     "detected": 27,
+     "k": 2,
+     "rate": 0.1862
+    },
+    {
+     "at_risk": 108,
+     "ci95": [
+      0.1246,
+      0.2817
+     ],
+     "detected": 21,
+     "k": 3,
+     "rate": 0.1944
+    },
+    {
+     "at_risk": 80,
+     "ci95": [
+      0.1495,
+      0.3458
+     ],
+     "detected": 19,
+     "k": 4,
+     "rate": 0.2375
+    },
+    {
+     "at_risk": 52,
+     "ci95": [
+      0.0963,
+      0.3253
+     ],
+     "detected": 10,
+     "k": 5,
+     "rate": 0.1923
+    },
+    {
+     "at_risk": 38,
+     "ci95": [
+      0.0294,
+      0.248
+     ],
+     "detected": 4,
+     "k": 6,
+     "rate": 0.1053
+    },
+    {
+     "at_risk": 29,
+     "ci95": [
+      0.0085,
+      0.2277
+     ],
+     "detected": 2,
+     "k": 7,
+     "rate": 0.069
+    },
+    {
+     "at_risk": 23,
+     "ci95": [
+      0.0278,
+      0.3359
+     ],
+     "detected": 3,
+     "k": 8,
+     "rate": 0.1304
+    },
+    {
+     "at_risk": 15,
+     "ci95": [
+      0.0166,
+      0.4046
+     ],
+     "detected": 2,
+     "k": 9,
+     "rate": 0.1333
+    },
+    {
+     "at_risk": 11,
+     "ci95": [
+      0.0602,
+      0.6097
+     ],
+     "detected": 3,
+     "k": 10,
+     "rate": 0.2727
+    }
+   ],
+   "next_pass_by_instrument": {
+    "GAO": {
+     "detected": 13,
+     "n": 67
+    },
+    "ang": {
+     "detected": 1,
+     "n": 4
+    },
+    "av3": {
+     "detected": 2,
+     "n": 8
+    },
+    "av3+tan": {
+     "detected": 0,
+     "n": 2
+    },
+    "emi": {
+     "detected": 8,
+     "n": 60
+    },
+    "emi+tan": {
+     "detected": 0,
+     "n": 1
+    },
+    "tan": {
+     "detected": 23,
+     "n": 68
+    }
+   },
+   "next_pass_detected": 47,
+   "next_pass_detection_ci95": [
+    0.1693,
+    0.2863
+   ],
+   "next_pass_detection_rate": 0.2238,
+   "no_next_pass": 21,
+   "redetected_by_follow_up": [
+    {
+     "passes_after": "0",
+     "redetected": 0,
+     "units": 21
+    },
+    {
+     "passes_after": "1",
+     "redetected": 1,
+     "units": 19
+    },
+    {
+     "passes_after": "2",
+     "redetected": 12,
+     "units": 22
+    },
+    {
+     "passes_after": "3-5",
+     "redetected": 28,
+     "units": 48
+    },
+    {
+     "passes_after": "6-10",
+     "redetected": 42,
+     "units": 58
+    },
+    {
+     "passes_after": "11+",
+     "redetected": 59,
+     "units": 63
+    }
+   ],
+   "redetected_later": 142,
+   "redetected_later_ci95": [
+    0.5486,
+    0.6778
+   ],
+   "redetected_later_right_censored": true,
+   "redetected_later_share": 0.6147,
+   "redetected_share_of_followed": 0.6762,
+   "run_length_median": 5,
+   "units": 897,
+   "units_ge2_detections": 544,
+   "with_next_pass": 210,
+   "with_run": 231
+  },
+  "source": {
+   "base_rate_before_run": {
+    "ci95": [
+     0.3039,
+     0.3312
+    ],
+    "detected": 1435,
+    "passes": 4521,
+    "rate": 0.3174
+   },
+   "base_rate_before_run_excl_eligibility": {
+    "ci95": [
+     0.149,
+     0.173
+    ],
+    "detected": 591,
+    "passes": 3677,
+    "rate": 0.1607
+   },
+   "followed": 375,
+   "hazard_after_run": [
+    {
+     "at_risk": 375,
+     "ci95": [
+      0.1607,
+      0.2441
+     ],
+     "detected": 75,
+     "k": 1,
+     "rate": 0.2
+    },
+    {
+     "at_risk": 266,
+     "ci95": [
+      0.1097,
+      0.1991
+     ],
+     "detected": 40,
+     "k": 2,
+     "rate": 0.1504
+    },
+    {
+     "at_risk": 208,
+     "ci95": [
+      0.1369,
+      0.2473
+     ],
+     "detected": 39,
+     "k": 3,
+     "rate": 0.1875
+    },
+    {
+     "at_risk": 152,
+     "ci95": [
+      0.1775,
+      0.3196
+     ],
+     "detected": 37,
+     "k": 4,
+     "rate": 0.2434
+    },
+    {
+     "at_risk": 99,
+     "ci95": [
+      0.0495,
+      0.1779
+     ],
+     "detected": 10,
+     "k": 5,
+     "rate": 0.101
+    },
+    {
+     "at_risk": 83,
+     "ci95": [
+      0.0346,
+      0.1661
+     ],
+     "detected": 7,
+     "k": 6,
+     "rate": 0.0843
+    },
+    {
+     "at_risk": 64,
+     "ci95": [
+      0.0352,
+      0.193
+     ],
+     "detected": 6,
+     "k": 7,
+     "rate": 0.0938
+    },
+    {
+     "at_risk": 45,
+     "ci95": [
+      0.0371,
+      0.2405
+     ],
+     "detected": 5,
+     "k": 8,
+     "rate": 0.1111
+    },
+    {
+     "at_risk": 28,
+     "ci95": [
+      0.0088,
+      0.235
+     ],
+     "detected": 2,
+     "k": 9,
+     "rate": 0.0714
+    },
+    {
+     "at_risk": 22,
+     "ci95": [
+      0.0519,
+      0.4028
+     ],
+     "detected": 4,
+     "k": 10,
+     "rate": 0.1818
+    }
+   ],
+   "next_pass_by_instrument": {
+    "GAO": {
+     "detected": 19,
+     "n": 129
+    },
+    "ang": {
+     "detected": 2,
+     "n": 6
+    },
+    "av3": {
+     "detected": 3,
+     "n": 13
+    },
+    "av3+tan": {
+     "detected": 0,
+     "n": 2
+    },
+    "emi": {
+     "detected": 14,
+     "n": 101
+    },
+    "emi+tan": {
+     "detected": 0,
+     "n": 2
+    },
+    "tan": {
+     "detected": 37,
+     "n": 122
+    }
+   },
+   "next_pass_detected": 75,
+   "next_pass_detection_ci95": [
+    0.1607,
+    0.2441
+   ],
+   "next_pass_detection_rate": 0.2,
+   "no_next_pass": 47,
+   "redetected_by_follow_up": [
+    {
+     "passes_after": "0",
+     "redetected": 0,
+     "units": 47
+    },
+    {
+     "passes_after": "1",
+     "redetected": 2,
+     "units": 36
+    },
+    {
+     "passes_after": "2",
+     "redetected": 21,
+     "units": 39
+    },
+    {
+     "passes_after": "3-5",
+     "redetected": 50,
+     "units": 89
+    },
+    {
+     "passes_after": "6-10",
+     "redetected": 79,
+     "units": 120
+    },
+    {
+     "passes_after": "11+",
+     "redetected": 80,
+     "units": 91
+    }
+   ],
+   "redetected_later": 232,
+   "redetected_later_ci95": [
+    0.5009,
+    0.5979
+   ],
+   "redetected_later_right_censored": true,
+   "redetected_later_share": 0.5498,
+   "redetected_share_of_followed": 0.6187,
+   "run_length_median": 5,
+   "units": 2026,
+   "units_ge2_detections": 1105,
+   "with_next_pass": 375,
+   "with_run": 422
+  }
+ },
+ "card": {
+  "all_instruments": {
+   "cells_with_run": 231,
+   "hazard_k2_to_k4": [
+    {
+     "at_risk": 145,
+     "ci95": [
+      0.1264,
+      0.2592
+     ],
+     "detected": 27,
+     "k": 2,
+     "rate": 0.1862
+    },
+    {
+     "at_risk": 108,
+     "ci95": [
+      0.1246,
+      0.2817
+     ],
+     "detected": 21,
+     "k": 3,
+     "rate": 0.1944
+    },
+    {
+     "at_risk": 80,
+     "ci95": [
+      0.1495,
+      0.3458
+     ],
+     "detected": 19,
+     "k": 4,
+     "rate": 0.2375
+    }
+   ],
+   "next_pass": {
+    "ci95": [
+     0.1693,
+     0.2863
+    ],
+    "detected": 47,
+    "passes": 210,
+    "rate": 0.2238
+   }
+  },
+  "note": "a reason for the cap, not evidence of repair; no 'usual rate' comparator is quoted (spec-v2 §15 after B1-fix)",
+  "sentence": "A quiet run is weak evidence: in Carbon Mapper's catalogue (897 cells; all instruments, unqualified passes) the pass after three non-detections still saw a plume 22 % of the time (47/210, 95 % CI 17–29 %), and the passes after longer quiet runs saw one 19–24 % of the time. That is why the refund is capped at the rebate, paid in installments, and cancelled by the next attested detection.",
+  "tanager_emit": {
+   "cells_with_run": 137,
+   "hazard_k2_to_k4": [
+    {
+     "at_risk": 75,
+     "ci95": [
+      0.1271,
+      0.3232
+     ],
+     "detected": 16,
+     "k": 2,
+     "rate": 0.2133
+    },
+    {
+     "at_risk": 53,
+     "ci95": [
+      0.0944,
+      0.3197
+     ],
+     "detected": 10,
+     "k": 3,
+     "rate": 0.1887
+    },
+    {
+     "at_risk": 39,
+     "ci95": [
+      0.1304,
+      0.4213
+     ],
+     "detected": 10,
+     "k": 4,
+     "rate": 0.2564
+    }
+   ],
+   "next_pass": {
+    "ci95": [
+     0.1786,
+     0.3426
+    ],
+    "detected": 30,
+    "passes": 118,
+    "rate": 0.2542
+   }
+  },
+  "unitLabel": "catalogue cells, not facilities; all instruments; unqualified passes"
+ },
+ "cases": {
+  "DZA_S_012": {
+   "cm_sources": [
+    "CH4_1B2_1000m_5.99636_31.77708",
+    "CH4_1B2_250m_5.99640_31.77781"
+   ],
+   "first_run": {
+    "first_redetection": "2026-02-01",
+    "next_pass": "2024-12-16",
+    "next_pass_detected": false,
+    "passes_after_qualifying": 11,
+    "qualifying_pass": "2024-11-11",
+    "redetected_later": true,
+    "run_length": 12,
+    "run_start": "2024-10-15",
+    "second_detection": "2023-01-31"
+   }
+  },
+  "TKM_S_276": {
+   "cm_sources": [
+    "CH4_1B2_1000m_53.71356_39.47100",
+    "CH4_1B2_250m_53.70692_39.48765",
+    "CH4_1B2_250m_53.70979_39.48786",
+    "CH4_1B2_250m_53.71782_39.48437",
+    "CH4_1B2_250m_53.72906_39.47848"
+   ],
+   "first_run": null
+  },
+  "USA_S_077": {
+   "cm_sources": [
+    "CH4_1B2_1000m_-101.52270_32.51483"
+   ],
+   "first_run": {
+    "first_redetection": null,
+    "next_pass": null,
+    "next_pass_detected": null,
+    "passes_after_qualifying": 0,
+    "qualifying_pass": "2026-08-25",
+    "redetected_later": false,
+    "run_length": 3,
+    "run_start": "2024-10-13",
+    "second_detection": "2023-07-31"
+   }
+  }
+ },
+ "cellRadiusKm": 1.5,
+ "cells": 897,
+ "cells_with_run": 231,
+ "definition": "pass          a UTC date on which Carbon Mapper observed the unit (`observation_dates`), plus every detection date\n                (4 detection dates in the file are missing from `observation_dates`; they count as detected passes)\n  detected      the date is in `detection_dates` (any instrument); for an instrument view, a plume of that unit on\n                that date carries one of the instruments\n  eligible      the unit has >= 2 detected passes\n  run           the first sequence of >= 3 consecutive non-detected passes after the second detected pass; the\n                run \"qualifies\" at its 3rd clean pass\n  next pass     the first pass after the qualifying pass (detected or not); units whose run ends the record have none\n  base rate     detected / passes over every pass before the run start, in the units with a run; also given without\n                the two detections every eligible unit must have (`..._excl_eligibility`), because eligibility\n                selects units that were detected before the run\n  hazard        for k = 1, 2, ...: among units whose first k-1 passes after the qualifying pass were all clean and\n                that have a k-th pass, the share detected on the k-th (k = 1 is the next-pass rate)\n  re-detected   any detected pass after the qualifying pass. RIGHT-CENSORED: it grows with how long Carbon Mapper kept\n                looking, so it is reported only with its breakdown by follow-up length and is not a headline figure\n  unit          a catalogue cell, not a facility: Carbon Mapper sources that share a plume_id (CRITERION.md rule 4:\n                250 m / 1000 m twins list the same plume ids) are merged, nearest pair first, only while every two\n                members stay within RADIUS_KM (1.5 km, the facility radius of the contract); a cell's passes and\n                detections are the union of its members'. Source-level figures are given beside it\n  u(N)          1 - 0.025^(1/N): upper limit of the two-sided 95 % Clopper-Pearson interval for the per-pass\n                detection probability after N passes and 0 detections; bp = round(10000 u), N = 1..32\n\nAll instruments (airborne GAO / AVIRIS-NG / AVIRIS-3 included) and unqualified passes (no cloud, footprint or MARS\nfilter: that needs scene data for every source, which is not fetched); a Tanager + EMIT subset is given beside it. The\npopulation is the join neighbourhood (sources within 1.5 km of a MARS notified O&G 'absent' target, plus the case\nsources), not the whole Carbon Mapper catalogue.",
+ "generatedFrom": [
+  {
+   "path": "data/derived/cm_timelines.json",
+   "sha256": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c"
+  },
+  {
+   "path": "data/derived/cm_plumes.csv",
+   "sha256": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69"
+  },
+  {
+   "path": "pipeline/cleanruns.py",
+   "sha256": "bdd79897d95258396ada7368aa475539c1fcefdd2775d89bee1b62040e8e5860"
+  }
+ ],
+ "largest_cell_size": 8,
+ "max_cell_diameter_km": 1.492,
+ "min_run": 3,
+ "next_pass_detection_rate": 0.2238,
+ "population": "2026 Carbon Mapper sources in cm_timelines.json (join neighbourhood + case sources), 897 catalogue cells (twin merge bounded at 1.5 km); passes are unqualified (no cloud / footprint / MARS filter)",
+ "redetected_later": 142,
+ "redetected_later_note": "right-censored (grows with follow-up length); not a headline figure, see by_unit.*.redetected_by_follow_up",
+ "redetected_later_share": 0.6147,
+ "rightCensored": true,
+ "schema": "methaneclause.cleanruns/1",
+ "selection_windows_not_base_rates": {
+  "all_instruments": {
+   "before_run_start": {
+    "ci95": [
+     0.3125,
+     0.3498
+    ],
+    "detected": 828,
+    "passes": 2502,
+    "rate": 0.3309
+   },
+   "before_run_start_excl_eligibility": {
+    "ci95": [
+     0.163,
+     0.1968
+    ],
+    "detected": 366,
+    "passes": 2040,
+    "rate": 0.1794
+   }
+  },
+  "label": "selection window, not a base rate: every candidate 'usual rate' depends on the definition (13-35 %) because eligibility and the run are defined by detections; not quoted",
+  "tanager_emit": {
+   "before_run_start": {
+    "ci95": [
+     0.3023,
+     0.3536
+    ],
+    "detected": 433,
+    "passes": 1322,
+    "rate": 0.3275
+   },
+   "before_run_start_excl_eligibility": {
+    "ci95": [
+     0.1305,
+     0.1749
+    ],
+    "detected": 159,
+    "passes": 1048,
+    "rate": 0.1517
+   }
+  }
+ },
+ "sources_with_run": 422,
+ "subset_tanager_emit": {
+  "cell": {
+   "base_rate_before_run": {
+    "ci95": [
+     0.3023,
+     0.3536
+    ],
+    "detected": 433,
+    "passes": 1322,
+    "rate": 0.3275
+   },
+   "base_rate_before_run_excl_eligibility": {
+    "ci95": [
+     0.1305,
+     0.1749
+    ],
+    "detected": 159,
+    "passes": 1048,
+    "rate": 0.1517
+   },
+   "followed": 118,
+   "hazard_after_run": [
+    {
+     "at_risk": 118,
+     "ci95": [
+      0.1786,
+      0.3426
+     ],
+     "detected": 30,
+     "k": 1,
+     "rate": 0.2542
+    },
+    {
+     "at_risk": 75,
+     "ci95": [
+      0.1271,
+      0.3232
+     ],
+     "detected": 16,
+     "k": 2,
+     "rate": 0.2133
+    },
+    {
+     "at_risk": 53,
+     "ci95": [
+      0.0944,
+      0.3197
+     ],
+     "detected": 10,
+     "k": 3,
+     "rate": 0.1887
+    },
+    {
+     "at_risk": 39,
+     "ci95": [
+      0.1304,
+      0.4213
+     ],
+     "detected": 10,
+     "k": 4,
+     "rate": 0.2564
+    },
+    {
+     "at_risk": 22,
+     "ci95": [
+      0.0291,
+      0.3491
+     ],
+     "detected": 3,
+     "k": 5,
+     "rate": 0.1364
+    },
+    {
+     "at_risk": 17,
+     "ci95": [
+      0.0015,
+      0.2869
+     ],
+     "detected": 1,
+     "k": 6,
+     "rate": 0.0588
+    },
+    {
+     "at_risk": 14,
+     "ci95": [
+      0.0178,
+      0.4281
+     ],
+     "detected": 2,
+     "k": 7,
+     "rate": 0.1429
+    },
+    {
+     "at_risk": 10,
+     "ci95": [
+      0.0025,
+      0.445
+     ],
+     "detected": 1,
+     "k": 8,
+     "rate": 0.1
+    },
+    {
+     "at_risk": 5,
+     "ci95": [
+      0.0527,
+      0.8534
+     ],
+     "detected": 2,
+     "k": 9,
+     "rate": 0.4
+    },
+    {
+     "at_risk": 2,
+     "ci95": [
+      0.0126,
+      0.9874
+     ],
+     "detected": 1,
+     "k": 10,
+     "rate": 0.5
+    }
+   ],
+   "next_pass_by_instrument": {
+    "av3+tan": {
+     "detected": 1,
+     "n": 1
+    },
+    "emi": {
+     "detected": 7,
+     "n": 52
+    },
+    "emi+tan": {
+     "detected": 0,
+     "n": 1
+    },
+    "tan": {
+     "detected": 22,
+     "n": 64
+    }
+   },
+   "next_pass_detected": 30,
+   "next_pass_detection_ci95": [
+    0.1786,
+    0.3426
+   ],
+   "next_pass_detection_rate": 0.2542,
+   "no_next_pass": 19,
+   "redetected_by_follow_up": [
+    {
+     "passes_after": "0",
+     "redetected": 0,
+     "units": 19
+    },
+    {
+     "passes_after": "1",
+     "redetected": 1,
+     "units": 14
+    },
+    {
+     "passes_after": "2",
+     "redetected": 10,
+     "units": 16
+    },
+    {
+     "passes_after": "3-5",
+     "redetected": 20,
+     "units": 33
+    },
+    {
+     "passes_after": "6-10",
+     "redetected": 27,
+     "units": 37
+    },
+    {
+     "passes_after": "11+",
+     "redetected": 18,
+     "units": 18
+    }
+   ],
+   "redetected_later": 76,
+   "redetected_later_ci95": [
+    0.4675,
+    0.6396
+   ],
+   "redetected_later_right_censored": true,
+   "redetected_later_share": 0.5547,
+   "redetected_share_of_followed": 0.6441,
+   "run_length_median": 4,
+   "units": 897,
+   "units_ge2_detections": 450,
+   "with_next_pass": 118,
+   "with_run": 137
+  },
+  "instruments": [
+   "emi",
+   "tan"
+  ],
+  "source": {
+   "base_rate_before_run": {
+    "ci95": [
+     0.2984,
+     0.3343
+    ],
+    "detected": 832,
+    "passes": 2632,
+    "rate": 0.3161
+   },
+   "base_rate_before_run_excl_eligibility": {
+    "ci95": [
+     0.1282,
+     0.1586
+    ],
+    "detected": 300,
+    "passes": 2100,
+    "rate": 0.1429
+   },
+   "followed": 226,
+   "hazard_after_run": [
+    {
+     "at_risk": 226,
+     "ci95": [
+      0.1689,
+      0.2811
+     ],
+     "detected": 50,
+     "k": 1,
+     "rate": 0.2212
+    },
+    {
+     "at_risk": 149,
+     "ci95": [
+      0.1229,
+      0.2526
+     ],
+     "detected": 27,
+     "k": 2,
+     "rate": 0.1812
+    },
+    {
+     "at_risk": 109,
+     "ci95": [
+      0.1083,
+      0.2587
+     ],
+     "detected": 19,
+     "k": 3,
+     "rate": 0.1743
+    },
+    {
+     "at_risk": 78,
+     "ci95": [
+      0.1118,
+      0.2973
+     ],
+     "detected": 15,
+     "k": 4,
+     "rate": 0.1923
+    },
+    {
+     "at_risk": 52,
+     "ci95": [
+      0.032,
+      0.2103
+     ],
+     "detected": 5,
+     "k": 5,
+     "rate": 0.0962
+    },
+    {
+     "at_risk": 43,
+     "ci95": [
+      0.0057,
+      0.1581
+     ],
+     "detected": 2,
+     "k": 6,
+     "rate": 0.0465
+    },
+    {
+     "at_risk": 34,
+     "ci95": [
+      0.0495,
+      0.3106
+     ],
+     "detected": 5,
+     "k": 7,
+     "rate": 0.1471
+    },
+    {
+     "at_risk": 22,
+     "ci95": [
+      0.0112,
+      0.2916
+     ],
+     "detected": 2,
+     "k": 8,
+     "rate": 0.0909
+    },
+    {
+     "at_risk": 11,
+     "ci95": [
+      0.0602,
+      0.6097
+     ],
+     "detected": 3,
+     "k": 9,
+     "rate": 0.2727
+    },
+    {
+     "at_risk": 6,
+     "ci95": [
+      0.0042,
+      0.6412
+     ],
+     "detected": 1,
+     "k": 10,
+     "rate": 0.1667
+    }
+   ],
+   "next_pass_by_instrument": {
+    "emi": {
+     "detected": 14,
+     "n": 101
+    },
+    "emi+tan": {
+     "detected": 0,
+     "n": 2
+    },
+    "tan": {
+     "detected": 36,
+     "n": 123
+    }
+   },
+   "next_pass_detected": 50,
+   "next_pass_detection_ci95": [
+    0.1689,
+    0.2811
+   ],
+   "next_pass_detection_rate": 0.2212,
+   "no_next_pass": 40,
+   "redetected_by_follow_up": [
+    {
+     "passes_after": "0",
+     "redetected": 0,
+     "units": 40
+    },
+    {
+     "passes_after": "1",
+     "redetected": 2,
+     "units": 29
+    },
+    {
+     "passes_after": "2",
+     "redetected": 16,
+     "units": 29
+    },
+    {
+     "passes_after": "3-5",
+     "redetected": 35,
+     "units": 62
+    },
+    {
+     "passes_after": "6-10",
+     "redetected": 44,
+     "units": 71
+    },
+    {
+     "passes_after": "11+",
+     "redetected": 33,
+     "units": 35
+    }
+   ],
+   "redetected_later": 130,
+   "redetected_later_ci95": [
+    0.4272,
+    0.5505
+   ],
+   "redetected_later_right_censored": true,
+   "redetected_later_share": 0.4887,
+   "redetected_share_of_followed": 0.5752,
+   "run_length_median": 4,
+   "units": 2026,
+   "units_ge2_detections": 903,
+   "with_next_pass": 226,
+   "with_run": 266
+  }
+ },
+ "unitLabel": "catalogue cells, not facilities; all instruments; unqualified passes",
+ "upper_bound_bp": [
+  9750,
+  8419,
+  7076,
+  6024,
+  5218,
+  4593,
+  4096,
+  3694,
+  3363,
+  3085,
+  2849,
+  2646,
+  2471,
+  2316,
+  2180,
+  2059,
+  1951,
+  1853,
+  1765,
+  1684,
+  1611,
+  1544,
+  1482,
+  1425,
+  1372,
+  1323,
+  1277,
+  1234,
+  1194,
+  1157,
+  1122,
+  1089
+ ],
+ "upper_bound_definition": "u(N) = 1 - 0.025^(1/N), two-sided 95 % Clopper-Pearson upper limit (one-sided 97.5 %) with 0 detections in N passes; bp = round(10000 u); index 0 = N 1"
+}

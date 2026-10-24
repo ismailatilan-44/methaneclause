@@ -1,0 +1,7 @@
+{
+ "check": "detection on 2026-06-11 at ~2548 kg/h after MARS last plume",
+ "checkedAt": "2026-10-17T07:41:48Z",
+ "lead": "TKM_S_276",
+ "matched_rate_kgh_on_date": 2548.2,
+ "reproduced": true
+}

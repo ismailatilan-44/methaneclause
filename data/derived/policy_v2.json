@@ -1,0 +1,571 @@
+{
+ "fields": [
+  "publicationLag",
+  "cleanWindow",
+  "resolveWindow",
+  "holdWindow",
+  "cureTerm",
+  "passBond",
+  "challengerBond",
+  "observerFeeWei",
+  "unitTierAmounts",
+  "installments",
+  "upperBoundBp"
+ ],
+ "policies": {
+  "POLICY_V2": {
+   "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+   "policy": {
+    "core": {
+     "challengeWindow": 86400,
+     "contestWindow": 172800,
+     "gwp100": 29.8,
+     "k": 2,
+     "linkWindow": 2592000,
+     "minRateKgH": 100,
+     "n": 3,
+     "rebateSchedule": {
+      "tierAmountsWei": [
+       "5000000000000000",
+       "3000000000000000",
+       "1000000000000000"
+      ],
+      "tierMinKgH": [
+       5000,
+       1500,
+       100
+      ]
+     },
+     "start": 1767225600,
+     "term": 31536000
+    },
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "pool": {
+     "challengerBondWei": "200000000000000",
+     "cleanWindow": 86400,
+     "cloudRule": "not_cloudy",
+     "cureTerm": 46656000,
+     "euSuperEmitterKgH": 100,
+     "holdWindow": 5529600,
+     "installments": [
+      [
+       3,
+       3000,
+       false,
+       false
+      ],
+      [
+       6,
+       3000,
+       false,
+       false
+      ],
+      [
+       10,
+       4000,
+       true,
+       true
+      ]
+     ],
+     "instrumentFloorKgH": {
+      "emi": 700,
+      "tan": 180
+     },
+     "marsWindowDays": 7,
+     "maxCloudBp": 2500,
+     "observerFeeWei": "10000000000000",
+     "passBondWei": "100000000000000",
+     "publicationLag": 5184000,
+     "resolveWindow": 604800,
+     "settlementMode": "ONCHAIN",
+     "unitTierAmounts": [
+      500,
+      300,
+      100
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "v": 2
+   },
+   "policyHash": "0x934a217b3e5ad942226be99f70ae46c0fe8d274c967cd6d256084bcc17f367ff",
+   "settlementMode": "ONCHAIN"
+  },
+  "POLICY_V2_MULTIYEAR": {
+   "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+   "policy": {
+    "core": {
+     "challengeWindow": 86400,
+     "contestWindow": 172800,
+     "gwp100": 29.8,
+     "k": 2,
+     "linkWindow": 2592000,
+     "minRateKgH": 100,
+     "n": 3,
+     "rebateSchedule": {
+      "tierAmountsWei": [
+       "5000000000000000",
+       "3000000000000000",
+       "1000000000000000"
+      ],
+      "tierMinKgH": [
+       5000,
+       1500,
+       100
+      ]
+     },
+     "start": 1767225600,
+     "term": 94608000
+    },
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "pool": {
+     "challengerBondWei": "200000000000000",
+     "cleanWindow": 86400,
+     "cloudRule": "not_cloudy",
+     "cureTerm": 46656000,
+     "euSuperEmitterKgH": 100,
+     "holdWindow": 5529600,
+     "installments": [
+      [
+       3,
+       3000,
+       false,
+       false
+      ],
+      [
+       6,
+       3000,
+       false,
+       false
+      ],
+      [
+       10,
+       4000,
+       true,
+       true
+      ]
+     ],
+     "instrumentFloorKgH": {
+      "emi": 700,
+      "tan": 180
+     },
+     "marsWindowDays": 7,
+     "maxCloudBp": 2500,
+     "observerFeeWei": "10000000000000",
+     "passBondWei": "100000000000000",
+     "publicationLag": 5184000,
+     "resolveWindow": 604800,
+     "settlementMode": "ONCHAIN",
+     "unitTierAmounts": [
+      500,
+      300,
+      100
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "v": 2
+   },
+   "policyHash": "0xda782c5b3911b90e4beadd6233836315041d71dc15b5979e24fb65a9837442cc",
+   "settlementMode": "ONCHAIN"
+  },
+  "POLICY_V2_REPLAY": {
+   "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+   "policy": {
+    "core": {
+     "challengeWindow": 86400,
+     "contestWindow": 172800,
+     "gwp100": 29.8,
+     "k": 2,
+     "linkWindow": 2592000,
+     "minRateKgH": 100,
+     "n": 3,
+     "rebateSchedule": {
+      "tierAmountsWei": [
+       "5000000000000000",
+       "3000000000000000",
+       "1000000000000000"
+      ],
+      "tierMinKgH": [
+       5000,
+       1500,
+       100
+      ]
+     },
+     "start": 1725148800,
+     "term": 63072000
+    },
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "pool": {
+     "challengerBondWei": "200000000000000",
+     "cleanWindow": 86400,
+     "cloudRule": "not_cloudy",
+     "cureTerm": 46656000,
+     "euSuperEmitterKgH": 100,
+     "holdWindow": 5529600,
+     "installments": [
+      [
+       3,
+       3000,
+       false,
+       false
+      ],
+      [
+       6,
+       3000,
+       false,
+       false
+      ],
+      [
+       10,
+       4000,
+       true,
+       true
+      ]
+     ],
+     "instrumentFloorKgH": {
+      "emi": 700,
+      "tan": 180
+     },
+     "marsWindowDays": 7,
+     "maxCloudBp": 2500,
+     "observerFeeWei": "10000000000000",
+     "passBondWei": "100000000000000",
+     "publicationLag": 5184000,
+     "resolveWindow": 604800,
+     "settlementMode": "ONCHAIN",
+     "unitTierAmounts": [
+      500,
+      300,
+      100
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "v": 2
+   },
+   "policyHash": "0x1776f04368519d5ca5da9e88a5e4be782a5069a3837d0be0585095c0448b5bd9",
+   "settlementMode": "ONCHAIN"
+  },
+  "POLICY_V2_SANDBOX": {
+   "onchainParamsHash": "0xd8614929f00117a344fa149ba957f74b924d1aff70bff6da34bd8ed67f7fbd12",
+   "policy": {
+    "core": {
+     "challengeWindow": 600,
+     "contestWindow": 600,
+     "gwp100": 29.8,
+     "k": 2,
+     "linkWindow": 2592000,
+     "minRateKgH": 100,
+     "n": 3,
+     "rebateSchedule": {
+      "tierAmountsWei": [
+       "50000000000000",
+       "30000000000000",
+       "10000000000000"
+      ],
+      "tierMinKgH": [
+       5000,
+       1500,
+       100
+      ]
+     },
+     "sandbox": "judge sandbox [SIM]: published keys, amounts / 100",
+     "start": 1767225600,
+     "term": 31536000
+    },
+    "onchainParamsHash": "0xd8614929f00117a344fa149ba957f74b924d1aff70bff6da34bd8ed67f7fbd12",
+    "pool": {
+     "challengerBondWei": "2000000000000",
+     "cleanWindow": 600,
+     "cloudRule": "not_cloudy",
+     "cureTerm": 86400,
+     "euSuperEmitterKgH": 100,
+     "holdWindow": 1800,
+     "installments": [
+      [
+       3,
+       3000,
+       false,
+       false
+      ],
+      [
+       6,
+       3000,
+       false,
+       false
+      ],
+      [
+       10,
+       4000,
+       true,
+       true
+      ]
+     ],
+     "instrumentFloorKgH": {
+      "emi": 700,
+      "tan": 180
+     },
+     "marsWindowDays": 7,
+     "maxCloudBp": 2500,
+     "observerFeeWei": "100000000000",
+     "passBondWei": "1000000000000",
+     "publicationLag": 600,
+     "resolveWindow": 600,
+     "sandbox": "judge sandbox [SIM]: published keys, wei amounts / 100, 10-minute windows",
+     "settlementMode": "ONCHAIN",
+     "unitTierAmounts": [
+      500,
+      300,
+      100
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "v": 2
+   },
+   "policyHash": "0x4df82d5b5bd420ae7642b05d7c8939029f51abf5c21c40771ba0e0b1926fe5d0",
+   "settlementMode": "ONCHAIN"
+  },
+  "POLICY_V2_VERDICT_ONLY": {
+   "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+   "policy": {
+    "core": {
+     "challengeWindow": 86400,
+     "contestWindow": 172800,
+     "gwp100": 29.8,
+     "k": 2,
+     "linkWindow": 2592000,
+     "minRateKgH": 100,
+     "n": 3,
+     "rebateSchedule": {
+      "tierAmountsWei": [
+       "5000000000000000",
+       "3000000000000000",
+       "1000000000000000"
+      ],
+      "tierMinKgH": [
+       5000,
+       1500,
+       100
+      ]
+     },
+     "start": 1767225600,
+     "term": 31536000
+    },
+    "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+    "pool": {
+     "challengerBondWei": "200000000000000",
+     "cleanWindow": 86400,
+     "cloudRule": "not_cloudy",
+     "cureTerm": 46656000,
+     "euSuperEmitterKgH": 100,
+     "holdWindow": 5529600,
+     "installments": [
+      [
+       3,
+       3000,
+       false,
+       false
+      ],
+      [
+       6,
+       3000,
+       false,
+       false
+      ],
+      [
+       10,
+       4000,
+       true,
+       true
+      ]
+     ],
+     "instrumentFloorKgH": {
+      "emi": 700,
+      "tan": 180
+     },
+     "marsWindowDays": 7,
+     "maxCloudBp": 2500,
+     "observerFeeWei": "10000000000000",
+     "passBondWei": "100000000000000",
+     "publicationLag": 5184000,
+     "resolveWindow": 604800,
+     "settlementMode": "VERDICT_ONLY",
+     "unitTierAmounts": [
+      500,
+      300,
+      100
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "v": 2
+   },
+   "policyHash": "0x4a39d3fbbd1cb21d5fee728e8227e0445526df44380618c9cc429b7a477500e8",
+   "settlementMode": "VERDICT_ONLY"
+  }
+ },
+ "poolParamsAbi": "(uint32,uint32,uint32,uint32,uint32,uint96,uint96,uint96,uint128[3],(uint8,uint16,bool,bool)[3],uint16[32])",
+ "schema": "methaneclause.policy_v2/1"
+}

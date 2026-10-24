@@ -1,0 +1,37 @@
+{
+ "chainId": 11155111,
+ "covenantEnd": 1861833600,
+ "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000002",
+ "covenantStart": 1767225600,
+ "finalReach": {
+  "lastDetectionDay": 522,
+  "minTermDays": 573,
+  "nonFinalShareBp": 6000
+ },
+ "incentivePool": "0x2bEfac4D6A55eEA1dAF853D517De6636f8646bBc",
+ "lastFinalDetection": 1812326400,
+ "methaneCovenant": "0xcAcBD7E8d995EFeB70a8b82Aa525726A3797f5f8",
+ "network": "Ethereum Sepolia",
+ "onchainParamsHash": "0x80d9745b3e16a3ed7d793b3c5d3471dc5740f629b6fe2430e029beece691ab06",
+ "policy": "POLICY_V2_MULTIYEAR",
+ "policyHash": "0x6ca95d5522a42fe26f5cb89cb9e5c94d296f822b79139e68046a69d6081f7338",
+ "poolPolicyHash": "0xda782c5b3911b90e4beadd6233836315041d71dc15b5979e24fb65a9837442cc",
+ "steps": [
+  {
+   "bondWei": "15000000000000000",
+   "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000002",
+   "gasUsed": 1385554,
+   "policyHash": "0x6ca95d5522a42fe26f5cb89cb9e5c94d296f822b79139e68046a69d6081f7338",
+   "status": 1,
+   "step": "createCovenant",
+   "tx": "https://sepolia.etherscan.io/tx/0x94745452cd1fea374c493f01bf67f0fe1af99d09a6fed7d7a7ba05886636ebd6"
+  },
+  {
+   "amountWei": "1000000000000000",
+   "gasUsed": 2452902,
+   "status": 1,
+   "step": "fund",
+   "tx": "https://sepolia.etherscan.io/tx/0xb752a9a579cad390aa9fa0545b719c800745967d1f07b4cb698f78d89d81b272"
+  }
+ ]
+}

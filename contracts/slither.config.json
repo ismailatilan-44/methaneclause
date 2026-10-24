@@ -1,0 +1,5 @@
+{
+  "exclude_dependencies": true,
+  "foundry_ignore_compile": true,
+  "foundry_out_directory": "out/slither"
+}

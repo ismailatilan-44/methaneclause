@@ -1,0 +1,38 @@
+{
+ "schema": "methaneclause.annex_c/1",
+ "template": "IEA, Annex C: MARS Feedback Form (Responding to Satellite Notifications from MARS, May 2026)",
+ "fields": {
+  "Date of Completion of Feedback Form (DD-MM-YYYY)": "20-03-2026",
+  "Source ID": "DZA_S_012",
+  "Plume(s) ID(s)": "755eef46-f7c4-4d5c-8ea9-2a1563046110",
+  "Operator": "[SIM] seller (the real operator is not named in public data)",
+  "Emissions cause": "[SIM] seller's claim: unplanned venting during a compressor trip",
+  "Did the MARS notification alert you to the emissions?": "[SIM] Yes",
+  "Have the emissions ceased? Was mitigation action taken to address the emissions?": "[SIM] seller's claim: ceased; a relief valve was replaced",
+  "What date did the mitigation action occur?": "15-03-2026",
+  "Executed or planned operator efforts": "[SIM] valve replaced; quarterly LDAR survey planned",
+  "Facility Name": "[SIM] facility at MARS source DZA_S_012",
+  "Facility Type": "Gas disposal facility",
+  "Facility Contact Information": null,
+  "Corporate Contact Information": null,
+  "OGMP 2.0 Asset Name": null,
+  "Emission Source Category": "[SIM] Venting",
+  "Emission Source Category - If other, please specify": null,
+  "Details of the specific point source within the facility (e.g. specific tank, compressor, flare)": null,
+  "Briefly describe the root cause of the emissions event": null,
+  "Operational situation or activity that led to the emission": null,
+  "Operational situation or activity that led to the emission - If other, please specify": null,
+  "Has the emission ceased or been mitigated or is it ongoing?": "[SIM] Ceased",
+  "If ceased/mitigated, describe the actions taken": "[SIM] relief valve replaced",
+  "If ongoing, do you have plans to mitigate?": null,
+  "If yes, describe the mitigation plans": null,
+  "Timeline by which you expect to mitigate the emission (date)": null,
+  "Are you able to quantify the emissions from this event?": "[SIM] No",
+  "If yes, estimate of total emissions released (kg methane if possible)": null,
+  "Duration of the event (hours or days)": null
+ },
+ "x-methaneclause": {
+  "label": "[SIM] example: a simulated seller's claim; recorded on chain by hash, changes no state",
+  "case": "DZA_S_012"
+ }
+}

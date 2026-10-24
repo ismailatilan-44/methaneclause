@@ -1,0 +1,97 @@
+{
+ "chain": "local Anvil 31337, genesis 1792000000 (pinned clock), Deploy.s.sol; anvil Version: 1.8.5",
+ "facility": "TKM_S_276",
+ "fit": {
+  "createCovenantGasMax": 322302,
+  "createCovenantGasMin": 322290,
+  "proposeEpisodeGasPerProofStep": 801
+ },
+ "generatedBy": "pipeline/observer/scale.py (make scale)",
+ "note": "Gas is Foundry's local schedule (Cancun); Ethereum Sepolia charged far more for new state (data/derived/measurements.json). The padded set is the 1,122 MARS targets plus synthetic leaves named SIM_PAD_<i> [SIM padding]. The warm-up pair pays one-time counter initialisation and is not in rows.",
+ "observers": [
+  "OBS_A",
+  "OBS_C"
+ ],
+ "plume": "tan20260611t083132c23s4001-AB",
+ "rows": [
+  {
+   "createCovenantGas": 322290,
+   "label": "data/derived/sourceset_v2.json",
+   "maxProofSteps": 2,
+   "n": 3,
+   "proofSteps": 2,
+   "proposeEpisodeCalldataBytes": 1444,
+   "proposeEpisodeGas": 351049,
+   "real": true,
+   "root": "0xcf8d4841f473c3b4e92556ddff53293ff242fd7196b449e8d3d0e0a8ab8591b0",
+   "set": "v2",
+   "wrongProof": {
+    "episodeCountAndBondUnchanged": true,
+    "from": "v3",
+    "revert": "NotCovered",
+    "status": 0
+   }
+  },
+  {
+   "createCovenantGas": 322290,
+   "label": "data/derived/sourceset_v3.json",
+   "maxProofSteps": 8,
+   "n": 205,
+   "proofSteps": 8,
+   "proposeEpisodeCalldataBytes": 1636,
+   "proposeEpisodeGas": 355838,
+   "real": true,
+   "root": "0xd931a93116008a9e46d921b88e549907d1d05302b88163a694d6fff611c8408f",
+   "set": "v3",
+   "wrongProof": {
+    "episodeCountAndBondUnchanged": true,
+    "from": "v2",
+    "revert": "NotCovered",
+    "status": 0
+   }
+  },
+  {
+   "createCovenantGas": 322290,
+   "label": "the 1,122 MARS targets (data/derived/mars_sources.csv, join rule 1)",
+   "maxProofSteps": 11,
+   "n": 1122,
+   "proofSteps": 11,
+   "proposeEpisodeCalldataBytes": 1732,
+   "proposeEpisodeGas": 358238,
+   "real": true,
+   "root": "0x4eeac157887c4724b970c891eb9a7b3855d28c3a883ce2abe738dd7ecaf17382",
+   "set": "mars_targets",
+   "wrongProof": {
+    "episodeCountAndBondUnchanged": true,
+    "from": "v3",
+    "revert": "NotCovered",
+    "status": 0
+   }
+  },
+  {
+   "createCovenantGas": 322302,
+   "label": "the MARS targets + synthetic leaves [SIM padding]",
+   "maxProofSteps": 14,
+   "n": 10000,
+   "proofSteps": 12,
+   "proposeEpisodeCalldataBytes": 1764,
+   "proposeEpisodeGas": 359065,
+   "real": false,
+   "root": "0x2a6da755b18195f823b06e7e30929070ddb5e927fa67525419901d7c97b85fb0",
+   "set": "padded",
+   "wrongProof": {
+    "episodeCountAndBondUnchanged": true,
+    "from": "mars_targets",
+    "revert": "NotCovered",
+    "status": 0
+   }
+  }
+ ],
+ "sentence": "Gas against facility-set size (Anvil, real transactions, `make scale` → [`data/derived/scale.json`](data/derived/scale.json)): `createCovenant` costs 322,290–322,302 gas for 3 to 10,000 facilities (the set is one 32-byte root); `proposeEpisode` grows only with the Merkle path, from 351,049 gas (2 steps, 3 facilities) to 359,065 (12 steps, 10,000 [SIM padding]), about 801 gas per step; a path has at most ⌈log2 n⌉ steps (14 at 10,000).",
+ "status0": 4,
+ "transactions": 14,
+ "warmUp": {
+  "createCovenantGas": 339390,
+  "proposeEpisodeGas": 368177
+ }
+}

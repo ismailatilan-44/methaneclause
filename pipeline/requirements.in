@@ -1,0 +1,11 @@
+requests
+rfc8785
+numpy
+pandas
+scikit-learn
+pytest
+pycryptodome
+web3
+eth-account
+codecarbon
+dilithium-py

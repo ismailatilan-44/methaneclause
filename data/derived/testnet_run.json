@@ -1,0 +1,83 @@
+{
+ "case": "TKM_S_276",
+ "chainId": 11155111,
+ "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+ "covenantStart": 1767225600,
+ "createdAt": 1792021200,
+ "episodeId": 1,
+ "evidenceHash": "0x07865dea25bb7bae8b367a23d636359a58d6b9ca8d784289dbf5e36dd31ec2c9",
+ "keyRegistry": "0x8f96340b051ac19D92976cC14aAEA0461Eaf0fc7",
+ "methaneCovenant": "0xcAcBD7E8d995EFeB70a8b82Aa525726A3797f5f8",
+ "network": "Ethereum Sepolia",
+ "plume": "tan20260611t083132c23s4001-AB",
+ "policyHash": "0x6a004cac9ab1790e341d08e13f5cb08eb9302c551b6d2704dceb33a3642c15d1",
+ "recoveredFromChain": true,
+ "steps": [
+  {
+   "bondWei": "15000000000000000",
+   "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+   "gasUsed": 1483462,
+   "status": 1,
+   "step": "createCovenant",
+   "tx": "https://sepolia.etherscan.io/tx/0x74edf31d45da1e0898da678122d51e16f3274f37e83f1aa94eb110be9ea377fd"
+  },
+  {
+   "gasUsed": 113416,
+   "reason": "InvalidSignature",
+   "status": 0,
+   "step": "reject_tamper",
+   "tx": "https://sepolia.etherscan.io/tx/0x93a4c8bffda75e6b2ddedc37619e98ab1457d6038ac0872d66b49751b7a85a3f"
+  },
+  {
+   "gasUsed": 113416,
+   "reason": "SelfAttestation",
+   "status": 0,
+   "step": "reject_self_attestation",
+   "tx": "https://sepolia.etherscan.io/tx/0x8a2fb0deed561c3319b913e4ab181db0f995a29c235efeab06ad50a4fa28e3f1"
+  },
+  {
+   "gasUsed": 113416,
+   "reason": "NotCovered",
+   "status": 0,
+   "step": "reject_not_covered",
+   "tx": "https://sepolia.etherscan.io/tx/0x870a90465b135054579dfa6d7f6e306ac3af0f0919896fdc734ddfe69af78a60"
+  },
+  {
+   "gasUsed": 113416,
+   "reason": "Replay",
+   "status": 0,
+   "step": "reject_replay",
+   "tx": "https://sepolia.etherscan.io/tx/0x52a71355fda3924772f714a4b493f45c1faaeba9964d96ca20c569d880971dc7"
+  },
+  {
+   "deadline": 1792107660,
+   "episodeId": 1,
+   "gasUsed": 1438909,
+   "rebateWei": "3000000000000000",
+   "status": 1,
+   "step": "proposeEpisode",
+   "tier": 2,
+   "tx": "https://sepolia.etherscan.io/tx/0x263e9321e985bee7086c4da45bbb57c0059c8853716c5905e31a2dcf09af7508"
+  },
+  {
+   "gasUsed": 397954,
+   "status": 1,
+   "step": "finalize",
+   "tx": "https://sepolia.etherscan.io/tx/0x470bcc95bfc58a9eb316c1da588f6628156ba51c6330bf078acfaa71029a43cd"
+  },
+  {
+   "amountWei": "3000000000000000",
+   "gasUsed": 30689,
+   "status": 1,
+   "step": "withdraw_buyer",
+   "tx": "https://sepolia.etherscan.io/tx/0xe15306ee30432c7e92f9ccfec14ee9ea4f799cd6324f704723694159e4a819e4"
+  },
+  {
+   "amountWei": "100000000000000",
+   "gasUsed": 30689,
+   "status": 1,
+   "step": "withdraw_proposer",
+   "tx": "https://sepolia.etherscan.io/tx/0xb635c75065fd018354e9cda1679774ffdc07f247cfa9429f9f1030d5046ef75e"
+  }
+ ]
+}

@@ -1,0 +1,210 @@
+{
+ "schema": "methaneclause.clause_sources/1",
+ "note": "Facts the model clause and the PDF's feasibility section quote, each with its public source, tag and read date. [V] = primary source read; [S] = secondary source only. Every string in `checks` is copied verbatim from the author's research notes; pipeline/tests/test_clause.py asserts that wherever those notes are present (they are not published). pipeline/clause.py renders the rows; nothing here is a number of ours.",
+ "precedents": [
+  {
+   "id": "kinetik",
+   "party": "Kinetik Holdings (Permian midstream), framework 2022",
+   "instrument": "Sustainability-linked revolver, term loan and notes",
+   "moneyTerm": "Effective interest rate moves ±0.05 % a year with the number of targets met; one target is Scope 1+2 methane intensity −30 % by 2030 vs 2021",
+   "differs": "Annual, company-wide, borrower-reported; the closest analogue to the refund side, but the next leak does not cancel it",
+   "tag": "[V] (step schedule [S])",
+   "url": "https://www.sec.gov/Archives/edgar/data/1692787/000169278724000011/apa-20231231.htm",
+   "read": "2026-10-15",
+   "checks": [
+    "Effective interest rate **±0.05 %**",
+    "Scope 1+2 methane intensity, −30 % by 2030 vs 2021",
+    "https://www.sec.gov/Archives/edgar/data/1692787/000169278724000011/apa-20231231.htm",
+    "Source (read 2026-10-15)"
+   ]
+  },
+  {
+   "id": "gasunie",
+   "party": "Gasunie (Dutch gas TSO), issued 2021",
+   "instrument": "€300 m 15-year sustainability-linked bond",
+   "moneyTerm": "Coupon +0.10 % if one of two 2030 targets is missed, +0.20 % if both; one target is methane about 50 % below 2020; tested once, at 31 Dec 2030",
+   "differs": "One company total, one test date; the coupon steps by indenture, not on an event at a source",
+   "tag": "[V]",
+   "url": "https://www.gasunie.nl/en/news/gasunie-successfully-issues-its-inaugural-sustainability-linked-bond",
+   "read": "2026-10-15",
+   "checks": [
+    "€300 m 15-year sustainability-linked bond (SLB)",
+    "**up 0.10 % if one of two 2030 targets is missed, 0.20 % if both are missed**",
+    "Tested **once, at 31 Dec 2030**",
+    "https://www.gasunie.nl/en/news/gasunie-successfully-issues-its-inaugural-sustainability-linked-bond"
+   ]
+  },
+  {
+   "id": "petrobras",
+   "party": "Petrobras, signed 8 Jul 2022",
+   "instrument": "US$1.25 bn sustainability-linked loan",
+   "moneyTerm": "Pricing incentive linked to corporate KPIs, one of them \"methane intensity in E&P\"; target and step size not disclosed",
+   "differs": "Company-wide intensity from the borrower's inventory; the money is the lender's margin, not a payment to the gas buyer",
+   "tag": "[V]",
+   "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281422003021/pbr20220711_6k.htm",
+   "read": "2026-10-15",
+   "checks": [
+    "US$1.25 bn sustainability-linked loan (SLL)",
+    "**\"methane intensity in E&P\"**",
+    "The 6-K gives no target and no step size.",
+    "signed 8 Jul 2022",
+    "https://www.sec.gov/Archives/edgar/data/1119639/000129281422003021/pbr20220711_6k.htm"
+   ]
+  },
+  {
+   "id": "pavilion",
+   "party": "Pavilion Energy with QatarEnergy (SPA 2020) and Chevron (SPA 2021); methodology 2021",
+   "instrument": "LNG sale and purchase agreements",
+   "moneyTerm": "Disclosure only: a Statement of GHG Emissions for every cargo, third-party verified; no money term found",
+   "differs": "The first SPA-level methane term; a modelled cargo-chain estimate that nothing pays on",
+   "tag": "[S]",
+   "url": "https://www.hydrocarbonengineering.com/the-environment/17112021/ghg-reporting-methodology-for-lng-cargoes-launched/",
+   "read": "2026-10-15",
+   "checks": [
+    "Statement of GHG Emissions (SGE) for every cargo",
+    "**No money term found.**",
+    "**It is the first SPA-level methane term**, and it is disclosure only.",
+    "https://www.hydrocarbonengineering.com/the-environment/17112021/ghg-reporting-methodology-for-lng-cargoes-launched/"
+   ]
+  },
+  {
+   "id": "rec18342026",
+   "party": "European Commission, Recommendation (EU) 2026/1834 of 20 Jul 2026",
+   "instrument": "Optional model clauses under Art. 28(3) of Regulation (EU) 2024/1787",
+   "moneyTerm": "No remedy term: no price adjustment, rebate, termination, liquidated damages, audit right, satellite or super-emitter reference",
+   "differs": "Moves information down the chain and leaves the economic clause open; this clause is that economic clause",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reco/2026/1834/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "**No money term at all.**",
+    "There is no price adjustment, rebate, termination, LDs, audit right, satellite or super-emitter reference.",
+    "Commission Recommendation (EU) 2026/1834** of 20 Jul 2026",
+    "https://eur-lex.europa.eu/eli/reco/2026/1834/oj/eng"
+   ]
+  }
+ ],
+ "noPriceTerm": {
+  "line": "No public LNG contract with a methane-intensity price term was found; SPA price terms are usually confidential, so the claim is \"no public precedent found\", not \"none exists\".",
+  "checks": [
+   "**An LNG contract with a methane-intensity price adjustment: none found in public.**",
+   "the right claim is \"**no public precedent found**\", not \"none exists\""
+  ]
+ },
+ "euDates": [
+  {
+   "id": "art28Scope",
+   "date": "4 Aug 2024",
+   "what": "Art. 28: contracts concluded or renewed on or after this date are the ones the import MRV-equivalence obligation covers (older contracts: \"all reasonable efforts\")",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reg/2024/1787/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "From 1 Jan 2027 importer must show contracts (concluded/renewed ≥ 4 Aug 2024)",
+    "Pre-2024 contracts: \"all reasonable efforts\""
+   ]
+  },
+  {
+   "id": "art28Applies",
+   "date": "1 Jan 2027",
+   "what": "Art. 28: the importer must show producer-level MRV equivalent to the EU's for those contracts (a one-year delay of reporting-related provisions was proposed on 14 Oct 2026, not adopted)",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reg/2024/1787/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "From 1 Jan 2027 importer must show contracts",
+    "Commission proposed on **14 Oct 2026** to postpone \"reporting-related provisions\" by 1 year (needs EP+Council)"
+   ]
+  },
+  {
+   "id": "art27Report",
+   "date": "31 May",
+   "what": "Art. 27 and Annex IX: the importer's yearly report to its national competent authority",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reg/2024/1787/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "First report was due 5 May 2025, then 31 May yearly."
+   ]
+  },
+  {
+   "id": "penaltyPause",
+   "date": "2027–29",
+   "what": "Recommendation (EU) 2026/1835 asks Member States not to fine importers for breaches in 2027–29, except fraud",
+   "tag": "[S]",
+   "url": "https://www.hsfkramer.com/insights/2026-08/eu-methan-regulation-eu-commission-clarifies-compliance-options-and-recommends-three-year-penalty-grace-period",
+   "read": "2026-10-15",
+   "checks": [
+    "Rec. 2026/1835 asks Member States not to fine importers for 2027–29 breaches except fraud"
+   ]
+  },
+  {
+   "id": "art29Reporting",
+   "date": "5 Aug 2028",
+   "what": "Art. 29: methane-intensity reporting begins",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reg/2024/1787/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "Intensity reporting from 5 Aug 2028"
+   ]
+  },
+  {
+   "id": "art29Max",
+   "date": "5 Aug 2030",
+   "what": "Art. 29: contracts concluded or renewed after this date must stay below Commission-set maximum methane-intensity values",
+   "tag": "[V]",
+   "url": "https://eur-lex.europa.eu/eli/reg/2024/1787/oj/eng",
+   "read": "2026-10-15",
+   "checks": [
+    "from 5 Aug 2030 contracts concluded/renewed after that date must be *below* Commission-set maximum values"
+   ]
+  }
+ ],
+ "renewalExample": {
+  "date": "6 Jul 2026",
+  "what": "BOTAS–Bulgargaz: a long-term supply deal from 2023, frozen and put into renegotiation by protocol; a renewal moves a contract into the full Art. 28 obligation (public news; the pilot's parties stay [SIM])",
+  "tag": "[S]",
+  "url": "https://pgjonline.com/news/2026/july/bulgargaz-botas-freeze-long-term-gas-deal-as-renegotiations-begin",
+  "read": "2026-10-15",
+  "checks": [
+   "frozen/renegotiated by protocol 6 Jul 2026",
+   "any **renewal** (e.g. the 2026 Bulgargaz renegotiation) flips them into full Art. 28 equivalence"
+  ]
+ },
+ "settlementLaw": [
+  {
+   "id": "cbrt2021",
+   "what": "Türkiye: the CBRT regulation of 16 April 2021 bans crypto-assets in payments, directly or indirectly",
+   "tag": "[V]",
+   "url": "https://www.lexpera.com.tr/mevzuat/yonetmelikler/odemelerde-kripto-varliklarin-kullanilmamasina-dair-yonetmelik",
+   "read": "2026-10-15",
+   "checks": [
+    "RG 16.04.2021 No. 31456"
+   ]
+  },
+  {
+   "id": "micaEmt",
+   "what": "EU: under MiCA a euro e-money token issued by a credit or e-money institution is electronic money, redeemable at par",
+   "tag": "[V]",
+   "url": "https://www.springlex.eu/en/packages/mica/mica-regulation/article-48/",
+   "read": "2026-10-15",
+   "checks": [
+    "\"E-money tokens shall be deemed to be electronic money.\"",
+    "redeemable \"at any time and at par value\""
+   ]
+  }
+ ],
+ "providers": [
+  {
+   "id": "emit",
+   "name": "NASA EMIT L2B Estimated Methane Plume Complexes 60 m V001",
+   "doi": "10.5067/EMIT/EMITL2BCH4PLM.001",
+   "terms": "NASA Earth science data: \"Unless the content is marked with a use restriction or license, data provided from a NASA-led mission are licensed as Creative Commons Zero (CC0).\" The collection record carries no use constraint.",
+   "tag": "[V]",
+   "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-use-guidance",
+   "read": "2026-10-17",
+   "checks": []
+  }
+ ]
+}

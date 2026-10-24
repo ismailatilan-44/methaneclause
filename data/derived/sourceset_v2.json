@@ -1,0 +1,60 @@
+{
+ "encoding": {
+  "layout": "leaves sorted by source_name; pairs (2i,2i+1); odd node promoted",
+  "leaf": "keccak256(bytes.concat(keccak256(abi.encode(sourceId))))",
+  "node": "keccak256(abi.encode(min(a,b), max(a,b)))",
+  "sourceId": "keccak256(utf8(source_name))"
+ },
+ "n": 3,
+ "root": "0xcf8d4841f473c3b4e92556ddff53293ff242fd7196b449e8d3d0e0a8ab8591b0",
+ "sha256": "d06e3657fd802b02f8eae7ec0cb4d3dfb3f1381bdb9f06061dce86f9241f5ea8",
+ "sources": [
+  {
+   "case": "DZA_S_012",
+   "kind": "facility",
+   "leaf": "0x33fae08f7dd463a5a080372f78df6171f1045ffe05addf128d1c55d697217251",
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_5.99636_31.77708",
+    "CH4_1B2_250m_5.99640_31.77781"
+   ],
+   "proof": [
+    "0x03a13ebb45929059c2b259d2c805d7b13871e5dd9028aedd90baafc39f12276a",
+    "0x2521beb0995481025a1b1c88d47bae615cdf70a52fd60b5e53e4d977bba20571"
+   ],
+   "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47",
+   "source_name": "DZA_S_012"
+  },
+  {
+   "case": "TKM_S_276",
+   "kind": "facility",
+   "leaf": "0x03a13ebb45929059c2b259d2c805d7b13871e5dd9028aedd90baafc39f12276a",
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_53.71356_39.47100",
+    "CH4_1B2_250m_53.70692_39.48765",
+    "CH4_1B2_250m_53.70979_39.48786",
+    "CH4_1B2_250m_53.71782_39.48437",
+    "CH4_1B2_250m_53.72906_39.47848"
+   ],
+   "proof": [
+    "0x33fae08f7dd463a5a080372f78df6171f1045ffe05addf128d1c55d697217251",
+    "0x2521beb0995481025a1b1c88d47bae615cdf70a52fd60b5e53e4d977bba20571"
+   ],
+   "sourceId": "0xcfa1375310da3b1b70c57b4650761ecb7e6ad352c74f9852fa02d724a6e92335",
+   "source_name": "TKM_S_276"
+  },
+  {
+   "case": "USA_S_077",
+   "kind": "facility",
+   "leaf": "0x2521beb0995481025a1b1c88d47bae615cdf70a52fd60b5e53e4d977bba20571",
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_-101.52270_32.51483"
+   ],
+   "proof": [
+    "0xe81d52d13ea609863a7bfec9d91595dbc6895924e9a0706bff809aec53b5573b"
+   ],
+   "sourceId": "0x39cd1bb61a41f58002e7b09b3b9550cbfaabe00daa748d52898465bfc1fa2211",
+   "source_name": "USA_S_077"
+  }
+ ],
+ "version": "v2"
+}

@@ -1,0 +1,97 @@
+# CI for the public MethaneClause repository. The development repository runs no GitHub Actions: there this file is
+# ci/public-ci.yml, and scripts/export_public.sh ships it as .github/workflows/ci.yml. Three independent jobs, so a red
+# run names the part that failed: check (make check, offline, with a pinned gitleaks so its history scan runs), e2e
+# (the page in a real browser), slither (static analysis against the committed triage). Every action is pinned to a
+# full commit SHA (tag in the comment), the gitleaks binary to its release SHA-256; tool versions match the ones the
+# repository records (Foundry: contracts/README.md, Slither: contracts/slither.md, Playwright: mk/lane-c.mk). No
+# repository secrets are read. scripts/tests/test_public_ci.py checks all of this offline on every make check.
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: make check (tests, demo, judge-local, STRICT audit, words, links, tree, core bytecode)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: install gitleaks (pinned release binary, SHA-256 checked) so make secrets scans the history
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+        run: |
+          cd "$RUNNER_TEMP"
+          curl -fsSLo gitleaks.tar.gz "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gitleaks.tar.gz" | sha256sum -c
+          mkdir -p gitleaks-bin
+          tar -xzf gitleaks.tar.gz -C gitleaks-bin gitleaks
+          echo "$RUNNER_TEMP/gitleaks-bin" >> "$GITHUB_PATH"
+          gitleaks-bin/gitleaks version
+      - uses: foundry-rs/foundry-toolchain@908c540300062bd5a7e473851cdb4282204cee09 # v1.9.1
+        with:
+          version: v1.8.5
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.14"
+      - name: make setup (pipeline venv, pinned requirements)
+        run: make setup
+      - name: make check (offline; local Anvil, no keys, no test ETH)
+        run: make check
+
+  e2e:
+    name: make e2e (the page in Google Chrome via Playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - name: make e2e-setup (Playwright, version pinned in mk/lane-c.mk)
+        run: make e2e-setup
+      - name: make e2e (needs the network for the page's pinned CDN modules)
+        run: make e2e
+
+  slither:
+    name: make slither (every finding triaged in contracts/slither.triage.json)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: foundry-rs/foundry-toolchain@908c540300062bd5a7e473851cdb4282204cee09 # v1.9.1
+        with:
+          version: v1.8.5
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.14"
+      - name: install Slither as a uv tool (version recorded in contracts/slither.md)
+        run: |
+          uv tool install --python 3.12 slither-analyzer==0.11.6 --with crytic-compile==0.4.2
+          uv tool dir --bin >> "$GITHUB_PATH"
+      - name: make slither
+        run: make slither
+      - name: the regenerated contracts/slither.md matches the committed one
+        run: git diff --exit-code -- contracts/slither.md

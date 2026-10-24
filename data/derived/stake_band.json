@@ -1,0 +1,33 @@
+{
+ "assumption": "the duty cycle seen on satellite passes holds between passes; plume rates are snapshots; conservative in one way: simultaneous plumes in one pass are not summed",
+ "case": "TKM_S_276",
+ "detected": 9,
+ "duty_cycle": 1.0,
+ "duty_cycle_ci95": [
+  0.6637,
+  1.0
+ ],
+ "gwp100": 29.8,
+ "kt_ch4_per_yr": {
+  "high": 25.59,
+  "low": 2.45,
+  "mid": 9.14
+ },
+ "kt_co2e_per_yr_gwp100": {
+  "high": 762.5,
+  "low": 73.0,
+  "mid": 272.3
+ },
+ "label": "stake, not abatement",
+ "mars_label": "absent",
+ "passes": 9,
+ "plumes": 23,
+ "rate_kgh": {
+  "max": 3456.8,
+  "median": 1043.2,
+  "min": 132.3,
+  "p10": 421.6,
+  "p90": 2920.9
+ },
+ "since": "2025-06-13"
+}

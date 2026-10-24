@@ -1,0 +1,18 @@
+# gitleaks configuration for `make secrets` in the public repository. Default rules plus a narrow allowlist.
+title = "MethaneClause"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Known non-secrets"
+regexTarget = "match"  # match the whole finding (field name + value), not only the extracted value
+regexes = [
+  # the public Anvil test mnemonic and its derived keys are documented throwaways, refused off-Anvil by the code
+  '''test test test test test test test test test test test junk''',
+  '''0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80''',
+  # Anvil account 3 (public test mnemonic), committed once in pipeline/tests/test_cleanpass_digest.py (now derived instead)
+  '''7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6''',
+  # a public contract address (20 bytes) stored under the field name "keyRegistry" is not an API key
+  '''keyRegistry"\s*:\s*"0x[0-9a-fA-F]{40}"''',
+]

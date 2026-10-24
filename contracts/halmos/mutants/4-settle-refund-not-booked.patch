@@ -1,0 +1,11 @@
+--- a/src/MethaneCovenant.sol
++++ b/src/MethaneCovenant.sol
+@@ -273,7 +273,7 @@
+         c.settled = true;
+         uint256 refund = c.remaining;
+         c.remaining = 0;
+-        c.refunded += refund;
++        // MUTANT: the refund is not booked
+         _credit(c.seller, refund);
+         emit CovenantSettled(covenantId, refund);
+     }

@@ -1,0 +1,4353 @@
+{
+ "case_evidence_hash": "0xc18d4f142e5a3c43df876591cfb085a1b5176d6b5aaf07ef1a45d7769eb17cd2",
+ "cm_plumes_within_radius": [
+  {
+   "emission_auto": 2153.168551718641,
+   "emission_uncertainty_auto": 397.225161550104,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77762075624895,
+   "lon": 5.996853156998156,
+   "modified": "2025-03-25T22:52:57.240893Z",
+   "origin_dist_km": 0.165,
+   "platform": "ISS",
+   "plume_id": "emi20220817t140501p09010-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-01-02T21:59:05.943900Z",
+   "scene_timestamp": "2022-08-17T14:05:01Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2496.9645105880577,
+   "emission_uncertainty_auto": 425.1740017246986,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.778771545122936,
+   "lon": 5.995712986596317,
+   "modified": "2025-03-25T22:53:33.238279Z",
+   "origin_dist_km": 0.11,
+   "platform": "ISS",
+   "plume_id": "emi20230131t115231p08040-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-11-23T22:14:10.361177Z",
+   "scene_timestamp": "2023-01-31T11:52:31Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 3615.260223971831,
+   "emission_uncertainty_auto": 434.110016098055,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77750214011739,
+   "lon": 5.99654464242883,
+   "modified": "2025-03-25T22:42:46.323599Z",
+   "origin_dist_km": 0.14,
+   "platform": "ISS",
+   "plume_id": "emi20230216t133626p09013-B",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-06-15T19:26:25.303513Z",
+   "scene_timestamp": "2023-02-16T13:36:26Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2610.151501367533,
+   "emission_uncertainty_auto": 688.278247343423,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.777954031752756,
+   "lon": 5.996620068974067,
+   "modified": "2025-03-25T22:42:17.317249Z",
+   "origin_dist_km": 0.14,
+   "platform": "ISS",
+   "plume_id": "emi20230326t142844p10039-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-11-23T22:14:10.212325Z",
+   "scene_timestamp": "2023-03-26T14:28:44Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 3176.5803467160226,
+   "emission_uncertainty_auto": 244.42172894267577,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.7773195463472,
+   "lon": 5.997056643592828,
+   "modified": "2025-03-25T23:18:46.305995Z",
+   "origin_dist_km": 0.193,
+   "platform": "ISS",
+   "plume_id": "emi20230330t125302p09038-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-07-25T23:16:36.788254Z",
+   "scene_timestamp": "2023-03-30T12:53:02Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 3641.5016545950307,
+   "emission_uncertainty_auto": 282.63802552385033,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.777499882168073,
+   "lon": 5.996804241127847,
+   "modified": "2025-03-25T23:32:32.613179Z",
+   "origin_dist_km": 0.164,
+   "platform": "ISS",
+   "plume_id": "emi20230403t111849p08039-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-07-25T20:52:03.394602Z",
+   "scene_timestamp": "2023-04-03T11:18:49Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2076.3311674242427,
+   "emission_uncertainty_auto": 658.2185801927998,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.777557668156717,
+   "lon": 5.996001149850201,
+   "modified": "2025-03-25T22:41:58.021045Z",
+   "origin_dist_km": 0.09,
+   "platform": "ISS",
+   "plume_id": "emi20230526t142126p10040-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-08-12T15:30:18.405085Z",
+   "scene_timestamp": "2023-05-26T14:21:26Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2214.590213029023,
+   "emission_uncertainty_auto": 307.750916628744,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77739816521712,
+   "lon": 5.99645811862672,
+   "modified": "2025-03-25T22:40:57.128472Z",
+   "origin_dist_km": 0.137,
+   "platform": "ISS",
+   "plume_id": "emi20230626t101232p07010-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2023-11-24T21:40:27.691618Z",
+   "scene_timestamp": "2023-06-26T10:12:32Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2326.3710900894985,
+   "emission_uncertainty_auto": 826.2418386062508,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77752772471068,
+   "lon": 5.996864858014078,
+   "modified": "2025-03-25T22:59:49.307183Z",
+   "origin_dist_km": 0.168,
+   "platform": "ISS",
+   "plume_id": "emi20230925t140134p09039-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-02-01T21:00:06.765620Z",
+   "scene_timestamp": "2023-09-25T14:01:34Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2079.1338896079696,
+   "emission_uncertainty_auto": 297.781359831993,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.778078378856875,
+   "lon": 5.996062858328173,
+   "modified": "2025-03-25T23:00:20.967445Z",
+   "origin_dist_km": 0.089,
+   "platform": "ISS",
+   "plume_id": "emi20230929t122534p08039-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-02-01T21:00:06.852574Z",
+   "scene_timestamp": "2023-09-29T12:25:34Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2307.642396286214,
+   "emission_uncertainty_auto": 347.78248901655235,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77805179241311,
+   "lon": 5.996744675047267,
+   "modified": "2025-03-25T22:57:40.714369Z",
+   "origin_dist_km": 0.153,
+   "platform": "ISS",
+   "plume_id": "emi20240226t091316p06006-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-03-27T18:31:30.820385Z",
+   "scene_timestamp": "2024-02-26T09:13:16Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2171.527635787684,
+   "emission_uncertainty_auto": 152.03526455622463,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.7780346207022,
+   "lon": 5.99657151509453,
+   "modified": "2025-03-25T22:41:18.877755Z",
+   "origin_dist_km": 0.136,
+   "platform": "ISS",
+   "plume_id": "emi20240327t131334p09001-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-04-03T22:10:09.026611Z",
+   "scene_timestamp": "2024-03-27T13:13:34Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 3004.3385394149946,
+   "emission_uncertainty_auto": 337.32635783790784,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.778439195900077,
+   "lon": 5.995949377611282,
+   "modified": "2025-03-25T23:04:43.837157Z",
+   "origin_dist_km": 0.097,
+   "platform": "ISS",
+   "plume_id": "emi20240331t113753p08006-B",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-04-22T16:13:59.625385Z",
+   "scene_timestamp": "2024-03-31T11:37:53Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2458.898687895705,
+   "emission_uncertainty_auto": 766.9192972441612,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77751004261232,
+   "lon": 5.996024010669601,
+   "modified": "2025-03-25T23:04:45.539215Z",
+   "origin_dist_km": 0.095,
+   "platform": "ISS",
+   "plume_id": "emi20240404t100146p07007-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-04-22T16:14:00.328203Z",
+   "scene_timestamp": "2024-04-04T10:01:46Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 3295.461524178307,
+   "emission_uncertainty_auto": 296.31681937318183,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.77784063296376,
+   "lon": 5.99671213813545,
+   "modified": "2025-03-25T22:45:42.357076Z",
+   "origin_dist_km": 0.149,
+   "platform": "ISS",
+   "plume_id": "emi20240802t103135p07004-A",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-08-13T19:46:43.020377Z",
+   "scene_timestamp": "2024-08-02T10:31:35Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2314.6385601938923,
+   "emission_uncertainty_auto": 173.159203406155,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.777895354560002,
+   "lon": 5.995674502741764,
+   "modified": "2025-03-25T22:47:22.631686Z",
+   "origin_dist_km": 0.051,
+   "platform": "ISS",
+   "plume_id": "emi20240806t085622p06005-B",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-08-26T20:02:01.129471Z",
+   "scene_timestamp": "2024-08-06T08:56:22Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 2674.083315551263,
+   "emission_uncertainty_auto": 643.527927485103,
+   "emission_version": "v3",
+   "instrument": "emi",
+   "lat": 31.777848874054868,
+   "lon": 5.996084952451156,
+   "modified": "2025-03-25T23:13:51.009065Z",
+   "origin_dist_km": 0.09,
+   "platform": "ISS",
+   "plume_id": "emi20240929t113148p08006-B",
+   "plume_quality": null,
+   "processing_software": "3.18.1",
+   "published_at": "2024-11-26T21:47:27.437163Z",
+   "scene_timestamp": "2024-09-29T11:31:48Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 693.5882875920905,
+   "emission_uncertainty_auto": 88.22039364868992,
+   "emission_version": "v3c",
+   "instrument": "tan",
+   "lat": 31.772806489494798,
+   "lon": 5.999045035331164,
+   "modified": "2026-03-03T12:19:10.791152Z",
+   "origin_dist_km": 0.677,
+   "platform": "Planet Tanager 1",
+   "plume_id": "tan20260201t113140c40s4001-C",
+   "plume_quality": null,
+   "processing_software": "3.53.1",
+   "published_at": "2026-03-03T12:19:10.792305Z",
+   "scene_timestamp": "2026-02-01T11:31:40.400000Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  },
+  {
+   "emission_auto": 272.8792936964166,
+   "emission_uncertainty_auto": 56.75736489427736,
+   "emission_version": "v3c",
+   "instrument": "tan",
+   "lat": 31.769118585409387,
+   "lon": 5.992987652231562,
+   "modified": "2026-03-03T12:19:10.865336Z",
+   "origin_dist_km": 0.999,
+   "platform": "Planet Tanager 1",
+   "plume_id": "tan20260201t113140c40s4001-D",
+   "plume_quality": null,
+   "processing_software": "3.53.1",
+   "published_at": "2026-03-03T12:19:10.866577Z",
+   "scene_timestamp": "2026-02-01T11:31:40.400000Z",
+   "source_name": "CH4_1B2_1000m_5.99636_31.77708"
+  }
+ ],
+ "cm_source_ids": {
+  "CH4_1B2_1000m_5.99636_31.77708": "0x74d017ac0a8ac9b2edc3170a11f6f0429e926cc7455f6934d4e536e2abfb767b",
+  "CH4_1B2_250m_5.99640_31.77781": "0x14dcec6cf14119ce63e511602a7b2e202e76d4d437a7cf9639a8d7e2aa96039f"
+ },
+ "cm_sources": {
+  "CH4_1B2_1000m_5.99636_31.77708": {
+   "content_sha256": "58fae8455d3ff3ff2df80673f3558d201798038db5cd3c7d6c3347ea0fd0a177",
+   "dist_km": 0.148,
+   "fetchedAt": "2026-10-14T03:05:14Z",
+   "lat": 31.777080589081322,
+   "lon": 5.996364513501455,
+   "n_det": 18,
+   "n_obs": 31,
+   "post_mars_last_plume": {
+    "detections": [
+     "2026-02-01"
+    ],
+    "n_detected": 1,
+    "n_passes": 14,
+    "passes": [
+     "2024-10-15",
+     "2024-10-26",
+     "2024-11-11",
+     "2024-12-16",
+     "2025-01-31",
+     "2025-02-12",
+     "2025-04-22",
+     "2025-06-19",
+     "2025-06-24",
+     "2025-07-08",
+     "2025-09-23",
+     "2025-10-02",
+     "2026-02-01",
+     "2026-07-13"
+    ]
+   },
+   "raw_sha256": "692a2af317bc2ae5c16b49029823b59b5b9a0b9fc96aae73089afa9eae951012",
+   "within_radius": true
+  },
+  "CH4_1B2_250m_5.99640_31.77781": {
+   "content_sha256": "ba8658e0ba6ed3575796c863934d034746ee5fc654a94528ed09a0a647363f9d",
+   "dist_km": 0.119,
+   "fetchedAt": "2026-10-14T03:05:15Z",
+   "lat": 31.77781472658256,
+   "lon": 5.9963964644875904,
+   "n_det": 17,
+   "n_obs": 28,
+   "post_mars_last_plume": {
+    "detections": [],
+    "n_detected": 0,
+    "n_passes": 11,
+    "passes": [
+     "2024-10-15",
+     "2024-10-26",
+     "2024-11-11",
+     "2024-12-16",
+     "2025-01-31",
+     "2025-02-12",
+     "2025-04-22",
+     "2025-06-19",
+     "2025-06-24",
+     "2025-10-02",
+     "2026-07-13"
+    ]
+   },
+   "raw_sha256": "7e015045b4c258baf6f5a68800ba564691f63fc4f15b0f79f33f18ac2b7414cc",
+   "within_radius": true
+  }
+ },
+ "cm_timeline_union": [
+  {
+   "date": "2022-08-17",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-01-31",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-02-16",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-03-26",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-03-30",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-04-03",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-05-26",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-06-26",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-09-25",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2023-09-29",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-02-26",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-03-27",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-03-31",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-04-04",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-08-02",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-08-06",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-09-29",
+   "detected": true,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-10-15",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2024-10-26",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2024-11-11",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2024-12-16",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2025-01-31",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2025-02-12",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2025-04-22",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2025-06-19",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2025-06-24",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2025-07-08",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2025-09-23",
+   "detected": false,
+   "instruments": "tan"
+  },
+  {
+   "date": "2025-10-02",
+   "detected": false,
+   "instruments": "emi"
+  },
+  {
+   "date": "2026-02-01",
+   "detected": true,
+   "instruments": "tan"
+  },
+  {
+   "date": "2026-07-13",
+   "detected": false,
+   "instruments": "tan"
+  }
+ ],
+ "join_v1_candidate": false,
+ "licence": [
+  "Carbon Mapper Terms of Use: non-commercial, attribution ('Data by Carbon Mapper®'), redistribution under the same terms — Data by Carbon Mapper",
+  "UNEP IMEO MARS, CC BY-NC-SA 4.0"
+ ],
+ "mars_plumes": [
+  {
+   "ch4_fluxrate": 3595.0,
+   "ch4_fluxrate_std": 1528.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "642f6c28-326f-4d54-88ac-510380a1c837",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-06-22T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 5993.0,
+   "ch4_fluxrate_std": 2328.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "57bb76e1-5359-4266-8ab0-dfabb41364c9",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-07-17T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2400.0,
+   "ch4_fluxrate_std": 973.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "92927bb9-b645-42aa-a4a4-7508be02c701",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-07-20T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2752.0,
+   "ch4_fluxrate_std": 885.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ea18a31d-8bda-4330-8d31-e3d2cf306586",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-09-01T10:08:45"
+  },
+  {
+   "ch4_fluxrate": 3667.0,
+   "ch4_fluxrate_std": 1426.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0884927a-f1d7-4457-90d0-35426b83ff1f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-09-18T10:16:39"
+  },
+  {
+   "ch4_fluxrate": 1052.0,
+   "ch4_fluxrate_std": 389.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "582458f6-2729-430c-a938-de27d87bacaf",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-09-23T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 1430.0,
+   "ch4_fluxrate_std": 383.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "09cf174f-4a25-498d-b07f-76910d05cedf",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-09-25T10:10:19"
+  },
+  {
+   "ch4_fluxrate": 1875.0,
+   "ch4_fluxrate_std": 513.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "925f58e1-d272-4eb8-a4f0-a03c983ee251",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-09-28T10:17:19"
+  },
+  {
+   "ch4_fluxrate": 1996.0,
+   "ch4_fluxrate_std": 826.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6657f9df-c5dd-4485-990c-01d7c8858f03",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-09-30T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 2164.0,
+   "ch4_fluxrate_std": 917.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2f4373ef-81fd-4a21-8bef-9ead10be6678",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-03T10:18:51"
+  },
+  {
+   "ch4_fluxrate": 3036.0,
+   "ch4_fluxrate_std": 1083.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a2a08eac-3ec1-4304-b7b2-33b05bb23d68",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-08T10:18:29"
+  },
+  {
+   "ch4_fluxrate": 3321.0,
+   "ch4_fluxrate_std": 1332.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bfbb31a1-b41f-4913-8139-da2aa03f5d0e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-10T10:09:41"
+  },
+  {
+   "ch4_fluxrate": 5758.0,
+   "ch4_fluxrate_std": 2176.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "144591d3-94d7-4a53-a69a-13910b4bd42f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-13T10:19:51"
+  },
+  {
+   "ch4_fluxrate": 2233.0,
+   "ch4_fluxrate_std": 861.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c10755e9-40b5-491a-a35c-e1855cc87e2c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-15T10:10:29"
+  },
+  {
+   "ch4_fluxrate": 2715.0,
+   "ch4_fluxrate_std": 937.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8b597244-0d41-4442-a60a-18d2ef2b4935",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-18T10:19:39"
+  },
+  {
+   "ch4_fluxrate": 2388.0,
+   "ch4_fluxrate_std": 1108.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3b3cff10-7dd7-4416-85a9-8ef2846965b7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-10-19T10:08:57"
+  },
+  {
+   "ch4_fluxrate": 3337.0,
+   "ch4_fluxrate_std": 1436.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "55739ee9-74d5-4562-bd4b-8ed3a13f4920",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-20T10:10:41"
+  },
+  {
+   "ch4_fluxrate": 2504.0,
+   "ch4_fluxrate_std": 961.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2e358190-435d-4755-b21a-d9edd3be5566",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-25T10:10:29"
+  },
+  {
+   "ch4_fluxrate": 1801.0,
+   "ch4_fluxrate_std": 411.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5e1f4ad8-08ea-4832-91e4-04a8ba41ee09",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-28T10:20:39"
+  },
+  {
+   "ch4_fluxrate": 3061.0,
+   "ch4_fluxrate_std": 1179.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "97772fe4-dede-4109-9e40-a3a253f10f0e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-10-30T10:11:41"
+  },
+  {
+   "ch4_fluxrate": 3182.0,
+   "ch4_fluxrate_std": 1077.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "af07db0c-092b-450d-a2f7-bf952f0b2e15",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-02T10:22:01"
+  },
+  {
+   "ch4_fluxrate": 3477.0,
+   "ch4_fluxrate_std": 1382.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fc6992fe-caaa-4385-a30f-0b573a29e320",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-11-04T10:08:56"
+  },
+  {
+   "ch4_fluxrate": 3517.0,
+   "ch4_fluxrate_std": 1372.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a481f197-9825-4c3f-8e7e-5d69123752a0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-04T10:11:09"
+  },
+  {
+   "ch4_fluxrate": 5023.0,
+   "ch4_fluxrate_std": 1866.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d9c0e4b2-ceb0-4b39-9bfc-2899439baafd",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-11-08T10:04:42"
+  },
+  {
+   "ch4_fluxrate": 541.0,
+   "ch4_fluxrate_std": 212.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "db167a95-e7e3-4f77-842e-d05fb21b7651",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-12T10:22:51"
+  },
+  {
+   "ch4_fluxrate": 3857.0,
+   "ch4_fluxrate_std": 1400.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5e524e4d-7da4-4367-b2e2-39221676be45",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-11-13T10:07:10"
+  },
+  {
+   "ch4_fluxrate": 4341.0,
+   "ch4_fluxrate_std": 1184.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5d1acc6b-812a-401c-9473-e493b1bf9e30",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-14T10:11:59"
+  },
+  {
+   "ch4_fluxrate": 2869.0,
+   "ch4_fluxrate_std": 1072.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "862e5353-5213-49f9-bbf1-3c5b1d2d63aa",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-11-18T10:09:38"
+  },
+  {
+   "ch4_fluxrate": 2606.0,
+   "ch4_fluxrate_std": 955.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "54feb12d-8633-4e92-a77b-793868aa9400",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-22T10:23:31"
+  },
+  {
+   "ch4_fluxrate": 342.0,
+   "ch4_fluxrate_std": 158.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5d6cd7fb-3994-4d95-9ed7-7ed85b38dd6d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-24T10:12:39"
+  },
+  {
+   "ch4_fluxrate": 3352.0,
+   "ch4_fluxrate_std": 1027.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b358c8ee-5b00-4d08-bf2e-722c7a971a28",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-11-27T10:22:59"
+  },
+  {
+   "ch4_fluxrate": 2877.0,
+   "ch4_fluxrate_std": 1128.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9a35552e-90b2-4114-a3ec-d04fb8f05aa0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-02T10:24:01"
+  },
+  {
+   "ch4_fluxrate": 3264.0,
+   "ch4_fluxrate_std": 1100.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4c744a34-4ac6-4262-998a-ee9bb4a76514",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-04T10:13:09"
+  },
+  {
+   "ch4_fluxrate": 5172.0,
+   "ch4_fluxrate_std": 2235.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c84350b1-b6ec-4876-abf5-d59ca04bbaf8",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-12-06T10:08:53"
+  },
+  {
+   "ch4_fluxrate": 3621.0,
+   "ch4_fluxrate_std": 1044.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "eb96d7ea-513e-4adb-a606-00d0b5b287a5",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-07T10:23:19"
+  },
+  {
+   "ch4_fluxrate": 3735.0,
+   "ch4_fluxrate_std": 1521.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "05ea8344-05e9-4eaf-958c-d0ca99e0fc47",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-09T10:14:11"
+  },
+  {
+   "ch4_fluxrate": 1840.0,
+   "ch4_fluxrate_std": 507.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7705e624-3ddd-4354-a5b2-9c3f59f9aefa",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-12T10:24:31"
+  },
+  {
+   "ch4_fluxrate": 1785.0,
+   "ch4_fluxrate_std": 564.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3d7af62d-120c-4312-ab91-0c75112a0e56",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-12-14T10:08:49"
+  },
+  {
+   "ch4_fluxrate": 2783.0,
+   "ch4_fluxrate_std": 848.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ab3e1fe7-5571-4327-bcf8-55c8b44c7765",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-14T10:13:29"
+  },
+  {
+   "ch4_fluxrate": 4171.0,
+   "ch4_fluxrate_std": 1215.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7161ad0c-6caf-49bb-8999-93481a959da0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-17T10:23:29"
+  },
+  {
+   "ch4_fluxrate": 1478.0,
+   "ch4_fluxrate_std": 381.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8171e719-862a-4056-b0c7-798a51935e55",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-19T10:14:31"
+  },
+  {
+   "ch4_fluxrate": 8540.0,
+   "ch4_fluxrate_std": 2001.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "401c5b14-018a-4744-9a1b-e4f3893d948b",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-12-22T10:08:50"
+  },
+  {
+   "ch4_fluxrate": 5308.0,
+   "ch4_fluxrate_std": 1242.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b5430788-4911-4477-820e-f120de95c0d1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-22T10:24:41"
+  },
+  {
+   "ch4_fluxrate": 3346.0,
+   "ch4_fluxrate_std": 523.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ca179b48-cade-4754-8385-3581124becf1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-24T10:13:29"
+  },
+  {
+   "ch4_fluxrate": 3035.0,
+   "ch4_fluxrate_std": 967.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "be4949c1-bf51-4423-8189-f0abfc6a917c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2021-12-29T10:14:31"
+  },
+  {
+   "ch4_fluxrate": 8333.0,
+   "ch4_fluxrate_std": 2709.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7c881ad0-9ba9-424b-88fd-249dbf801ee2",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-12-30T08:56:03"
+  },
+  {
+   "ch4_fluxrate": 3491.0,
+   "ch4_fluxrate_std": 1113.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "152cecad-9756-4ad9-9a05-882b9bbff96d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2021-12-30T10:08:49"
+  },
+  {
+   "ch4_fluxrate": 1043.0,
+   "ch4_fluxrate_std": 310.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7497aaeb-a192-4434-abae-0167ccd19e71",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-01T10:24:31"
+  },
+  {
+   "ch4_fluxrate": 5929.0,
+   "ch4_fluxrate_std": 694.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "edb41c5d-e6ed-4363-99bf-715b3b64ebef",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-03T10:13:19"
+  },
+  {
+   "ch4_fluxrate": 3786.0,
+   "ch4_fluxrate_std": 1602.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a1b8ad10-1ed4-474e-b33c-574f9d789b0c",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-01-07T10:08:46"
+  },
+  {
+   "ch4_fluxrate": 2011.0,
+   "ch4_fluxrate_std": 817.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1ed85ae6-d35e-4d52-99c1-a740fbba7072",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-08T10:14:11"
+  },
+  {
+   "ch4_fluxrate": 5852.0,
+   "ch4_fluxrate_std": 1999.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a1ec6f98-f431-4bee-a369-64d8ae230c7f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-13T10:12:59"
+  },
+  {
+   "ch4_fluxrate": 7272.0,
+   "ch4_fluxrate_std": 2045.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8ffb71e0-f015-4c5a-b3e6-7533f28c6dbe",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-01-15T08:54:31"
+  },
+  {
+   "ch4_fluxrate": 1195.0,
+   "ch4_fluxrate_std": 278.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c853234c-cd24-4fd1-8eac-afddd00b2e11",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-01-15T10:08:45"
+  },
+  {
+   "ch4_fluxrate": 2425.0,
+   "ch4_fluxrate_std": 759.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "77248001-85ed-4b92-ad76-cb491490a08a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-16T10:22:49"
+  },
+  {
+   "ch4_fluxrate": 1862.0,
+   "ch4_fluxrate_std": 271.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1822402e-f436-4f9e-b63f-90c9a5b4f6aa",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-18T10:13:41"
+  },
+  {
+   "ch4_fluxrate": 2179.0,
+   "ch4_fluxrate_std": 345.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "db987de9-2b2b-4f48-8744-a5622eaf1e22",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-21T10:23:31"
+  },
+  {
+   "ch4_fluxrate": 2024.0,
+   "ch4_fluxrate_std": 565.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c79abf13-dc52-4076-903b-a36bd73a5eb8",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-01-23T10:08:42"
+  },
+  {
+   "ch4_fluxrate": 2567.0,
+   "ch4_fluxrate_std": 699.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "56980c88-b5f9-435a-b51f-3c44cc2ede9e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-23T10:12:19"
+  },
+  {
+   "ch4_fluxrate": 4713.0,
+   "ch4_fluxrate_std": 1703.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0dffd44f-45c9-413e-bf89-c80d50a2a94d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-26T10:22:09"
+  },
+  {
+   "ch4_fluxrate": 3882.0,
+   "ch4_fluxrate_std": 1446.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fa1d1c66-d426-49ca-b814-f6c9a2cdd94b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-28T10:13:01"
+  },
+  {
+   "ch4_fluxrate": 5780.0,
+   "ch4_fluxrate_std": 2351.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "78f9cd66-8e08-4af4-94f1-fae06ebe34b6",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-01-31T10:08:48"
+  },
+  {
+   "ch4_fluxrate": 2476.0,
+   "ch4_fluxrate_std": 1003.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1855be8a-9be1-4e61-ba8b-da1afdeb9296",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-01-31T10:22:51"
+  },
+  {
+   "ch4_fluxrate": 3268.0,
+   "ch4_fluxrate_std": 1190.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4ed13ab3-9b3d-42aa-9fd2-b981e3f6ff99",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-02T10:11:29"
+  },
+  {
+   "ch4_fluxrate": 4228.0,
+   "ch4_fluxrate_std": 1486.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8ce7704f-311b-47a4-b63d-5cd59e230a10",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-05T10:21:19"
+  },
+  {
+   "ch4_fluxrate": 1404.0,
+   "ch4_fluxrate_std": 604.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8b807432-9d37-42ff-a12b-320a2e4b85a1",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-02-08T10:08:38"
+  },
+  {
+   "ch4_fluxrate": 5307.0,
+   "ch4_fluxrate_std": 2217.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "517839ba-15c4-4072-b8f2-efb28824e1f4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-15T10:20:19"
+  },
+  {
+   "ch4_fluxrate": 5525.0,
+   "ch4_fluxrate_std": 2127.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f6535bb4-e93e-4850-8963-6f7a10e4bf3d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-02-16T10:08:42"
+  },
+  {
+   "ch4_fluxrate": 3355.0,
+   "ch4_fluxrate_std": 1162.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7db6e023-1504-4ba6-b044-185c6daba78f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-17T10:11:01"
+  },
+  {
+   "ch4_fluxrate": 4581.0,
+   "ch4_fluxrate_std": 2002.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d03915d8-6bc0-41ed-ae3c-c587c2ee5b27",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-22T10:10:19"
+  },
+  {
+   "ch4_fluxrate": 3133.0,
+   "ch4_fluxrate_std": 1052.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "70f35b43-436d-4fac-aa52-d1d2d989d930",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-02-24T10:08:33"
+  },
+  {
+   "ch4_fluxrate": 5010.0,
+   "ch4_fluxrate_std": 1638.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "94a79b87-92d7-4926-94b6-307e4279edff",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-25T10:19:09"
+  },
+  {
+   "ch4_fluxrate": 3061.0,
+   "ch4_fluxrate_std": 665.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6a4662dc-1823-4494-a7bd-782d1079df86",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-02-27T10:09:51"
+  },
+  {
+   "ch4_fluxrate": 2533.0,
+   "ch4_fluxrate_std": 943.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b0ffbaad-af8d-47a8-8c13-468a30c6d7df",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-02T10:19:41"
+  },
+  {
+   "ch4_fluxrate": 2637.0,
+   "ch4_fluxrate_std": 668.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4e38cea6-6f5c-47f7-8c49-54a40f31ba3d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-03-04T08:49:47"
+  },
+  {
+   "ch4_fluxrate": 1338.0,
+   "ch4_fluxrate_std": 438.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a671062d-0384-4e08-addc-e05c36507189",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-04T10:10:19"
+  },
+  {
+   "ch4_fluxrate": 4989.0,
+   "ch4_fluxrate_std": 1365.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "41be8f54-0a95-482f-ac75-a4308211e0ca",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-09T10:08:41"
+  },
+  {
+   "ch4_fluxrate": 3839.0,
+   "ch4_fluxrate_std": 1661.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e3cdadac-9e5d-40b3-a07f-1c65edbbd296",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-14T10:10:19"
+  },
+  {
+   "ch4_fluxrate": 3106.0,
+   "ch4_fluxrate_std": 1254.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ad24b637-5894-4595-8f03-02e8fad09368",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-22T10:17:11"
+  },
+  {
+   "ch4_fluxrate": 921.0,
+   "ch4_fluxrate_std": 437.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "11c6880a-0e17-48d5-b608-6c025a497962",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-24T10:06:49"
+  },
+  {
+   "ch4_fluxrate": 1702.0,
+   "ch4_fluxrate_std": 665.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f0ee34fb-8680-4641-848c-730f6b39b149",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-03-27T10:16:29"
+  },
+  {
+   "ch4_fluxrate": 6841.0,
+   "ch4_fluxrate_std": 1992.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fa411a89-250e-451b-8714-2bdbcbdd2fc6",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-03-28T10:08:17"
+  },
+  {
+   "ch4_fluxrate": 6440.0,
+   "ch4_fluxrate_std": 2732.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc226695-7013-4224-a3df-db62853b1dbd",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-03T10:05:49"
+  },
+  {
+   "ch4_fluxrate": 2655.0,
+   "ch4_fluxrate_std": 866.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7413b9e4-36dd-4ff3-b93c-864d684ac37e",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-04-05T10:08:27"
+  },
+  {
+   "ch4_fluxrate": 1953.0,
+   "ch4_fluxrate_std": 585.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4794b570-2734-4885-9d9c-3d077f0e6521",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-08T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1649.0,
+   "ch4_fluxrate_std": 694.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a3ab9801-e129-47cb-b792-d3ce33b039de",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-11T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 2202.0,
+   "ch4_fluxrate_std": 858.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c5ccb491-71a6-4229-9677-7af533160cd0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-18T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1894.0,
+   "ch4_fluxrate_std": 785.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc0cd625-ee1c-476e-90e8-51db2b68d5fb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-23T10:05:49"
+  },
+  {
+   "ch4_fluxrate": 2106.0,
+   "ch4_fluxrate_std": 939.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7ca61071-e1d8-405e-9cef-9fa9be5555de",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-04-26T10:15:49"
+  },
+  {
+   "ch4_fluxrate": 3094.0,
+   "ch4_fluxrate_std": 1226.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "18373274-d990-4f88-a619-5b2b42dae7be",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-01T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 3598.0,
+   "ch4_fluxrate_std": 1454.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "af51d716-de32-4f4e-9a42-303f5fccda6e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-03T10:05:49"
+  },
+  {
+   "ch4_fluxrate": 6183.0,
+   "ch4_fluxrate_std": 2328.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3c47e795-8789-4ae4-b8a6-0b83c3497601",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-05-07T10:08:13"
+  },
+  {
+   "ch4_fluxrate": 2101.0,
+   "ch4_fluxrate_std": 808.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "682a2950-c392-44e5-b98f-f4e018a33644",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-08T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2160.0,
+   "ch4_fluxrate_std": 856.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1339156b-6e63-4e99-9c34-1a474f5f5b50",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-11T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 4739.0,
+   "ch4_fluxrate_std": 1613.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4d367a38-d821-4a73-af11-edfb7c97dfae",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-13T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3199.0,
+   "ch4_fluxrate_std": 1200.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ea334ab4-746f-4573-84e3-b4895296bf6e",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-05-15T10:08:27"
+  },
+  {
+   "ch4_fluxrate": 4556.0,
+   "ch4_fluxrate_std": 1691.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "343f6545-b0ed-4dd5-814c-98288aba13b8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-16T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 3031.0,
+   "ch4_fluxrate_std": 1170.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "23aef22b-b2a1-440c-8a2b-8932d5c029a0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-18T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1368.0,
+   "ch4_fluxrate_std": 538.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4bc48032-c03b-4eb2-b94c-dca149d1751e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-21T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 4511.0,
+   "ch4_fluxrate_std": 1288.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "42c92e6c-f57e-48f0-9897-aeb16a0f7210",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-23T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4454.0,
+   "ch4_fluxrate_std": 1278.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5fdc83e9-9692-464f-a394-3d5ee939f152",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-05-23T10:08:02"
+  },
+  {
+   "ch4_fluxrate": 3923.0,
+   "ch4_fluxrate_std": 1686.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "05aa0e86-eaca-4ae3-885a-d0c4d99384f1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-26T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 5249.0,
+   "ch4_fluxrate_std": 2038.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bbace7b6-f316-488f-8686-2a3439937707",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-28T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 11139.0,
+   "ch4_fluxrate_std": 4705.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "afb0f2c2-e864-425b-b411-020dd65809a3",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-05-31T10:08:30"
+  },
+  {
+   "ch4_fluxrate": 5375.0,
+   "ch4_fluxrate_std": 2266.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d65da923-dfc9-4665-8aba-9bca370e3696",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-05-31T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 2057.0,
+   "ch4_fluxrate_std": 820.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bd7127ee-1b70-4f89-b334-370bc07a172f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-02T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4783.0,
+   "ch4_fluxrate_std": 1940.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ee3e2dd8-01ae-4e42-8730-d1d92f669cb7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-05T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2619.0,
+   "ch4_fluxrate_std": 930.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8f60f665-f45d-4597-966d-8cda08dcbfcc",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-07T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2007.0,
+   "ch4_fluxrate_std": 791.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "18223dbe-b504-489f-981e-2434d9d4d529",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-10T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 4386.0,
+   "ch4_fluxrate_std": 1736.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "df40aad8-9827-43fe-a7dc-6709e8303aeb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-15T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2543.0,
+   "ch4_fluxrate_std": 1018.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "48a0c422-400a-4e35-b980-d8bbdc6c7ea5",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-17T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 2975.0,
+   "ch4_fluxrate_std": 1125.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9877dcff-58f1-49da-90ab-e502c637e22c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-20T10:20:41"
+  },
+  {
+   "ch4_fluxrate": 2514.0,
+   "ch4_fluxrate_std": 968.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "30ee4369-dd7b-4362-acc9-5130f58191f2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-22T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3959.0,
+   "ch4_fluxrate_std": 1643.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "333fb0bb-57c3-48d4-80dc-bf356985624e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-25T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1755.0,
+   "ch4_fluxrate_std": 766.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "07dd76f6-a6a5-424d-85ec-f2e6795a44bd",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-27T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 4797.0,
+   "ch4_fluxrate_std": 2126.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc32816c-f7c3-43a8-a573-b7caa514f4a8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-06-30T10:20:41"
+  },
+  {
+   "ch4_fluxrate": 5714.0,
+   "ch4_fluxrate_std": 2198.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4a76782e-9e8a-472b-80ce-3c15c55cf947",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-05T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2560.0,
+   "ch4_fluxrate_std": 958.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "80bb89a1-1023-4692-916b-cad5b702a48d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-07T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 2645.0,
+   "ch4_fluxrate_std": 1222.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1eaaa412-0503-4ef5-a257-6362d758e7ff",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-07-10T10:08:21"
+  },
+  {
+   "ch4_fluxrate": 2811.0,
+   "ch4_fluxrate_std": 1220.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9d7e8987-5832-46ee-b361-e1630267075c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-10T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 3067.0,
+   "ch4_fluxrate_std": 1315.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2eb80a18-037d-4380-8264-f0c5ab065fc8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-12T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 6366.0,
+   "ch4_fluxrate_std": 2546.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4506fcd2-cf3a-403e-b671-405206f0dac6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-15T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2230.0,
+   "ch4_fluxrate_std": 905.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ffe485f7-6ace-4361-8e8f-b10f93ecf948",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-17T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 2825.0,
+   "ch4_fluxrate_std": 1151.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d23f57e9-bb75-4bac-8fd9-ba54df5fa127",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-07-18T10:08:47"
+  },
+  {
+   "ch4_fluxrate": 3203.0,
+   "ch4_fluxrate_std": 1066.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "86b50e36-133e-4a8b-b2bf-ea057720c24f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-20T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 3569.0,
+   "ch4_fluxrate_std": 1400.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "59ed8085-ef12-4fce-9f38-61b62422344c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-22T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4197.0,
+   "ch4_fluxrate_std": 1487.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8a455e78-8a93-44e0-b611-815500caac4a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-25T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1927.0,
+   "ch4_fluxrate_std": 595.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d2b71e0b-ed9f-4626-af94-a48747620d29",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-07-26T10:08:31"
+  },
+  {
+   "ch4_fluxrate": 3051.0,
+   "ch4_fluxrate_std": 786.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d714b386-901e-4593-b358-916900981b48",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-27T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2714.0,
+   "ch4_fluxrate_std": 1037.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d68e5906-e00f-40ed-902b-7c7539c52152",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-07-30T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 4356.0,
+   "ch4_fluxrate_std": 1660.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8f9c573a-0a99-48eb-b46c-c685a15e3e18",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-01T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4114.0,
+   "ch4_fluxrate_std": 1761.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "77902b7b-c5be-49fc-b228-53a1f0dd5c52",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-08-03T10:08:58"
+  },
+  {
+   "ch4_fluxrate": 745.0,
+   "ch4_fluxrate_std": 308.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "697faa07-74ab-4d2e-8aca-f2a303cdb73e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-04T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1524.0,
+   "ch4_fluxrate_std": 490.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a0082609-f450-4adf-a3fe-2a49761d0325",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-06T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 1857.0,
+   "ch4_fluxrate_std": 740.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "da666ed3-404e-4bc6-a654-22f0099c78c0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-11T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2573.0,
+   "ch4_fluxrate_std": 1057.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a7435c7b-54bd-45d9-ad6d-f1918c4f3c82",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-08-11T10:08:41"
+  },
+  {
+   "ch4_fluxrate": 2629.0,
+   "ch4_fluxrate_std": 1016.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "930fc4d9-50ab-416c-bb0d-84349737ff71",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-14T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 3350.0,
+   "ch4_fluxrate_std": 1352.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f454f35c-d43e-44cd-9044-9061ce3f0e40",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-16T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 2526.0,
+   "ch4_fluxrate_std": 1081.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "eb635e86-871f-49a0-aa3d-6d00d8e1a6b7",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2022-08-17T14:05:01"
+  },
+  {
+   "ch4_fluxrate": 1654.0,
+   "ch4_fluxrate_std": 554.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a6023c85-6164-46f9-a2f5-c3c311c05329",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-21T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 7625.0,
+   "ch4_fluxrate_std": 2948.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fac9c025-1755-4633-a27d-5b8f0c8bc5b7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-24T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2909.0,
+   "ch4_fluxrate_std": 1176.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d849eb25-a273-475c-a5cd-9ea2b5e3d07c",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-08-27T10:08:45"
+  },
+  {
+   "ch4_fluxrate": 3296.0,
+   "ch4_fluxrate_std": 1208.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "016c1cab-98bc-47f4-8cc7-2a57819fd51c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-29T10:16:11"
+  },
+  {
+   "ch4_fluxrate": 1690.0,
+   "ch4_fluxrate_std": 661.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8a3b094a-ac42-4836-a78b-c3db7cc13da4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-08-31T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 1879.0,
+   "ch4_fluxrate_std": 550.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "06fbc11e-2d86-4b18-a990-df21aefec18e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-03T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2388.0,
+   "ch4_fluxrate_std": 1032.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ca79a64b-a63d-4064-80e3-be6a8443dd7f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-09-04T10:09:04"
+  },
+  {
+   "ch4_fluxrate": 1146.0,
+   "ch4_fluxrate_std": 475.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "327a930b-dd38-480a-89cf-e88fb2e7ee68",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-05T10:06:11"
+  },
+  {
+   "ch4_fluxrate": 2060.0,
+   "ch4_fluxrate_std": 590.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f40b1812-162b-4993-a535-3357c087bf23",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-10T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 5919.0,
+   "ch4_fluxrate_std": 2415.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "00a1386c-10e4-4f51-a369-7dc163270de4",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-09-12T10:08:47"
+  },
+  {
+   "ch4_fluxrate": 3741.0,
+   "ch4_fluxrate_std": 1356.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d7971bd4-a12b-4b8a-882c-c1e1e6967011",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-13T10:16:29"
+  },
+  {
+   "ch4_fluxrate": 745.0,
+   "ch4_fluxrate_std": 325.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7c6c3f08-932c-4bb2-9f85-9c2daba2c708",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-15T10:06:41"
+  },
+  {
+   "ch4_fluxrate": 4531.0,
+   "ch4_fluxrate_std": 1898.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3145f394-e7cc-4908-8d26-1d679f86bd76",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-09-20T10:09:10"
+  },
+  {
+   "ch4_fluxrate": 4624.0,
+   "ch4_fluxrate_std": 1805.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ea5ef2b1-bb1c-4bff-98d4-b505942c4391",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-23T10:16:49"
+  },
+  {
+   "ch4_fluxrate": 2104.0,
+   "ch4_fluxrate_std": 840.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7b7351f8-7442-4e4d-a591-ea55deeba054",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-25T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 4253.0,
+   "ch4_fluxrate_std": 1601.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "103cb6fa-240b-4396-868b-5d0bb12c9365",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-09-28T10:08:53"
+  },
+  {
+   "ch4_fluxrate": 1900.0,
+   "ch4_fluxrate_std": 712.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "01404756-fc8a-4d84-8eeb-8d513d8b464d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-28T10:18:11"
+  },
+  {
+   "ch4_fluxrate": 4481.0,
+   "ch4_fluxrate_std": 1722.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "70d2fe33-5a51-4b4e-aae9-db47e35c2f46",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-09-30T10:07:29"
+  },
+  {
+   "ch4_fluxrate": 2362.0,
+   "ch4_fluxrate_std": 635.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9c36814d-a595-4f0b-b3d8-37fdae2bd9b4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-03T10:17:49"
+  },
+  {
+   "ch4_fluxrate": 2425.0,
+   "ch4_fluxrate_std": 971.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "48b03f2e-28bd-4259-83ca-a996df994845",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-05T10:09:01"
+  },
+  {
+   "ch4_fluxrate": 5263.0,
+   "ch4_fluxrate_std": 1903.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4f13900b-4124-4419-8ca0-d8d8b57f7ec1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-08T10:19:31"
+  },
+  {
+   "ch4_fluxrate": 4798.0,
+   "ch4_fluxrate_std": 1609.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0adc2685-a13a-431a-a8cb-5be568ef4db8",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-10-14T10:08:57"
+  },
+  {
+   "ch4_fluxrate": 2790.0,
+   "ch4_fluxrate_std": 742.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fc67d046-3492-406a-baf4-9eb81853784b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-15T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 1955.0,
+   "ch4_fluxrate_std": 343.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3d987ec3-3052-4270-8b3c-bba6fb235bd6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-18T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 3336.0,
+   "ch4_fluxrate_std": 1043.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5ebabe5b-74b0-4d45-b387-66b2052e98ff",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-20T10:09:39"
+  },
+  {
+   "ch4_fluxrate": 2038.0,
+   "ch4_fluxrate_std": 580.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ed5b0a06-6447-4eb0-b8a0-e31d94c9abdd",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-10-22T10:09:07"
+  },
+  {
+   "ch4_fluxrate": 3674.0,
+   "ch4_fluxrate_std": 1342.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "394ec90e-0de8-460a-b7d4-be81cc1211c4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-23T10:20:29"
+  },
+  {
+   "ch4_fluxrate": 1645.0,
+   "ch4_fluxrate_std": 577.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a7949d9f-9c27-41d3-ab9a-1cf179075729",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-25T10:11:11"
+  },
+  {
+   "ch4_fluxrate": 3180.0,
+   "ch4_fluxrate_std": 603.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7764d066-712a-4eea-88a4-b207621d1973",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-28T10:21:31"
+  },
+  {
+   "ch4_fluxrate": 3224.0,
+   "ch4_fluxrate_std": 418.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a55b2433-a73b-4c95-b391-e69364e7963e",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-10-30T10:08:57"
+  },
+  {
+   "ch4_fluxrate": 3450.0,
+   "ch4_fluxrate_std": 440.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b01e0329-d610-4561-9541-8586c278723f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-10-30T10:10:39"
+  },
+  {
+   "ch4_fluxrate": 4290.0,
+   "ch4_fluxrate_std": 1271.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "887a56e4-d72f-4020-b923-897858388f3d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-02T10:20:59"
+  },
+  {
+   "ch4_fluxrate": 2628.0,
+   "ch4_fluxrate_std": 999.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "dcb38648-7fc3-43ff-a6f2-a8abdd2b6c9c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-04T10:12:11"
+  },
+  {
+   "ch4_fluxrate": 4190.0,
+   "ch4_fluxrate_std": 1030.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "88067b35-9cf3-4d94-baa6-efef3ef08f0b",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-11-07T10:09:09"
+  },
+  {
+   "ch4_fluxrate": 4486.0,
+   "ch4_fluxrate_std": 1169.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4b902d3c-04dd-4475-8cc3-965d3255589c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-09T10:11:39"
+  },
+  {
+   "ch4_fluxrate": 6038.0,
+   "ch4_fluxrate_std": 2376.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9274c3b2-8e5c-4d47-9edb-6061d0767ec7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-12T10:21:59"
+  },
+  {
+   "ch4_fluxrate": 4407.0,
+   "ch4_fluxrate_std": 1665.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0d9b72ea-9121-415a-931c-a89c8373f972",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-14T10:13:01"
+  },
+  {
+   "ch4_fluxrate": 3045.0,
+   "ch4_fluxrate_std": 1149.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9a9f8af8-6962-4c44-a0ed-d62983c59d7d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-11-15T10:09:00"
+  },
+  {
+   "ch4_fluxrate": 1954.0,
+   "ch4_fluxrate_std": 826.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "62720bab-a155-4b3b-a48e-f7df15bd244f",
+   "satellite": "EnMAP - DLR",
+   "tile_date": "2022-11-17T10:57:57"
+  },
+  {
+   "ch4_fluxrate": 2785.0,
+   "ch4_fluxrate_std": 1063.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "609f73b7-d630-4da6-84ef-f92129483186",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-24T10:13:41"
+  },
+  {
+   "ch4_fluxrate": 4656.0,
+   "ch4_fluxrate_std": 1917.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "20906bcd-834b-417e-ad92-0c3f794ebe15",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-27T10:23:51"
+  },
+  {
+   "ch4_fluxrate": 6188.0,
+   "ch4_fluxrate_std": 2646.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8c7f447f-fff8-4e84-9ff1-7f483c8f26e3",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-11-29T10:12:59"
+  },
+  {
+   "ch4_fluxrate": 864.0,
+   "ch4_fluxrate_std": 143.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1f95093f-0224-42d4-8dd4-08b8b859bf70",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-12-01T10:08:55"
+  },
+  {
+   "ch4_fluxrate": 2631.0,
+   "ch4_fluxrate_std": 796.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "51f19463-1a45-4a8b-a3f6-a5b529bfad4f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-04T10:14:11"
+  },
+  {
+   "ch4_fluxrate": 3617.0,
+   "ch4_fluxrate_std": 1161.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ca47f40e-4129-40ba-860b-0371e75478fb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-07T10:24:11"
+  },
+  {
+   "ch4_fluxrate": 4026.0,
+   "ch4_fluxrate_std": 1540.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "61e247de-240e-4e58-8c2e-17f8a3cd67ea",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-14T10:14:31"
+  },
+  {
+   "ch4_fluxrate": 1738.0,
+   "ch4_fluxrate_std": 533.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a9682d06-094a-452a-b050-e9c0e8f233f7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-12-17T10:08:57"
+  },
+  {
+   "ch4_fluxrate": 1916.0,
+   "ch4_fluxrate_std": 568.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "feaa1a6d-bb85-453e-8785-6a42656a1aa6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-17T10:24:31"
+  },
+  {
+   "ch4_fluxrate": 1084.0,
+   "ch4_fluxrate_std": 487.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8561e680-ba83-447b-b6e2-00670ae1ae9a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-19T10:13:39"
+  },
+  {
+   "ch4_fluxrate": 3142.0,
+   "ch4_fluxrate_std": 922.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2bbfdb4f-b367-4f71-9f2e-d83b8dcb7409",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-22T10:23:39"
+  },
+  {
+   "ch4_fluxrate": 934.0,
+   "ch4_fluxrate_std": 304.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "040a71d9-8881-4547-9506-a8ee517d1cfb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-24T10:14:31"
+  },
+  {
+   "ch4_fluxrate": 2641.0,
+   "ch4_fluxrate_std": 870.0,
+   "detection_institution": "UPV LARS",
+   "id_plume": "f7b85109-b46a-46d8-bd22-d74e42a09bb2",
+   "satellite": "PRISMA - ASI",
+   "tile_date": "2022-12-24T10:17:50"
+  },
+  {
+   "ch4_fluxrate": 3210.0,
+   "ch4_fluxrate_std": 987.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c90536ec-eaf6-4651-b265-6e5a452f212a",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2022-12-25T10:08:55"
+  },
+  {
+   "ch4_fluxrate": 1506.0,
+   "ch4_fluxrate_std": 452.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "613e5686-c503-4d37-8653-6698150bb736",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-27T10:24:31"
+  },
+  {
+   "ch4_fluxrate": 2630.0,
+   "ch4_fluxrate_std": 739.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7fff5734-face-478a-9c36-5a639d30a09a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2022-12-29T10:13:29"
+  },
+  {
+   "ch4_fluxrate": 981.0,
+   "ch4_fluxrate_std": 278.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "46f72742-615d-4e4a-af59-670180761c20",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-01T10:23:39"
+  },
+  {
+   "ch4_fluxrate": 1859.0,
+   "ch4_fluxrate_std": 541.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "35494f2e-d1eb-479c-ad0a-80de808f21bd",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-01-02T10:08:58"
+  },
+  {
+   "ch4_fluxrate": 2619.0,
+   "ch4_fluxrate_std": 895.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cf79d7e3-6755-447c-9c45-39dad3c2dea6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-03T10:14:11"
+  },
+  {
+   "ch4_fluxrate": 2982.0,
+   "ch4_fluxrate_std": 1087.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e6d98611-a11b-4839-9198-1de25cfca22f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-08T10:13:19"
+  },
+  {
+   "ch4_fluxrate": 3117.0,
+   "ch4_fluxrate_std": 1270.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ee8e619a-7c9a-4003-8b86-32de6d3843af",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-01-10T10:08:54"
+  },
+  {
+   "ch4_fluxrate": 1163.0,
+   "ch4_fluxrate_std": 318.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ad4d712e-3ec5-4d62-a6f9-5f7247b732b1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-11T10:23:09"
+  },
+  {
+   "ch4_fluxrate": 3690.0,
+   "ch4_fluxrate_std": 888.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1c3eddf3-2732-4c9b-a175-2b605ccd4ea2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-13T10:14:01"
+  },
+  {
+   "ch4_fluxrate": 1797.0,
+   "ch4_fluxrate_std": 719.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "27a158a7-9693-4fb9-8634-19e39f7e9dbc",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-16T10:23:51"
+  },
+  {
+   "ch4_fluxrate": 2024.0,
+   "ch4_fluxrate_std": 978.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b20ed217-bc96-466b-a43e-13ae3fd79c22",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-01-18T10:08:51"
+  },
+  {
+   "ch4_fluxrate": 3898.0,
+   "ch4_fluxrate_std": 1686.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "435e79d2-880f-4a4f-b643-e28d17ab312d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-18T10:12:39"
+  },
+  {
+   "ch4_fluxrate": 1706.0,
+   "ch4_fluxrate_std": 370.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ab4a6ab6-0e6a-4ac2-9649-fe58f7769cc6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-21T10:22:39"
+  },
+  {
+   "ch4_fluxrate": 3469.0,
+   "ch4_fluxrate_std": 1111.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1bb31e42-289c-419f-8769-bfc602e8a53b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-23T10:13:21"
+  },
+  {
+   "ch4_fluxrate": 1425.0,
+   "ch4_fluxrate_std": 526.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ecb85e9c-5590-42e9-a8c9-7cac37aeded4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-26T10:23:11"
+  },
+  {
+   "ch4_fluxrate": 2912.0,
+   "ch4_fluxrate_std": 733.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4823e342-c165-431b-b619-fb4b313cfa4f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-28T10:11:59"
+  },
+  {
+   "ch4_fluxrate": 4197.0,
+   "ch4_fluxrate_std": 1278.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2035c41d-6c59-4f81-a118-d5f1324a8384",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-01-31T10:21:49"
+  },
+  {
+   "ch4_fluxrate": 3568.0,
+   "ch4_fluxrate_std": 1014.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "934caa8f-3077-44dc-b9f0-82340b84c117",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-01-31T11:52:31"
+  },
+  {
+   "ch4_fluxrate": 6234.0,
+   "ch4_fluxrate_std": 1817.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cf680f5d-bead-4f1f-a032-44d0082ac952",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-05T10:22:21"
+  },
+  {
+   "ch4_fluxrate": 5341.0,
+   "ch4_fluxrate_std": 2056.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0553484b-39cf-4c20-8c29-ca9c419d9de3",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-07T10:11:09"
+  },
+  {
+   "ch4_fluxrate": 2419.0,
+   "ch4_fluxrate_std": 999.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "926a9ab5-682b-47de-9c17-551fe69bfe46",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-10T10:20:49"
+  },
+  {
+   "ch4_fluxrate": 2295.0,
+   "ch4_fluxrate_std": 927.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "81231c7c-04b1-4d5e-bf21-d590d32d5a1e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-15T10:21:21"
+  },
+  {
+   "ch4_fluxrate": 1942.0,
+   "ch4_fluxrate_std": 671.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "143d1583-78e0-4bfd-a5a5-9201f75c02d5",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-02-16T13:36:26"
+  },
+  {
+   "ch4_fluxrate": 3501.0,
+   "ch4_fluxrate_std": 1290.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1a9544a7-6502-4707-8428-cca6708dd3c1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-17T10:10:29"
+  },
+  {
+   "ch4_fluxrate": 989.0,
+   "ch4_fluxrate_std": 396.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1bda31a5-da53-4a58-afa5-c4580ebe7b1f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-02-19T10:08:54"
+  },
+  {
+   "ch4_fluxrate": 1745.0,
+   "ch4_fluxrate_std": 600.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0c0f5e23-eeca-4e28-a327-4f95eacb1f42",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-20T10:19:49"
+  },
+  {
+   "ch4_fluxrate": 2032.0,
+   "ch4_fluxrate_std": 648.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b464625c-5cf7-4743-ae02-8795e5bb5591",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-02-22T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 3318.0,
+   "ch4_fluxrate_std": 1268.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1349574e-ff5c-473a-a905-0c8b68b35b4d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-02-27T10:08:35"
+  },
+  {
+   "ch4_fluxrate": 2931.0,
+   "ch4_fluxrate_std": 986.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2e5f3275-c874-40b5-bbac-abd5ed3c76d4",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-03-07T10:08:42"
+  },
+  {
+   "ch4_fluxrate": 1761.0,
+   "ch4_fluxrate_std": 586.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ef9390aa-e94d-4525-b253-8dfe1b7f9f03",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-07T10:19:01"
+  },
+  {
+   "ch4_fluxrate": 2807.0,
+   "ch4_fluxrate_std": 972.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2507ab5f-539e-4b72-bbf9-da400a18acca",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-09T10:07:49"
+  },
+  {
+   "ch4_fluxrate": 3078.0,
+   "ch4_fluxrate_std": 994.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "697bbf11-665d-4a22-8511-79fa90db4ed0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-14T10:10:21"
+  },
+  {
+   "ch4_fluxrate": 5289.0,
+   "ch4_fluxrate_std": 2186.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "26f48ccb-2145-4b88-95a3-306ba6b2ccbb",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-03-15T10:08:29"
+  },
+  {
+   "ch4_fluxrate": 3735.0,
+   "ch4_fluxrate_std": 1363.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3f7d8066-e260-4006-8786-8f85bd656d06",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-17T10:17:41"
+  },
+  {
+   "ch4_fluxrate": 3271.0,
+   "ch4_fluxrate_std": 1213.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "29ab0fd4-3b85-4296-9ce9-06d206f33b83",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-22T10:16:49"
+  },
+  {
+   "ch4_fluxrate": 2314.0,
+   "ch4_fluxrate_std": 854.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d7cc144a-57fb-41af-bdca-6d56df37cae7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-03-23T10:08:36"
+  },
+  {
+   "ch4_fluxrate": 4208.0,
+   "ch4_fluxrate_std": 1511.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "de48a5b3-6d76-4422-bd5e-3ba7ee8b36ac",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-24T10:10:21"
+  },
+  {
+   "ch4_fluxrate": 1813.0,
+   "ch4_fluxrate_std": 598.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7e2796ff-0992-467a-b50d-5374f0dc37f6",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-03-26T14:28:44"
+  },
+  {
+   "ch4_fluxrate": 3575.0,
+   "ch4_fluxrate_std": 1294.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ef583595-6bff-46ad-aa15-84ee368f76e4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-27T10:16:31"
+  },
+  {
+   "ch4_fluxrate": 1870.0,
+   "ch4_fluxrate_std": 797.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc3b00e9-1db1-4749-afd3-13268c310b28",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-03-29T10:06:29"
+  },
+  {
+   "ch4_fluxrate": 2448.0,
+   "ch4_fluxrate_std": 887.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "c1b525b3-0be5-4cd3-81e1-9ed34957dd13",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-03-30T12:53:02"
+  },
+  {
+   "ch4_fluxrate": 3688.0,
+   "ch4_fluxrate_std": 963.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2b15c169-09de-4e4b-ac3b-63f396024bc9",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-03-31T10:08:18"
+  },
+  {
+   "ch4_fluxrate": 2831.0,
+   "ch4_fluxrate_std": 1097.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "84696205-d178-4127-943d-486ac94aa4d6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-01T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 981.0,
+   "ch4_fluxrate_std": 437.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "02de520a-33f9-422a-86f8-c3add2e27bc8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-03T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 2470.0,
+   "ch4_fluxrate_std": 914.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0fcc6821-55b2-4b3a-a1a5-beb6beb8f42f",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-04-03T11:18:49"
+  },
+  {
+   "ch4_fluxrate": 7780.0,
+   "ch4_fluxrate_std": 3516.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "be34ad15-4045-48bb-bcbf-901122250605",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-06T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 6606.0,
+   "ch4_fluxrate_std": 2664.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ea9c2dc9-9067-47c6-804f-02a14d16230f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-08T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4044.0,
+   "ch4_fluxrate_std": 1660.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "940ea546-9d7e-430b-9a45-0949ced650ad",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-04-08T10:08:27"
+  },
+  {
+   "ch4_fluxrate": 4483.0,
+   "ch4_fluxrate_std": 1786.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "48b313c6-9ed6-442d-a758-a6943aff6c78",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-11T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 4679.0,
+   "ch4_fluxrate_std": 1809.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d6c5fc63-90ee-4fe3-a4f9-184f090d53fd",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-13T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 6897.0,
+   "ch4_fluxrate_std": 3076.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d97bb754-dc89-4231-baa2-5227c4df6081",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-04-16T10:08:04"
+  },
+  {
+   "ch4_fluxrate": 3057.0,
+   "ch4_fluxrate_std": 1355.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b7537b96-18b8-4572-9563-4545e7e47e92",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-16T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 1149.0,
+   "ch4_fluxrate_std": 446.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d9889888-13cf-4225-a487-f3fb2ab265cc",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-18T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 5740.0,
+   "ch4_fluxrate_std": 2506.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "033862e6-3d2e-4a70-af9d-6cb0b15d0079",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-21T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 6263.0,
+   "ch4_fluxrate_std": 2478.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3dba365d-fab1-4826-8d53-f6fe7a27ff6c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-23T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 5069.0,
+   "ch4_fluxrate_std": 1639.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "096ecd7a-7c3a-438f-9f81-45a2cbe5c67d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-04-24T10:08:21"
+  },
+  {
+   "ch4_fluxrate": 2691.0,
+   "ch4_fluxrate_std": 1030.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3df916f9-4fe9-40f7-bbd0-88d2e23e7a43",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-26T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 4996.0,
+   "ch4_fluxrate_std": 1503.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1eb5bb32-1b4b-454e-bb16-0e1f62e4162a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-04-28T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 881.0,
+   "ch4_fluxrate_std": 368.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "98a1dec5-478e-4f9b-899e-ce0a1fe97f84",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-05-02T10:07:59"
+  },
+  {
+   "ch4_fluxrate": 1605.0,
+   "ch4_fluxrate_std": 316.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "93951cde-0eca-4dd1-92dd-595ce2bd50da",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-03T10:10:21"
+  },
+  {
+   "ch4_fluxrate": 9625.0,
+   "ch4_fluxrate_std": 3830.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8e415262-5852-4329-9f3e-ab0a8be34365",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-06T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 4558.0,
+   "ch4_fluxrate_std": 1671.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f8e6d95c-eb69-434a-84e0-3651be49dde7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-05-10T10:08:10"
+  },
+  {
+   "ch4_fluxrate": 3568.0,
+   "ch4_fluxrate_std": 1110.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "51419abe-7436-4feb-801c-be9324b4f0d6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-13T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 2895.0,
+   "ch4_fluxrate_std": 1037.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2053633a-3e32-4fd1-b436-357b556daae2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-16T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 5998.0,
+   "ch4_fluxrate_std": 1893.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc8bd5db-9523-40db-b392-b2511dabbb54",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-18T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3647.0,
+   "ch4_fluxrate_std": 1162.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2768f88b-0bfc-461d-a715-297b6a34cece",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-05-18T10:07:47"
+  },
+  {
+   "ch4_fluxrate": 3447.0,
+   "ch4_fluxrate_std": 964.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "873c81ff-9ac7-477a-a4ae-a6e8c8d29164",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-21T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 1970.0,
+   "ch4_fluxrate_std": 886.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "326af18d-c2a7-475c-9c18-8e8fefd6693a",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-05-26T10:08:00"
+  },
+  {
+   "ch4_fluxrate": 8300.0,
+   "ch4_fluxrate_std": 3429.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7834fad0-b472-4eb2-9204-e68106239773",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-05-26T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 1626.0,
+   "ch4_fluxrate_std": 593.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "7a773465-21a3-48eb-8b6f-bf9ec2c6f936",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-05-26T14:21:26"
+  },
+  {
+   "ch4_fluxrate": 2181.0,
+   "ch4_fluxrate_std": 1004.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1ea4f9c5-67ff-428f-a6e2-5dd58d02e97f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-06-03T10:07:51"
+  },
+  {
+   "ch4_fluxrate": 2618.0,
+   "ch4_fluxrate_std": 1053.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "54fb4ca6-646b-4367-939a-8f70a1f528e2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-07T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2457.0,
+   "ch4_fluxrate_std": 846.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "967b2d1c-924d-4aae-a51e-3452016a4aa9",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-10T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 2901.0,
+   "ch4_fluxrate_std": 1275.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5dfcf37d-c5c7-4884-b9bd-9f70cb9e4a61",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-06-11T10:07:54"
+  },
+  {
+   "ch4_fluxrate": 2413.0,
+   "ch4_fluxrate_std": 1019.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cbc31e07-cb33-4a1d-ab8a-b298cdc220ff",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-12T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1558.0,
+   "ch4_fluxrate_std": 550.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "baa17c09-e105-4fd4-a464-064cf81e34ee",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-15T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 2377.0,
+   "ch4_fluxrate_std": 908.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0ad02e18-5088-44fb-9141-7c68d86edef7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-17T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3215.0,
+   "ch4_fluxrate_std": 1436.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1ea4a62b-a5c1-4820-85c3-ad7a0713ce83",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-06-19T10:07:59"
+  },
+  {
+   "ch4_fluxrate": 1120.0,
+   "ch4_fluxrate_std": 462.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c30f8629-e863-4dcc-9cd4-b7df0525a867",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-20T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1114.0,
+   "ch4_fluxrate_std": 463.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "64ed26e7-0650-49ac-8529-946455e5b34a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-22T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1908.0,
+   "ch4_fluxrate_std": 702.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c9a5a1f4-1e85-494d-99eb-e20427d6114a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-25T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 2286.0,
+   "ch4_fluxrate_std": 971.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f85a92e0-9324-4e22-8efd-f8b8ada34322",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-06-27T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 1290.0,
+   "ch4_fluxrate_std": 667.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bc5f5944-fd95-4e09-a012-259c7c367745",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-06-27T10:07:53"
+  },
+  {
+   "ch4_fluxrate": 2320.0,
+   "ch4_fluxrate_std": 1025.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "54eacc4d-37a0-43e3-8fd1-7bbea73bf3b9",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-07-05T10:08:11"
+  },
+  {
+   "ch4_fluxrate": 3746.0,
+   "ch4_fluxrate_std": 1557.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "02b4b28f-8575-4b97-9dee-28670ae50748",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-05T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 2220.0,
+   "ch4_fluxrate_std": 923.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b2bde45b-b487-41c1-b7cd-0a6ff68ed89d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-07T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 942.0,
+   "ch4_fluxrate_std": 338.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9f9287d9-5b2d-4ba6-9528-09f74f97f2f6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-10T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 2432.0,
+   "ch4_fluxrate_std": 913.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6ecc12f5-aa75-47aa-a231-8b0e7206f373",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-12T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2797.0,
+   "ch4_fluxrate_std": 976.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "92671367-2c1f-4a69-bbb4-009c385728c8",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-07-13T10:08:07"
+  },
+  {
+   "ch4_fluxrate": 3839.0,
+   "ch4_fluxrate_std": 1374.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "86d6dece-e15a-4ac3-b588-0e7ab95adddf",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-15T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 3995.0,
+   "ch4_fluxrate_std": 1498.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "22148031-bff6-4a73-b678-e615fb505dc0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-17T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2099.0,
+   "ch4_fluxrate_std": 681.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "01a7ca6d-ecd0-4342-a89c-38f5ddd34372",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-20T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 1684.0,
+   "ch4_fluxrate_std": 677.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "92a97752-ccad-4feb-86e2-0307f162280f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-07-21T10:08:14"
+  },
+  {
+   "ch4_fluxrate": 1386.0,
+   "ch4_fluxrate_std": 602.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3e63b8f3-3d49-4682-aae9-ed1752aa5293",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-22T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1444.0,
+   "ch4_fluxrate_std": 546.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4a179bbc-2889-48db-94b9-1309de1d38e9",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-25T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 1787.0,
+   "ch4_fluxrate_std": 697.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1dbeb3e9-b09f-4a4c-8053-bf0b555e4f75",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-27T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3202.0,
+   "ch4_fluxrate_std": 1317.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d10d46e6-059b-475d-8b4a-62ac34d201d6",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-07-29T10:08:11"
+  },
+  {
+   "ch4_fluxrate": 685.0,
+   "ch4_fluxrate_std": 266.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "78b44d1a-e1de-4634-957b-906009ec1a87",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-07-30T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 1946.0,
+   "ch4_fluxrate_std": 693.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7461246d-4381-4a2d-9207-707f83d1a6f0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-01T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2525.0,
+   "ch4_fluxrate_std": 1030.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "998d9dff-39e1-47ed-b4de-be27aaa47b73",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-04T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 2998.0,
+   "ch4_fluxrate_std": 1166.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6c280f92-c7c7-4c82-9ad6-43053a44b644",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-06T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 1546.0,
+   "ch4_fluxrate_std": 658.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "11b473c9-bdc1-48b5-ac1c-5f8ab178e0cd",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-08-06T10:08:23"
+  },
+  {
+   "ch4_fluxrate": 1968.0,
+   "ch4_fluxrate_std": 849.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9b91ece3-65e8-4d26-b875-8ebaa0ca8957",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-08-14T10:08:18"
+  },
+  {
+   "ch4_fluxrate": 2439.0,
+   "ch4_fluxrate_std": 985.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8beab949-a751-4519-94e6-47b240530ca2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-14T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 2984.0,
+   "ch4_fluxrate_std": 1014.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b89c51d1-c91e-49bd-8e51-6cbb525b03d7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-16T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3007.0,
+   "ch4_fluxrate_std": 1090.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "62ddd1ad-66b6-4254-b073-cc197d336533",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-19T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 2456.0,
+   "ch4_fluxrate_std": 1062.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4779bfad-9cfa-4047-be79-6c03094dbf43",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-21T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2871.0,
+   "ch4_fluxrate_std": 607.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "37df985e-1e31-49ff-a6ac-e7544c894176",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-24T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 3219.0,
+   "ch4_fluxrate_std": 1071.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "72e2aeca-05f8-46cc-b6ef-e3abef404a67",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-26T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 4159.0,
+   "ch4_fluxrate_std": 1604.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f0655eba-4c4c-4f74-9ebb-a94bd320ee3e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-29T10:16:09"
+  },
+  {
+   "ch4_fluxrate": 2843.0,
+   "ch4_fluxrate_std": 1012.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "456bb909-f99e-4209-84c3-4f823de923a8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-08-31T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 3493.0,
+   "ch4_fluxrate_std": 1186.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0f5f94ce-d5e0-4268-ab9d-53d3d7c57c59",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-05T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 6046.0,
+   "ch4_fluxrate_std": 2390.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "366c402e-3861-44f8-8528-c6cc32663a22",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-08T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2876.0,
+   "ch4_fluxrate_std": 1108.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "48f7d4d6-8e7a-4a32-8ad4-f4f207341d3f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-10T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2124.0,
+   "ch4_fluxrate_std": 789.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8737441f-92c3-43b0-aee4-4b0e7245b898",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-13T10:16:31"
+  },
+  {
+   "ch4_fluxrate": 3262.0,
+   "ch4_fluxrate_std": 1208.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "65b537da-0e7b-49cb-8605-aa94c99a3704",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-15T10:06:39"
+  },
+  {
+   "ch4_fluxrate": 2716.0,
+   "ch4_fluxrate_std": 1030.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "905c4fa0-f97f-4b3d-a88c-eb4d3178ac2d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-09-15T10:08:36"
+  },
+  {
+   "ch4_fluxrate": 2266.0,
+   "ch4_fluxrate_std": 837.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a43bc4ea-7ccb-499e-8717-cabee4a3cb4e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-18T10:16:49"
+  },
+  {
+   "ch4_fluxrate": 4519.0,
+   "ch4_fluxrate_std": 1885.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b73b21cc-2100-4e0e-a6bc-9eed8b2f1efa",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-09-23T10:08:36"
+  },
+  {
+   "ch4_fluxrate": 3086.0,
+   "ch4_fluxrate_std": 1039.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0f1ce507-4b96-44a1-93c8-ded69c2281ef",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-25T10:06:49"
+  },
+  {
+   "ch4_fluxrate": 2093.0,
+   "ch4_fluxrate_std": 332.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "611cf65d-90f8-47ac-ba6f-cfe9aefd3c1c",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-09-25T14:01:34"
+  },
+  {
+   "ch4_fluxrate": 340.0,
+   "ch4_fluxrate_std": 172.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "956f8889-9c18-49e9-9a71-0cba67934e59",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-28T10:17:19"
+  },
+  {
+   "ch4_fluxrate": 2055.0,
+   "ch4_fluxrate_std": 826.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e22c418e-d0ce-4f01-879c-0d5fa0420c00",
+   "satellite": "PRISMA - ASI",
+   "tile_date": "2023-09-29T10:27:44"
+  },
+  {
+   "ch4_fluxrate": 2008.0,
+   "ch4_fluxrate_std": 764.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "9860a5ed-4abf-4faa-9446-9d20fe07c38a",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2023-09-29T12:25:34"
+  },
+  {
+   "ch4_fluxrate": 2323.0,
+   "ch4_fluxrate_std": 946.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "dc0ef05b-fee1-4cfb-a223-fa9335fa6e4a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-09-30T10:08:11"
+  },
+  {
+   "ch4_fluxrate": 1650.0,
+   "ch4_fluxrate_std": 792.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "40886d1c-4c0a-4de3-8acf-3236ef289274",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-10-01T10:08:35"
+  },
+  {
+   "ch4_fluxrate": 2181.0,
+   "ch4_fluxrate_std": 893.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1e0fd39d-3796-4bd3-aff2-a21e2962bc4c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-03T10:18:41"
+  },
+  {
+   "ch4_fluxrate": 2253.0,
+   "ch4_fluxrate_std": 920.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e90d40a6-1b49-4199-8aab-de42416f69a5",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-05T10:07:59"
+  },
+  {
+   "ch4_fluxrate": 3594.0,
+   "ch4_fluxrate_std": 1244.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "44f2cc72-17ea-41d6-92e0-bd15cffc2cfe",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-08T10:18:29"
+  },
+  {
+   "ch4_fluxrate": 3010.0,
+   "ch4_fluxrate_std": 1273.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5635d939-aecd-4522-b8c7-34eb33fab5e5",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-10-09T10:08:40"
+  },
+  {
+   "ch4_fluxrate": 2550.0,
+   "ch4_fluxrate_std": 987.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8fda44a2-ca60-4d8e-bb74-44fc85a153c6",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-10T10:09:31"
+  },
+  {
+   "ch4_fluxrate": 1951.0,
+   "ch4_fluxrate_std": 746.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5cc13400-398c-4043-ac5b-2e807a42440d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-13T10:19:51"
+  },
+  {
+   "ch4_fluxrate": 935.0,
+   "ch4_fluxrate_std": 346.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4870fb99-36e2-40db-8cda-ecb843ce003c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-15T10:09:09"
+  },
+  {
+   "ch4_fluxrate": 1632.0,
+   "ch4_fluxrate_std": 477.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0eac599e-2915-4e7d-9ccd-4135f55f33c7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-10-17T10:08:46"
+  },
+  {
+   "ch4_fluxrate": 4791.0,
+   "ch4_fluxrate_std": 1720.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cfd48de1-4168-48a2-add7-940e0a167f10",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-18T10:19:39"
+  },
+  {
+   "ch4_fluxrate": 2399.0,
+   "ch4_fluxrate_std": 830.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bddc92f7-54de-4ffe-bc4f-281159388c7d",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-23T10:21:01"
+  },
+  {
+   "ch4_fluxrate": 4678.0,
+   "ch4_fluxrate_std": 1844.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "07f82922-435b-4568-9c20-330822e33033",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-10-25T10:08:43"
+  },
+  {
+   "ch4_fluxrate": 4070.0,
+   "ch4_fluxrate_std": 1589.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c895767f-ca41-4576-8a99-e8d477153d8b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-25T10:10:29"
+  },
+  {
+   "ch4_fluxrate": 5599.0,
+   "ch4_fluxrate_std": 2021.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "89c8b4f1-3b38-41ed-88f0-e6d28ce56097",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-10-28T10:20:39"
+  },
+  {
+   "ch4_fluxrate": 1587.0,
+   "ch4_fluxrate_std": 509.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5c3048a7-60da-405d-9f57-8bfdab35a12b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-02T10:22:01"
+  },
+  {
+   "ch4_fluxrate": 2934.0,
+   "ch4_fluxrate_std": 948.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0407ec63-f025-4ee1-b0bb-b3e71c938473",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-04T10:11:19"
+  },
+  {
+   "ch4_fluxrate": 1821.0,
+   "ch4_fluxrate_std": 304.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ac657a99-0b4f-4127-b93a-b7c393f043eb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-07T10:21:39"
+  },
+  {
+   "ch4_fluxrate": 1530.0,
+   "ch4_fluxrate_std": 591.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7b873a8c-85a8-4611-970d-81e2518d8d42",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-09T10:12:31"
+  },
+  {
+   "ch4_fluxrate": 3327.0,
+   "ch4_fluxrate_std": 1221.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "34beb95f-88a3-4c7d-9db7-e4242e6cfca7",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-11-10T10:08:39"
+  },
+  {
+   "ch4_fluxrate": 2621.0,
+   "ch4_fluxrate_std": 848.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "174934d6-4333-48b6-bdd7-bc782d34aeab",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-12T10:22:51"
+  },
+  {
+   "ch4_fluxrate": 1835.0,
+   "ch4_fluxrate_std": 373.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e542792f-ab92-4044-957f-352dc7cce672",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-14T10:11:59"
+  },
+  {
+   "ch4_fluxrate": 1262.0,
+   "ch4_fluxrate_std": 164.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "95ef2426-52cf-4485-88fd-1aa1a8123956",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-17T10:22:19"
+  },
+  {
+   "ch4_fluxrate": 1811.0,
+   "ch4_fluxrate_std": 594.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8574d6d1-4645-4b61-8f06-cd06551e7dc9",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-11-18T10:08:44"
+  },
+  {
+   "ch4_fluxrate": 928.0,
+   "ch4_fluxrate_std": 324.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "bd5a9bc3-dba2-4912-8cb0-5d22008f0254",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-19T10:13:11"
+  },
+  {
+   "ch4_fluxrate": 3507.0,
+   "ch4_fluxrate_std": 1515.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f96316d7-c3d0-4184-a31a-593ddbbf54b3",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-22T10:23:31"
+  },
+  {
+   "ch4_fluxrate": 1277.0,
+   "ch4_fluxrate_std": 277.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "737e1589-9fc7-4526-8a87-ae4df5f2bb2a",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-11-26T10:08:46"
+  },
+  {
+   "ch4_fluxrate": 3790.0,
+   "ch4_fluxrate_std": 1280.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b3c4bcab-9902-44ae-aedf-ae1780a373cb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-11-27T10:22:59"
+  },
+  {
+   "ch4_fluxrate": 2482.0,
+   "ch4_fluxrate_std": 921.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "58fa0066-3f82-4bf1-8c73-f8dbe6f801e5",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-02T10:24:01"
+  },
+  {
+   "ch4_fluxrate": 2851.0,
+   "ch4_fluxrate_std": 1059.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3715fb69-b19c-40d8-a8b5-0bda6eb51290",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-12-04T10:08:47"
+  },
+  {
+   "ch4_fluxrate": 2505.0,
+   "ch4_fluxrate_std": 892.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6daefe20-8156-4a6e-aa00-4f3e8f14311b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-07T10:23:19"
+  },
+  {
+   "ch4_fluxrate": 1749.0,
+   "ch4_fluxrate_std": 773.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "43050ac8-d028-4faa-bd89-6ea437e071af",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-09T10:14:11"
+  },
+  {
+   "ch4_fluxrate": 3145.0,
+   "ch4_fluxrate_std": 1262.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "27ab389a-66e8-44f3-8975-2b309ad9b1d9",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2023-12-12T10:08:41"
+  },
+  {
+   "ch4_fluxrate": 1738.0,
+   "ch4_fluxrate_std": 686.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c7c2e7cb-1c09-4d39-a0b3-edf394f43a9a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-12T10:24:21"
+  },
+  {
+   "ch4_fluxrate": 2786.0,
+   "ch4_fluxrate_std": 1196.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3e670614-8064-49a3-ac4d-8357c49de208",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-14T10:13:29"
+  },
+  {
+   "ch4_fluxrate": 2153.0,
+   "ch4_fluxrate_std": 884.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "05a01f06-54d3-45bf-a0f9-f90ffdccec8c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-17T10:23:39"
+  },
+  {
+   "ch4_fluxrate": 1664.0,
+   "ch4_fluxrate_std": 537.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f86bff39-dc4e-4b4b-b8bf-ccf69121f02f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-22T10:24:31"
+  },
+  {
+   "ch4_fluxrate": 1372.0,
+   "ch4_fluxrate_std": 490.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "94926edd-0489-4522-ac84-3531fc4ee979",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-24T10:13:39"
+  },
+  {
+   "ch4_fluxrate": 4214.0,
+   "ch4_fluxrate_std": 1498.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7c987d15-91ea-4053-b174-a4741b047373",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2023-12-29T10:14:31"
+  },
+  {
+   "ch4_fluxrate": 4855.0,
+   "ch4_fluxrate_std": 1315.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4c5fe022-16a8-419d-865e-30f849eecbca",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-03T10:13:29"
+  },
+  {
+   "ch4_fluxrate": 5678.0,
+   "ch4_fluxrate_std": 2066.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b24f3fbc-4e5f-4987-8b83-1f4e7a9f4efa",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-01-05T10:08:45"
+  },
+  {
+   "ch4_fluxrate": 2695.0,
+   "ch4_fluxrate_std": 1167.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "12c234f8-d529-474f-8cc5-414ae322f3e2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-06T10:23:29"
+  },
+  {
+   "ch4_fluxrate": 2754.0,
+   "ch4_fluxrate_std": 1071.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "79d6f47b-168b-421f-b8dc-a6999af4db57",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-08T10:14:01"
+  },
+  {
+   "ch4_fluxrate": 3461.0,
+   "ch4_fluxrate_std": 864.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5431ea7b-07ba-4878-8ece-99d53e6dca61",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-11T10:24:01"
+  },
+  {
+   "ch4_fluxrate": 2397.0,
+   "ch4_fluxrate_std": 356.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "50a3a080-164e-4d84-82af-d26430149603",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-01-13T10:08:39"
+  },
+  {
+   "ch4_fluxrate": 2599.0,
+   "ch4_fluxrate_std": 377.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "b8be6efa-664e-477a-ae46-c574c3d647f1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-13T10:13:09"
+  },
+  {
+   "ch4_fluxrate": 4812.0,
+   "ch4_fluxrate_std": 1646.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3c549ddb-b357-463d-9551-ab20d199163e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-16T10:22:59"
+  },
+  {
+   "ch4_fluxrate": 2875.0,
+   "ch4_fluxrate_std": 1140.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f6726453-2aa4-473c-b6bb-b8f9fb4e5dd8",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-18T10:13:31"
+  },
+  {
+   "ch4_fluxrate": 2150.0,
+   "ch4_fluxrate_std": 712.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0d891b92-264b-4830-9a37-96361a65501f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-23T10:12:29"
+  },
+  {
+   "ch4_fluxrate": 2294.0,
+   "ch4_fluxrate_std": 768.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "60cd5289-653e-46c2-9594-6ab5900d1c1e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-26T10:22:19"
+  },
+  {
+   "ch4_fluxrate": 9384.0,
+   "ch4_fluxrate_std": 2193.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e1795c07-081e-48e6-95b9-e74bcda940b7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-01-28T10:13:01"
+  },
+  {
+   "ch4_fluxrate": 4588.0,
+   "ch4_fluxrate_std": 1685.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "28465599-6686-4f24-9562-b07c9f8290e9",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-01-29T10:08:33"
+  },
+  {
+   "ch4_fluxrate": 2716.0,
+   "ch4_fluxrate_std": 803.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ba55cff6-6c31-45ea-af7e-44ee6cf74bdb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-02T10:11:39"
+  },
+  {
+   "ch4_fluxrate": 2839.0,
+   "ch4_fluxrate_std": 778.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "89721fa8-0ea8-4399-b55f-6d0ea4980b11",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-05T10:21:29"
+  },
+  {
+   "ch4_fluxrate": 1735.0,
+   "ch4_fluxrate_std": 303.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d5c0595b-a0a5-4885-a3bd-edaf61907184",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-02-06T10:08:50"
+  },
+  {
+   "ch4_fluxrate": 3414.0,
+   "ch4_fluxrate_std": 1347.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "eb78d9b0-5e16-450b-a070-c24bee4523ef",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-07T10:12:01"
+  },
+  {
+   "ch4_fluxrate": 2988.0,
+   "ch4_fluxrate_std": 1173.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "296517a1-b4b9-4df4-8f79-75e06cd27ef2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-12T10:10:39"
+  },
+  {
+   "ch4_fluxrate": 2798.0,
+   "ch4_fluxrate_std": 992.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7677d326-df48-41d0-b45d-ff436ae3b561",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-02-14T10:08:36"
+  },
+  {
+   "ch4_fluxrate": 3386.0,
+   "ch4_fluxrate_std": 1227.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "db8e2421-213e-4f1f-a4ee-c2d15d8d95ee",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-15T10:20:29"
+  },
+  {
+   "ch4_fluxrate": 1386.0,
+   "ch4_fluxrate_std": 381.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fca2354a-bdca-48eb-8ef5-b6daeb95d200",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-20T10:20:51"
+  },
+  {
+   "ch4_fluxrate": 3137.0,
+   "ch4_fluxrate_std": 961.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7b2eb224-9f68-4f60-99a6-4127e35e6504",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-02-22T10:08:36"
+  },
+  {
+   "ch4_fluxrate": 4965.0,
+   "ch4_fluxrate_std": 1503.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "488041b1-5310-4f17-bd41-46ce0a900fab",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-02-22T10:09:39"
+  },
+  {
+   "ch4_fluxrate": 2791.0,
+   "ch4_fluxrate_std": 1162.0,
+   "detection_institution": "NASA JPL EMIT",
+   "id_plume": "93156530-455b-4de6-ac3d-bfd80dacda11",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-02-26T09:13:16"
+  },
+  {
+   "ch4_fluxrate": 3252.0,
+   "ch4_fluxrate_std": 1339.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "5f02bb60-3df1-4036-ba82-6483920fa867",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-03-01T10:08:29"
+  },
+  {
+   "ch4_fluxrate": 4655.0,
+   "ch4_fluxrate_std": 1868.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "63b3ffff-a8d2-4147-85bb-418f48ead548",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-01T10:19:41"
+  },
+  {
+   "ch4_fluxrate": 3323.0,
+   "ch4_fluxrate_std": 1392.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d5dfac06-7f8e-4a85-a8e7-154c86a1ebfc",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-03T10:08:19"
+  },
+  {
+   "ch4_fluxrate": 6369.0,
+   "ch4_fluxrate_std": 2227.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e50357b7-04d6-4324-84ec-a6ef36ec6462",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-08T10:08:41"
+  },
+  {
+   "ch4_fluxrate": 3145.0,
+   "ch4_fluxrate_std": 1279.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "43688905-b2d0-4e97-b5cd-f47553ea772c",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-03-09T10:08:42"
+  },
+  {
+   "ch4_fluxrate": 4144.0,
+   "ch4_fluxrate_std": 1635.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "520f7559-5d18-4325-95ad-bcc3c931e69b",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-11T10:18:31"
+  },
+  {
+   "ch4_fluxrate": 3415.0,
+   "ch4_fluxrate_std": 825.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "7f2e703b-430d-4c76-8487-3adbdb18b492",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-13T10:07:09"
+  },
+  {
+   "ch4_fluxrate": 3396.0,
+   "ch4_fluxrate_std": 872.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "37ae8ec7-f3c5-436d-bade-064372729b7e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-16T10:16:49"
+  },
+  {
+   "ch4_fluxrate": 3289.0,
+   "ch4_fluxrate_std": 1049.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "554cab46-d69e-4597-8982-9061316d7198",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-03-17T10:08:19"
+  },
+  {
+   "ch4_fluxrate": 2517.0,
+   "ch4_fluxrate_std": 900.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2240c7bd-493f-4d61-97ac-fe1071154ebc",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-18T10:07:31"
+  },
+  {
+   "ch4_fluxrate": 1896.0,
+   "ch4_fluxrate_std": 799.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3f9c4ae2-232a-408f-82ab-9b29752be057",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-21T10:17:21"
+  },
+  {
+   "ch4_fluxrate": 1063.0,
+   "ch4_fluxrate_std": 222.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "736a95f9-2d9b-4942-b4ab-3cc11f401f6a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-23T10:06:49"
+  },
+  {
+   "ch4_fluxrate": 2181.0,
+   "ch4_fluxrate_std": 853.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9608bea8-4337-43f3-8552-127bd9704473",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-03-27T13:13:34"
+  },
+  {
+   "ch4_fluxrate": 1902.0,
+   "ch4_fluxrate_std": 687.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8b859937-2ce6-46ea-b43b-8bb02755dc32",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-28T10:06:31"
+  },
+  {
+   "ch4_fluxrate": 2029.0,
+   "ch4_fluxrate_std": 870.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e4905a46-6f1f-4c44-8b53-a5548ec3afa2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-03-31T10:16:01"
+  },
+  {
+   "ch4_fluxrate": 2990.0,
+   "ch4_fluxrate_std": 1226.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f673281a-fe2d-4a3c-ba62-b4df9d845714",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-03-31T11:37:53"
+  },
+  {
+   "ch4_fluxrate": 7182.0,
+   "ch4_fluxrate_std": 2863.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3beee5cc-da21-4c97-bf7f-e05f1b7312ed",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-04-02T10:05:49"
+  },
+  {
+   "ch4_fluxrate": 1556.0,
+   "ch4_fluxrate_std": 689.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "73f3951d-1292-4a8d-b0b4-a5abb4470e01",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-04-02T10:08:08"
+  },
+  {
+   "ch4_fluxrate": 2144.0,
+   "ch4_fluxrate_std": 947.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2f920540-93de-4851-ae0f-3e351bcad0eb",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-04-04T10:01:46"
+  },
+  {
+   "ch4_fluxrate": 2614.0,
+   "ch4_fluxrate_std": 1069.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3e3460bc-4588-457d-b65a-939fead10086",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-04-07T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 2077.0,
+   "ch4_fluxrate_std": 852.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2fc8c2b3-3d86-4333-9b04-8e75690e7e96",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-04-17T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1743.0,
+   "ch4_fluxrate_std": 635.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "33016397-70d2-498c-adec-049693c8d726",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-04-25T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2566.0,
+   "ch4_fluxrate_std": 1224.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "874667dc-658b-4ff2-bd68-4c19a27d302a",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-04-26T10:08:09"
+  },
+  {
+   "ch4_fluxrate": 1496.0,
+   "ch4_fluxrate_std": 517.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "716bc71e-48ec-4263-9701-366374be63b1",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-02T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2748.0,
+   "ch4_fluxrate_std": 953.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e33a0596-e39f-43ba-a3ff-16b456eb7d4f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-05T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 596.0,
+   "ch4_fluxrate_std": 215.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a1511e2d-f6ad-41a6-a6f6-7576f466e1d7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-07T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2522.0,
+   "ch4_fluxrate_std": 626.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "903a9081-570d-45ad-8ac5-9c9482453009",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-10T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 5269.0,
+   "ch4_fluxrate_std": 2010.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "973a45ac-9ab6-4035-a33c-3ed5ef4a6963",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-12T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 5780.0,
+   "ch4_fluxrate_std": 2218.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9ee299c6-a44d-43c5-91bc-9eb16ad1251f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-05-12T10:08:06"
+  },
+  {
+   "ch4_fluxrate": 4759.0,
+   "ch4_fluxrate_std": 2072.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "11d3abc2-3c96-4e1c-8365-65f037207e02",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-05-20T10:07:38"
+  },
+  {
+   "ch4_fluxrate": 2693.0,
+   "ch4_fluxrate_std": 1126.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fa502c4d-e8ec-48ab-9149-05b5b44dd4c0",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-22T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2949.0,
+   "ch4_fluxrate_std": 1207.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8c53aec6-978a-4824-bbbd-fde7d6989032",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-25T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 662.0,
+   "ch4_fluxrate_std": 285.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "94c97c09-1516-4a94-99aa-7e2acfd07939",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-27T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2515.0,
+   "ch4_fluxrate_std": 944.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "3b4f4ac3-7118-4cbc-b72c-78b2c3db8ee3",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-05-28T10:07:53"
+  },
+  {
+   "ch4_fluxrate": 1618.0,
+   "ch4_fluxrate_std": 612.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "876ac90e-caf4-49dd-85aa-2f954fb56cad",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-05-30T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 4063.0,
+   "ch4_fluxrate_std": 1244.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "69fef3d8-8851-474b-bb30-0abb97ff18df",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-01T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2772.0,
+   "ch4_fluxrate_std": 1147.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c5f5cc6b-c652-4ed8-b203-810538097e4f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-04T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2582.0,
+   "ch4_fluxrate_std": 845.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "24f4ee35-3b37-45a7-a00c-9826f31f725b",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-06-05T10:07:36"
+  },
+  {
+   "ch4_fluxrate": 1663.0,
+   "ch4_fluxrate_std": 658.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4f3bdf34-cf9a-4d72-b662-0d675a242a70",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-06T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1701.0,
+   "ch4_fluxrate_std": 717.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "226feaf0-97d9-429a-972b-c726caf14c85",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-09T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 4960.0,
+   "ch4_fluxrate_std": 2084.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "892c0b99-e94d-41dc-aaa3-f07e43e4b703",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-19T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 3183.0,
+   "ch4_fluxrate_std": 1271.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0b29ba20-0aaf-4848-a655-c7003bde22a7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-21T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 5485.0,
+   "ch4_fluxrate_std": 2204.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "a56264cf-fbe2-4261-a476-e993c3678ae4",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-06-21T10:07:45"
+  },
+  {
+   "ch4_fluxrate": 2401.0,
+   "ch4_fluxrate_std": 962.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "93beb5a4-b52b-4ccf-b43c-95f1c4f33d8a",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-26T10:10:31"
+  },
+  {
+   "ch4_fluxrate": 1748.0,
+   "ch4_fluxrate_std": 696.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "59587791-d842-4f57-8577-e3cfabc840be",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-06-29T10:07:38"
+  },
+  {
+   "ch4_fluxrate": 3210.0,
+   "ch4_fluxrate_std": 1202.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "afb7407e-d62f-4150-a643-e84f569821b5",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-06-29T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 6419.0,
+   "ch4_fluxrate_std": 2309.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "30f16257-2d05-4d1d-bfb3-f0cc9294041e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-04T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 2603.0,
+   "ch4_fluxrate_std": 1041.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "42d876c0-22bf-4c8b-9fcf-07b33ddf5f8e",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-06T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2462.0,
+   "ch4_fluxrate_std": 960.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "aca81ae1-5fb9-47f0-8252-32b130edad78",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-09T10:20:31"
+  },
+  {
+   "ch4_fluxrate": 1669.0,
+   "ch4_fluxrate_std": 688.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ad18d22b-6abc-4228-b45c-37ba65517f81",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-11T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3636.0,
+   "ch4_fluxrate_std": 1475.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "445dd16b-43b7-4080-ae82-49ba5b44ad2f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-14T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1702.0,
+   "ch4_fluxrate_std": 776.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fcd96eb9-535c-42d8-a198-62387b60c10b",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-07-15T10:07:58"
+  },
+  {
+   "ch4_fluxrate": 2921.0,
+   "ch4_fluxrate_std": 1044.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "005f0b2b-a38e-4985-8713-5514470a87cb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-16T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 1633.0,
+   "ch4_fluxrate_std": 564.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e3197936-0374-48c4-9859-eb31ca4beae4",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-19T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 1477.0,
+   "ch4_fluxrate_std": 469.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cf4dd5c4-6a98-4581-9b46-e1b72d3f33b7",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-21T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2338.0,
+   "ch4_fluxrate_std": 373.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e893dac6-9ef4-41d7-9c9b-4f96a80ba75f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-24T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 4614.0,
+   "ch4_fluxrate_std": 1300.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "82930993-43a8-4bb3-84f2-fdf877b2dc3f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-26T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 3043.0,
+   "ch4_fluxrate_std": 1211.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ce3f4b55-c4fc-4a96-a441-69a8f1c98558",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-07-31T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2826.0,
+   "ch4_fluxrate_std": 1159.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9205d490-4e48-458b-ad1e-399cef18d18d",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-07-31T10:08:00"
+  },
+  {
+   "ch4_fluxrate": 1933.0,
+   "ch4_fluxrate_std": 683.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "562daafc-bb91-44b1-b284-e3a828d5bcde",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-08-02T10:31:35"
+  },
+  {
+   "ch4_fluxrate": 2513.0,
+   "ch4_fluxrate_std": 1138.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "2a737b73-31b4-481c-9b0f-507b12ea6673",
+   "satellite": "EnMAP - DLR",
+   "tile_date": "2024-08-03T11:01:42"
+  },
+  {
+   "ch4_fluxrate": 1261.0,
+   "ch4_fluxrate_std": 369.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "8ff6001c-b850-45ec-b1a1-155d243882eb",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-05T10:06:01"
+  },
+  {
+   "ch4_fluxrate": 2985.0,
+   "ch4_fluxrate_std": 1107.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "02e30c01-9be6-4f31-98b8-e71ee56ca9da",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-08-06T08:56:22"
+  },
+  {
+   "ch4_fluxrate": 3722.0,
+   "ch4_fluxrate_std": 1325.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "82e2e8e8-fcf9-4e38-8cde-f4b4ebef5556",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-08-08T10:08:04"
+  },
+  {
+   "ch4_fluxrate": 4925.0,
+   "ch4_fluxrate_std": 1734.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "da42b195-54a5-4f84-9b21-04fc476b4756",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-08T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 2790.0,
+   "ch4_fluxrate_std": 1148.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d803a5e2-8bd9-4db1-ac69-14611bc56d94",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-10T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3243.0,
+   "ch4_fluxrate_std": 1310.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4467a97b-68b5-4dec-b833-97cefb1f2afa",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-13T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 943.0,
+   "ch4_fluxrate_std": 430.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c9e527fe-887a-40ff-8720-0cfb9561d19f",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-08-16T10:08:08"
+  },
+  {
+   "ch4_fluxrate": 2946.0,
+   "ch4_fluxrate_std": 1066.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fdca56ec-2ae1-4f79-b792-b45832cbed42",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-18T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 2223.0,
+   "ch4_fluxrate_std": 873.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "f89d22f8-dc70-4ea5-be6f-383c45c78397",
+   "satellite": "EnMAP - DLR",
+   "tile_date": "2024-08-18T10:50:58"
+  },
+  {
+   "ch4_fluxrate": 2458.0,
+   "ch4_fluxrate_std": 804.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "639f583f-133e-4450-a995-e1c7de55ff2f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-20T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 3408.0,
+   "ch4_fluxrate_std": 1144.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "4541b704-d993-401d-bf83-e9d1283245ab",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-23T10:15:59"
+  },
+  {
+   "ch4_fluxrate": 1448.0,
+   "ch4_fluxrate_std": 596.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ce63f1fc-bd40-444d-b561-b13bfd7d1ee8",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-08-24T10:08:17"
+  },
+  {
+   "ch4_fluxrate": 1666.0,
+   "ch4_fluxrate_std": 376.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "fe64c48e-b491-45b5-8c09-3ea2392508df",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-25T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 2687.0,
+   "ch4_fluxrate_std": 1074.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ac1570f1-5a3d-4a26-8464-fa766d6cb840",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-28T10:20:21"
+  },
+  {
+   "ch4_fluxrate": 4955.0,
+   "ch4_fluxrate_std": 1941.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "c490a3f5-207d-4769-9650-dc40ec79c2da",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-08-30T10:05:59"
+  },
+  {
+   "ch4_fluxrate": 2656.0,
+   "ch4_fluxrate_std": 1012.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "019d8873-f0b8-4492-96db-1389607fa3f3",
+   "satellite": "EnMAP - DLR",
+   "tile_date": "2024-08-30T11:02:16"
+  },
+  {
+   "ch4_fluxrate": 2495.0,
+   "ch4_fluxrate_std": 784.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "d019bb91-aafa-43ce-8e4e-544abedaf69b",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-09-01T10:08:17"
+  },
+  {
+   "ch4_fluxrate": 3037.0,
+   "ch4_fluxrate_std": 1181.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "1e7b2d98-9486-49b0-83bd-c7195fa957e2",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-04T10:05:51"
+  },
+  {
+   "ch4_fluxrate": 1780.0,
+   "ch4_fluxrate_std": 697.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "ba619571-a52a-4e54-9411-e43ac8645daa",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-12T10:20:19"
+  },
+  {
+   "ch4_fluxrate": 2367.0,
+   "ch4_fluxrate_std": 853.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "82623fe4-6818-4581-8367-7f5b447e586f",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-14T10:06:31"
+  },
+  {
+   "ch4_fluxrate": 2530.0,
+   "ch4_fluxrate_std": 710.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "72b11469-6842-43de-a6bd-cd3bb86801d9",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-17T10:16:51"
+  },
+  {
+   "ch4_fluxrate": 637.0,
+   "ch4_fluxrate_std": 182.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "000a7896-682b-4726-8ef9-609a99428759",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-27T10:18:11"
+  },
+  {
+   "ch4_fluxrate": 1805.0,
+   "ch4_fluxrate_std": 771.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "9830bced-4af5-4ffc-9fb2-655f1db708bd",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-09-29T10:07:19"
+  },
+  {
+   "ch4_fluxrate": 2345.0,
+   "ch4_fluxrate_std": 950.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "0c2ff184-4778-489d-b6c7-367d0f7a207f",
+   "satellite": "EMIT - NASA",
+   "tile_date": "2024-09-29T11:31:48"
+  },
+  {
+   "ch4_fluxrate": 1975.0,
+   "ch4_fluxrate_std": 786.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "e8ab070c-5c24-4ca3-9327-d16c29a5cd26",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-10-07T10:19:21"
+  },
+  {
+   "ch4_fluxrate": 1315.0,
+   "ch4_fluxrate_std": 228.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "6839ab7f-d190-4cdf-a322-741613c9ec8c",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-10-09T10:08:29"
+  },
+  {
+   "ch4_fluxrate": 2688.0,
+   "ch4_fluxrate_std": 1101.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "cbd2e377-93a7-484f-a98c-4f6b5a8d3168",
+   "satellite": "Landsat - NASA/USGS",
+   "tile_date": "2024-10-11T10:08:30"
+  },
+  {
+   "ch4_fluxrate": 2702.0,
+   "ch4_fluxrate_std": 1072.0,
+   "detection_institution": "UNEP IMEO MARS",
+   "id_plume": "755eef46-f7c4-4d5c-8ea9-2a1563046110",
+   "satellite": "Sentinel-2 - ESA",
+   "tile_date": "2024-10-12T10:18:59"
+  }
+ ],
+ "mars_snapshot_sha256": "978464740cc903433b104e9f65dd7bd56838e7839dca0fa2605aeb34bbd40095",
+ "mars_source": {
+  "country": "Algeria",
+  "emission_status": null,
+  "feedback": "Yes",
+  "feedback_government": "Yes",
+  "feedback_operator": "Yes",
+  "id_last_plume": "755eef46-f7c4-4d5c-8ea9-2a1563046110",
+  "last_plume_date": "2024-10-12T10:18:59",
+  "lat": 31.77791,
+  "lon": 5.99514,
+  "n_plumes_detected": 468,
+  "notified": "Yes",
+  "persistency": 0.0,
+  "persistency_category": "absent",
+  "persistency_std": 0.0,
+  "sector": "Oil and Gas",
+  "source_name": "DZA_S_012",
+  "source_type": "Gas disposal facility"
+ },
+ "post_mars_last_plume": {
+  "basis": "facility radius: linked Carbon Mapper sources whose centre is within 1.5 km of the MARS point; a pass or detection counts only on a date in those sources' own observation lists",
+  "cm_sources": [
+   "CH4_1B2_1000m_5.99636_31.77708",
+   "CH4_1B2_250m_5.99640_31.77781"
+  ],
+  "detections": [
+   "2026-02-01"
+  ],
+  "n_cm_detected": 1,
+  "n_cm_passes": 14,
+  "radius_km": 1.5,
+  "since": "2024-10-12"
+ },
+ "post_mars_last_plume_all_linked": {
+  "cm_sources": [
+   "CH4_1B2_1000m_5.99636_31.77708",
+   "CH4_1B2_250m_5.99640_31.77781"
+  ],
+  "detections": [
+   "2026-02-01"
+  ],
+  "label": "secondary, not the headline: union over every linked Carbon Mapper source, including centres beyond 1.5 km of the MARS point",
+  "n_cm_detected": 1,
+  "n_cm_passes": 14,
+  "since": "2024-10-12"
+ },
+ "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47"
+}

@@ -1,0 +1,304 @@
+{
+ "bundle_bytes_jcs": 754,
+ "chain": "ethereum-sepolia-11155111",
+ "deploy_runs": {
+  "contracts/broadcast/Deploy.s.sol/11155111/run-1792020728332.json": {
+   "failed": 1,
+   "firstBlockTime": "2026-10-14T23:32:12Z",
+   "gasUsed_total": 1178056,
+   "script": "Deploy.s.sol",
+   "txs": 1
+  },
+  "contracts/broadcast/Deploy.s.sol/11155111/run-latest.json": {
+   "failed": 0,
+   "firstBlockTime": "2026-10-14T23:33:36Z",
+   "gasUsed_total": 68063016,
+   "script": "Deploy.s.sol",
+   "txs": 24
+  },
+  "contracts/broadcast/DeployPool.s.sol/11155111/run-latest.json": {
+   "failed": 0,
+   "firstBlockTime": "2026-10-17T00:14:24Z",
+   "gasUsed_total": 64297684,
+   "script": "DeployPool.s.sol",
+   "txs": 7
+  },
+  "contracts/broadcast/DeployPool.s.sol/11155111/runSandbox-latest.json": {
+   "failed": 0,
+   "firstBlockTime": "2026-10-17T00:18:48Z",
+   "gasUsed_total": 68577822,
+   "script": "DeployPool.s.sol",
+   "txs": 14
+  },
+  "contracts/broadcast/DeploySandbox.s.sol/11155111/run-latest.json": {
+   "failed": 0,
+   "firstBlockTime": "2026-10-15T00:42:00Z",
+   "gasUsed_total": 33862858,
+   "script": "DeploySandbox.s.sol",
+   "txs": 12
+  }
+ },
+ "functions": {
+  "challenge": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 151470,
+   "n": 3,
+   "usd_at_stated_gwei": 0.3672
+  },
+  "createCovenant": {
+   "gas_anvil_cancun_rounded_1k": 339000,
+   "gas_sepolia_median": 1254826,
+   "n": 7,
+   "usd_at_stated_gwei": 3.0422
+  },
+  "deploy_IncentivePool": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 34584829,
+   "n": 2,
+   "usd_at_stated_gwei": 83.8471
+  },
+  "deploy_KeyRegistry": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 6242107,
+   "n": 4,
+   "usd_at_stated_gwei": 15.1333
+  },
+  "deploy_MethaneCovenant": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 25075377,
+   "n": 4,
+   "usd_at_stated_gwei": 60.7925
+  },
+  "deploy_PoolCorroboration": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 3482702,
+   "n": 1,
+   "usd_at_stated_gwei": 8.4434
+  },
+  "deploy_PoolEpisodes": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 3586409,
+   "n": 1,
+   "usd_at_stated_gwei": 8.6949
+  },
+  "deploy_PoolInstallments": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 5197540,
+   "n": 1,
+   "usd_at_stated_gwei": 12.6009
+  },
+  "deploy_PoolSetup": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 4664440,
+   "n": 1,
+   "usd_at_stated_gwei": 11.3084
+  },
+  "deploy_PoolVerify": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 10328856,
+   "n": 1,
+   "usd_at_stated_gwei": 25.0412
+  },
+  "deploy_registerKey": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 467921,
+   "n": 17,
+   "usd_at_stated_gwei": 1.1344
+  },
+  "deploy_renounceAdmin": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 23129,
+   "n": 4,
+   "usd_at_stated_gwei": 0.0561
+  },
+  "deploy_setOrgController": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 130117,
+   "n": 20,
+   "usd_at_stated_gwei": 0.3155
+  },
+  "finalize": {
+   "gas_anvil_cancun_rounded_1k": 118000,
+   "gas_sepolia_median": 397954,
+   "n": 5,
+   "usd_at_stated_gwei": 0.9648
+  },
+  "fund": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 248387,
+   "n": 3,
+   "usd_at_stated_gwei": 0.6022
+  },
+  "pool_attestCleanPass": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 1569642,
+   "n": 1,
+   "usd_at_stated_gwei": 3.8054
+  },
+  "pool_countPass": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 578574,
+   "n": 1,
+   "usd_at_stated_gwei": 1.4027
+  },
+  "pool_fund": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 2452902,
+   "n": 3,
+   "usd_at_stated_gwei": 5.9468
+  },
+  "pool_openClaim": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 721912,
+   "n": 1,
+   "usd_at_stated_gwei": 1.7502
+  },
+  "proposeEpisode": {
+   "gas_anvil_cancun_rounded_1k": 368000,
+   "gas_sepolia_median": 1340989,
+   "n": 9,
+   "usd_at_stated_gwei": 3.2511
+  },
+  "proposeEpisode_reverted": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 113416,
+   "n": 7,
+   "usd_at_stated_gwei": 0.275
+  },
+  "registerKey": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 470069,
+   "n": 2,
+   "usd_at_stated_gwei": 1.1396
+  },
+  "submitResolution": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 485563,
+   "n": 3,
+   "usd_at_stated_gwei": 1.1772
+  },
+  "transfer": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 21000,
+   "n": 6,
+   "usd_at_stated_gwei": 0.0509
+  },
+  "transfer_new_account": {
+   "gas_anvil_cancun_rounded_1k": null,
+   "gas_sepolia_median": 204600,
+   "n": 12,
+   "usd_at_stated_gwei": 0.496
+  },
+  "withdraw": {
+   "gas_anvil_cancun_rounded_1k": 30000,
+   "gas_sepolia_median": 30689,
+   "n": 5,
+   "usd_at_stated_gwei": 0.0744
+  }
+ },
+ "idempotent_resubmission": "evidenceSeen[evidenceHash] -> DuplicateEvidence (make demo step 'Resubmit')",
+ "latency_blocks": [
+  {
+   "label": "measured 2026-10-15, raw samples lost with a deleted worktree",
+   "measuredAt": "2026-10-15T01:00:28Z",
+   "n": 43,
+   "p50": 11.18,
+   "p90": 13.63,
+   "source": {
+    "blob": "207bcd72fafb49a76f37c2e9329c5d0081869d53",
+    "commit": "4bb97826dbeb043d5784669f16926e3e178db0c4",
+    "file": "data/derived/measurements.json"
+   },
+   "what": "wall clock from eth_sendRawTransaction to receipt via a public RPC (12 s slots)"
+  },
+  {
+   "label": "logged since 2026-10-15 in data/derived/sepolia_txlog.jsonl",
+   "measuredAt": null,
+   "n": 21,
+   "p50": 11.03,
+   "p90": 12.28,
+   "what": "wall clock from eth_sendRawTransaction to receipt via a public RPC (12 s slots)"
+  }
+ ],
+ "latency_seconds": {
+  "label": "measured 2026-10-15, raw samples lost with a deleted worktree",
+  "n": 43,
+  "p50": 11.18,
+  "p90": 13.63,
+  "what": "wall clock from eth_sendRawTransaction to receipt via a public RPC (12 s slots)"
+ },
+ "measuredAt": "2026-10-22T08:13:56Z",
+ "paid_on_sepolia_gwei": {
+  "max": 0.100000016,
+  "median": 0.001000018,
+  "min": 0.001000015
+ },
+ "reconciliation": [
+  {
+   "asOf": "2026-10-15T01:00:28Z",
+   "chain": {
+    "expected_reverts": 7,
+    "failed_deploy_transactions": 1,
+    "sent": 96,
+    "sent_outside_deploy_scripts": 59,
+    "unexpected_failures": 2
+   },
+   "deployer_funding_transfers": 4,
+   "every_logged_transaction_is_on_chain": true,
+   "not_in_then_logs": 9,
+   "not_in_then_logs_by_function": {
+    "challenge": 1,
+    "proposeEpisode": 1,
+    "submitResolution": 1,
+    "transfer_new_account": 5,
+    "withdraw": 1
+   },
+   "then": {
+    "expected_reverts": 7,
+    "logged": 50,
+    "unexpected_failures": 2
+   }
+  }
+ ],
+ "source": {
+  "fetchedAt": "2026-10-22T08:13:37Z",
+  "senders": 19,
+  "transactions": "data/derived/sepolia_txs.json"
+ },
+ "transactions": {
+  "by_kind": {
+   "deploy_scripts": 58,
+   "eth_transfers": 19,
+   "latency_samples": 12,
+   "protocol_calls": 49
+  },
+  "expected_reverts": 7,
+  "logged": 138,
+  "unexpected_failures": 2,
+  "unexpected_failures_detail": [
+   {
+    "cause": "first deploy attempt, KeyRegistry create: out of gas on Foundry's local Cancun-schedule estimate (fixed: higher limit)",
+    "label": "deploy_KeyRegistry",
+    "revert": "OutOfGas",
+    "tx": "0xe3206db767a05bd4aea02fa470d1a721ed99830e3e47e4a8dc33f52bdf019569"
+   },
+   {
+    "cause": "judge test wallet's first sandbox-seller funding: fixed 21,000 gas, below Sepolia's fresh-account price (fixed: transfers now use eth_estimateGas)",
+    "label": "transfer_new_account",
+    "revert": "OutOfGas",
+    "tx": "0xcfeabcf63c9663279bb547bfc1c46d0778a2aaf13eee097ecbcd1d507f76018b"
+   }
+  ],
+  "what": "every transaction our addresses sent on Sepolia, rebuilt from the chain (data/derived/sepolia_txs.json)"
+ },
+ "usd_assumption": {
+  "error": null,
+  "eth_usd": 2424.39,
+  "eth_usd_round": {
+   "roundId": "129127208515966896200",
+   "updatedAt": 1792653695
+  },
+  "eth_usd_source": "Chainlink ETH/USD 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419 (Ethereum mainnet)",
+  "stated_gwei": 1.0
+ }
+}

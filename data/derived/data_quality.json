@@ -1,0 +1,243 @@
+{
+ "cases": {
+  "DZA_S_012": {
+   "emission_version": {
+    "v3": 17,
+    "v3c": 2
+   },
+   "hidden_emission": 0,
+   "plume_quality": {
+    "(empty)": 19
+   },
+   "plumes": 19,
+   "processing_software": {
+    "3.18.1": 17,
+    "3.53.1": 2
+   },
+   "uncertainty_exceeds_rate": 0
+  },
+  "TKM_S_276": {
+   "emission_version": {
+    "v3": 11,
+    "v3b": 2,
+    "v3c": 4,
+    "v3d": 11,
+    "v3e": 6
+   },
+   "hidden_emission": 6,
+   "plume_quality": {
+    "(empty)": 34
+   },
+   "plumes": 34,
+   "processing_software": {
+    "3.17.0": 1,
+    "3.18.1": 2,
+    "3.19.2": 2,
+    "3.25.1": 6,
+    "3.43.2": 2,
+    "3.51.0": 1,
+    "3.69.0": 3,
+    "3.72.2": 4,
+    "3.77.0": 6,
+    "3.79.0": 1,
+    "3.85.0": 3,
+    "3.99.0": 3
+   },
+   "uncertainty_exceeds_rate": 1
+  },
+  "USA_S_077": {
+   "emission_version": {
+    "v3": 4
+   },
+   "hidden_emission": 0,
+   "plume_quality": {
+    "(empty)": 4
+   },
+   "plumes": 4,
+   "processing_software": {
+    "3.18.1": 4
+   },
+   "uncertainty_exceeds_rate": 0
+  }
+ },
+ "definitions": "(de-duplicated by plume_id, twins counted once):\n  hidden_emission           no published rate (`emission_auto` empty): the plume counts as a detection, no kg/h\n  uncertainty_exceeds_rate  `emission_uncertainty_auto` > `emission_auto`: the rate's 1-sigma band includes zero\n  plume_quality             Carbon Mapper's quality label, with its empty count\n  emission_version          quantification version (Carbon Mapper re-quantifies; versions are pinned per bundle)\n  processing_software       processing software version\nSets: every plume of the join neighbourhood (`cm_plumes.csv`), the join v1 candidate plumes (`join_v1.json`), and\neach demo case's plumes within the facility radius (`cases/<case>.json`).",
+ "generatedFrom": [
+  {
+   "path": "data/derived/cm_plumes.csv",
+   "sha256": "00b02182a587088a7e3f8dbe4cf7813c96e8f1a770f3a09bfbe7900be4bf0d69"
+  },
+  {
+   "path": "data/derived/cm_sources.csv",
+   "sha256": "de88e43f13ca14243ea4f6be30c6939230681d4ee7ff899048dd80408f638335"
+  },
+  {
+   "path": "data/derived/mars_sources.csv",
+   "sha256": "3573b9b5f11e1ebf09a3bcc6b5d085d07aeace10f1da7e8e81b663ec3106f10f"
+  },
+  {
+   "path": "data/derived/join_v1.json",
+   "sha256": "b5662f399cb6ff9a390a38d66daad2f930f50668c6a89fe306678e490a7051cf"
+  },
+  {
+   "path": "data/MANIFEST.json",
+   "sha256": "b902da81be1d1b6fbc93af29698151d497e1cc5260f8510fbb02ee6d14d4c192"
+  },
+  {
+   "path": "pipeline/join/CRITERION.md",
+   "sha256": "866ea4e28764d2c7494d2ab165b0951b2c8dae6d07d0eec0199e8fed042d7345"
+  },
+  {
+   "path": "pipeline/data_quality.py",
+   "sha256": "42b3cecaf2b84da7c857833b91c9008777288dd760a82372465528c6fe19d0ab"
+  }
+ ],
+ "joinCandidates": {
+  "emission_version": {
+   "v3c": 111,
+   "v3d": 307,
+   "v3e": 205
+  },
+  "hidden_emission": 142,
+  "note": "join_v1.json keeps rate, uncertainty and emission_version per candidate plume; plume_quality and processing_software are counted on the neighbourhood set only",
+  "plumes": 623,
+  "uncertainty_exceeds_rate": 11
+ },
+ "joinCriterionHash": {
+  "currentFile": "866ea4e28764d2c7494d2ab165b0951b2c8dae6d07d0eec0199e8fed042d7345",
+  "equal": false,
+  "freezeTimeText": true,
+  "provenanceAtFreeze": "Derived from [a research script, private path] plus the fixes asked for in [an internal review, private path] (twin dedup, plume level).",
+  "provenanceNow": "Derived from an exploratory join scan written during idea selection, plus the fixes an internal security review asked for (twin de-duplication, plume-level matching).",
+  "recordedInJoin": "c2f01726c73ae87aedf78b7317e051a6b89fce72d8920c5a74e64f7c160a8b2c",
+  "rulesSectionSha256": "0c6b5a8199fed974d3919ed5507727b04c4f15df337df0f076d499923122e869",
+  "why": "join_v1.json keeps its frozen bytes because the Sepolia covenant's policy commits to its SHA-256 (spec-v2 §15 'after B5'); the recorded criterion hash is the freeze-time text. A later edit changed only the provenance sentence; rules 1-6 are byte-identical (see pipeline/join/README.md)"
+ },
+ "joinRadiusSensitivity": {
+  "criterion": "pipeline/join/CRITERION.md rules 1-6 with the radius as the only parameter",
+  "rows": [
+   {
+    "n_candidate_cm_sources": 183,
+    "n_candidate_plumes": 487,
+    "n_candidates": 179,
+    "n_cm_sources_within_radius": 1567,
+    "n_cm_sources_without_plume_records": 0,
+    "note": "subset of v1's neighbourhood",
+    "radiusKm": 1.0
+   },
+   {
+    "n_candidate_cm_sources": 229,
+    "n_candidate_plumes": 623,
+    "n_candidates": 203,
+    "n_cm_sources_within_radius": 2026,
+    "n_cm_sources_without_plume_records": 0,
+    "note": "v1 (frozen criterion)",
+    "radiusKm": 1.5
+   },
+   {
+    "n_candidate_cm_sources": 231,
+    "n_candidate_plumes": 634,
+    "n_candidates": 205,
+    "n_cm_sources_within_radius": 2407,
+    "n_cm_sources_without_plume_records": 381,
+    "note": "lower bound: plume records were fetched only for Carbon Mapper sources within 1.5 km of a target, so sources between 1.5 and 2.0 km add no plumes",
+    "radiusKm": 2.0
+   }
+  ]
+ },
+ "neighbourhood": {
+  "emission_version": {
+   "jpl": 669,
+   "v1": 540,
+   "v3": 2392,
+   "v3a": 128,
+   "v3b": 155,
+   "v3c": 388,
+   "v3d": 334,
+   "v3e": 257
+  },
+  "hidden_emission": 705,
+  "plume_quality": {
+   "(empty)": 4863
+  },
+  "plumes": 4863,
+  "processing_software": {
+   "(empty)": 1209,
+   "3.0.1": 14,
+   "3.1.0": 29,
+   "3.102.0": 11,
+   "3.104.0": 47,
+   "3.109.0": 25,
+   "3.11.1": 18,
+   "3.115.2": 11,
+   "3.116.0": 5,
+   "3.12.0": 76,
+   "3.15.0": 58,
+   "3.15.1": 1,
+   "3.16.0": 62,
+   "3.17.0": 380,
+   "3.18.1": 851,
+   "3.19.2": 73,
+   "3.21.0": 72,
+   "3.22.0": 5,
+   "3.24.0": 44,
+   "3.25.0": 61,
+   "3.25.1": 252,
+   "3.26.0": 16,
+   "3.26.1": 70,
+   "3.30.3": 28,
+   "3.31.0": 19,
+   "3.33.0": 20,
+   "3.34.0": 8,
+   "3.36.0": 56,
+   "3.37.5": 41,
+   "3.39.0": 28,
+   "3.39.1": 19,
+   "3.41.3": 12,
+   "3.41.4": 116,
+   "3.43.2": 57,
+   "3.46.0": 46,
+   "3.48.1": 52,
+   "3.5.0": 2,
+   "3.51.0": 68,
+   "3.53.1": 32,
+   "3.53.5": 27,
+   "3.54.0": 31,
+   "3.56.0": 57,
+   "3.57.0": 20,
+   "3.59.1": 14,
+   "3.6.2": 3,
+   "3.6.3": 72,
+   "3.63.0": 9,
+   "3.66.0": 37,
+   "3.67.1": 11,
+   "3.69.0": 34,
+   "3.69.1": 48,
+   "3.72.2": 81,
+   "3.72.4": 16,
+   "3.72.5": 31,
+   "3.72.8": 27,
+   "3.72.9": 19,
+   "3.73.1": 30,
+   "3.77.0": 95,
+   "3.79.0": 35,
+   "3.8.0": 8,
+   "3.8.1-alpha.2+hotfix.245.1360bd52": 6,
+   "3.85.0": 19,
+   "3.85.2": 25,
+   "3.87.1": 7,
+   "3.91.0": 25,
+   "3.92.0": 4,
+   "3.96.2": 9,
+   "3.97.0": 27,
+   "3.99.0": 42
+  },
+  "uncertainty_exceeds_rate": 14
+ },
+ "plumeQualityLabel": {
+  "emptyRows": 9285,
+  "rows": 9285,
+  "sentence": "Carbon Mapper's API v1 returned no plume_quality label (empty in all 9,285 rows), so no quality filter is applied."
+ },
+ "schema": "methaneclause.data_quality/1",
+ "v1RadiusKm": 1.5
+}

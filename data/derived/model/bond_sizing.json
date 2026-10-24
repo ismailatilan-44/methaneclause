@@ -1,0 +1,293 @@
+{
+ "B1s_constants": {
+  "a": 0.45,
+  "b": 1.6
+ },
+ "asof": "2026-01-01",
+ "data_cutoff": "2026-09-13",
+ "decision": "RULE_IS_ENOUGH",
+ "draws": 20000,
+ "facilities": {
+  "DZA_S_012": {
+   "annual_B1": {
+    "mean_eth": 0.0,
+    "p50_eth": 0.0,
+    "p90_eth": 0.0
+   },
+   "annual_B1s": {
+    "mean_eth": 0.003903,
+    "p50_eth": 0.003,
+    "p90_eth": 0.009
+   },
+   "annual_model": {
+    "mean_eth": 0.015003,
+    "p50_eth": 0.015,
+    "p90_eth": 0.021
+   },
+   "backtest": {
+    "forecast_B1": {
+     "mean_eth": 0.0,
+     "p10_eth": 0.0,
+     "p90_eth": 0.0,
+     "realised_percentile": 1.0
+    },
+    "forecast_B1s": {
+     "mean_eth": 0.002621,
+     "p10_eth": 0.0,
+     "p90_eth": 0.006,
+     "realised_percentile": 0.397
+    },
+    "forecast_model": {
+     "mean_eth": 0.009995,
+     "p10_eth": 0.006,
+     "p90_eth": 0.015,
+     "realised_percentile": 0.013
+    },
+    "months": 8,
+    "realised": {
+     "episodes": 1,
+     "rebate_eth": 0.001
+    },
+    "window": "2026-01-01..2026-09-13"
+   },
+   "instrument_mix": {
+    "emi": 0.5,
+    "tan": 0.5
+   },
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_5.99636_31.77708",
+    "CH4_1B2_250m_5.99640_31.77781"
+   ],
+   "p_pass": {
+    "B1": 0.0,
+    "B1s": 0.1731,
+    "model": 0.8085
+   },
+   "p_source_B1": {
+    "CH4_1B2_1000m_5.99636_31.77708": 0.0,
+    "CH4_1B2_250m_5.99640_31.77781": 0.0
+   },
+   "p_source_B1s": {
+    "CH4_1B2_1000m_5.99636_31.77708": 0.0978,
+    "CH4_1B2_250m_5.99640_31.77781": 0.1731
+   },
+   "p_source_model": {
+    "CH4_1B2_1000m_5.99636_31.77708": 0.8085,
+    "CH4_1B2_250m_5.99640_31.77781": 0.672
+   },
+   "passes_last_12m": 8,
+   "payable_share_of_detections": 1.0,
+   "tier_shares": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  "TKM_S_276": {
+   "annual_B1": {
+    "mean_eth": 0.005095,
+    "p50_eth": 0.005,
+    "p90_eth": 0.009
+   },
+   "annual_B1s": {
+    "mean_eth": 0.003946,
+    "p50_eth": 0.004,
+    "p90_eth": 0.008
+   },
+   "annual_model": {
+    "mean_eth": 0.004724,
+    "p50_eth": 0.004,
+    "p90_eth": 0.009
+   },
+   "backtest": {
+    "forecast_B1": {
+     "mean_eth": 0.003402,
+     "p10_eth": 0.0,
+     "p90_eth": 0.007,
+     "realised_percentile": 0.946
+    },
+    "forecast_B1s": {
+     "mean_eth": 0.002624,
+     "p10_eth": 0.0,
+     "p90_eth": 0.006,
+     "realised_percentile": 0.974
+    },
+    "forecast_model": {
+     "mean_eth": 0.003167,
+     "p10_eth": 0.0,
+     "p90_eth": 0.007,
+     "realised_percentile": 0.953
+    },
+    "months": 8,
+    "realised": {
+     "episodes": 4,
+     "rebate_eth": 0.008
+    },
+    "window": "2026-01-01..2026-09-13"
+   },
+   "instrument_mix": {
+    "tan": 1.0
+   },
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_53.71356_39.47100",
+    "CH4_1B2_250m_53.70692_39.48765",
+    "CH4_1B2_250m_53.70979_39.48786",
+    "CH4_1B2_250m_53.71782_39.48437",
+    "CH4_1B2_250m_53.72906_39.47848"
+   ],
+   "p_pass": {
+    "B1": 1.0,
+    "B1s": 0.75,
+    "model": 0.9176
+   },
+   "p_source_B1": {
+    "CH4_1B2_1000m_53.71356_39.47100": 1.0,
+    "CH4_1B2_250m_53.70692_39.48765": 1.0,
+    "CH4_1B2_250m_53.70979_39.48786": 0.3224,
+    "CH4_1B2_250m_53.71782_39.48437": 1.0,
+    "CH4_1B2_250m_53.72906_39.47848": 1.0
+   },
+   "p_source_B1s": {
+    "CH4_1B2_1000m_53.71356_39.47100": 0.75,
+    "CH4_1B2_250m_53.70692_39.48765": 0.5577,
+    "CH4_1B2_250m_53.70979_39.48786": 0.2812,
+    "CH4_1B2_250m_53.71782_39.48437": 0.75,
+    "CH4_1B2_250m_53.72906_39.47848": 0.5577
+   },
+   "p_source_model": {
+    "CH4_1B2_1000m_53.71356_39.47100": 0.9176,
+    "CH4_1B2_250m_53.70692_39.48765": 0.3251,
+    "CH4_1B2_250m_53.70979_39.48786": 0.142,
+    "CH4_1B2_250m_53.71782_39.48437": 0.8782,
+    "CH4_1B2_250m_53.72906_39.47848": 0.5257
+   },
+   "passes_last_12m": 4,
+   "payable_share_of_detections": 0.7778,
+   "tier_shares": [
+    0.0,
+    0.4286,
+    0.5714
+   ]
+  },
+  "USA_S_077": {
+   "annual_B1": {
+    "mean_eth": 0.0,
+    "p50_eth": 0.0,
+    "p90_eth": 0.0
+   },
+   "annual_B1s": {
+    "mean_eth": 0.000607,
+    "p50_eth": 0.0,
+    "p90_eth": 0.003
+   },
+   "annual_model": {
+    "mean_eth": 0.000762,
+    "p50_eth": 0.0,
+    "p90_eth": 0.003
+   },
+   "backtest": {
+    "forecast_B1": {
+     "mean_eth": 0.0,
+     "p10_eth": 0.0,
+     "p90_eth": 0.0,
+     "realised_percentile": 0.5
+    },
+    "forecast_B1s": {
+     "mean_eth": 0.000398,
+     "p10_eth": 0.0,
+     "p90_eth": 0.003,
+     "realised_percentile": 0.446
+    },
+    "forecast_model": {
+     "mean_eth": 0.000512,
+     "p10_eth": 0.0,
+     "p90_eth": 0.003,
+     "realised_percentile": 0.432
+    },
+    "months": 8,
+    "realised": {
+     "episodes": 0,
+     "rebate_eth": 0.0
+    },
+    "window": "2026-01-01..2026-09-13"
+   },
+   "instrument_mix": {
+    "emi": 1.0
+   },
+   "linked_cm_sources": [
+    "CH4_1B2_1000m_-101.52270_32.51483"
+   ],
+   "p_pass": {
+    "B1": 0.0,
+    "B1s": 0.1731,
+    "model": 0.2159
+   },
+   "p_source_B1": {
+    "CH4_1B2_1000m_-101.52270_32.51483": 0.0
+   },
+   "p_source_B1s": {
+    "CH4_1B2_1000m_-101.52270_32.51483": 0.1731
+   },
+   "p_source_model": {
+    "CH4_1B2_1000m_-101.52270_32.51483": 0.2159
+   },
+   "passes_last_12m": 1,
+   "payable_share_of_detections": 1.0,
+   "tier_shares": [
+    0.25,
+    0.75,
+    0.0
+   ]
+  }
+ },
+ "forecaster_used": "B1s",
+ "method": "monthly Poisson passes x per-pass detection x payable share x tier mix; <= 1 paid episode/month",
+ "modelHash": null,
+ "ranking_by_expected_exposure": [
+  "TKM_S_276",
+  "DZA_S_012",
+  "USA_S_077"
+ ],
+ "recommended_bond_eth": 0.015,
+ "recommended_bond_wei": "15000000000000000",
+ "seed": 0,
+ "set_annual_exposure": {
+  "B1": {
+   "mean_eth": 0.005095,
+   "p90_eth": 0.009
+  },
+  "B1s": {
+   "mean_eth": 0.008456,
+   "p90_eth": 0.015
+  },
+  "model": {
+   "mean_eth": 0.020489,
+   "p90_eth": 0.029
+  }
+ },
+ "set_backtest": {
+  "forecast_B1": {
+   "mean_eth": 0.003402,
+   "p10_eth": 0.0,
+   "p90_eth": 0.007
+  },
+  "forecast_B1s": {
+   "mean_eth": 0.005644,
+   "p10_eth": 0.001,
+   "p90_eth": 0.01
+  },
+  "forecast_model": {
+   "mean_eth": 0.013674,
+   "p10_eth": 0.007,
+   "p90_eth": 0.02
+  },
+  "note": "3 facilities: a sanity check of the bond logic, not a validation of the model (that is the held-out BSS in model_metrics.json)",
+  "realised_rebate_eth": 0.009,
+  "window": "2026-01-01..2026-09-13"
+ },
+ "tier_amounts_eth": [
+  0.005,
+  0.003,
+  0.001
+ ]
+}

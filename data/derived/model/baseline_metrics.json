@@ -1,0 +1,117 @@
+{
+ "labels_sha256": "48b75997835ec25aa796238588cc7d9e6d5c2c5592888c928fc4ef898e47f168",
+ "results": {
+  "test_a": {
+   "B0_climatology": {
+    "auc": 0.5,
+    "brier": 0.2353,
+    "bss_vs_B1": -0.4498,
+    "false_zero_rate": null,
+    "n": 4875,
+    "n_forecast_below_5pct": 0,
+    "positives": 1803
+   },
+   "B1_persistence": {
+    "auc": 0.8408,
+    "brier": 0.1623,
+    "false_zero_rate": 0.0722,
+    "n": 4875,
+    "n_forecast_below_5pct": 1718,
+    "positives": 1803
+   },
+   "B1s_smoothed": {
+    "auc": 0.8515,
+    "brier": 0.151,
+    "bss_vs_B1": 0.0695,
+    "false_zero_rate": null,
+    "n": 4875,
+    "n_forecast_below_5pct": 0,
+    "positives": 1803
+   },
+   "B2_mars_absent_zero": {
+    "auc": 0.7524,
+    "brier": 0.1925,
+    "bss_vs_B1": -0.1862,
+    "false_zero_rate": 0.0722,
+    "n": 4875,
+    "n_forecast_below_5pct": 1718,
+    "positives": 1803
+   }
+  },
+  "test_b": {
+   "B0_climatology": {
+    "auc": 0.5,
+    "brier": 0.2563,
+    "bss_vs_B1": -0.6052,
+    "false_zero_rate": null,
+    "n": 2757,
+    "n_forecast_below_5pct": 0,
+    "positives": 1183
+   },
+   "B1_persistence": {
+    "auc": 0.8454,
+    "brier": 0.1597,
+    "false_zero_rate": 0.0916,
+    "n": 2757,
+    "n_forecast_below_5pct": 939,
+    "positives": 1183
+   },
+   "B1s_smoothed": {
+    "auc": 0.8615,
+    "brier": 0.1541,
+    "bss_vs_B1": 0.0352,
+    "false_zero_rate": null,
+    "n": 2757,
+    "n_forecast_below_5pct": 0,
+    "positives": 1183
+   },
+   "B2_mars_absent_zero": {
+    "auc": 0.799,
+    "brier": 0.2081,
+    "bss_vs_B1": -0.3028,
+    "false_zero_rate": 0.0916,
+    "n": 2757,
+    "n_forecast_below_5pct": 939,
+    "positives": 1183
+   }
+  },
+  "train": {
+   "B0_climatology": {
+    "auc": 0.5,
+    "brier": 0.2185,
+    "bss_vs_B1": -0.0636,
+    "false_zero_rate": null,
+    "n": 8848,
+    "n_forecast_below_5pct": 0,
+    "positives": 2853
+   },
+   "B1_persistence": {
+    "auc": 0.7531,
+    "brier": 0.2054,
+    "false_zero_rate": 0.1065,
+    "n": 8848,
+    "n_forecast_below_5pct": 2600,
+    "positives": 2853
+   },
+   "B1s_smoothed": {
+    "auc": 0.7628,
+    "brier": 0.1748,
+    "bss_vs_B1": 0.1491,
+    "false_zero_rate": 0.0,
+    "n": 8848,
+    "n_forecast_below_5pct": 18,
+    "positives": 2853
+   },
+   "B2_mars_absent_zero": {
+    "auc": 0.6598,
+    "brier": 0.2019,
+    "bss_vs_B1": 0.0173,
+    "false_zero_rate": 0.1065,
+    "n": 8848,
+    "n_forecast_below_5pct": 2600,
+    "positives": 2853
+   }
+  }
+ },
+ "splits_hash": "0x129b74cb5f666b9ea270e24c4a41bcc2ad6b61b383e62b9bf0f3ff0b60777cb6"
+}

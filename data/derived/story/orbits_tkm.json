@@ -1,0 +1,222 @@
+{
+ "source": "CelesTrak GP data (celestrak.org/NORAD/elements/gp.php)",
+ "requests": {
+  "NAME=TANAGER&FORMAT=JSON": {
+   "Content-Type": "application/json; charset=UTF-8",
+   "Access-Control-Allow-Origin": "*"
+  },
+  "CATNR=25544&FORMAT=JSON": {
+   "Content-Type": "application/json; charset=UTF-8",
+   "Access-Control-Allow-Origin": "*"
+  },
+  "CATNR=25544&FORMAT=TLE": {
+   "Content-Type": "text/plain; charset=UTF-8",
+   "Access-Control-Allow-Origin": "*"
+  },
+  "CATNR=60507&FORMAT=TLE": {
+   "Content-Type": "text/plain; charset=UTF-8",
+   "Access-Control-Allow-Origin": "*"
+  }
+ },
+ "tanager_search": [
+  {
+   "OBJECT_NAME": "TANAGER-1",
+   "OBJECT_ID": "2024-149AR",
+   "NORAD_CAT_ID": 60507,
+   "EPOCH": "2026-10-16T17:38:41.572032"
+  },
+  {
+   "OBJECT_NAME": "TANAGER-2",
+   "OBJECT_ID": "2026-227D",
+   "NORAD_CAT_ID": 100886,
+   "EPOCH": "2026-10-16T14:05:47.542848"
+  }
+ ],
+ "tle": {
+  "25544": [
+   "ISS (ZARYA)             ",
+   "1 25544U 98067A   26289.78971907  .00007803  00000+0  15012-3 0  9994",
+   "2 25544  51.6326  58.3278 0006748 271.9059  88.1156 15.48899044590607"
+  ],
+  "60507": [
+   "TANAGER-1               ",
+   "1 60507U 24149AR  26289.73520338  .00016988  00000+0  36858-3 0  9990",
+   "2 60507  97.2277  23.2864 0000592 150.5709 209.5573 15.44455490121794"
+  ]
+ },
+ "satellites": {
+  "ISS (ZARYA) - EMIT host": {
+   "norad": 25544,
+   "intl": "1998-067A",
+   "epoch": "2026-10-16T18:57:11.727648",
+   "inclination_deg": 51.6326,
+   "mean_motion_rev_day": 15.48899044,
+   "period_min": 92.97,
+   "perigee_km": 415.4,
+   "apogee_km": 424.5,
+   "mean_alt_km": 419.9,
+   "omm": {
+    "OBJECT_NAME": "ISS (ZARYA)",
+    "OBJECT_ID": "1998-067A",
+    "EPOCH": "2026-10-16T18:57:11.727648",
+    "MEAN_MOTION": 15.48899044,
+    "ECCENTRICITY": 0.0006748,
+    "INCLINATION": 51.6326,
+    "RA_OF_ASC_NODE": 58.3278,
+    "ARG_OF_PERICENTER": 271.9059,
+    "MEAN_ANOMALY": 88.1156,
+    "EPHEMERIS_TYPE": 0,
+    "CLASSIFICATION_TYPE": "U",
+    "NORAD_CAT_ID": 25544,
+    "ELEMENT_SET_NO": 999,
+    "REV_AT_EPOCH": 59060,
+    "BSTAR": 0.00015012,
+    "MEAN_MOTION_DOT": 7.803e-05,
+    "MEAN_MOTION_DDOT": 0
+   }
+  },
+  "Tanager-1": {
+   "norad": 60507,
+   "intl": "2024-149AR",
+   "epoch": "2026-10-16T17:38:41.572032",
+   "inclination_deg": 97.2277,
+   "mean_motion_rev_day": 15.4445549,
+   "period_min": 93.24,
+   "perigee_km": 432.6,
+   "apogee_km": 433.4,
+   "mean_alt_km": 433.0,
+   "omm": {
+    "OBJECT_NAME": "TANAGER-1",
+    "OBJECT_ID": "2024-149AR",
+    "EPOCH": "2026-10-16T17:38:41.572032",
+    "MEAN_MOTION": 15.4445549,
+    "ECCENTRICITY": 5.92e-05,
+    "INCLINATION": 97.2277,
+    "RA_OF_ASC_NODE": 23.2864,
+    "ARG_OF_PERICENTER": 150.5709,
+    "MEAN_ANOMALY": 209.5573,
+    "EPHEMERIS_TYPE": 0,
+    "CLASSIFICATION_TYPE": "U",
+    "NORAD_CAT_ID": 60507,
+    "ELEMENT_SET_NO": 999,
+    "REV_AT_EPOCH": 12179,
+    "BSTAR": 0.00036858,
+    "MEAN_MOTION_DOT": 0.00016988,
+    "MEAN_MOTION_DDOT": 0
+   },
+   "ltan_hours_at_epoch": 0.11
+  }
+ },
+ "tanager_pass_estimates": [
+  {
+   "scene": "tan20260611t083132c23s4001",
+   "time_utc": "2026-06-11T08:31:32Z",
+   "cm_off_nadir_deg": 12.5,
+   "cm_azimuth_deg": 90.898,
+   "alt_km_assumed": 433.0,
+   "A_subsat_point_lonlat": [
+    54.84,
+    39.4656
+   ],
+   "A_ground_distance_facility_to_subsat_km": 96.2,
+   "A_slant_range_km": 444.2,
+   "A_elevation_of_satellite_seen_from_facility_deg": 76.6,
+   "B_track_heading_deg": 189.4,
+   "B_pass": "descending",
+   "B_closest_track_point_lonlat": [
+    54.783,
+    39.353
+   ],
+   "B_cross_track_facility_km": 92.5,
+   "B_facility_side": "right of flight direction",
+   "B_sensitivity_if_decaying_orbit": {
+    "alt_km": 445.7,
+    "cross_track_facility_km": 127.6,
+    "closest_track_point_lonlat": [
+     55.187,
+     39.303
+    ]
+   },
+   "A_vs_B_cross_track_km": -2.8,
+   "footprint_centre_lonlat": [
+    54.0207,
+    39.371
+   ],
+   "facility_to_footprint_centre_km": 28.7
+  },
+  {
+   "scene": "tan20260620t083638c93s4001",
+   "time_utc": "2026-06-20T08:36:38Z",
+   "cm_off_nadir_deg": 20.482,
+   "cm_azimuth_deg": 199.709,
+   "alt_km_assumed": 433.0,
+   "A_subsat_point_lonlat": [
+    53.0937,
+    38.1069
+   ],
+   "A_ground_distance_facility_to_subsat_km": 162.5,
+   "A_slant_range_km": 464.4,
+   "A_elevation_of_satellite_seen_from_facility_deg": 68.1,
+   "B_track_heading_deg": 189.4,
+   "B_pass": "descending",
+   "B_closest_track_point_lonlat": [
+    53.632,
+    39.491
+   ],
+   "B_cross_track_facility_km": 7.6,
+   "B_facility_side": "left of flight direction",
+   "B_sensitivity_if_decaying_orbit": {
+    "alt_km": 444.8,
+    "cross_track_facility_km": 22.7,
+    "closest_track_point_lonlat": [
+     53.981,
+     39.451
+    ]
+   },
+   "A_vs_B_cross_track_km": 21.4,
+   "footprint_centre_lonlat": [
+    54.0424,
+    39.515
+   ],
+   "facility_to_footprint_centre_km": 27.9
+  },
+  {
+   "scene": "tan20260810t083543c12s4001",
+   "time_utc": "2026-08-10T08:35:43Z",
+   "cm_off_nadir_deg": 12.324,
+   "cm_azimuth_deg": 99.137,
+   "alt_km_assumed": 433.0,
+   "A_subsat_point_lonlat": [
+    54.808,
+    39.3442
+   ],
+   "A_ground_distance_facility_to_subsat_km": 94.8,
+   "A_slant_range_km": 443.9,
+   "A_elevation_of_satellite_seen_from_facility_deg": 76.8,
+   "B_track_heading_deg": 189.4,
+   "B_pass": "descending",
+   "B_closest_track_point_lonlat": [
+    54.378,
+    39.402
+   ],
+   "B_cross_track_facility_km": 57.2,
+   "B_facility_side": "right of flight direction",
+   "B_sensitivity_if_decaying_orbit": {
+    "alt_km": 439.7,
+    "cross_track_facility_km": 67.0,
+    "closest_track_point_lonlat": [
+     54.492,
+     39.392
+    ]
+   },
+   "A_vs_B_cross_track_km": -37.5,
+   "footprint_centre_lonlat": [
+    53.7764,
+    39.4573
+   ],
+   "facility_to_footprint_centre_km": 5.7
+  }
+ ],
+ "altitude_note": "Tanager-1 altitude assumed = today's CelesTrak mean altitude (epoch 2026-10-16), i.e. orbit maintained. Sensitivity case rolls mean motion back with the TLE decay term (MEAN_MOTION_DOT) and gives ~440-446 km. Published figures differ (pre-launch 405 km; ~500-522 km after launch; lowered to ~430 km), so treat altitude as +/- ~15 km.",
+ "method": "\u2014 why the mean anomaly is NOT back-propagated:\nA current TLE propagated back months (Tanager-1) or years (ISS: reboosts, drag) cannot place the satellite\nalong its track: along-track error grows to hundreds or thousands of km. Two things survive:\n  1. Carbon Mapper's own per-scene view geometry (scenes/annotated: `azimuth`, `off_nadir`). With an\n     altitude this gives the sub-satellite point relative to the target directly.  -> METHOD A (preferred)\n  2. A sun-synchronous orbit keeps its plane fixed relative to the Sun, so the current plane, moved back\n     with J2 nodal drift (altitude held; a decaying-orbit variant is reported as sensitivity), gives the\n     ground track at the scene time. Only the across-track position is meaningful.        -> METHOD B (cross-check)\nMethod B is used only to check that Method A's side-of-track and pass direction are plausible.\nBoth are approximations; draw the result as simulated (purple, dashed), never as a measured position."
+}

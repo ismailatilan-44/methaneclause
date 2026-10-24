@@ -1,0 +1,14 @@
+{
+ "v1_tkm_bundle.json": {
+  "canonical": "{\"covenantId\":\"0x0000000000000000000000000000000000000000000000000000000000000001\",\"detectedAt\":\"2026-06-11T08:31:32.230000Z\",\"emissionKgH\":2548.2483082628996,\"emissionVersion\":\"v3\",\"instrument\":\"tan\",\"plumeId\":\"tan20260611t083132c23s4001-AB\",\"providerId\":\"carbonmapper\",\"rawResponseSha256\":\"0000000000000000000000000000000000000000000000000000000000000000\",\"retrievedAt\":\"2026-10-14T00:00:00Z\",\"schemaVersion\":1,\"sourceId\":\"TKM_S_276\",\"uncertaintyKgH\":null}",
+  "evidenceHash": "0xc464599e6182c413a6f64da234de8bfc924c55b5eeb5955f7bcadc9d8c44ffc5"
+ },
+ "v2_rfc8785_example.json": {
+  "canonical": "{\"literals\":[null,true,false],\"numbers\":[333333333.3333333,1e+30,4.5,0.002,1e-27],\"string\":\"€$\\u000f\\nA'B\\\"\\\\\\\\\\\"/\"}",
+  "evidenceHash": "0x2d5e01a318d0f0879ab568c4be289c8b1f64ef8921a53c6277d5e069978baacb"
+ },
+ "v3_unicode_nesting.json": {
+  "canonical": "{\"\":\"\",\"A\":0.1,\"a\":1e+21,\"b\":{\"a\":{\"e\":\"e\",\"é\":\"é\",\"€\":0,\"😀\":\"emoji\"},\"z\":[3,2,1]}}",
+  "evidenceHash": "0xdcf42d3ac5a856a618fa098ab2ced2784cb5fbe5eb331d7a90ab3f527e76493a"
+ }
+}

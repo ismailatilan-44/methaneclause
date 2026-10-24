@@ -1,0 +1,16 @@
+{
+ "bond_eth": 0.015,
+ "chain": "anvil-31337",
+ "checks": 33,
+ "evidenceHash": "0x07865dea25bb7bae8b367a23d636359a58d6b9ca8d784289dbf5e36dd31ec2c9",
+ "gas_rounded_1k": {
+  "createCovenant": 339000,
+  "finalize": 118000,
+  "proposeEpisode": 368000,
+  "proposeEpisode_linked": 322000,
+  "withdraw": 30000
+ },
+ "linkedEvidenceHash": "0xd3c27f3007a43b29a0a2a521cfa0ebf8485667cb5f81958517313511d6afdbdd",
+ "mode": "snapshot",
+ "rebate_eth": 0.003
+}

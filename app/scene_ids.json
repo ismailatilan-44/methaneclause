@@ -1,0 +1,22 @@
+{
+ "fetchedAt": "2026-10-15",
+ "licence": "Data by Carbon Mapper\u00ae \u2014 scene identifiers only",
+ "scenes": {
+  "emi20240929t113148p08006": {
+   "id": "d5e56d9d-028a-434c-8e01-b9ac004b3808",
+   "query": "https://api.carbonmapper.org/api/v1/catalog/scenes/annotated?intersects=%7B%22type%22%3A+%22Point%22%2C+%22coordinates%22%3A+%5B5.996084952451156%2C+31.777848874054868%5D%7D&datetime=2024-09-28T00%3A00%3A00Z%2F2024-10-01T00%3A00%3A00Z&limit=20",
+   "timestamp": "2024-09-29T11:31:48Z"
+  },
+  "tan20260201t113140c40s4001": {
+   "id": "3414fc64-0158-4821-abe9-58b554e76a0b",
+   "query": "https://api.carbonmapper.org/api/v1/catalog/scenes/annotated?intersects=%7B%22type%22%3A+%22Point%22%2C+%22coordinates%22%3A+%5B5.999045035331164%2C+31.772806489494798%5D%7D&datetime=2026-01-31T00%3A00%3A00Z%2F2026-02-03T00%3A00%3A00Z&limit=20",
+   "timestamp": "2026-02-01T11:31:40.400Z"
+  },
+  "tan20260611t083132c23s4001": {
+   "id": "9e0a31c0-6487-47d1-8567-187dcffcf4bd",
+   "query": "https://api.carbonmapper.org/api/v1/catalog/scenes/annotated?intersects=%7B%22type%22%3A+%22Point%22%2C+%22coordinates%22%3A+%5B53.71444106171069%2C+39.48477371264278%5D%7D&datetime=2026-06-10T00%3A00%3A00Z%2F2026-06-13T00%3A00%3A00Z&limit=20",
+   "timestamp": "2026-06-11T08:31:32.230Z"
+  }
+ },
+ "schema": "methaneclause.app_scene_ids/1"
+}

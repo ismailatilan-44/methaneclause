@@ -1,0 +1,4840 @@
+{
+ "abi": {
+  "IncentivePool": [
+   {
+    "inputs": [
+     {
+      "internalType": "contract MethaneCovenant",
+      "name": "covenant_",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+   },
+   {
+    "stateMutability": "payable",
+    "type": "receive"
+   },
+   {
+    "inputs": [],
+    "name": "DOMAIN_SEPARATOR",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_ATTESTATIONS",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_EXPIRY_HORIZON",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_PENDING",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_CLOUD_FLAG",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_FLOOR_MISMATCH",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_MARS_PLUME_NEARBY",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_NO_ORIGIN_INTERSECT",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_PLUME_ON_SCENE",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_SCENE_NOT_FOUND",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "sceneAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "publishedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint16",
+        "name": "cloudBp",
+        "type": "uint16"
+       },
+       {
+        "internalType": "bool",
+        "name": "notCloudy",
+        "type": "bool"
+       },
+       {
+        "internalType": "uint32",
+        "name": "floorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "rateFloorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct CleanPass[]",
+      "name": "atts",
+      "type": "tuple[]"
+     },
+     {
+      "internalType": "bytes[]",
+      "name": "sigs",
+      "type": "bytes[]"
+     }
+    ],
+    "name": "attestCleanPass",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "marsSnapshotHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "windowFrom",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "windowTo",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint16",
+        "name": "marsPlumesInWindow",
+        "type": "uint16"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct Corroboration[]",
+      "name": "atts",
+      "type": "tuple[]"
+     },
+     {
+      "internalType": "bytes[]",
+      "name": "sigs",
+      "type": "bytes[]"
+     }
+    ],
+    "name": "attestCorroboration",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "uint8",
+      "name": "reason",
+      "type": "uint8"
+     }
+    ],
+    "name": "challengeCorroboration",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint8",
+      "name": "reason",
+      "type": "uint8"
+     }
+    ],
+    "name": "challengePass",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "sceneAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "publishedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint16",
+        "name": "cloudBp",
+        "type": "uint16"
+       },
+       {
+        "internalType": "bool",
+        "name": "notCloudy",
+        "type": "bool"
+       },
+       {
+        "internalType": "uint32",
+        "name": "floorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "rateFloorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct CleanPass",
+      "name": "a",
+      "type": "tuple"
+     }
+    ],
+    "name": "cleanPassDigest",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "closeClaim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "address",
+      "name": "sponsor",
+      "type": "address"
+     }
+    ],
+    "name": "contributions",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "marsSnapshotHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "windowFrom",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "windowTo",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint16",
+        "name": "marsPlumesInWindow",
+        "type": "uint16"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct Corroboration",
+      "name": "a",
+      "type": "tuple"
+     }
+    ],
+    "name": "corroborationDigest",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "name": "countPass",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "covenant",
+    "outputs": [
+     {
+      "internalType": "contract MethaneCovenant",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "eip712Domain",
+    "outputs": [
+     {
+      "internalType": "bytes1",
+      "name": "fields",
+      "type": "bytes1"
+     },
+     {
+      "internalType": "string",
+      "name": "name",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "version",
+      "type": "string"
+     },
+     {
+      "internalType": "uint256",
+      "name": "chainId",
+      "type": "uint256"
+     },
+     {
+      "internalType": "address",
+      "name": "verifyingContract",
+      "type": "address"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "salt",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "uint256[]",
+      "name": "extensions",
+      "type": "uint256[]"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "finalizeCorroboration",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "name": "finalizePass",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "policyHash",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "enum IncentivePool.Mode",
+      "name": "mode",
+      "type": "uint8"
+     },
+     {
+      "components": [
+       {
+        "internalType": "uint32",
+        "name": "publicationLag",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "cleanWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "resolveWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "holdWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "cureTerm",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint96",
+        "name": "passBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint96",
+        "name": "challengerBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint96",
+        "name": "observerFeeWei",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint128[3]",
+        "name": "unitTierAmounts",
+        "type": "uint128[3]"
+       },
+       {
+        "components": [
+         {
+          "internalType": "uint8",
+          "name": "afterPasses",
+          "type": "uint8"
+         },
+         {
+          "internalType": "uint16",
+          "name": "shareBp",
+          "type": "uint16"
+         },
+         {
+          "internalType": "bool",
+          "name": "twoInstruments",
+          "type": "bool"
+         },
+         {
+          "internalType": "bool",
+          "name": "isFinal",
+          "type": "bool"
+         }
+        ],
+        "internalType": "struct IncentivePool.InstallmentRule[3]",
+        "name": "installments",
+        "type": "tuple[3]"
+       },
+       {
+        "internalType": "uint16[32]",
+        "name": "upperBoundBp",
+        "type": "uint16[32]"
+       }
+      ],
+      "internalType": "struct IncentivePool.PoolParams",
+      "name": "p",
+      "type": "tuple"
+     }
+    ],
+    "name": "fund",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "getClaim",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "uint256",
+        "name": "episodeId",
+        "type": "uint256"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "covenantId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "since",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint32",
+        "name": "rateKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "tier",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint256",
+        "name": "cap",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "paid",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "reserved",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint32",
+        "name": "counted",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentsSeen",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint8",
+        "name": "pending",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "corroboratedTo",
+        "type": "uint64"
+       },
+       {
+        "internalType": "enum IncentivePool.ClaimState",
+        "name": "state",
+        "type": "uint8"
+       }
+      ],
+      "internalType": "struct IncentivePool.Claim",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     }
+    ],
+    "name": "getInstallment",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "index",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint64",
+        "name": "claimableAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "enum IncentivePool.InstState",
+        "name": "state",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "ref",
+        "type": "bytes32"
+       }
+      ],
+      "internalType": "struct IncentivePool.Installment",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "name": "getPass",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "sceneAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "publishedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint16",
+        "name": "cloudBp",
+        "type": "uint16"
+       },
+       {
+        "internalType": "address",
+        "name": "submitter",
+        "type": "address"
+       },
+       {
+        "internalType": "uint96",
+        "name": "bond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "bytes32[]",
+        "name": "orgs",
+        "type": "bytes32[]"
+       },
+       {
+        "internalType": "address",
+        "name": "challenger",
+        "type": "address"
+       },
+       {
+        "internalType": "uint96",
+        "name": "challengerBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint8",
+        "name": "reason",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "window",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "resolveBy",
+        "type": "uint64"
+       },
+       {
+        "internalType": "enum IncentivePool.PassState",
+        "name": "state",
+        "type": "uint8"
+       }
+      ],
+      "internalType": "struct IncentivePool.Pass",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "getPool",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "enum IncentivePool.PoolState",
+        "name": "state",
+        "type": "uint8"
+       },
+       {
+        "internalType": "enum IncentivePool.Mode",
+        "name": "mode",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "policyHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "paramsHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "reserved",
+        "type": "uint256"
+       },
+       {
+        "internalType": "address",
+        "name": "opener",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct IncentivePool.Pool",
+      "name": "pl",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "uint32",
+        "name": "publicationLag",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "cleanWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "resolveWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "holdWindow",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "cureTerm",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint96",
+        "name": "passBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint96",
+        "name": "challengerBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint96",
+        "name": "observerFeeWei",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint128[3]",
+        "name": "unitTierAmounts",
+        "type": "uint128[3]"
+       },
+       {
+        "components": [
+         {
+          "internalType": "uint8",
+          "name": "afterPasses",
+          "type": "uint8"
+         },
+         {
+          "internalType": "uint16",
+          "name": "shareBp",
+          "type": "uint16"
+         },
+         {
+          "internalType": "bool",
+          "name": "twoInstruments",
+          "type": "bool"
+         },
+         {
+          "internalType": "bool",
+          "name": "isFinal",
+          "type": "bool"
+         }
+        ],
+        "internalType": "struct IncentivePool.InstallmentRule[3]",
+        "name": "installments",
+        "type": "tuple[3]"
+       },
+       {
+        "internalType": "uint16[32]",
+        "name": "upperBoundBp",
+        "type": "uint16[32]"
+       }
+      ],
+      "internalType": "struct IncentivePool.PoolParams",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "openClaim",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "registry",
+    "outputs": [
+     {
+      "internalType": "contract KeyRegistry",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "uint256",
+      "name": "episodeId2",
+      "type": "uint256"
+     }
+    ],
+    "name": "relapse",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     }
+    ],
+    "name": "release",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "claimId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sceneHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "sceneAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "publishedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint16",
+        "name": "cloudBp",
+        "type": "uint16"
+       },
+       {
+        "internalType": "bool",
+        "name": "notCloudy",
+        "type": "bool"
+       },
+       {
+        "internalType": "uint32",
+        "name": "floorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "rateFloorKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct CleanPass[]",
+      "name": "atts",
+      "type": "tuple[]"
+     },
+     {
+      "internalType": "bytes[]",
+      "name": "sigs",
+      "type": "bytes[]"
+     }
+    ],
+    "name": "resolvePass",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "sponsorWithdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "name": "voidPass",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     }
+    ],
+    "name": "withdrawable",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "relapseEpisodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "releasedReserve",
+      "type": "uint256"
+     }
+    ],
+    "name": "ClaimCancelled",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "ClaimClosed",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "marsSnapshotHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "windowFrom",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "windowTo",
+      "type": "uint64"
+     }
+    ],
+    "name": "ClaimCorroborated",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "cap",
+      "type": "uint256"
+     }
+    ],
+    "name": "ClaimOpened",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "sceneId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "sceneHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "sceneAt",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "instrumentId",
+      "type": "uint8"
+     }
+    ],
+    "name": "CleanPassAttested",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "challenger",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "reason",
+      "type": "uint8"
+     }
+    ],
+    "name": "CleanPassChallenged",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint32",
+      "name": "counted",
+      "type": "uint32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "upperBoundBp",
+      "type": "uint16"
+     }
+    ],
+    "name": "CleanPassCounted",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     }
+    ],
+    "name": "CleanPassExpired",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "beneficiary",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "award",
+      "type": "uint256"
+     }
+    ],
+    "name": "CleanPassVoided",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "challenger",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "resolveBy",
+      "type": "uint64"
+     }
+    ],
+    "name": "CorroborationChallenged",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "marsSnapshotHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "effectiveAt",
+      "type": "uint64"
+     }
+    ],
+    "name": "CorroborationPending",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "ref",
+      "type": "bytes32"
+     }
+    ],
+    "name": "CreditNoteDue",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "ref",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "newRef",
+      "type": "bytes32"
+     }
+    ],
+    "name": "CreditNoteSuperseded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "Credited",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "FinalOutOfTerm",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "InstallmentReleased",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "index",
+      "type": "uint8"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "claimableAt",
+      "type": "uint64"
+     }
+    ],
+    "name": "InstallmentScheduled",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "claimId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "installmentId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "InstallmentUnfunded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "passId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "observer",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "ObserverFeePaid",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "sponsor",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "policyHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "enum IncentivePool.Mode",
+      "name": "mode",
+      "type": "uint8"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "paramsHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "PoolFunded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "Withdrawn",
+    "type": "event"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "index",
+      "type": "uint256"
+     }
+    ],
+    "name": "AttestationMismatch",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "AttestorNotIndependent",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "BadBond",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "BadKind",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "BadParams",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "BeforePublicationLag",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ClaimExists",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ClaimNotOpen",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "Cloudy",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "DuplicateScene",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint64",
+      "name": "expiry",
+      "type": "uint64"
+     }
+    ],
+    "name": "Expired",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "FinalOutOfTermError",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "FloorAboveRate",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidReason",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidSignature",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidState",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "MarsPlumeInWindow",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "NotARelapse",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "NotConfirmed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotCorroborated",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingToWithdraw",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "PolicyMismatch",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "PoolClosed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "PoolNotClosed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "PoolNotOpenedByParty",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "have",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "need",
+      "type": "uint256"
+     }
+    ],
+    "name": "QuorumNotMet",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "RelapsePending",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     },
+     {
+      "internalType": "uint64",
+      "name": "nonce",
+      "type": "uint64"
+     }
+    ],
+    "name": "Replay",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "RevokedKey",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "SceneOutOfRange",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "SelfAttestation",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "SourceUnderReview",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "TooManyPending",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "TransferFailed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "WindowClosed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "WindowOpen",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "WrongCovenant",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ZeroCap",
+    "type": "error"
+   }
+  ],
+  "KeyRegistry": [
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "admin_",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+   },
+   {
+    "inputs": [],
+    "name": "ALG_ECDSA",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "ALG_HYBRID_MLDSA44",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+     }
+    ],
+    "name": "getKey",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "orgId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "enum KeyRegistry.Role",
+        "name": "role",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint8",
+        "name": "algId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "validFrom",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "validUntil",
+        "type": "uint64"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "pqPubKeyHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "address",
+        "name": "replacedBy",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct KeyRegistry.Key",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+     },
+     {
+      "internalType": "enum KeyRegistry.Role",
+      "name": "role",
+      "type": "uint8"
+     },
+     {
+      "internalType": "uint256",
+      "name": "ts",
+      "type": "uint256"
+     }
+    ],
+    "name": "isValidAt",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+     },
+     {
+      "internalType": "uint256",
+      "name": "ts",
+      "type": "uint256"
+     }
+    ],
+    "name": "keyStatus",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "enum KeyRegistry.Role",
+      "name": "role",
+      "type": "uint8"
+     },
+     {
+      "internalType": "bool",
+      "name": "valid",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "orgController",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "orgKeys",
+    "outputs": [
+     {
+      "internalType": "address[]",
+      "name": "",
+      "type": "address[]"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+     }
+    ],
+    "name": "orgOf",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "enum KeyRegistry.Role",
+      "name": "role",
+      "type": "uint8"
+     },
+     {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+     },
+     {
+      "internalType": "uint8",
+      "name": "algId",
+      "type": "uint8"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "pqPubKeyHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "registerKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "renounceAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     }
+    ],
+    "name": "revokeKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "oldKey",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "newKey",
+      "type": "address"
+     },
+     {
+      "internalType": "uint8",
+      "name": "algId",
+      "type": "uint8"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "pqPubKeyHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "rotateKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "address",
+      "name": "controller",
+      "type": "address"
+     }
+    ],
+    "name": "setOrgController",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "admin",
+      "type": "address"
+     }
+    ],
+    "name": "AdminRenounced",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "enum KeyRegistry.Role",
+      "name": "role",
+      "type": "uint8"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "algId",
+      "type": "uint8"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "pqPubKeyHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "validFrom",
+      "type": "uint64"
+     }
+    ],
+    "name": "KeyRegistered",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "timestamp",
+      "type": "uint64"
+     }
+    ],
+    "name": "KeyRevoked",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "oldKey",
+      "type": "address"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "newKey",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "timestamp",
+      "type": "uint64"
+     }
+    ],
+    "name": "KeyRotated",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "orgId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "controller",
+      "type": "address"
+     }
+    ],
+    "name": "OrgControllerSet",
+    "type": "event"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidParams",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     }
+    ],
+    "name": "KeyExists",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     }
+    ],
+    "name": "KeyNotActive",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotAuthorized",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "key",
+      "type": "address"
+     }
+    ],
+    "name": "UnknownKey",
+    "type": "error"
+   }
+  ],
+  "MethaneCovenant": [
+   {
+    "inputs": [
+     {
+      "internalType": "contract KeyRegistry",
+      "name": "registry_",
+      "type": "address"
+     },
+     {
+      "internalType": "uint96",
+      "name": "proposerBond_",
+      "type": "uint96"
+     },
+     {
+      "internalType": "uint96",
+      "name": "challengerBond_",
+      "type": "uint96"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+   },
+   {
+    "inputs": [],
+    "name": "DOMAIN_SEPARATOR",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_ATTESTATIONS",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_EXPIRY_HORIZON",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_LOOKBACK",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_DUPLICATE_PLUME",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_HASH_MISMATCH",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_REVOKED_KEY",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_SOURCE_NOT_COVERED",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "REASON_STALE",
+    "outputs": [
+     {
+      "internalType": "uint8",
+      "name": "",
+      "type": "uint8"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "TIER1_MIN_KGH",
+    "outputs": [
+     {
+      "internalType": "uint32",
+      "name": "",
+      "type": "uint32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "TIER2_MIN_KGH",
+    "outputs": [
+     {
+      "internalType": "uint32",
+      "name": "",
+      "type": "uint32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "covenantId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "modelHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "emissionKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "uncertaintyKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "detectedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct Attestation",
+      "name": "a",
+      "type": "tuple"
+     }
+    ],
+    "name": "attestationDigest",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint8",
+      "name": "reasonCode",
+      "type": "uint8"
+     }
+    ],
+    "name": "challenge",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "challengerBond",
+    "outputs": [
+     {
+      "internalType": "uint96",
+      "name": "",
+      "type": "uint96"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "contest",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "covenantCount",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceSetRoot",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "policyHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "term",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "start",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "k",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "challengeWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "contestWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "linkWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint32",
+        "name": "minRateKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint128[3]",
+        "name": "tierAmounts",
+        "type": "uint128[3]"
+       }
+      ],
+      "internalType": "struct MethaneCovenant.CovenantParams",
+      "name": "p",
+      "type": "tuple"
+     }
+    ],
+    "name": "createCovenant",
+    "outputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "eip712Domain",
+    "outputs": [
+     {
+      "internalType": "bytes1",
+      "name": "fields",
+      "type": "bytes1"
+     },
+     {
+      "internalType": "string",
+      "name": "name",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "version",
+      "type": "string"
+     },
+     {
+      "internalType": "uint256",
+      "name": "chainId",
+      "type": "uint256"
+     },
+     {
+      "internalType": "address",
+      "name": "verifyingContract",
+      "type": "address"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "salt",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "uint256[]",
+      "name": "extensions",
+      "type": "uint256[]"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "episodeCount",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "evidenceHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "evidenceSeen",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "finalize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "fund",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "getCovenant",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+       },
+       {
+        "internalType": "uint64",
+        "name": "start",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint32",
+        "name": "openEpisodes",
+        "type": "uint32"
+       },
+       {
+        "internalType": "bool",
+        "name": "settled",
+        "type": "bool"
+       },
+       {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+       },
+       {
+        "internalType": "uint64",
+        "name": "end",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "createdAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "k",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint32",
+        "name": "minRateKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sellerOrg",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "buyerOrg",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceSetRoot",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "policyHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "challengeWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "contestWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "linkWindow",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint128[3]",
+        "name": "tierAmounts",
+        "type": "uint128[3]"
+       },
+       {
+        "internalType": "uint256",
+        "name": "funded",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "remaining",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "held",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "paid",
+        "type": "uint256"
+       },
+       {
+        "internalType": "uint256",
+        "name": "refunded",
+        "type": "uint256"
+       }
+      ],
+      "internalType": "struct MethaneCovenant.Covenant",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "getEpisode",
+    "outputs": [
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "covenantId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
+       },
+       {
+        "internalType": "uint96",
+        "name": "proposerBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "address",
+        "name": "challenger",
+        "type": "address"
+       },
+       {
+        "internalType": "uint96",
+        "name": "challengerBond",
+        "type": "uint96"
+       },
+       {
+        "internalType": "uint64",
+        "name": "detectedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "proposedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "deadline",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint32",
+        "name": "emissionKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "tier",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint8",
+        "name": "quorumOrgs",
+        "type": "uint8"
+       },
+       {
+        "internalType": "enum MethaneCovenant.State",
+        "name": "state",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint8",
+        "name": "reasonCode",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "parentEpisode",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint128",
+        "name": "rebate",
+        "type": "uint128"
+       }
+      ],
+      "internalType": "struct MethaneCovenant.Episode",
+      "name": "",
+      "type": "tuple"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     },
+     {
+      "internalType": "uint64",
+      "name": "nonce",
+      "type": "uint64"
+     }
+    ],
+    "name": "isNonceUsed",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "latestEpisode",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     },
+     {
+      "internalType": "uint256",
+      "name": "word",
+      "type": "uint256"
+     }
+    ],
+    "name": "nonceBitmap",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32[]",
+      "name": "merkleProof",
+      "type": "bytes32[]"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "evidenceHash",
+      "type": "bytes32"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "covenantId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "modelHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "emissionKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "uncertaintyKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "detectedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct Attestation[]",
+      "name": "atts",
+      "type": "tuple[]"
+     },
+     {
+      "internalType": "bytes[]",
+      "name": "sigs",
+      "type": "bytes[]"
+     }
+    ],
+    "name": "proposeEpisode",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "proposerBond",
+    "outputs": [
+     {
+      "internalType": "uint96",
+      "name": "",
+      "type": "uint96"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "bytes32",
+      "name": "claimHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "recordMitigationClaim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "registry",
+    "outputs": [
+     {
+      "internalType": "contract KeyRegistry",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "settle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bytes32",
+        "name": "covenantId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "sourceId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "modelHash",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "emissionKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint32",
+        "name": "uncertaintyKgH",
+        "type": "uint32"
+       },
+       {
+        "internalType": "uint64",
+        "name": "detectedAt",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint8",
+        "name": "instrumentId",
+        "type": "uint8"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "providerId",
+        "type": "bytes32"
+       },
+       {
+        "internalType": "uint8",
+        "name": "kind",
+        "type": "uint8"
+       },
+       {
+        "internalType": "uint64",
+        "name": "nonce",
+        "type": "uint64"
+       },
+       {
+        "internalType": "uint64",
+        "name": "expiry",
+        "type": "uint64"
+       }
+      ],
+      "internalType": "struct Attestation[]",
+      "name": "atts",
+      "type": "tuple[]"
+     },
+     {
+      "internalType": "bytes[]",
+      "name": "sigs",
+      "type": "bytes[]"
+     }
+    ],
+    "name": "submitResolution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     }
+    ],
+    "name": "withdrawable",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "seller",
+      "type": "address"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "buyer",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "sourceSetRoot",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "policyHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "start",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "end",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "createdAt",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "k",
+      "type": "uint8"
+     }
+    ],
+    "name": "CovenantCreated",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "from",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "CovenantFunded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "refund",
+      "type": "uint256"
+     }
+    ],
+    "name": "CovenantSettled",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "Credited",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "parentEpisode",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "evidenceHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint32",
+      "name": "emissionKgH",
+      "type": "uint32"
+     }
+    ],
+    "name": "DetectionLinked",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "challenger",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "reasonCode",
+      "type": "uint8"
+     }
+    ],
+    "name": "EpisodeChallenged",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "rebate",
+      "type": "uint256"
+     }
+    ],
+    "name": "EpisodeConfirmed",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "EpisodeContested",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "EpisodeExpired",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "evidenceHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "parentEpisode",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint32",
+      "name": "emissionKgH",
+      "type": "uint32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "tier",
+      "type": "uint8"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "rebate",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint8",
+      "name": "quorumOrgs",
+      "type": "uint8"
+     }
+    ],
+    "name": "EpisodeProposed",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "challenger",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "award",
+      "type": "uint256"
+     }
+    ],
+    "name": "EpisodeVoided",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes32",
+      "name": "claimHash",
+      "type": "bytes32"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "seller",
+      "type": "address"
+     }
+    ],
+    "name": "MitigationClaimRecorded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "account",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "Withdrawn",
+    "type": "event"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "index",
+      "type": "uint256"
+     }
+    ],
+    "name": "AttestationMismatch",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "AttestorNotIndependent",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "sent",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "required",
+      "type": "uint256"
+     }
+    ],
+    "name": "BadBond",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint32",
+      "name": "emissionKgH",
+      "type": "uint32"
+     }
+    ],
+    "name": "BelowMinRate",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint64",
+      "name": "detectedAt",
+      "type": "uint64"
+     }
+    ],
+    "name": "DetectionOutOfTerm",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "evidenceHash",
+      "type": "bytes32"
+     }
+    ],
+    "name": "DuplicateEvidence",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "EpisodeLinked",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint64",
+      "name": "expiry",
+      "type": "uint64"
+     }
+    ],
+    "name": "Expired",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidParams",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint8",
+      "name": "reasonCode",
+      "type": "uint8"
+     }
+    ],
+    "name": "InvalidReason",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "InvalidSignature",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "InvalidState",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotAuthorized",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "sourceId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "NotCovered",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "episodeId",
+      "type": "uint256"
+     }
+    ],
+    "name": "NothingToFinalize",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingToWithdraw",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "distinctOrgs",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "required",
+      "type": "uint256"
+     }
+    ],
+    "name": "QuorumNotMet",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     },
+     {
+      "internalType": "uint64",
+      "name": "nonce",
+      "type": "uint64"
+     }
+    ],
+    "name": "Replay",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "RevokedKey",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "signer",
+      "type": "address"
+     }
+    ],
+    "name": "SelfAttestation",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "TransferFailed",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes32",
+      "name": "covenantId",
+      "type": "bytes32"
+     }
+    ],
+    "name": "UnknownCovenant",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "WindowClosed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "WindowOpen",
+    "type": "error"
+   }
+  ]
+ },
+ "cleanPasses": {
+  "DZA_S_012": {
+   "bundleTemplate": {
+    "bounds": [
+     5.7174281,
+     30.99624,
+     6.2145819,
+     32.1408094
+    ],
+    "claimId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "cloudCoverPct": 1,
+    "cloudCoverPctAssessed": 0,
+    "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "floorKgH": 180,
+    "gsd": 37.454138574305325,
+    "instrument": "tan",
+    "marsNearby": {
+     "count": 0,
+     "rows": [],
+     "windowDays": 7
+    },
+    "notCloudy": true,
+    "offNadir": 25.855563103352857,
+    "originIntersect": true,
+    "originPoints": [
+     [
+      5.992988,
+      31.769119
+     ],
+     [
+      5.995675,
+      31.777895
+     ],
+     [
+      5.995713,
+      31.778772
+     ],
+     [
+      5.995949,
+      31.778439
+     ],
+     [
+      5.996001,
+      31.777558
+     ],
+     [
+      5.996024,
+      31.77751
+     ],
+     [
+      5.996063,
+      31.778078
+     ],
+     [
+      5.996085,
+      31.777849
+     ],
+     [
+      5.996458,
+      31.777398
+     ],
+     [
+      5.996545,
+      31.777502
+     ],
+     [
+      5.996572,
+      31.778035
+     ],
+     [
+      5.99662,
+      31.777954
+     ],
+     [
+      5.996712,
+      31.777841
+     ],
+     [
+      5.996745,
+      31.778052
+     ],
+     [
+      5.996804,
+      31.7775
+     ],
+     [
+      5.996853,
+      31.777621
+     ],
+     [
+      5.996865,
+      31.777528
+     ],
+     [
+      5.997057,
+      31.77732
+     ],
+     [
+      5.999045,
+      31.772806
+     ]
+    ],
+    "perSourceQueries": [
+     {
+      "cmSource": "CH4_1B2_1000m_5.99636_31.77708",
+      "params": {},
+      "plumeCount": 0,
+      "responseSha256": "58fae8455d3ff3ff2df80673f3558d201798038db5cd3c7d6c3347ea0fd0a177",
+      "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_5.99636_31.77708"
+     },
+     {
+      "cmSource": "CH4_1B2_250m_5.99640_31.77781",
+      "params": {},
+      "plumeCount": 0,
+      "responseSha256": "ba8658e0ba6ed3575796c863934d034746ee5fc654a94528ed09a0a647363f9d",
+      "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_250m_5.99640_31.77781"
+     }
+    ],
+    "platform": "tan-1",
+    "plumesNearFacility": {
+     "count": 0,
+     "plumeIds": [],
+     "query": {
+      "params": {
+       "limit": 1000,
+       "scene_id": "6f197dca-c097-4c7b-a473-d2d3ea457697"
+      },
+      "plumes": 19,
+      "responseSha256": "108961be13b6b93c4b03a513b3331295db1a6016d29e88a197bf0b678a82117a",
+      "url": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated"
+     },
+     "radiusKm": 1.5
+    },
+    "providerId": "carbonmapper",
+    "publishedAt": 1786540754,
+    "rateFloorKgH": 180,
+    "sceneAt": 1783943140,
+    "sceneId": "0x399f13e3e45b3e47c2b29b40bae28ec2392806fef119920f5c2a727341c638a6",
+    "sceneProviderId": "6f197dca-c097-4c7b-a473-d2d3ea457697",
+    "sceneRecordSha256": "978dfe1b97f4f4bef9f27147ad8b607a7c034072e379112a45138b225eee814c",
+    "schemaVersion": "methaneclause.cleanpass/1",
+    "sensitivityMode": "standard_sensitivity",
+    "solarZenithAngle": 9.825393927295224,
+    "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47",
+    "sourceName": "DZA_S_012"
+   },
+   "case": "DZA_S_012",
+   "file": "data/derived/cases/DZA_S_012.clean_passes.json",
+   "instrumentId": 1,
+   "pool": {
+    "firstInstallmentAfter": 3,
+    "observerFeeWei": "100000000000",
+    "onchainParamsHash": "0xd8614929f00117a344fa149ba957f74b924d1aff70bff6da34bd8ed67f7fbd12",
+    "params": {
+     "challengerBond": "2000000000000",
+     "cleanWindow": 600,
+     "cureTerm": 86400,
+     "holdWindow": 1800,
+     "installments": [
+      {
+       "afterPasses": 3,
+       "isFinal": false,
+       "shareBp": 3000,
+       "twoInstruments": false
+      },
+      {
+       "afterPasses": 6,
+       "isFinal": false,
+       "shareBp": 3000,
+       "twoInstruments": false
+      },
+      {
+       "afterPasses": 10,
+       "isFinal": true,
+       "shareBp": 4000,
+       "twoInstruments": true
+      }
+     ],
+     "observerFeeWei": "100000000000",
+     "passBond": "1000000000000",
+     "publicationLag": 600,
+     "resolveWindow": 600,
+     "unitTierAmounts": [
+      "500",
+      "300",
+      "100"
+     ],
+     "upperBoundBp": [
+      9750,
+      8419,
+      7076,
+      6024,
+      5218,
+      4593,
+      4096,
+      3694,
+      3363,
+      3085,
+      2849,
+      2646,
+      2471,
+      2316,
+      2180,
+      2059,
+      1951,
+      1853,
+      1765,
+      1684,
+      1611,
+      1544,
+      1482,
+      1425,
+      1372,
+      1323,
+      1277,
+      1234,
+      1194,
+      1157,
+      1122,
+      1089
+     ]
+    },
+    "passBondWei": "1000000000000",
+    "policy": "POLICY_V2_SANDBOX",
+    "policyHash": "0x4df82d5b5bd420ae7642b05d7c8939029f51abf5c21c40771ba0e0b1926fe5d0"
+   },
+   "sceneName": "tan20260713t114540c27s4001",
+   "sceneProviderId": "6f197dca-c097-4c7b-a473-d2d3ea457697"
+  }
+ },
+ "covenant": {
+  "bondWei": "150000000000000",
+  "params": {
+   "challengeWindow": 600,
+   "contestWindow": 600,
+   "k": 2,
+   "linkWindow": 2592000,
+   "minRateKgH": 100,
+   "start": 1767225600,
+   "term": 31536000,
+   "tierAmounts": [
+    "50000000000000",
+    "30000000000000",
+    "10000000000000"
+   ]
+  },
+  "policy": {
+   "challengeWindow": 600,
+   "contestWindow": 600,
+   "gwp100": 29.8,
+   "k": 2,
+   "linkWindow": 2592000,
+   "minRateKgH": 100,
+   "n": 3,
+   "rebateSchedule": {
+    "tierAmountsWei": [
+     "50000000000000",
+     "30000000000000",
+     "10000000000000"
+    ],
+    "tierMinKgH": [
+     5000,
+     1500,
+     100
+    ]
+   },
+   "sandbox": "judge sandbox [SIM]: published keys, amounts / 100",
+   "start": 1767225600,
+   "term": 31536000
+  },
+  "policyHashRule": "SHA-256 of RFC 8785 of {...policy, bondWei, judge: <your checksummed address>, sourceSetRoot} (pipeline/observer/judge.py cmd_attest)",
+  "start": 1767225600
+ },
+ "detections": {
+  "DZA_S_012": {
+   "bundleTemplate": {
+    "cmSourceName": "CH4_1B2_1000m_5.99636_31.77708",
+    "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "detectedAt": 1769945500,
+    "emissionKgH": 694,
+    "emissionVersion": "v3c",
+    "instrument": "tan",
+    "platform": "Planet Tanager 1",
+    "plumeId": "tan20260201t113140c40s4001-C",
+    "plumeLat": 31.772806489494798,
+    "plumeLon": 5.999045035331164,
+    "processingSoftware": "3.53.1",
+    "providerContentSha256": "58fae8455d3ff3ff2df80673f3558d201798038db5cd3c7d6c3347ea0fd0a177",
+    "providerId": "carbonmapper",
+    "publishedAt": "2026-03-03T12:19:10.792305Z",
+    "sceneTimestamp": "2026-02-01T11:31:40.400000Z",
+    "schemaVersion": "methaneclause.bundle/1",
+    "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47",
+    "sourceName": "DZA_S_012",
+    "uncertaintyKgH": 88
+   },
+   "case": "DZA_S_012",
+   "facility": {
+    "coveredCmSources": [
+     "CH4_1B2_1000m_5.99636_31.77708",
+     "CH4_1B2_250m_5.99640_31.77781"
+    ],
+    "lat": 31.77791,
+    "lon": 5.99514,
+    "proof": [
+     "0x03a13ebb45929059c2b259d2c805d7b13871e5dd9028aedd90baafc39f12276a",
+     "0x2521beb0995481025a1b1c88d47bae615cdf70a52fd60b5e53e4d977bba20571"
+    ],
+    "root": "0xcf8d4841f473c3b4e92556ddff53293ff242fd7196b449e8d3d0e0a8ab8591b0",
+    "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47",
+    "sourceName": "DZA_S_012"
+   },
+   "instrumentId": 1,
+   "plumeId": "tan20260201t113140c40s4001-C",
+   "receipt": {
+    "contentSha256": "58fae8455d3ff3ff2df80673f3558d201798038db5cd3c7d6c3347ea0fd0a177",
+    "file": "data/derived/cases/DZA_S_012.json",
+    "mode": "snapshot",
+    "retrievedAt": "2026-10-14T03:05:14Z",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/sources/CH4_1B2_1000m_5.99636_31.77708"
+   }
+  },
+  "TKM_S_276": {
+   "bundleTemplate": {
+    "cmSourceName": "CH4_1B2_250m_53.71782_39.48437",
+    "covenantId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "detectedAt": 1781166692,
+    "emissionKgH": 2548,
+    "emissionVersion": "v3d",
+    "instrument": "tan",
+    "platform": "Planet Tanager 1",
+    "plumeId": "tan20260611t083132c23s4001-AB",
+    "plumeLat": 39.48477371264278,
+    "plumeLon": 53.71444106171069,
+    "processingSoftware": "3.77.0",
+    "providerContentSha256": "c5309f98b0ddb9cea3ab2aa5624a3504bb680dee25504adf4c213317bd1a7252",
+    "providerId": "carbonmapper",
+    "publishedAt": "2026-07-11T09:19:20.486366Z",
+    "sceneTimestamp": "2026-06-11T08:31:32.230000Z",
+    "schemaVersion": "methaneclause.bundle/1",
+    "sourceId": "0xcfa1375310da3b1b70c57b4650761ecb7e6ad352c74f9852fa02d724a6e92335",
+    "sourceName": "TKM_S_276",
+    "uncertaintyKgH": 483
+   },
+   "case": "TKM_S_276",
+   "facility": {
+    "coveredCmSources": [
+     "CH4_1B2_1000m_53.71356_39.47100",
+     "CH4_1B2_250m_53.70692_39.48765",
+     "CH4_1B2_250m_53.70979_39.48786",
+     "CH4_1B2_250m_53.71782_39.48437",
+     "CH4_1B2_250m_53.72906_39.47848"
+    ],
+    "lat": 39.48457,
+    "lon": 53.72005,
+    "proof": [
+     "0x33fae08f7dd463a5a080372f78df6171f1045ffe05addf128d1c55d697217251",
+     "0x2521beb0995481025a1b1c88d47bae615cdf70a52fd60b5e53e4d977bba20571"
+    ],
+    "root": "0xcf8d4841f473c3b4e92556ddff53293ff242fd7196b449e8d3d0e0a8ab8591b0",
+    "sourceId": "0xcfa1375310da3b1b70c57b4650761ecb7e6ad352c74f9852fa02d724a6e92335",
+    "sourceName": "TKM_S_276"
+   },
+   "instrumentId": 1,
+   "plumeId": "tan20260611t083132c23s4001-AB",
+   "receipt": {
+    "contentSha256": "c5309f98b0ddb9cea3ab2aa5624a3504bb680dee25504adf4c213317bd1a7252",
+    "file": "data/derived/cases/TKM_S_276.json",
+    "mode": "snapshot",
+    "retrievedAt": "2026-10-14T03:05:13Z",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/sources/CH4_1B2_250m_53.71782_39.48437"
+   }
+  }
+ },
+ "generatedFrom": [
+  {
+   "path": "contracts/deployments/11155111.json",
+   "sha256": "221792226a62c80e46f86affda7fde542b6715e363defad5cb55397affaab6e9"
+  },
+  {
+   "path": "data/derived/model/bond_sizing.json",
+   "sha256": "a784fa475191365e68d7482175c454d369939b07346acb4f5f12cc75bfb97de4"
+  },
+  {
+   "path": "data/derived/policy_v2.json",
+   "sha256": "e4babce5cac0331ed9db596e706c1931900577ba3720e1f73d4bf126d666863b"
+  },
+  {
+   "path": "data/derived/sourceset_v2.json",
+   "sha256": "74d73e911d3aab0dd4dd8fa2261d501fc19b687bb979e72eca8110dfb4ba2012"
+  },
+  {
+   "path": "data/derived/cases/TKM_S_276.json",
+   "sha256": "ba7a832224d804590b3687c497e88e58fc0c7354b8a4c87e1f269c1f2e088324"
+  },
+  {
+   "path": "data/derived/cases/DZA_S_012.json",
+   "sha256": "c40c48095675e6897f0507c2118e9eab0b4b93495dd256777497f85ba5d2596c"
+  },
+  {
+   "path": "data/derived/cases/DZA_S_012.clean_passes.json",
+   "sha256": "30304887db7a6362b467bb7dbc5c135ad42d1ad135251b628d5df8d8cb7a054b"
+  }
+ ],
+ "network": {
+  "chainId": 11155111,
+  "explorer": "https://sepolia.etherscan.io",
+  "name": "Ethereum Sepolia",
+  "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "sandbox": {
+   "challengerBond": 40000000000000,
+   "incentivePool": "0x5D323582991A0e11B9Acf144a29d8CC206c9D982",
+   "keyRegistry": "0x9BEb9Ca5a2BC166e0C3231ee8E65295b8d4F0682",
+   "methaneCovenant": "0x12B9f286Fc5B0fD0006F1B31335E78fe7E0f0aDa",
+   "proposerBond": 20000000000000
+  }
+ },
+ "parity": {
+  "attestationDigest": "0xaa007987b4d3879c0b3f6e5483d57ec744363b45ce962fba3f2f69ee1000014f",
+  "cleanPassDigest": "0x25c6dbe9c4fa4a9c15ff087e2b22b1421a3a850e2b4ad7d892e461ba00675010",
+  "cleanPassMessage": {
+   "claimId": "0xc1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1",
+   "cloudBp": 100,
+   "expiry": 1760000000,
+   "floorKgH": 180,
+   "instrumentId": 1,
+   "kind": 4,
+   "nonce": 7,
+   "notCloudy": true,
+   "providerId": "0x636172626f6e6d61707065720000000000000000000000000000000000000000",
+   "publishedAt": 1786540754,
+   "rateFloorKgH": 180,
+   "sceneAt": 1783943140,
+   "sceneHash": "0xb00e18455b4b9885dfa4ebaa5f3d74ccb7e1c7dcbbce38232af2e039eaefcaa0",
+   "sceneId": "0x399f13e3e45b3e47c2b29b40bae28ec2392806fef119920f5c2a727341c638a6",
+   "sourceId": "0x93bd476224707320d9dbbeee027fc28343b8164b9dc01f399783741a33df8c47"
+  },
+  "evidenceHash": "0x8d9be8b02c7d25ddec15f4f5291fdad186d994fd476c7393a7085aa034dedb64",
+  "inputs": {
+   "chainId": 11155111,
+   "claimId": "0xc1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1",
+   "covenant": "0x12B9f286Fc5B0fD0006F1B31335E78fe7E0f0aDa",
+   "covenantId": "0xc0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0",
+   "expiry": 1760000000,
+   "judge": "0x000000000000000000000000000000000000dEaD",
+   "nonce": 7,
+   "pool": "0x5D323582991A0e11B9Acf144a29d8CC206c9D982"
+  },
+  "policyHash": "0xf9177ed205766f80b9b9805479c0265042ffc57fd6718fd836fb16ebfdcc6571",
+  "sceneHash": "0xb00e18455b4b9885dfa4ebaa5f3d74ccb7e1c7dcbbce38232af2e039eaefcaa0"
+ },
+ "sandboxKeys": {
+  "addresses": {
+   "BUYER": "0x2f4a34d6D13b734c03f80784Cf830e92e9F220eC",
+   "INDEPENDENT_CONTROLLER": "0x7a0103710C45f844E9e5F5d62604274BA5179A2a",
+   "JUDGE_CONTROLLER": "0xD10155920CC2163E4925163552F5d15569507838",
+   "OBS_1": "0x91E2f912B5c4aCE570460Ec795a54baa8a228A39",
+   "OBS_2": "0x75BE5bf57FFBD707D189F808F63e9A56b848C776",
+   "SELLER": "0x934e10Af23194BBd6D02ec8e3Bb2EDe7BD618b47"
+  },
+  "derivation": "privateKey = keccak256(utf8(prefix + role)); generation n > 1: role + '#' + n (pipeline/observer/sandbox.py)",
+  "maxGeneration": 20,
+  "orgs": {
+   "BUYER": "SANDBOX_BUYER",
+   "INDEPENDENT_CONTROLLER": "OBS_INDEPENDENT",
+   "JUDGE_CONTROLLER": "OBS_JUDGE",
+   "OBS_1": "SANDBOX_OBS_1",
+   "OBS_2": "SANDBOX_OBS_2",
+   "SELLER": "SANDBOX_SELLER"
+  },
+  "prefix": "MethaneClause judge sandbox v1 [SIM] testnet-only / ",
+  "registryRole": {
+   "BUYER": 3,
+   "OBSERVER": 1,
+   "SELLER": 2
+  },
+  "why": "judge sandbox [SIM]: these keys are published on purpose so a fresh wallet can play every role; they protect nothing and live in their own registry, never the main deployment's"
+ },
+ "schema": "methaneclause.wallet/1"
+}

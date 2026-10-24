@@ -1,0 +1,143 @@
+{
+ "aggregates": {
+  "byPlumesOutcome": {
+   "1": {
+    "didNotRespond": 2,
+    "notFound": 13,
+    "typeA": 30,
+    "typeB": 12,
+    "typeC": 11
+   },
+   "10": {
+    "didNotRespond": 0,
+    "notFound": 0,
+    "typeA": 0,
+    "typeB": 1,
+    "typeC": 0
+   },
+   "2": {
+    "didNotRespond": 0,
+    "notFound": 3,
+    "typeA": 11,
+    "typeB": 6,
+    "typeC": 8
+   },
+   "3": {
+    "didNotRespond": 0,
+    "notFound": 3,
+    "typeA": 5,
+    "typeB": 3,
+    "typeC": 1
+   },
+   "4": {
+    "didNotRespond": 0,
+    "notFound": 0,
+    "typeA": 2,
+    "typeB": 2,
+    "typeC": 0
+   },
+   "5": {
+    "didNotRespond": 0,
+    "notFound": 0,
+    "typeA": 0,
+    "typeB": 1,
+    "typeC": 0
+   },
+   "6": {
+    "didNotRespond": 0,
+    "notFound": 0,
+    "typeA": 0,
+    "typeB": 1,
+    "typeC": 0
+   }
+  },
+  "byYearOutcome": {
+   "2021": {
+    "didNotRespond": 1,
+    "notFound": 5,
+    "typeA": 19,
+    "typeB": 5,
+    "typeC": 10
+   },
+   "2023": {
+    "didNotRespond": 1,
+    "notFound": 14,
+    "typeA": 29,
+    "typeB": 21,
+    "typeC": 10
+   }
+  },
+  "delays": {
+   "typeA": {
+    "earliestPlumeToMitigatedDays": {
+     "10": 2,
+     "11": 1,
+     "13": 1,
+     "16": 1,
+     "17": 3,
+     "19": 1,
+     "23": 1,
+     "24": 1,
+     "25": 1,
+     "3": 4,
+     "30": 1,
+     "35": 1,
+     "36": 1,
+     "4": 6,
+     "5": 4,
+     "6": 3,
+     "7": 5,
+     "8": 6,
+     "9": 2
+    },
+    "notifiedToMitigatedDays": {
+     "0": 8,
+     "1": 6,
+     "13": 2,
+     "14": 3,
+     "18": 2,
+     "2": 4,
+     "20": 1,
+     "22": 1,
+     "26": 1,
+     "29": 1,
+     "3": 4,
+     "4": 3,
+     "5": 4,
+     "6": 3,
+     "7": 2
+    }
+   }
+  },
+  "incidences": 115,
+  "outcomes": [
+   "didNotRespond",
+   "notFound",
+   "typeA",
+   "typeB",
+   "typeC"
+  ],
+  "uniqueJoinKey": 14,
+  "years": [
+   2021,
+   2023
+  ]
+ },
+ "aggregatesJcsSha256": "0xc22a98d696dd1c2cda14b75ead817bd6ce83bbc15bf192791b3dd111599ccc3d",
+ "datesNote": "delays are histograms {days: number of incidences} of the day differences between the appendix's dates as printed, not corrected, for the outcomes in delays only; a row with a blank mitigation cell is in neither histogram, a row with a blank notification cell is not in notifiedToMitigatedDays",
+ "label": "CARB airborne campaigns 2021 and 2023, oil and gas incidences sent to an operator (appendix Tables A1 and A2): the aggregates the projection uses; no per-incidence row is kept here (pipeline/fetch_published.py --write-summary)",
+ "missing": "no emission rate, location or plume identifier per incidence (none is published in the appendix), so the rows cannot weight the action share by mass",
+ "readOn": "2026-10-20",
+ "rowsFile": {
+  "path": "data/derived/carb_incidences.json",
+  "rebuild": "make fetch-published (network, ask first): downloads the appendix, checks its SHA-256, extracts the rows and checks that they reproduce this file",
+  "rows": 115,
+  "rowsJcsSha256": "0xa197a4ac0cadc7dd7c56b1d9ce4235550c218e0d8e1dd459678829d35c299832",
+  "tracked": false
+ },
+ "schema": "methaneclause.carb_summary/1",
+ "sector": "Oil & Gas",
+ "sha256": "e41f92acf519915cf84ca44a6d340348414dd5d331edc958ff0d715641ef80be",
+ "source": "carb-2024-appendix",
+ "url": "https://ww2.arb.ca.gov/sites/default/files/2024-04/2020-2021-2023%20Appendix_FINAL.pdf"
+}

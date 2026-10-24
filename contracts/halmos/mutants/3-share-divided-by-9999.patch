@@ -1,0 +1,11 @@
+--- a/src/lib/PoolInstallments.sol
++++ b/src/lib/PoolInstallments.sol
+@@ -163,7 +163,7 @@
+         IncentivePool.Installment storage it = b.installments[id];
+         it.claimId = claimId;
+         it.index = index;
+-        uint256 amount = c.cap * p.installments[index].shareBp / 10_000;
++        uint256 amount = c.cap * p.installments[index].shareBp / 9_999; // MUTANT
+         it.amount = amount;
+         ClaimBook storage x = b.claims[claimId];
+         x.ids[index] = id;

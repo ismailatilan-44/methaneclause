@@ -1,0 +1,915 @@
+{
+ "case": "USA_S_077",
+ "countIsLowerBound": true,
+ "countIsLowerBoundReason": "a lower bound on what an observer at each pass's time would have counted (they saw at most today's plumes); re-checking later can only lower it.",
+ "covenant": {
+  "end": null,
+  "endIso": null,
+  "label": "none — hypothetical claim [SIM]",
+  "policy": "POLICY_V2",
+  "policyHash": "0x934a217b3e5ad942226be99f70ae46c0fe8d274c967cd6d256084bcc17f367ff",
+  "start": null
+ },
+ "episode": {
+  "detectedAt": 1723838504,
+  "detectedAtIso": "2024-08-16T20:01:44Z",
+  "instrument": "emi",
+  "plumeId": "emi20240816t200144p13032-A",
+  "publishedAt": "2024-08-28T23:48:42.571987Z",
+  "rateKgH": 3642,
+  "rule": "hypothetical claim [SIM]: no covenant holds an episode at this facility; the latest Carbon Mapper plume >= minRateKgH within the facility radius; no covenant term"
+ },
+ "episodeOriginPoint": 0,
+ "evaluatedAt": 1792057847,
+ "evaluatedAtIso": "2026-10-15T09:50:47Z",
+ "facility": {
+  "country": "United States of America",
+  "lat": 32.51469,
+  "lon": -101.52357,
+  "radiusKm": 1.5
+ },
+ "generatedFrom": [
+  {
+   "path": "data/derived/cases/USA_S_077.json",
+   "sha256": "2520e0adbbc4c43ef9a94271c10a9233d3118900f034074020ff99830bb839e3"
+  },
+  {
+   "path": "pipeline/cleanpass_rules.py",
+   "sha256": "4c14b1730721ea747abc2086c7251193eca1dd6dbdaa7c9d2851fecf9b3f74a5"
+  },
+  {
+   "path": "pipeline/clean_passes.py",
+   "sha256": "52f044c480599d338f966bba41b4bd55cca7bb17c9881cf28095a6186f6b7d41"
+  },
+  {
+   "path": "pipeline/policy.py",
+   "sha256": "8b059d16f7bc2427c66b37e335578041d0ddae46cf1e94d1738db6a1b861e8b0"
+  },
+  {
+   "contentSha256": "d9f47d4255f8266f3b627425edbbb69e0caaf643a42c025f75de9c1bd3108b62",
+   "query": "scenes/USA_S_077"
+  },
+  {
+   "contentSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+   "query": "source/CH4_1B2_1000m_-101.52270_32.51483"
+  },
+  {
+   "contentSha256": "691d4051292441ccb2ccc965a02802c57ffed43a577b7793fe5c9f3cadf2c9f4",
+   "query": "scene_plumes/accd113e-f13e-40cd-aa63-df93a96f4ce3"
+  },
+  {
+   "contentSha256": "5cf1ae5c81471a8fd00400974b175ca2a1f24ff71429dd3cf397a10596d0d58a",
+   "query": "scene_plumes/caf50ccf-cd7e-4f64-be38-55982d90fd0e"
+  },
+  {
+   "contentSha256": "7d472642f24da9954e68f77435946bebfd001a718b0496581d4dc6257825f49b",
+   "query": "scene_plumes/d2393c0f-a92a-4f28-a0ae-a204cf7f4611"
+  },
+  {
+   "contentSha256": "12c19c3b92ec75e4cb9dd9f7d2a5fc390da389d30db0ee33c2aa87a476843484",
+   "query": "scene_plumes/afe170be-4525-49d5-95c6-abc62f7c5b79"
+  }
+ ],
+ "licence": [
+  "Carbon Mapper Terms of Use: non-commercial, attribution ('Data by Carbon Mapper®'), redistribution under the same terms — Data by Carbon Mapper; derived scene fields only",
+  "UNEP IMEO MARS: CC BY-NC-SA 4.0"
+ ],
+ "linkedCmSources": [
+  "CH4_1B2_1000m_-101.52270_32.51483"
+ ],
+ "originPointPublishedAt": [
+  "2024-08-28T23:48:42Z",
+  "2024-03-27T18:16:06Z",
+  "2023-12-08T16:58:17Z",
+  "2023-12-08T16:58:17Z"
+ ],
+ "originPoints": [
+  [
+   -101.522755,
+   32.514987
+  ],
+  [
+   -101.522746,
+   32.514608
+  ],
+  [
+   -101.522729,
+   32.514892
+  ],
+  [
+   -101.522563,
+   32.514813
+  ]
+ ],
+ "originRule": "rule 2 without look-ahead (spec-v2 §15 2026-10-16): the footprint must contain an origin point whose earliest plume was published by the time the pass can first be attested (max(sceneAt + publicationLag, publishedAt)); undetermined offline = refused. `qualifiedAllOriginsToday` shows the same scene against every origin known today (not the rule)",
+ "perPointQueries": null,
+ "rules": {
+  "cloudRule": "not_cloudy",
+  "instrumentFloorKgH": {
+   "emi": 700,
+   "tan": 180
+  },
+  "linkWindow": 2592000,
+  "marsWindowDays": 7,
+  "maxCloudBp": 2500,
+  "plumeRadiusKm": 1.5,
+  "publicationLag": 5184000
+ },
+ "sceneQuery": {
+  "count": 5,
+  "fetchedAt": "2026-10-15T09:50:47Z",
+  "params": {
+   "datetime": "2024-08-16T00:00:00Z/2026-10-16T00:00:00Z",
+   "intersects": "{\"type\":\"MultiPoint\",\"coordinates\":[[-101.522755,32.514987],[-101.522746,32.514608],[-101.522729,32.514892],[-101.522563,32.514813]]}",
+   "limit": 100,
+   "sort": "asc"
+  },
+  "responseSha256": "d9f47d4255f8266f3b627425edbbb69e0caaf643a42c025f75de9c1bd3108b62",
+  "url": "https://api.carbonmapper.org/api/v1/catalog/scenes/annotated"
+ },
+ "scenes": [
+  {
+   "attestableFrom": "2024-10-15T20:01:44Z",
+   "bounds": [
+    -102.3121025,
+    32.2773504,
+    -101.147074,
+    33.370689
+   ],
+   "checks": {
+    "cloud": {
+     "code": "CLOUD_FLAG",
+     "ok": false,
+     "rule": "Carbon Mapper not_cloudy == true [D3]"
+    },
+    "cloudConsistent": {
+     "cloudBp": 5000,
+     "code": "CLOUD_FLAG_MISMATCH",
+     "ok": true,
+     "rule": "not_cloudy == (cloudBp <= maxCloudBp)"
+    },
+    "duplicate": {
+     "code": "DUPLICATE_SCENE",
+     "ok": true,
+     "rule": "scene not already used for this claim"
+    },
+    "floor": {
+     "code": "FLOOR_MISMATCH",
+     "floorKgH": 700,
+     "ok": true,
+     "rateKgH": 3642,
+     "rule": "instrument floor <= episode rate R"
+    },
+    "future": {
+     "code": "FUTURE",
+     "ok": true,
+     "rule": "sceneAt <= now"
+    },
+    "instrument": {
+     "code": "UNKNOWN_INSTRUMENT",
+     "ok": true,
+     "rule": "instrument in floor table"
+    },
+    "mars": {
+     "code": "MARS_PLUME_NEARBY",
+     "count": 1,
+     "ok": false,
+     "rule": "no UNEP MARS plume at the facility within +/- 7 days"
+    },
+    "noPlume": {
+     "code": "PLUME_ON_SCENE",
+     "ok": false,
+     "perSourcePlumes": 1,
+     "plumesNearFacility": 1,
+     "rule": "no plume of a linked CM source on this scene, and no scene plume with origin inside the facility radius"
+    },
+    "originIntersect": {
+     "code": "NO_ORIGIN_INTERSECT",
+     "ok": true,
+     "rule": "scene footprint contains >= 1 plume-origin point of the linked CM sources"
+    },
+    "publicationLag": {
+     "attestableFrom": 1729022504,
+     "code": "BEFORE_PUBLICATION_LAG",
+     "ok": true,
+     "rule": "now >= sceneAt + publicationLag"
+    },
+    "published": {
+     "code": "SCENE_NOT_PUBLISHED",
+     "ok": true,
+     "rule": "sceneAt <= publishedAt <= now"
+    },
+    "since": {
+     "code": "SCENE_BEFORE_SINCE",
+     "ok": false,
+     "rule": "since < sceneAt",
+     "since": 1726430504
+    },
+    "term": {
+     "code": "AFTER_TERM",
+     "covenantEnd": null,
+     "ok": true,
+     "rule": "sceneAt < covenant.end"
+    }
+   },
+   "cloudBp": 5000,
+   "cloudCoverPct": 50,
+   "cloudCoverPctAssessed": 50,
+   "episodeOriginInside": null,
+   "floorKgH": 700,
+   "gsd": null,
+   "instrument": "emi",
+   "marsNearby": {
+    "count": 1,
+    "rows": [
+     {
+      "ch4_fluxrate": 5358.0,
+      "daysFromScene": 2.89,
+      "id_plume": "7e07cb6d-6386-4437-9952-c75e727a5aab",
+      "satellite": "Sentinel-2 - ESA",
+      "tile_date": "2024-08-19T17:18:59"
+     }
+    ],
+    "windowDays": 7
+   },
+   "notCloudy": false,
+   "offNadir": null,
+   "originIntersect": true,
+   "originIntersectAnyOriginToday": true,
+   "originIntersectBasis": "origins published by attestation time",
+   "originPointsInside": null,
+   "perSourceQueries": [
+    {
+     "cmSource": "CH4_1B2_1000m_-101.52270_32.51483",
+     "params": {},
+     "plumeCount": 1,
+     "plumeIds": [
+      "emi20240816t200144p13032-A"
+     ],
+     "plumes": [
+      {
+       "emissionKgH": 3642.9744565402066,
+       "plumeId": "emi20240816t200144p13032-A",
+       "uncertaintyKgH": 894.2289720748769
+      }
+     ],
+     "responseSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+     "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_-101.52270_32.51483"
+    }
+   ],
+   "platform": "iss",
+   "plumeOnScene": true,
+   "plumesNearFacility": [
+    {
+     "distKm": 0.083,
+     "emissionKgH": 3642.9744565402066,
+     "plumeId": "emi20240816t200144p13032-A"
+    }
+   ],
+   "publishedAt": 1724888922,
+   "publishedAtIso": "2024-08-28T23:48:42Z",
+   "publishedPlumeCount": 1,
+   "qualified": false,
+   "qualifiedAllOriginsToday": false,
+   "rateFloorKgH": 700,
+   "refusal": "SCENE_BEFORE_SINCE",
+   "refusalAllOriginsToday": "SCENE_BEFORE_SINCE",
+   "refusals": [
+    "SCENE_BEFORE_SINCE",
+    "CLOUD_FLAG",
+    "PLUME_ON_SCENE",
+    "MARS_PLUME_NEARBY"
+   ],
+   "sceneAt": 1723838504,
+   "sceneAtIso": "2024-08-16T20:01:44Z",
+   "sceneId": "0x3c9428e164f8118910713780d5dbdf29a5fcaac7292205bed4e71ed08567e6c7",
+   "sceneName": "emi20240816t200144p13032",
+   "scenePlumesQuery": {
+    "params": {
+     "limit": 1000,
+     "scene_id": "accd113e-f13e-40cd-aa63-df93a96f4ce3"
+    },
+    "plumes": 1,
+    "responseSha256": "691d4051292441ccb2ccc965a02802c57ffed43a577b7793fe5c9f3cadf2c9f4",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated"
+   },
+   "sceneProviderId": "accd113e-f13e-40cd-aa63-df93a96f4ce3",
+   "sceneRecordSha256": "f27a071d32f4d899c380267a4a1bd523dc22d688d4ccb15647d0ab92a916face",
+   "sensitivityMode": null,
+   "solarZenithAngle": null
+  },
+  {
+   "attestableFrom": "2024-12-12T21:04:21Z",
+   "bounds": [
+    -101.8077101,
+    31.7107034,
+    -100.6523406,
+    32.8004063
+   ],
+   "checks": {
+    "cloud": {
+     "code": "CLOUD_FLAG",
+     "ok": true,
+     "rule": "Carbon Mapper not_cloudy == true [D3]"
+    },
+    "cloudConsistent": {
+     "cloudBp": 2500,
+     "code": "CLOUD_FLAG_MISMATCH",
+     "ok": true,
+     "rule": "not_cloudy == (cloudBp <= maxCloudBp)"
+    },
+    "duplicate": {
+     "code": "DUPLICATE_SCENE",
+     "ok": true,
+     "rule": "scene not already used for this claim"
+    },
+    "floor": {
+     "code": "FLOOR_MISMATCH",
+     "floorKgH": 700,
+     "ok": true,
+     "rateKgH": 3642,
+     "rule": "instrument floor <= episode rate R"
+    },
+    "future": {
+     "code": "FUTURE",
+     "ok": true,
+     "rule": "sceneAt <= now"
+    },
+    "instrument": {
+     "code": "UNKNOWN_INSTRUMENT",
+     "ok": true,
+     "rule": "instrument in floor table"
+    },
+    "mars": {
+     "code": "MARS_PLUME_NEARBY",
+     "count": 1,
+     "ok": false,
+     "rule": "no UNEP MARS plume at the facility within +/- 7 days"
+    },
+    "noPlume": {
+     "code": "PLUME_ON_SCENE",
+     "ok": true,
+     "perSourcePlumes": 0,
+     "plumesNearFacility": 0,
+     "rule": "no plume of a linked CM source on this scene, and no scene plume with origin inside the facility radius"
+    },
+    "originIntersect": {
+     "code": "NO_ORIGIN_INTERSECT",
+     "ok": true,
+     "rule": "scene footprint contains >= 1 plume-origin point of the linked CM sources"
+    },
+    "publicationLag": {
+     "attestableFrom": 1734037461,
+     "code": "BEFORE_PUBLICATION_LAG",
+     "ok": true,
+     "rule": "now >= sceneAt + publicationLag"
+    },
+    "published": {
+     "code": "SCENE_NOT_PUBLISHED",
+     "ok": true,
+     "rule": "sceneAt <= publishedAt <= now"
+    },
+    "since": {
+     "code": "SCENE_BEFORE_SINCE",
+     "ok": true,
+     "rule": "since < sceneAt",
+     "since": 1726430504
+    },
+    "term": {
+     "code": "AFTER_TERM",
+     "covenantEnd": null,
+     "ok": true,
+     "rule": "sceneAt < covenant.end"
+    }
+   },
+   "cloudBp": 2500,
+   "cloudCoverPct": 25,
+   "cloudCoverPctAssessed": 25,
+   "episodeOriginInside": null,
+   "floorKgH": 700,
+   "gsd": null,
+   "instrument": "emi",
+   "marsNearby": {
+    "count": 1,
+    "rows": [
+     {
+      "ch4_fluxrate": 709.0,
+      "daysFromScene": -5.15,
+      "id_plume": "31060ef5-8dc7-459f-83a1-854330ff4985",
+      "satellite": "Sentinel-2 - ESA",
+      "tile_date": "2024-10-08T17:21:29"
+     }
+    ],
+    "windowDays": 7
+   },
+   "notCloudy": true,
+   "offNadir": null,
+   "originIntersect": true,
+   "originIntersectAnyOriginToday": true,
+   "originIntersectBasis": "origins published by attestation time",
+   "originPointsInside": null,
+   "perSourceQueries": [
+    {
+     "cmSource": "CH4_1B2_1000m_-101.52270_32.51483",
+     "params": {},
+     "plumeCount": 0,
+     "plumeIds": [],
+     "plumes": [],
+     "responseSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+     "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_-101.52270_32.51483"
+    }
+   ],
+   "platform": "iss",
+   "plumeOnScene": false,
+   "plumesNearFacility": [],
+   "publishedAt": 1733491119,
+   "publishedAtIso": "2024-12-06T13:18:39Z",
+   "publishedPlumeCount": 0,
+   "qualified": false,
+   "qualifiedAllOriginsToday": false,
+   "rateFloorKgH": 700,
+   "refusal": "MARS_PLUME_NEARBY",
+   "refusalAllOriginsToday": "MARS_PLUME_NEARBY",
+   "refusals": [
+    "MARS_PLUME_NEARBY"
+   ],
+   "sceneAt": 1728853461,
+   "sceneAtIso": "2024-10-13T21:04:21Z",
+   "sceneId": "0xde37d573739a75229907bf8ee8f5f2d9f8821ab29d2358947da50a2ae7b3faef",
+   "sceneName": "emi20241013t210421p14032",
+   "scenePlumesQuery": {
+    "fastPath": "published_plume_count == 0"
+   },
+   "sceneProviderId": "bb12c1ff-1104-469f-b4dd-0b90c0d9929a",
+   "sceneRecordSha256": "662c58fc48e4ef37732aa25e2cf452d900cde37bf191fbb1d349693b932d370a",
+   "sensitivityMode": null,
+   "solarZenithAngle": null
+  },
+  {
+   "attestableFrom": "2025-10-07T14:45:01Z",
+   "bounds": [
+    -102.1808127,
+    31.8443378,
+    -100.3493959,
+    33.3662147
+   ],
+   "checks": {
+    "cloud": {
+     "code": "CLOUD_FLAG",
+     "ok": true,
+     "rule": "Carbon Mapper not_cloudy == true [D3]"
+    },
+    "cloudConsistent": {
+     "cloudBp": 2500,
+     "code": "CLOUD_FLAG_MISMATCH",
+     "ok": true,
+     "rule": "not_cloudy == (cloudBp <= maxCloudBp)"
+    },
+    "duplicate": {
+     "code": "DUPLICATE_SCENE",
+     "ok": true,
+     "rule": "scene not already used for this claim"
+    },
+    "floor": {
+     "code": "FLOOR_MISMATCH",
+     "floorKgH": 700,
+     "ok": true,
+     "rateKgH": 3642,
+     "rule": "instrument floor <= episode rate R"
+    },
+    "future": {
+     "code": "FUTURE",
+     "ok": true,
+     "rule": "sceneAt <= now"
+    },
+    "instrument": {
+     "code": "UNKNOWN_INSTRUMENT",
+     "ok": true,
+     "rule": "instrument in floor table"
+    },
+    "mars": {
+     "code": "MARS_PLUME_NEARBY",
+     "count": 0,
+     "ok": true,
+     "rule": "no UNEP MARS plume at the facility within +/- 7 days"
+    },
+    "noPlume": {
+     "code": "PLUME_ON_SCENE",
+     "ok": true,
+     "perSourcePlumes": 0,
+     "plumesNearFacility": 0,
+     "rule": "no plume of a linked CM source on this scene, and no scene plume with origin inside the facility radius"
+    },
+    "originIntersect": {
+     "code": "NO_ORIGIN_INTERSECT",
+     "ok": true,
+     "rule": "scene footprint contains >= 1 plume-origin point of the linked CM sources"
+    },
+    "publicationLag": {
+     "attestableFrom": 1759848301,
+     "code": "BEFORE_PUBLICATION_LAG",
+     "ok": true,
+     "rule": "now >= sceneAt + publicationLag"
+    },
+    "published": {
+     "code": "SCENE_NOT_PUBLISHED",
+     "ok": true,
+     "rule": "sceneAt <= publishedAt <= now"
+    },
+    "since": {
+     "code": "SCENE_BEFORE_SINCE",
+     "ok": true,
+     "rule": "since < sceneAt",
+     "since": 1726430504
+    },
+    "term": {
+     "code": "AFTER_TERM",
+     "covenantEnd": null,
+     "ok": true,
+     "rule": "sceneAt < covenant.end"
+    }
+   },
+   "cloudBp": 2500,
+   "cloudCoverPct": 25,
+   "cloudCoverPctAssessed": 25,
+   "episodeOriginInside": null,
+   "floorKgH": 700,
+   "gsd": null,
+   "instrument": "emi",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": true,
+   "offNadir": null,
+   "originIntersect": true,
+   "originIntersectAnyOriginToday": true,
+   "originIntersectBasis": "origins published by attestation time",
+   "originPointsInside": null,
+   "perSourceQueries": [
+    {
+     "cmSource": "CH4_1B2_1000m_-101.52270_32.51483",
+     "params": {},
+     "plumeCount": 0,
+     "plumeIds": [],
+     "plumes": [],
+     "responseSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+     "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_-101.52270_32.51483"
+    }
+   ],
+   "platform": "iss",
+   "plumeOnScene": false,
+   "plumesNearFacility": [],
+   "publishedAt": 1769029102,
+   "publishedAtIso": "2026-01-21T20:58:22Z",
+   "publishedPlumeCount": 2,
+   "qualified": true,
+   "qualifiedAllOriginsToday": true,
+   "rateFloorKgH": 700,
+   "refusal": null,
+   "refusalAllOriginsToday": null,
+   "refusals": [],
+   "sceneAt": 1754664301,
+   "sceneAtIso": "2025-08-08T14:45:01Z",
+   "sceneId": "0xb98ba10aff86480f8f3dc78bfb8f698233661a89167dd1522750c105bcb58bb3",
+   "sceneName": "emi20250808t144501p10004",
+   "scenePlumesQuery": {
+    "params": {
+     "limit": 1000,
+     "scene_id": "caf50ccf-cd7e-4f64-be38-55982d90fd0e"
+    },
+    "plumes": 2,
+    "responseSha256": "5cf1ae5c81471a8fd00400974b175ca2a1f24ff71429dd3cf397a10596d0d58a",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated"
+   },
+   "sceneProviderId": "caf50ccf-cd7e-4f64-be38-55982d90fd0e",
+   "sceneRecordSha256": "fe3581293c616c2ef1ab69fab43828b83d9affb3e35bbef3652f4c787ff2d9db",
+   "sensitivityMode": null,
+   "solarZenithAngle": null
+  },
+  {
+   "attestableFrom": "2026-07-03T18:48:30Z",
+   "bounds": [
+    -102.0518377,
+    31.1050791,
+    -101.3843813,
+    32.6777045
+   ],
+   "checks": {
+    "cloud": {
+     "code": "CLOUD_FLAG",
+     "ok": false,
+     "rule": "Carbon Mapper not_cloudy == true [D3]"
+    },
+    "cloudConsistent": {
+     "cloudBp": 5900,
+     "code": "CLOUD_FLAG_MISMATCH",
+     "ok": true,
+     "rule": "not_cloudy == (cloudBp <= maxCloudBp)"
+    },
+    "duplicate": {
+     "code": "DUPLICATE_SCENE",
+     "ok": true,
+     "rule": "scene not already used for this claim"
+    },
+    "floor": {
+     "code": "FLOOR_MISMATCH",
+     "floorKgH": 180,
+     "ok": true,
+     "rateKgH": 3642,
+     "rule": "instrument floor <= episode rate R"
+    },
+    "future": {
+     "code": "FUTURE",
+     "ok": true,
+     "rule": "sceneAt <= now"
+    },
+    "instrument": {
+     "code": "UNKNOWN_INSTRUMENT",
+     "ok": true,
+     "rule": "instrument in floor table"
+    },
+    "mars": {
+     "code": "MARS_PLUME_NEARBY",
+     "count": 0,
+     "ok": true,
+     "rule": "no UNEP MARS plume at the facility within +/- 7 days"
+    },
+    "noPlume": {
+     "code": "PLUME_ON_SCENE",
+     "ok": true,
+     "perSourcePlumes": 0,
+     "plumesNearFacility": 0,
+     "rule": "no plume of a linked CM source on this scene, and no scene plume with origin inside the facility radius"
+    },
+    "originIntersect": {
+     "code": "NO_ORIGIN_INTERSECT",
+     "ok": true,
+     "rule": "scene footprint contains >= 1 plume-origin point of the linked CM sources"
+    },
+    "publicationLag": {
+     "attestableFrom": 1783104510,
+     "code": "BEFORE_PUBLICATION_LAG",
+     "ok": true,
+     "rule": "now >= sceneAt + publicationLag"
+    },
+    "published": {
+     "code": "SCENE_NOT_PUBLISHED",
+     "ok": true,
+     "rule": "sceneAt <= publishedAt <= now"
+    },
+    "since": {
+     "code": "SCENE_BEFORE_SINCE",
+     "ok": true,
+     "rule": "since < sceneAt",
+     "since": 1726430504
+    },
+    "term": {
+     "code": "AFTER_TERM",
+     "covenantEnd": null,
+     "ok": true,
+     "rule": "sceneAt < covenant.end"
+    }
+   },
+   "cloudBp": 5900,
+   "cloudCoverPct": 59,
+   "cloudCoverPctAssessed": 50,
+   "episodeOriginInside": null,
+   "floorKgH": 180,
+   "gsd": 36.07061078123515,
+   "instrument": "tan",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": false,
+   "offNadir": 23.578915051700104,
+   "originIntersect": true,
+   "originIntersectAnyOriginToday": true,
+   "originIntersectBasis": "origins published by attestation time",
+   "originPointsInside": null,
+   "perSourceQueries": [
+    {
+     "cmSource": "CH4_1B2_1000m_-101.52270_32.51483",
+     "params": {},
+     "plumeCount": 0,
+     "plumeIds": [],
+     "plumes": [],
+     "responseSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+     "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_-101.52270_32.51483"
+    }
+   ],
+   "platform": "tan-1",
+   "plumeOnScene": false,
+   "plumesNearFacility": [],
+   "publishedAt": 1780517954,
+   "publishedAtIso": "2026-06-03T20:19:14Z",
+   "publishedPlumeCount": 3,
+   "qualified": false,
+   "qualifiedAllOriginsToday": false,
+   "rateFloorKgH": 180,
+   "refusal": "CLOUD_FLAG",
+   "refusalAllOriginsToday": "CLOUD_FLAG",
+   "refusals": [
+    "CLOUD_FLAG"
+   ],
+   "sceneAt": 1777920510,
+   "sceneAtIso": "2026-05-04T18:48:30Z",
+   "sceneId": "0x7333316744020206e821badef79eb0b117ed64bb5ff0e24cd690da13c3956e8c",
+   "sceneName": "tan20260504t184830c90s4001",
+   "scenePlumesQuery": {
+    "params": {
+     "limit": 1000,
+     "scene_id": "d2393c0f-a92a-4f28-a0ae-a204cf7f4611"
+    },
+    "plumes": 3,
+    "responseSha256": "7d472642f24da9954e68f77435946bebfd001a718b0496581d4dc6257825f49b",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated"
+   },
+   "sceneProviderId": "d2393c0f-a92a-4f28-a0ae-a204cf7f4611",
+   "sceneRecordSha256": "19952e382e8629e31ba8ce4a0030232e771aec28bf3b6a1881c7a6ebe9f50f52",
+   "sensitivityMode": "standard_sensitivity",
+   "solarZenithAngle": 15.811368621503448
+  },
+  {
+   "attestableFrom": "2026-10-24T18:50:02Z",
+   "bounds": [
+    -102.0499756,
+    31.1037198,
+    -101.3919103,
+    32.6726815
+   ],
+   "checks": {
+    "cloud": {
+     "code": "CLOUD_FLAG",
+     "ok": true,
+     "rule": "Carbon Mapper not_cloudy == true [D3]"
+    },
+    "cloudConsistent": {
+     "cloudBp": 100,
+     "code": "CLOUD_FLAG_MISMATCH",
+     "ok": true,
+     "rule": "not_cloudy == (cloudBp <= maxCloudBp)"
+    },
+    "duplicate": {
+     "code": "DUPLICATE_SCENE",
+     "ok": true,
+     "rule": "scene not already used for this claim"
+    },
+    "floor": {
+     "code": "FLOOR_MISMATCH",
+     "floorKgH": 180,
+     "ok": true,
+     "rateKgH": 3642,
+     "rule": "instrument floor <= episode rate R"
+    },
+    "future": {
+     "code": "FUTURE",
+     "ok": true,
+     "rule": "sceneAt <= now"
+    },
+    "instrument": {
+     "code": "UNKNOWN_INSTRUMENT",
+     "ok": true,
+     "rule": "instrument in floor table"
+    },
+    "mars": {
+     "code": "MARS_PLUME_NEARBY",
+     "count": 0,
+     "ok": true,
+     "rule": "no UNEP MARS plume at the facility within +/- 7 days"
+    },
+    "noPlume": {
+     "code": "PLUME_ON_SCENE",
+     "ok": true,
+     "perSourcePlumes": 0,
+     "plumesNearFacility": 0,
+     "rule": "no plume of a linked CM source on this scene, and no scene plume with origin inside the facility radius"
+    },
+    "originIntersect": {
+     "code": "NO_ORIGIN_INTERSECT",
+     "ok": true,
+     "rule": "scene footprint contains >= 1 plume-origin point of the linked CM sources"
+    },
+    "publicationLag": {
+     "attestableFrom": 1792867802,
+     "code": "BEFORE_PUBLICATION_LAG",
+     "ok": false,
+     "rule": "now >= sceneAt + publicationLag"
+    },
+    "published": {
+     "code": "SCENE_NOT_PUBLISHED",
+     "ok": true,
+     "rule": "sceneAt <= publishedAt <= now"
+    },
+    "since": {
+     "code": "SCENE_BEFORE_SINCE",
+     "ok": true,
+     "rule": "since < sceneAt",
+     "since": 1726430504
+    },
+    "term": {
+     "code": "AFTER_TERM",
+     "covenantEnd": null,
+     "ok": true,
+     "rule": "sceneAt < covenant.end"
+    }
+   },
+   "cloudBp": 100,
+   "cloudCoverPct": 1,
+   "cloudCoverPctAssessed": 0,
+   "episodeOriginInside": null,
+   "floorKgH": 180,
+   "gsd": 35.02148773592225,
+   "instrument": "tan",
+   "marsNearby": {
+    "count": 0,
+    "rows": [],
+    "windowDays": 7
+   },
+   "notCloudy": true,
+   "offNadir": 15.487795723187356,
+   "originIntersect": true,
+   "originIntersectAnyOriginToday": true,
+   "originIntersectBasis": "origins published by attestation time",
+   "originPointsInside": null,
+   "perSourceQueries": [
+    {
+     "cmSource": "CH4_1B2_1000m_-101.52270_32.51483",
+     "params": {},
+     "plumeCount": 0,
+     "plumeIds": [],
+     "plumes": [],
+     "responseSha256": "52e07b7a757fc69738bc47d237ce89c9ed14071240d481a76a1011854625a0ea",
+     "url": "https://api.carbonmapper.org/api/v1/catalog/search/source/CH4_1B2_1000m_-101.52270_32.51483"
+    }
+   ],
+   "platform": "tan-1",
+   "plumeOnScene": false,
+   "plumesNearFacility": [],
+   "publishedAt": 1790281154,
+   "publishedAtIso": "2026-09-24T20:19:14Z",
+   "publishedPlumeCount": 17,
+   "qualified": false,
+   "qualifiedAllOriginsToday": false,
+   "rateFloorKgH": 180,
+   "refusal": "BEFORE_PUBLICATION_LAG",
+   "refusalAllOriginsToday": "BEFORE_PUBLICATION_LAG",
+   "refusals": [
+    "BEFORE_PUBLICATION_LAG"
+   ],
+   "sceneAt": 1787683802,
+   "sceneAtIso": "2026-08-25T18:50:02Z",
+   "sceneId": "0x7c6c2116d84e24853f7896c9dfc95dae4a4b136f92fdf0c90fd4db195c27d6ed",
+   "sceneName": "tan20260825t185002c91s4001",
+   "scenePlumesQuery": {
+    "params": {
+     "limit": 1000,
+     "scene_id": "afe170be-4525-49d5-95c6-abc62f7c5b79"
+    },
+    "plumes": 17,
+    "responseSha256": "12c19c3b92ec75e4cb9dd9f7d2a5fc390da389d30db0ee33c2aa87a476843484",
+    "url": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated"
+   },
+   "sceneProviderId": "afe170be-4525-49d5-95c6-abc62f7c5b79",
+   "sceneRecordSha256": "749c92f5359bed99220bc1568cbbdcd53d7f20113ba2c521c727972ce314d15c",
+   "sensitivityMode": "standard_sensitivity",
+   "solarZenithAngle": 21.34138970706455
+  }
+ ],
+ "schema": "methaneclause.clean_passes/1",
+ "since": 1726430504,
+ "sinceIso": "2024-09-15T20:01:44Z",
+ "sourceId": "0x39cd1bb61a41f58002e7b09b3b9550cbfaabe00daa748d52898465bfc1fa2211",
+ "summary": {
+  "candidates": 5,
+  "countedAtCloudBp2500": 1,
+  "countedAtCloudBp2500Note": "counted passes whose cloud cover sits exactly at 25 % (EMIT reports cloud in bins); the gate stays Carbon Mapper's not_cloudy flag [D3]",
+  "firstPlumeAfterSince": null,
+  "firstRefusal": {
+   "BEFORE_PUBLICATION_LAG": 1,
+   "CLOUD_FLAG": 1,
+   "MARS_PLUME_NEARBY": 1,
+   "SCENE_BEFORE_SINCE": 1
+  },
+  "maxCountedFloorKgH": 700,
+  "originIntersectUndetermined": 0,
+  "qualified": 1,
+  "qualifiedBeforeFirstPlume": 1,
+  "qualifiedBeforeFirstPlumeAllOriginsToday": 1,
+  "qualifiedBeforeFirstPlumeByInstrument": {
+   "emi": 1
+  },
+  "qualifiedByInstrument": {
+   "emi": 1
+  },
+  "qualifiedScenes": [
+   "2025-08-08 emi"
+  ],
+  "statusLabel": "1 qualified clean pass (a lower bound)",
+  "timelineDatesWithoutIntersectingScene": [],
+  "upperBoundBpAtThatCount": 9750
+ }
+}

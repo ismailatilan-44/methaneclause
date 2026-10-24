@@ -1,0 +1,54 @@
+{
+ "cm_timelines_sha256": "f19af037741b082db49bd1e3078c5ee4fa632dec60d65cc542f4ccb695b1ba5c",
+ "definition": {
+  "country": "nearest MARS source (any sector) within 50 km, else UNK",
+  "history": "strictly before the row date; trailing window 6 calendar months",
+  "row": "(Carbon Mapper source, observation date); label = date in detection_dates",
+  "sample": "cm_timelines.json sources, first 2000 by sha256(name); rows with n_det_before > 0 only (history features use all rows)",
+  "test_a": "country in ['Algeria', 'Turkmenistan'], all dates",
+  "test_b": "date >= 2026-01-01, all countries",
+  "train": "date < 2026-01-01 and country not in ['Algeria', 'Turkmenistan']"
+ },
+ "excluded_by_v2_sample_rule": {
+  "label_rate_total": 0.1156,
+  "n_rows_total": 17297,
+  "note": "descriptive; not part of splits_hash",
+  "rule": "n_det_before == 0 (pass before the source's first catalogue detection)",
+  "v1_test_b_label_rate": 0.6345,
+  "v1_test_b_rows": 342,
+  "v1_test_b_share": 0.1104
+ },
+ "frozen": "v1 2026-10-14 (D1), before any model training; v2 2026-10-14 after the D3 review: sample rule n_det_before > 0 (sample-construction leak in v1) and the B1s smoothing constants",
+ "frozen_rule_constants": {
+  "B1s_a": 0.45,
+  "B1s_b": 1.6,
+  "train_base_rate": 0.322446,
+  "train_rate_non_absent": 0.428571
+ },
+ "labels_sha256": "48b75997835ec25aa796238588cc7d9e6d5c2c5592888c928fc4ef898e47f168",
+ "n_rows": 32269,
+ "n_sources": 2000,
+ "splits": {
+  "test_a": {
+   "n_pos": 1803,
+   "n_rows": 4875,
+   "n_sources": 528,
+   "row_ids_sha256": "9c6143db700efdfc1a97b3adf870875740900017961ebb3a17e05919301a7251"
+  },
+  "test_b": {
+   "n_pos": 1183,
+   "n_rows": 2757,
+   "n_sources": 1083,
+   "row_ids_sha256": "95e434cbf007ea7cd29c1ea45346ff4450c6fed3a84d74ad9c1187b7c4f28dd1"
+  },
+  "train": {
+   "n_pos": 2853,
+   "n_rows": 8848,
+   "n_sources": 1119,
+   "row_ids_sha256": "0b680c54c2d2842cca496c395ddcbb647590b174fcfcd424620dc19d5ae73115"
+  }
+ },
+ "splits_hash": "0x129b74cb5f666b9ea270e24c4a41bcc2ad6b61b383e62b9bf0f3ff0b60777cb6",
+ "v1_splits_hash": "0x9adbc5e648b1a4e19c9edb22e5053bd15c9a9a1b40889e007dfa2da79aff8a68",
+ "version": "v2"
+}

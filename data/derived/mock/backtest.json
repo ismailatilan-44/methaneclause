@@ -1,0 +1,11 @@
+{
+ "by_country": {},
+ "exporter_table": [],
+ "label": "MOCK \u2014 placeholder for the page, not a measurement",
+ "note": "MOCK \u2014 placeholder for the page, not a measurement",
+ "policyHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+ "scene_data": "MOCK \u2014 placeholder for the page, not a measurement",
+ "schema": "methaneclause.backtest/1",
+ "stake_band": {},
+ "targets": 0
+}

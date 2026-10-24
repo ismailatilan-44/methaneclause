@@ -1,0 +1,12 @@
+{
+ "label": "MOCK \u2014 placeholder for the page, not a measurement",
+ "manual": {
+  "n": 0,
+  "steps": []
+ },
+ "note": "MOCK \u2014 placeholder for the page, not a measurement",
+ "schema": "methaneclause.verification_time/1",
+ "tool": {
+  "n": 0
+ }
+}

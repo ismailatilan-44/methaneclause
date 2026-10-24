@@ -1,0 +1,8364 @@
+{
+ "field": "plume property `notified` (boolean); firstNotified = tile date of the first such plume",
+ "licence": "UNEP IMEO MARS, CC BY-NC-SA 4.0",
+ "schema": "methaneclause.mars_notified/1",
+ "sources": {
+  "AGO_S_001": {
+   "firstNotified": "2023-09-20",
+   "notifiedPlumes": 1
+  },
+  "AGO_S_004": {
+   "firstNotified": "2025-03-24",
+   "notifiedPlumes": 5
+  },
+  "AGO_S_005": {
+   "firstNotified": "2024-02-12",
+   "notifiedPlumes": 1
+  },
+  "AGO_S_006": {
+   "firstNotified": "2024-02-18",
+   "notifiedPlumes": 6
+  },
+  "ARE_S_005": {
+   "firstNotified": "2025-07-27",
+   "notifiedPlumes": 1
+  },
+  "ARE_S_019": {
+   "firstNotified": "2025-07-27",
+   "notifiedPlumes": 1
+  },
+  "ARE_S_020": {
+   "firstNotified": "2025-07-27",
+   "notifiedPlumes": 1
+  },
+  "ARE_S_021": {
+   "firstNotified": "2025-07-27",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_001": {
+   "firstNotified": "2023-01-21",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_002": {
+   "firstNotified": "2020-10-29",
+   "notifiedPlumes": 5
+  },
+  "ARG_S_004": {
+   "firstNotified": "2026-01-09",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_005": {
+   "firstNotified": "2024-03-02",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_006": {
+   "firstNotified": "2024-04-10",
+   "notifiedPlumes": 8
+  },
+  "ARG_S_007": {
+   "firstNotified": "2024-11-13",
+   "notifiedPlumes": 2
+  },
+  "ARG_S_008": {
+   "firstNotified": "2024-11-22",
+   "notifiedPlumes": 2
+  },
+  "ARG_S_009": {
+   "firstNotified": "2025-01-05",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_010": {
+   "firstNotified": "2025-01-04",
+   "notifiedPlumes": 4
+  },
+  "ARG_S_011": {
+   "firstNotified": "2025-01-04",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_012": {
+   "firstNotified": "2025-02-26",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_014": {
+   "firstNotified": "2025-03-21",
+   "notifiedPlumes": 4
+  },
+  "ARG_S_018": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_019": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_033": {
+   "firstNotified": "2026-01-18",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_036": {
+   "firstNotified": "2025-06-07",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_038": {
+   "firstNotified": "2025-06-06",
+   "notifiedPlumes": 4
+  },
+  "ARG_S_045": {
+   "firstNotified": "2025-10-18",
+   "notifiedPlumes": 5
+  },
+  "ARG_S_046": {
+   "firstNotified": "2025-11-05",
+   "notifiedPlumes": 2
+  },
+  "ARG_S_047": {
+   "firstNotified": "2025-11-17",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_050": {
+   "firstNotified": "2026-01-09",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_053": {
+   "firstNotified": "2026-03-18",
+   "notifiedPlumes": 12
+  },
+  "ARG_S_055": {
+   "firstNotified": "2023-01-29",
+   "notifiedPlumes": 2
+  },
+  "ARG_S_057": {
+   "firstNotified": "2026-05-02",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_058": {
+   "firstNotified": "2026-06-02",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_060": {
+   "firstNotified": "2026-07-05",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_061": {
+   "firstNotified": "2026-07-05",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_062": {
+   "firstNotified": "2026-07-03",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_063": {
+   "firstNotified": "2026-07-03",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_064": {
+   "firstNotified": "2026-07-03",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_065": {
+   "firstNotified": "2026-07-03",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_066": {
+   "firstNotified": "2026-07-03",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_067": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_068": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_069": {
+   "firstNotified": "2026-08-18",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_071": {
+   "firstNotified": "2026-08-18",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_074": {
+   "firstNotified": "2026-08-27",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_076": {
+   "firstNotified": "2026-09-08",
+   "notifiedPlumes": 1
+  },
+  "ARG_S_077": {
+   "firstNotified": "2026-09-08",
+   "notifiedPlumes": 1
+  },
+  "AUS_S_011": {
+   "firstNotified": "2025-07-16",
+   "notifiedPlumes": 2
+  },
+  "AUS_S_020": {
+   "firstNotified": "2025-03-03",
+   "notifiedPlumes": 1
+  },
+  "AUS_S_095": {
+   "firstNotified": "2025-05-23",
+   "notifiedPlumes": 2
+  },
+  "AZE_S_001": {
+   "firstNotified": "2024-06-11",
+   "notifiedPlumes": 4
+  },
+  "AZE_S_003": {
+   "firstNotified": "2024-06-11",
+   "notifiedPlumes": 4
+  },
+  "AZE_S_004": {
+   "firstNotified": "2024-08-04",
+   "notifiedPlumes": 4
+  },
+  "AZE_S_005": {
+   "firstNotified": "2024-06-11",
+   "notifiedPlumes": 8
+  },
+  "AZE_S_006": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 3
+  },
+  "AZE_S_007": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 3
+  },
+  "AZE_S_008": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 2
+  },
+  "AZE_S_009": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 5
+  },
+  "AZE_S_010": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 9
+  },
+  "AZE_S_011": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 9
+  },
+  "AZE_S_012": {
+   "firstNotified": "2024-07-12",
+   "notifiedPlumes": 4
+  },
+  "AZE_S_013": {
+   "firstNotified": "2024-07-12",
+   "notifiedPlumes": 8
+  },
+  "AZE_S_014": {
+   "firstNotified": "2024-07-12",
+   "notifiedPlumes": 2
+  },
+  "AZE_S_015": {
+   "firstNotified": "2024-08-04",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_016": {
+   "firstNotified": "2024-08-04",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_017": {
+   "firstNotified": "2024-08-23",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_020": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_021": {
+   "firstNotified": "2025-05-24",
+   "notifiedPlumes": 6
+  },
+  "AZE_S_022": {
+   "firstNotified": "2025-07-03",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_023": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 3
+  },
+  "AZE_S_024": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_025": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_026": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_027": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_028": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_029": {
+   "firstNotified": "2025-06-20",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_030": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_031": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_034": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 2
+  },
+  "AZE_S_035": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 2
+  },
+  "AZE_S_036": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_037": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_038": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_040": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_041": {
+   "firstNotified": "2026-06-17",
+   "notifiedPlumes": 1
+  },
+  "AZE_S_042": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_003": {
+   "firstNotified": "2024-05-26",
+   "notifiedPlumes": 25
+  },
+  "BHR_S_004": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 3
+  },
+  "BHR_S_006": {
+   "firstNotified": "2025-03-30",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_007": {
+   "firstNotified": "2024-07-12",
+   "notifiedPlumes": 2
+  },
+  "BHR_S_008": {
+   "firstNotified": "2024-07-22",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_011": {
+   "firstNotified": "2025-04-27",
+   "notifiedPlumes": 6
+  },
+  "BHR_S_015": {
+   "firstNotified": "2025-10-04",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_018": {
+   "firstNotified": "2024-06-22",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_027": {
+   "firstNotified": "2025-06-28",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_028": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_029": {
+   "firstNotified": "2025-10-05",
+   "notifiedPlumes": 13
+  },
+  "BHR_S_032": {
+   "firstNotified": "2025-11-03",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_033": {
+   "firstNotified": "2025-12-29",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_035": {
+   "firstNotified": "2026-06-09",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_037": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 2
+  },
+  "BHR_S_038": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_039": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 2
+  },
+  "BHR_S_040": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_041": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_042": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_044": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "BHR_S_045": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_035": {
+   "firstNotified": "2025-10-25",
+   "notifiedPlumes": 3
+  },
+  "BRA_S_036": {
+   "firstNotified": "2025-10-25",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_037": {
+   "firstNotified": "2025-11-07",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_038": {
+   "firstNotified": "2025-11-07",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_039": {
+   "firstNotified": "2025-11-07",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_040": {
+   "firstNotified": "2025-11-07",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_042": {
+   "firstNotified": "2025-11-23",
+   "notifiedPlumes": 2
+  },
+  "BRA_S_043": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_044": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_045": {
+   "firstNotified": "2025-12-08",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_046": {
+   "firstNotified": "2025-12-08",
+   "notifiedPlumes": 1
+  },
+  "BRA_S_091": {
+   "firstNotified": "2026-07-20",
+   "notifiedPlumes": 1
+  },
+  "CAN_S_002": {
+   "firstNotified": "2026-04-10",
+   "notifiedPlumes": 1
+  },
+  "CAN_S_003": {
+   "firstNotified": "2026-05-06",
+   "notifiedPlumes": 1
+  },
+  "CAN_S_006": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 1
+  },
+  "CAN_S_007": {
+   "firstNotified": "2026-09-12",
+   "notifiedPlumes": 6
+  },
+  "CHN_S_001": {
+   "firstNotified": "2024-08-01",
+   "notifiedPlumes": 3
+  },
+  "CHN_S_002": {
+   "firstNotified": "2024-09-07",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_003": {
+   "firstNotified": "2024-10-01",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_004": {
+   "firstNotified": "2024-10-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_005": {
+   "firstNotified": "2024-10-28",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_006": {
+   "firstNotified": "2024-10-28",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_007": {
+   "firstNotified": "2024-11-20",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_008": {
+   "firstNotified": "2024-11-20",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_009": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_010": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 4
+  },
+  "CHN_S_011": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_012": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_013": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_014": {
+   "firstNotified": "2025-03-06",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_015": {
+   "firstNotified": "2025-03-06",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_016": {
+   "firstNotified": "2025-03-06",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_022": {
+   "firstNotified": "2025-08-03",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_024": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 3
+  },
+  "CHN_S_025": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_042": {
+   "firstNotified": "2026-04-03",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_043": {
+   "firstNotified": "2025-06-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_047": {
+   "firstNotified": "2026-07-22",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_1055": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_1056": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_1058": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_250": {
+   "firstNotified": "2025-08-03",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_286": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 4
+  },
+  "CHN_S_287": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_288": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_289": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_290": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_291": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_292": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_293": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 3
+  },
+  "CHN_S_294": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 4
+  },
+  "CHN_S_295": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 3
+  },
+  "CHN_S_296": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_297": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_298": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_299": {
+   "firstNotified": "2025-04-04",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_300": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 4
+  },
+  "CHN_S_314": {
+   "firstNotified": "2025-05-30",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_315": {
+   "firstNotified": "2025-05-30",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_316": {
+   "firstNotified": "2025-05-30",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_335": {
+   "firstNotified": "2025-06-19",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_358": {
+   "firstNotified": "2025-06-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_359": {
+   "firstNotified": "2025-06-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_388": {
+   "firstNotified": "2025-06-22",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_460": {
+   "firstNotified": "2025-08-03",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_462": {
+   "firstNotified": "2025-08-03",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_680": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_681": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_682": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_683": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_684": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_692": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_693": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_694": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_695": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_705": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_706": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_707": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_708": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_709": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_748": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_749": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_800": {
+   "firstNotified": "2026-02-11",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_827": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_828": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_829": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_839": {
+   "firstNotified": "2026-03-30",
+   "notifiedPlumes": 6
+  },
+  "CHN_S_841": {
+   "firstNotified": "2026-03-30",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_848": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_849": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_850": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_851": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_852": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_855": {
+   "firstNotified": "2026-03-30",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_856": {
+   "firstNotified": "2026-04-03",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_857": {
+   "firstNotified": "2026-03-30",
+   "notifiedPlumes": 9
+  },
+  "CHN_S_858": {
+   "firstNotified": "2026-03-31",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_863": {
+   "firstNotified": "2026-04-06",
+   "notifiedPlumes": 5
+  },
+  "CHN_S_865": {
+   "firstNotified": "2026-04-13",
+   "notifiedPlumes": 3
+  },
+  "CHN_S_866": {
+   "firstNotified": "2026-04-03",
+   "notifiedPlumes": 4
+  },
+  "CHN_S_868": {
+   "firstNotified": "2026-04-18",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_869": {
+   "firstNotified": "2026-04-18",
+   "notifiedPlumes": 2
+  },
+  "CHN_S_870": {
+   "firstNotified": "2026-04-18",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_900": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_913": {
+   "firstNotified": "2026-07-22",
+   "notifiedPlumes": 1
+  },
+  "CHN_S_938": {
+   "firstNotified": "2026-07-29",
+   "notifiedPlumes": 1
+  },
+  "COL_S_029": {
+   "firstNotified": "2026-08-24",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_001": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_003": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_005": {
+   "firstNotified": "2025-04-09",
+   "notifiedPlumes": 10
+  },
+  "DZA_S_008": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 26
+  },
+  "DZA_S_009": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_010": {
+   "firstNotified": "2024-07-17",
+   "notifiedPlumes": 19
+  },
+  "DZA_S_011": {
+   "firstNotified": "2024-06-13",
+   "notifiedPlumes": 22
+  },
+  "DZA_S_012": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 44
+  },
+  "DZA_S_013": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_014": {
+   "firstNotified": "2024-08-02",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_015": {
+   "firstNotified": "2024-08-02",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_017": {
+   "firstNotified": "2024-08-06",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_018": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 45
+  },
+  "DZA_S_019": {
+   "firstNotified": "2024-07-16",
+   "notifiedPlumes": 23
+  },
+  "DZA_S_020": {
+   "firstNotified": "2024-08-18",
+   "notifiedPlumes": 31
+  },
+  "DZA_S_022": {
+   "firstNotified": "2025-04-18",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_023": {
+   "firstNotified": "2025-04-03",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_025": {
+   "firstNotified": "2025-04-03",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_027": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_028": {
+   "firstNotified": "2026-08-30",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_030": {
+   "firstNotified": "2024-06-26",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_031": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 14
+  },
+  "DZA_S_036": {
+   "firstNotified": "2024-08-02",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_039": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_040": {
+   "firstNotified": "2026-04-06",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_043": {
+   "firstNotified": "2024-06-13",
+   "notifiedPlumes": 32
+  },
+  "DZA_S_049": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_050": {
+   "firstNotified": "2024-10-26",
+   "notifiedPlumes": 16
+  },
+  "DZA_S_053": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_060": {
+   "firstNotified": "2025-01-17",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_063": {
+   "firstNotified": "2026-05-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_064": {
+   "firstNotified": "2026-04-30",
+   "notifiedPlumes": 9
+  },
+  "DZA_S_066": {
+   "firstNotified": "2026-04-15",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_070": {
+   "firstNotified": "2024-09-29",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_073": {
+   "firstNotified": "2025-09-05",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_074": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_076": {
+   "firstNotified": "2025-05-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_080": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_087": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_088": {
+   "firstNotified": "2025-10-29",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_092": {
+   "firstNotified": "2026-07-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_096": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_098": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 21
+  },
+  "DZA_S_100": {
+   "firstNotified": "2024-09-14",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_101": {
+   "firstNotified": "2024-11-28",
+   "notifiedPlumes": 18
+  },
+  "DZA_S_103": {
+   "firstNotified": "2024-09-29",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_105": {
+   "firstNotified": "2024-10-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_106": {
+   "firstNotified": "2024-10-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_107": {
+   "firstNotified": "2024-10-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_108": {
+   "firstNotified": "2024-10-24",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_109": {
+   "firstNotified": "2024-10-27",
+   "notifiedPlumes": 10
+  },
+  "DZA_S_110": {
+   "firstNotified": "2024-10-27",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_111": {
+   "firstNotified": "2024-11-06",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_112": {
+   "firstNotified": "2024-10-31",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_113": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_115": {
+   "firstNotified": "2024-11-25",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_116": {
+   "firstNotified": "2024-11-20",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_118": {
+   "firstNotified": "2024-12-06",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_119": {
+   "firstNotified": "2024-12-16",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_120": {
+   "firstNotified": "2024-12-24",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_123": {
+   "firstNotified": "2025-01-23",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_124": {
+   "firstNotified": "2025-01-31",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_125": {
+   "firstNotified": "2025-01-31",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_133": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_134": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_135": {
+   "firstNotified": "2025-02-14",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_137": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_140": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_141": {
+   "firstNotified": "2025-02-12",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_146": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_152": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_154": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_155": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_168": {
+   "firstNotified": "2025-04-25",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_179": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_180": {
+   "firstNotified": "2025-10-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_181": {
+   "firstNotified": "2025-05-17",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_186": {
+   "firstNotified": "2026-05-30",
+   "notifiedPlumes": 10
+  },
+  "DZA_S_188": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_196": {
+   "firstNotified": "2025-05-19",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_197": {
+   "firstNotified": "2025-05-19",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_198": {
+   "firstNotified": "2025-05-19",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_199": {
+   "firstNotified": "2025-05-19",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_203": {
+   "firstNotified": "2025-06-01",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_204": {
+   "firstNotified": "2025-06-11",
+   "notifiedPlumes": 17
+  },
+  "DZA_S_205": {
+   "firstNotified": "2025-05-23",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_206": {
+   "firstNotified": "2026-09-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_207": {
+   "firstNotified": "2025-06-11",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_208": {
+   "firstNotified": "2025-05-30",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_209": {
+   "firstNotified": "2025-06-07",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_210": {
+   "firstNotified": "2025-06-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_211": {
+   "firstNotified": "2025-06-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_213": {
+   "firstNotified": "2025-06-11",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_214": {
+   "firstNotified": "2025-06-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_215": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_216": {
+   "firstNotified": "2025-06-29",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_217": {
+   "firstNotified": "2025-10-24",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_218": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_219": {
+   "firstNotified": "2026-03-04",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_220": {
+   "firstNotified": "2025-10-22",
+   "notifiedPlumes": 31
+  },
+  "DZA_S_223": {
+   "firstNotified": "2025-07-16",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_224": {
+   "firstNotified": "2025-07-21",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_225": {
+   "firstNotified": "2025-07-23",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_226": {
+   "firstNotified": "2025-07-27",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_232": {
+   "firstNotified": "2026-06-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_233": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_236": {
+   "firstNotified": "2025-10-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_238": {
+   "firstNotified": "2025-08-26",
+   "notifiedPlumes": 23
+  },
+  "DZA_S_241": {
+   "firstNotified": "2025-09-16",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_243": {
+   "firstNotified": "2025-09-19",
+   "notifiedPlumes": 24
+  },
+  "DZA_S_246": {
+   "firstNotified": "2025-09-21",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_248": {
+   "firstNotified": "2025-09-15",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_250": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_254": {
+   "firstNotified": "2025-10-11",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_258": {
+   "firstNotified": "2025-10-02",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_259": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_260": {
+   "firstNotified": "2025-10-02",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_263": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_264": {
+   "firstNotified": "2025-10-10",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_265": {
+   "firstNotified": "2025-10-02",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_266": {
+   "firstNotified": "2025-10-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_267": {
+   "firstNotified": "2025-10-24",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_269": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_270": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_271": {
+   "firstNotified": "2026-09-07",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_273": {
+   "firstNotified": "2026-06-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_274": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_276": {
+   "firstNotified": "2025-10-27",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_277": {
+   "firstNotified": "2025-10-31",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_278": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_279": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_280": {
+   "firstNotified": "2026-01-16",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_281": {
+   "firstNotified": "2025-11-10",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_282": {
+   "firstNotified": "2026-02-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_283": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_284": {
+   "firstNotified": "2026-01-04",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_286": {
+   "firstNotified": "2026-01-06",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_287": {
+   "firstNotified": "2025-11-05",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_290": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_291": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_301": {
+   "firstNotified": "2025-12-10",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_306": {
+   "firstNotified": "2025-11-18",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_309": {
+   "firstNotified": "2025-01-02",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_313": {
+   "firstNotified": "2025-11-26",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_314": {
+   "firstNotified": "2026-02-20",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_315": {
+   "firstNotified": "2026-04-30",
+   "notifiedPlumes": 6
+  },
+  "DZA_S_316": {
+   "firstNotified": "2026-03-09",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_317": {
+   "firstNotified": "2025-12-16",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_319": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_320": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_321": {
+   "firstNotified": "2025-12-03",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_322": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_325": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_328": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_332": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_338": {
+   "firstNotified": "2025-12-30",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_339": {
+   "firstNotified": "2025-12-31",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_340": {
+   "firstNotified": "2026-01-10",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_342": {
+   "firstNotified": "2026-01-17",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_345": {
+   "firstNotified": "2026-01-12",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_349": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_353": {
+   "firstNotified": "2026-04-17",
+   "notifiedPlumes": 7
+  },
+  "DZA_S_354": {
+   "firstNotified": "2026-01-13",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_356": {
+   "firstNotified": "2026-02-13",
+   "notifiedPlumes": 6
+  },
+  "DZA_S_357": {
+   "firstNotified": "2026-01-13",
+   "notifiedPlumes": 6
+  },
+  "DZA_S_358": {
+   "firstNotified": "2026-02-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_362": {
+   "firstNotified": "2026-02-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_363": {
+   "firstNotified": "2026-01-27",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_365": {
+   "firstNotified": "2026-02-05",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_366": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 5
+  },
+  "DZA_S_367": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_368": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_369": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_371": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_372": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_373": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_374": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_375": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_377": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_378": {
+   "firstNotified": "2026-02-21",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_379": {
+   "firstNotified": "2026-02-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_380": {
+   "firstNotified": "2026-03-07",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_381": {
+   "firstNotified": "2026-03-01",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_382": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_383": {
+   "firstNotified": "2026-03-08",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_384": {
+   "firstNotified": "2026-03-04",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_385": {
+   "firstNotified": "2026-03-04",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_386": {
+   "firstNotified": "2026-03-10",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_388": {
+   "firstNotified": "2026-03-12",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_389": {
+   "firstNotified": "2026-03-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_391": {
+   "firstNotified": "2026-04-07",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_392": {
+   "firstNotified": "2026-04-09",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_393": {
+   "firstNotified": "2026-04-14",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_395": {
+   "firstNotified": "2026-04-17",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_397": {
+   "firstNotified": "2026-04-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_398": {
+   "firstNotified": "2026-04-17",
+   "notifiedPlumes": 8
+  },
+  "DZA_S_400": {
+   "firstNotified": "2026-04-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_405": {
+   "firstNotified": "2026-05-06",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_407": {
+   "firstNotified": "2026-05-03",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_408": {
+   "firstNotified": "2026-05-02",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_410": {
+   "firstNotified": "2026-05-18",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_412": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_413": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_414": {
+   "firstNotified": "2026-05-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_416": {
+   "firstNotified": "2026-06-04",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_425": {
+   "firstNotified": "2026-06-28",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_426": {
+   "firstNotified": "2026-06-28",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_430": {
+   "firstNotified": "2026-06-27",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_431": {
+   "firstNotified": "2026-06-29",
+   "notifiedPlumes": 7
+  },
+  "DZA_S_432": {
+   "firstNotified": "2026-07-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_433": {
+   "firstNotified": "2026-07-04",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_434": {
+   "firstNotified": "2026-07-01",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_436": {
+   "firstNotified": "2026-07-16",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_439": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_440": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_441": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_442": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_443": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_444": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_445": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_446": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_447": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_448": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_449": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_450": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_451": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_452": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 4
+  },
+  "DZA_S_453": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_455": {
+   "firstNotified": "2026-07-21",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_456": {
+   "firstNotified": "2026-07-20",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_457": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_458": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_459": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_460": {
+   "firstNotified": "2026-07-30",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_461": {
+   "firstNotified": "2026-07-30",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_462": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_463": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_465": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_466": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_467": {
+   "firstNotified": "2026-08-27",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_468": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_469": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_470": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_471": {
+   "firstNotified": "2026-08-30",
+   "notifiedPlumes": 3
+  },
+  "DZA_S_472": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_473": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_474": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_475": {
+   "firstNotified": "2026-08-30",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_478": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 2
+  },
+  "DZA_S_479": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "DZA_S_480": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_001": {
+   "firstNotified": "2022-12-06",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_002": {
+   "firstNotified": "2023-01-29",
+   "notifiedPlumes": 6
+  },
+  "EGY_S_003": {
+   "firstNotified": "2024-03-11",
+   "notifiedPlumes": 11
+  },
+  "EGY_S_004": {
+   "firstNotified": "2024-05-22",
+   "notifiedPlumes": 19
+  },
+  "EGY_S_005": {
+   "firstNotified": "2024-05-30",
+   "notifiedPlumes": 10
+  },
+  "EGY_S_006": {
+   "firstNotified": "2024-06-04",
+   "notifiedPlumes": 13
+  },
+  "EGY_S_007": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_008": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_009": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 8
+  },
+  "EGY_S_010": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 2
+  },
+  "EGY_S_013": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_014": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_015": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_020": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 2
+  },
+  "EGY_S_022": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 9
+  },
+  "EGY_S_024": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_029": {
+   "firstNotified": "2025-05-30",
+   "notifiedPlumes": 26
+  },
+  "EGY_S_030": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_031": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_032": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_039": {
+   "firstNotified": "2026-03-20",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_041": {
+   "firstNotified": "2025-07-29",
+   "notifiedPlumes": 6
+  },
+  "EGY_S_045": {
+   "firstNotified": "2025-07-30",
+   "notifiedPlumes": 5
+  },
+  "EGY_S_046": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 2
+  },
+  "EGY_S_049": {
+   "firstNotified": "2025-11-06",
+   "notifiedPlumes": 5
+  },
+  "EGY_S_051": {
+   "firstNotified": "2025-10-24",
+   "notifiedPlumes": 4
+  },
+  "EGY_S_052": {
+   "firstNotified": "2025-10-24",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_053": {
+   "firstNotified": "2025-11-23",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_054": {
+   "firstNotified": "2025-12-13",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_055": {
+   "firstNotified": "2026-02-12",
+   "notifiedPlumes": 53
+  },
+  "EGY_S_056": {
+   "firstNotified": "2026-06-02",
+   "notifiedPlumes": 1
+  },
+  "EGY_S_060": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 4
+  },
+  "EGY_S_061": {
+   "firstNotified": "2026-06-17",
+   "notifiedPlumes": 2
+  },
+  "EGY_S_062": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 3
+  },
+  "EGY_S_063": {
+   "firstNotified": "2026-07-12",
+   "notifiedPlumes": 3
+  },
+  "IND_S_001": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_003": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_004": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_005": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_006": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_007": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_008": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_009": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_010": {
+   "firstNotified": "2024-02-28",
+   "notifiedPlumes": 6
+  },
+  "IND_S_011": {
+   "firstNotified": "2024-04-29",
+   "notifiedPlumes": 5
+  },
+  "IND_S_012": {
+   "firstNotified": "2024-04-29",
+   "notifiedPlumes": 6
+  },
+  "IND_S_013": {
+   "firstNotified": "2024-04-29",
+   "notifiedPlumes": 3
+  },
+  "IND_S_014": {
+   "firstNotified": "2024-04-29",
+   "notifiedPlumes": 11
+  },
+  "IND_S_015": {
+   "firstNotified": "2024-05-19",
+   "notifiedPlumes": 2
+  },
+  "IND_S_016": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 2
+  },
+  "IND_S_018": {
+   "firstNotified": "2024-09-19",
+   "notifiedPlumes": 3
+  },
+  "IND_S_020": {
+   "firstNotified": "2024-09-19",
+   "notifiedPlumes": 1
+  },
+  "IND_S_021": {
+   "firstNotified": "2024-12-24",
+   "notifiedPlumes": 3
+  },
+  "IND_S_036": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 2
+  },
+  "IND_S_046": {
+   "firstNotified": "2026-01-06",
+   "notifiedPlumes": 1
+  },
+  "IND_S_047": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "IND_S_051": {
+   "firstNotified": "2026-02-19",
+   "notifiedPlumes": 1
+  },
+  "IND_S_052": {
+   "firstNotified": "2026-02-19",
+   "notifiedPlumes": 1
+  },
+  "IND_S_053": {
+   "firstNotified": "2026-02-19",
+   "notifiedPlumes": 1
+  },
+  "IND_S_071": {
+   "firstNotified": "2024-01-28",
+   "notifiedPlumes": 1
+  },
+  "IND_S_076": {
+   "firstNotified": "2026-04-02",
+   "notifiedPlumes": 1
+  },
+  "IND_S_082": {
+   "firstNotified": "2026-04-28",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_001": {
+   "firstNotified": "2023-07-01",
+   "notifiedPlumes": 112
+  },
+  "IRN_S_002": {
+   "firstNotified": "2023-12-20",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_004": {
+   "firstNotified": "2024-06-09",
+   "notifiedPlumes": 14
+  },
+  "IRN_S_005": {
+   "firstNotified": "2024-02-04",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_006": {
+   "firstNotified": "2024-02-04",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_007": {
+   "firstNotified": "2024-06-14",
+   "notifiedPlumes": 7
+  },
+  "IRN_S_009": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 16
+  },
+  "IRN_S_010": {
+   "firstNotified": "2024-06-10",
+   "notifiedPlumes": 8
+  },
+  "IRN_S_011": {
+   "firstNotified": "2024-07-29",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_012": {
+   "firstNotified": "2024-08-02",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_013": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 24
+  },
+  "IRN_S_014": {
+   "firstNotified": "2024-08-11",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_017": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 16
+  },
+  "IRN_S_018": {
+   "firstNotified": "2024-09-06",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_019": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 9
+  },
+  "IRN_S_020": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_021": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 7
+  },
+  "IRN_S_023": {
+   "firstNotified": "2024-10-08",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_024": {
+   "firstNotified": "2024-10-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_025": {
+   "firstNotified": "2024-10-22",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_027": {
+   "firstNotified": "2024-06-09",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_029": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_033": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_034": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_035": {
+   "firstNotified": "2025-03-27",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_036": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_037": {
+   "firstNotified": "2025-05-23",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_039": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_041": {
+   "firstNotified": "2024-12-01",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_042": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_046": {
+   "firstNotified": "2024-12-02",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_048": {
+   "firstNotified": "2024-06-10",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_049": {
+   "firstNotified": "2024-08-25",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_051": {
+   "firstNotified": "2024-12-02",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_053": {
+   "firstNotified": "2024-12-02",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_054": {
+   "firstNotified": "2024-12-02",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_055": {
+   "firstNotified": "2024-12-17",
+   "notifiedPlumes": 23
+  },
+  "IRN_S_056": {
+   "firstNotified": "2024-12-17",
+   "notifiedPlumes": 13
+  },
+  "IRN_S_057": {
+   "firstNotified": "2026-05-07",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_058": {
+   "firstNotified": "2024-09-12",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_060": {
+   "firstNotified": "2024-08-25",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_061": {
+   "firstNotified": "2024-10-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_063": {
+   "firstNotified": "2024-12-04",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_064": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_065": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 44
+  },
+  "IRN_S_068": {
+   "firstNotified": "2025-01-31",
+   "notifiedPlumes": 11
+  },
+  "IRN_S_071": {
+   "firstNotified": "2025-04-25",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_072": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 16
+  },
+  "IRN_S_073": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_074": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_075": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 45
+  },
+  "IRN_S_077": {
+   "firstNotified": "2024-06-10",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_080": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_087": {
+   "firstNotified": "2025-06-30",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_090": {
+   "firstNotified": "2025-05-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_091": {
+   "firstNotified": "2025-06-03",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_094": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_095": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_096": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_097": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_099": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_100": {
+   "firstNotified": "2025-04-02",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_102": {
+   "firstNotified": "2025-04-09",
+   "notifiedPlumes": 54
+  },
+  "IRN_S_105": {
+   "firstNotified": "2025-04-18",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_107": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 30
+  },
+  "IRN_S_108": {
+   "firstNotified": "2025-04-18",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_111": {
+   "firstNotified": "2025-05-05",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_113": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_116": {
+   "firstNotified": "2024-07-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_117": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_118": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_123": {
+   "firstNotified": "2026-02-21",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_128": {
+   "firstNotified": "2025-06-03",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_129": {
+   "firstNotified": "2025-06-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_130": {
+   "firstNotified": "2025-06-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_131": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_132": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_133": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_134": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_135": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_136": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_137": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_139": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_140": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_142": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_143": {
+   "firstNotified": "2025-06-26",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_144": {
+   "firstNotified": "2025-07-07",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_145": {
+   "firstNotified": "2025-07-17",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_148": {
+   "firstNotified": "2025-08-01",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_151": {
+   "firstNotified": "2025-08-31",
+   "notifiedPlumes": 6
+  },
+  "IRN_S_152": {
+   "firstNotified": "2025-09-15",
+   "notifiedPlumes": 10
+  },
+  "IRN_S_154": {
+   "firstNotified": "2025-09-16",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_155": {
+   "firstNotified": "2025-09-17",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_156": {
+   "firstNotified": "2025-09-28",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_158": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_160": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_161": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_162": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_164": {
+   "firstNotified": "2025-09-27",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_165": {
+   "firstNotified": "2025-09-28",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_170": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_171": {
+   "firstNotified": "2025-10-13",
+   "notifiedPlumes": 8
+  },
+  "IRN_S_185": {
+   "firstNotified": "2025-10-30",
+   "notifiedPlumes": 7
+  },
+  "IRN_S_186": {
+   "firstNotified": "2025-10-30",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_197": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_198": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_200": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_201": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_202": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_207": {
+   "firstNotified": "2026-01-04",
+   "notifiedPlumes": 7
+  },
+  "IRN_S_208": {
+   "firstNotified": "2025-11-21",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_210": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 12
+  },
+  "IRN_S_212": {
+   "firstNotified": "2026-03-28",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_213": {
+   "firstNotified": "2026-04-05",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_217": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_218": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_219": {
+   "firstNotified": "2026-06-09",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_220": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_221": {
+   "firstNotified": "2026-06-07",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_222": {
+   "firstNotified": "2026-06-10",
+   "notifiedPlumes": 5
+  },
+  "IRN_S_223": {
+   "firstNotified": "2026-06-18",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_224": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 23
+  },
+  "IRN_S_225": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_226": {
+   "firstNotified": "2026-06-19",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_227": {
+   "firstNotified": "2026-06-19",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_228": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_229": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_230": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_231": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_232": {
+   "firstNotified": "2026-06-19",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_233": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_235": {
+   "firstNotified": "2026-07-07",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_236": {
+   "firstNotified": "2026-07-12",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_237": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_238": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_239": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_240": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_242": {
+   "firstNotified": "2026-07-24",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_244": {
+   "firstNotified": "2026-07-27",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_245": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 3
+  },
+  "IRN_S_246": {
+   "firstNotified": "2026-08-18",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_249": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_250": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_252": {
+   "firstNotified": "2026-09-05",
+   "notifiedPlumes": 2
+  },
+  "IRN_S_254": {
+   "firstNotified": "2026-09-03",
+   "notifiedPlumes": 4
+  },
+  "IRN_S_255": {
+   "firstNotified": "2026-09-03",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_256": {
+   "firstNotified": "2026-09-06",
+   "notifiedPlumes": 1
+  },
+  "IRN_S_257": {
+   "firstNotified": "2026-09-12",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_001": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_002": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_003": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 4
+  },
+  "IRQ_S_004": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_005": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_006": {
+   "firstNotified": "2022-09-07",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_008": {
+   "firstNotified": "2023-08-15",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_009": {
+   "firstNotified": "2023-02-05",
+   "notifiedPlumes": 15
+  },
+  "IRQ_S_010": {
+   "firstNotified": "2023-02-05",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_011": {
+   "firstNotified": "2022-09-01",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_014": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_015": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_016": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_017": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_018": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_019": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_020": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_021": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_022": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_023": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_024": {
+   "firstNotified": "2023-03-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_025": {
+   "firstNotified": "2023-06-01",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_026": {
+   "firstNotified": "2023-06-01",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_027": {
+   "firstNotified": "2023-08-09",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_028": {
+   "firstNotified": "2023-08-09",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_029": {
+   "firstNotified": "2023-06-01",
+   "notifiedPlumes": 3
+  },
+  "IRQ_S_030": {
+   "firstNotified": "2023-11-27",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_031": {
+   "firstNotified": "2024-02-20",
+   "notifiedPlumes": 3
+  },
+  "IRQ_S_032": {
+   "firstNotified": "2024-03-29",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_033": {
+   "firstNotified": "2023-12-21",
+   "notifiedPlumes": 5
+  },
+  "IRQ_S_034": {
+   "firstNotified": "2023-12-21",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_035": {
+   "firstNotified": "2024-04-26",
+   "notifiedPlumes": 6
+  },
+  "IRQ_S_036": {
+   "firstNotified": "2024-06-04",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_037": {
+   "firstNotified": "2023-09-13",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_038": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_040": {
+   "firstNotified": "2023-02-23",
+   "notifiedPlumes": 8
+  },
+  "IRQ_S_041": {
+   "firstNotified": "2023-02-23",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_045": {
+   "firstNotified": "2021-12-03",
+   "notifiedPlumes": 4
+  },
+  "IRQ_S_046": {
+   "firstNotified": "2024-11-16",
+   "notifiedPlumes": 4
+  },
+  "IRQ_S_050": {
+   "firstNotified": "2023-02-05",
+   "notifiedPlumes": 6
+  },
+  "IRQ_S_054": {
+   "firstNotified": "2025-03-12",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_060": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_065": {
+   "firstNotified": "2025-08-13",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_066": {
+   "firstNotified": "2025-10-09",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_067": {
+   "firstNotified": "2025-10-15",
+   "notifiedPlumes": 9
+  },
+  "IRQ_S_069": {
+   "firstNotified": "2025-10-17",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_070": {
+   "firstNotified": "2025-10-21",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_071": {
+   "firstNotified": "2025-10-20",
+   "notifiedPlumes": 4
+  },
+  "IRQ_S_074": {
+   "firstNotified": "2026-08-07",
+   "notifiedPlumes": 2
+  },
+  "IRQ_S_077": {
+   "firstNotified": "2026-01-30",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_078": {
+   "firstNotified": "2026-03-09",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_079": {
+   "firstNotified": "2026-03-09",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_080": {
+   "firstNotified": "2026-03-09",
+   "notifiedPlumes": 3
+  },
+  "IRQ_S_083": {
+   "firstNotified": "2026-03-30",
+   "notifiedPlumes": 4
+  },
+  "IRQ_S_086": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_087": {
+   "firstNotified": "2026-07-10",
+   "notifiedPlumes": 1
+  },
+  "IRQ_S_088": {
+   "firstNotified": "2026-07-24",
+   "notifiedPlumes": 1
+  },
+  "ITA_S_002": {
+   "firstNotified": "2025-11-03",
+   "notifiedPlumes": 6
+  },
+  "ITA_S_004": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "JOR_S_001": {
+   "firstNotified": "2024-03-12",
+   "notifiedPlumes": 11
+  },
+  "JOR_S_005": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "JOR_S_006": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 7
+  },
+  "JOR_S_007": {
+   "firstNotified": "2025-10-20",
+   "notifiedPlumes": 1
+  },
+  "JOR_S_011": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 5
+  },
+  "JOR_S_012": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 1
+  },
+  "JOR_S_013": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "JOR_S_014": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_001": {
+   "firstNotified": "2023-07-11",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_002": {
+   "firstNotified": "2024-05-25",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_003": {
+   "firstNotified": "2024-05-26",
+   "notifiedPlumes": 12
+  },
+  "KAZ_S_004": {
+   "firstNotified": "2024-06-05",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_005": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 14
+  },
+  "KAZ_S_006": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_007": {
+   "firstNotified": "2024-07-19",
+   "notifiedPlumes": 10
+  },
+  "KAZ_S_008": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_009": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 34
+  },
+  "KAZ_S_010": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 16
+  },
+  "KAZ_S_011": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_012": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_013": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_014": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_015": {
+   "firstNotified": "2024-08-10",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_016": {
+   "firstNotified": "2024-08-07",
+   "notifiedPlumes": 16
+  },
+  "KAZ_S_018": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_022": {
+   "firstNotified": "2025-10-18",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_023": {
+   "firstNotified": "2024-10-14",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_024": {
+   "firstNotified": "2024-11-22",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_025": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_026": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_027": {
+   "firstNotified": "2025-02-13",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_049": {
+   "firstNotified": "2026-08-13",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_060": {
+   "firstNotified": "2025-03-18",
+   "notifiedPlumes": 9
+  },
+  "KAZ_S_062": {
+   "firstNotified": "2025-03-30",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_063": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_067": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_068": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 4
+  },
+  "KAZ_S_069": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_070": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_071": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_072": {
+   "firstNotified": "2025-04-07",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_074": {
+   "firstNotified": "2025-04-26",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_079": {
+   "firstNotified": "2025-05-14",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_094": {
+   "firstNotified": "2025-06-05",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_095": {
+   "firstNotified": "2025-06-10",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_096": {
+   "firstNotified": "2025-06-04",
+   "notifiedPlumes": 13
+  },
+  "KAZ_S_097": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_098": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_099": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_100": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_101": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_102": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 8
+  },
+  "KAZ_S_104": {
+   "firstNotified": "2025-06-18",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_112": {
+   "firstNotified": "2025-06-08",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_123": {
+   "firstNotified": "2025-08-03",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_127": {
+   "firstNotified": "2025-08-14",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_129": {
+   "firstNotified": "2025-09-08",
+   "notifiedPlumes": 8
+  },
+  "KAZ_S_130": {
+   "firstNotified": "2025-09-08",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_131": {
+   "firstNotified": "2025-09-29",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_136": {
+   "firstNotified": "2025-10-29",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_137": {
+   "firstNotified": "2025-10-28",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_141": {
+   "firstNotified": "2026-01-21",
+   "notifiedPlumes": 14
+  },
+  "KAZ_S_142": {
+   "firstNotified": "2026-03-29",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_150": {
+   "firstNotified": "2026-04-02",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_151": {
+   "firstNotified": "2026-04-12",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_153": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_154": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_155": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_156": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_157": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_158": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_159": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_160": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_161": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_162": {
+   "firstNotified": "2026-06-05",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_163": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_164": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 4
+  },
+  "KAZ_S_167": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_170": {
+   "firstNotified": "2026-07-10",
+   "notifiedPlumes": 19
+  },
+  "KAZ_S_171": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_172": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_173": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 4
+  },
+  "KAZ_S_174": {
+   "firstNotified": "2026-07-11",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_175": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_176": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_177": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_178": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_179": {
+   "firstNotified": "2026-09-06",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_180": {
+   "firstNotified": "2026-07-30",
+   "notifiedPlumes": 5
+  },
+  "KAZ_S_181": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_182": {
+   "firstNotified": "2026-07-29",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_184": {
+   "firstNotified": "2026-07-29",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_185": {
+   "firstNotified": "2026-07-30",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_186": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_187": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_188": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 2
+  },
+  "KAZ_S_189": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 6
+  },
+  "KAZ_S_190": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 3
+  },
+  "KAZ_S_191": {
+   "firstNotified": "2026-09-02",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_192": {
+   "firstNotified": "2026-09-06",
+   "notifiedPlumes": 1
+  },
+  "KAZ_S_193": {
+   "firstNotified": "2026-09-06",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_002": {
+   "firstNotified": "2024-04-26",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_003": {
+   "firstNotified": "2024-06-06",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_004": {
+   "firstNotified": "2024-06-08",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_005": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 21
+  },
+  "KWT_S_006": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 2
+  },
+  "KWT_S_007": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_008": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 2
+  },
+  "KWT_S_009": {
+   "firstNotified": "2024-08-22",
+   "notifiedPlumes": 22
+  },
+  "KWT_S_010": {
+   "firstNotified": "2024-07-02",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_013": {
+   "firstNotified": "2025-08-17",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_017": {
+   "firstNotified": "2024-12-02",
+   "notifiedPlumes": 2
+  },
+  "KWT_S_018": {
+   "firstNotified": "2024-12-05",
+   "notifiedPlumes": 2
+  },
+  "KWT_S_019": {
+   "firstNotified": "2024-12-08",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_033": {
+   "firstNotified": "2026-03-29",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_036": {
+   "firstNotified": "2026-09-04",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_037": {
+   "firstNotified": "2026-08-05",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_038": {
+   "firstNotified": "2026-08-05",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_039": {
+   "firstNotified": "2026-08-05",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_040": {
+   "firstNotified": "2026-08-05",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_041": {
+   "firstNotified": "2026-08-05",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_043": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_044": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 2
+  },
+  "KWT_S_045": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_046": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_047": {
+   "firstNotified": "2026-08-14",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_048": {
+   "firstNotified": "2026-09-04",
+   "notifiedPlumes": 1
+  },
+  "KWT_S_049": {
+   "firstNotified": "2026-09-04",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_001": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 19
+  },
+  "LBY_S_002": {
+   "firstNotified": "2024-06-12",
+   "notifiedPlumes": 14
+  },
+  "LBY_S_008": {
+   "firstNotified": "2025-04-09",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_009": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_014": {
+   "firstNotified": "2024-09-19",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_016": {
+   "firstNotified": "2024-06-12",
+   "notifiedPlumes": 17
+  },
+  "LBY_S_020": {
+   "firstNotified": "2024-09-04",
+   "notifiedPlumes": 4
+  },
+  "LBY_S_021": {
+   "firstNotified": "2024-10-14",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_023": {
+   "firstNotified": "2024-09-28",
+   "notifiedPlumes": 7
+  },
+  "LBY_S_024": {
+   "firstNotified": "2024-09-28",
+   "notifiedPlumes": 17
+  },
+  "LBY_S_026": {
+   "firstNotified": "2024-10-12",
+   "notifiedPlumes": 14
+  },
+  "LBY_S_027": {
+   "firstNotified": "2024-10-12",
+   "notifiedPlumes": 8
+  },
+  "LBY_S_028": {
+   "firstNotified": "2024-10-04",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_030": {
+   "firstNotified": "2024-07-01",
+   "notifiedPlumes": 12
+  },
+  "LBY_S_031": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_032": {
+   "firstNotified": "2024-12-15",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_033": {
+   "firstNotified": "2024-12-16",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_039": {
+   "firstNotified": "2025-07-21",
+   "notifiedPlumes": 21
+  },
+  "LBY_S_041": {
+   "firstNotified": "2025-11-02",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_042": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_043": {
+   "firstNotified": "2025-01-24",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_044": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_049": {
+   "firstNotified": "2025-01-25",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_050": {
+   "firstNotified": "2026-03-20",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_052": {
+   "firstNotified": "2025-02-11",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_053": {
+   "firstNotified": "2025-03-22",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_059": {
+   "firstNotified": "2025-02-09",
+   "notifiedPlumes": 9
+  },
+  "LBY_S_063": {
+   "firstNotified": "2025-06-23",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_065": {
+   "firstNotified": "2025-02-10",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_066": {
+   "firstNotified": "2025-03-15",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_067": {
+   "firstNotified": "2026-04-24",
+   "notifiedPlumes": 7
+  },
+  "LBY_S_069": {
+   "firstNotified": "2025-09-12",
+   "notifiedPlumes": 4
+  },
+  "LBY_S_072": {
+   "firstNotified": "2025-02-16",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_073": {
+   "firstNotified": "2025-02-16",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_077": {
+   "firstNotified": "2025-04-29",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_079": {
+   "firstNotified": "2025-03-06",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_082": {
+   "firstNotified": "2025-08-22",
+   "notifiedPlumes": 3
+  },
+  "LBY_S_083": {
+   "firstNotified": "2025-04-15",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_084": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_086": {
+   "firstNotified": "2025-04-28",
+   "notifiedPlumes": 8
+  },
+  "LBY_S_101": {
+   "firstNotified": "2025-06-06",
+   "notifiedPlumes": 12
+  },
+  "LBY_S_106": {
+   "firstNotified": "2025-05-29",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_110": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_111": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_112": {
+   "firstNotified": "2025-06-21",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_113": {
+   "firstNotified": "2025-07-26",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_114": {
+   "firstNotified": "2025-07-29",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_115": {
+   "firstNotified": "2025-08-21",
+   "notifiedPlumes": 39
+  },
+  "LBY_S_117": {
+   "firstNotified": "2025-09-03",
+   "notifiedPlumes": 4
+  },
+  "LBY_S_118": {
+   "firstNotified": "2025-08-29",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_119": {
+   "firstNotified": "2026-02-03",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_125": {
+   "firstNotified": "2025-10-21",
+   "notifiedPlumes": 8
+  },
+  "LBY_S_127": {
+   "firstNotified": "2025-10-22",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_128": {
+   "firstNotified": "2025-10-22",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_129": {
+   "firstNotified": "2025-10-25",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_132": {
+   "firstNotified": "2025-11-17",
+   "notifiedPlumes": 3
+  },
+  "LBY_S_137": {
+   "firstNotified": "2025-12-04",
+   "notifiedPlumes": 3
+  },
+  "LBY_S_138": {
+   "firstNotified": "2025-12-15",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_140": {
+   "firstNotified": "2025-12-27",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_141": {
+   "firstNotified": "2025-12-27",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_143": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_144": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_145": {
+   "firstNotified": "2026-01-24",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_149": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_150": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_151": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_152": {
+   "firstNotified": "2026-07-07",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_153": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 2
+  },
+  "LBY_S_154": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 3
+  },
+  "LBY_S_155": {
+   "firstNotified": "2026-08-27",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_156": {
+   "firstNotified": "2026-08-27",
+   "notifiedPlumes": 1
+  },
+  "LBY_S_157": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 3
+  },
+  "MEX_S_001": {
+   "firstNotified": "2023-06-17",
+   "notifiedPlumes": 4
+  },
+  "MEX_S_002": {
+   "firstNotified": "2023-06-17",
+   "notifiedPlumes": 3
+  },
+  "MEX_S_003": {
+   "firstNotified": "2023-04-10",
+   "notifiedPlumes": 80
+  },
+  "MEX_S_006": {
+   "firstNotified": "2025-10-17",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_007": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 25
+  },
+  "MEX_S_008": {
+   "firstNotified": "2024-08-15",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_009": {
+   "firstNotified": "2024-10-06",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_010": {
+   "firstNotified": "2025-02-13",
+   "notifiedPlumes": 3
+  },
+  "MEX_S_011": {
+   "firstNotified": "2025-02-13",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_013": {
+   "firstNotified": "2025-03-16",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_014": {
+   "firstNotified": "2025-07-31",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_057": {
+   "firstNotified": "2026-03-15",
+   "notifiedPlumes": 6
+  },
+  "MEX_S_059": {
+   "firstNotified": "2025-05-15",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_061": {
+   "firstNotified": "2026-01-09",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_077": {
+   "firstNotified": "2025-08-16",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_078": {
+   "firstNotified": "2025-08-15",
+   "notifiedPlumes": 2
+  },
+  "MEX_S_085": {
+   "firstNotified": "2025-10-17",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_090": {
+   "firstNotified": "2026-01-09",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_091": {
+   "firstNotified": "2026-01-06",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_093": {
+   "firstNotified": "2026-01-24",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_094": {
+   "firstNotified": "2026-01-24",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_095": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 11
+  },
+  "MEX_S_101": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 3
+  },
+  "MEX_S_103": {
+   "firstNotified": "2026-03-22",
+   "notifiedPlumes": 18
+  },
+  "MEX_S_108": {
+   "firstNotified": "2026-04-23",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_112": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_113": {
+   "firstNotified": "2026-01-24",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_115": {
+   "firstNotified": "2026-06-20",
+   "notifiedPlumes": 6
+  },
+  "MEX_S_118": {
+   "firstNotified": "2026-07-17",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_119": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "MEX_S_122": {
+   "firstNotified": "2026-08-26",
+   "notifiedPlumes": 1
+  },
+  "MMR_S_006": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "MMR_S_007": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "MOZ_S_001": {
+   "firstNotified": "2023-06-30",
+   "notifiedPlumes": 1
+  },
+  "MOZ_S_004": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "MYS_S_001": {
+   "firstNotified": "2022-01-23",
+   "notifiedPlumes": 25
+  },
+  "MYS_S_006": {
+   "firstNotified": "2026-04-23",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_001": {
+   "firstNotified": "2024-04-20",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_002": {
+   "firstNotified": "2024-08-22",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_003": {
+   "firstNotified": "2024-10-23",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_004": {
+   "firstNotified": "2024-10-23",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_006": {
+   "firstNotified": "2024-06-22",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_007": {
+   "firstNotified": "2025-02-28",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_008": {
+   "firstNotified": "2025-02-28",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_010": {
+   "firstNotified": "2025-02-28",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_011": {
+   "firstNotified": "2025-02-28",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_012": {
+   "firstNotified": "2024-06-22",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_014": {
+   "firstNotified": "2025-02-28",
+   "notifiedPlumes": 1
+  },
+  "NGA_S_024": {
+   "firstNotified": "2024-12-19",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_001": {
+   "firstNotified": "2023-11-22",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_002": {
+   "firstNotified": "2023-11-24",
+   "notifiedPlumes": 4
+  },
+  "OMN_S_003": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_004": {
+   "firstNotified": "2025-02-02",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_006": {
+   "firstNotified": "2025-02-02",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_015": {
+   "firstNotified": "2025-08-25",
+   "notifiedPlumes": 4
+  },
+  "OMN_S_016": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 2
+  },
+  "OMN_S_017": {
+   "firstNotified": "2025-09-19",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_019": {
+   "firstNotified": "2025-11-25",
+   "notifiedPlumes": 2
+  },
+  "OMN_S_020": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_022": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 1
+  },
+  "OMN_S_023": {
+   "firstNotified": "2026-07-13",
+   "notifiedPlumes": 1
+  },
+  "PAK_S_001": {
+   "firstNotified": "2023-12-21",
+   "notifiedPlumes": 26
+  },
+  "PAK_S_002": {
+   "firstNotified": "2024-06-23",
+   "notifiedPlumes": 1
+  },
+  "PAK_S_003": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 7
+  },
+  "PAK_S_008": {
+   "firstNotified": "2024-12-16",
+   "notifiedPlumes": 6
+  },
+  "PAK_S_009": {
+   "firstNotified": "2025-01-27",
+   "notifiedPlumes": 2
+  },
+  "PAK_S_010": {
+   "firstNotified": "2025-01-27",
+   "notifiedPlumes": 1
+  },
+  "PAK_S_011": {
+   "firstNotified": "2025-04-16",
+   "notifiedPlumes": 2
+  },
+  "PAK_S_020": {
+   "firstNotified": "2026-03-06",
+   "notifiedPlumes": 3
+  },
+  "PAK_S_024": {
+   "firstNotified": "2026-06-23",
+   "notifiedPlumes": 1
+  },
+  "QAT_S_001": {
+   "firstNotified": "2024-07-26",
+   "notifiedPlumes": 1
+  },
+  "QAT_S_006": {
+   "firstNotified": "2025-10-13",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_001": {
+   "firstNotified": "2025-03-19",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_018": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 5
+  },
+  "RUS_S_019": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 7
+  },
+  "RUS_S_020": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_023": {
+   "firstNotified": "2025-05-12",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_024": {
+   "firstNotified": "2025-05-12",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_026": {
+   "firstNotified": "2025-06-02",
+   "notifiedPlumes": 5
+  },
+  "RUS_S_027": {
+   "firstNotified": "2025-06-10",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_028": {
+   "firstNotified": "2025-06-07",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_029": {
+   "firstNotified": "2025-07-10",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_030": {
+   "firstNotified": "2025-07-12",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_034": {
+   "firstNotified": "2025-08-09",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_035": {
+   "firstNotified": "2025-08-09",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_036": {
+   "firstNotified": "2025-08-11",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_037": {
+   "firstNotified": "2025-08-25",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_038": {
+   "firstNotified": "2025-09-01",
+   "notifiedPlumes": 5
+  },
+  "RUS_S_039": {
+   "firstNotified": "2025-09-01",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_040": {
+   "firstNotified": "2025-09-04",
+   "notifiedPlumes": 17
+  },
+  "RUS_S_041": {
+   "firstNotified": "2025-09-11",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_042": {
+   "firstNotified": "2025-09-11",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_043": {
+   "firstNotified": "2025-09-15",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_044": {
+   "firstNotified": "2025-09-16",
+   "notifiedPlumes": 7
+  },
+  "RUS_S_045": {
+   "firstNotified": "2025-09-17",
+   "notifiedPlumes": 10
+  },
+  "RUS_S_046": {
+   "firstNotified": "2025-09-18",
+   "notifiedPlumes": 5
+  },
+  "RUS_S_047": {
+   "firstNotified": "2025-09-18",
+   "notifiedPlumes": 7
+  },
+  "RUS_S_049": {
+   "firstNotified": "2025-09-23",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_050": {
+   "firstNotified": "2025-09-22",
+   "notifiedPlumes": 15
+  },
+  "RUS_S_051": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_052": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 8
+  },
+  "RUS_S_222": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_224": {
+   "firstNotified": "2026-03-04",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_225": {
+   "firstNotified": "2026-03-05",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_226": {
+   "firstNotified": "2026-03-04",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_227": {
+   "firstNotified": "2026-04-02",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_228": {
+   "firstNotified": "2026-04-16",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_229": {
+   "firstNotified": "2026-04-09",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_230": {
+   "firstNotified": "2026-04-21",
+   "notifiedPlumes": 5
+  },
+  "RUS_S_231": {
+   "firstNotified": "2026-04-21",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_232": {
+   "firstNotified": "2026-04-21",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_233": {
+   "firstNotified": "2026-05-18",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_234": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_235": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_236": {
+   "firstNotified": "2026-05-21",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_237": {
+   "firstNotified": "2026-05-18",
+   "notifiedPlumes": 7
+  },
+  "RUS_S_238": {
+   "firstNotified": "2026-06-04",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_239": {
+   "firstNotified": "2026-06-04",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_243": {
+   "firstNotified": "2026-07-08",
+   "notifiedPlumes": 4
+  },
+  "RUS_S_244": {
+   "firstNotified": "2026-07-06",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_247": {
+   "firstNotified": "2026-07-28",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_248": {
+   "firstNotified": "2026-08-06",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_249": {
+   "firstNotified": "2026-08-06",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_251": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_252": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_253": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_254": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_255": {
+   "firstNotified": "2026-08-10",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_256": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_257": {
+   "firstNotified": "2026-08-13",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_258": {
+   "firstNotified": "2026-08-13",
+   "notifiedPlumes": 1
+  },
+  "RUS_S_259": {
+   "firstNotified": "2026-08-18",
+   "notifiedPlumes": 2
+  },
+  "RUS_S_260": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 6
+  },
+  "RUS_S_261": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 3
+  },
+  "RUS_S_262": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "SAU_S_002": {
+   "firstNotified": "2024-08-12",
+   "notifiedPlumes": 10
+  },
+  "SAU_S_010": {
+   "firstNotified": "2025-05-21",
+   "notifiedPlumes": 1
+  },
+  "SAU_S_012": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 2
+  },
+  "SAU_S_022": {
+   "firstNotified": "2026-06-09",
+   "notifiedPlumes": 1
+  },
+  "SAU_S_031": {
+   "firstNotified": "2026-09-05",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_001": {
+   "firstNotified": "2024-03-02",
+   "notifiedPlumes": 38
+  },
+  "SYR_S_002": {
+   "firstNotified": "2024-04-01",
+   "notifiedPlumes": 29
+  },
+  "SYR_S_003": {
+   "firstNotified": "2024-04-01",
+   "notifiedPlumes": 4
+  },
+  "SYR_S_004": {
+   "firstNotified": "2024-04-01",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_005": {
+   "firstNotified": "2024-04-01",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_007": {
+   "firstNotified": "2026-06-16",
+   "notifiedPlumes": 9
+  },
+  "SYR_S_008": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_009": {
+   "firstNotified": "2024-08-03",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_010": {
+   "firstNotified": "2024-10-04",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_011": {
+   "firstNotified": "2024-08-07",
+   "notifiedPlumes": 3
+  },
+  "SYR_S_012": {
+   "firstNotified": "2024-08-01",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_014": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 93
+  },
+  "SYR_S_015": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 77
+  },
+  "SYR_S_016": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 3
+  },
+  "SYR_S_017": {
+   "firstNotified": "2024-09-14",
+   "notifiedPlumes": 4
+  },
+  "SYR_S_018": {
+   "firstNotified": "2024-09-30",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_019": {
+   "firstNotified": "2024-09-30",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_020": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_021": {
+   "firstNotified": "2024-10-25",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_022": {
+   "firstNotified": "2024-10-17",
+   "notifiedPlumes": 10
+  },
+  "SYR_S_023": {
+   "firstNotified": "2024-11-25",
+   "notifiedPlumes": 14
+  },
+  "SYR_S_024": {
+   "firstNotified": "2024-11-25",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_025": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 3
+  },
+  "SYR_S_027": {
+   "firstNotified": "2024-09-30",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_028": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_029": {
+   "firstNotified": "2025-09-09",
+   "notifiedPlumes": 14
+  },
+  "SYR_S_030": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 4
+  },
+  "SYR_S_031": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_032": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 91
+  },
+  "SYR_S_034": {
+   "firstNotified": "2025-01-28",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_037": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 37
+  },
+  "SYR_S_038": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 2
+  },
+  "SYR_S_039": {
+   "firstNotified": "2025-04-17",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_040": {
+   "firstNotified": "2025-04-25",
+   "notifiedPlumes": 8
+  },
+  "SYR_S_041": {
+   "firstNotified": "2024-08-01",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_042": {
+   "firstNotified": "2024-04-01",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_051": {
+   "firstNotified": "2025-06-18",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_052": {
+   "firstNotified": "2025-07-23",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_053": {
+   "firstNotified": "2025-07-31",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_054": {
+   "firstNotified": "2025-07-31",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_055": {
+   "firstNotified": "2025-10-03",
+   "notifiedPlumes": 12
+  },
+  "SYR_S_056": {
+   "firstNotified": "2025-10-03",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_057": {
+   "firstNotified": "2025-11-09",
+   "notifiedPlumes": 11
+  },
+  "SYR_S_058": {
+   "firstNotified": "2025-11-09",
+   "notifiedPlumes": 8
+  },
+  "SYR_S_059": {
+   "firstNotified": "2025-11-09",
+   "notifiedPlumes": 10
+  },
+  "SYR_S_060": {
+   "firstNotified": "2025-11-26",
+   "notifiedPlumes": 5
+  },
+  "SYR_S_061": {
+   "firstNotified": "2026-02-01",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_062": {
+   "firstNotified": "2026-06-08",
+   "notifiedPlumes": 4
+  },
+  "SYR_S_063": {
+   "firstNotified": "2026-04-16",
+   "notifiedPlumes": 1
+  },
+  "SYR_S_064": {
+   "firstNotified": "2026-08-31",
+   "notifiedPlumes": 1
+  },
+  "THA_S_008": {
+   "firstNotified": "2026-03-20",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_001": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 9
+  },
+  "TKM_S_002": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 14
+  },
+  "TKM_S_003": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 11
+  },
+  "TKM_S_005": {
+   "firstNotified": "2024-07-07",
+   "notifiedPlumes": 22
+  },
+  "TKM_S_006": {
+   "firstNotified": "2024-06-05",
+   "notifiedPlumes": 22
+  },
+  "TKM_S_007": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_008": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_009": {
+   "firstNotified": "2024-06-09",
+   "notifiedPlumes": 48
+  },
+  "TKM_S_010": {
+   "firstNotified": "2024-08-09",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_011": {
+   "firstNotified": "2024-06-08",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_012": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 72
+  },
+  "TKM_S_013": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_014": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_015": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_016": {
+   "firstNotified": "2024-07-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_017": {
+   "firstNotified": "2024-07-22",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_018": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 131
+  },
+  "TKM_S_019": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 109
+  },
+  "TKM_S_020": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 122
+  },
+  "TKM_S_021": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 55
+  },
+  "TKM_S_022": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 145
+  },
+  "TKM_S_023": {
+   "firstNotified": "2024-08-06",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_024": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 49
+  },
+  "TKM_S_025": {
+   "firstNotified": "2024-07-05",
+   "notifiedPlumes": 45
+  },
+  "TKM_S_026": {
+   "firstNotified": "2024-07-28",
+   "notifiedPlumes": 92
+  },
+  "TKM_S_027": {
+   "firstNotified": "2024-07-17",
+   "notifiedPlumes": 27
+  },
+  "TKM_S_028": {
+   "firstNotified": "2024-06-30",
+   "notifiedPlumes": 9
+  },
+  "TKM_S_029": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 219
+  },
+  "TKM_S_030": {
+   "firstNotified": "2024-06-26",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_031": {
+   "firstNotified": "2024-07-13",
+   "notifiedPlumes": 27
+  },
+  "TKM_S_032": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_033": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_034": {
+   "firstNotified": "2024-07-08",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_035": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 88
+  },
+  "TKM_S_036": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_037": {
+   "firstNotified": "2024-07-28",
+   "notifiedPlumes": 11
+  },
+  "TKM_S_038": {
+   "firstNotified": "2024-07-22",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_039": {
+   "firstNotified": "2024-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_040": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_041": {
+   "firstNotified": "2024-07-10",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_042": {
+   "firstNotified": "2024-07-26",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_043": {
+   "firstNotified": "2024-06-13",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_044": {
+   "firstNotified": "2024-07-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_045": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 93
+  },
+  "TKM_S_046": {
+   "firstNotified": "2024-06-07",
+   "notifiedPlumes": 53
+  },
+  "TKM_S_047": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 108
+  },
+  "TKM_S_048": {
+   "firstNotified": "2024-06-03",
+   "notifiedPlumes": 38
+  },
+  "TKM_S_049": {
+   "firstNotified": "2024-07-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_050": {
+   "firstNotified": "2024-07-25",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_051": {
+   "firstNotified": "2024-06-08",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_052": {
+   "firstNotified": "2024-06-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_053": {
+   "firstNotified": "2024-06-15",
+   "notifiedPlumes": 15
+  },
+  "TKM_S_054": {
+   "firstNotified": "2024-06-25",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_055": {
+   "firstNotified": "2024-08-07",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_056": {
+   "firstNotified": "2024-08-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_057": {
+   "firstNotified": "2024-09-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_058": {
+   "firstNotified": "2024-08-30",
+   "notifiedPlumes": 9
+  },
+  "TKM_S_059": {
+   "firstNotified": "2024-09-09",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_060": {
+   "firstNotified": "2024-08-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_061": {
+   "firstNotified": "2025-05-24",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_062": {
+   "firstNotified": "2024-09-13",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_063": {
+   "firstNotified": "2024-08-27",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_065": {
+   "firstNotified": "2024-08-24",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_066": {
+   "firstNotified": "2024-08-24",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_067": {
+   "firstNotified": "2024-09-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_068": {
+   "firstNotified": "2024-09-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_069": {
+   "firstNotified": "2024-10-03",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_070": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_071": {
+   "firstNotified": "2024-10-01",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_072": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_073": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_075": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_076": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_077": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 19
+  },
+  "TKM_S_078": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_079": {
+   "firstNotified": "2024-10-05",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_080": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_081": {
+   "firstNotified": "2024-10-11",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_082": {
+   "firstNotified": "2024-12-04",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_083": {
+   "firstNotified": "2024-12-20",
+   "notifiedPlumes": 42
+  },
+  "TKM_S_084": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_085": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_086": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_087": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_088": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_089": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_090": {
+   "firstNotified": "2025-01-29",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_091": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_092": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_093": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_094": {
+   "firstNotified": "2025-01-30",
+   "notifiedPlumes": 10
+  },
+  "TKM_S_095": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_097": {
+   "firstNotified": "2025-03-18",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_102": {
+   "firstNotified": "2025-08-13",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_109": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_110": {
+   "firstNotified": "2024-06-21",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_117": {
+   "firstNotified": "2025-01-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_118": {
+   "firstNotified": "2025-06-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_125": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_126": {
+   "firstNotified": "2025-05-14",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_127": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_129": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_134": {
+   "firstNotified": "2025-10-08",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_136": {
+   "firstNotified": "2025-11-25",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_138": {
+   "firstNotified": "2024-08-27",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_140": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_143": {
+   "firstNotified": "2026-05-27",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_144": {
+   "firstNotified": "2024-06-24",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_146": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_147": {
+   "firstNotified": "2025-08-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_149": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_152": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_161": {
+   "firstNotified": "2026-02-02",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_177": {
+   "firstNotified": "2025-04-01",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_178": {
+   "firstNotified": "2025-04-08",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_179": {
+   "firstNotified": "2025-06-06",
+   "notifiedPlumes": 10
+  },
+  "TKM_S_192": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_193": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_194": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_195": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_196": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_198": {
+   "firstNotified": "2024-11-02",
+   "notifiedPlumes": 13
+  },
+  "TKM_S_201": {
+   "firstNotified": "2025-10-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_203": {
+   "firstNotified": "2025-05-21",
+   "notifiedPlumes": 95
+  },
+  "TKM_S_209": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_210": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_211": {
+   "firstNotified": "2026-05-15",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_213": {
+   "firstNotified": "2025-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_217": {
+   "firstNotified": "2026-05-15",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_220": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_222": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_226": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_249": {
+   "firstNotified": "2026-05-27",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_252": {
+   "firstNotified": "2025-03-28",
+   "notifiedPlumes": 11
+  },
+  "TKM_S_256": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 11
+  },
+  "TKM_S_258": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_259": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_262": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_268": {
+   "firstNotified": "2025-05-19",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_276": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_277": {
+   "firstNotified": "2026-08-25",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_280": {
+   "firstNotified": "2025-04-25",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_281": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_285": {
+   "firstNotified": "2025-10-02",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_293": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_295": {
+   "firstNotified": "2025-08-06",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_307": {
+   "firstNotified": "2026-05-23",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_311": {
+   "firstNotified": "2025-10-05",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_312": {
+   "firstNotified": "2025-06-12",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_313": {
+   "firstNotified": "2025-04-06",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_314": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_319": {
+   "firstNotified": "2026-05-23",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_337": {
+   "firstNotified": "2026-04-04",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_338": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_340": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_341": {
+   "firstNotified": "2025-04-02",
+   "notifiedPlumes": 10
+  },
+  "TKM_S_342": {
+   "firstNotified": "2025-04-08",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_343": {
+   "firstNotified": "2024-10-30",
+   "notifiedPlumes": 11
+  },
+  "TKM_S_344": {
+   "firstNotified": "2025-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_347": {
+   "firstNotified": "2025-04-01",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_348": {
+   "firstNotified": "2025-04-01",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_350": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_352": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_354": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_355": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 59
+  },
+  "TKM_S_356": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_357": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_358": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_359": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_360": {
+   "firstNotified": "2025-04-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_361": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_364": {
+   "firstNotified": "2025-04-23",
+   "notifiedPlumes": 12
+  },
+  "TKM_S_365": {
+   "firstNotified": "2025-05-23",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_366": {
+   "firstNotified": "2025-05-10",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_367": {
+   "firstNotified": "2025-05-18",
+   "notifiedPlumes": 49
+  },
+  "TKM_S_371": {
+   "firstNotified": "2026-09-10",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_374": {
+   "firstNotified": "2025-05-13",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_375": {
+   "firstNotified": "2025-05-13",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_376": {
+   "firstNotified": "2025-08-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_377": {
+   "firstNotified": "2025-05-29",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_378": {
+   "firstNotified": "2025-06-06",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_379": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_380": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_381": {
+   "firstNotified": "2025-06-21",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_383": {
+   "firstNotified": "2025-07-02",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_385": {
+   "firstNotified": "2025-11-29",
+   "notifiedPlumes": 9
+  },
+  "TKM_S_386": {
+   "firstNotified": "2025-06-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_387": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_388": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_389": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_390": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_391": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_392": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_393": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_395": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_396": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_397": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_398": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_400": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_401": {
+   "firstNotified": "2025-07-24",
+   "notifiedPlumes": 10
+  },
+  "TKM_S_402": {
+   "firstNotified": "2025-07-24",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_403": {
+   "firstNotified": "2025-07-30",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_404": {
+   "firstNotified": "2025-07-26",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_405": {
+   "firstNotified": "2025-08-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_406": {
+   "firstNotified": "2025-08-06",
+   "notifiedPlumes": 43
+  },
+  "TKM_S_407": {
+   "firstNotified": "2025-08-12",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_408": {
+   "firstNotified": "2025-08-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_409": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_410": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_411": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_413": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_414": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_418": {
+   "firstNotified": "2025-09-10",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_419": {
+   "firstNotified": "2025-09-10",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_420": {
+   "firstNotified": "2025-09-18",
+   "notifiedPlumes": 36
+  },
+  "TKM_S_421": {
+   "firstNotified": "2025-09-26",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_425": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_426": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_427": {
+   "firstNotified": "2025-10-04",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_428": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_429": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_430": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_431": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_432": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_433": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_434": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_435": {
+   "firstNotified": "2025-10-03",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_438": {
+   "firstNotified": "2025-09-30",
+   "notifiedPlumes": 64
+  },
+  "TKM_S_440": {
+   "firstNotified": "2025-10-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_442": {
+   "firstNotified": "2025-10-11",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_443": {
+   "firstNotified": "2025-10-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_445": {
+   "firstNotified": "2025-10-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_446": {
+   "firstNotified": "2025-11-15",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_447": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_450": {
+   "firstNotified": "2025-12-07",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_451": {
+   "firstNotified": "2026-02-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_452": {
+   "firstNotified": "2026-02-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_454": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 16
+  },
+  "TKM_S_455": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_456": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_457": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_458": {
+   "firstNotified": "2026-02-27",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_459": {
+   "firstNotified": "2026-04-04",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_460": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_461": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_462": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_463": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_465": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 4
+  },
+  "TKM_S_467": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_468": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_469": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_471": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_472": {
+   "firstNotified": "2026-04-04",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_474": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_475": {
+   "firstNotified": "2026-04-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_476": {
+   "firstNotified": "2026-04-08",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_477": {
+   "firstNotified": "2026-04-08",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_478": {
+   "firstNotified": "2026-04-08",
+   "notifiedPlumes": 36
+  },
+  "TKM_S_479": {
+   "firstNotified": "2026-04-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_480": {
+   "firstNotified": "2026-04-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_484": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 13
+  },
+  "TKM_S_485": {
+   "firstNotified": "2026-05-04",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_486": {
+   "firstNotified": "2026-05-04",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_487": {
+   "firstNotified": "2026-05-12",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_488": {
+   "firstNotified": "2026-05-12",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_489": {
+   "firstNotified": "2026-05-23",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_490": {
+   "firstNotified": "2026-05-23",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_493": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 47
+  },
+  "TKM_S_494": {
+   "firstNotified": "2026-06-17",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_495": {
+   "firstNotified": "2026-05-27",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_496": {
+   "firstNotified": "2026-05-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_497": {
+   "firstNotified": "2026-05-27",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_499": {
+   "firstNotified": "2026-06-02",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_501": {
+   "firstNotified": "2026-06-09",
+   "notifiedPlumes": 22
+  },
+  "TKM_S_502": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 19
+  },
+  "TKM_S_503": {
+   "firstNotified": "2026-06-10",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_504": {
+   "firstNotified": "2026-06-10",
+   "notifiedPlumes": 12
+  },
+  "TKM_S_505": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 18
+  },
+  "TKM_S_506": {
+   "firstNotified": "2026-07-10",
+   "notifiedPlumes": 7
+  },
+  "TKM_S_508": {
+   "firstNotified": "2026-06-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_509": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 28
+  },
+  "TKM_S_510": {
+   "firstNotified": "2026-06-12",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_511": {
+   "firstNotified": "2026-06-20",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_515": {
+   "firstNotified": "2026-06-29",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_517": {
+   "firstNotified": "2026-07-04",
+   "notifiedPlumes": 9
+  },
+  "TKM_S_518": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 8
+  },
+  "TKM_S_519": {
+   "firstNotified": "2026-07-22",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_520": {
+   "firstNotified": "2026-07-15",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_521": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 14
+  },
+  "TKM_S_522": {
+   "firstNotified": "2026-07-14",
+   "notifiedPlumes": 6
+  },
+  "TKM_S_524": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_525": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_526": {
+   "firstNotified": "2026-08-04",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_527": {
+   "firstNotified": "2026-08-04",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_528": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 5
+  },
+  "TKM_S_529": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_530": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 3
+  },
+  "TKM_S_531": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 14
+  },
+  "TKM_S_532": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_533": {
+   "firstNotified": "2026-08-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_534": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_535": {
+   "firstNotified": "2026-08-16",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_536": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_537": {
+   "firstNotified": "2026-08-12",
+   "notifiedPlumes": 2
+  },
+  "TKM_S_538": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_539": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_540": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_541": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_542": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_545": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_547": {
+   "firstNotified": "2026-09-04",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_548": {
+   "firstNotified": "2026-09-05",
+   "notifiedPlumes": 1
+  },
+  "TKM_S_549": {
+   "firstNotified": "2026-09-05",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_001": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 2
+  },
+  "UKR_S_017": {
+   "firstNotified": "2026-03-11",
+   "notifiedPlumes": 3
+  },
+  "UKR_S_019": {
+   "firstNotified": "2026-08-02",
+   "notifiedPlumes": 2
+  },
+  "UKR_S_020": {
+   "firstNotified": "2026-06-10",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_021": {
+   "firstNotified": "2026-06-11",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_022": {
+   "firstNotified": "2026-06-20",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_023": {
+   "firstNotified": "2026-06-20",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_024": {
+   "firstNotified": "2026-06-19",
+   "notifiedPlumes": 3
+  },
+  "UKR_S_026": {
+   "firstNotified": "2026-08-04",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_032": {
+   "firstNotified": "2026-08-04",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_034": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_035": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_036": {
+   "firstNotified": "2026-08-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_037": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_038": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_039": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 2
+  },
+  "UKR_S_040": {
+   "firstNotified": "2026-08-04",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_041": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_042": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_043": {
+   "firstNotified": "2026-08-08",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_044": {
+   "firstNotified": "2026-08-07",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_046": {
+   "firstNotified": "2026-08-02",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_048": {
+   "firstNotified": "2026-08-13",
+   "notifiedPlumes": 2
+  },
+  "UKR_S_051": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_053": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_054": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_055": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_056": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_057": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_058": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_059": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_060": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_061": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_062": {
+   "firstNotified": "2026-09-09",
+   "notifiedPlumes": 1
+  },
+  "UKR_S_063": {
+   "firstNotified": "2026-09-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_001": {
+   "firstNotified": "2023-05-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_002": {
+   "firstNotified": "2023-09-09",
+   "notifiedPlumes": 1
+  },
+  "USA_S_003": {
+   "firstNotified": "2023-09-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_004": {
+   "firstNotified": "2023-10-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_005": {
+   "firstNotified": "2023-10-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_006": {
+   "firstNotified": "2023-10-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_007": {
+   "firstNotified": "2025-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_009": {
+   "firstNotified": "2023-11-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_011": {
+   "firstNotified": "2023-11-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_012": {
+   "firstNotified": "2023-11-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_013": {
+   "firstNotified": "2023-11-28",
+   "notifiedPlumes": 4
+  },
+  "USA_S_014": {
+   "firstNotified": "2023-06-19",
+   "notifiedPlumes": 2
+  },
+  "USA_S_015": {
+   "firstNotified": "2023-07-29",
+   "notifiedPlumes": 21
+  },
+  "USA_S_016": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_017": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_018": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_019": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_020": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_021": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_022": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_023": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_024": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_025": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_026": {
+   "firstNotified": "2024-01-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_027": {
+   "firstNotified": "2024-01-15",
+   "notifiedPlumes": 3
+  },
+  "USA_S_028": {
+   "firstNotified": "2024-01-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_029": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_030": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_031": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_032": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_033": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_034": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_035": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_036": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 3
+  },
+  "USA_S_037": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 4
+  },
+  "USA_S_038": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_039": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "USA_S_040": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_041": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_042": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_043": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_044": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 3
+  },
+  "USA_S_045": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_050": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 4
+  },
+  "USA_S_051": {
+   "firstNotified": "2024-02-13",
+   "notifiedPlumes": 3
+  },
+  "USA_S_053": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_054": {
+   "firstNotified": "2024-09-13",
+   "notifiedPlumes": 4
+  },
+  "USA_S_055": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_056": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_057": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_060": {
+   "firstNotified": "2024-07-20",
+   "notifiedPlumes": 6
+  },
+  "USA_S_061": {
+   "firstNotified": "2024-07-20",
+   "notifiedPlumes": 8
+  },
+  "USA_S_062": {
+   "firstNotified": "2024-07-27",
+   "notifiedPlumes": 3
+  },
+  "USA_S_063": {
+   "firstNotified": "2024-07-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_064": {
+   "firstNotified": "2024-07-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_065": {
+   "firstNotified": "2024-07-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_066": {
+   "firstNotified": "2024-07-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_067": {
+   "firstNotified": "2024-08-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_068": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 1
+  },
+  "USA_S_069": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 1
+  },
+  "USA_S_070": {
+   "firstNotified": "2025-03-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_071": {
+   "firstNotified": "2024-07-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_072": {
+   "firstNotified": "2024-08-12",
+   "notifiedPlumes": 18
+  },
+  "USA_S_073": {
+   "firstNotified": "2024-08-12",
+   "notifiedPlumes": 10
+  },
+  "USA_S_074": {
+   "firstNotified": "2024-08-12",
+   "notifiedPlumes": 5
+  },
+  "USA_S_075": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "USA_S_076": {
+   "firstNotified": "2024-08-12",
+   "notifiedPlumes": 12
+  },
+  "USA_S_077": {
+   "firstNotified": "2024-10-08",
+   "notifiedPlumes": 3
+  },
+  "USA_S_078": {
+   "firstNotified": "2024-08-16",
+   "notifiedPlumes": 1
+  },
+  "USA_S_079": {
+   "firstNotified": "2024-08-16",
+   "notifiedPlumes": 1
+  },
+  "USA_S_080": {
+   "firstNotified": "2025-06-03",
+   "notifiedPlumes": 2
+  },
+  "USA_S_082": {
+   "firstNotified": "2024-09-10",
+   "notifiedPlumes": 3
+  },
+  "USA_S_083": {
+   "firstNotified": "2024-08-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_084": {
+   "firstNotified": "2024-08-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_085": {
+   "firstNotified": "2024-08-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_086": {
+   "firstNotified": "2024-09-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_088": {
+   "firstNotified": "2024-09-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_093": {
+   "firstNotified": "2024-10-16",
+   "notifiedPlumes": 1
+  },
+  "USA_S_094": {
+   "firstNotified": "2024-03-11",
+   "notifiedPlumes": 3
+  },
+  "USA_S_095": {
+   "firstNotified": "2024-10-21",
+   "notifiedPlumes": 2
+  },
+  "USA_S_096": {
+   "firstNotified": "2024-10-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_099": {
+   "firstNotified": "2024-10-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_100": {
+   "firstNotified": "2025-03-10",
+   "notifiedPlumes": 4
+  },
+  "USA_S_1018": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1021": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_103": {
+   "firstNotified": "2025-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_104": {
+   "firstNotified": "2024-11-09",
+   "notifiedPlumes": 4
+  },
+  "USA_S_1042": {
+   "firstNotified": "2025-12-30",
+   "notifiedPlumes": 4
+  },
+  "USA_S_1045": {
+   "firstNotified": "2026-01-09",
+   "notifiedPlumes": 1
+  },
+  "USA_S_105": {
+   "firstNotified": "2024-11-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_106": {
+   "firstNotified": "2024-11-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1063": {
+   "firstNotified": "2026-01-21",
+   "notifiedPlumes": 5
+  },
+  "USA_S_1064": {
+   "firstNotified": "2026-01-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1065": {
+   "firstNotified": "2026-01-27",
+   "notifiedPlumes": 4
+  },
+  "USA_S_1066": {
+   "firstNotified": "2026-01-27",
+   "notifiedPlumes": 7
+  },
+  "USA_S_107": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 3
+  },
+  "USA_S_1074": {
+   "firstNotified": "2026-01-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1075": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1076": {
+   "firstNotified": "2026-02-05",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1077": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1078": {
+   "firstNotified": "2026-01-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_108": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 2
+  },
+  "USA_S_109": {
+   "firstNotified": "2024-04-25",
+   "notifiedPlumes": 6
+  },
+  "USA_S_1093": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1094": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1096": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1097": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1098": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1099": {
+   "firstNotified": "2026-02-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1101": {
+   "firstNotified": "2026-02-18",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1105": {
+   "firstNotified": "2026-03-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1106": {
+   "firstNotified": "2026-03-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_111": {
+   "firstNotified": "2024-11-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1114": {
+   "firstNotified": "2026-03-17",
+   "notifiedPlumes": 3
+  },
+  "USA_S_1115": {
+   "firstNotified": "2026-03-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_112": {
+   "firstNotified": "2024-11-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1121": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1122": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1124": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1125": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1126": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1127": {
+   "firstNotified": "2026-03-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1128": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1129": {
+   "firstNotified": "2026-03-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1130": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1132": {
+   "firstNotified": "2026-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1136": {
+   "firstNotified": "2026-03-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1139": {
+   "firstNotified": "2026-03-22",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1140": {
+   "firstNotified": "2026-03-26",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1144": {
+   "firstNotified": "2026-04-02",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1152": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1154": {
+   "firstNotified": "2026-04-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1155": {
+   "firstNotified": "2026-04-24",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1157": {
+   "firstNotified": "2026-04-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1164": {
+   "firstNotified": "2026-05-12",
+   "notifiedPlumes": 4
+  },
+  "USA_S_1167": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1168": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1169": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_117": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1171": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1172": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1173": {
+   "firstNotified": "2026-05-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1174": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 3
+  },
+  "USA_S_1175": {
+   "firstNotified": "2026-05-22",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1179": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1183": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1184": {
+   "firstNotified": "2026-06-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_119": {
+   "firstNotified": "2025-03-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1191": {
+   "firstNotified": "2026-06-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1194": {
+   "firstNotified": "2026-06-13",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1195": {
+   "firstNotified": "2026-06-13",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1196": {
+   "firstNotified": "2026-06-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1199": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_120": {
+   "firstNotified": "2025-03-24",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1200": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1201": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1202": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1203": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1204": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1205": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1206": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1207": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1208": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1209": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_121": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1210": {
+   "firstNotified": "2026-06-25",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1211": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1212": {
+   "firstNotified": "2026-06-29",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1213": {
+   "firstNotified": "2026-06-29",
+   "notifiedPlumes": 1
+  },
+  "USA_S_122": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1223": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1226": {
+   "firstNotified": "2026-07-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1229": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 2
+  },
+  "USA_S_123": {
+   "firstNotified": "2024-11-05",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1230": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1231": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1232": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1233": {
+   "firstNotified": "2026-07-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1236": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1237": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1238": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_124": {
+   "firstNotified": "2024-11-21",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1240": {
+   "firstNotified": "2026-08-02",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1244": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1247": {
+   "firstNotified": "2026-08-03",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1248": {
+   "firstNotified": "2026-08-02",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1251": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1252": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1253": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1254": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1255": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 3
+  },
+  "USA_S_1257": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1258": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1259": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1260": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1261": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1262": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1264": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1265": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1266": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1267": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 3
+  },
+  "USA_S_1268": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1269": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 2
+  },
+  "USA_S_1276": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1277": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1278": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1279": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1280": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1281": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1282": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_1283": {
+   "firstNotified": "2026-09-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_136": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_137": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_138": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_139": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_140": {
+   "firstNotified": "2024-11-30",
+   "notifiedPlumes": 2
+  },
+  "USA_S_143": {
+   "firstNotified": "2024-12-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_144": {
+   "firstNotified": "2024-03-11",
+   "notifiedPlumes": 3
+  },
+  "USA_S_145": {
+   "firstNotified": "2024-12-29",
+   "notifiedPlumes": 3
+  },
+  "USA_S_146": {
+   "firstNotified": "2025-01-06",
+   "notifiedPlumes": 1
+  },
+  "USA_S_148": {
+   "firstNotified": "2024-12-27",
+   "notifiedPlumes": 2
+  },
+  "USA_S_149": {
+   "firstNotified": "2025-01-19",
+   "notifiedPlumes": 18
+  },
+  "USA_S_150": {
+   "firstNotified": "2025-01-11",
+   "notifiedPlumes": 4
+  },
+  "USA_S_151": {
+   "firstNotified": "2025-01-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_152": {
+   "firstNotified": "2024-02-02",
+   "notifiedPlumes": 1
+  },
+  "USA_S_156": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_158": {
+   "firstNotified": "2025-05-02",
+   "notifiedPlumes": 1
+  },
+  "USA_S_162": {
+   "firstNotified": "2026-07-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_163": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "USA_S_164": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 2
+  },
+  "USA_S_165": {
+   "firstNotified": "2025-05-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_166": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 3
+  },
+  "USA_S_177": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 8
+  },
+  "USA_S_178": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_180": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_181": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "USA_S_182": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_185": {
+   "firstNotified": "2026-08-15",
+   "notifiedPlumes": 3
+  },
+  "USA_S_187": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_189": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_190": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_191": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_192": {
+   "firstNotified": "2024-02-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_195": {
+   "firstNotified": "2024-04-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_198": {
+   "firstNotified": "2025-03-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_199": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_200": {
+   "firstNotified": "2025-02-25",
+   "notifiedPlumes": 2
+  },
+  "USA_S_201": {
+   "firstNotified": "2025-02-26",
+   "notifiedPlumes": 3
+  },
+  "USA_S_202": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 2
+  },
+  "USA_S_203": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 2
+  },
+  "USA_S_205": {
+   "firstNotified": "2025-03-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_211": {
+   "firstNotified": "2025-02-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_212": {
+   "firstNotified": "2024-02-19",
+   "notifiedPlumes": 30
+  },
+  "USA_S_213": {
+   "firstNotified": "2024-02-13",
+   "notifiedPlumes": 3
+  },
+  "USA_S_214": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_215": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_216": {
+   "firstNotified": "2025-03-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_217": {
+   "firstNotified": "2025-03-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_218": {
+   "firstNotified": "2025-03-28",
+   "notifiedPlumes": 1
+  },
+  "USA_S_220": {
+   "firstNotified": "2025-04-09",
+   "notifiedPlumes": 4
+  },
+  "USA_S_225": {
+   "firstNotified": "2025-04-02",
+   "notifiedPlumes": 4
+  },
+  "USA_S_234": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_235": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_236": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_237": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_238": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_239": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 3
+  },
+  "USA_S_240": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 3
+  },
+  "USA_S_241": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 2
+  },
+  "USA_S_242": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_243": {
+   "firstNotified": "2025-04-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_284": {
+   "firstNotified": "2025-05-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_292": {
+   "firstNotified": "2025-05-03",
+   "notifiedPlumes": 1
+  },
+  "USA_S_295": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_296": {
+   "firstNotified": "2024-02-13",
+   "notifiedPlumes": 1
+  },
+  "USA_S_297": {
+   "firstNotified": "2024-02-13",
+   "notifiedPlumes": 2
+  },
+  "USA_S_298": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_299": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_300": {
+   "firstNotified": "2024-04-29",
+   "notifiedPlumes": 1
+  },
+  "USA_S_301": {
+   "firstNotified": "2024-02-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_302": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_303": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_304": {
+   "firstNotified": "2024-01-30",
+   "notifiedPlumes": 1
+  },
+  "USA_S_305": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_306": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_308": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_309": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_310": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_311": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_312": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_313": {
+   "firstNotified": "2023-06-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_314": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_315": {
+   "firstNotified": "2024-02-13",
+   "notifiedPlumes": 2
+  },
+  "USA_S_316": {
+   "firstNotified": "2024-04-05",
+   "notifiedPlumes": 1
+  },
+  "USA_S_317": {
+   "firstNotified": "2024-02-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_318": {
+   "firstNotified": "2024-04-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_319": {
+   "firstNotified": "2024-07-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_320": {
+   "firstNotified": "2023-06-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_321": {
+   "firstNotified": "2024-07-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_322": {
+   "firstNotified": "2024-07-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_346": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_370": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_371": {
+   "firstNotified": "2025-12-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_426": {
+   "firstNotified": "2025-05-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_427": {
+   "firstNotified": "2025-05-24",
+   "notifiedPlumes": 2
+  },
+  "USA_S_438": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 2
+  },
+  "USA_S_456": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 1
+  },
+  "USA_S_462": {
+   "firstNotified": "2025-06-13",
+   "notifiedPlumes": 1
+  },
+  "USA_S_474": {
+   "firstNotified": "2025-06-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_482": {
+   "firstNotified": "2025-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_519": {
+   "firstNotified": "2025-07-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_520": {
+   "firstNotified": "2025-07-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_526": {
+   "firstNotified": "2025-07-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_529": {
+   "firstNotified": "2025-07-22",
+   "notifiedPlumes": 1
+  },
+  "USA_S_560": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_562": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_564": {
+   "firstNotified": "2025-08-06",
+   "notifiedPlumes": 1
+  },
+  "USA_S_565": {
+   "firstNotified": "2025-08-11",
+   "notifiedPlumes": 2
+  },
+  "USA_S_570": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_572": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_573": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_574": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_576": {
+   "firstNotified": "2025-08-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_577": {
+   "firstNotified": "2025-08-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_578": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 1
+  },
+  "USA_S_580": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 1
+  },
+  "USA_S_581": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 1
+  },
+  "USA_S_582": {
+   "firstNotified": "2025-08-04",
+   "notifiedPlumes": 5
+  },
+  "USA_S_584": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_586": {
+   "firstNotified": "2025-08-20",
+   "notifiedPlumes": 1
+  },
+  "USA_S_593": {
+   "firstNotified": "2025-08-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_595": {
+   "firstNotified": "2025-08-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_598": {
+   "firstNotified": "2025-11-27",
+   "notifiedPlumes": 2
+  },
+  "USA_S_599": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_610": {
+   "firstNotified": "2025-10-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_623": {
+   "firstNotified": "2025-10-16",
+   "notifiedPlumes": 1
+  },
+  "USA_S_627": {
+   "firstNotified": "2026-01-11",
+   "notifiedPlumes": 2
+  },
+  "USA_S_660": {
+   "firstNotified": "2026-05-24",
+   "notifiedPlumes": 1
+  },
+  "USA_S_689": {
+   "firstNotified": "2026-06-21",
+   "notifiedPlumes": 1
+  },
+  "USA_S_709": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_722": {
+   "firstNotified": "2026-08-19",
+   "notifiedPlumes": 1
+  },
+  "USA_S_729": {
+   "firstNotified": "2026-08-11",
+   "notifiedPlumes": 1
+  },
+  "USA_S_798": {
+   "firstNotified": "2025-10-03",
+   "notifiedPlumes": 1
+  },
+  "USA_S_811": {
+   "firstNotified": "2025-09-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_812": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_813": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_814": {
+   "firstNotified": "2025-10-01",
+   "notifiedPlumes": 2
+  },
+  "USA_S_815": {
+   "firstNotified": "2025-09-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_825": {
+   "firstNotified": "2026-02-08",
+   "notifiedPlumes": 1
+  },
+  "USA_S_832": {
+   "firstNotified": "2026-07-29",
+   "notifiedPlumes": 4
+  },
+  "USA_S_846": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 2
+  },
+  "USA_S_849": {
+   "firstNotified": "2024-06-27",
+   "notifiedPlumes": 4
+  },
+  "USA_S_906": {
+   "firstNotified": "2026-07-31",
+   "notifiedPlumes": 1
+  },
+  "USA_S_909": {
+   "firstNotified": "2026-02-14",
+   "notifiedPlumes": 1
+  },
+  "USA_S_916": {
+   "firstNotified": "2026-05-19",
+   "notifiedPlumes": 3
+  },
+  "USA_S_931": {
+   "firstNotified": "2025-10-17",
+   "notifiedPlumes": 1
+  },
+  "USA_S_942": {
+   "firstNotified": "2025-11-03",
+   "notifiedPlumes": 5
+  },
+  "USA_S_943": {
+   "firstNotified": "2025-10-31",
+   "notifiedPlumes": 6
+  },
+  "USA_S_961": {
+   "firstNotified": "2025-11-12",
+   "notifiedPlumes": 1
+  },
+  "USA_S_978": {
+   "firstNotified": "2025-11-25",
+   "notifiedPlumes": 1
+  },
+  "USA_S_980": {
+   "firstNotified": "2025-11-27",
+   "notifiedPlumes": 1
+  },
+  "USA_S_981": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_982": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_983": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "USA_S_984": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_985": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_989": {
+   "firstNotified": "2025-12-01",
+   "notifiedPlumes": 1
+  },
+  "USA_S_991": {
+   "firstNotified": "2025-12-10",
+   "notifiedPlumes": 1
+  },
+  "USA_S_992": {
+   "firstNotified": "2025-12-10",
+   "notifiedPlumes": 4
+  },
+  "USA_S_996": {
+   "firstNotified": "2026-03-28",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_001": {
+   "firstNotified": "2023-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_002": {
+   "firstNotified": "2023-04-23",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_003": {
+   "firstNotified": "2023-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_004": {
+   "firstNotified": "2023-04-23",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_005": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_006": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_007": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_008": {
+   "firstNotified": "2024-01-20",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_009": {
+   "firstNotified": "2024-04-08",
+   "notifiedPlumes": 5
+  },
+  "UZB_S_010": {
+   "firstNotified": "2024-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_011": {
+   "firstNotified": "2024-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_012": {
+   "firstNotified": "2024-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_013": {
+   "firstNotified": "2024-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_014": {
+   "firstNotified": "2024-04-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_015": {
+   "firstNotified": "2025-03-31",
+   "notifiedPlumes": 4
+  },
+  "UZB_S_019": {
+   "firstNotified": "2024-07-08",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_020": {
+   "firstNotified": "2024-08-13",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_021": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_023": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 15
+  },
+  "UZB_S_024": {
+   "firstNotified": "2024-08-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_025": {
+   "firstNotified": "2024-08-29",
+   "notifiedPlumes": 7
+  },
+  "UZB_S_031": {
+   "firstNotified": "2024-10-07",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_032": {
+   "firstNotified": "2025-02-01",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_033": {
+   "firstNotified": "2025-03-29",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_034": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_035": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_036": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_037": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_038": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_039": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_040": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_041": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_042": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_044": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_045": {
+   "firstNotified": "2024-08-05",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_046": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_047": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_048": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_049": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_050": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_051": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_052": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_053": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_054": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_055": {
+   "firstNotified": "2024-12-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_058": {
+   "firstNotified": "2025-03-30",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_062": {
+   "firstNotified": "2025-04-16",
+   "notifiedPlumes": 5
+  },
+  "UZB_S_063": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_064": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_066": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_067": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_068": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_069": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_070": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_072": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_073": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_074": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_075": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_076": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_077": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_078": {
+   "firstNotified": "2025-05-14",
+   "notifiedPlumes": 8
+  },
+  "UZB_S_079": {
+   "firstNotified": "2025-04-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_081": {
+   "firstNotified": "2025-05-02",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_082": {
+   "firstNotified": "2025-05-02",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_084": {
+   "firstNotified": "2025-05-12",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_093": {
+   "firstNotified": "2025-06-03",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_094": {
+   "firstNotified": "2025-06-03",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_095": {
+   "firstNotified": "2025-06-02",
+   "notifiedPlumes": 4
+  },
+  "UZB_S_096": {
+   "firstNotified": "2025-06-15",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_097": {
+   "firstNotified": "2025-06-11",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_098": {
+   "firstNotified": "2025-07-21",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_100": {
+   "firstNotified": "2025-08-07",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_101": {
+   "firstNotified": "2025-08-07",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_102": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_103": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_104": {
+   "firstNotified": "2025-08-08",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_105": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_106": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_107": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_108": {
+   "firstNotified": "2025-08-22",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_109": {
+   "firstNotified": "2025-08-18",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_110": {
+   "firstNotified": "2025-09-15",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_115": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 5
+  },
+  "UZB_S_116": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 5
+  },
+  "UZB_S_120": {
+   "firstNotified": "2025-10-11",
+   "notifiedPlumes": 10
+  },
+  "UZB_S_122": {
+   "firstNotified": "2025-10-12",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_124": {
+   "firstNotified": "2025-11-02",
+   "notifiedPlumes": 6
+  },
+  "UZB_S_127": {
+   "firstNotified": "2026-02-24",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_129": {
+   "firstNotified": "2026-03-11",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_130": {
+   "firstNotified": "2026-03-11",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_131": {
+   "firstNotified": "2026-03-11",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_132": {
+   "firstNotified": "2026-04-14",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_135": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_137": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_138": {
+   "firstNotified": "2026-06-03",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_139": {
+   "firstNotified": "2026-06-15",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_140": {
+   "firstNotified": "2026-06-15",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_141": {
+   "firstNotified": "2026-06-15",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_142": {
+   "firstNotified": "2026-07-12",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_143": {
+   "firstNotified": "2026-07-19",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_144": {
+   "firstNotified": "2026-07-21",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_145": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_146": {
+   "firstNotified": "2026-07-28",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_147": {
+   "firstNotified": "2026-07-28",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_148": {
+   "firstNotified": "2026-08-02",
+   "notifiedPlumes": 3
+  },
+  "UZB_S_149": {
+   "firstNotified": "2026-08-14",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_150": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_151": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_152": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_153": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 2
+  },
+  "UZB_S_154": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_155": {
+   "firstNotified": "2026-08-23",
+   "notifiedPlumes": 1
+  },
+  "UZB_S_157": {
+   "firstNotified": "2026-08-20",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_001": {
+   "firstNotified": "2024-03-13",
+   "notifiedPlumes": 5
+  },
+  "VEN_S_002": {
+   "firstNotified": "2024-02-15",
+   "notifiedPlumes": 4
+  },
+  "VEN_S_003": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_004": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_005": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_006": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_007": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 4
+  },
+  "VEN_S_008": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 14
+  },
+  "VEN_S_009": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 6
+  },
+  "VEN_S_010": {
+   "firstNotified": "2024-07-21",
+   "notifiedPlumes": 4
+  },
+  "VEN_S_011": {
+   "firstNotified": "2024-10-27",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_012": {
+   "firstNotified": "2024-11-20",
+   "notifiedPlumes": 5
+  },
+  "VEN_S_013": {
+   "firstNotified": "2024-11-24",
+   "notifiedPlumes": 7
+  },
+  "VEN_S_014": {
+   "firstNotified": "2024-11-28",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_015": {
+   "firstNotified": "2024-12-15",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_016": {
+   "firstNotified": "2024-12-15",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_017": {
+   "firstNotified": "2025-01-23",
+   "notifiedPlumes": 4
+  },
+  "VEN_S_018": {
+   "firstNotified": "2025-03-09",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_019": {
+   "firstNotified": "2025-03-09",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_020": {
+   "firstNotified": "2025-03-09",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_023": {
+   "firstNotified": "2024-02-15",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_024": {
+   "firstNotified": "2025-03-25",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_025": {
+   "firstNotified": "2025-03-25",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_026": {
+   "firstNotified": "2025-03-25",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_028": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_029": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 4
+  },
+  "VEN_S_030": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 5
+  },
+  "VEN_S_031": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_032": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_033": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_034": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_035": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_036": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_037": {
+   "firstNotified": "2025-03-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_039": {
+   "firstNotified": "2026-01-18",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_051": {
+   "firstNotified": "2025-04-13",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_052": {
+   "firstNotified": "2025-04-13",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_053": {
+   "firstNotified": "2025-04-13",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_054": {
+   "firstNotified": "2025-04-13",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_055": {
+   "firstNotified": "2025-04-13",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_056": {
+   "firstNotified": "2025-04-14",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_058": {
+   "firstNotified": "2025-04-27",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_060": {
+   "firstNotified": "2025-05-14",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_061": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_062": {
+   "firstNotified": "2025-05-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_063": {
+   "firstNotified": "2025-05-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_065": {
+   "firstNotified": "2025-05-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_066": {
+   "firstNotified": "2025-05-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_068": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_069": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_070": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_073": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_075": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_076": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_077": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_078": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_079": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_080": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_081": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_082": {
+   "firstNotified": "2025-08-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_084": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_085": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_086": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_087": {
+   "firstNotified": "2025-08-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_091": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_092": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_093": {
+   "firstNotified": "2025-09-24",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_094": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_095": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_096": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_097": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_098": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_099": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_100": {
+   "firstNotified": "2025-09-20",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_101": {
+   "firstNotified": "2025-09-26",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_102": {
+   "firstNotified": "2025-09-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_104": {
+   "firstNotified": "2025-09-26",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_108": {
+   "firstNotified": "2025-10-19",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_110": {
+   "firstNotified": "2025-10-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_113": {
+   "firstNotified": "2025-12-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_115": {
+   "firstNotified": "2025-12-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_116": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_118": {
+   "firstNotified": "2026-01-18",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_121": {
+   "firstNotified": "2026-02-23",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_122": {
+   "firstNotified": "2026-02-23",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_124": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_125": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_126": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_127": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_128": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_129": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_130": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 3
+  },
+  "VEN_S_131": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_132": {
+   "firstNotified": "2026-03-16",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_134": {
+   "firstNotified": "2026-03-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_135": {
+   "firstNotified": "2026-03-22",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_139": {
+   "firstNotified": "2026-05-18",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_140": {
+   "firstNotified": "2026-05-18",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_141": {
+   "firstNotified": "2026-07-25",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_142": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_143": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_144": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_145": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_146": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_147": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_148": {
+   "firstNotified": "2026-08-17",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_149": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_150": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_151": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 1
+  },
+  "VEN_S_152": {
+   "firstNotified": "2026-08-21",
+   "notifiedPlumes": 2
+  },
+  "VEN_S_153": {
+   "firstNotified": "2026-08-22",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_001": {
+   "firstNotified": "2024-06-05",
+   "notifiedPlumes": 108
+  },
+  "YEM_S_002": {
+   "firstNotified": "2025-04-03",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_003": {
+   "firstNotified": "2025-01-28",
+   "notifiedPlumes": 5
+  },
+  "YEM_S_004": {
+   "firstNotified": "2024-09-18",
+   "notifiedPlumes": 36
+  },
+  "YEM_S_006": {
+   "firstNotified": "2024-10-13",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_007": {
+   "firstNotified": "2025-03-23",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_010": {
+   "firstNotified": "2025-02-20",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_013": {
+   "firstNotified": "2025-08-09",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_018": {
+   "firstNotified": "2025-07-05",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_021": {
+   "firstNotified": "2025-12-07",
+   "notifiedPlumes": 3
+  },
+  "YEM_S_023": {
+   "firstNotified": "2025-12-10",
+   "notifiedPlumes": 7
+  },
+  "YEM_S_024": {
+   "firstNotified": "2026-02-07",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_025": {
+   "firstNotified": "2026-09-03",
+   "notifiedPlumes": 5
+  },
+  "YEM_S_027": {
+   "firstNotified": "2026-01-18",
+   "notifiedPlumes": 3
+  },
+  "YEM_S_028": {
+   "firstNotified": "2026-01-14",
+   "notifiedPlumes": 21
+  },
+  "YEM_S_036": {
+   "firstNotified": "2025-12-08",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_037": {
+   "firstNotified": "2026-07-09",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_038": {
+   "firstNotified": "2026-07-10",
+   "notifiedPlumes": 1
+  },
+  "YEM_S_039": {
+   "firstNotified": "2026-07-26",
+   "notifiedPlumes": 1
+  },
+  "ZAF_S_010": {
+   "firstNotified": "2025-12-31",
+   "notifiedPlumes": 3
+  },
+  "ZAF_S_011": {
+   "firstNotified": "2025-12-31",
+   "notifiedPlumes": 3
+  }
+ },
+ "zipSha256": "978464740cc903433b104e9f65dd7bd56838e7839dca0fa2605aeb34bbd40095"
+}

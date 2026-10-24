@@ -1,0 +1,11 @@
+--- a/src/MethaneCovenant.sol
++++ b/src/MethaneCovenant.sol
+@@ -598,7 +598,7 @@
+         uint256 rebate = e.rebate;
+         e.state = State.CONFIRMED;
+         c.held -= rebate;
+-        c.paid += rebate;
++        // MUTANT: the payment is not booked
+         c.openEpisodes -= 1;
+         _credit(c.buyer, rebate);
+         _releaseBond(e.proposer, e, true);

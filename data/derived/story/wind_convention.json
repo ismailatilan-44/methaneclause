@@ -1,0 +1,666 @@
+{
+ "query": "https://api.carbonmapper.org/api/v1/catalog/plumes/annotated?bbox=53.685132&bbox=39.457439&bbox=53.754968&bbox=39.511701&limit=1000",
+ "plumes": [
+  {
+   "plume_id": "tan20260611t083132c23s4001-AB",
+   "scene_time": "2026-06-11T08:31:32.230Z",
+   "rate_kg_h": 2548,
+   "origin": [
+    53.71444106171069,
+    39.48477371264278
+   ],
+   "plume_bounds": [
+    53.694154545165006,
+    39.46949556101256,
+    53.73535486994183,
+    39.501024010583535
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 118,
+    "h": 117
+   },
+   "pixels": 177,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.07,
+   "bearing_origin_to_centroid": 35.1,
+   "bearing_origin_to_tail": 63.2,
+   "max_extent_km": 0.37,
+   "wind_dir_reported": 202.0,
+   "wind_speed_reported": 5.33,
+   "diff_tail_vs_W": 138.8,
+   "diff_tail_vs_W_plus_180": 41.2,
+   "verdict": "FROM",
+   "tif": {
+    "width": 101,
+    "height": 101,
+    "bits": [
+     8,
+     8,
+     8,
+     8
+    ],
+    "compression": 8,
+    "sample_format": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pixel_scale": [
+     30.0,
+     30.0,
+     0.0
+    ],
+    "tiepoint": [
+     0.0,
+     0.0,
+     0.0,
+     215940.0,
+     4377300.0,
+     0.0
+    ],
+    "nodata": null,
+    "geokeys": {
+     "GTModelType": 1,
+     "GeographicType(4326=WGS84)": null,
+     "ProjectedCSType": 32640
+    }
+   },
+   "tif_bounds_vs_plume_bounds": {
+    "tif": [
+     215940.0,
+     4374270.0,
+     218970.0,
+     4377300.0
+    ],
+    "plume_bounds": [
+     53.694154545165006,
+     39.46949556101256,
+     53.73535486994183,
+     39.501024010583535
+    ]
+   },
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20260611t083132c23s4001-CK",
+   "scene_time": "2026-06-11T08:31:32.230Z",
+   "rate_kg_h": 3334,
+   "origin": [
+    53.70978777959249,
+    39.48786009080831
+   ],
+   "plume_bounds": [
+    53.690815442015115,
+    39.47398564385919,
+    53.73131907616772,
+    39.50524391205381
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 116,
+    "h": 116
+   },
+   "pixels": 208,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.23,
+   "bearing_origin_to_centroid": 32.2,
+   "bearing_origin_to_tail": 32.6,
+   "max_extent_km": 0.54,
+   "wind_dir_reported": 202.0,
+   "wind_speed_reported": 5.33,
+   "diff_tail_vs_W": 169.4,
+   "diff_tail_vs_W_plus_180": 10.6,
+   "verdict": "FROM",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20260620t083638c93s4001-AD",
+   "scene_time": "2026-06-20T08:36:38.930Z",
+   "rate_kg_h": 2419,
+   "origin": [
+    53.71691058248368,
+    39.48464212105378
+   ],
+   "plume_bounds": [
+    53.69183402134522,
+    39.47429455390705,
+    53.73303711103851,
+    39.505822943340995
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 118,
+    "h": 117
+   },
+   "pixels": 1072,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.66,
+   "bearing_origin_to_centroid": 326.4,
+   "bearing_origin_to_tail": 330.7,
+   "max_extent_km": 1.42,
+   "wind_dir_reported": 359.3,
+   "wind_speed_reported": 1.42,
+   "diff_tail_vs_W": 28.6,
+   "diff_tail_vs_W_plus_180": 151.4,
+   "verdict": "TO",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-I",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 3457,
+   "origin": [
+    53.71483976340187,
+    39.484843074726314
+   ],
+   "plume_bounds": [
+    53.69170357748639,
+    39.436355590813875,
+    53.78880877313462,
+    39.51131253417367
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 278,
+    "h": 278
+   },
+   "pixels": 6725,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 2.45,
+   "bearing_origin_to_centroid": 120.5,
+   "bearing_origin_to_tail": 116.3,
+   "max_extent_km": 5.98,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 23.7,
+   "diff_tail_vs_W_plus_180": 156.3,
+   "verdict": "TO",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-H",
+    "tan20250803t075028c55s4001-J",
+    "tan20250803t075028c55s4001-Z"
+   ]
+  },
+  {
+   "plume_id": "tan20260410t082753c95s4001-H",
+   "scene_time": "2026-04-10T08:27:53.950Z",
+   "rate_kg_h": 2199,
+   "origin": [
+    53.715436428563294,
+    39.48482231734141
+   ],
+   "plume_bounds": [
+    53.696219823020805,
+    39.470354350067055,
+    53.73672149573484,
+    39.501612736852564
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 116,
+    "h": 116
+   },
+   "pixels": 81,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.16,
+   "bearing_origin_to_centroid": 38.4,
+   "bearing_origin_to_tail": 40.6,
+   "max_extent_km": 0.31,
+   "wind_dir_reported": 259.7,
+   "wind_speed_reported": 2.3,
+   "diff_tail_vs_W": 140.9,
+   "diff_tail_vs_W_plus_180": 39.1,
+   "verdict": "FROM",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20250729t080259c55s4001-T",
+   "scene_time": "2025-07-29T08:02:59.550Z",
+   "rate_kg_h": 1245,
+   "origin": [
+    53.728742071619166,
+    39.478214118030394
+   ],
+   "plume_bounds": [
+    53.71140848170433,
+    39.46211534758908,
+    53.75192924818093,
+    39.49339217128888
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 116,
+    "h": 116
+   },
+   "pixels": 366,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.24,
+   "bearing_origin_to_centroid": 104.6,
+   "bearing_origin_to_tail": 114.1,
+   "max_extent_km": 0.63,
+   "wind_dir_reported": 308.7,
+   "wind_speed_reported": 2.86,
+   "diff_tail_vs_W": 165.5,
+   "diff_tail_vs_W_plus_180": 14.5,
+   "verdict": "FROM",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-F",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 2954,
+   "origin": [
+    53.75087606028475,
+    39.459445258332096
+   ],
+   "plume_bounds": [
+    53.72357089848013,
+    39.44318290987484,
+    53.76407960595847,
+    39.47418937337338
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 116,
+    "h": 115
+   },
+   "pixels": 999,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.62,
+   "bearing_origin_to_centroid": 267.0,
+   "bearing_origin_to_tail": 271.1,
+   "max_extent_km": 1.71,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 178.4,
+   "diff_tail_vs_W_plus_180": 1.6,
+   "verdict": "FROM",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-G",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 2208,
+   "origin": [
+    53.7154187821362,
+    39.4601703577425
+   ],
+   "plume_bounds": [
+    53.689723930488555,
+    39.441526449042385,
+    53.7410627053438,
+    39.481162730403234
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 147,
+    "h": 147
+   },
+   "pixels": 3124,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.26,
+   "bearing_origin_to_centroid": 321.6,
+   "bearing_origin_to_tail": 310.8,
+   "max_extent_km": 1.78,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 141.8,
+   "diff_tail_vs_W_plus_180": 38.2,
+   "verdict": "FROM",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-K",
+    "tan20250803t075028c55s4001-N"
+   ]
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-H",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 8553,
+   "origin": [
+    53.735406613345106,
+    39.47794050500809
+   ],
+   "plume_bounds": [
+    53.69170357748639,
+    39.436355590813875,
+    53.78880877313462,
+    39.51131253417367
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 278,
+    "h": 278
+   },
+   "pixels": 6762,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.59,
+   "bearing_origin_to_centroid": 143.7,
+   "bearing_origin_to_tail": 120.2,
+   "max_extent_km": 4.06,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 27.5,
+   "diff_tail_vs_W_plus_180": 152.5,
+   "verdict": "TO",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-I",
+    "tan20250803t075028c55s4001-J",
+    "tan20250803t075028c55s4001-Z"
+   ]
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-J",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 3014,
+   "origin": [
+    53.720921102547436,
+    39.48421572458764
+   ],
+   "plume_bounds": [
+    53.69170357748639,
+    39.436355590813875,
+    53.78880877313462,
+    39.51131253417367
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 278,
+    "h": 278
+   },
+   "pixels": 6542,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 1.97,
+   "bearing_origin_to_centroid": 126.5,
+   "bearing_origin_to_tail": 118.7,
+   "max_extent_km": 5.48,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 26.0,
+   "diff_tail_vs_W_plus_180": 154.0,
+   "verdict": "TO",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-H",
+    "tan20250803t075028c55s4001-I",
+    "tan20250803t075028c55s4001-Z"
+   ]
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-K",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 0,
+   "origin": [
+    53.731269811661775,
+    39.46520506932845
+   ],
+   "plume_bounds": [
+    53.689723930488555,
+    39.441526449042385,
+    53.7410627053438,
+    39.481162730403234
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 147,
+    "h": 147
+   },
+   "pixels": 2875,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 1.53,
+   "bearing_origin_to_centroid": 256.1,
+   "bearing_origin_to_tail": 265.8,
+   "max_extent_km": 3.07,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 173.1,
+   "diff_tail_vs_W_plus_180": 6.9,
+   "verdict": "FROM",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-G",
+    "tan20250803t075028c55s4001-N"
+   ]
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-N",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 2351,
+   "origin": [
+    53.734572641759286,
+    39.46440254671549
+   ],
+   "plume_bounds": [
+    53.689723930488555,
+    39.441526449042385,
+    53.7410627053438,
+    39.481162730403234
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 147,
+    "h": 147
+   },
+   "pixels": 2866,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 1.79,
+   "bearing_origin_to_centroid": 261.1,
+   "bearing_origin_to_tail": 268.1,
+   "max_extent_km": 3.35,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 175.4,
+   "diff_tail_vs_W_plus_180": 4.6,
+   "verdict": "FROM",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-G",
+    "tan20250803t075028c55s4001-K"
+   ]
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-Q",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 415,
+   "origin": [
+    53.75235595323164,
+    39.4782238139145
+   ],
+   "plume_bounds": [
+    53.73166553339571,
+    39.462991092061955,
+    53.77183791793358,
+    39.494268249893786
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 115,
+    "h": 116
+   },
+   "pixels": 62,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.07,
+   "bearing_origin_to_centroid": 295.2,
+   "bearing_origin_to_tail": 302.4,
+   "max_extent_km": 0.23,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 150.3,
+   "diff_tail_vs_W_plus_180": 29.7,
+   "verdict": "FROM",
+   "shared_mask_with": []
+  },
+  {
+   "plume_id": "tan20250803t075028c55s4001-Z",
+   "scene_time": "2025-08-03T07:50:28.550Z",
+   "rate_kg_h": 2689,
+   "origin": [
+    53.74003135180888,
+    39.475568204073085
+   ],
+   "plume_bounds": [
+    53.69170357748639,
+    39.436355590813875,
+    53.78880877313462,
+    39.51131253417367
+   ],
+   "png": {
+    "ctype": 2,
+    "depth": 8,
+    "w": 278,
+    "h": 278
+   },
+   "pixels": 6739,
+   "pixel_m": [
+    30.0,
+    29.8
+   ],
+   "origin_to_centroid_km": 0.22,
+   "bearing_origin_to_centroid": 192.1,
+   "bearing_origin_to_tail": 170.1,
+   "max_extent_km": 3.58,
+   "wind_dir_reported": 92.7,
+   "wind_speed_reported": 9.71,
+   "diff_tail_vs_W": 77.4,
+   "diff_tail_vs_W_plus_180": 102.6,
+   "verdict": "TO",
+   "shared_mask_with": [
+    "tan20250803t075028c55s4001-H",
+    "tan20250803t075028c55s4001-I",
+    "tan20250803t075028c55s4001-J"
+   ]
+  }
+ ],
+ "method": "Decide Carbon Mapper's wind_direction_avg_auto convention (FROM or TO) from the plume rasters themselves.",
+ "summary_independent_masks": {
+  "plumes": [
+   "tan20260611t083132c23s4001-AB",
+   "tan20260611t083132c23s4001-CK",
+   "tan20260620t083638c93s4001-AD",
+   "tan20260410t082753c95s4001-H",
+   "tan20250729t080259c55s4001-T",
+   "tan20250803t075028c55s4001-F",
+   "tan20250803t075028c55s4001-Q"
+  ],
+  "verdicts": [
+   "FROM",
+   "FROM",
+   "TO",
+   "FROM",
+   "FROM",
+   "FROM",
+   "FROM"
+  ],
+  "n_from": 6,
+  "n_to": 1,
+  "shared_mask_groups": [
+   [
+    "tan20250803t075028c55s4001-G",
+    "tan20250803t075028c55s4001-K",
+    "tan20250803t075028c55s4001-N"
+   ],
+   [
+    "tan20250803t075028c55s4001-H",
+    "tan20250803t075028c55s4001-I",
+    "tan20250803t075028c55s4001-J",
+    "tan20250803t075028c55s4001-Z"
+   ]
+  ]
+ },
+ "summary": {
+  "verdicts": [
+   "FROM",
+   "FROM",
+   "TO",
+   "TO",
+   "FROM",
+   "FROM",
+   "FROM",
+   "FROM",
+   "TO",
+   "TO",
+   "FROM",
+   "FROM",
+   "FROM",
+   "TO"
+  ],
+  "n_from": 9,
+  "n_to": 5,
+  "wind_0_3_ms": {
+   "n": 3,
+   "from": 2,
+   "median_diff_vs_W_plus_180": 39.1,
+   "median_diff_vs_W": 140.9
+  },
+  "wind_3_6_ms": {
+   "n": 2,
+   "from": 2,
+   "median_diff_vs_W_plus_180": 41.2,
+   "median_diff_vs_W": 169.4
+  },
+  "wind_6_99_ms": {
+   "n": 9,
+   "from": 5,
+   "median_diff_vs_W_plus_180": 38.2,
+   "median_diff_vs_W": 141.8
+  }
+ },
+ "lead_vs_era5": {
+  "era5_from_deg": 157,
+  "era5_blows_to_deg": 337,
+  "plume_tail_bearing": 63.2,
+  "diff_era5_to_vs_tail": 86.2,
+  "diff_cm_vs_era5_from": 45.0
+ },
+ "attribution": "Data by Carbon Mapper\u00ae"
+}

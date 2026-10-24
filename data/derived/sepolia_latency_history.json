@@ -1,0 +1,44 @@
+{
+ "blocks": [
+  {
+   "functionsAtThatTime": {
+    "challenge": 2,
+    "createCovenant": 5,
+    "deploy_KeyRegistry": 2,
+    "deploy_MethaneCovenant": 2,
+    "deploy_registerKey": 9,
+    "deploy_renounceAdmin": 2,
+    "deploy_setOrgController": 9,
+    "finalize": 2,
+    "fund": 2,
+    "fund_bogus_proposer": 3,
+    "fund_judge_controller_gas": 1,
+    "fund_sandbox_seller": 1,
+    "fund_sandbox_seller_gas": 3,
+    "proposeEpisode": 4,
+    "proposeEpisode_bogus": 2,
+    "proposeEpisode_reverted": 7,
+    "registerKey_judge": 1,
+    "submitResolution": 2,
+    "withdraw": 2
+   },
+   "label": "measured 2026-10-15, raw samples lost with a deleted worktree",
+   "measuredAt": "2026-10-15T01:00:28Z",
+   "n": 43,
+   "p50": 11.18,
+   "p90": 13.63,
+   "source": {
+    "blob": "207bcd72fafb49a76f37c2e9329c5d0081869d53",
+    "commit": "4bb97826dbeb043d5784669f16926e3e178db0c4",
+    "file": "data/derived/measurements.json"
+   },
+   "transactionsAtThatTime": {
+    "expected_reverts": 7,
+    "logged": 50,
+    "unexpected_failures": 2
+   },
+   "what": "wall clock from eth_sendRawTransaction to receipt via a public RPC (12 s slots)"
+  }
+ ],
+ "what": "Sepolia send -> receipt latency blocks whose raw samples are no longer available; pipeline/measure.py copies them verbatim"
+}

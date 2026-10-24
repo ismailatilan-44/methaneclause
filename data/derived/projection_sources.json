@@ -1,0 +1,1230 @@
+{
+ "schema": "methaneclause.projection_sources/1",
+ "note": "Every parameter pipeline/projection.py uses, with the source it comes from. Quotes are short and verbatim; tag [V] = read at the URL on readOn by the maintainer's agent (abstract or page text), [S] = secondary (read through a summary, not the primary document). status ASSUMPTION = a scenario we chose, not data. GWP values come from data/derived/floors.json and the ledger costs from data/derived/measurements.json; neither is repeated here.",
+ "model": {
+  "status": "PRE-REGISTERED (board T4b, 2026-10-20: written and committed alone, before any value of the model was computed); AMENDED 2026-10-21 after the adversarial review (HOLD): clause (3) added, option (c) added to the menu, the 0.90 relabelled as a repair rate, and the headline made an interim range until board T4c builds the time factor. pipeline/projection.py implements it and refuses to run if the parameters stop following these rules.",
+  "formula": "kt CH4/yr stopped = S x (r - b) x d",
+  "factors": {
+   "S": "the stake: low bound of the mass rate (kt CH4/yr) of the plume-detected emissions at the contracted sources, whatever their cause (backtest.json). An attested episode prices any such detection, whatever its cause.",
+   "r": "the fixable-and-fixed share: of the plume sources notified to their operators, the share whose emissions were a fault unknown to the operator that the operator then stopped or repaired (CARB Table 3, Type A over incidences sent; no response, not found, Type B allowed operation and Type C maintenance count as not fixed). r is the only factor that removes emissions a repair cannot touch, and the only factor that carries the seller's behaviour (an operator who does not answer fixes nothing).",
+   "b": "today's baseline: the most recent published share of MARS alerts that receive a reply (baselineResponseShare.rule, unchanged). It is subtracted from r, in the same unit (a share of notified sources), and bounds the reply-driven fixes: every reply is counted as a fix of a fixable fault. It does not bound sources that stop on their own (natural stops), which the interim range spans. It is not applied to d.",
+   "d": "the share of a fixed source's yearly emissions that stops. Interim (until board T4c): a range with two ends from Ravikumar et al. 2020's re-survey of repaired leaks, not a central value. Low end = one repair round net of new faults (fugitive emissions fell only 22 % because of new leaks); high end = the repair rate (90 % of the found leaks' emissions fixed before the re-survey) with fixed leaks not re-appearing, read as every fix holding all year. Within r's Type A population every fault was stopped or repaired, so the high end's 0.90 is a conservative reading, not a durability."
+  },
+  "criterion": "Each emission is removed by exactly one factor, and each factor is measured on the population it multiplies. The stake is the mass of plume-detected emissions at a contracted source, whatever their cause, and an attested episode prices any such detection; so (1) the factor that removes what a repair cannot touch must be measured on plume-detected emissions after a notification, and (2) the factor after it must be measured on repaired faults only, so that it removes nothing the first factor already removed and credits nothing a repair did not cause. (3) The second factor's time base is a year at the stake's sources: it must say what share of a fixed source's yearly emissions stops, counting new faults, the emissions before detection and during repair, and sources that stop on their own. The option whose factors meet (1), (2) and (3) is chosen. If none meets (3), the projection is a range over the options that meet (1) and (2), with no single central tonnage, until the time factor is built (board T4c).",
+  "options": {
+   "a": {
+    "r": "share of notified sources the operator answers (CARB oil and gas, sent minus did not respond, over sent; Table 4 shows an answer is not always an on-site inspection: Type B and Type C answers were partly attributed from records)",
+    "d": "Ravikumar et al. 2020, total emissions reduced by 44% after one LDAR survey",
+    "meets1": false,
+    "meets2": false,
+    "why": "(1) the answer share removes nothing a repair cannot touch, so that removal falls to d; (2) d is measured on the total emissions of 8 Alberta sites from ground (OGI) surveys, of every size including leaks far below an airborne detection limit, not on repaired faults, and most of it is a vent change the paper reports 'despite near-zero repair' (tank level indicators), which a repair did not cause.",
+    "meets3": false
+   },
+   "b": {
+    "r": "CARB Type A over incidences sent (fixable faults, every one stopped or repaired)",
+    "d": "Ravikumar et al. 2020: the repair rate, 90 % of the found leaks' emissions fixed before the re-survey, with fixed leaks not re-appearing (every fix holding all year)",
+    "meets1": true,
+    "meets2": true,
+    "why": "(1) Type A is measured on airborne plume detections (University of Arizona 2020, Carbon Mapper 2021 and 2023, imaging spectrometers of the class the stake's data come from) after a notification; (2) the repair rate is measured on found leaks at a re-survey and removes nothing r removes; (3) not met: it credits a whole year per fix and counts no new fault, no emissions before detection or during repair, and no natural stop.",
+    "meets3": false
+   },
+   "c": {
+    "r": "CARB Type A over incidences sent (as option b)",
+    "d": "Ravikumar et al. 2020: fugitive emissions reduced by only 22 % after one repair round, because of new leaks",
+    "meets1": true,
+    "meets2": true,
+    "why": "(1) as option (b); (2) measured on the leak emissions of the re-surveyed sites after one repair round; it removes nothing r removes; (3) partly: it nets new faults over 6 to 13 months but not the emissions before detection and during repair, nor natural stops. Not offered in the T4b menu; added after the review.",
+    "meets3": false
+   }
+  },
+  "choice": "range",
+  "choiceNote": "Option (a) projects more than either end of the range; the T4 model sits at the low end's value by coincidence of 0.44 x 0.5. The choice follows the criterion, not the size.",
+  "rules": {
+   "r": "unchanged from T4: central = sum of Type A over sum of incidences sent, oil and gas rows of CARB Table 3, every campaign year (2020, 2021, 2023), counted by incidence; low and high = its Wilson interval at 0.95; each rounded to two decimals.",
+   "massWeighting": "Mass weighting needs an emission rate per incidence. If a published per-incidence rate exists (CARB's own tables first, a Carbon Mapper plume rate joined by an identifier second), r is the mass-weighted share of 2021 and 2023 and its interval a percentile bootstrap over incidences (seed and draws written before running). If none exists, r stays counted by incidence, the per-incidence rows are committed with their source, SHA-256 and readOn and re-checked against Table 3, and the gap and what would close it are written down. Read on 2026-10-20: CARB Appendix Tables A1 (2021) and A2 (2023) give, per incidence, sector, outcome, earliest plume date, number of plumes and dates, but no emission rate, location or plume identifier; Carbon Mapper's 2023 plume list (CARB contract 22RD001, Appendix B) gives rates and locations but no incidence identifier, and a date-and-plume-count key identifies the incidence for few rows. So r stays counted by incidence.",
+   "plumeWeighting": "reported, never used to set r: the share of plume detections (2021 and 2023, Tables A1 and A2) that belong to Type A incidences. A plume count says how often a source was seen during a campaign of about two weeks, not its mass.",
+   "d": "low = the per-cent figure matched by the band's regex in Ravikumar et al. 2020's 'fugitive emissions reduced by only 22% because of new leaks' (one repair round net of new faults); high = the per-cent figure in '93% of the leaks corresponding to 90% of fugitive emissions ... were fixed before the re-survey' (the repair rate), valid as 'every fix holding all year' only together with 'leaks that were fixed did not re-appear'. No mid value. pipeline/projection.py re-reads the quotes and refuses to run if a value differs.",
+   "b": "unchanged: the most recent published MARS response share, subtracted from r and from nothing else; it bounds reply-driven fixes only.",
+   "headlineRange": "interim: the two ends of d (low, high) at the central r, for every scope; projection.json -> headline.kind = 'range' and headline.central = null. The sampling interval of r stays in the scenario rows.",
+   "encoding": "each factor declares the emission classes it removes and the population it is measured on; pipeline/projection.py refuses to run if either end of the range removes a class twice, credits a change a repair did not cause, or measures a factor on another population than `required`, and if an emission class in classes.list is neither removed by exactly one factor nor listed in classes.spannedByInterimRange. The T4 pairing fails by construction."
+  },
+  "sensitivity": [
+   {
+    "id": "c_count",
+    "label": "option (c) end of the range: Type A share x 22 % (one repair round net of new faults)",
+    "pairing": "c",
+    "r": "rule",
+    "d": "low"
+   },
+   {
+    "id": "b_count",
+    "label": "option (b) end of the range: Type A share x 90 % (every fix holding all year)",
+    "pairing": "b",
+    "r": "rule",
+    "d": "high"
+   },
+   {
+    "id": "c_plumes",
+    "label": "option (c), weighted by plume detections, 2021 and 2023 (detections, not mass)",
+    "pairing": "c",
+    "r": "plumeWeighted",
+    "d": "low"
+   },
+   {
+    "id": "b_plumes",
+    "label": "option (b), weighted by plume detections, 2021 and 2023 (detections, not mass)",
+    "pairing": "b",
+    "r": "plumeWeighted",
+    "d": "high"
+   },
+   {
+    "id": "b_mass",
+    "label": "either end, weighted by mass: not computable (no published per-incidence rate)",
+    "pairing": "b",
+    "r": "massWeighted",
+    "d": "high"
+   },
+   {
+    "id": "a_count",
+    "label": "option (a), answered share x 44% of total emissions",
+    "pairing": "a",
+    "r": "answered",
+    "d": "ravikumarTotal"
+   },
+   {
+    "id": "t4",
+    "label": "the T4 model (Type A share x 44%); it removes allowed operation and maintenance twice",
+    "pairing": "t4",
+    "r": "rule",
+    "d": "ravikumarTotal"
+   }
+  ],
+  "classes": {
+   "note": "Emission classes each factor removes (a share below 1 leaves them out of the projected stop) and the population it is measured on. pipeline/projection.py refuses to run if the chosen pairing removes a class twice, credits a change a repair did not cause, or measures a factor on another population than `required`; it recomputes every option's meets1/meets2 from these lists and refuses to run if model.options says otherwise. classes.list is the fixed list of emission classes the review named; each is removed by exactly one factor (classes.removedBy) or spanned by the interim range (classes.spannedByInterimRange).",
+   "required": {
+    "r": "plume-detected sources after a notification",
+    "d": "leak emissions re-surveyed after a repair round"
+   },
+   "notRepairable": [
+    "allowed operation (Type B)",
+    "maintenance (Type C)"
+   ],
+   "pairings": {
+    "b": {
+     "r": {
+      "population": "plume-detected sources after a notification",
+      "removes": [
+       "allowed operation (Type B)",
+       "maintenance (Type C)",
+       "not found",
+       "no response"
+      ]
+     },
+     "d": {
+      "population": "leak emissions re-surveyed after a repair round",
+      "removes": [
+       "found faults never fixed"
+      ]
+     }
+    },
+    "a": {
+     "r": {
+      "population": "plume-detected sources after a notification",
+      "removes": [
+       "no response"
+      ]
+     },
+     "d": {
+      "population": "total facility emissions, ground survey",
+      "removes": [
+       "allowed operation (Type B)",
+       "maintenance (Type C)",
+       "found leaks never fixed",
+       "fixed leaks that recur",
+       "new leaks"
+      ],
+      "credits": [
+       "vent change without repair"
+      ]
+     }
+    },
+    "t4": {
+     "r": {
+      "population": "plume-detected sources after a notification",
+      "removes": [
+       "allowed operation (Type B)",
+       "maintenance (Type C)",
+       "not found",
+       "no response"
+      ]
+     },
+     "d": {
+      "population": "total facility emissions, ground survey",
+      "removes": [
+       "allowed operation (Type B)",
+       "maintenance (Type C)",
+       "found leaks never fixed",
+       "fixed leaks that recur",
+       "new leaks"
+      ],
+      "credits": [
+       "vent change without repair"
+      ]
+     }
+    },
+    "c": {
+     "r": {
+      "population": "plume-detected sources after a notification",
+      "removes": [
+       "allowed operation (Type B)",
+       "maintenance (Type C)",
+       "not found",
+       "no response"
+      ]
+     },
+     "d": {
+      "population": "leak emissions re-surveyed after a repair round",
+      "removes": [
+       "found faults never fixed",
+       "new faults"
+      ]
+     }
+    }
+   },
+   "list": [
+    "allowed operation (Type B)",
+    "maintenance (Type C)",
+    "not found",
+    "no response",
+    "reply-driven fixes",
+    "new faults",
+    "emissions before detection and during repair",
+    "natural stops"
+   ],
+   "removedBy": {
+    "allowed operation (Type B)": "r",
+    "maintenance (Type C)": "r",
+    "not found": "r",
+    "no response": "r",
+    "reply-driven fixes": "b"
+   },
+   "spannedByInterimRange": [
+    "new faults",
+    "emissions before detection and during repair",
+    "natural stops"
+   ],
+   "b": {
+    "removes": [
+     "reply-driven fixes"
+    ]
+   }
+  },
+  "reads": {
+   "ravikumarTotal": {
+    "source": "ravikumar-2020-erl",
+    "quote": 0,
+    "regex": "total emissions reduced by (\\d+)% after one LDAR survey"
+   }
+  },
+  "range": {
+   "low": "c",
+   "high": "b",
+   "atAction": "central",
+   "note": "No option meets clause (3): the headline is the range from option (c) to option (b) at the central action share, with no single central tonnage, until board T4c builds the time factor."
+  },
+  "t4c": {
+   "status": "PRE-REGISTERED (board T4c, 2026-10-21): written and committed alone, before any value of the time factor was computed. pipeline/projection.py implements it in a later commit and refuses to run if a value stops following these rules. Values already known when this was written: the interim range (T4b step 1), the CARB rows and dates, the stake per facility and the number of episodes; no event duration, publication lag or time-factor value had been computed.",
+   "question": "What share of a source's YEARLY plume-detected mass would the clause remove, once the time from an event's start to its fix, how long events last without action, new faults and the stops that happen anyway are counted?",
+   "formula": "kt CH4/yr stopped = sum over the scope's quantified facilities i of S_i x r x T_i",
+   "factors": {
+    "S_i": "facility i's stake low bound (backtest.json -> stake.kt_ch4_per_yr.low): its yearly plume-detected mass, duty cycle x P10 rate x 8,760 h, unchanged.",
+    "r": "the CARB Type A share (responseScenarios, unchanged rule: 0.32 / 0.39 / 0.48): of notified plume sources, the share that were fixable faults the operator stopped or repaired. Removes allowed operation (Type B), maintenance (Type C), not found and no response.",
+    "T_i": "the time factor: of facility i's emitting time over its window, the share a fix would remove. T_i = (sum over events e of W_e) / (sum over events e of L_e), with L_e = end_e - start_e and W_e = mean over the CARB response delays d_j of max(0, end_e - (f_e + p_e + d_j)). It is computed on the stake's own passes (the same passes after the facility's start that the stake's duty cycle counts), so its time base is the stake's window at the stake's sources (criterion clause 3).",
+    "events": "Cusworth et al. 2026's event definition applied to facility i's passes after its start, in date order: a pass with a detection that follows a pass without one (or is the first pass) starts an event; a pass without a detection that follows one with a detection ends it. f_e = the event's first detected pass, l_e = its last detected pass, prev_e = the pass without detection before f_e (the facility's start date if none), next_e = the pass without detection after l_e (the catalogue end if none).",
+    "conventions": {
+     "shortest": "start_e = f_e, end_e = max(l_e, f_e + 8.3 min) (Cusworth's minimum event duration for a single detection)",
+     "central": "start_e = the midpoint of prev_e and f_e, end_e = the midpoint of l_e and next_e (Cusworth's stated assumption that missed detections and non-detections are equally likely)",
+     "longest": "start_e = prev_e, end_e = next_e"
+    },
+    "p_e": "the publication lag of the event's first detection: the earliest published_at minus scene_timestamp, in days, among the facility's Carbon Mapper plumes on f_e (data/derived/cm_plumes.csv); under the clause an episode can be attested once the plume is published. Floored at 0.",
+    "d_j": "the seller's response delay: for every CARB oil and gas Type A row with both dates (data/derived/carb_summary.json; rows: carb_incidences.json, rebuilt locally by make fetch-published), mitigated minus notified, in days; a negative difference (mitigation printed before the notification) counts as 0. The whole empirical distribution is used, not a quantile.",
+    "b": "not subtracted in the chosen model. Every facility of the stake is a MARS-notified target, so the event ends observed on its passes already include the reply-driven fixes and the stops that happen anyway; subtracting the MARS reply share as well would remove them twice."
+   },
+   "emissionClasses": {
+    "removedBy": {
+     "allowed operation (Type B)": "r",
+     "maintenance (Type C)": "r",
+     "not found": "r",
+     "no response": "r",
+     "new faults": "T",
+     "emissions before detection and during repair": "T",
+     "natural stops": "T",
+     "reply-driven fixes": "T"
+    },
+    "spannedByInterimRange": [],
+    "how": "r leaves out the outcomes a fix does not reach; T truncates only the fixed event itself: a later fault is a later event with its own start and delay (new faults), the emissions from the event's start to the fix are never credited (before detection and during repair), and an event that ends on its own or after a MARS reply before the fix is credited nothing (natural stops, reply-driven fixes)."
+   },
+   "rules": {
+    "central": "r's central scenario (0.39) x T_i under the central convention, summed over the scope's quantified facilities.",
+    "lowHigh": "low and high = the smallest and the largest scope total over the three conventions (shortest, central, longest) at r's central scenario.",
+    "scenarios": "every r scenario (0.32, 0.39, 0.48) x every convention, in projection.json.",
+    "headline": "one central figure with its low-high range, but only if (i) the chosen option meets clauses (1) to (3), (ii) every emission class in classes.list is removed by exactly one factor with none spanned, and (iii) the adversarial review passes. If (iii) fails, the coordinator reverts the headline to the range; projection.json -> headline.kind says which (\"central\" or \"range\").",
+    "transferGap": "the methods paragraph says once that r and d_j are California's, under a regulator, and gives the share of the portfolio's stake in its two largest countries by stake (generated from backtest.json), where a contract counterparty, not a regulator, would ask.",
+    "diagnostics": "events per facility-year (the new-fault and recurrence rate the event decomposition implies), the publication lag and response delay quantiles, and the share of the stake in facilities with a single unbounded event, all generated."
+   },
+   "options": {
+    "t": {
+     "model": "S x r x T, T on the stake's own passes (MARS-notified targets), delay = publication lag + CARB response",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "why": "(1) r as before; (2) T removes only time classes r does not touch and credits only the truncation of a fixed event; (3) T is measured over the stake's window on the stake's own passes."
+    },
+    "t_carb": {
+     "model": "S x r x T with delay = CARB first plume -> mitigation (CARB's own notification step in place of the publication lag)",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "why": "the same model with another delay definition; reported as sensitivity."
+    },
+    "t_nn": {
+     "model": "S x (r - b) x T, T on Carbon Mapper sources never near a MARS-notified source (natural stops only; b removes reply-driven fixes)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "(3) not met: T is measured on other sources than the stake's. Reported as sensitivity; not computable if fewer than evidence.minSourcesPerGroup such sources have an event."
+    },
+    "c": {
+     "model": "interim low end, r x 0.22",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "(3) not met: one repair round over 6 to 13 months at 8 Alberta sites."
+    },
+    "b": {
+     "model": "interim high end, r x 0.90",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "(3) not met: credits a whole year per fix."
+    },
+    "a": {
+     "model": "answered share x 44 %",
+     "meets": [
+      false,
+      false,
+      false
+     ],
+     "why": "as recorded in model.options.a"
+    },
+    "t4": {
+     "model": "Type A share x 44 %",
+     "meets": [
+      true,
+      false,
+      false
+     ],
+     "why": "removes allowed operation and maintenance twice"
+    }
+   },
+   "choice": "t",
+   "choiceNote": "the only option on the menu that meets clauses (1), (2) and (3); chosen by the criterion, not by size. Its value was not known when it was chosen.",
+   "sensitivity": [
+    "t_shortest",
+    "t_central",
+    "t_longest",
+    "t_carb",
+    "t_nn",
+    "c",
+    "b",
+    "a",
+    "t4"
+   ],
+   "limits": "T inherits the stake's pass sampling: a cloudy or partly covered pass without a detection ends an event early, and intermittent emission from one fault splits it into several events; both shorten events and lower T. r is assumed independent of an event's duration (CARB gives no duration per outcome)."
+  },
+  "timeFactor": {
+   "status": "ASSUMPTION",
+   "unit": "share of a facility's emitting time over its window that a fix would remove (model.t4c.factors.T_i)",
+   "minEventMinutes": {
+    "source": "cusworth-2026-ncomms",
+    "quote": 2,
+    "regex": "we assume an (\\d+\\.\\d+)-min shortest duration"
+   },
+   "conventions": [
+    "shortest",
+    "central",
+    "longest"
+   ],
+   "central": "central",
+   "delays": {
+    "file": "data/derived/carb_summary.json",
+    "from": "notified",
+    "to": "mitigated"
+   },
+   "lags": {
+    "file": "data/derived/cm_plumes.csv",
+    "from": "scene_timestamp",
+    "to": "published_at"
+   },
+   "headlineKind": "central",
+   "informedBy": [
+    "cusworth-2026-ncomms",
+    "carb-2024-appendix"
+   ],
+   "sources": [],
+   "note": "ASSUMPTION, built by the pre-registered rule (model.t4c) from committed data: events and their duration bounds by Cusworth et al. 2026's definition on the stake's own passes, the publication lag of each event's first detection from Carbon Mapper's own timestamps, and the seller's response delay from CARB's oil and gas Type A rows (notification to mitigation, every row). The delay is California's, under a regulator; the publication lags are those of Carbon Mapper's catalogue, which include archive processing and overstate an operating clause's latency (T errs low). headlineKind (here, unpublished until a review passes) is 'central' only while model.t4c.rules.headline (i)-(iii) hold; the coordinator sets it to 'range' if the review does not pass."
+  },
+  "t4d": {
+   "status": "PRE-REGISTERED (board T4d, 2026-10-21), committed before the implementation commit. Known when it was written: the T4c results and the adversarial review of T4c (HOLD), including the reviewer's report-only values (censored at the last pass 71.5 kt; re-onset hazard 0.814 / yr 52.5 kt; cap 365 d 65.6 kt; cap 182 d 45.9 kt; about 136 restarts over 178.6 event-free facility-years) and the CARB Type A shares by plume count the reviewer quoted. The T4d time factor itself had not been computed. While model.timeFactor.headlineKind is 'range' nothing of T4d is published: README, Devpost, PDF and SCALING keep the reviewed interim range; projection.json -> t4d holds the result and the headline it would carry. AMENDED 2026-10-21 after the adversarial review of T4d (HOLD, unblock path): option e was registered (the sample pre-registration) after d's result was visible in the implementation commit, and it redefined d_norec; d is the choice again, as first registered, with d_norec = 'as d with lambda = 0'; e and its no-recurrence variant are reported as labelled post-result sensitivity rows. The single-miss-merged hazard, the event-length denominator and the selection share were added after the result was known, as labelled rows and diagnostics that set no value.",
+   "question": "What share of a facility's yearly plume-detected mass would the clause remove, counting the time to the fix, new faults after it, and only the time the stake's own passes observe?",
+   "formula": "kt CH4/yr stopped = sum over the scope's quantified facilities i of S_i x T_i, T_i = min(1, sum over events e of r_e x C_e / (D_i x W_i))",
+   "factors": {
+    "S_i": "facility i's stake low bound (backtest.json -> stake.kt_ch4_per_yr.low), unchanged.",
+    "D_i x W_i": "the denominator, on the stake's own time base: D_i = the stake's duty cycle (backtest.json -> stake.duty_cycle: detected passes / passes after the start) and W_i = days from the facility's start to its LAST PASS (not the catalogue end). D_i x W_i is the facility's emitting days as the stake counts them; removed time is counted in absolute days against it, so a single detection no longer shrinks the denominator (review finding 2).",
+    "events": "Cusworth et al. 2026's definition on the passes after the start (as in T4c), with every event censored at the facility's last pass: an event whose last detected pass is the last pass ends there (censored); otherwise it ends at its convention's end (observed end).",
+    "conventions": {
+     "central": "end = midpoint of the last detected pass and the next pass without a detection",
+     "shortest": "end = the last detected pass",
+     "longest": "end = the next pass without a detection",
+     "censored": "end = the last pass, for every convention"
+    },
+    "C_e": "credited days of event e: the mean over the CARB response delays d_j of the survival-weighted time from the fix to the event's end, (1 - exp(-lambda x x_ej)) / lambda with x_ej = max(0, end_e - (f_e + p_e + d_j)) in years (x_ej itself when lambda = 0). A fix is credited only until a new fault would start again; p_e = the publication lag of the event's first detection (cm_plumes.csv, as T4c); d_j = every CARB Type A notification -> mitigation delay (negatives as 0).",
+    "lambda": "the re-onset hazard, measured per scope on the stake's own passes: restarts / event-free years, where an event-free period runs, under the central convention, from the end of an event with an observed end to the start of the next event (midpoint of the pass before it and its first detection) or to the facility's last pass if none follows, and a restart is a period that ends in an event. Sparse passes miss restarts, so the measured value is a floor (it errs toward more credit).",
+    "r_e": "the CARB Type A share conditioned on persistence: the share of Type A among the 2021 and 2023 oil and gas incidences (carb_summary.json, the years with per-incidence rows; rows: carb_incidences.json, rebuilt locally by make fetch-published) whose plume count is in the same class as event e's number of detected passes (1, 2, 3 or more); each action scenario s scales it by s / responseScenarios.central.",
+    "b": "per event. An event with an observed end already includes the fixes and stops that happen anyway (its end was seen at a MARS-notified facility): b is not subtracted. A censored event is credited only up to the last pass, where it was still detected, so no stop-anyway can fall inside its credited time: b is not subtracted either. The variant that subtracts b on censored events is reported."
+   },
+   "emissionClasses": {
+    "list": [
+     "allowed operation (Type B)",
+     "maintenance (Type C)",
+     "not found",
+     "no response",
+     "new faults",
+     "emissions before detection and during repair",
+     "natural stops",
+     "reply-driven fixes",
+     "emissions after the last pass"
+    ],
+    "removedBy": {
+     "allowed operation (Type B)": "r",
+     "maintenance (Type C)": "r",
+     "not found": "r",
+     "no response": "r",
+     "new faults": "T",
+     "emissions before detection and during repair": "T",
+     "natural stops": "T",
+     "reply-driven fixes": "T",
+     "emissions after the last pass": "T"
+    },
+    "spannedByInterimRange": [],
+    "atTheNoRecurrenceEnd": [
+     "new faults"
+    ],
+    "how": "r leaves out what a fix does not reach; T credits only the time from the fix to the event's observed or censored end (before detection and during repair: never; after the last pass: never; an observed end includes natural stops and reply-driven fixes), weighted by the survival of no new fault. At the no-recurrence end (lambda = 0) nothing removes new faults: that end is an upper bound, not a model of them."
+   },
+   "rules": {
+    "band": "low = 'with the measured re-onset hazard' (lambda measured), high = 'no recurrence' (lambda = 0); both for option d under the central convention, r conditioned on plume count, at each action scenario.",
+    "central": "if a headline ever carries one figure it is the low end, 'with the measured re-onset hazard', because every input of it is measured on the stake's own passes; the no-recurrence end is its upper bound. projection.json -> t4d.wouldBeHeadline is the sentence that would then be published; it is not rendered while headlineKind is 'range'.",
+    "cap": "T_i is capped at 1; the number of facilities at the cap is reported.",
+    "diagnostics": "lambda per scope with its restarts and event-free years, events per facility, censored events and their share of credited time, facilities at the cap, the r by plume-count class with counts, lag and delay quantiles, the transfer gap (stake share of the two largest countries).",
+    "headline": "headlineKind 'central' publishes option d's low end ('with the measured re-onset hazard') as the central figure with its no-recurrence end, the selection clause and the credit clause, and the methods paragraph carries the evidence sentence and 'not a measured reduction' once."
+   },
+   "options": {
+    "d": {
+     "model": "S x T, T with r by plume count, the measured lambda, the central convention, lag + CARB delay",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "why": "(1) r on plume-detected notified sources, now by persistence; (2) T removes only time classes and credits only the time after a fix that the stake's passes observe; (3) T's denominator is the stake's own emitting time and the hazard is measured on its own passes."
+    },
+    "d_norec": {
+     "model": "as d with lambda = 0",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "variantOf": "d",
+     "why": "(3) not met: it counts no new fault after a fix; the band's upper end."
+    },
+    "d_shortest": {
+     "model": "as d, shortest convention",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "another convention"
+    },
+    "d_longest": {
+     "model": "as d, longest convention",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "another convention"
+    },
+    "d_rflat": {
+     "model": "as d with r = the rule's flat share",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "r not conditioned on persistence"
+    },
+    "d_lag0": {
+     "model": "as d with publication lag 0",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "an operating observer network publishing at once"
+    },
+    "d_lagcw": {
+     "model": "as d with publication lag + the core's challenge window",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "a seller who waits for finalisation"
+    },
+    "d_carb": {
+     "model": "as d with CARB first plume -> mitigation and no publication lag",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "CARB's own notification step"
+    },
+    "d_rminusb": {
+     "model": "S x (r - b) x T on the stake's own passes",
+     "meets": [
+      true,
+      false,
+      true
+     ],
+     "why": "(2) not met: b removes reply-driven fixes that observed event ends already include (twice)."
+    },
+    "d_bcensored": {
+     "model": "as d, b subtracted on censored events only",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "variantOf": "d",
+     "why": "the reviewer's per-event b"
+    },
+    "rev_t4c_censored": {
+     "model": "T4c with every event censored at the last pass (reviewer, report only)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "T4c's denominator"
+    },
+    "rev_t4c_hazard": {
+     "model": "T4c with re-onset hazard 0.814 / yr (reviewer, report only)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "T4c's denominator"
+    },
+    "rev_t4c_cap365": {
+     "model": "T4c with each event's credit capped at 365 days (reviewer, report only)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "T4c's denominator"
+    },
+    "rev_t4c_cap182": {
+     "model": "T4c with each event's credit capped at 182 days (reviewer, report only)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "T4c's denominator"
+    },
+    "c": {
+     "model": "interim low end, (r - b) x 0.22",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "the reviewed interim range"
+    },
+    "b": {
+     "model": "interim high end, (r - b) x 0.90",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "the reviewed interim range"
+    },
+    "a": {
+     "model": "answered share x 44 %",
+     "meets": [
+      false,
+      false,
+      false
+     ],
+     "why": "model.options.a"
+    },
+    "t4": {
+     "model": "Type A share x 44 %",
+     "meets": [
+      true,
+      false,
+      false
+     ],
+     "why": "removes allowed operation and maintenance twice"
+    },
+    "e": {
+     "model": "POST RESULT (registered after d's result was known): as d, and a censored event's credited time is also weighted by the survival of no natural stop, with h_nat from the not MARS-notified sample",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "postResult": true,
+     "why": "reported as sensitivity only; its natural-stop sample is US airborne-heavy (model.t4d.notMarsNotifiedSample)."
+    },
+    "e_norec": {
+     "model": "POST RESULT: as e with lambda = 0",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "postResult": true,
+     "why": "e's no-recurrence variant, reported as sensitivity only."
+    },
+    "d_lambda_singlemiss": {
+     "model": "POST RESULT: as d with lambda measured after merging two events separated by exactly one pass without a detection (a single missed detection of a persistent source no longer counts as a restart)",
+     "meets": [
+      true,
+      true,
+      true
+     ],
+     "postResult": true,
+     "variantOf": "d",
+     "why": "the other direction of the hazard's bias (review finding 5)."
+    },
+    "d_eventdenom": {
+     "model": "POST RESULT: as d with T's denominator = the facility's summed event lengths (central convention) in place of duty cycle x days to the last pass",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "postResult": true,
+     "variantOf": "d",
+     "why": "(3) not met: not the stake's own time base; it shows how much the longer denominator lowers T (finding 6)."
+    },
+    "t_nmn": {
+     "model": "S x T_nn with r - b: T_nn = the T4d time factor (measured re-onset hazard of the stake, central convention, censored at the last observation) pooled over the not MARS-notified sample, each source's emitting days = its detected / observed dates x days from its first to its last observation, with the portfolio's median publication lag (the sample has no plume records committed)",
+     "meets": [
+      true,
+      true,
+      false
+     ],
+     "why": "(3) not met: T is measured on other sources than the stake's. Reported as sensitivity."
+    }
+   },
+   "choice": "d",
+   "choiceNote": "Option d is the choice, as pre-registered in the T4d pre-registration: it meets clauses (1) to (3) and every input is measured on committed data for the stake's own facilities and the CARB rows. The other options that also meet the clauses are variants of d that change one input (d_shortest, d_longest, d_rflat, d_lag0, d_lagcw, d_carb, d_bcensored, and the post-result d_lambda_singlemiss), reported as sensitivity. Option e was registered after d's result was known and is reported as a post-result row with e_norec; it is not the choice. Not chosen by size.",
+   "sensitivity": [
+    "d",
+    "d_norec",
+    "d_shortest",
+    "d_longest",
+    "d_rflat",
+    "d_lag0",
+    "d_lagcw",
+    "d_carb",
+    "d_rminusb",
+    "d_bcensored",
+    "t_nmn",
+    "rev_t4c_censored",
+    "rev_t4c_hazard",
+    "rev_t4c_cap365",
+    "rev_t4c_cap182",
+    "c",
+    "b",
+    "a",
+    "t4"
+   ],
+   "reviewerReportOnly": {
+    "hazardPerYear": 0.814,
+    "capDays": [
+     365,
+     182
+    ],
+    "note": "the reviewer's parameters for the report-only rows, typed here as the review gave them; they set no published value."
+   },
+   "postHoc": [
+    {
+     "id": "d_hazard_reviewer",
+     "restarts": 136,
+     "eventFreeYears": 178.6,
+     "note": "POST HOC, not pre-registered: option d with the re-onset hazard the reviewer measured for T4d (136 restarts over 178.6 event-free facility-years). The pre-registered rule counts the same kind of restarts but measures event-free time from the central end of an event to the central start of the next (or to the last pass), which gives fewer event-free years; this row shows what the other measurement would give. It sets no value."
+    }
+   ],
+   "notMarsNotified": "t_nn stays 'not computable from committed data': cm_timelines.json holds the Carbon Mapper sources fetched near MARS targets, not a not MARS-notified sample; the sample needs a network fetch the user decides on.",
+   "postResultSensitivity": [
+    "e",
+    "e_norec",
+    "d_lambda_singlemiss",
+    "d_eventdenom"
+   ],
+   "lambdaBias": "the bias runs both ways: sparse passes miss restarts, and a single missed detection of a persistent source creates a false one (d_lambda_singlemiss shows the second direction).",
+   "notMarsNotifiedSample": {
+    "status": "PRE-REGISTERED (board T4d amendment, 2026-10-21; user approved the fetch): committed before the fetch and before the implementation commit. Nothing of the sample had been fetched or seen.",
+    "eligible": "Carbon Mapper sources in data/derived/cm_sources.csv whose name carries the IPCC oil and gas code '_1B2_', with detection_date_count >= 1, farther than the join radius (1.5 km) from every MARS source in data/derived/mars_sources.csv with notified = 'Yes' (any sector), and not in cm_timelines.json or cm_timelines_notified.json.",
+    "draw": "random.Random(seed).sample(sorted(eligible names), size)",
+    "seed": 20261021,
+    "size": 400,
+    "fetch": "one keyless request per source to fetch_cm.SRC_URL (fetch_cm.py's endpoint, thread pool and retries; at most size requests plus retries); raw responses kept outside the repository; committed: the derived timeline per source (fetch_cm_notified.timeline fields), the content SHA-256 of each response, the licence, the seed and the rule (data/derived/cm_timelines_not_mars_notified.json).",
+    "naturalStopHazard": "h_nat = observed event ends / emitting years over the sample: Cusworth's events on each source's observation dates, censored at its last observation; an event ends observed when a non-detected observation follows it; its emitting time runs from its central start (the midpoint of the observation before it without a detection and its first detection, or the first detection if there is none) to its central end (the midpoint of its last detection and the next observation, or the last observation when censored). The same measure on the stake's own facilities (h_obs) is reported next to it.",
+    "unusable": "if fewer than evidence.minSourcesPerGroup sampled sources have an event, or the sample has no observed event end, h_nat is not computable and option d stays the choice; the reason is written in the output.",
+    "name": "the not MARS-notified sample",
+    "population": {
+     "airborneInstruments": [
+      "GAO",
+      "ang",
+      "av3"
+     ],
+     "usBox": {
+      "lonMin": -125,
+      "lonMax": -66,
+      "latMin": 24,
+      "latMax": 50
+     },
+     "note": "not a never-notified population in general: Carbon Mapper sources farther than 1.5 km from every MARS notification, which is US airborne-heavy (projection.json -> t4d.notMarsNotifiedSample gives the share of sampled sources in the contiguous-US box and the share of their observations by the airborne instruments). A satellite-only, country-stratified redraw is future work."
+    }
+   },
+   "selection": {
+    "note": "Finding 3 (foreknowledge): every member was chosen because a Carbon Mapper plume MARS did not see was found in its window, and the credit runs over that same window since MARS's first plume there, as if the covenant had started then. projection.json -> t4d.diagnostics.selection gives the share of d's credit that comes from events containing a selecting plume (join_v1.json candidates' plume dates). A forward hold-out (members chosen before a date, credit only after it) is future work."
+   }
+  }
+ },
+ "parameters": {
+  "baselineResponseShare": {
+   "value": 0.13,
+   "unit": "share of MARS alerts that received a response (the nearest published analogue to acting on an episode)",
+   "status": "read",
+   "sources": [
+    "un-news-2026-07-23",
+    "unep-pr-2025-10-22",
+    "unep-highlight-2025-07-23"
+   ],
+   "rule": {
+    "text": "the most recent published MARS response share: of the candidates below, the source with the latest date; the value is the per-cent figure in its quote. pipeline/projection.py re-reads it and refuses to run if the value differs.",
+    "candidates": [
+     {
+      "source": "unep-pr-2025-10-22",
+      "quote": 0,
+      "cite": "UNEP 2025"
+     },
+     {
+      "source": "un-news-2026-07-23",
+      "quote": 1,
+      "cite": "UNEP via UN News 2026"
+     }
+    ]
+   },
+   "note": "Today's baseline, without the clause: the most recent published share of UNEP IMEO MARS alerts that received a response (13 % in UN News, July 2026; 12 % in the year to October 2025). A response is detailed information on the event, not an action and not a confirmed stop; it is the nearest published analogue to a seller acting on an attested episode. The projection counts only the action share above it: it bounds the reply-driven fixes, not sources that stop on their own (natural stops), which the interim range spans. Subtracting a reply rate from an outcome rate is conservative: MARS outcomes are far rarer than replies (more than 40 verified repairs after more than 5,000 alerts), so the share of reply-driven fixes that would happen anyway is smaller than the baseline subtracted; it says nothing about sources that stop on their own."
+  },
+  "responseScenarios": {
+   "values": [
+    0.32,
+    0.39,
+    0.48
+   ],
+   "central": 0.39,
+   "unit": "share of attested episodes at contracted sources that the seller acts on",
+   "status": "ASSUMPTION",
+   "rule": {
+    "source": "carb-2024-airborne",
+    "sector": "Oil & Gas",
+    "columns": [
+     "sent",
+     "didNotRespond",
+     "notFound",
+     "typeA",
+     "typeB",
+     "typeC"
+    ],
+    "acted": "typeA",
+    "of": "sent",
+    "rows": [
+     {
+      "year": 2020,
+      "sent": 32,
+      "didNotRespond": 0,
+      "notFound": 9,
+      "typeA": 10,
+      "typeB": 3,
+      "typeC": 10
+     },
+     {
+      "year": 2021,
+      "sent": 40,
+      "didNotRespond": 1,
+      "notFound": 5,
+      "typeA": 19,
+      "typeB": 5,
+      "typeC": 10
+     },
+     {
+      "year": 2023,
+      "sent": 75,
+      "didNotRespond": 1,
+      "notFound": 14,
+      "typeA": 29,
+      "typeB": 21,
+      "typeC": 10
+     }
+    ],
+    "text": "central = the share of oil and gas incidences sent to operators that were Type A (a fault unknown to the operator before the notice; every one was stopped or repaired), summed over every campaign year in CARB's Table 3; low and high = the Wilson interval of that share at rule.confidence; each rounded to two decimals. Chosen after reading Table 3, as the lowest of the definitions in rule.sensitivity (projection.json -> responseSensitivity gives each one's share and projected kt). The landfill rows are left out because every contracted source is oil and gas. pipeline/projection.py recomputes the three values from these rows and refuses to run if the values above differ. The previous scenarios (0.3, 0.5, 0.7) had no source.",
+    "confidence": 0.95,
+    "sensitivity": [
+     {
+      "id": "typeA_of_sent",
+      "label": "Type A / incidences sent (the rule)",
+      "numerator": [
+       "typeA"
+      ],
+      "denominator": [
+       "sent"
+      ],
+      "subtract": [],
+      "years": null
+     },
+     {
+      "id": "typeA_of_responded",
+      "label": "Type A / incidences answered",
+      "numerator": [
+       "typeA"
+      ],
+      "denominator": [
+       "sent"
+      ],
+      "subtract": [
+       "didNotRespond"
+      ],
+      "years": null
+     },
+     {
+      "id": "typeA_of_sent_2021_2023",
+      "label": "Type A / incidences sent, 2021 and 2023 (all identified operators)",
+      "numerator": [
+       "typeA"
+      ],
+      "denominator": [
+       "sent"
+      ],
+      "subtract": [],
+      "years": [
+       2021,
+       2023
+      ]
+     },
+     {
+      "id": "typeA_of_located",
+      "label": "Type A / incidences answered and located (sent - not found - no response)",
+      "numerator": [
+       "typeA"
+      ],
+      "denominator": [
+       "sent"
+      ],
+      "subtract": [
+       "notFound",
+       "didNotRespond"
+      ],
+      "years": null
+     },
+     {
+      "id": "typeA_or_C_of_sent",
+      "label": "Type A or C (maintenance, short-lived) / incidences sent",
+      "numerator": [
+       "typeA",
+       "typeC"
+      ],
+      "denominator": [
+       "sent"
+      ],
+      "subtract": [],
+      "years": null
+     },
+     {
+      "id": "typeA_of_A_or_B",
+      "label": "Type A / (Type A + Type B, persistent emissions)",
+      "numerator": [
+       "typeA"
+      ],
+      "denominator": [
+       "typeA",
+       "typeB"
+      ],
+      "subtract": [],
+      "years": null
+     }
+    ],
+    "incidences": {
+     "file": "data/derived/carb_summary.json",
+     "source": "carb-2024-appendix",
+     "text": "CARB Appendix Tables A1 (2021) and A2 (2023), oil and gas rows, one per incidence, committed as aggregates (counts by year, outcome and plume count, the join-key count, the Type A delays); make fetch-published rebuilds the rows locally and checks that they reproduce the aggregates. pipeline/projection.py refuses to run unless their outcome counts equal the 2021 and 2023 rows above, and uses them for the plume-weighted sensitivity row, the join-key count and the time factor's delays and plume classes (model.t4c, model.t4d). They carry no emission rate, so r stays counted by incidence (model.rules.massWeighting)."
+    }
+   },
+   "sources": [],
+   "informedBy": [
+    "carb-2024-airborne",
+    "carb-2024-appendix",
+    "un-news-2026-07-23"
+   ],
+   "note": "ASSUMPTION, informed by the published share of notified incidences that were fixable faults, all fixed. California's air regulator (CARB) sent operators airborne plume detections and asked them to find the source, repair it if possible and report; operators answered nearly every oil and gas incidence, and the Type A ones (a fault unknown to the operator before the notice) were every one stopped or repaired; the rule above turns the oil and gas rows into the scenarios. In the model (model.factors.r) this is the only factor that removes emissions a repair cannot touch (Type B allowed operation, Type C maintenance, not found, no response). Counted by incidence: CARB publishes no emission rate per incidence (model.rules.massWeighting). Not observed under the clause: a seller who pays a rebate on every attested episode is not an operator answering a regulator, aerial notices are not satellite ones, and California is one jurisdiction; the interval is sampling uncertainty only and does not cover that move. The move can err either way: Type B emissions (normal operation) were classified as allowable, while under the clause each one still costs the seller a rebate; a contract counterparty has less reach than a regulator. Voluntary satellite alerts sit far lower (MARS: responses, not actions, to 13 % of alerts and more than 40 verified repairs after more than 5,000 alerts), which is why only the share above today's MARS response share counts."
+  },
+  "ceasedShare": {
+   "low": 0.22,
+   "high": 0.9,
+   "unit": "share of a fixed source's yearly emissions that stops: the two ends of the interim range (no central value until board T4c)",
+   "status": "ASSUMPTION",
+   "rule": {
+    "source": "ravikumar-2020-erl",
+    "bands": {
+     "low": {
+      "quote": 1,
+      "regex": "fugitive emissions reduced by only (\\d+)% because of new leaks"
+     },
+     "high": {
+      "quote": 3,
+      "regex": "corresponding to (\\d+)% of fugitive emissions",
+      "with": {
+       "quote": 4,
+       "phrase": "leaks that were fixed did not re-appear"
+      }
+     }
+    },
+    "text": "model.rules.d: each end is the per-cent figure matched by its regex in its quote; the high end also needs its 'with' quote to state that fixed leaks did not re-appear. pipeline/projection.py re-reads the quotes and refuses to run if a value differs."
+   },
+   "note": "ASSUMPTION, the two ends of an interim range informed by the one published re-survey of repaired leaks we found: Ravikumar et al. 2020 surveyed 36 Alberta facilities from the ground and re-surveyed 8 of them 6 to 13 months later. Low end: fugitive emissions fell only 22 % after one repair round, because of new leaks (one round, net of new faults). High end: 93 % of the leaks, carrying 90 % of the fugitive emissions found, were fixed before the re-survey and the fixed ones did not re-appear, read as every fix holding all year; 0.90 is a repair rate, used only as this upper-end assumption. Time is not yet modelled: the delay from detection to repair, how long an event lasts, new faults and sources that stop on their own are spanned by the range, not separated (board T4c). Not measured after a satellite notification, on super-emitters, or over a full year; one operator's sites. The study's 44 % fall in total emissions is not used: it is measured on all of a facility's emissions and is mostly a vent change the paper reports 'despite near-zero repair' (model.options.a). Our own checks (projection_evidence.py) neither support nor bound it.",
+   "informedBy": [
+    "ravikumar-2020-erl"
+   ],
+   "sources": []
+  },
+  "ledgerCalls": {
+   "perEpisode": [
+    "proposeEpisode",
+    "finalize",
+    "withdraw"
+   ],
+   "perCovenantYear": [
+    "createCovenant"
+   ],
+   "status": "read",
+   "sources": [
+    "measurements-json"
+   ],
+   "note": "The core path of one episode on Ethereum Sepolia (k-signed proposal, finalisation after the challenge window, the buyer's withdrawal) and one portfolio covenant per year. Refund-side calls of the IncentivePool are not included. The episode rate is the backtest's, before any response, so it overstates the calls once sources answer."
+  },
+  "evidence": {
+   "status": "DESIGN",
+   "sources": [
+    "mars-definitions",
+    "mars-current-zip-2026-10-15"
+   ],
+   "confidence": 0.95,
+   "power": 0.8,
+   "bootstrapDraws": 2000,
+   "seed": 7,
+   "minSourcesPerGroup": 10,
+   "plumeStrata": [
+    1,
+    2,
+    4,
+    10
+   ],
+   "statusProxy": {
+    "absentCategory": "absent"
+   },
+   "eventStudy": {
+    "primary": {
+     "proxy": "firstNotifiedPlume",
+     "windowDays": 365,
+     "gapDays": 30,
+     "minPassesEachSide": 2
+    },
+    "variants": [
+     {
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 365,
+      "gapDays": 30,
+      "minPassesEachSide": 1
+     },
+     {
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 730,
+      "gapDays": 30,
+      "minPassesEachSide": 2
+     },
+     {
+      "proxy": "firstPlume",
+      "windowDays": 365,
+      "gapDays": 30,
+      "minPassesEachSide": 2
+     },
+     {
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 180,
+      "gapDays": 15,
+      "minPassesEachSide": 1
+     },
+     {
+      "proxy": "firstNotifiedPlume",
+      "windowDays": 1000,
+      "gapDays": 30,
+      "minPassesEachSide": 3
+     }
+    ]
+   },
+   "note": "Design choices of the two empirical checks (pipeline/projection_evidence.py), not data. The primary event-study specification is the first one that was run; every specification that was run is reported as a variant, none was dropped. The checks are reported next to the published parameters; they do not set them.",
+   "feedbackTrackingStart": "2024-11-01"
+  },
+  "costScale": {
+   "usdPerTco2e": 20,
+   "status": "read",
+   "sources": [
+    "iea-gmt-2024-1p5"
+   ],
+   "note": "Kept as a source, not used in the card (projection review, spec-v2 §15): the IEA's GHG price below which nearly all options to cut oil, gas and coal methane can be deployed is a price for the work on site; the ledger cost is the cost of the clause's records, a different quantity."
+  }
+ },
+ "sources": {
+  "unep-pr-2025-10-22": {
+   "tag": "[V]",
+   "title": "UNEP press release: Better data driving action on methane emissions, but more work needed (An Eye on Methane 2025)",
+   "url": "https://www.unep.org/news-and-stories/press-release/better-data-driving-action-methane-emissions-more-work-needed",
+   "date": "2025-10-22",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "Government and industry responses to UNEP’s more than 3,500 satellite methane alerts climbed from one to 12 per cent in the past year.",
+    "IMEO has documented 25 cases of mitigation action in ten countries since MARS was launched in 2022",
+    "nearly 90 per cent remain unanswered"
+   ]
+  },
+  "unep-highlight-2025-07-23": {
+   "tag": "[V]",
+   "title": "UNEP technical highlight: Satellite alerts spur methane cuts but room for progress remains",
+   "url": "https://www.unep.org/technical-highlight/satellite-alerts-spur-methane-cuts-room-progress-remains",
+   "date": "2025-07-23",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "IMEO considers a response received if recipients reply with detailed information on the emissions event that triggered the alert.",
+    "Within a matter of weeks, MARS satellite images confirmed the leak had been stopped.",
+    "The emissions ceased on their own."
+   ]
+  },
+  "ravikumar-2020-erl": {
+   "tag": "[V]",
+   "title": "Ravikumar et al., Repeated leak detection and repair surveys reduce methane emissions over scale of years, Environmental Research Letters 15, 034029",
+   "url": "https://iopscience.iop.org/article/10.1088/1748-9326/ab6ae1",
+   "date": "2020",
+   "readOn": "2026-10-20",
+   "quotes": [
+    "total emissions reduced by 44% after one LDAR survey",
+    "fugitive emissions reduced by only 22% because of new leaks",
+    ">90% of the leaks found in the initial survey were not emitting in the re-survey",
+    "93% of the leaks corresponding to 90% of fugitive emissions observed in the initial survey were fixed before the re-survey",
+    "We find that leaks that were fixed did not re-appear and leaks that were not fixed were still present during the re-survey",
+    "vented emissions were reduced by 47% during the re-survey, despite near-zero repair after the initial survey"
+   ],
+   "quoteNote": "The abstract and the results section were read in the open-access PDF (the PDF carries a per-download stamp, so no SHA-256 is recorded); quotes 3 to 5 are from the results section."
+  },
+  "iea-gmt-2026-key-findings": {
+   "tag": "[V]",
+   "title": "IEA, Global Methane Tracker 2026, Key findings",
+   "url": "https://www.iea.org/reports/global-methane-tracker-2026/key-findings",
+   "date": "2026",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "Around 70% of methane emissions from fossil fuels – nearly 85 Mt – can be abated with existing technology",
+    "three-quarters of emissions from oil and gas",
+    "Around 30% of methane emissions from fossil fuel operations could be reduced at no cost"
+   ],
+   "context": "Why the stop share is not the IEA's avoidable share: that figure is a share of all fossil-fuel methane abatable with existing technology, not what stays stopped after a fix. Not a parameter."
+  },
+  "iea-gmt-2024-1p5": {
+   "tag": "[V]",
+   "title": "IEA, Global Methane Tracker 2024, Methane emissions in a 1.5 °C pathway",
+   "url": "https://www.iea.org/reports/global-methane-tracker-2024/methane-emissions-in-a-15-0c-pathway",
+   "date": "2024",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "nearly all methane abatement options could be deployed at a GHG price of less than USD 20 per tonne of CO2-eq."
+   ]
+  },
+  "mateo-garcia-2025-arxiv": {
+   "tag": "[V]",
+   "title": "Mateo-Garcia, Allen, Irakulis-Loitxate et al., Artificial intelligence for methane detection: from continuous monitoring to verified mitigation (arXiv 2511.21777, preprint)",
+   "url": "https://arxiv.org/abs/2511.21777",
+   "date": "2025-11-26",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "Deployed operationally, MARS-S2L has issued 2,776 notifications to stakeholders in 25 countries",
+    "enabling verified, permanent mitigation of six persistent emitters"
+   ],
+   "context": "Why a response is not counted as a stop: few stops are documented after notification. Not a parameter."
+  },
+  "cusworth-2026-ncomms": {
+   "tag": "[V]",
+   "title": "Cusworth, Bon, Varon et al., Duration of super-emitting oil and gas methane sources, Nature Communications",
+   "url": "https://www.nature.com/articles/s41467-026-68804-7",
+   "date": "2026-01-24",
+   "readOn": "2026-10-21",
+   "quotes": [
+    "Emission events generally lasted for at least 2 hours, and a small subset of sources (18 total), persistently emitted throughout the entire campaign",
+    "If a detection follows a non-detection, it constitutes the start of a new event. If a non-detection follows a detection, it constitutes the end of an event.",
+    "For examples where the super-emitter event only contained a single detection, we assume an 8.3-min shortest duration",
+    "assume that missed detections and non-detections between site observations are equally likely",
+    "The median shortest and median longest duration for finite events (respectively) is 2.4 to 145 h, for mixed events is 0.14 to 129 h, and for unbounded events is 387 to 411 h.",
+    "Several single-detection finite events do not have a follow-up observation for an extended period, often days, which likely artificially inflates the longest duration estimate.",
+    "we estimate super-emitters to contribute approximately 50% (37-73%) towards total emissions"
+   ],
+   "quoteNote": "The quotes before the last are from the Results and Methods of the open-access article (HTML), read in full on readOn; the last is the abstract.",
+   "context": "Why the stake's duty-cycle assumption is the weak point: most super-emitting events are short, so extrapolating pass detections to a year is uncertain. Not a parameter; the projection uses the stake's low bound only."
+  },
+  "mars-definitions": {
+   "tag": "[V]",
+   "title": "UNEP IMEO MARS, definitions_detected_plumes_sources.pdf (inside the MARS data zip; committed snapshot, data/MANIFEST.json mars_zip)",
+   "url": "https://unepazeconomyadlsstorage.blob.core.windows.net/public/unep_methanedata_detected_plumes_geojson.zip",
+   "date": "snapshot fetched 2026-10-14",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "indicates whether the plume was notified to governments and/or OGMP 2.0 companies (if applicable)",
+    "The source’s most recent plume was detected before November 2024 phase (i.e. before feedback tracking implementation).",
+    "Summarizes the most recent activity observed at a source over the last 6 months",
+    "several validated plume-free hyperspectral observations within this timeframe"
+   ]
+  },
+  "mars-current-zip-2026-10-15": {
+   "tag": "[V]",
+   "title": "UNEP IMEO MARS public data zip, current version checked for the documented emission_status field (fetched once to scratch, not committed)",
+   "url": "https://unepazeconomyadlsstorage.blob.core.windows.net/public/unep_methanedata_detected_plumes_geojson.zip",
+   "date": "Last-Modified 2026-10-15T14:33:24Z",
+   "readOn": "2026-10-15",
+   "sha256": "483ac2e676aac938dc14373c079a962258932206f3797248818196ab21d725bc",
+   "bytes": 55461559,
+   "quotes": [
+    "source properties: country, feedback, feedback_government, feedback_operator, id_last_plume, last_plume_date, lat, lon, n_plumes_detected, notified, persistency, persistency_category, persistency_std, sector, source_name, source_type"
+   ],
+   "context": "emission_status (Ongoing / In review / Potentially ceased / Undetermined in the definitions) is carried by no source in this file nor in the committed snapshot, so line 1 uses persistency_category as a labelled non-detection fallback."
+  },
+  "measurements-json": {
+   "tag": "[V]",
+   "title": "MethaneClause, data/derived/measurements.json (make measure): Sepolia gas per call, USD at the stated gwei and the Chainlink ETH/USD read",
+   "url": "data/derived/measurements.json",
+   "date": "measuredAt in the file",
+   "readOn": "2026-10-15",
+   "quotes": [
+    "functions.<call>.usd_at_stated_gwei",
+    "usd_assumption.eth_usd"
+   ]
+  },
+  "carb-2024-airborne": {
+   "tag": "[V]",
+   "title": "California Air Resources Board, Summary Report of the 2020, 2021, and 2023 Airborne Methane Plume Mapping Studies",
+   "url": "https://ww2.arb.ca.gov/sites/default/files/2024-04/2020-2021-2023%20Airborne%20Summary%20Report_FINAL.pdf",
+   "date": "2024-04",
+   "readOn": "2026-10-20",
+   "sha256": "abb8f446b5e581d35ab6259089e02d7f33bba984249b435e65c6ac06fedd0eee",
+   "quotes": [
+    "CARB staff identified the owner of infrastructure at each methane plume’s source and shared findings directly with landfill and oil & gas operators via 245 unique “incidence reports.”",
+    "Operators responded to these incidence reports 94% of the time.",
+    "In all cases of “Type A” emissions, the operator was able to stop or repair the associated component and mitigate the source of emissions.",
+    "Type A Incidence: An incidence where an operator was able to locate the cause of emissions, the source of emissions was not known previously to the operator, and the emissions could be mitigated.",
+    "In 2020, plumes were only shared with operators who volunteered to be part of the study, whereas in 2021 and 2023 plumes were shared with all identified operators.",
+    "Data by itself does not mean that mitigation will occur"
+   ],
+   "tableRows": [
+    "Oil & Gas 32 0 9 10 3 10",
+    "Oil & Gas 40 1 5 19 5 10",
+    "Oil & Gas 75 1 14 29 21 10"
+   ],
+   "tableNote": "Table 3 (Incidence follow-up statistics based on operator response to emails), oil and gas rows for 2020, 2021 and 2023 in that order, as extracted text with whitespace collapsed; columns: incidences sent to operators, did not respond, emission source not found, Type A, Type B, Type C. The whole PDF was read; sha256 is of the file read.",
+   "quoteNote": "The 94% response figure covers all 245 incidences in both sectors (landfill and oil and gas); for oil and gas alone Table 3 gives the answered share (projection.json -> responseRule).",
+   "cite": "CARB 2024"
+  },
+  "un-news-2026-07-23": {
+   "tag": "[V]",
+   "title": "UN News: Satellites can now spot methane leaks in real time – but most go unfixed",
+   "url": "https://news.un.org/en/story/2026/07/1168007",
+   "date": "2026-07-23",
+   "readOn": "2026-10-20",
+   "quotes": [
+    "Since launching in 2023, the system has issued more than 5,000 alerts across 33 countries, helping trigger more than 40 verified repairs.",
+    "only 13 per cent of alerts currently receive a response from the countries or operators notified."
+   ]
+  },
+  "carb-2024-appendix": {
+   "tag": "[V]",
+   "title": "California Air Resources Board, Appendix to the Summary Report of the 2020, 2021, and 2023 Airborne Methane Plume Mapping Studies (Tables A1 and A2)",
+   "url": "https://ww2.arb.ca.gov/sites/default/files/2024-04/2020-2021-2023%20Appendix_FINAL.pdf",
+   "date": "2024-04",
+   "readOn": "2026-10-20",
+   "sha256": "e41f92acf519915cf84ca44a6d340348414dd5d331edc958ff0d715641ef80be",
+   "quotes": [
+    "Table A1. List of all incidences that were sent to operators in 2021",
+    "Table A2. List of all incidences that were sent to operators in 2023.",
+    "All 2021 and 2023 incidences and their outcomes are available in Table A1 and A2 in the Appendix."
+   ],
+   "quoteNote": "The third quote is the summary report's footnote to its Table 1 (carb-2024-airborne). Each row gives incidence ID, earliest plume measurement, number of plumes, sector, emission type and the notification, inspection, mitigation and reply dates; no row gives an emission rate, a location or a plume identifier. The oil and gas rows' aggregates are committed in data/derived/carb_summary.json and make fetch-published rebuilds the rows locally (data/derived/carb_incidences.json, not tracked); the whole PDF was read and sha256 is of the file read.",
+   "cite": "CARB 2024, Appendix"
+  },
+  "carb-22rd001-2023": {
+   "tag": "[V]",
+   "title": "Carbon Mapper, Final Report to CARB, Agreement No. 22RD001 (June 2023 airborne campaign), Appendix B Methane Emissions Plume Source List",
+   "url": "https://ww2.arb.ca.gov/sites/default/files/2023-11/22RD001%20Contractor%20Final%20Report.pdf",
+   "date": "2023-11",
+   "readOn": "2026-10-20",
+   "sha256": "a5a443920eb429eb5c71464a5661870072bc403813b954bffcb207fe093ab189",
+   "quotes": [
+    "Carbon Mapper detected a total of 325 methane plumes (Appendix B)."
+   ],
+   "context": "Why the action share is counted, not mass-weighted: this list gives each 2023 plume a rate and a location but no CARB incidence identifier, and CARB's Table A2 gives no plume identifier or location; the only shared key, earliest plume date with number of plumes, identifies few incidences (projection.json -> weighting). A CARB crosswalk from incidence to plume identifier would make the mass-weighted share computable. Not a parameter."
+  }
+ }
+}

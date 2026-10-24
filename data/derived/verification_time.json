@@ -1,0 +1,75 @@
+{
+ "case": "TKM_S_276",
+ "label": "author-measured, not a user study",
+ "manual": {
+  "maxSeconds": null,
+  "medianSeconds": null,
+  "minSeconds": null,
+  "mode": "live portals (UNEP MARS, Carbon Mapper)",
+  "n": 0,
+  "runs": [],
+  "stepMedianSeconds": {},
+  "steps": [
+   {
+    "id": "mars",
+    "text": "Open the UNEP MARS record of the source (MARS data portal) and note its persistency category and the date of MARS's last plume."
+   },
+   {
+    "id": "catalogue",
+    "text": "Find the Carbon Mapper sources within 1.5 km of the MARS point in the Carbon Mapper data portal."
+   },
+   {
+    "id": "passes",
+    "text": "List every Carbon Mapper pass since MARS's last plume, with plume / no plume."
+   },
+   {
+    "id": "compare",
+    "text": "Compare dates: note the most recent quantified plume after the label, its date, rate and uncertainty."
+   },
+   {
+    "id": "hash",
+    "text": "Write the bundle fields, canonicalise them by the published RFC 8785 steps, compute SHA-256 and compare it with the attested evidenceHash."
+   }
+  ]
+ },
+ "question": "did a quantified plume reappear after the MARS label, and is the attested evidence exactly what the observers signed?",
+ "schema": "methaneclause.verification_time/1",
+ "tool": {
+  "command": "pipeline/.venv/bin/python scripts/measure_verification.py tool-once",
+  "machine": "Darwin arm64, Python 3.12.13",
+  "maxSeconds": 1.61,
+  "medianSeconds": 1.35,
+  "minSeconds": 1.33,
+  "mode": "snapshot",
+  "modeNote": "pinned snapshot: the committed case file (the manual protocol uses the live portals)",
+  "n": 5,
+  "runs": [
+   {
+    "at": "2026-10-15T10:32:31Z",
+    "mode": "snapshot",
+    "seconds": 1.611
+   },
+   {
+    "at": "2026-10-15T10:32:32Z",
+    "mode": "snapshot",
+    "seconds": 1.334
+   },
+   {
+    "at": "2026-10-15T10:32:33Z",
+    "mode": "snapshot",
+    "seconds": 1.351
+   },
+   {
+    "at": "2026-10-15T10:32:35Z",
+    "mode": "snapshot",
+    "seconds": 1.361
+   },
+   {
+    "at": "2026-10-15T10:32:36Z",
+    "mode": "snapshot",
+    "seconds": 1.333
+   }
+  ],
+  "what": "fresh process: MARS record + Carbon Mapper passes since the label (case file), plume fetch, canonical bundle, validation, SHA-256 vs evidenceHash, ECDSA + ML-DSA-44 of both observers"
+ }
+}

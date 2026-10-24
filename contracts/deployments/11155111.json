@@ -1,0 +1,64 @@
+{
+  "buyer": "0x6FEfe70603a9d90Aa77bedEc076bdCd2E9A01743",
+  "chainId": 11155111,
+  "challengerBond": 200000000000000,
+  "deployer": "0xb753A1cc38F05971aE31C5132BCdfad2d31E93cc",
+  "keyRegistry": "0x8f96340b051ac19D92976cC14aAEA0461Eaf0fc7",
+  "methaneCovenant": "0xcAcBD7E8d995EFeB70a8b82Aa525726A3797f5f8",
+  "observerA": "0xc208f0a1F357B89d611cbb77F9b7630EC246b7Ae",
+  "observerB": "0xf1A111C3bf2638bD00B17C89abD834f3C4F01D11",
+  "observerC": "0x53Ba3b2266DEB93a7159264Bf0AA7bD46A5662A9",
+  "proposerBond": 100000000000000,
+  "registryAdmin": "0x0000000000000000000000000000000000000000",
+  "sandbox": {
+    "buyer": "0x2f4a34d6D13b734c03f80784Cf830e92e9F220eC",
+    "challengerBond": 40000000000000,
+    "incentivePool": "0x5D323582991A0e11B9Acf144a29d8CC206c9D982",
+    "incentivePoolLibraries": {
+      "PoolCorroboration": "0xBaD69CFBD4CD6788C1c4fa85a1D66F18c04cc699",
+      "PoolEpisodes": "0xd64520a12A9DAc7b777d6551871c7676cCf243B9",
+      "PoolInstallments": "0xA6EB0fD2bC461895C856D926C79B67bd01A85b88",
+      "PoolSetup": "0xB993489bD29c1BdB1B4e97B658d82af7f018768a",
+      "PoolVerify": "0xA174DACf098343Af30459EaE13598072a3f869fa"
+    },
+    "incentivePoolSizes": {
+      "IncentivePool": 22225,
+      "PoolCorroboration": 2115,
+      "PoolEpisodes": 2182,
+      "PoolInstallments": 3224,
+      "PoolSetup": 2879,
+      "PoolVerify": 6541
+    },
+    "independentController": "0x7a0103710C45f844E9e5F5d62604274BA5179A2a",
+    "judgeController": "0xD10155920CC2163E4925163552F5d15569507838",
+    "keyDerivation": "keccak256(\"MethaneClause judge sandbox v1 [SIM] testnet-only / <ROLE>\")",
+    "keyRegistry": "0x9BEb9Ca5a2BC166e0C3231ee8E65295b8d4F0682",
+    "methaneCovenant": "0x12B9f286Fc5B0fD0006F1B31335E78fe7E0f0aDa",
+    "observer1": "0x91E2f912B5c4aCE570460Ec795a54baa8a228A39",
+    "observer2": "0x75BE5bf57FFBD707D189F808F63e9A56b848C776",
+    "proposerBond": 20000000000000,
+    "registryAdmin": "0x0000000000000000000000000000000000000000",
+    "seller": "0x934e10Af23194BBd6D02ec8e3Bb2EDe7BD618b47"
+  },
+  "seller": "0xd7379Ce44b12A7aEf8a71A1D4bd790909DF65F1E",
+  "incentivePool": "0x2bEfac4D6A55eEA1dAF853D517De6636f8646bBc",
+  "incentivePoolLibraries": {
+    "PoolCorroboration": "0xBaD69CFBD4CD6788C1c4fa85a1D66F18c04cc699",
+    "PoolEpisodes": "0xd64520a12A9DAc7b777d6551871c7676cCf243B9",
+    "PoolInstallments": "0xA6EB0fD2bC461895C856D926C79B67bd01A85b88",
+    "PoolSetup": "0xB993489bD29c1BdB1B4e97B658d82af7f018768a",
+    "PoolVerify": "0xA174DACf098343Af30459EaE13598072a3f869fa"
+  },
+  "incentivePoolSizes": {
+    "IncentivePool": 22225,
+    "PoolCorroboration": 2115,
+    "PoolEpisodes": 2182,
+    "PoolInstallments": 3224,
+    "PoolSetup": 2879,
+    "PoolVerify": 6541
+  },
+  "sandboxPrevious": {
+    "keyRegistry": "0x7133BB58F10D5D670F3F1949C088a1f71c19FF3A",
+    "methaneCovenant": "0x0C4558429ec3c1E65e8A7Cf2Bc50BFCF640E5D28"
+  }
+}

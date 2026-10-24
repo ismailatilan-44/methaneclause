@@ -1,0 +1,408 @@
+{
+ "by_layer": {
+  "hash": {
+   "caught": 5,
+   "n": 5
+  },
+  "re-check": {
+   "caught": 1,
+   "n": 1
+  },
+  "validation": {
+   "caught": 36,
+   "n": 36
+  }
+ },
+ "by_subject": {
+  "clean pass": {
+   "caught": 24,
+   "n": 24
+  },
+  "detection": {
+   "caught": 18,
+   "n": 18
+  }
+ },
+ "cases": [
+  {
+   "case": "negative rate",
+   "caught": true,
+   "expected": "RANGE",
+   "got": "RANGE",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "rate 1e6 kg/h",
+   "caught": true,
+   "expected": "RANGE",
+   "got": "RANGE",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "unit swap t/h written as kg/h",
+   "caught": true,
+   "expected": "BELOW_FLOOR",
+   "got": "BELOW_FLOOR",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "unit swap kg/h written as t/h",
+   "caught": true,
+   "expected": "RANGE",
+   "got": "RANGE",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "no quantification (real CM rows have null rates)",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "missing emission_version",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "future timestamp",
+   "caught": true,
+   "expected": "TIME",
+   "got": "TIME",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "before covenant start",
+   "caught": true,
+   "expected": "TIME",
+   "got": "TIME",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "published before acquired",
+   "caught": true,
+   "expected": "TIME",
+   "got": "TIME",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "plume 50 km from the facility",
+   "caught": true,
+   "expected": "DISTANCE",
+   "got": "DISTANCE",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "CM source not linked to the facility",
+   "caught": true,
+   "expected": "NOT_COVERED",
+   "got": "NOT_COVERED",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "unknown instrument",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "facility not in the covenant's set",
+   "caught": true,
+   "expected": "NOT_COVERED",
+   "got": "NOT_COVERED",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "extra field in the bundle",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "plume attested twice by one observer",
+   "caught": true,
+   "expected": "DUPLICATE",
+   "got": "DUPLICATE",
+   "layer": "validation",
+   "subject": "detection"
+  },
+  {
+   "case": "bundle edited after signing (2,548 -> 548)",
+   "caught": true,
+   "expected": "signer mismatch",
+   "got": "signer mismatch",
+   "layer": "hash",
+   "subject": "detection"
+  },
+  {
+   "case": "signature replayed on another chain",
+   "caught": true,
+   "expected": "signer mismatch",
+   "got": "signer mismatch",
+   "layer": "hash",
+   "subject": "detection"
+  },
+  {
+   "case": "slow drift (6 passes, x0.97/pass)",
+   "caught": true,
+   "expected": "hash mismatch on re-fetch",
+   "got": "hash mismatch on re-fetch",
+   "layer": "hash",
+   "note": "validation passes every step (not caught by statistics); caught because a re-fetch from the provider rebuilds a bundle whose hash differs",
+   "subject": "detection"
+  },
+  {
+   "case": "not_cloudy false (cloud 80 / 80)",
+   "caught": true,
+   "expected": "CLOUD_FLAG",
+   "got": "CLOUD_FLAG",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "not_cloudy true but cloud 42 / 0",
+   "caught": true,
+   "expected": "CLOUD_FLAG_MISMATCH",
+   "got": "CLOUD_FLAG_MISMATCH",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "footprint holds only a later-published origin (real 2025-07-08 Tanager)",
+   "caught": true,
+   "expected": "NO_ORIGIN_INTERSECT",
+   "got": "NO_ORIGIN_INTERSECT",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "plume of a linked source on the scene",
+   "caught": true,
+   "expected": "PLUME_ON_SCENE",
+   "got": "PLUME_ON_SCENE",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "plume within 1.5 km filed under another source",
+   "caught": true,
+   "expected": "PLUME_ON_SCENE",
+   "got": "PLUME_ON_SCENE",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "MARS plume 3 days before the scene",
+   "caught": true,
+   "expected": "MARS_PLUME_NEARBY",
+   "got": "MARS_PLUME_NEARBY",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "inside the episode's link window (real 2024-10-26 Tanager)",
+   "caught": true,
+   "expected": "SCENE_BEFORE_SINCE",
+   "got": "SCENE_BEFORE_SINCE",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "scene record not published",
+   "caught": true,
+   "expected": "SCENE_NOT_PUBLISHED",
+   "got": "SCENE_NOT_PUBLISHED",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "attested once published but inside the 60-day lag (real 2024-12-16 Tanager, published day 46)",
+   "caught": true,
+   "expected": "BEFORE_PUBLICATION_LAG",
+   "got": "BEFORE_PUBLICATION_LAG",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "scene after the covenant term",
+   "caught": true,
+   "expected": "AFTER_TERM",
+   "got": "AFTER_TERM",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "same scene twice for one claim",
+   "caught": true,
+   "expected": "DUPLICATE_SCENE",
+   "got": "DUPLICATE_SCENE",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "instrument without a published floor",
+   "caught": true,
+   "expected": "UNKNOWN_INSTRUMENT",
+   "got": "UNKNOWN_INSTRUMENT",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "episode rate below the EMIT floor",
+   "caught": true,
+   "expected": "FLOOR_MISMATCH",
+   "got": "FLOOR_MISMATCH",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "bundle understates the EMIT floor (100)",
+   "caught": true,
+   "expected": "BUNDLE_POLICY_MISMATCH",
+   "got": "BUNDLE_POLICY_MISMATCH",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "bundle narrows the MARS window to 1 day",
+   "caught": true,
+   "expected": "BUNDLE_POLICY_MISMATCH",
+   "got": "BUNDLE_POLICY_MISMATCH",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "negative per-source count hiding a plume",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "scene in the future",
+   "caught": true,
+   "expected": "FUTURE",
+   "got": "FUTURE",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "extra field in the bundle",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "sceneId of another scene",
+   "caught": true,
+   "expected": "SCHEMA",
+   "got": "SCHEMA",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "relapse scene offered as clean (real 2026-02-01 Tanager)",
+   "caught": true,
+   "expected": "CLOUD_FLAG",
+   "got": "CLOUD_FLAG",
+   "layer": "validation",
+   "subject": "clean pass"
+  },
+  {
+   "case": "cloud fields edited after signing",
+   "caught": true,
+   "expected": "both signatures fail",
+   "got": "both signatures fail",
+   "layer": "hash",
+   "subject": "clean pass"
+  },
+  {
+   "case": "clean-pass signature replayed on another chain",
+   "caught": true,
+   "expected": "signer mismatch",
+   "got": "signer mismatch",
+   "layer": "hash",
+   "subject": "clean pass"
+  },
+  {
+   "case": "[SIM] observers sign notCloudy = true on a cloudy scene (2025-11-11)",
+   "caught": true,
+   "expected": "content differs (notCloudy)",
+   "got": "content differs (notCloudy)",
+   "layer": "re-check",
+   "note": "the signature verifies; re-building the bundle from the committed provider record shows notCloudy = false and a different sceneHash (challenge reason 1, CLOUD_FLAG)",
+   "subject": "clean pass"
+  },
+  {
+   "case": "MARS corroboration over a window with a MARS plume (2024-10-12)",
+   "caught": true,
+   "expected": "MARS_PLUME_IN_WINDOW",
+   "got": "MARS_PLUME_IN_WINDOW",
+   "layer": "validation",
+   "subject": "clean pass"
+  }
+ ],
+ "caught": 42,
+ "detection_rate": 1.0,
+ "n": 42,
+ "scope": "inputs we wrote; a detection rate over our own adversarial set, not over unknown attacks",
+ "slowDrift": [
+  {
+   "emissionKgH": 2472,
+   "hashMatchesRefetch": false,
+   "pass": 1,
+   "validation": "passes"
+  },
+  {
+   "emissionKgH": 2397,
+   "hashMatchesRefetch": false,
+   "pass": 2,
+   "validation": "passes"
+  },
+  {
+   "emissionKgH": 2325,
+   "hashMatchesRefetch": false,
+   "pass": 3,
+   "validation": "passes"
+  },
+  {
+   "emissionKgH": 2256,
+   "hashMatchesRefetch": false,
+   "pass": 4,
+   "validation": "passes"
+  },
+  {
+   "emissionKgH": 2188,
+   "hashMatchesRefetch": false,
+   "pass": 5,
+   "validation": "passes"
+  },
+  {
+   "emissionKgH": 2122,
+   "hashMatchesRefetch": false,
+   "pass": 6,
+   "validation": "passes"
+  }
+ ]
+}
