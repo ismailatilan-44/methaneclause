@@ -3,7 +3,7 @@
 Every number here is a script output with its input hashes (`generatedFrom`) and lands in `data/derived/audit_numbers.json`
 (`STRICT=1 make audit`). Offline targets: `make cleanruns floors policy-v2 data-quality exports backtest`.
 
-## Backtest (`backtest.py` → `data/derived/backtest.json`; spec-v2 §7)
+## Backtest (`backtest.py` → `data/derived/backtest.json`; spec §16)
 
 *Counterfactual: if these sources had been under the clause; no clause existed.* The set is **the 1,122 sources MARS
 labels absent today — a label decided after the window**; every summary sentence says so. Amounts are written in
@@ -65,7 +65,7 @@ catalogue and MARS snapshot, which can only refuse more than an observer at the 
 
 ### Decisions that differ from the spec text
 
-- **Two clean-pass variants.** `qualified` counts passes that pass spec-v2 §2 rules 1–6 on committed scene records
+- **Two clean-pass variants.** `qualified` counts passes that pass spec §12 rules 1–6 on committed scene records
   (`scenes_v1/`, above), keyed by claim; every facility outside the fetch scope is "unqualified — scene data not
   fetched" (0 counted). `upper_bound` counts every detection-free pass whose instrument has a floor ≤ the episode rate
   and no MARS plume within ±7 days; cloud and footprint are not checked, so it is an upper bound on refunds, labelled
@@ -113,7 +113,7 @@ named and cannot open an episode) [SIM].
 
 *[PROJECTION] of what the clause could change if adopted, not a measured reduction.* Per scope (the portfolio set v3
 [SIM]; every backtest facility with a quantified stake) and response scenario: Σ over quantified facilities of stake
-low bound × the fixed share of its emitting time (board T4d option d: the action share by CARB plume count × the days
+low bound × the fixed share of its emitting time (option d of `model.t4d`: the action share by CARB plume count × the days
 a fix is credited, from the fix to the fault's observed end, the last pass or a new fault, over the stake's own
 emitting days). `projection.json` → `headline.kind` is `"central"` (the measured re-onset hazard, with the
 no-recurrence end) and `t4d` holds the model, its sensitivity, the post-result and post-hoc rows and the diagnostics;
@@ -146,12 +146,12 @@ refuses a notified source that has no first-notified date rather than guessing o
 
 ### Decisions that differ from the spec text
 
-- **Projection review (spec-v2 §15, 2026-10-16).** The lead is the floor, then the scenario band, then the null. The
+- **Projection review (spec §20, 2026-10-16).** The lead is the floor, then the scenario band, then the null. The
   stop share is an ASSUMPTION informed by Ravikumar et al. 2020 and the IEA ceiling; "acted on" replaces "answered"
   (MARS's rate counts replies). The evidence-capped figure was withdrawn: a detection-rate difference cannot bound a
   share of emitted mass.
 - **The action share follows a written rule, chosen after reading Table 3 as the lowest of the definitions in
-  projection.json → responseSensitivity (board T4, 2026-10-20).** The scenarios were 0.3 / 0.5 / 0.7 with no source.
+  projection.json → responseSensitivity (2026-10-20).** The scenarios were 0.3 / 0.5 / 0.7 with no source.
   They are now the share of notified oil and gas incidences that were fixable faults unknown to the operator (CARB
   Type A, every one stopped or repaired) in the California Air Resources Board's 2020, 2021 and 2023 airborne campaigns
   (Table 3, every year kept) and its Wilson interval at the rule's own confidence, two decimals; `responseScenarios.rule`
@@ -160,8 +160,8 @@ refuses a notified source that has no first-notified date rather than guessing o
   first) re-reads the table from the publisher's PDF. Still an ASSUMPTION: the interval is sampling uncertainty over
   California incidences and does not cover the move from a regulator's notice to a rebate under a contract; the note
   says which way each difference pushes. Cost: the central projection moves down with the central action share.
-- **Each factor has one meaning (board T4b, 2026-10-20; pre-registered in `projection_sources.json` → `model`,
-  committed alone before any new value was computed).** A review found the T4 model removed the same emissions twice:
+- **Each factor has one meaning (2026-10-20; pre-registered in `projection_sources.json` → `model`,
+  committed alone before any new value was computed).** A review found the earlier model removed the same emissions twice:
   CARB's Type A share already leaves out what a repair cannot touch (allowed operation, maintenance, not found), and
   Ravikumar et al.'s 44 % "total emissions reduced" leaves it out again; CARB also counts incidences while the stake is
   mass. The model is now stake × (r − b) × d: r = the share of notified plume sources that were fixable faults, all
@@ -174,8 +174,8 @@ refuses a notified source that has no first-notified date rather than guessing o
   carry no emission rate, location or plume identifier, and Carbon Mapper's 2023 plume list carries no incidence
   identifier; r stays counted by incidence, the rows are committed and re-checked, and a CARB crosswalk from incidence
   to plume identifier (or a public-records request for it) would make the mass-weighted share computable.
-- **Interim range after the T4b review (2026-10-21, adversarial review HOLD; amendment recorded in
-  `projection_sources.json` → `model.status`).** The review found the T4b value credited a whole year's mass per fix
+- **Interim range after the review of that model (2026-10-21, adversarial review HOLD; amendment recorded in
+  `projection_sources.json` → `model.status`).** The review found its value credited a whole year's mass per fix
   with nothing for new faults, the emissions before detection and during repair, or sources that stop on their own,
   and that 0.90 is Ravikumar et al.'s repair rate, not a durability. The criterion gains clause (3), "the second
   factor's time base is a year at the stake's sources"; no option meets it yet, so the headline is the range between
@@ -183,17 +183,17 @@ refuses a notified source that has no first-notified date rather than guessing o
   × 90 % (the repair rate with fixed leaks not re-appearing, read as every fix holding all year), at the central action
   share. b bounds reply-driven fixes only. `classes.list` names the emission classes and `projection.py` refuses to
   run unless each is removed by exactly one factor or spanned by the range. The CARB appendix's notification and
-  mitigation dates are committed for the 48 oil and gas Type A rows, for the time factor of board T4c. Cost: no
-  single central tonnage until T4c; the portfolio's headline is a fourfold range.
-- **The time factor, unpublished until a review passes (boards T4c and T4d, 2026-10-21).** T4c's time factor
+  mitigation dates are committed for the 48 oil and gas Type A rows, for the time factor (`model.t4c`). Cost: no
+  single central tonnage until a time factor; the portfolio's headline is a fourfold range.
+- **The time factor, unpublished until a review passes (`model.t4c` and `model.t4d`, 2026-10-21).** The first time factor (`model.t4c`)
   (Cusworth event bounds on the stake's own passes) was held by its review: its "events" were pass gaps, runs where
-  every pass saw a plume merged later faults into the first fix, and its band ran the wrong way. T4d (pre-registered
+  every pass saw a plume merged later faults into the first fix, and its band ran the wrong way. The second (`model.t4d`, pre-registered
   in `projection_sources.json` → `model.t4d`, committed before the implementation commit) counts removed time in
   absolute days against the stake's own emitting days (duty cycle × days to the last pass), censors every event at
   the facility's last pass, credits a fix only until a new fault would start (the re-onset hazard measured on the
   stake's own passes), conditions the action share on persistence (CARB plume count), and keeps b per event. Its
   result sits in `projection.json` → `t4d`; while `model.timeFactor.headlineKind` is `"range"` the published text keeps
-  the reviewed interim range. After the T4d review (HOLD, unblock path) option d is the choice as first registered;
+  the reviewed interim range. After the review of `model.t4d` (HOLD, unblock path) option d is the choice as first registered;
   option e (registered after d's result was known: d plus the natural-stop hazard from a seeded sample of 400 Carbon
   Mapper oil and gas sources farther than 1.5 km from every MARS notification, the "not MARS-notified" sample, US
   airborne-heavy) is a labelled post-result row, as are the single-miss-merged hazard and the event-length

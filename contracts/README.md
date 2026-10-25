@@ -65,9 +65,9 @@ Nothing is defaulted off-Anvil. See the header of `script/Deploy.s.sol`. The dep
 
 ## Decisions that differ from the spec (v2 IncentivePool)
 
-Each entry: what, why, what it costs. The frozen surface of spec-v2 §3.1 is unchanged by all of them.
+Each entry: what, why, what it costs. The frozen surface of spec §11 is unchanged by all of them.
 
-- **A VERDICT_ONLY pool holds no ETH and takes no top-up.** spec-v2 §3 says "VERDICT_ONLY accepts 0" and "later
+- **A VERDICT_ONLY pool holds no ETH and takes no top-up.** spec §11 says "VERDICT_ONLY accepts 0" and "later
   calls are top-ups by anyone". The pool opens a VERDICT_ONLY pool only with `msg.value == 0`; any later `fund` call
   (and any VERDICT_ONLY call carrying ETH) reverts `BadParams`. Why: in that mode cap, reserved and paid are policy
   units with no balance (§3 "Settlement modes"), so ETH sent there could only sit until `sponsorWithdraw`, and a
@@ -89,7 +89,7 @@ Each entry: what, why, what it costs. The frozen surface of spec-v2 §3.1 is unc
   reverts `InvalidState` in `challengePass`, `resolvePass`, `countPass`, `finalizePass` and `voidPass` (also on a pass
   whose claim is not CANCELLED). Installments: `release` of anything but a PENDING installment reverts `InvalidState`; then a later detection
   live or confirmed reverts `SourceUnderReview` / `RelapsePending`, even before `claimableAt`; only then does an early
-  call revert `WindowOpen` (spec-v2 §8.9 g, §15).
+  call revert `WindowOpen` (spec §8, §20).
   `relapse` on a claim that is not OPEN reverts `ClaimNotOpen`; with a live episode (it may still end VOID)
   `SourceUnderReview`; with anything that is not a CONFIRMED / EXPIRED episode at the claim's source detected after
   `since` `NotARelapse`. Corroboration: `windowFrom > since` or `windowTo > now` reverts `SceneOutOfRange`; a window
@@ -106,16 +106,16 @@ Each entry: what, why, what it costs. The frozen surface of spec-v2 §3.1 is unc
   `resolvePass` binds `claimId`, `sourceId` and `sceneId` to the pass and requires the attestations to agree with each
   other on the other scene fields; a CONFIRM counts the pass at once (it re-checks P9, so it cannot count past a live
   detection); after review it also binds `sceneHash`. Cost: none of these changes a frozen signature.
-- **Corroboration cycle (spec-v2 §15).** An attested corroboration is PENDING for `cleanWindow`; anyone may
+- **Corroboration cycle (spec §20).** An attested corroboration is PENDING for `cleanWindow`; anyone may
   challenge it on reason 5 with `challengerBond`; k orgs answering with the same snapshot and window before
   `resolveBy` make it effective and the challenger's bond goes to the seller; unanswered, `finalizeCorroboration` drops
   it and refunds the challenger (nobody slashed); unchallenged, `finalizeCorroboration` makes it effective after
   `cleanWindow`. An answer is not re-checked against passes counted after the original attestation (that coverage
-  was checked then). `attestCorroboration` also applies P9. Events (spec-v2 §15): `CorroborationPending(claimId,
+  was checked then). `attestCorroboration` also applies P9. Events (spec §20): `CorroborationPending(claimId,
   marsSnapshotHash, effectiveAt)` when it is attested, `CorroborationChallenged(claimId, challenger, resolveBy)` when it
   is challenged, so observers can subscribe to a challenge they must answer; `ClaimCorroborated` still marks effect.
   Cost: the final share waits one more clean window.
-- **The corroboration gate sits at scheduling, not at release.** spec-v2 §3 requires `corroboratedTo ≥` the final
+- **The corroboration gate sits at scheduling, not at release.** spec §11 requires `corroboratedTo ≥` the final
   installment's triggering pass. The pool records the triggering pass when the final's count and two-instrument rules
   are met and schedules (reserves) the final share only once a MARS corroboration reaches it, at that count or when the
   corroboration arrives. Why: gating at `release` would reserve sponsor money that can never be paid if MARS truly shows
@@ -124,7 +124,7 @@ Each entry: what, why, what it costs. The frozen surface of spec-v2 §3.1 is unc
 - **UNFUNDED installments.** They wait in a per-pool first-in-first-out queue; each ONCHAIN `fund` schedules up to 8 from
   the head while the unreserved balance covers them (a top-up of 1 wei continues). A new installment first lets the
   queue drain with the current balance and queues behind anything still waiting, so it never skips an older one. A PENDING or UNFUNDED installment
-  keeps its claim from closing (spec-v2 §15): sponsors cannot walk away from an earned installment. Cost: a
+  keeps its claim from closing (spec §20): sponsors cannot walk away from an earned installment. Cost: a
   pool with an unfunded installment stays CLOSING until a top-up covers it or a relapse voids it.
 - **`relapse` accepts CONFIRMED or EXPIRED only.** A PROPOSED / CHALLENGED / CONTESTED episode may still end VOID, so it
   freezes the claim (`SourceUnderReview`) instead of cancelling it. Accepting EXPIRED closes R23's second form: the
@@ -132,7 +132,7 @@ Each entry: what, why, what it costs. The frozen surface of spec-v2 §3.1 is unc
 - **Units and credit notes.** In VERDICT_ONLY, installment reserves are policy units on the claim only (`pool.reserved`
   stays ETH-only and 0); `release` emits `CreditNoteDue` with `ref = keccak256(abi.encode(chainid, pool, installmentId))`
   and `InstallmentReleased`, and moves no funds.
-- **Reserved declarations (spec-v2 §15).** `CreditNoteSuperseded` is never emitted (supersession is an
+- **Reserved declarations (spec §20).** `CreditNoteSuperseded` is never emitted (supersession is an
   off-chain export step; nobody supersedes a released verdict on chain) and `FinalOutOfTermError` is never
   raised (the event `FinalOutOfTerm` is emitted instead). Both stay declared, marked reserved in NatSpec.
 - **Code size: five linked libraries.** To stay under EIP-170 (24,576 B) part of the pool's logic lives in external
@@ -179,7 +179,7 @@ member organisations' controllers vote for it (`proposeOrg` / `voteOrg`); its ke
 `admittedAt + admissionDelay` (production 7 days; Anvil 600 s). A symmetric vote (`proposeRemoval` / `voteRemoval`)
 removes a member and closes all its keys at once; a removal that would leave fewer than k members is refused, both
 when proposed and again when it executes (two removals proposed at once cannot together drop below k). Votes
-are judged when cast (spec-v2 §15): an organisation that revoked one of its keys within the last
+are judged when cast (spec §20): an organisation that revoked one of its keys within the last
 `admissionDelay` cannot vote (`VoterQuarantined`), and a vote once cast keeps counting. A proposal expires after
 `proposalTtl` (production 7 days; Anvil 1 h; late votes revert `ProposalExpired`) and can then be proposed again with
 fresh votes; a controller address is reserved while a live proposal names it, so no proposal can be left stuck.
@@ -192,7 +192,7 @@ admission), `invariant_V2_observerKeysOnlyInMembers`, `test_v2_removal_closesKey
 the trusted set of every covenant on the registry; a production clause pins its observer set per covenant (not
 built). Not deployed to Sepolia: the main registry's admin is renounced.
 
-**Decision that differs from the spec.** spec-v2 §9.4 describes V2 as the v1 registry plus voting. V2 is a fresh
+**Decision that differs from the spec.** spec §17 describes V2 as the v1 registry plus voting. V2 is a fresh
 contract with the same view interface instead of a subclass: the v1 `registerKey` is not virtual (any org controller
 could mint OBSERVER keys and bypass the vote) and its key validity is private (a new org's keys could not start
 after the admission delay, nor be closed on removal). Cost: the key logic exists twice (v1 for the deployed core, V2

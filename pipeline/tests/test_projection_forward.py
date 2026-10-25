@@ -2,7 +2,7 @@
 
 The pre-registration (projection_time.FORWARD) is pinned here and was committed on its own before any forward value was
 computed (git log -- pipeline/projection_time.py). The members, the stake known at D and the credit are recomputed with
-this file's own loop (the event, lag and credit helpers of tests/test_projection_t4d.py, independent of
+this file's own loop (the event, lag and credit helpers of tests/test_projection_time_factor.py, independent of
 projection_time.py). Offline: committed files only."""
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ import pytest
 
 import projection_time as ptime
 from common import RADIUS_KM, WINDOW_MONTHS, haversine_km, minus_months
-from test_projection_t4d import credit, delays, end_of, lags_for, o, plumes_by_source, r_classes, runs
+from test_projection_time_factor import credit, delays, end_of, lags_for, o, plumes_by_source, r_classes, runs
 
 ROOT = Path(__file__).resolve().parents[2]
 DERIVED = ROOT / "data" / "derived"
@@ -67,7 +67,7 @@ def test_the_rolling_origin_pre_registration_is_byte_for_byte_the_committed_one(
     assert ptime.FORWARD["D"] not in r["origins"]
 
 
-# Committed with the rule, before any value of the twelve-month control was computed (task P2 item 1).
+# Committed with the rule, before any value of the twelve-month control was computed (twelve-month control).
 FORWARD_CONTROL_LENGTH_SHA256 = "9e5feba8f94153bcd4c55cb7c3d3cbfa124d6bd6f9b2dd12999b3dece560b2dd"
 
 
@@ -365,7 +365,7 @@ def test_the_short_window_control_is_recomputed_and_read_by_its_rule(ind):
 
 
 def test_the_full_length_control_is_recomputed_and_read_by_its_rule(ind):
-    """FORWARD_CONTROL_LENGTH (task P2 item 1): twelve months of credit ending before today's absent window; near the
+    """FORWARD_CONTROL_LENGTH (twelve-month control): twelve months of credit ending before today's absent window; near the
     full-window share iff inside the member-bootstrap share interval and nearer the full-window share than the cut
     row's; the limits sentence carries the reading the rule picks, never the other."""
     f = fwd()

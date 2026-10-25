@@ -101,7 +101,7 @@ def test_committed_join_is_reproduced_from_committed_inputs():
         assert counts[k] == summary[k], k
     as_json = json.loads(json.dumps(cands, default=lambda o: o.item() if hasattr(o, "item") else str(o)))
     assert as_json == committed["candidates"]  # every candidate, field by field
-    # criterion_sha256 is the freeze-time text (spec-v2 §15 "after B5"); the rules section is unchanged since then
+    # criterion_sha256 is the freeze-time text (the header was edited later); the rules section is unchanged since then
     dq = json.loads((DERIVED / "data_quality.json").read_text())["joinCriterionHash"]
     assert summary["criterion_sha256"] == dq["recordedInJoin"] and dq["freezeTimeText"] is True
     rules = CRITERION.read_text().split("## Rules", 1)[1]

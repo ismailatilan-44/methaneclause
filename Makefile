@@ -4,7 +4,7 @@ RUN     := cd pipeline && .venv/bin/python
 .PHONY: help setup fetch join cases sourceset baseline model bond stake audit audit-strict reproduce test test-pipeline test-contracts demo deploy-base deploy-sepolia deploy-sandbox-sepolia testnet-run testnet-finalize fund-judge judge-attest judge-propose judge-tamper judge-challenge judge-finalize judge-status judge-reset sandbox-rekey judge-local measure adversarial export verify-bundle app app-preview check words links tree secrets core-bytecode
 
 help:             ## list targets (from the double-hash comments)
-	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | sed 's/:.*## /\t/' | sort
+	@grep -hE '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) | sed 's/:.*## /\t/' | sort
 
 setup:            ## Python 3.12 venv with pinned deps (needs uv)
 	uv venv pipeline/.venv --python 3.12
@@ -23,10 +23,10 @@ cases:            ## demo case files, Carbon Mapper fetched live (OFFLINE=1 uses
 sourceset:        ## covered-facility Merkle root + proofs (SigLib format) -> data/derived/sourceset_v2.json
 	$(RUN) sourceset.py
 
-baseline:         ## B1/B2 rule baselines on frozen splits -> data/derived/model/
+baseline:         ## rule baselines (persistence ratio B1, MARS-label rule B2) on frozen splits -> data/derived/model/
 	$(RUN) model/baseline.py
 
-model:            ## D3: HistGradientBoosting next-pass forecast vs frozen B1 -> data/derived/model/model_metrics.json
+model:            ## HistGradientBoosting next-pass forecast vs the frozen persistence rule B1 -> data/derived/model/model_metrics.json
 	$(RUN) model/train.py
 
 bond:             ## bond sizing from the kept forecaster + 2026 backtest -> data/derived/model/bond_sizing.json
@@ -51,7 +51,7 @@ test-contracts:
 
 test: test-pipeline test-contracts   ## pipeline pytest + Foundry (unit, fuzz, invariants); counts in README "Run it"
 
-check: test demo judge-local adversarial verify-bundle audit-strict words links tree secrets core-bytecode lane-checks   ## the "nothing broke" gate (offline, a few minutes)
+check: test demo judge-local adversarial verify-bundle audit-strict words links tree secrets core-bytecode extra-checks   ## the "nothing broke" gate (offline, a few minutes)
 	@echo "check: all green"
 
 core-bytecode:    ## the v1 core (MethaneCovenant, KeyRegistry) is unchanged: deployedBytecode hashes vs contracts/deployments/core_bytecode.sha256
@@ -153,7 +153,7 @@ app-preview:      ## serve the page on http://127.0.0.1:$(APP_PORT)/ (from a cop
 	@echo "tamper A: http://127.0.0.1:$(APP_PORT)/?tamper=A   (B, C: the other two tampers)"
 	python3 -I -m http.server $(APP_PORT) --bind 127.0.0.1 --directory /tmp/methaneclause-app
 
-measure:          ## D4 table: gas per function on Sepolia vs Anvil, p50/p90 latency, failed txs, bundle size -> data/derived/measurements.json (network: Chainlink price)
+measure:          ## gas per function on Sepolia vs Anvil, p50/p90 latency, failed txs, bundle size -> data/derived/measurements.json (network: Chainlink price)
 	$(RUN) measure.py && .venv/bin/python readme_testnet.py
 
 judge-local:      ## the judge walk-through end to end on Anvil (no test ETH needed)
@@ -166,8 +166,8 @@ demo:            ## Anvil end to end, 33 checks: covenant, two observers sign TK
 # Each mk/*.mk owns its own targets and .PHONY line.
 -include mk/*.mk
 
-# Lane fragments add offline test targets with `LANE_CHECKS += <target>`; expanded here, after the includes.
-.PHONY: lane-checks
-lane-checks: $(LANE_CHECKS)   ## offline tests contributed by mk/lane-*.mk (part of make check)
-	@echo "lane-checks: ok ($(or $(strip $(LANE_CHECKS)),none))"
+# Fragments add offline test targets with `EXTRA_CHECKS += <target>`; expanded here, after the includes.
+.PHONY: extra-checks
+extra-checks: $(EXTRA_CHECKS)   ## offline tests contributed by the mk/*.mk fragments (part of make check)
+	@echo "extra-checks: ok ($(or $(strip $(EXTRA_CHECKS)),none))"
 

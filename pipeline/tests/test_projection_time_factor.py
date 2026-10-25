@@ -1,4 +1,5 @@
-"""Board T4d's unpublished time factor (projection.json -> t4d; pre-registered in projection_sources.json -> model.t4d).
+"""The projection's time factor with the re-onset hazard (projection.json -> t4d; pre-registered in
+projection_sources.json -> model.t4d).
 
 Review finding 8: the checks here are computed independently of projection_time.py (their own event loop, credit,
 hazard and lag code on the committed rows), plus synthetic facilities for a censored final event, a single-pass

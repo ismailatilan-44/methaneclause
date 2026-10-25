@@ -83,7 +83,7 @@ def main(argv: list[str]) -> int:
     md.append("on an `invariant_` function: no sequence of target calls up to the label's depth violates it. `FAIL` on a")
     md.append("`canary` is the expected outcome: Halmos found a sequence reaching that state, so the invariants of the")
     md.append("same run were checked on states that contain it. `TIMEOUT` is not a proof. Each run's flags are in the")
-    md.append("`halmos` target of `mk/lane-a.mk`: loops unrolled to 32 (pool-installments) or 4 (the others); any-order")
+    md.append("`halmos` target of `mk/contracts.mk`: loops unrolled to 32 (pool-installments) or 4 (the others); any-order")
     md.append("depth 2 (pool) and 1 (core); 65-byte signatures in the core runs; 60 s per assertion for rounding-256-bit.")
     md.append("")
     md.append("Core bytecode in the Halmos build against the pinned v1 hashes (`deployments/core_bytecode.sha256`): "

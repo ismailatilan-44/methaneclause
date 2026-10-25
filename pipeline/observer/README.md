@@ -31,7 +31,7 @@ revokes its own key (no admin exists after deployment) and OBS_B's next attestat
 attest the 2026-06-20 plume, 9 days after the paid episode → `LINKED` to episode 1, recorded, nothing paid or held.
 Gas and tx hashes go to `out/demo/run.json` (gitignored).
 
-## Clean-pass observer (`cleanpass.py`, spec-v2 §2, §3.1, §4)
+## Clean-pass observer (`cleanpass.py`, spec §12, §11, §13)
 
 ```sh
 cd pipeline
@@ -44,7 +44,7 @@ LIVE=1 .venv/bin/python -m observer.cleanpass --scene "2025-02-12 emi"   # Re-ch
 The rules are imported from `pipeline/cleanpass_rules.py` (one copy, shared with the case files, including the
 attestation-time formula `attestable_from` and `cloud_bp`). Each step prints `[i/5 <label>]` with the labels of the
 page.
-- **Validate** refuses with a spec-v2 §2 code; with `SCHEMA` when the bundle is not exactly the §4 field set with the
+- **Validate** refuses with a spec §12 code; with `SCHEMA` when the bundle is not exactly the §13 field set with the
   right types, `sceneId != keccak256(sceneProviderId)`, a per-source `plumeCount` is negative, or
   `plumesNearFacility.count != len(plumeIds)`; with `BUNDLE_POLICY_MISMATCH` when the bundle's floor or
   `marsNearby.windowDays` differs from the policy. Rule 3 needs every per-source count to be 0 (not just the sum). A
@@ -56,7 +56,7 @@ page.
   quantities on this scene at the facility (per linked source and within 1.5 km). The whole-response hashes
   (`perSourceQueries[].responseSha256`, `plumesNearFacility.query`, `sceneRecordSha256`) stay in the bundle as
   provenance and are not compared, so a plume added elsewhere at the source does not flip an honest pass, while a plume
-  added on this scene does (spec-v2 §15 B2 audit (1)). A cache file whose bytes or content hash no longer match its
+  added on this scene does (a review finding). A cache file whose bytes or content hash no longer match its
   recorded hashes is reported as DIFFERS. On DIFFERS the observer withholds the signature (`RECHECK_DIFFERS`).
   On 2026-10-15 the live re-check of DZA 2025-02-12 was equal.
 - **Corroboration** covers `[since, latest counted sceneAt]` against the plumes MARS attributes to the facility in the
@@ -81,7 +81,7 @@ c = cp.build_corroboration(doc, claim_id=CLAIM)
 cp.sign_corroboration(c, org="OBS_C", chain_id=..., pool=..., now=chain_now, expiry=chain_now + 3600)
 ```
 
-Tamper C (spec-v2 §8.4) is `cp.verify` after editing `cloudCoverPct` / `notCloudy` in `s["bundle"]`: `sceneHash`
+Tamper C (spec §8) is `cp.verify` after editing `cloudCoverPct` / `notCloudy` in `s["bundle"]`: `sceneHash`
 changes, so both the ECDSA and the ML-DSA-44 checks fail (`data/derived/adversarial.json`, case "cloud fields edited after signing").
 
 **Determinism hooks (opt-in, for a repeatable demo only; defaults stay random; refused on any chain but 31337).**
@@ -113,7 +113,7 @@ Every tool, judge and Sepolia path uses the defaults.
   [SIM]. Say it once, plainly: *this run proves the mechanism, not the absence of foreknowledge — the chain shows the
   plume was public before the covenant was created.* The same flow works on Base Sepolia (no clock tricks).
 
-### Clean passes (spec-v2 §2 rules 1-6; `pipeline/cleanpass_rules.py`, `pipeline/clean_passes.py`, `pipeline/scenes.py`)
+### Clean passes (spec §12 rules 1-6; `pipeline/cleanpass_rules.py`, `pipeline/clean_passes.py`, `pipeline/scenes.py`)
 
 - **Per-source plume query = `/catalog/search/source/{name}`, not `/catalog/plumes/annotated?source_name=`.** On
   2026-10-15 the plumes endpoint ignored `source_name` and returned the whole catalogue (`total_count` 45,227). The
@@ -126,7 +126,7 @@ Every tool, judge and Sepolia path uses the defaults.
   when `published_plume_count == 0`, the spec's fast path). Stricter than the spec, never looser: a plume at the
   facility under another source name is still a plume at the facility. In the three case files it never changed an
   outcome (it agreed with the per-source check on every scene).
-- **Rule 2 has no look-ahead (spec-v2 §15, 2026-10-16).** The footprint (server-side `intersects`) must contain an
+- **Rule 2 has no look-ahead (spec §20, 2026-10-16).** The footprint (server-side `intersects`) must contain an
   origin point whose earliest plume was already published when the pass could first be attested
   (`max(sceneAt + publicationLag, publishedAt)`). Where only the MultiPoint query was made and some origin was
   published later, the answer is undetermined offline and the scene is refused (fail closed; TKM 2026-06-11 / 06-20,

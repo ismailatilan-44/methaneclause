@@ -14,7 +14,7 @@ here (a mismatch is refused). A rebate has no on-chain ref; it is derived off ch
 covenant contract, episodeId) and labelled so.
 
 Supersession is an off-chain export step in v2: `supersede(old, new)` marks the old note superseded and links the new
-ref, append-only. The on-chain `CreditNoteSuperseded` event is reserved and never emitted (spec-v2 §15 A3 audit (4)),
+ref, append-only. The on-chain `CreditNoteSuperseded` event is reserved and never emitted (a contract review finding),
 so no note claims an on-chain supersession.
 
     python -m export.credit_note --case TKM_S_276 --verdict verdict.json      # rebate

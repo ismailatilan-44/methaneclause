@@ -50,7 +50,7 @@ def test_sentences_link_every_step_and_label_the_simulated_parties(arc):
         assert cure_arc.clean_window_note() in text
     assert "two-sided loop runs" not in loop and loop.startswith("**Both sides of the clause have transactions")
     assert "10-minute sandbox challenge window" in loop and "funded the sandbox pool" in loop
-    # the public export's secret scan reads a 64-hex value on a line that says "wallet" as a possible key
+    # a secret scan reads a 64-hex value on a line that says "wallet" as a possible key
     assert not any("wallet" in x.lower() and re.search(r"0x[0-9a-fA-F]{64}", x) for x in line.splitlines())
     assert all(x["status"] == 1 and x["tx"].startswith(cure_arc.SCAN) for x in cure_arc.app_steps(arc))
 

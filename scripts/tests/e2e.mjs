@@ -1,5 +1,5 @@
 // One-file end-to-end check of the page (make e2e). The page is told in three layers: the five-second view (who pays
-// whom, two money arrows, the analogy, one button into the failure moment), the story on real data (TKM_S_276 penalty
+// whom, two money arrows, one button into the failure moment), the story on real data (TKM_S_276 penalty
 // arc, DZA_S_012 earn-back arc) and the "Why you can trust it" drawer that keeps every proof of the former screen.
 //
 // Serves app/ from this checkout on an ephemeral port, opens it in a real browser (Playwright; the installed Google
@@ -133,17 +133,20 @@ try {
     `no "[SIM" text or attribute on the page; ${sim.marks} purple dashed marks; one legend (real data / simulated)`);
 
   console.log("== layer 0: the first view");
-  const HEADLINE_V3 = "Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.";
-  const h1 = await page.locator("#hero-h").innerText();
+  const HEADLINE_V4 = "No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.";
   const line = (k) => page.locator(`#hero-h .l:nth-child(${k})`).innerText();
-  ok((await page.locator("#hero-lead").innerText()) === 'A speed camera for methane, written into the gas contract.'
+  ok((await page.locator("#hero-lead").innerText()) === "A speed camera for methane, written into the gas contract between an EU gas importer and its supplier."
     && (await line(1)) === "Satellites confirm a leak → the seller's bond pays the buyer."
-    && (await line(2)) === "No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's)."
-    && (await line(3)) === HEADLINE_V3, "the lead line and the three-line headline, verbatim (canonical v3)");
-  ok((await page.getAttribute('meta[name="description"]', "content")).endsWith(` ${HEADLINE_V3}`),
-    "the meta description ends on the same headline sentence (canonical v3)");
-  ok((await page.locator(".analogy").innerText()) === "Public satellite records are the cameras; independent witnesses (separate organisations) each fetch the record and sign it; when enough of them sign the same leak and the appeal window passes, the seller's bond pays the buyer — the ticket goes to the buyer, not to a state. A clean pass never undoes a paid rebate or proves a repair; it only earns money back from the sponsor's pool.",
-    "the body line, verbatim (canonical v2)");
+    && (await line(2)) === "No new leak on later passes → the seller earns money back in steps, up to the rebate, from a sponsor's pool (for example its lender's)."
+    && (await line(3)) === HEADLINE_V4, "the lead line and the three-line headline, verbatim");
+  ok((await page.getAttribute('meta[name="description"]', "content")).endsWith(` ${HEADLINE_V4}`),
+    "the meta description ends on the same headline sentence");
+  const weights = await page.evaluate(() => [1, 2, 3].map((k) => { const s = getComputedStyle(document.querySelector(`#hero-h .l:nth-child(${k})`)); return [Number(s.fontWeight), parseFloat(s.fontSize)]; }));
+  ok(weights[0][0] >= 600 && weights.slice(1).every(([w, f]) => w < 600 && f < weights[0][1]),
+    `line 1 is bold; lines 2 and 3 are lighter and smaller (${JSON.stringify(weights)})`);
+  ok((await count(page, ".analogy")) === 0, "no analogy paragraph repeating the headline");
+  ok(/judge's 10-minute path/.test(await page.locator("#judge-teaser").innerText()) && (await page.locator("#judge-teaser a").getAttribute("href")) === "#judge-path",
+    "the judge's path teaser sits in the first view and links the full path in the drawer");
   ok((await page.locator("#money-fig figcaption").innerText()).includes("a sponsor (the seller's lender, as a sustainability-linked margin step, or the buyer)"),
     "the sponsor is glossed on its first use after the headline");
   const fig = await page.locator("#money-fig").textContent();
@@ -160,6 +163,7 @@ try {
   const above = await page.evaluate(() => ["#hero-h", "#money-fig", "#cheat-btn"].every((s) => document.querySelector(s).getBoundingClientRect().top < innerHeight));
   ok(above, "sentence, picture and the cheat button are in the first screen");
   const lead = D.hybrid.entries[0].bundle, tam = S.run.steps.find((x) => x.step === "reject_tamper");
+  ok(!(await page.locator("#cheat-btn").isDisabled()), "the cheat button is enabled once the page is ready");
   ok((await page.locator("#cheat-btn").innerText()).includes(fmt.format(lead.emissionKgH)), "the cheat button names the signed rate from app.json");
   await page.click("#cheat-btn");
   await page.waitForFunction(() => document.querySelector("#tamper-verdict").classList.contains("bad"));
@@ -192,6 +196,7 @@ try {
     ["B · sighting deleted", "#miss-btn", "#miss-reset", "#miss-verdict", "#miss-checks", [/re-fetch hash differs/], "#miss-now", "#miss-committed"],
     ["C · cloud fields edited", "#cloud-btn", "#cloud-reset", "#cloud-verdict", "#cloud-checks", [/sceneHash changed/, /InvalidSignature/, /ML-DSA-44 does not verify/], "#cloud-now", "#cloud-committed"],
   ]) {
+    await page.evaluate((b) => { const box = document.querySelector(b).closest("details"); if (box) box.open = true; }, btn);
     const [h0, c0] = await hashes(page, now, committed);
     ok(/^0x[0-9a-f]{64}$/.test(h0) && h0 === c0, `tamper ${name}: the recomputed hash equals the committed one before`);
     ok(!(await hasClass(page, verdict, "bad")) && (await count(page, `${checks} li.fail`)) === 0, `tamper ${name}: green before`);
@@ -320,7 +325,7 @@ try {
   await page.keyboard.press("ArrowRight");
   ok(Number(await page.getAttribute("body", "data-chapter")) === chBefore + 1, "→ on the keyboard changes the chapter while the story is on screen, without focusing it first");
   await page.keyboard.press("ArrowLeft");
-  ok((await page.locator("#ds-arc").textContent()).startsWith("Earn-back") && /chapter 1 of/.test(await page.locator("#ds-count").textContent()),
+  ok((await page.locator("#ds-arc").textContent()).startsWith("Earn-back") && /^Earn-back case · step 1 of \d+$/.test(await page.locator("#ds-count").textContent()),
     "the arc buttons switch to the earn-back story");
 
   console.log("== become a witness");
@@ -333,6 +338,16 @@ try {
   ok((await page.getAttribute("body", "data-witness")) === "NO_WALLET" && /make judge-local/.test(await page.locator("#witness-msg").innerText())
     && (await hasClass(page, "#witness-msg", "note")) && (await count(page, "#witness-log li.fail")) === 0,
     "without a browser wallet the button explains itself once, as a neutral note naming make judge-local");
+  await page.click("#witness-try");
+  await page.waitForFunction(() => document.body.dataset.throwaway, null, { timeout: 30_000 });
+  {
+    const out = await page.locator("#witness-try-out").innerText();
+    const m = out.match(/Signed by (0x[0-9a-fA-F]{6,}…[0-9a-fA-F]{4}) · recovered (0x[0-9a-fA-F]{6,}…[0-9a-fA-F]{4}) · match/);
+    const rejLink = await page.locator("#witness-try-out a").getAttribute("href");
+    ok((await page.getAttribute("body", "data-throwaway")) === "ok" && m && m[1] === m[2] && /not in the KeyRegistry/.test(out)
+      && rejLink === tam.tx && (await count(page, "#witness-try-out li.fail")) === 0,
+      `no wallet: a throwaway key signs the record in the tab, the signer is recovered (${m?.[1]}), and the page links the recorded refusal (${tam.reason})`);
+  }
 
   console.log("== layer 2: the drawer");
   {
@@ -461,6 +476,9 @@ try {
   ok(w[0] <= w[1], `no horizontal scroll at 375 px (scrollWidth ${w[0]} ≤ ${w[1]})`);
   ok((await count(phone, "#self-checks li.fail")) === 0, "self-checks: 0 failed at 375 px");
   ok(await phone.evaluate(() => document.querySelector("#hero-h").getBoundingClientRect().top < innerHeight), "the sentence is in the first screen at 375 px");
+  const cheatBox = await phone.evaluate(() => { const r = document.querySelector("#cheat-btn").getBoundingClientRect(); return [Math.round(r.top), Math.round(r.bottom), innerHeight]; });
+  ok(cheatBox[0] >= 0 && cheatBox[1] <= cheatBox[2], `the cheat button is fully inside the first screen at 375×812 (${cheatBox[0]}–${cheatBox[1]} of ${cheatBox[2]})`);
+  await phone.evaluate(() => { document.querySelector("#tamper-b-box").open = true; });
   const taps = await phone.evaluate(() => ["#ds-prev", "#ds-next", ".dot-btn", "label.tap"].map((s) => {
     const r = document.querySelector(s).getBoundingClientRect();
     return Math.min(r.width, r.height) >= 28 && Math.max(r.width, r.height) >= 44 && r.height >= 44;
@@ -548,6 +566,21 @@ try {
   }
   const hc = await sp.evaluate(async () => { location.hash = "#ch=3&view=contract"; await new Promise(r => setTimeout(r, 150)); return [window.story.chOf(window.story.T), window.story.view]; });
   ok(hc[0] === 2 && hc[1] === "contract", `story: a typed #ch=3&view=contract moves the page (chapter ${hc[0] + 1}, ${hc[1]})`);
+  {   // the last chapter: its own side cards, then "Your turn" opens Verify on an end card, not a rewind
+    const SJ = JSON.parse(await readFile(join(APP, "data", "story.json"), "utf8")).scene;
+    const c9 = await sp.evaluate(() => { window.story.goChapter(window.story.CH.length - 1); window.story.setView("incident"); const side = document.getElementById("side");
+      return [side.innerText, [...side.querySelectorAll(".simw")].map((s) => s.textContent), side.querySelectorAll(".chip.simc").length]; });
+    const simParts = [...SJ.dza.clean.covenantLabel.matchAll(/([^,;:()[]+?)\s*\[SIM[^\]]*\]/g)].map((m) => m[1].trim());
+    ok(simParts.length > 0 && simParts.every((w) => c9[1].includes(w)) && c9[1].includes("sponsor") && c9[2] >= 1 && /pinned clock/.test(c9[0]) && /What this does not prove/i.test(c9[0]),
+      `story ch${nCh}: the replay marks ${simParts.join(", ")} and the sponsor purple, carries a "pinned clock" chip, and the "What this does not prove" card is shown`);
+    const yt = await sp.evaluate(async () => { document.getElementById("yourturn").click(); await new Promise((r) => setTimeout(r, 150));
+      return [location.hash, document.getElementById("story").textContent, document.getElementById("side").innerText, document.getElementById("casepill").innerText, window.story.view, window.story.CH.at(-2).head]; });
+    ok(yt[0] === `#ch=${nCh}&view=verify` && yt[4] === "verify" && yt[1].includes(`chapter ${nCh} of ${nCh}`) && yt[1].includes(`Your turn: check the ${SJ.facility.country} case yourself`)
+        && !yt[1].includes(yt[5]) && /check it yourself/i.test(yt[2]) && yt[3].includes(SJ.case),
+      `story: "Your turn" stays on chapter ${nCh} (${yt[0]}) with an end card for the ${SJ.case} check, not chapter ${nCh - 1}'s text`);
+    const op = await sp.evaluate(() => { window.story.goChapter(0); window.story.setView("incident"); return [...document.querySelectorAll(".cast li")].map((l) => getComputedStyle(l).opacity); });
+    ok(op.length > 0 && op.every((o) => o === "1"), "story players: resting rows keep full-opacity text (only the icon dims), so purple names keep their contrast");
+  }
   ok(!/\[SIM/.test(sTxt), "story: no \"[SIM\" text in any chapter or view (simulated = purple, dashed, one legend)");
   ok(sTxt.includes("anyone may appeal with a deposit and an objective reason") && !/appeal with a bond/.test(sTxt),
     "story: an appeal is made with a deposit and an objective reason (the main page's words; \"bond\" stays the seller's)");

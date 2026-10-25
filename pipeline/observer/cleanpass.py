@@ -285,7 +285,7 @@ PROVENANCE = "provider response hashes (perSourceQueries[].responseSha256, plume
 
 
 def scene_view(b: dict, rec: dict) -> dict:
-    """What Re-check compares (spec-v2 §15 B2 audit (1)): every rule-relevant field of the bundle, plus the plume ids
+    """What Re-check compares (review finding 1): every rule-relevant field of the bundle, plus the plume ids
     and quantities that fall on this scene at the facility (per linked source, and within the facility radius) — but
     not the provenance hashes of whole provider responses, which change whenever Carbon Mapper adds a plume anywhere
     at the source or on the scene. Those stay in the bundle as provenance."""
@@ -320,7 +320,7 @@ def check_against_committed(doc: dict, rec: dict, bundle: dict) -> dict:
 def recheck(doc: dict, rec: dict, *, covenant_id: str, claim_id: str, live: bool = False,
             bundle: dict | None = None) -> dict:
     """Rebuild this scene's record from the provider responses and decide EQUAL / DIFFERS on `scene_view` (the
-    scene-relevant content; spec-v2 §15 B2 audit (1)). `bundle` = the signed bundle to check (default: the bundle
+    scene-relevant content; review finding 1). `bundle` = the signed bundle to check (default: the bundle
     built from the committed record). Default source: the cached raw responses (no network); live=True: keyless
     Carbon Mapper now. A cache whose bytes do not match their recorded hash is reported as DIFFERS."""
     from scenes import OfflineMiss
@@ -360,7 +360,7 @@ class CleanPassObserver:
     def attest(self, case: str, scene: str, *, covenant_id: str, claim_id: str, now: int | None = None,
                nonce: int | None = None, expiry: int | None = None, pq_deterministic: bool = False) -> dict:
         """Five steps. Returns the signed pass only if Re-check is EQUAL (or skipped for want of cached responses);
-        DIFFERS raises RECHECK_DIFFERS and no signature leaves the observer (spec-v2 §15 B2 audit (3))."""
+        DIFFERS raises RECHECK_DIFFERS and no signature leaves the observer (review finding 3)."""
         require_anvil_for_determinism(self.chain_id, nonce, pq_deterministic)
         doc = load_case(case)
         rec = find_scene(doc, scene)

@@ -6,7 +6,7 @@
   <title>MethaneClause</title>
   <!-- The bare address opens the story map on a desktop screen; index.html, any ?query or #hash, and phones stay here. -->
   <script>if (/\/$/.test(location.pathname) && !location.search && !location.hash && matchMedia("(min-width: 901px)").matches) location.replace("story.html");</script>
-  <meta name="description" content="A speed camera for methane, written into the gas contract. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's). Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.">
+  <meta name="description" content="A speed camera for methane, written into the gas contract between an EU gas importer and its supplier. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later passes → the seller earns money back in steps, up to the rebate, from a sponsor's pool (for example its lender's). No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -28,19 +28,21 @@
   <!-- Layer 0: the five-second view -->
   <section class="hero wrap" id="hero" aria-labelledby="hero-h">
     <div class="hero-text">
-      <p class="lead" id="hero-lead">A speed camera for methane, written into the gas contract.</p>
+      <p class="lead" id="hero-lead">A speed camera for methane, written into the gas contract between an EU gas importer and its supplier.</p>
       <h1 id="hero-h">
         <span class="l red">Satellites confirm a leak → the seller's bond pays the buyer.</span>
-        <span class="l green">No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's).</span>
-        <span class="l">Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.</span>
+        <span class="l green sub-l">No new leak on later passes → the seller earns money back in steps, up to the rebate, from a sponsor's pool (for example its lender's).</span>
+        <span class="l sub-l">No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.</span>
       </h1>
-      <p class="analogy">Public satellite records are the cameras; independent witnesses (separate organisations) each fetch the record and sign it; when enough of them sign the same leak and the appeal window passes, the seller's bond pays the buyer — the ticket goes to the buyer, not to a state. A clean pass never undoes a paid rebate or proves a repair; it only earns money back from the sponsor's pool.</p>
       <div class="cta">
-        <button class="btn danger big" type="button" id="cheat-btn" disabled>Try to cheat: shrink the signed leak</button>
-        <a class="btn big" href="#story">Follow the story</a>
+        <button class="btn danger big" type="button" id="cheat-btn" disabled>Preparing checks…</button>
+        <a class="btn big" href="#story">Step through the penalty case</a>
         <a class="btn big" href="story.html">Watch it on the map</a>
         <a class="btn big" href="#witness">Become a witness</a>
       </div>
+      <p class="jteaser" id="judge-teaser"><strong>A judge's 10-minute path:</strong> read the clause live from Sepolia,
+        break a signature (tamper A–C), open the reverted transactions on the explorer, sign with your own key.
+        <a href="#judge-path">The full path, step by step →</a></p>
       <p class="fine" id="fine-amounts">Amounts are representative test values; a production clause sets them in euros in the parties' policy.</p>
       <p class="fine" id="fine-oneperson">In this demo one person runs every role; in production each witness is a separate organisation with its own keys.</p>
     </div>
@@ -118,7 +120,7 @@
       <button type="button" class="arc-btn" data-arc="tkm" aria-pressed="true">Penalty · TKM_S_276, “Marked Absent”</button>
       <button type="button" class="arc-btn" data-arc="dza" aria-pressed="false">Earn-back · DZA_S_012</button>
     </div>
-    <div class="player" id="player" tabindex="-1" aria-label="The story: use the arrow keys or the buttons to change chapter">
+    <div class="player" id="player" tabindex="-1" aria-label="The case: use the arrow keys or the buttons to change step">
       <div class="stage">
         <div id="stage-map" role="img" aria-label="Satellite image of the facility with the plume sightings of the current chapter"></div>
         <svg class="sky" id="stage-sky" aria-hidden="true" viewBox="0 0 400 140" preserveAspectRatio="xMidYMin meet"></svg>
@@ -126,14 +128,14 @@
         <p class="stage-attrib" id="stage-attrib"></p>
       </div>
       <aside class="demo-story" id="demo-story" aria-labelledby="ds-head">
-        <div class="ds-kick"><span id="ds-count">Demo story</span><span id="ds-arc"></span></div>
+        <div class="ds-kick"><span id="ds-count">Penalty case</span><span id="ds-arc"></span></div>
         <h3 id="ds-head" tabindex="-1"></h3>
         <p id="ds-body"></p>
         <ul class="ds-facts" id="ds-facts"></ul>
         <div class="ds-nav">
-          <button type="button" class="btn" id="ds-prev" aria-label="Previous chapter">←</button>
-          <div class="ds-dots" id="ds-dots" aria-label="Chapters"></div>
-          <button type="button" class="btn" id="ds-next" aria-label="Next chapter">→</button>
+          <button type="button" class="btn" id="ds-prev" aria-label="Previous step">←</button>
+          <div class="ds-dots" id="ds-dots" aria-label="Steps"></div>
+          <button type="button" class="btn" id="ds-next" aria-label="Next step">→</button>
         </div>
       </aside>
     </div>
@@ -165,6 +167,7 @@
           <button id="reset-btn" class="btn" type="button">Reset</button>
         </div>
         <table class="kv" id="bundle-table"></table>
+        <button class="btn linkish" type="button" id="bundle-all" aria-expanded="false" aria-controls="bundle-table">Show all fields</button>
       </div>
       <div>
         <div class="hashes">
@@ -176,7 +179,9 @@
       </div>
     </div>
 
-    <h3 class="tamper-h" id="tamper-b">B · Delete a sighting from the list</h3>
+    <details class="tamper-more" id="tamper-b-box">
+    <summary><h3 class="tamper-h" id="tamper-b">B · Delete a sighting from the list</h3>
+      <span class="sub">The seller hides a sighting from the provider's list; the witness's re-fetch receipt no longer matches, so it refuses to sign.</span></summary>
     <p class="sub" id="miss-sub"></p>
     <div class="tamper-grid">
       <div>
@@ -195,8 +200,11 @@
         <p class="verdict" id="miss-verdict" role="status" aria-live="polite"></p>
       </div>
     </div>
+    </details>
 
-    <h3 class="tamper-h" id="tamper-c">C · Make a cloudy scene look clear (the earn-back side) <span class="mockb" id="cloud-mock">MOCK data</span></h3>
+    <details class="tamper-more" id="tamper-c-box">
+    <summary><h3 class="tamper-h" id="tamper-c">C · Make a cloudy scene look clear (the earn-back side) <span class="mockb" id="cloud-mock">MOCK data</span></h3>
+      <span class="sub">The seller edits a scene's cloud fields to earn money back; the signed sceneHash changes and both witnesses' signatures fail.</span></summary>
     <p class="sub" id="cloud-sub"></p>
     <div class="tamper-grid">
       <div>
@@ -223,9 +231,10 @@
         <p class="verdict" id="cloud-verdict" role="status" aria-live="polite"></p>
       </div>
     </div>
+    </details>
   </section>
 
-  <!-- U2 face: one person with a test wallet becomes a witness -->
+  <!-- one person with a test wallet becomes a witness -->
   <section class="card wrap-card witness" id="witness" aria-labelledby="witness-h">
     <div class="card-head">
       <h2 id="witness-h">Become a witness</h2>
@@ -239,7 +248,13 @@
         <ol class="wsteps" id="witness-plan"></ol>
         <div class="tamper-actions">
           <button class="btn primary" type="button" id="witness-btn">Become a witness</button>
+          <span class="fine" id="witness-needs">(needs MetaMask + Sepolia test ETH)</span>
         </div>
+        <div class="tamper-actions">
+          <button class="btn" type="button" id="witness-try">Try it without a wallet</button>
+          <span class="fine">a throwaway key made in this tab signs the same record; nothing is sent</span>
+        </div>
+        <ul class="checks" id="witness-try-out" aria-live="polite"></ul>
         <p class="sub" id="witness-alt">No browser wallet? The same flow runs from a terminal: <code>make judge-local</code>
           (a local chain, no test ETH needed) or <code>make judge-attest</code> then <code>make judge-propose</code> with
           <code>JUDGE_PK</code> set (Ethereum Sepolia).</p>
@@ -427,34 +442,18 @@
         <p class="sub" id="build-line" hidden></p>
       </section>
 
-      <section class="notprove" id="notprove" aria-labelledby="notprove-h">
-        <h2 id="notprove-h">What this does not prove</h2>
-        <ul>
-          <li><strong>Not abatement.</strong> A rebate follows an attested plume; an earn-back follows passes that saw none. Observed, not abated.</li>
-          <li><strong>Not a repair verdict.</strong> A clean pass bounds how often a source emits above the instrument's floor — not its rate, not its repair.</li>
-          <li><strong>Not legal compliance.</strong> The exports are evidence for a regulator's form, never a finding of compliance.</li>
-          <li><strong>Not a payment instrument.</strong> Money here is testnet ETH; where crypto payments are not lawful the verdict settles as a credit note.</li>
-          <li><strong>Not to scale.</strong> The satellites' sky positions and paths are drawn; their pass dates and images are real.</li>
-        </ul>
-      </section>
-
       <section class="limits" id="limits" aria-labelledby="limits-h">
-        <h2 id="limits-h">Limits, said the same way everywhere</h2>
+        <h2 id="limits-h">Limits</h2>
         <ul>
-          <li><strong>Non-detection is not repair.</strong> Non-detection never cancels a rebate or counts as repair. It can release a capped refund that the next attested detection cancels.</li>
-          <li><strong>The refund is capped and cancellable.</strong> It never exceeds the rebate that episode cost, is frozen while a new detection is under review, and is cancelled by any later attested detection at that source. Installments already released are not clawed back; the final share waits for the cure term.</li>
+          <li><strong>Stake, not abatement.</strong> A rebate follows an attested plume; an earn-back follows passes that saw none. Annualised rates are a stake and only the stake's low bound is quoted. Observed, not abated.</li>
+          <li><strong>Non-detection is not repair.</strong> A clean pass never cancels a rebate or counts as repair; it bounds how often a source emits above the instrument's floor, not its rate. It can release a refund that never exceeds the rebate that episode cost, is frozen while a new detection is under review, and is cancelled by any later attested detection at that source; installments already released are not clawed back, and the final share waits for the cure term.</li>
           <li><strong>Floor blindness, both ways.</strong> A source emitting just below the instrument's detection floor is invisible to the rebate and to the refund alike.</li>
-          <li><strong>One provider's scene catalogue.</strong> Qualified clean passes come from Carbon Mapper's catalogue. k-of-n witnesses guard against one witness's error or key, not against an error of the provider. UNEP MARS is used against the negative: a MARS plume within the window refuses the pass.</li>
-          <li><strong>Tasking.</strong> A seller can request Carbon Mapper passes during a planned shutdown. That is why the final tranche needs two instruments, the MARS corroboration and the cure term.</li>
-          <li><strong>Re-quantification never edits a confirmed episode.</strong> A later correction is a new record; the confirmed verdict stays.</li>
-          <li><strong>Late scenes are lost.</strong> Scenes published after the covenant's end plus the publication lag and the window for qualified clean passes cannot be attested.</li>
-          <li><strong>Relapses are reported, not discovered.</strong> A relapse is read from the core's latest episode at the source, so the sponsor watches and reports relapses.</li>
-          <li><strong>The chain cannot see clouds.</strong> It verifies that k organisations signed the same named scene fields; the cloud value itself is Carbon Mapper's.</li>
-          <li><strong>Witnesses attest what they received</strong>, from whom and when — not what the satellite saw. Carbon Mapper and UNEP do not sign their data.</li>
-          <li><strong>Prototype keys.</strong> In this prototype the witness organisations are run by one person <span class="sim">[SIM]</span>; a judge's own wallet is designed to be the one signer we do not control. Seller, buyer and sponsor are <span class="sim">[SIM]</span>.</li>
-          <li><strong>The DZA replay runs on a <span class="sim">[SIM clock]</span>.</strong> Every DZA date was public before this covenant was written; the replay proves the mechanism, not the absence of foreknowledge. On Sepolia <code>createdAt</code> is real and later than the plumes and passes it settles (starts backdated); these runs prove the mechanism too, and the chain shows the plume was public first.</li>
+          <li><strong>One provider's scene catalogue, and tasking.</strong> Qualified clean passes come from Carbon Mapper's catalogue; k-of-n witnesses guard against one witness's error or key, not against an error of the provider, and UNEP MARS is used against the negative (a MARS plume within the window refuses the pass). A seller can request Carbon Mapper passes during a planned shutdown, so the final tranche needs two instruments, the MARS corroboration and the cure term.</li>
+          <li><strong>What the chain sees.</strong> It verifies that k organisations signed the same named fields; the cloud value itself is Carbon Mapper's. Witnesses attest what they received, from whom and when — not what the satellite saw; Carbon Mapper and UNEP do not sign their data.</li>
+          <li><strong>Records only grow.</strong> Re-quantification never edits a confirmed episode (a later correction is a new record). Scenes published after the covenant's end plus the publication lag and the clean-pass window cannot be attested. A relapse is read from the core's latest episode at the source, so the sponsor watches and reports relapses.</li>
+          <li><strong>Prototype keys and clocks.</strong> In this prototype the witness organisations are run by one person <span class="sim">[SIM]</span>; a judge's own wallet is designed to be the one signer we do not control. Seller, buyer and sponsor are <span class="sim">[SIM]</span>. The DZA replay runs on a <span class="sim">[SIM clock]</span>: every DZA date was public before this covenant was written, so the replay proves the mechanism, not the absence of foreknowledge. On Sepolia <code>createdAt</code> is real and later than the plumes and passes it settles (starts backdated); the chain shows the plume was public first. The satellites' sky positions and paths are drawn; their pass dates and images are real.</li>
           <li><strong>Post-quantum boundary.</strong> The on-chain check is secp256k1 ECDSA; ML-DSA-44 protects bundle authenticity off-chain. We do not claim a quantum-safe chain. Tamper-evident, not tamper-proof.</li>
-          <li><strong>Stake, not abatement.</strong> Annualised rates are a stake. Only the stake's low bound is quoted. Money here is testnet ETH.</li>
+          <li><strong>Not legal compliance, not a payment instrument.</strong> The exports are evidence for a regulator's form, never a finding of compliance. Money here is testnet ETH; where crypto payments are not lawful the verdict settles as a credit note.</li>
           <li><strong>Data licence.</strong> Carbon Mapper data is non-commercial; production needs a licence held by the witnesses.</li>
         </ul>
       </section>

@@ -185,7 +185,7 @@ def test_adversarial_set_covers_every_clean_pass_refusal():
     assert sum(v["n"] for v in r["by_layer"].values()) == r["n"]
 
 
-# ---------------------------------------------------------------- B2 audit notes (spec-v2 §15 "2026-10-16 B2 audit")
+# ---------------------------------------------------------------- clean-pass observer review notes (2026-10-16)
 def _view(dza, scene=QUALIFIED, bundle_edit=None, rec_edit=None):
     rec = copy.deepcopy(cp.find_scene(dza, scene))
     if rec_edit:

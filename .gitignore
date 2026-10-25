@@ -12,8 +12,5 @@ data/raw/
 pipeline/.venv/
 .pytest_cache/
 data/derived/model/model.pkl
-.claude/worktrees/
-.claude/settings.local.json
-contracts/slither-report.json
 contracts/broadcast/**/*.lock
 data/derived/carb_incidences.json

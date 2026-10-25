@@ -1,8 +1,8 @@
-# Keyless re-check of the committed Ethereum Sepolia record (final sprint F5). No key, no account, nothing sent:
+# Keyless re-check of the committed Ethereum Sepolia record. No key, no account, nothing sent:
 # read-only JSON-RPC (eth_chainId, eth_blockNumber, eth_getCode, eth_getTransactionReceipt, eth_getTransactionByHash,
 # eth_getLogs, eth_call) and keyless GETs of the Sourcify / Blockscout source-verification APIs.
 .PHONY: verify-evidence verify-evidence-offline
-LANE_CHECKS += verify-evidence-offline
+EXTRA_CHECKS += verify-evidence-offline
 
 verify-evidence:  ## keyless: re-check every recorded Sepolia tx, the deployed code, its public source verification, every pool's opener and terms and the signed bundle (read-only); OFFLINE=1 replays recorded answers
 	cd contracts && PATH="$$HOME/.foundry/bin:$$PATH" forge build -q

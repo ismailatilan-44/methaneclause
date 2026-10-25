@@ -683,7 +683,7 @@
    ]
   }
  },
- "formula": "kt CH4/yr = sum over quantified facilities of stake low bound x the fixed share of its emitting time (action share by plume count x credited days / emitting days, board T4d option d)",
+ "formula": "kt CH4/yr = sum over quantified facilities of stake low bound x the fixed share of its emitting time (action share by plume count x credited days / emitting days)",
  "forward": {
   "bootstrap": {
    "confidence": 0.95,
@@ -1504,7 +1504,7 @@
   },
   {
    "path": "pipeline/projection.py",
-   "sha256": "edf17f52f3fc3a8846ddafbf3d98261501c026ecdcc03499e1bd3ad3be38a620"
+   "sha256": "f20b6cc13d2b1c4d5876bb4592d0aa2db82784ac9e86ad27860eccace3758b0a"
   },
   {
    "path": "pipeline/projection_evidence.py",
@@ -1512,7 +1512,7 @@
   },
   {
    "path": "pipeline/projection_time.py",
-   "sha256": "36ea10f0520ca7f1d17656269ffbae7d7d70fc15787fb3225022fd4f0ba29057"
+   "sha256": "366be72e27b0b66e125843f78ae4514c4066643458b30f3af47887e88d373340"
   },
   {
    "path": "pipeline/backtest.py",

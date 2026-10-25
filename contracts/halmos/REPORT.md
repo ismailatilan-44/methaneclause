@@ -5,7 +5,7 @@ by hand. `PASS` on a `check_` function: no input violates its assertions (paths 
 on an `invariant_` function: no sequence of target calls up to the label's depth violates it. `FAIL` on a
 `canary` is the expected outcome: Halmos found a sequence reaching that state, so the invariants of the
 same run were checked on states that contain it. `TIMEOUT` is not a proof. Each run's flags are in the
-`halmos` target of `mk/lane-a.mk`: loops unrolled to 32 (pool-installments) or 4 (the others); any-order
+`halmos` target of `mk/contracts.mk`: loops unrolled to 32 (pool-installments) or 4 (the others); any-order
 depth 2 (pool) and 1 (core); 65-byte signatures in the core runs; 60 s per assertion for rounding-256-bit.
 
 Core bytecode in the Halmos build against the pinned v1 hashes (`deployments/core_bytecode.sha256`): MethaneCovenant unchanged, KeyRegistry unchanged.

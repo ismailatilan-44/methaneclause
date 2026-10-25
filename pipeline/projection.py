@@ -13,7 +13,7 @@ backtest with a quantified stake) and each response scenario r (ASSUMPTION), per
 Board T4b (pre-registered in projection_sources.json -> model, amended after the adversarial review): r is the only
 factor that removes emissions a repair cannot touch (CARB Type A over incidences sent), the baseline is subtracted from r
 only and bounds reply-driven fixes, and the ceased share is an interim range with two ends (one repair round net of new
-faults; every fix holding all year), so the headline is a range with no central tonnage until board T4c models time.
+faults; every fix holding all year), so the headline is a range with no central tonnage until the time factor (model.t4c) models time.
 `check_model` refuses a range end that removes an emission class twice or is measured on another population than the
 criterion requires, and an emission class that is neither removed by exactly one factor nor spanned by the range.
 
@@ -51,15 +51,15 @@ T_PER_KT = KT_PER_MT = 1000
 PERCENT = 100
 # Unit conversions and rounding digits: the only numeric literals allowed in this file (tests/test_projection.py).
 UNIT_AND_FORMAT_CONSTANTS = {0, 1, 2, 3, 4, DAYS_PER_YEAR, T_PER_KT, PERCENT}
-# the two ends of the interim stop-share range (board T4b review, 2026-10-21): no central value until the time factor
-# is built (board T4c)
+# the two ends of the interim stop-share range (review of the one-meaning-per-factor model, 2026-10-21): no central
+# value until the time factor is built (model.t4c)
 BANDS = ("low", "high")
 PROJ = "projection of what the clause could change if adopted, not a measured reduction"
 PORTFOLIO_SELECTION = "members chosen because each showed a Carbon Mapper plume MARS did not see"
 HEADLINE_SELECTION = "members chosen for a Carbon Mapper plume not in MARS"  # the T4d headline's shorter wording
 FIX = "the published share of notified incidences that were fixable faults, all fixed"
 # the README quotes the headline alone (projection review 2026-10-20): it ends by pointing to the assumptions; the
-# caveat "not a measured reduction" stays once, in the methods paragraph (user decision 2026-10-16)
+# caveat "not a measured reduction" stays once, in the methods paragraph (vision first, limits once)
 HEADLINE_END = "assumptions: paper §4."
 
 
@@ -212,7 +212,7 @@ def check_model(prm: dict) -> dict:
             raise ValueError(f"model.options.{oid} says meets1={opt['meets1']}, meets2={opt['meets2']}; the classes give "
                              f"{one}, {two}: fix projection_sources.json")
     if m["choice"] != "range" or any(o["meets3"] for o in m["options"].values()):
-        raise ValueError("an option meeting clause (3) needs the time factor (board T4c); the interim headline is a range")
+        raise ValueError("an option meeting clause (3) needs the time factor (model.t4c); the interim headline is a range")
     ledger = {}
     for c in cls["list"]:
         at_ends = [[f for f, rm in (("r", cls["pairings"][oid]["r"]["removes"]),
@@ -459,14 +459,14 @@ def build(inp: dict) -> dict:
     interim_card = _all_cards(scopes, p, gwp, neg, bt["selection"], evd, rule)
     interim_head = {"kind": "range", "central": None, "atActionShare": p["responseScenarios"]["central"],
                     "ends": {b: prm["model"]["range"][b] for b in BANDS}, "note": prm["model"]["range"]["note"]}
-    if t4d["headline"]["kind"] == "central":  # board T4d option d is published (model.t4d.rules.headline)
+    if t4d["headline"]["kind"] == "central":  # option d is published (model.t4d.rules.headline)
         pub_scopes = _t4d_scopes(scopes, t4d)
         card = interim_card | _t4d_cards(pub_scopes, p, bt["selection"], interim_card["evidenceSentence"], rule, t4d)
         head = {"kind": "central", "model": "t4d", "option": t4d["model"]["choice"],
                 "central": t4d["headline"]["central"], "upToNoRecurrence": t4d["headline"]["upToNoRecurrence"],
                 "atActionShare": p["responseScenarios"]["central"], "note": prm["model"]["t4d"]["rules"]["headline"]}
         formula = ("kt CH4/yr = sum over quantified facilities of stake low bound x the fixed share of its emitting time "
-                   "(action share by plume count x credited days / emitting days, board T4d option d)")
+                   "(action share by plume count x credited days / emitting days)")
     else:
         pub_scopes, card, head = scopes, interim_card, interim_head
         formula = ("kt CH4/yr = stake low bound x (action scenario - MARS reply rate) x share of a fixed fault's "
@@ -489,7 +489,7 @@ def build(inp: dict) -> dict:
             + [{"path": f"pipeline/{n}", "sha256": sha256_file(Path(__file__).resolve().parent / n)} for n in CODE]}
 
 
-# ================================================================== board T4d (model.t4d): unpublished time factor
+# ======================================================= model.t4d: time factor, published once its review passes
 def check_t4d(prm: dict) -> dict:
     """The chosen option meets clauses (1)-(3); every emission class in model.t4d.emissionClasses.list (the review's
     classes included) is removed by exactly one factor (r's classes are r's encoded removals, the rest belong to T) and
@@ -944,11 +944,11 @@ def _rusd(costs: list[float]) -> str:
 
 
 def _vision_cards(scopes: dict, p: dict, selection: str, evidence_sentence: str, rule: dict) -> dict:
-    """Vision first (user decision 2026-10-16): the headline says what the clause is designed to achieve, labelled
+    """Vision first: the headline says what the clause is designed to achieve, labelled
     [PROJECTION] once; scale, floor and cost follow in plain words; the ASSUMPTIONs, the null of our own checks and
     "not a measured reduction" are said once, in the methods paragraph. The headline ends with a pointer to the
-    paper's section 4. Interim (board T4b review, 2026-10-21): every tonnage is the range between the two ends of the
-    stop share at the central action share; there is no central tonnage until board T4c models time. Every number is
+    paper's section 4. Interim (after the one-meaning-per-factor review, 2026-10-21): every tonnage is the range between the two ends of the
+    stop share at the central action share; there is no central tonnage until the time factor (model.t4c) exists. Every number is
     read from the scopes."""
     pf, bs = scopes["portfolio_v3"], scopes["backtest_set"]
     base, c, rs = p["baselineResponseShare"]["value"], p["ceasedShare"], p["responseScenarios"]

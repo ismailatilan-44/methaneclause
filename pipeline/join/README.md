@@ -7,7 +7,7 @@ bytes. The Sepolia main covenant's policy commits to `joinVersionHash = sha256(j
 (`pipeline/tests/test_join.py::test_sepolia_covenant_policy_is_reproduced_from_the_repo`).
 
 **Why `criterion_sha256` in `data/derived/join_v1.json` differs from `sha256(CRITERION.md)` today.** The recorded hash
-(`c2f01726…`) is the criterion text at freeze time. A later edit (for the public export) changed only the provenance
+(`c2f01726…`) is the criterion text at freeze time. A later edit changed only the provenance
 sentence of the header; rules 1–6 are byte-identical (the test pins the rules-section hash). The two sentences, with
 private file paths replaced by a description:
 

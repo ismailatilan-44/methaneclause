@@ -49,7 +49,7 @@ def observer_key(org: str, chain_id: int) -> str:
 
 
 def require_anvil_for_determinism(chain_id: int, nonce, pq_deterministic: bool) -> None:
-    """Opt-in determinism (a pinned nonce, deterministic ML-DSA) is for the local demo only (spec-v2 §15 B2 audit)."""
+    """Opt-in determinism (a pinned nonce, deterministic ML-DSA) is for the local demo only (a review finding)."""
     if (nonce is not None or pq_deterministic) and chain_id != 31337:
         raise ValueError(f"opt-in determinism (nonce / pq_deterministic) is refused on chain {chain_id}; Anvil only")
 

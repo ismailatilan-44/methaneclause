@@ -102,6 +102,9 @@ async function sha256bytes(bytes) {
 // registry): every signature check on this page compares with it, never with the signer field of the same entry.
 let REG = {};
 const regAddr = (org) => REG[org]?.address || "";
+// readable witness names in prose ("Witness A"); check lists keep the raw organisation id in monospace beside it
+const wname = (org) => (/^OBS_[A-Z]$/.test(org) ? `Witness ${org.slice(4)}` : org);
+const wtag = (org) => `${wname(org)} <code>${org}</code>`;
 // Pinned in the page's code, not read from data/app.json: the ML-DSA-44 context string every witness signs under
 // (pipeline/observer/pq.py CONTEXT) and the KeyRegistry anchor the signature checks compare with (the registry the demo
 // read and each witness's SHA-256 of its ML-DSA-44 public key). scripts/tests/test_page_data.py keeps them equal to the
@@ -329,6 +332,7 @@ function renderEpisodes(d, live) {
 
 // ---------------------------------------------------------------- 4. tamper
 const TAMPER_ACTIONS = {};  // A, B, C: the edit each tamper button makes; ?tamper=A|B|C runs one after the self-checks
+let CHEAT_LABEL = "Try to cheat: shrink the signed leak";  // set by setupTamper from the signed record
 const TAMPER_RATE = 548;  // the edited rate of tamper A, as sent to Ethereum Sepolia (the reject_tamper transaction)
 
 // the failure moment above the tampers: edited rate → signatures fail → the bond does not move
@@ -355,7 +359,7 @@ async function setupTamper(d) {
   const input = $("rate-input");
   input.value = original.emissionKgH;
   $("tamper-btn").textContent = `Tamper: ${fmt.format(original.emissionKgH)} → ${fmt.format(TAMPER_RATE)}`;
-  $("cheat-btn").textContent = `Try to cheat: shrink the signed leak ${fmt.format(original.emissionKgH)} → ${fmt.format(TAMPER_RATE)} kg/h`;
+  CHEAT_LABEL = `Try to cheat: shrink the signed leak ${fmt.format(original.emissionKgH)} → ${fmt.format(TAMPER_RATE)} kg/h`;
   $("h-committed").textContent = entries[0].evidenceHash;
 
   async function evaluate() {
@@ -365,7 +369,8 @@ async function setupTamper(d) {
     const tbl = $("bundle-table");
     tbl.innerHTML = "";
     for (const k of BUNDLE_ORDER.filter((k) => k in bundle)) {
-      tbl.append(el("tr", { class: k === "emissionKgH" && edited ? "edited" : "" }, el("td", {}, k),
+      const cls = [k === "emissionKgH" && edited ? "edited" : "", k === "emissionKgH" ? "" : "extra"].filter(Boolean).join(" ");
+      tbl.append(el("tr", { class: cls }, el("td", {}, k),
         el("td", {}, typeof bundle[k] === "number" ? String(bundle[k]) : bundle[k])));
     }
     const canon = jcs(bundle);
@@ -385,12 +390,12 @@ async function setupTamper(d) {
       catch (err) { rec = "unrecoverable"; }
       const want = regAddr(e.org);
       const ok = rec.toLowerCase() === want.toLowerCase();
-      allOk = check(list, ok, ok ? `${e.org} · ECDSA secp256k1 (EIP-712) recovers to ${e.org}'s key in the KeyRegistry record <code>${short(want)}</code>`
-        : `${e.org} · ECDSA recovers to <code>${short(rec)}</code>, not ${e.org}'s registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
+      allOk = check(list, ok, ok ? `${wtag(e.org)} · ECDSA secp256k1 (EIP-712) recovers to its key in the KeyRegistry record <code>${short(want)}</code>`
+        : `${wtag(e.org)} · ECDSA recovers to <code>${short(rec)}</code>, not its registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
       const m = e.mldsa44;
       const pqOk = (await pqAnchored(e.org, m.publicKey)) && ml_dsa44.verify(hexBytes(m.sig), enc.encode(canon), hexBytes(m.publicKey), { context: PQ_CTX });
-      allOk = check(list, pqOk, pqOk ? `${e.org} · ML-DSA-44 (FIPS 204) verifies over the same bytes with the key whose SHA-256 the registry anchors (checked here with @noble/post-quantum)`
-        : `${e.org} · ML-DSA-44 signature does not verify over the edited bytes`) && allOk;
+      allOk = check(list, pqOk, pqOk ? `${wtag(e.org)} · ML-DSA-44 (FIPS 204) verifies over the same bytes with the key whose SHA-256 the registry anchors (checked here with @noble/post-quantum)`
+        : `${wtag(e.org)} · ML-DSA-44 signature does not verify over the edited bytes`) && allOk;
     }
     const verdict = $("tamper-verdict");
     if (allOk) {
@@ -405,6 +410,13 @@ async function setupTamper(d) {
     return allOk;
   }
   input.addEventListener("input", evaluate);
+  const all = $("bundle-all");
+  all.addEventListener("click", () => {
+    const open = all.getAttribute("aria-expanded") !== "true";
+    all.setAttribute("aria-expanded", String(open));
+    $("bundle-table").classList.toggle("show-all", open);
+    all.textContent = open ? "Show only the edited field" : "Show all fields";
+  });
   TAMPER_ACTIONS.A = () => { input.value = TAMPER_RATE; return evaluate(); };
   $("tamper-btn").addEventListener("click", TAMPER_ACTIONS.A);
   $("reset-btn").addEventListener("click", () => { input.value = original.emissionKgH; evaluate(); });
@@ -834,8 +846,8 @@ async function observerSteps(d) {
       [h === e.evidenceHash, `SHA-256 → evidenceHash <code>${short(h, 12, 6)}</code>${h === e.evidenceHash ? " (equals the signed value)" : " (differs from the signed value)"}`]] },
     { label: "Sign", lines: [
       [null, `EIP-712 digest <code>${short(digest, 12, 6)}</code> (domain MethaneClause v1, chain ${H.chainId})`],
-      [signer.toLowerCase() === regAddr(e.org).toLowerCase(), `${e.org} · ECDSA secp256k1 recovers to ${e.org}'s key in the KeyRegistry record <code>${short(regAddr(e.org))}</code>`],
-      [pqOk, `${e.org} · ML-DSA-44 (FIPS 204) second signature over the same bytes verifies with the registry-anchored key`]] },
+      [signer.toLowerCase() === regAddr(e.org).toLowerCase(), `${wtag(e.org)} · ECDSA secp256k1 recovers to its key in the KeyRegistry record <code>${short(regAddr(e.org))}</code>`],
+      [pqOk, `${wtag(e.org)} · ML-DSA-44 (FIPS 204) second signature over the same bytes verifies with the registry-anchored key`]] },
     { label: "Re-check", lines: [
       [rec.contentSha256 === b.providerContentSha256, `re-fetch content hash <code>${short(rec.contentSha256, 12, 6)}</code> ${rec.contentSha256 === b.providerContentSha256 ? "equals" : "differs from"} the bundle's providerContentSha256`],
       [null, "Tamper B below shows the other outcome: a list with one record missing hashes differently"]] },
@@ -862,7 +874,7 @@ function renderSteps(steps, upto) {
 async function setupObserver(d) {
   const steps = await observerSteps(d);
   const lead = d.hybrid.entries[0];
-  $("obs-sub").textContent = `Replayed from the committed demo run (${lead.org} on the ${lead.bundle.sceneTimestamp.slice(0, 10)} plume). Every check below runs again in your browser; the same five labels are printed by the witness in the terminal.`;
+  $("obs-sub").textContent = `Replayed from the committed demo run (${wname(lead.org)} on the ${lead.bundle.sceneTimestamp.slice(0, 10)} plume). Every check below runs again in your browser; the same five labels are printed by the witness in the terminal.`;
   renderSteps(steps, steps.length);
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   $("obs-replay").addEventListener("click", () => {
@@ -964,10 +976,10 @@ async function setupCloud(d) {
       catch (err) { rec = "unrecoverable"; }
       const want = regAddr(e.org);
       const ok = rec.toLowerCase() === want.toLowerCase();
-      allOk = check(list, ok, ok ? `${e.org} <span class="sim">[SIM]</span> · CleanPass ECDSA (EIP-712) recovers to ${e.org}'s key in the KeyRegistry record <code>${short(want)}</code>`
-        : `${e.org} <span class="sim">[SIM]</span> · ECDSA recovers to <code>${short(rec)}</code>, not ${e.org}'s registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
+      allOk = check(list, ok, ok ? `${wtag(e.org)} <span class="sim">[SIM]</span> · CleanPass ECDSA (EIP-712) recovers to its key in the KeyRegistry record <code>${short(want)}</code>`
+        : `${wtag(e.org)} <span class="sim">[SIM]</span> · ECDSA recovers to <code>${short(rec)}</code>, not its registered <code>${short(want)}</code> → <b>InvalidSignature</b>`) && allOk;
       const pqOk = (await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX });
-      allOk = check(list, pqOk, pqOk ? `${e.org} · ML-DSA-44 over the scene bytes verifies` : `${e.org} · ML-DSA-44 does not verify over the edited scene`) && allOk;
+      allOk = check(list, pqOk, pqOk ? `${wtag(e.org)} · ML-DSA-44 over the scene bytes verifies` : `${wtag(e.org)} · ML-DSA-44 does not verify over the edited scene`) && allOk;
     }
     const v = $("cloud-verdict");
     v.className = allOk ? "verdict" : "verdict bad";
@@ -1236,10 +1248,10 @@ function setupVerificationTime(d) {
     const results = [];
     for (const e of H.entries) {
       const canon = jcs(e.bundle);
-      results.push([(await sha256hex(canon)) === e.evidenceHash, `${e.org}: bundle hashes to the attested evidenceHash`]);
+      results.push([(await sha256hex(canon)) === e.evidenceHash, `${wtag(e.org)}: bundle hashes to the attested evidenceHash`]);
       const r = await recoverTypedDataAddress({ domain, types: TYPES, primaryType: "Attestation", message: asMessage(e.attestation), signature: e.signature });
-      results.push([r.toLowerCase() === regAddr(e.org).toLowerCase(), `${e.org}: ECDSA recovers to the key in the KeyRegistry record`]);
-      results.push([(await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX }), `${e.org}: ML-DSA-44 verifies with the registry-anchored key`]);
+      results.push([r.toLowerCase() === regAddr(e.org).toLowerCase(), `${wtag(e.org)}: ECDSA recovers to the key in the KeyRegistry record`]);
+      results.push([(await pqAnchored(e.org, e.mldsa44.publicKey)) && ml_dsa44.verify(hexBytes(e.mldsa44.sig), enc.encode(canon), hexBytes(e.mldsa44.publicKey), { context: PQ_CTX }), `${wtag(e.org)}: ML-DSA-44 verifies with the registry-anchored key`]);
     }
     results.push([rec.every((x) => x.contentSha256 === H.entries[0].bundle.providerContentSha256), "re-fetch receipts match the bundle's provider content hash"]);
     const ms = performance.now() - t0;
@@ -1386,13 +1398,15 @@ async function applyDeepLink() {
     note.textContent = `Unknown tamper "${q}" in the link: nothing was edited. Use ?tamper=A, B or C.`;
     return;
   }
+  const box = $(`tamper-${key.toLowerCase()}-box`);
+  if (box) box.open = true;
   await TAMPER_ACTIONS[key]();
   document.body.dataset.tamper = key;
   note.dataset.key = key;
   note.dataset.state = "applied";
   note.textContent = `Opened with ?tamper=${key}: tamper ${key} is applied below and its checks are red. The self-checks at the bottom ran first, on the untouched data. Reset restores it.`;
   const h = $(`tamper-${key.toLowerCase()}`);
-  h.after(note);  // the note sits under the tamper it describes, where the page scrolls to
+  (box || h).querySelector("summary") ? box.querySelector("summary").after(note) : h.after(note);  // the note sits under the tamper it describes, where the page scrolls to
   requestAnimationFrame(() => h.scrollIntoView({ block: "start" }));
 }
 
@@ -1639,7 +1653,7 @@ let CH = [], chIdx = 0;
 function renderChapter(i, focus) {
   chIdx = Math.max(0, Math.min(CH.length - 1, i));
   const c = CH[chIdx], arcCh = CH.filter((x) => x.arc === c.arc), j = arcCh.indexOf(c);
-  $("ds-count").textContent = `Demo story · chapter ${j + 1} of ${arcCh.length}`;
+  $("ds-count").textContent = `${c.arc === "tkm" ? "Penalty case" : "Earn-back case"} · step ${j + 1} of ${arcCh.length}`;
   $("ds-arc").textContent = c.arc === "tkm" ? "Penalty · TKM_S_276" : "Earn-back · DZA_S_012";
   $("case-title").textContent = c.arc === "tkm" ? "“Marked Absent” case" : "Earn-back case · DZA_S_012";
   $("ds-head").textContent = c.head;
@@ -1655,7 +1669,7 @@ function renderChapter(i, focus) {
   for (const b of document.querySelectorAll(".arc-btn")) b.setAttribute("aria-pressed", String(b.dataset.arc === c.arc));
   $("ds-dots").replaceChildren(...arcCh.map((x, n) => {
     const k = CH.indexOf(x);
-    const b = el("button", { type: "button", class: "dot-btn" + (k === chIdx ? " now" : ""), "aria-label": `Chapter ${n + 1}: ${x.short}`, title: x.short });
+    const b = el("button", { type: "button", class: "dot-btn" + (k === chIdx ? " now" : ""), "aria-label": `Step ${n + 1}: ${x.short}`, title: x.short });
     if (k === chIdx) b.setAttribute("aria-current", "step");
     b.addEventListener("click", () => renderChapter(k, true));
     return b;
@@ -1784,6 +1798,45 @@ function setupWitness(d) {
   mark();
 }
 
+// ---------------------------------------------------------------- no wallet: a throwaway key made in this tab
+// Signs the same EIP-712 Attestation the witnesses signed (the TKM_S_276 record of tamper A) with a key generated here,
+// recovers the signer from the signature, and compares it with the KeyRegistry record. Nothing is sent anywhere.
+function setupThrowaway(d) {
+  const btn = $("witness-try"), out = $("witness-try-out");
+  const H = d.hybrid, e = H.entries[0];
+  const domain = { name: "MethaneClause", version: "1", chainId: H.chainId, verifyingContract: H.verifyingContract };
+  const rej = d.sepolia.run.steps.find((x) => x.step === "reject_tamper" && x.status === 0);
+  btn.addEventListener("click", async () => {
+    btn.disabled = true;
+    out.replaceChildren(el("li", { class: "info" }, "Making a key in this tab…"));
+    try {
+      const A = await import("https://cdn.jsdelivr.net/npm/viem@2.57.1/accounts/+esm");
+      const acct = A.privateKeyToAccount(A.generatePrivateKey());
+      const message = asMessage(e.attestation);
+      const signature = await acct.signTypedData({ domain, types: TYPES, primaryType: "Attestation", message });
+      const rec = await recoverTypedDataAddress({ domain, types: TYPES, primaryType: "Attestation", message, signature });
+      const match = rec.toLowerCase() === acct.address.toLowerCase();
+      const known = Object.entries(REG).find(([, r]) => r.address?.toLowerCase() === rec.toLowerCase());
+      out.replaceChildren();
+      check(out, match, `Signed by <code>${short(acct.address)}</code> · recovered <code>${short(rec)}</code> · ${match ? "match" : "no match"}`);
+      check(out, null, `What you signed: the EIP-712 Attestation for the ${e.bundle.sourceName} sighting, evidenceHash <code>${short(e.attestation.evidenceHash)}</code> (the record of tamper A)`);
+      const li = el("li", { class: known ? "fail" : "info" });
+      li.append(known ? `This key recovers to ${wname(known[0])}'s registered key: unexpected.`
+        : "This throwaway key is not in the KeyRegistry, so the contract would refuse this signature and the bond would not move. ");
+      if (!known && rej) li.append("The same refusal (a signer that is not registered), recorded on Ethereum Sepolia: ", link(rej.tx, `status 0, ${rej.reason}`), ".");
+      out.append(li);
+      out.append(el("li", { class: "info" }, "No transaction, no test ETH: the key lives only in this tab and is gone when you reload. To make your signature count, join the registry with a wallet (the button above)."));
+      document.body.dataset.throwaway = match && !known ? "ok" : "bad";
+    } catch (err) {
+      out.replaceChildren();
+      check(out, false, `Could not sign in this browser: ${String(err.message || err).replace(/[<>&]/g, "")}`);
+      document.body.dataset.throwaway = "error";
+    } finally {
+      btn.disabled = false;
+    }
+  });
+}
+
 // ================================================================ layer 2: the drawer
 let sourcesLead = null;
 function openTrust(open = true) {
@@ -1850,6 +1903,17 @@ function applyPersonaLink() {
 (async () => {
   const d = await fetch("data/app.json").then((r) => r.json());
   REG = d.hybrid.registeredKeys || {};
+  // the cheat button works as soon as tamper A is set up (committed data only); the live reads and the self-checks
+  // below run on, and a failure there cannot keep it disabled
+  const cheat = $("cheat-btn");
+  cheat.addEventListener("click", goCheat);
+  const enableCheat = () => {
+    if (!TAMPER_ACTIONS.A || !cheat.disabled) return;
+    cheat.textContent = CHEAT_LABEL;
+    cheat.disabled = false;
+  };
+  const tamperP = setupTamper(d).finally(enableCheat);
+  try {
   setupTrust();
   sourcesLead = d.cases.TKM_S_276;
   renderSources(d);
@@ -1863,6 +1927,7 @@ function applyPersonaLink() {
   renderActors(d, live);
   setupStory(d, live);
   setupWitness(d);
+  setupThrowaway(d);
   renderRules(d);
   renderStrip(d, live);
   renderJudgePath(d, live);
@@ -1873,15 +1938,16 @@ function applyPersonaLink() {
   renderEpisodes(d, live);
   setupClock(d, live);
   setupVerificationTime(d);
-  const tamperOk = await setupTamper(d);
+  const tamperOk = await tamperP;
   const results = { observer: await setupObserver(d), missing: await setupMissing(d), cloud: await setupCloud(d) };
   await renderExport(d);
   await selfChecks(d, live, liveErr, tamperOk);
   await selfChecksV2(d, results);
   selfCheckPill();
-  $("cheat-btn").disabled = false;
-  $("cheat-btn").addEventListener("click", goCheat);
   await applyDeepLink();
   applyPersonaLink();
   document.body.dataset.ready = "1";
+  } finally {
+    enableCheat();
+  }
 })();

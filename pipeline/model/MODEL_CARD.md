@@ -38,7 +38,7 @@ is not a clean site.
 | test_b | pass ≥ 2026-01-01, all countries (held out by time) | 2,757 | 1,183 | 1,083 | 484 |
 
 All sets keep only passes where the source **already had a detection** (history features still use every pass).
-**Why v2:** the D3 review found a sample-construction leak in v1 (frozen on D1, `0x9adbc5e6…`, in git history). Every
+**Why v2:** an adversarial review found a sample-construction leak in v1 (frozen first, `0x9adbc5e6…`, in git history). Every
 catalogue source exists because it was detected at least once, so the passes before its first detection carry a
 guaranteed future positive: 342 rows = 11.0 % of v1 test_b, label rate 0.63 (`data/derived/model/splits.json` → `excluded_by_v2_sample_rule`). Those rows never occur in the product (covenants cover
 catalogued, already-detected sources). Under v1 the model passed; under v2 it does not. We report the v2 result.

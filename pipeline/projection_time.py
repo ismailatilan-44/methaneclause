@@ -225,7 +225,7 @@ def quantiles(xs: list[float]) -> dict:
     qs = statistics.quantiles(xs, n=10)
     return {"n": len(xs), "median": round(statistics.median(xs), 2), "p10": round(qs[0], 2), "p90": round(qs[-1], 2)}
 
-# ===================================================================================== board T4d (model.t4d)
+# ====================================================== time factor with re-onset hazard, option d (model.t4d)
 # Removed time in absolute days against the stake's own emitting days (duty cycle x days from the start to the last
 # pass); every event censored at the facility's last pass; a fix credited only until a new fault would start (the
 # re-onset hazard measured on the stake's own passes); the action share conditioned on persistence (CARB plume count).
@@ -363,7 +363,7 @@ def t4c_variant(evs: list[dict], lags: dict[str, float], delays: list[float], mi
 PLUME_CLASSES = ("1", "2", "3+")
 
 
-# ---------------------------------------------------------- board T4d amendment: the not MARS-notified natural-stop sample
+# --------------------------------------- model.t4d amendment: the not MARS-notified natural-stop sample
 def sample_passes(tl: dict) -> list[dict]:
     """A sampled source's observation dates as passes (a detection date counts as an observation)."""
     det = set(tl["det"])
@@ -406,8 +406,8 @@ def natural_stop_hazard(series: list[tuple[list[dict], str]], days_per_year: flo
             "perYear": round(ends / years, T_DIGITS) if years > 0 else None}
 
 
-# ===================================================================== board B1: the forward hold-out (pre-registered)
-# PRE-REGISTERED 2026-10-24 (submission sprint task P1), committed on its own before any forward value was computed:
+# =============================================================== the forward hold-out (pre-registered)
+# PRE-REGISTERED 2026-10-24 (forward hold-out rule), committed on its own before any forward value was computed:
 # the commit order is the evidence. Known when it was written: T4d option d on portfolio_v3 (central ~30 kt CH4/yr,
 # up to ~62 kt with no recurrence; 65.52 % of its credit on events containing the plume that selected the member) and
 # the shape of the committed files; no member list, stake, event or tonnage of the forward scope had been computed.
@@ -554,7 +554,7 @@ FORWARD_ROLLING = {
 }
 
 
-# Added 2026-10-24 (submission sprint task P2 item 1), committed on its own BEFORE any value of this control was
+# Added 2026-10-24 (twelve-month control), committed on its own BEFORE any value of this control was
 # computed. Known when it was written: the forward result and every reported row (full window 4.01 % of the credited
 # stake, the credit ending before the label window 0.85 %, the six-month control 0.04 %, the rolling origin 2025-03-12
 # to creditEnd 2.90 %, the member-bootstrap share interval 1.26-7.03 %). Reported only: it sets no value.

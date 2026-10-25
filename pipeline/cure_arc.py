@@ -115,8 +115,7 @@ def clean_window_note() -> str:
 
 def readme_line(a: dict, first_installment_passes: int) -> str:
     s = {x["key"]: x for x in a["steps"]}
-    # two source lines, one paragraph: scripts/check_public.py reads a 64-hex value on a line that says "wallet" as a
-    # possible key, so the transaction links sit on the line after the one naming the judge test wallet
+    # two source lines, one paragraph: a secret scan reads a 64-hex value on a line that says "wallet" as a possible key, so the transaction links sit on the line after the one naming the judge test wallet
     return (f"**Refund side, by a judge test wallet [SIM] run by the author** (observer OBS_JUDGE, judge sandbox, "
             "`make judge-cure`):\n"
             f"the {a['case']} relapse of {a['relapseDate']} ({a['relapseKgH']:,} kg/h) CONFIRMED "

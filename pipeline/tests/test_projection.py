@@ -22,9 +22,9 @@ SRC = DERIVED / "projection_sources.json"
 
 
 def interim() -> dict:
-    """projection.json as the reviewed interim (T4b step 1) path writes it: its own headline, scopes and card, whether
-    or not the published kind is T4d's 'central' (the interim sentences are tested here, T4d's in
-    test_projection_t4d.py)."""
+    """projection.json as the reviewed interim path writes it: its own headline, scopes and card, whether
+    or not the published kind is model.t4d's 'central' (the interim sentences are tested here, model.t4d's in
+    test_projection_time_factor.py)."""
     o = committed()
     return o | o["interim"]
 
@@ -100,7 +100,7 @@ def test_sources_file_is_complete():
 
 def test_every_parameter_names_its_evidence():
     """A parameter that is not an ASSUMPTION has a non-empty source list; an ASSUMPTION that sets a projected value
-    names the published figures that inform it (no scenario stands on an empty list, board T4)."""
+    names the published figures that inform it (no scenario stands on an empty list)."""
     s = sources()
     for name, prm in s["parameters"].items():
         if prm["status"] != "ASSUMPTION":
@@ -587,7 +587,7 @@ def test_cards_say_what_they_are():
 
 
 def test_the_pdf_draft_carries_the_projection_blocks():
-    """Vision first (user decision 2026-10-16), forward hold-out leading (G2, after the B1 review): headline
+    """Vision first, forward hold-out leading: headline
     ([PROJECTION] once) -> forward stake, interval and rolling origins -> the whole-window comparison -> cost line ->
     one "How we estimated this" paragraph that holds the ASSUMPTIONs, the null and "not a measured reduction", once
     each; the whole-window headline is no longer quoted. The cost and methods sentences are the card's, with the
@@ -634,7 +634,7 @@ def test_the_pdf_draft_carries_the_projection_blocks():
 
 
 def test_the_readme_headline_is_the_generated_one():
-    """The README quotes the forward hold-out's generated headline verbatim (G2) and no longer the whole-window one;
+    """The README quotes the forward hold-out's generated headline verbatim and no longer the whole-window one;
     its central figure is projection.json's forward central figure (no hand-typed number)."""
     readme = ROOT / "README.md"
     if not readme.exists():

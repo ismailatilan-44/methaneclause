@@ -119,7 +119,7 @@ def missing_inputs(numbers: dict) -> list[str]:
 
 
 def refuse_missing(numbers: dict) -> None:
-    """STRICT=1: a missing input is a failure, not a string in audit_numbers.json (spec-v2 §15, B1 review)."""
+    """STRICT=1: a missing input is a failure, not a string in audit_numbers.json (missing inputs fail closed)."""
     gone = missing_inputs(numbers)
     if gone and os.environ.get("STRICT") == "1":
         print(f"audit: STRICT and {len(gone)} input(s) missing: " + ", ".join(gone))
@@ -173,8 +173,8 @@ def _projection(d: dict) -> dict:
                            "responseScenarios": ", ".join(map(str, d["parameters"]["responseScenarios"]["values"])),
                            "ceasedShare": {b: d["parameters"]["ceasedShare"][b] for b in ("low", "high")},
                            "responseRule": d["responseRule"]},
-            # T4b: the chosen pairing, the pairings it was chosen over, and the weighting it could not use
-            # interim (T4b review): the headline is a range with no central tonnage until the time factor (T4c)
+            # model: the chosen pairing, the pairings it was chosen over, and the weighting it could not use
+            # interim (after its review): the headline is a range with no central tonnage until the time factor (T4c)
             "headline": d["headline"],
             "model": {"choice": d["model"]["choice"], "range": d["model"]["range"],
                       "emissionClasses": d["model"]["emissionClasses"], "violations": d["model"]["violations"],
@@ -196,7 +196,7 @@ def _projection(d: dict) -> dict:
                                           f"{r['spec']['minPassesEachSide']}": {"groups": r["groups"], "did": r["did"]}
                                           for r in [c["primary"], *c["variants"]]}}
                              for n, c in d["evidence"]["line2"]["coverageSets"].items()}}},
-            # board T4d: the unpublished time factor (published only when its review passes)
+            # model.t4d: the time factor (published only when its review passes)
             "t4d": {"headline": d["t4d"]["headline"], "rByPlumeClass": d["t4d"]["rByPlumeClass"],
                     "scopes": {n: {"reonsetHazard": s["reonsetHazard"],
                                    "scenarios": {str(r["responseShare"]): {k: r[k] for k in (
@@ -211,7 +211,7 @@ def _projection(d: dict) -> dict:
                                     for n, s in d["t4d"]["scopes"].items()},
                     "notMarsNotifiedSample": {k: v for k, v in d["t4d"]["notMarsNotifiedSample"].items()
                                               if k != "population"}},
-            # board B1: the forward hold-out (pre-registered in projection_time.FORWARD), reported next to t4d
+            # the forward hold-out (pre-registered in projection_time.FORWARD), reported next to t4d
             "forward": {"scopes": {n: {k: v for k, v in s.items() if k not in ("memberNames", "scenarios")}
                                    | {"scenarios": {str(r["responseShare"]): {k: r[k] for k in (
                                        "kt_ch4_per_yr", "mt_co2e_per_yr_gwp100", "mt_co2e_per_yr_gwp20", "shareOfStake")}

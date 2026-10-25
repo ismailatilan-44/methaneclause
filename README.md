@@ -1,10 +1,12 @@
 # MethaneClause
 
-*A speed camera for methane, written into the gas contract.*
+*A speed camera for methane, written into the gas contract between an EU gas importer and its supplier.*
+
+**Live demo:** [the story on a map](https://ismailatilan-44.github.io/methaneclause/) · [try to cheat it](https://ismailatilan-44.github.io/methaneclause/?tamper=A) (60 s) · [full page](https://ismailatilan-44.github.io/methaneclause/index.html)
 
 **Satellites confirm a leak → the seller's bond pays the buyer.**\
-**No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's).**\
-**Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.**
+No new leak on later passes → the seller earns money back in steps, up to the rebate, from a sponsor's pool (for example its lender's).\
+No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.
 
 Public satellite records are the cameras; independent witnesses (separate organisations) each fetch the record and
 sign it; when enough of them sign the same leak and the appeal window passes, the seller's bond pays the buyer — the
@@ -22,14 +24,14 @@ money back from the sponsor's pool.
 <!-- gen:status0:end -->
 
 <!-- gen:paths:begin -->
-- **Who.** The seller posts a bond for named sources; the buyer, an EU gas importer, gets the rebate; witnesses (separate organisations) fetch and sign the public record; the sponsor (a lender, as a sustainability-linked margin step, or the buyer, to keep a clean supplier) funds the earn-back pool.
+- **Who.** The seller posts a bond for named sources; the buyer, an EU gas importer, gets the rebate; witnesses (separate organisations both parties name in the clause, controlled by neither, paid a fee per counted pass from the sponsor's pool) fetch and sign the public record; the sponsor (a lender, as a sustainability-linked margin step, or the buyer, to keep a clean supplier) funds the earn-back pool.
 - **Seen → confirmed → paid.** 2 of 4 witnesses (the clause's quorum k of n, with n ≥ k + 2 so an appeal still has a spare witness) sign the same detection; after the appeal window the buyer withdraws the rebate.
 - **Clean passes → earn-back in steps.** k witnesses sign each clean pass; the sponsor's pool pays in steps.
 - **New leak → the earn-back stops.** The next confirmed leak cancels every unpaid step.
 <!-- gen:paths:end -->
 
 <!-- gen:whyNow:begin -->
-**Why now.** Carbon Mapper saw a methane plume within 1.5 km of 203 oil and gas sources that the UN's alert system (UNEP MARS) had listed as quiet (*absent*: no MARS plume in six months), out of 1,122 such sources ([`CRITERION`](pipeline/join/CRITERION.md)). Across the 428 of those 1,122 with a quantified stake (a Carbon Mapper plume any time after MARS's first plume there, not only inside the six quiet months), the low bound of the stake band is ~0.5 Mt CH₄/yr (stake, not abatement).
+**Why now.** The UN's alert system (UNEP MARS) lists 1,122 oil and gas sources as quiet (*absent*: no MARS plume in six months); Carbon Mapper still saw a plume within 1.5 km of 203 of them ([`CRITERION`](pipeline/join/CRITERION.md)). A pre-registered forward test projects that a 220-facility clause portfolio [SIM] would stop ~3.4 kt CH₄/yr (~0.10 Mt CO₂e/yr; 95 % ~0.9–6.5 kt), against a stake of ~0.5 Mt CH₄/yr across 428 of those sources (a Carbon Mapper plume any time after MARS's first plume there; low bound; stake, not abatement).
 <!-- gen:whyNow:end -->
 
 ```sh
@@ -74,7 +76,7 @@ UNEP's Methane Alert and Response System has issued more than 5,000 satellite al
 <!-- gen:problem:end -->
 
 A buyer who contracted "no super-emitters" has no executable remedy, and any one party's database can drop the
-record. This clause is what moves.
+record. This clause gives that buyer a remedy that pays.
 
 ## Who uses it
 
@@ -87,26 +89,21 @@ and chain execution are real.
 
 ## How the two-sided clause works
 
-Front words, mapped once: confirmed leak = CONFIRMED episode · clean pass = qualified clean pass · earn-back step =
-installment · appeal window = challenge window · witness = observer organisation · clause = covenant. The mechanism
-sections, spec, code and ABI use the right-hand terms.
-
 - **Rebate (the core, unchanged since v1).** k distinct observer organisations sign the same evidence bundle for a
   re-detection; after the challenge window the episode is CONFIRMED and the buyer withdraws the rebate from the bond.
 <!-- gen:mechanism:begin -->
 - **Refund (the IncentivePool).** A confirmed episode opens a claim. Qualified clean passes — Carbon Mapper's `not_cloudy` flag, the scene footprint over the source's plume origins, no plume on the scene, no UNEP MARS plume within ±7 days, the instrument's detection floor at most the episode's rate — are attested by k observer organisations and count after a clean window open to challenge. At 3, 6 and 10 counted passes, 30 %, 30 % and 40 % of the rebate are scheduled; the last needs two instruments, a MARS corroboration and a 540-day cure term within the covenant term (one-year Sepolia policy: ≤ 60 %; 3-year Sepolia covenant 2: final reachable for episodes to 2027-06-07). The refund never exceeds the episode's rebate, freezes while a new detection is reviewed, and a later attested detection cancels what is unpaid.
 <!-- gen:mechanism:end -->
 
+Each scene rule is a challenge reason anyone can raise in the clean window (`CLOUD_FLAG` … `FLOOR_MISMATCH`).
+
+*Code names: confirmed leak = CONFIRMED episode · clean pass = qualified clean pass · earn-back step = installment ·
+appeal window = challenge window · witness = observer organisation · clause = covenant; the spec, code and ABI use the
+right-hand terms.*
+
 <!-- gen:refund:begin -->
 On **DZA_S_012** (Algeria) the replay counts **8 qualified clean passes (a lower bound)** after the 2024-09-29 episode; the relapse on 2026-02-01 cancels the claim: paid 60 %, forfeited 40 %. On **TKM_S_276**: no attestable clean pass since the 2026-06-11 episode yet. Why the refund is capped: a quiet run is weak evidence: in Carbon Mapper's catalogue (897 cells; all instruments, unqualified passes) the pass after three non-detections still saw a plume 22 % of the time (47/210, 95 % CI 17–29 %), and the passes after longer quiet runs saw one 19–24 % of the time.
 <!-- gen:refund:end -->
-
-### Why a clean pass counts
-
-A clean pass counts only on a clear-sky scene over the source, from an instrument that could see a leak this size,
-with no UNEP MARS plume within ±7 days — and the last earn-back step needs 10 of them, two instruments, a MARS
-corroboration and a 540-day cure term. Each scene rule is a challenge reason anyone can raise in the clean window
-(`CLOUD_FLAG` … `FLOOR_MISMATCH`).
 
 ## Do we need a chain? (four questions)
 
@@ -119,9 +116,9 @@ corroboration and a 540-day cure term. Each scene rule is a challenge reason any
 | Fits the ledger? | Only hashes, IDs and money: `evidenceHash`, `sceneHash`, `policyHash`, a Merkle root of covered facilities, the bond, the pool. Raw data stays with the providers and the observers. |
 <!-- gen:chain:end -->
 
-**Without the chain,** a signed database owned by any one of these parties can drop a re-detection or hold the rebate;
-here, once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it,
-and then the independent witnesses must confirm it again; and no administrator can touch the funds. The existing registries stay what
+**Without the chain,** a signed database is run by one of these parties, and that party decides whether a
+re-detection counts and whether the rebate is paid; here the contract pays on k independent signatures and an open
+appeal window, and no administrator can touch the funds. The existing registries stay what
 they are — inputs and certification — and the clause adds the one thing none of them does: executing a counterparty's
 commitment on an independent re-detection.
 
@@ -133,11 +130,17 @@ checkable record — which detection, which witnesses, which policy, which payme
 D with the EU evidence mapping) and a lender can use as a contract KPI. On chain where a euro token is lawful: a MiCA
 euro e-money token (the prototype uses testnet ETH). As a credit note where crypto payments are not: the CBRT
 regulation of 16 April 2021 bans crypto-assets in payments in Türkiye, so a Türkiye-type importer's covenant runs
-verdict-only and `make demo` exports its credit note; the Türkiye ETS (Official Gazette 33353) prices no methane and
+verdict-only and `make demo` exports its credit note.
+
+<details><summary>Why a contractual clause is the methane incentive in Türkiye today, and what lenders already do</summary>
+
+The Türkiye ETS (Official Gazette 33353) prices no methane and
 exempts gas transmission and storage in its first period, so a contractual clause is the methane incentive Turkish gas
 counterparties have today. Lenders' margins already move on methane intensity (Petrobras 2022 SLL; Gasunie SLB, 10 bp
 per missed KPI); the pool is that margin step made source- and event-level. Payouts are pulls; AML/KYC on paying a
 third-country seller is the sponsor's obligation.
+
+</details>
 
 Amounts are representative test values; a production clause sets them in euros in the parties' policy.
 
@@ -149,13 +152,14 @@ Production adds witnesses as separate organisations with their own keys, a comme
 satellite provider (a NASA EMIT plume reader), a euro e-money token where lawful, a signed pilot. On a permissioned
 ledger, Hyperledger Fabric carries the verdict (covenant as chaincode, k-of-n as the endorsement policy of
 `proposeEpisode`, seller and buyer peers excluded) and the rebate follows by instruction; between counterparties
-without a shared regulated venue, the public chain is the venue. Details: [`docs/PRODUCTION.md`](docs/PRODUCTION.md).
+without a shared regulated venue, the parties use a public chain. Details: [`docs/PRODUCTION.md`](docs/PRODUCTION.md).
 
 ## Architecture
 
 ![Data providers, k observer organisations, the contracts and the parties](docs/architecture.svg)
 
-Each observer runs five steps, labelled alike in terminal and page: Fetch → Validate → Seal → Sign → Re-check.
+Each observer runs five steps, labelled alike in terminal and page: Fetch → Validate → Seal (RFC 8785 JCS, SHA-256) → Sign (EIP-712, secp256k1 ECDSA on chain; ML-DSA-44 off chain) →
+Re-check. Threats, mechanisms and tests: [`SECURITY`](docs/SECURITY.md).
 Observers that disagree produce no quorum. The bond is sized by a rule committed in `policyHash`.
 
 <!-- gen:assurance:begin -->
@@ -164,16 +168,23 @@ Observers that disagree produce no quorum. The bond is sized by a rule committed
 
 ## What runs end to end (`make demo`)
 
+Four runs on a local chain — a real two-sided replay, the v1 rebate with its refused inputs, a verdict-only covenant
+with its credit note, and a portfolio covenant — each with its checks and every rejection a failed transaction.
+
+<details><summary>The four runs, what happens on chain, and their checks</summary>
+
 <!-- gen:demo:begin -->
 | Run | What happens on chain | Checks |
 |---|---|---|
-| **DZA replay**, own chain from 2024-09-01 [SIM clock] | covenant via a SuretyBond (operator's withdraw fails `NotFunder`); the 2024-09-29 episode CONFIRMED; real passes counted, installments 1–2 released; MARS corroboration; a seeded [SIM] bad pass voided (`CLOUD_FLAG`); while the relapse is PROPOSED, cancel and release fail `SourceUnderReview`; then `relapse()` cancels A (paid 60 %) and B [SIM look-ahead] (pending final voided); refunds pulled to the surety | 91 checks, 85 txs, 3 status 0 |
+| **DZA replay**, own chain from 2024-09-01 [SIM clock] | covenant via a SuretyBond (operator's withdraw fails `NotFunder`); the 2024-09-29 episode CONFIRMED; real passes counted, installments 1–2 released; MARS corroboration; a seeded [SIM] bad pass voided (`CLOUD_FLAG`); while the relapse is PROPOSED, cancel and release fail `SourceUnderReview`; then `relapse()` cancels the real claim (paid 60 %) and a second claim built on today's origin points [SIM look-ahead], whose scheduled final installment is voided before payment; refunds pulled to the surety | 91 checks, 85 txs, 3 status 0 |
 | **v1**, TKM_S_276 | the 2026-06-11 plume → CONFIRMED → rebate withdrawn; `InvalidSignature`, `SelfAttestation`, `AttestationMismatch`, `NotCovered`, `Replay`, `DuplicateEvidence`, `RevokedKey`; `LINKED` | 33 checks |
-| **TKM verdict-only** [SIM importer] | no bond; the pool refuses ETH (`BadParams`); CONFIRMED is the verdict; Annex C hash read back; credit note round-trips | 11 checks |
+| **TKM verdict-only** [SIM importer] | no bond; the pool refuses ETH (`BadParams`); CONFIRMED is the verdict; model-clause Annex C hash read back; credit note round-trips | 11 checks |
 | **Portfolio**, set v3 | one covenant, 205 facilities; a wrong-set proof fails `NotCovered`; an episode proven by its 8-step path → CONFIRMED → claim | 7 checks |
 
 A fresh clone skips the DZA observer's Re-check step: no raw cache (`LIVE=1` or `METHANECLAUSE_RAW` enables it).
 <!-- gen:demo:end -->
+
+</details>
 
 Every rejection is a real failed transaction (receipt status 0) that leaves the bond and the counts unchanged. Every
 wait is skipped on a pinned clock that only moves forward, printed as `[SIM: chain clock advanced …]`.
@@ -208,27 +219,33 @@ the DZA_S_012 relapse of 2026-02-01 (694 kg/h) CONFIRMED [`0x978213…`](https:/
 ## Numbers (generated)
 
 <!-- gen:numbers:begin -->
-- **AI vs the rule.** A gradient-boosted next-pass forecast measured against the frozen persistence rule on region- and time-held-out sets: BSS +0.037 and **−0.0721** → *the persistence rule is enough* ([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)); held out, the rule called zero on passes that still showed a plume 7.2 % / 9.2 % of the time (the reason it is smoothed).
+- **AI vs the rule.** We trained a gradient-boosted next-pass forecast; on region- and time-held-out sets it did not beat the frozen persistence rule (Brier skill score +0.037 and −0.0721), so *the persistence rule is enough* and the product uses it ([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)). Held out, the rule called zero on passes that still showed a plume 7.2 % / 9.2 % of the time (the reason it is smoothed).
 - **Backtest** over the 1,122 sources MARS labels absent today — a label decided after the window:
-  - **Episodes.** Counterfactual walk over the 673 sources that own a Carbon Mapper source, from the first MARS plume's tile date (a backdated start) to the catalogue end (2026-09-13), policy frozen: 1,204 episodes at 425 facilities (tier 1 94, tier 2 356, tier 3 754); 277 detections refused (below 100 kg/h or no rate) and 372 linked; rebates 2,292.00 policy units (a parameter, not a price).
+  - **Episodes.** Counterfactual walk over the 673 sources that own a Carbon Mapper source, from the first MARS plume's tile date (a backdated start) to the catalogue end (2026-09-13), policy frozen: 1,204 episodes at 425 facilities (tier 1 94, tier 2 356, tier 3 754); 277 detections refused (below 100 kg/h or no rate) and 372 linked; rebates 2,292.00 policy units (a parameter, not a price). (Tier: the rebate size the attested leak rate sets, tier 1 the largest; [model clause §4](docs/clause/model-clause.md#4-rebate-tiers).)
   - **Independent satellites.** 11 % of episodes had a MARS plume from a satellite other than EMIT or Tanager within 7 days (132 of 1,204; MARS rows on the start date excluded).
   - **Refunds.** Counterfactual, qualified passes only, at the 174 join-candidate and demo facilities: 49 of 628 claims had a counted pass; 17 installments released (14.70 policy units), 4 cancelled; 5 released claims saw a plume not counted as a relapse; 576 claims not fetched.
   - **Stake.** Stake, not abatement: ~0.5 Mt CH₄/yr, the low bound of the band, across 428 facilities, the 425 with an episode plus 3 whose plumes all fell below 100 kg/h, assuming what satellites saw on their passes holds between them; passes are partly tasked toward expected plumes, which biases the seen duty cycle upward (roadmap: a duty cycle measured on un-targeted EMIT passes).
-- [PROJECTION] Pre-registered forward hold-out: a 220-facility portfolio covenant [SIM], chosen with Carbon Mapper plumes published before 2025-09-12 at sources MARS had not seen for six months and lists as absent today, and credited only for faults first detected after that date up to 2026-09-13, would stop ~3.4 kt CH₄/yr at the central 39 % action share (95 % member bootstrap ~0.9–6.5 kt; ~2.8–5.0 kt across action and recurrence scenarios), ~0.10 Mt CO₂e/yr at GWP-100, none of it on the plume that selected a member — assumptions: paper §4.
-  - **Uncertainty.** Resampling the members (2,000 draws, the re-onset hazard re-measured in each) puts the central figure between ~0.9 and ~6.5 kt CH₄/yr (95 % interval).
-  - **Robustness.** At three more origins registered after this result, with overlapping credit windows, the share is 2.6–2.9 %.
-  - **Comparison.** Credited over each member's whole window instead, the same model gives ~30 kt CH₄/yr for the portfolio covenant set v3, 66 % of it on events containing the plume that selected the member; the forward hold-out credits none.
+- **[PROJECTION] ~3.4 kt CH₄/yr stopped** (95 % ~0.9–6.5 kt) — pre-registered forward hold-out, 220-facility portfolio [SIM]: members chosen with Carbon Mapper plumes published before 2025-09-12 at sources MARS had not seen for six months and lists as absent today, credited only for faults first detected after that date, up to 2026-09-13; central 39 % action share, ~2.8–5.0 kt across action and recurrence scenarios, ~0.10 Mt CO₂e/yr at GWP-100, none of it on the plume that selected a member. Assumptions: the paper's carbon projection section (section 4).
   - **Stake.** Stake, not abatement: ~84 kt CH₄/yr across the 115 members with a stake known on 2025-09-12 and a satellite pass after it; the projection credits 4.0 % of it (3.4 % of the ~99 kt stake of all 143 quantified members).
   - Method and output: [`pipeline/projection.py`](pipeline/projection.py), [`data/derived/projection.json`](data/derived/projection.json) (`forward`); what was fixed before computing, with its hashes: [`docs/preregistration.md`](docs/preregistration.md).
+
+<details><summary>The reviewed headline, robustness and the whole-window comparison</summary>
+
+- **Reviewed headline.** [PROJECTION] Pre-registered forward hold-out: a 220-facility portfolio covenant [SIM], chosen with Carbon Mapper plumes published before 2025-09-12 at sources MARS had not seen for six months and lists as absent today, and credited only for faults first detected after that date up to 2026-09-13, would stop ~3.4 kt CH₄/yr at the central 39 % action share (95 % member bootstrap ~0.9–6.5 kt; ~2.8–5.0 kt across action and recurrence scenarios), ~0.10 Mt CO₂e/yr at GWP-100, none of it on the plume that selected a member — assumptions: paper §4.
+- **Robustness.** At three more origins registered after this result, with overlapping credit windows, the credited share of stake is 2.6–2.9 %.
+- **Comparison.** Credited over each member's whole window instead, the same model gives ~30 kt CH₄/yr for the portfolio covenant set v3, 66 % of it on events containing the plume that selected the member; the forward hold-out credits none.
+
+</details>
+
 <!-- gen:numbers:end -->
 
 ## Not evaluated
 
 | Not evaluated | Why | Instead |
 |---|---|---|
-| Emission reduction or repair | passes bound how often a source emits above a floor, not its rate | u(N); "observed, not abated" |
+| Emission reduction or repair | passes bound how often a source emits above a floor, not its rate | a confidence upper bound, from N clean passes, on how often the source emits above the floor; "observed, not abated" |
 | Refunds outside the scene-data scope | scene data only for join candidates and demo cases with a claim | backtest counts rebates set-wide, refunds only there |
-| Real parties, independent keys, a legal opinion, a euro token | no partner yet; prototype keys held by one person | [SIM] roles, the judge's own key, KeyRegistryV2 by majority (Anvil), credit note, testnet ETH; [production path](#production-path) |
+| Real parties, independent keys, a legal opinion, a euro token | no partner yet; prototype keys: see [Limits](#limits) | [SIM] roles, the judge's own key, KeyRegistryV2 by majority (Anvil), credit note, testnet ETH; [production path](#production-path) |
 <!-- gen:open:begin -->
 | Verification time by hand | the manual protocol is not timed yet | the tool path, author-measured, not a user study: median 1.35 s over n = 5 (snapshot) |
 <!-- gen:open:end -->
@@ -243,14 +260,14 @@ Python 3.12 + [uv](https://docs.astral.sh/uv/), Foundry, `curl`, free ports `ANV
 make setup   # Python venv with pinned deps
 make test    # in a fresh clone of the public export: pipeline 402 passed, 10 skipped; contracts (forge) 302 tests passed, 0 failed
 make demo    # the four runs in the table above
-make check   # + judge-local, the strict audit, wording, links, secrets; page and builder tests: 166 passed, 7 skipped
+make check   # + judge-local, the strict audit, wording, links, secrets; page and builder tests: 168 passed, 7 skipped
 ```
 <!-- gen:counts:end -->
 
 `make reproduce` re-fetches the data (keyless, cached in `data/raw/`, never committed) and diffs every number
 against `data/derived/audit_numbers.json`. Decisions: [`contracts/README.md`](contracts/README.md), [`pipeline/README.md`](pipeline/README.md).
 
-## Limits (said once)
+## Limits
 
 - **Non-detection is not repair.** Non-detection never cancels a rebate or counts as repair. The refund is capped at
   the rebate, paid in installments and cancellable; released installments are not clawed back.
@@ -282,7 +299,7 @@ against `data/derived/audit_numbers.json`. Decisions: [`contracts/README.md`](co
   that settles real payments on Carbon Mapper data would be commercial use and would need a commercial data agreement
   with Carbon Mapper, held by the observers.
 <!-- gen:forwardLimit:begin -->
-- **Carbon projection, forward hold-out.** The forward members come from today's MARS targets (notified and labelled absent today; 135 other notified oil and gas sources MARS had not seen for six months on 2025-09-12 lie outside them because their Carbon Mapper plume rows are not committed), and both catalogues are read as they stand today: MARS rows and Carbon Mapper passes without a detection carry no publication date, and 53 detections dated up to 2025-09-12 were published only on or after it (without them, ~3.3 kt). Today's 'absent' label is decided inside the credit window; credit ending before it (to 2026-03-11) gives ~0.6 kt; a twelve-month credit window from 2025-03-12 to 2026-03-11, also before the label window, gives ~1.61 kt (1.87 % of stake, against 0.85 % for the credit ending before the label and 4.01 % over the full window), but the control differs by period and members as well as length, so it does not separate the window's length from the label.
+- **Carbon projection, forward hold-out.** Members and both catalogues are read as they stand today, so today's 'absent' label is decided inside the credit window; the publication leaks and the controls that bound this, with their figures, are in [`docs/preregistration.md`](docs/preregistration.md) and the paper.
 <!-- gen:forwardLimit:end -->
 
 ## How this was built (AI assistance)

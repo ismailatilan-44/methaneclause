@@ -1,4 +1,4 @@
-"""Page and builder offline tests (make test-lane-c, part of make check through LANE_CHECKS).
+"""Page and builder offline tests (make test-scripts, part of make check through EXTRA_CHECKS).
 
 Each fail-closed path of scripts/build_app_data.py must stop the build (SystemExit) on an inconsistent input, and the
 demo's clock helper must only ever move a chain forward and record what it skipped. Inputs are the committed files,
@@ -300,7 +300,7 @@ NEEDS_DEVPOST = pytest.mark.skipif(not (ROOT / "docs" / "devpost.md").exists(),
 
 @NEEDS_DEVPOST
 def test_devpost_carries_the_sepolia_core_and_the_chain_test_from_generated_blocks():
-    """C5b: the Devpost draft's addresses, four-question table and stake low bound are generated, never typed; the
+    """The Devpost draft's addresses, four-question table and stake low bound are generated, never typed; the
     README shares the table; the stake sentence no longer cites a figure the README does not show."""
     dep = json.loads((ROOT / "contracts" / "deployments" / "11155111.json").read_text())
     dp = (ROOT / "docs" / "devpost.md").read_text()
@@ -346,7 +346,7 @@ def test_devpost_surfaces_the_pool_the_closed_loop_and_the_projection_headline()
     assert head in block("projectionHeadline")
     readme = (ROOT / "README.md").read_text()
     assert "<!-- gen:loop:begin -->" not in readme and "<!-- gen:projectionHeadline:begin -->" not in readme
-    # the README's first screen folds the closed loop (success first) into its status-0 line, 2026-10-21
+    # the README's first screen folds the closed loop (success first) into its status-0 line
     s0 = readme[readme.index("<!-- gen:status0:begin -->"):readme.index("<!-- gen:status0:end -->")]
     assert s0.index(steps["withdraw_buyer"]["tx"]) < s0.index("receipt status 0") < readme.index("## ")
 
@@ -457,9 +457,11 @@ def test_assurance_line_fails_closed(what):
         bad.assurance_block(dep, sec, sl, ha)
 
 
-# ------------------------------------------------------------------------- submission wording (G1, 24 Oct 2026)
-HEADLINE = ("Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only "
-            "appeal it, and then the independent witnesses must confirm it again.")  # shared headline v3 (Wave 4)
+# ---------------------------------------------------------------------------------------------- submission wording
+HEADLINE = ("No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window "
+            "passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm "
+            "it again — but cannot delete the sighting or hold the money.")
+OLD_HEADLINE = "no one — the seller included — can delete it"
 PUBLIC_REPO = "https://github.com/ismailatilan-44/methaneclause"
 PUBLIC_PAGE = "https://ismailatilan-44.github.io/methaneclause/"
 PROJ_SOURCES = json.loads((DERIVED / "projection_sources.json").read_text())
@@ -476,13 +478,13 @@ def _docs() -> dict[str, str]:
 
 
 def test_why_now_names_the_stakes_own_scope_and_calls_it_the_low_bound():
-    """B2: the stake is the backtest's, over the absent sources with a quantified stake, not over the join candidates
+    """The stake is the backtest's, over the absent sources with a quantified stake, not over the join candidates
     named in the same paragraph; its figure is the band's low bound, never "at least"."""
     sb = json.loads((DERIVED / "backtest.json").read_text())["stake_band"]
     j = json.loads((DERIVED / "audit_numbers.json").read_text())["numbers"]["join_v1"]
     w = _readme_blocks()["whyNow"]
-    assert f"Across the {sb['facilitiesQuantified']:,} of those {j['n_mars_target_sources']:,} with a quantified stake" in w
-    assert "the low bound of the stake band" in w and "at least" not in w and "Across them" not in w
+    assert f"across {sb['facilitiesQuantified']:,} of those sources (a Carbon Mapper plume any time after" in w
+    assert "low bound; stake, not abatement" in w and "at least" not in w and "Across them" not in w
 
 
 def test_stake_sentences_say_low_bound_and_name_the_measurement_that_removes_the_bias():
@@ -494,12 +496,14 @@ def test_stake_sentences_say_low_bound_and_name_the_measurement_that_removes_the
 
 
 def test_forward_cost_leads_the_whole_window_cost_and_the_forward_hazard_is_in_the_methods():
-    """P2 outputs: the ledger cost on the forward basis comes first, the whole-window cost second (PDF section 4 and
+    """The ledger cost on the forward basis comes first, the whole-window cost second (PDF section 4 and
     docs/SCALING.md); the methods paragraph states the forward re-onset hazard next to the whole-window one."""
     pj = PROJECTION
     fwd_cost, whole = pj["forward"]["card"]["costSentence"], bad._whole_window(pj["card"]["costLineSentence"])
+    cost = bad.projection_blocks()["projectionCost"]
+    assert cost.index(fwd_cost) < cost.index(bad._whole_window(pj["card"]["costSentence"]))
     lead = bad.projection_blocks()["projection"]
-    assert lead.index(fwd_cost) < lead.index(whole)
+    assert fwd_cost not in lead and whole in lead and lead.endswith("|")
     pays = bad.scaling_blocks(bad.load(bad.APP / "app.json"))["scPays"]
     assert pays.index(fwd_cost) < pays.index(bad._whole_window(pj["card"]["costSentence"]))
     methods = bad._methods_with_forward(pj["card"]["methodsSentence"], pj["forward"])
@@ -508,7 +512,7 @@ def test_forward_cost_leads_the_whole_window_cost_and_the_forward_hazard_is_in_t
 
 
 def test_alerts_paragraph_quotes_the_july_2026_source_and_the_event_study_null():
-    """B5: the problem opens on the newest committed MARS figures (alerts, countries, repairs, response share), each
+    """The problem opens on the newest committed MARS figures (alerts, countries, repairs, response share), each
     taken from the source's quote, with its link, and on our event study's null; the 2025 figures are gone."""
     src = PROJ_SOURCES["sources"][bad.ALERTS_SOURCE]
     a = _readme_blocks()["alerts"]
@@ -536,16 +540,18 @@ def test_alerts_paragraph_fails_closed(what):
 
 
 def test_headline_and_contest_sentence_are_the_shared_wording():
-    """B3: README, Devpost and PDF carry the shared headline; nothing still says the seller cannot hold back a rebate
-    "on its own" (it can appeal: a challenge resolved by k witnesses or a contest resolved by k+1)."""
+    """README and Devpost carry the shared headline (the PDF's static text is edited separately); nothing still says
+    the seller cannot hold back a rebate "on its own" (it can appeal: a challenge resolved by k witnesses or a contest
+    resolved by k+1)."""
     for path, t in _docs().items():
-        assert HEADLINE in t, path
         assert "hold back the rebate" not in t, path
+        if path != "docs/pdf/methaneclause.md":
+            assert HEADLINE in t and OLD_HEADLINE not in t, path
 
 
 @NEEDS_DEVPOST
 def test_devpost_learned_line_is_the_readme_model_wording_with_generated_values(monkeypatch):
-    """B4: Devpost's model line gives both held-out scores, as the README does, and fails closed if the model ever
+    """Devpost's model line gives both held-out scores, as the README does, and fails closed if the model ever
     beats the rule on both sets."""
     audit = json.loads((DERIVED / "audit_numbers.json").read_text())
     m = audit["numbers"]["model"]
@@ -553,7 +559,7 @@ def test_devpost_learned_line_is_the_readme_model_wording_with_generated_values(
     learned = dp[dp.index("<!-- gen:learned:begin -->"):dp.index("<!-- gen:learned:end -->")]
     a, b = (bad._signed(m[t]["model"]["bss_vs_B1"]) for t in ("test_a", "test_b"))
     readme = (ROOT / "README.md").read_text()
-    assert f"BSS {a} and {b}" in learned and f"BSS {a} and **{b}**" in readme
+    assert f"BSS {a} and {b}" in learned and f"Brier skill score {a} and {b}" in readme
     assert "the product uses the rule" in learned
     app = bad.load(bad.APP / "app.json")
     m["test_b"]["model"]["bss_vs_B1"] = 0.01
@@ -565,7 +571,7 @@ def test_devpost_learned_line_is_the_readme_model_wording_with_generated_values(
 
 @NEEDS_DEVPOST
 def test_devpost_and_readme_link_the_public_repo_and_the_hosted_page():
-    """A1/A2/A4/D4: Track 4 opens the Devpost About; the repository and the hosted page (with the 60-second tamper
+    """Track 4 opens the Devpost About; the repository and the hosted page (with the 60-second tamper
     link) replace the placeholder; the next steps no longer ask for an observer organisation that is registered."""
     dp = (ROOT / "docs" / "devpost.md").read_text()
     readme = (ROOT / "README.md").read_text()
@@ -578,7 +584,7 @@ def test_devpost_and_readme_link_the_public_repo_and_the_hosted_page():
     assert dep["observerC"] and "A third observer organisation" not in dp
 
 
-# ------------------------------------------------------------------------- G2: the forward hold-out leads the projection
+# ------------------------------------------------------------------------------ the forward hold-out leads the projection
 FWD = PROJECTION["forward"]["card"]
 
 
@@ -587,7 +593,7 @@ def _block(text: str, name: str) -> str:
 
 
 def test_projection_headline_is_the_forward_hold_out_everywhere():
-    """B1 outcome: README, Devpost and the PDF lead the carbon projection with the pre-registered forward hold-out
+    """README, Devpost and the PDF lead the carbon projection with the pre-registered forward hold-out
     (headline, stake, interval), followed by the whole-window figure as context; the whole-window card headline (whose
     credit falls two-thirds on the plumes that selected the members) is no longer quoted as ours anywhere."""
     docs = _docs()
@@ -597,9 +603,11 @@ def test_projection_headline_is_the_forward_hold_out_everywhere():
     lead = [FWD["headlineSentence"], FWD["stakeSentence"], FWD["intervalSentence"]]
     readme = docs["README.md"]
     nums = _block(readme, "numbers")
-    for s in lead + [FWD["rollingSentence"], FWD["comparisonSentence"]]:
+    first = bad._forward_lead(PROJECTION)["numbers"]
+    for s in [first, FWD["headlineSentence"], FWD["stakeSentence"], bad._rolling(FWD["rollingSentence"]),
+              FWD["comparisonSentence"]]:
         assert s in nums, s[:40]
-    assert nums.index(FWD["headlineSentence"]) < min(nums.index(s) for s in lead[1:] + [FWD["comparisonSentence"]])
+    assert nums.index(first) < nums.index(FWD["stakeSentence"]) < nums.index("<details>")
     if "docs/devpost.md" in docs:
         dp = _block(docs["docs/devpost.md"], "projectionHeadline")
         for s in lead + [FWD["comparisonSentence"]]:
@@ -614,12 +622,17 @@ def test_projection_headline_is_the_forward_hold_out_everywhere():
 
 def test_forward_limits_are_said_once_in_the_readme_limits():
     """The forward hold-out's limits line (the label window, the publication leaks, the short-window control) is in
-    README Limits exactly once, split into two sentences from the same card field, never retyped."""
+    the PDF's Limits, split into two sentences from the same card field, never retyped; README Limits gives the label
+    window in one sentence and points to the pre-registration."""
     readme = (ROOT / "README.md").read_text()
     split = bad._forward_limits(FWD["limitsSentence"])
-    limits = readme[readme.index("## Limits (said once)"):]
+    limits = readme[readme.index("## Limits\n"):]
     limits = limits[:limits.index("\n## ", 1)]
-    assert split in limits and readme.count(split) == 1
+    assert _readme_blocks()["readme:forwardLimit"] in limits and split not in readme
+    assert "decided inside the credit window" in limits and "docs/preregistration.md" in limits
+    pdf = ROOT / "docs" / "pdf" / "methaneclause.md"
+    if pdf.exists():
+        assert split in _block(pdf.read_text(), "forwardLimit")
     assert split.replace(". Today's", "; today's", 1) == FWD["limitsSentence"]
     with pytest.raises(SystemExit):
         bad._forward_limits(FWD["limitsSentence"].replace("; today's 'absent' label", "; the label"))
@@ -646,15 +659,16 @@ def test_whole_window_cost_is_labelled_and_fails_closed():
 
 
 def test_why_now_explains_the_two_counts_and_alerts_say_no_money_moves():
-    """G1 audit notes: the 428 with a stake are sources with a Carbon Mapper plume any time after MARS's first plume
+    """The 428 with a stake are sources with a Carbon Mapper plume any time after MARS's first plume
     there, not only inside MARS's quiet window (the 203); the alerts paragraph says money moves for none of them."""
     b = _readme_blocks()
-    assert "any time after MARS's first plume there, not only inside the six quiet months" in b["whyNow"]
+    assert "a Carbon Mapper plume any time after MARS's first plume there" in b["whyNow"]
+    assert b["whyNow"].index("lists") < b["whyNow"].index("still saw a plume") < b["whyNow"].index("kt CH₄/yr")
     assert "For most alerts no one answers, and the alert itself pays no one." in b["alerts"]
     assert "nothing moves when they arrive" not in b["alerts"] and "does money move" not in b["alerts"]
 
 
-# ------------------------------------------------------------------------------------------- G3: wording of Wave 4
+# ------------------------------------------------------------------------------------------------- problem wording
 def test_problem_says_answering_moved_nothing_and_the_alert_pays_no_one():
     """The problem's opening says what the event study measured (answering an alert), that no alert pays anyone, and
     that the two datasets disagree about one gas facility (TKM_S_276), not about a "pipeline"."""
@@ -676,23 +690,59 @@ def test_first_screen_quorum_is_the_production_rule_and_the_demo_quorum_is_said_
     assert f"{k} of {n} witnesses" not in paths
     assert f"{k} of {n}" in limit and "`POLICY_V2`" in limit and "k + 1" in limit
     readme = (ROOT / "README.md").read_text()
-    limits = readme[readme.index("## Limits (said once)"):]
+    limits = readme[readme.index("## Limits\n"):]
     limits = limits[:limits.index("\n## ", 1)]
     assert limit in limits and readme.count(limit) == 1
     with pytest.raises(SystemExit):  # a prototype that already meets the production margin has no limit to state
         bad.quorum_lines({**core, "n": k + 2})
 
 
-def test_readme_projection_bullet_is_one_headline_with_four_sub_bullets():
-    """Jury fix: the [PROJECTION] bullet is one headline line (the reviewed forward headline, verbatim, interval
-    included) and four labelled sub-bullets, each a whole card sentence; no claim is dropped."""
+def test_readme_projection_bullet_leads_with_the_number_and_folds_the_rest():
+    """The [PROJECTION] bullet leads with the central figure and its interval, every figure read from projection.json
+    and checked against the reviewed headline; the stake and method follow; the reviewed headline (verbatim), the
+    rolling origins and the whole-window comparison sit in one folded block; the interval is not repeated."""
     nums = _block((ROOT / "README.md").read_text(), "numbers").splitlines()
-    i = nums.index(f"- {FWD['headlineSentence']}")
-    subs = [f"  - **Uncertainty.** {FWD['intervalSentence']}", f"  - **Robustness.** {FWD['rollingSentence']}",
-            f"  - **Comparison.** {FWD['comparisonSentence']}", f"  - **Stake.** {FWD['stakeSentence']}"]
-    assert nums[i + 1:i + 5] == subs
-    assert nums[i + 5].startswith("  - Method and output: [`pipeline/projection.py`](pipeline/projection.py)")
-    assert "[`docs/preregistration.md`](docs/preregistration.md)" in nums[i + 5]
+    lead = bad._forward_lead(PROJECTION)["numbers"]
+    i = nums.index(f"- {lead}")
+    assert lead.startswith(f"**[PROJECTION] ~{FWD['centralKtCh4PerYr']:.1f} kt CH₄/yr stopped**")
+    assert nums[i + 1] == f"  - **Stake.** {FWD['stakeSentence']}"
+    assert nums[i + 2].startswith("  - Method and output: [`pipeline/projection.py`](pipeline/projection.py)")
+    assert "[`docs/preregistration.md`](docs/preregistration.md)" in nums[i + 2]
+    fold = nums[i + 3:]
+    assert fold[0] == "" and fold[1].startswith("<details><summary>") and fold[2] == "", "GitHub needs the blank line"
+    body = "\n".join(fold[:fold.index("</details>")])
+    for s in (FWD["headlineSentence"], bad._rolling(FWD["rollingSentence"]), FWD["comparisonSentence"]):
+        assert s in body, s[:40]
+    assert "the credited share of stake is" in body
+    assert FWD["intervalSentence"] not in "\n".join(nums)
+    with pytest.raises(SystemExit):
+        bad._rolling(FWD["rollingSentence"].replace("the share is", "it is"))
+    broken = copy.deepcopy(PROJECTION)
+    broken["forward"]["card"]["headlineSentence"] = FWD["headlineSentence"].replace(
+        f"~{FWD['centralKtCh4PerYr']:.1f} kt", "~99.9 kt")
+    with pytest.raises(SystemExit):
+        bad._forward_lead(broken)
+
+
+def test_projection_sources_are_a_numbered_deduplicated_reference_list():
+    """The PDF's source list is one numbered line per source (title, date, link), without the verbatim quotes, which
+    stay in data/derived/projection_sources.json."""
+    body = bad.projection_blocks()["projectionSources"]
+    items = [x for x in body.splitlines() if re.match(r"\d+\. ", x)]
+    urls = [s["url"] for s in PROJ_SOURCES["sources"].values()]
+    assert len(items) == len({x.split(" — ")[0] for x in items})
+    for sid, src in PROJ_SOURCES["sources"].items():
+        if any(sid in (p.get(k) or []) for p in PROJ_SOURCES["parameters"].values() for k in ("sources", "informedBy")):
+            assert sum(src["url"] in x and src["title"] in x for x in items) == 1, sid
+        for q in src["quotes"]:
+            assert q not in body
+    assert urls
+
+
+def test_refund_block_ends_without_the_that_is_why_sentence():
+    b = _readme_blocks()
+    for k in ("refund", "readme:refund"):
+        assert "That is why" not in b[k], k
 
 
 @NEEDS_DEVPOST
@@ -710,7 +760,7 @@ def test_headline_v3_everywhere_and_v2_nowhere():
     for path, t in docs.items():
         assert "witnesses decide" not in " ".join(t.split()), path
     sp = " ".join(docs["spec"].split())
-    assert "the seller can only appeal it, and then the independent witnesses must confirm it again" in sp
+    assert "cannot delete the sighting or hold the money" in sp
 
 
 PREREG = ROOT / "docs" / "preregistration.md"

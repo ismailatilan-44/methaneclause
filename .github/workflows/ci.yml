@@ -1,9 +1,8 @@
-# CI for the public MethaneClause repository. The development repository runs no GitHub Actions: there this file is
-# ci/public-ci.yml, and scripts/export_public.sh ships it as .github/workflows/ci.yml. Three independent jobs, so a red
+# CI for MethaneClause. Three independent jobs, so a red
 # run names the part that failed: check (make check, offline, with a pinned gitleaks so its history scan runs), e2e
 # (the page in a real browser), slither (static analysis against the committed triage). Every action is pinned to a
 # full commit SHA (tag in the comment), the gitleaks binary to its release SHA-256; tool versions match the ones the
-# repository records (Foundry: contracts/README.md, Slither: contracts/slither.md, Playwright: mk/lane-c.mk). No
+# repository records (Foundry: contracts/README.md, Slither: contracts/slither.md, Playwright: mk/app.mk). No
 # repository secrets are read. scripts/tests/test_public_ci.py checks all of this offline on every make check.
 name: ci
 
@@ -65,7 +64,7 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "24"
-      - name: make e2e-setup (Playwright, version pinned in mk/lane-c.mk)
+      - name: make e2e-setup (Playwright, version pinned in mk/app.mk)
         run: make e2e-setup
       - name: make e2e (needs the network for the page's pinned CDN modules)
         run: make e2e

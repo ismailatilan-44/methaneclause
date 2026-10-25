@@ -52,6 +52,8 @@ const seen2025 = plumes.filter(p => p.t > marsLast.t && p.t < Date.UTC(2026, 0, 
 const pl = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
 const W = (t, time) => `<span class="when">${dfmt(t, time)}</span>`;
 const sim = (w) => `<span class="simw">${w}</span>`;
+const simMark = (s) => String(s).replace(/(^|[,;:(]\s*)([^,;:()[]+?)\s*\[SIM[^\]]*\]/g, (m, pre, w) => pre + sim(w.trim()));   // "EU importer [SIM]" -> purple "EU importer"
+const pinned = `<span class="chip simc" title="simulated">pinned clock</span>`;
 const ORD = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
 /* chapter 9: the refund side of the clause, on DZA_S_012 (origin/main ledger + Anvil replay + Sepolia cure arc) */
 const Z9 = S.dza, Z9C = Z9.clean;
@@ -108,7 +110,7 @@ let view = "incident";
 /* prologue: the problem in one screen, before chapter 1 (failure first). T sits at the end of "Still seen". */
 const PRO = { T: CH[2].to - 864e5, view: "incident",        // the last day of "Still seen"
   head: "Registry: “absent”. Satellites: still seeing it.",
-  body: `UNEP's record labels this pipeline's methane source “${S.mars.persistency}”. Every time Carbon Mapper looked again, it saw a plume. Nothing in the gas contract moves. MethaneClause makes it move.` };
+  body: `UNEP's record labels this pipeline's methane source “${S.mars.persistency}”. Every time Carbon Mapper looked again, it saw a plume. Nothing in the gas contract responds to this.` };
 let prologue = false;
 
 /* ---------- players: who they are, what they do now ---------- */
@@ -288,7 +290,12 @@ map.on("load", () => {
   update();
 });
 let mapReady = false;
-map.once("idle", () => { mapReady = true; drawSky(); });
+let mapLoading = document.createElement("div");
+mapLoading.className = "maploading"; mapLoading.setAttribute("role", "status"); mapLoading.textContent = "Loading satellite map…";
+$("mapwrap").appendChild(mapLoading);
+const loaded = () => { mapLoading?.remove(); mapLoading = null; };
+map.once("load", loaded);
+map.once("idle", () => { mapReady = true; loaded(); drawSky(); });
 let skyBoxes = [];
 function fitMapLabels() {
   const c = document.querySelector(".maplibregl-ctrl-bottom-right")?.getBoundingClientRect(), m = map.getContainer().getBoundingClientRect();
@@ -399,7 +406,8 @@ function drawSky() {
     const gs = big ? 1.6 : 1.3;
     out += satGlyph(px, py, gs, over);
     glyphs.push({ id: sat.id, x: px - 27 * gs, y: py - 8 * gs, r: px + 27 * gs, b: py + 11 * gs });
-    pending.push({ sat, px, py, gs, over, sub: over ? (st.rate ? `● ${fmt.format(st.rate)} kg/h in view` : "● methane in view") : "" });
+    const tag = over && (view !== "satellites" || sat.inst === lead.inst);   // the camera loop aims both at the lead plume; only its own satellite saw it
+    pending.push({ sat, px, py, gs, over: tag, sub: tag ? (st.rate ? `● ${fmt.format(st.rate)} kg/h in view` : "● methane in view") : "" });
   }
   const placed = [], clash = (x, y, bw, bh) => underCam(x, y, bw, bh)
     || glyphs.some(g => x < g.r && x + bw > g.x && y < g.b && y + bh > g.y)   // its own satellite too: a label pushed off the edge must not land on it
@@ -552,13 +560,14 @@ function sideRefund() {
       <div><b style="color:${relapsed ? "var(--bad)" : "inherit"}">${relapsed ? z9Pct(z9Out.forfeitedBp) : "—"}</b><small>forfeited</small></div><div><b>${seen.filter(z => !z.qualified).length}</b><small>refused</small></div></div>
     <div class="inst">${bar}</div>
     <p class="hint">${relapsed ? `${dfmt(z9Relapse)}: ${(SATS.find(x => x.inst === Z9.relapse.instrument) || { name: Z9.relapse.instrument }).name} saw ${fmt.format(Z9.relapse.rateKgH)} ± ${fmt.format(Z9.relapse.uncKgH)} kg/h. A new attested detection cancels what is still unpaid.` : `Earn-back steps are paid at ${inst.map(([n]) => n).join(", ")} counted clean passes${(() => { const [, , two, corr] = inst.at(-1); const need = [two && "two instruments", corr && "a MARS corroboration"].filter(Boolean); return need.length ? `; the last needs ${need.join(" and ")}` : ""; })()}.`}</p></div>
-  <div class="card"><h3>Replay <span class="r">${Z9.replayA.chain}</span></h3><dl class="kv">
-    <dt>Witness fees (sponsor)</dt><dd>${eth(z9Sp.observerFeesWei)} ETH</dd></dl>
-    <p class="foot-note">${noSim(Z9C.covenantLabel)}; ${noSim(Z9.replayA.label)}; ${Z9.replayA.checks} checks. ${Z9C.statusLabel}.</p></div>
+  <div class="card"><h3>Replay <span class="r">${Z9.replayA.chain} ${pinned}</span></h3><dl class="kv">
+    <dt>Witness fees (${sim("sponsor")})</dt><dd>${eth(z9Sp.observerFeesWei)} ETH</dd></dl>
+    <p class="foot-note">${simMark(Z9C.covenantLabel)}; ${simMark(Z9.replayA.label)}; ${Z9.replayA.checks} checks. ${Z9C.statusLabel}.</p></div>
   <div class="card"><h3>Passes <span class="r">${seen.length} of ${z9Scenes.length}</span></h3><ul class="hwk">${rows}</ul></div>
   <div class="card"><h3>On Sepolia</h3><ul class="txs">${Z9.sandbox.map(st => `<li><span class="v">✓</span><div><span style="color:var(--sim)">${noSim(st.step.replace("judge sandbox [SIM]: ", "")).replace(/observer/g, "witness")}</span><br><a class="h" href="${st.tx}" target="_blank" rel="noopener">${st.tx.split("/tx/")[1].slice(0, 10)}…</a></div><span class="h">${fmt.format(st.gasUsed)} gas</span></li>`).join("")}</ul>
     <p class="foot-note" style="color:var(--sim)">Run with a judge test wallet operated by the author, in the sandbox clause.</p></div>
-  <div class="card"><h3>Why the refund is capped</h3><p class="notprove" style="padding-top:2px">${Z9.capSentence}</p></div>`;
+  <div class="card"><h3>Why the refund is capped</h3><p class="notprove" style="padding-top:2px">${Z9.capSentence}</p></div>
+  ${NOTPROVE()}`;
 }
 function sideIncident() {
   if (inZ9(T) && !prologue) return sideRefund();
@@ -629,7 +638,7 @@ function sideContract() {
     const eth = (w) => Number(BigInt(w)) / 1e18;
     return `<div class="card"><h3>Earn-back clause <span class="r">${Z9.source}</span></h3>
       <div class="kpis"><div><b>${z9Out.counted}</b><small>passes counted</small></div><div><b style="color:var(--money)">${eth(z9Sp.releasedWei)}</b><small>ETH back</small></div><div><b style="color:var(--bad)">${eth(z9Sp.forfeitedWei)}</b><small>ETH forfeited</small></div><div><b>${Z9.replayA.checks}</b><small>checks</small></div></div>
-      <p class="hint">Replayed on ${Z9.replayA.chain} with a pinned clock (${noSim(Z9C.covenantLabel)}).</p></div>
+      <p class="hint">Replayed on ${Z9.replayA.chain} with a ${sim("pinned clock")} (${simMark(Z9C.covenantLabel)}).</p></div>
       <div class="card"><h3>Earn-back steps</h3><dl class="kv">${Z9C.installments.map(([n, bp, two, corr]) => `<dt>at ${n} counted passes</dt><dd>${bp / 100} %${two ? " · 2 instruments" : ""}${corr ? " · MARS corroboration" : ""}</dd>`).join("")}</dl></div>
       <div class="card"><h3>On Sepolia <span class="r">judge sandbox</span></h3><ul class="txs">${Z9.sandbox.map(st => `<li><span class="v">✓</span><div><span style="color:var(--sim)">${noSim(st.step.replace("judge sandbox [SIM]: ", "")).replace(/observer/g, "witness")}</span><br><a class="h" href="${st.tx}" target="_blank" rel="noopener">${st.tx.split("/tx/")[1].slice(0, 10)}…</a></div><span class="h">${fmt.format(st.gasUsed)} gas</span></li>`).join("")}</ul></div>`;
   }
@@ -874,11 +883,12 @@ $("nsat").textContent = SATS.length; $("ntx").textContent = S.sepolia.steps.leng
 let imgTiles = false, tileNote = null;
 function tileCheck() {
   if (imgTiles || tileNote) return;
+  mapLoading?.remove(); mapLoading = null;
   tileNote = document.createElement("div"); tileNote.className = "offline";
   tileNote.textContent = "Map tiles could not load (they need internet). The story, numbers and contract view still work.";
   $("mapwrap").appendChild(tileNote);
 }
-map.on("sourcedata", (e) => { if (e.sourceId === "img" && e.tile) { imgTiles = true; tileNote?.remove(); tileNote = null; } });
+map.on("sourcedata", (e) => { if (e.sourceId === "img" && e.tile) { imgTiles = true; tileNote?.remove(); tileNote = null; loaded(); } });   // the first imagery tile also ends "Loading satellite map…"
 setTimeout(tileCheck, 15000);
 if (q_debug()) {
   const d = document.createElement("div"); d.className = "debug";
@@ -900,10 +910,21 @@ function fitStory() {      // a long chapter steps its type down so the button a
   el.classList.remove("fit1", "fit2");
   for (const k of ["fit1", "fit2"]) { if (el.scrollHeight <= el.clientHeight + 1) break; el.classList.add(k); }
 }
+const endCard = () => view === "verify" && !prologue && chOf(T) === CH.length - 1;   // Verify after the last chapter: the story's end card
 function storyPanel() {
   const ci = chOf(T), c = CH[ci];
   const el = $("story");
   el.classList.toggle("simch", !!c.sim);
+  if (endCard()) {
+    el.innerHTML = `<div class="kick"><span>Demo story · chapter ${ci + 1} of ${CH.length} · your turn</span>
+        <span class="nav"><button id="sprev" aria-label="Back to chapter ${ci + 1}">←</button></span></div>
+      <div class="premise">${PREMISE}</div><h2>Your turn: check the ${S.facility.country} case yourself.</h2>
+      <p>${S.case}, the ${S.facility.sourceType.toLowerCase().replace(/s$/, "")} from chapters 1–${ci}: ${V.steps.length} steps on public sources, with a stopwatch on the right. The script does the same check in ${V.toolMedianSeconds} s.</p>
+      <div class="dots">${CH.map((x, i) => `<button class="${i < ci ? "done" : i === ci ? "now" : ""} ${x.sim ? "sim" : ""}" data-i="${i}" aria-label="Chapter ${i + 1}: ${x.short}"></button>`).join("")}</div>`;
+    $("sprev").onclick = () => goChapter(ci);
+    el.querySelector(".dots").onclick = (e) => { const i = e.target.dataset.i; if (i !== undefined) goChapter(+i); };
+    return;
+  }
   if (prologue) {
     el.classList.remove("simch");
     el.innerHTML = `<div class="kick"><span>Demo story · the problem</span><span class="nav"><button id="snext" aria-label="Start chapter 1">→</button></span></div>
@@ -1035,7 +1056,7 @@ track.addEventListener("pointerup", () => { drag = false; if (!moved) goChapter(
 track.addEventListener("keydown", (e) => {
   const ci = chOf(T);
   if (prologue && e.key === "ArrowRight") { goChapter(0); e.preventDefault(); return; }
-  if (e.key === "ArrowRight") goChapter(ci + 1); else if (e.key === "ArrowLeft") goChapter(ci - 1);
+  if (e.key === "ArrowRight") goChapter(ci + 1); else if (e.key === "ArrowLeft") goChapter(endCard() ? ci : ci - 1);
   else if (e.key === "Home") goChapter(0); else if (e.key === "End") goChapter(CH.length - 1); else return;
   e.preventDefault();
 });
@@ -1069,7 +1090,7 @@ $("fwd").onclick = () => goChapter(prologue ? 0 : Math.min(CH.length - 1, chOf(T
 
 /* views */
 function setView(v) {
-  if ((v === "verify" || v === "satellites") && inZ9(T) && !prologue) { T = CH[CH.length - 2].at; lastCh = CH.length - 2; }   // Verify and the camera are the TKM case (no scene tiles for the second site)
+  if (v === "satellites" && inZ9(T) && !prologue) { T = CH[CH.length - 2].at; lastCh = CH.length - 2; }   // the camera is the TKM case (no scene tiles for the second site); Verify stays on the last chapter as its end card
   view = v; document.body.className = "view-" + v;
   document.querySelectorAll(".tab").forEach(b => { b.classList.toggle("on", b.dataset.view === v); b.setAttribute("aria-selected", b.dataset.view === v); });
   try { map.setTerrain(v === "verify" ? null : { source: "dem", exaggeration: 2.4 }); } catch (e) {}   // the verify view is a flat analytic map
@@ -1096,7 +1117,7 @@ document.addEventListener("keydown", (e) => {
   const ci = chOf(T);
   if (e.key === " " && !e.target.closest("button, a")) { $("play").click(); e.preventDefault(); }
   else if (e.key === "ArrowRight") { prologue ? goChapter(0) : goChapter(ci + 1); e.preventDefault(); }
-  else if (e.key === "ArrowLeft") { goChapter(ci - 1); e.preventDefault(); }
+  else if (e.key === "ArrowLeft") { goChapter(endCard() ? ci : ci - 1); e.preventDefault(); }
   else if (/^[1-4]$/.test(e.key)) setView(VIEWS[+e.key - 1]);
   else if (e.key === "?") $("help").classList.toggle("on");
   else if (e.key === "Escape") $("help").classList.remove("on");

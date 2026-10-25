@@ -1,5 +1,5 @@
-# Lane C fragment (spec-v2 §11; owned by lane C). Declare targets with a ## comment and list them here:
-.PHONY: readme judge-cure app-scenes measure-verification measure-verification-manual test-lane-c e2e-setup e2e pages pages-e2e wallet-data wallet-setup wallet-local
+# Page, judge walk-through, browser tests, wallet and README rendering. Each target carries a ## comment for make help.
+.PHONY: readme judge-cure app-scenes measure-verification measure-verification-manual test-scripts test-lane-c e2e-setup e2e pages pages-e2e wallet-data wallet-setup wallet-local
 
 judge-cure:       ## judge sandbox [SIM] on Sepolia (JUDGE_PK), after judge-finalize: real DZA relapse -> claim -> real 2026-07-13 pass signed by your key; rerun after each 10-minute window
 	./scripts/judge.sh cure
@@ -7,14 +7,16 @@ judge-cure:       ## judge sandbox [SIM] on Sepolia (JUDGE_PK), after judge-fina
 app-scenes:       ## network, keyless: Carbon Mapper scene ids for the ledger cards' CH4 tile layer -> app/scene_ids.json (then make app)
 	pipeline/.venv/bin/python scripts/build_app_data.py --resolve-scenes
 
-measure-verification:  ## W2 tool path timed n=5 in fresh processes (offline snapshot; LIVE=1 fetches Carbon Mapper) -> data/derived/verification_time.json
+measure-verification:  ## time the verification tool path, n=5 in fresh processes (offline snapshot; LIVE=1 fetches Carbon Mapper) -> data/derived/verification_time.json
 	pipeline/.venv/bin/python scripts/measure_verification.py tool --n 5 $(if $(filter 1,$(LIVE)),--live,)
 
-measure-verification-manual:  ## W2 manual protocol, timed step by step by the author (interactive; one run per call, n >= 5)
+measure-verification-manual:  ## time the manual verification protocol step by step (interactive; one run per call, n >= 5)
 	pipeline/.venv/bin/python scripts/measure_verification.py manual
 
-test-lane-c:      ## lane C offline tests: build_app_data fail-closed paths, forward-only demo clock, wallet.json current (scripts/tests)
+test-scripts:     ## offline script tests: build_app_data fail-closed paths, forward-only demo clock, wallet.json current (scripts/tests)
 	pipeline/.venv/bin/python -m pytest -q scripts/tests
+
+test-lane-c: test-scripts   # older name, kept for references in test docstrings
 
 # Browser e2e: network for the pinned CDN modules, so not in make check. Playwright lives in out/e2e-tools (gitignored);
 # it drives the installed Google Chrome (E2E_CHANNEL= uses Playwright's Chromium after `npx playwright install chromium`).
@@ -27,20 +29,20 @@ e2e:              ## one-file browser e2e of the page: first view, story chapter
 
 # Hosted page: a static copy of app/ for any static host (relative paths; live Sepolia read through the public RPC;
 # pinned CDN modules). Builds and checks only; publishing it is a separate, approved step.
-pages:            ## static export of the page -> out/pages/ (no server code; fails closed on a missing file, a root-relative path, an unpinned CDN or an internal label); not published
+pages:            ## static export of the page for GitHub Pages -> out/pages/ (no server code; fails closed on a missing file, a root-relative path, an unpinned CDN or an internal label)
 	python3 -I scripts/build_pages.py out/pages
 
 pages-e2e: pages  ## make e2e against the static export in out/pages/ (network for the CDN modules)
 	E2E_ROOT=out/pages node scripts/tests/e2e.mjs
 
-LANE_CHECKS += test-lane-c
+EXTRA_CHECKS += test-scripts
 
-readme:           ## render README.md's generated blocks from committed files (runs make test for the counts; <= 25 KB)
+readme:           ## render README.md's generated blocks from committed files (runs make test for the counts; fails over README_BUDGET in scripts/build_app_data.py)
 	pipeline/.venv/bin/python scripts/build_app_data.py --readme
 
 # Browser-wallet back end (app/wallet.js): its data file, and its end-to-end test on a local Anvil judge sandbox.
 # The test maps wallet.js's pinned CDN imports to the same viem version in out/e2e-tools and signs with MetaMask's own
-# library, so it runs offline once wallet-setup has installed them; it is not in LANE_CHECKS because a fresh clone has
+# library, so it runs offline once wallet-setup has installed them; it is not in make check because a fresh clone has
 # no out/e2e-tools (npm needs the network once).
 WALLET_VIEM ?= 2.57.1
 WALLET_SIG_UTIL ?= 8.2.0

@@ -26,7 +26,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-# README size budget: 32,000 bytes since the final sprint (user, 21 Oct; not cut back to 25,000, user, same day).
+# README size budget: 32,000 bytes.
 README_BUDGET = 32_000
 sys.path.insert(0, str(ROOT / "pipeline"))
 
@@ -233,7 +233,7 @@ def build_ledger(attested_plume: str) -> dict:
 
 
 def cap_reasons(model: dict) -> dict:
-    """Why a refund is capped and cancellable (spec-v2 §2, §15 B1 audit): the rule's held-out false-zero rate, and lane
+    """Why a refund is capped and cancellable (spec-v2 §2, §15): the rule's held-out false-zero rate, and lane
     B's catalogue sentence `cleanruns.json` -> card.sentence, rendered verbatim (a reason for the cap, never evidence of
     repair). No comparator, no "re-detected later" and no base rate are read here; until the pipeline writes the sentence the
     page shows nothing in its place."""
@@ -249,7 +249,7 @@ def cap_reasons(model: dict) -> dict:
 
 def clean_view(doc: dict, prov: dict, relapse: dict | None, cleanruns: dict | None, cr_prov: dict,
                pool: dict | None) -> dict:
-    """Panel 2 of the card from the pipeline's clean_passes file (real or MOCK). Under spec-v2 §15 (B1) the card counts the
+    """Panel 2 of the card from the pipeline's clean_passes file (real or MOCK). Under spec-v2 §15 the card counts the
     passes qualified with no look-ahead (`qualifiedNoLookAhead`) before the first plume after `since`."""
     relapse_t = int(datetime.fromisoformat(relapse["sceneAt"].replace("Z", "+00:00")).timestamp()) if relapse else None
     scenes = [{"sceneName": x.get("sceneName") or x["sceneProviderId"], "sceneProviderId": x["sceneProviderId"],
@@ -384,7 +384,7 @@ def replay_view(path: Path) -> dict | None:
 
 
 def exports_view() -> dict:
-    """C4: the TKM verdict-only run (out/demo/verdict.json) with its credit-note register, and the pipeline's Annex C example
+    """The TKM verdict-only run (out/demo/verdict.json) with its credit-note register, and the pipeline's Annex C example
     (claimHash = the bytes32 recordMitigationClaim takes) — files copied to app/data, deterministic fields only."""
     from export import annex_c
 
@@ -413,7 +413,7 @@ def exports_view() -> dict:
 
 
 def portfolio_view() -> dict | None:
-    """C4: the portfolio covenant over the pipeline's set v3 (out/demo/portfolio.json; mechanics only, no stake or backtest
+    """The portfolio covenant over the pipeline's set v3 (out/demo/portfolio.json; mechanics only, no stake or backtest
     figures), deterministic fields; the set's root and size are checked against the committed set file."""
     path = ROOT / "out" / "demo" / "portfolio.json"
     if not path.exists():
@@ -579,7 +579,7 @@ def abi_subset() -> dict:
     return out
 
 
-# ---------------------------------------------------------------------------------------------- README blocks (C5)
+# ---------------------------------------------------------------------------------------------------- README blocks
 # README.md carries no hand-typed number of ours: every `<!-- gen:NAME:begin/end -->` block is rendered here from the
 # committed files (app/data/app.json, data/derived/*). `--readme` writes them (and runs `make test` for the counts block);
 # `--readme-check` exits 1 if any block other than the counts is stale (a lane test runs it in make check).
@@ -588,7 +588,7 @@ DEVPOST = ROOT / "docs" / "devpost.md"  # the Devpost draft shares the README's 
 PDF = ROOT / "docs" / "pdf" / "methaneclause.md"  # the submission PDF's source: README blocks + pdf_blocks()
 SPEC_PUBLIC = ROOT / "docs" / "spec-public.md"  # the public specification: spec_blocks() (exported as docs/spec.md)
 COUNTS_BLOCK = "counts"
-README_ONLY = "readme:"  # a block key with this prefix replaces that block in README.md only (25 KB budget)
+README_ONLY = "readme:"  # a block key with this prefix replaces that block in README.md only (size budget)
 DEVPOST_ONLY = ("deploy", "stake", "loop", "cure", "projectionHeadline", "learned")  # Devpost carries these, README does not
 # (README.md's first screen folds the loop into its status-0 line: README_ONLY "status0")
 CHAIN_TABLE = "\n".join([  # the organizer's four-question blockchain test; README and Devpost share it
@@ -626,7 +626,7 @@ FORWARD_KEYS = ("headlineSentence", "stakeSentence", "intervalSentence", "rollin
 
 
 def forward_card(pj: dict) -> dict:
-    """The carbon projection's lead: projection.json's pre-registered forward hold-out card (P1). Exit 1 if a sentence
+    """The carbon projection's lead: projection.json's pre-registered forward hold-out card. Exit 1 if a sentence
     is missing or if any credit falls on the plume that selected a member (zero by construction)."""
     card = (pj.get("forward") or {}).get("card") or {}
     missing = [k for k in FORWARD_KEYS if not isinstance(card.get(k), str) or not card[k].strip()]
@@ -635,6 +635,50 @@ def forward_card(pj: dict) -> dict:
     if card.get("selectingShareOfCredit") != 0:
         fail("projection.json forward hold-out credits the plume that selected a member: it is not a forward hold-out")
     return card
+
+
+def _forward_lead(pj: dict) -> dict[str, str]:
+    """The forward hold-out's figures, number first: the README's whyNow clause and its Numbers lead. Every figure is read
+    from projection.json's forward block and must appear, as printed, in the reviewed headline sentence (exit 1
+    otherwise), so the number-first wording cannot drift from the reviewed one."""
+    fwd = pj["forward"]
+    card = forward_card(pj)
+    head = card["headlineSentence"]
+    sc = fwd["scopes"]["portfolio_forward"]
+    central = next((r for r in sc["scenarios"] if r["kt_ch4_per_yr"]["low"] == card["centralKtCh4PerYr"]), None)
+    if central is None:
+        fail("projection.json forward: no scenario carries the central figure")
+    c = f"{card['centralKtCh4PerYr']:.1f}"
+    lo, hi = (f"{x:.1f}" for x in card["bootstrapKtCh4PerYrCentralCi"])
+    a, b = f"{card['lowKtCh4PerYr']:.1f}", f"{card['highKtCh4PerYr']:.1f}"
+    y = f"{central['mt_co2e_per_yr_gwp100']['low']:.2f}"
+    share = f"{central['responseShare'] * 100:.0f}"
+    d, end = fwd["preRegistration"]["D"], sc["creditWindow"][1]
+    p = card["members"]
+    for frag in (f"a {p}-facility portfolio", f"~{c} kt", f"~{lo}–{hi} kt", f"~{a}–{b} kt", f"~{y} Mt CO₂e/yr",
+                 f"central {share} % action share", f"before {d}", f"up to {end}",
+                 "none of it on the plume that selected a member"):
+        if frag not in head:
+            fail(f"projection.json forward headlineSentence no longer says {frag!r}: reword the number-first lead")
+    return {
+        "whyNow": f"a {p}-facility clause portfolio [SIM] would stop ~{c} kt CH₄/yr (~{y} Mt CO₂e/yr; 95 % ~{lo}–{hi} kt)",
+        "numbers": (f"**[PROJECTION] ~{c} kt CH₄/yr stopped** (95 % ~{lo}–{hi} kt) — pre-registered forward hold-out, "
+                    f"{p}-facility portfolio [SIM]: members chosen with Carbon Mapper plumes published before {d} at "
+                    "sources MARS had not seen for six months and lists as absent today, credited only for faults first "
+                    f"detected after that date, up to {end}; central {share} % action share, ~{a}–{b} kt across action "
+                    f"and recurrence scenarios, ~{y} Mt CO₂e/yr at GWP-100, none of it on the plume that selected a "
+                    "member. Assumptions: the paper's carbon projection section (section 4)."),
+    }
+
+
+ROLLING_SHARE = (", the share is ", ", the credited share of stake is ")
+
+
+def _rolling(sentence: str) -> str:
+    """The rolling-origin sentence names what its share is a share of. Exit 1 if the phrase is not there once."""
+    if sentence.count(ROLLING_SHARE[0]) != 1:
+        fail(f"projection.json forward rollingSentence changed its form: {sentence[:60]}…")
+    return sentence.replace(*ROLLING_SHARE)
 
 
 FORWARD_LIMIT_SPLIT = ("; today's 'absent' label is decided inside the credit window;",
@@ -721,7 +765,7 @@ def alerts_block(ps: dict, pj: dict) -> str:
 def quorum_lines(core: dict) -> tuple[str, str]:
     """The first screen's quorum and its Limits line. A production clause names at least k + 2 observer organisations
     (docs/PRODUCTION.md item 8): a challenge is answered by k of them, a contest by k + 1, so one is spare. The
-    prototype policy's own k of n (POLICY_V2, run by make demo and on Sepolia) is said once, in Limits. Exit 1 if the
+    prototype policy's own k of n (POLICY_V2, run by make demo and on Sepolia) is stated in Limits. Exit 1 if the
     prototype already meets the production margin (then there is no limit to state: reword both lines)."""
     k, n = core["k"], core["n"]
     if n >= k + 2:
@@ -945,24 +989,26 @@ def readme_blocks(app: dict) -> dict[str, str]:
     # passes quantify it (the stake band's facilitiesQuantified, a subset of the n_mars_target_sources)
     if not 0 < sb["facilitiesQuantified"] <= j["n_mars_target_sources"]:
         fail("backtest.json stake_band.facilitiesQuantified is not a subset of the join's absent sources: reword whyNow")
-    b["whyNow"] = (f"**Why now.** Carbon Mapper saw a methane plume within {j['radius_km']:g} km of "
-                   f"{_n(j['n_candidates'])} oil and gas sources that the UN's alert system (UNEP MARS) had listed as "
-                   f"quiet (*absent*: no MARS plume in {words.get(months, str(months))} months), out of "
-                   f"{_n(j['n_mars_target_sources'])} such sources ([`CRITERION`](pipeline/join/CRITERION.md)). "
-                   f"Across the {_n(sb['facilitiesQuantified'])} of those {_n(j['n_mars_target_sources'])} with a "
-                   f"quantified stake (a Carbon Mapper plume any time after MARS's first plume there, not only inside "
-                   f"the {words.get(months, str(months))} quiet months), the low bound of the stake band is ~{stake_floor:g} Mt CH₄/yr "
-                   "(stake, not abatement).")
+    pj = load(DERIVED / "projection.json")
+    fwd, lead_fwd = forward_card(pj), _forward_lead(pj)
+    b["whyNow"] = (f"**Why now.** The UN's alert system (UNEP MARS) lists {_n(j['n_mars_target_sources'])} oil and gas "
+                   f"sources as quiet (*absent*: no MARS plume in {words.get(months, str(months))} months); Carbon Mapper "
+                   f"still saw a plume within {j['radius_km']:g} km of {_n(j['n_candidates'])} of them "
+                   f"([`CRITERION`](pipeline/join/CRITERION.md)). A pre-registered forward test projects that "
+                   f"{lead_fwd['whyNow']}, against a stake of ~{stake_floor:g} Mt CH₄/yr across "
+                   f"{_n(sb['facilitiesQuantified'])} of those sources (a Carbon Mapper plume any time after MARS's first "
+                   "plume there; low bound; stake, not abatement).")
     b["alerts"] = alerts_block(load(DERIVED / "projection_sources.json"), load(DERIVED / "projection.json"))
     core = policy_mod.POLICY_V2["core"]
     b["paths"] = "\n".join([
         "- **Who.** The seller posts a bond for named sources; the buyer, an EU gas importer, gets the rebate; "
-        "witnesses (separate organisations) fetch and sign the public record; the sponsor (a lender, as a "
+        "witnesses (separate organisations both parties name in the clause, controlled by neither, paid a fee per counted "
+        "pass from the sponsor's pool) fetch and sign the public record; the sponsor (a lender, as a "
         "sustainability-linked margin step, or the buyer, to keep a clean supplier) funds the earn-back pool.",
         quorum_lines(core)[0],
         "- **Clean passes → earn-back in steps.** k witnesses sign each clean pass; the sponsor's pool pays in steps.",
         "- **New leak → the earn-back stops.** The next confirmed leak cancels every unpaid step."])
-    b["quorumLimit"] = quorum_lines(core)[1]  # README Limits (said once); the PDF's Limits quote it
+    b["quorumLimit"] = quorum_lines(core)[1]  # README Limits; the PDF's Limits quote it
     # README (first screen carries the join numbers): its problem section keeps the TKM_S_276 bullet only
     b[README_ONLY + "problem"] = b["problem"].split("\n")[0]
     if not b[README_ONLY + "problem"].startswith("- UNEP MARS labels source"):
@@ -987,7 +1033,7 @@ def readme_blocks(app: dict) -> dict[str, str]:
                       f"{_pct_bp(reach['nonFinalShareBp'])}; the "
                       f"{policy_mod.POLICY_V2_REPLAY['core']['term'] // 86400 // 365}-year DZA replay reaches it for "
                       f"episodes in its first {replay_reach['lastDetectionDay']} days.")
-        # README (25 KB budget): the same fact folded into the cure-term clause
+        # README (size budget): the same fact folded into the cure-term clause
         cure_short = (f"last needs two instruments, a MARS corroboration and a {cure_days}-day cure term within the "
                       f"covenant term (one-year Sepolia policy: ≤ {_pct_bp(reach['nonFinalShareBp'])}).")
         my_path = DERIVED / "multiyear_run.json"
@@ -1018,7 +1064,7 @@ def readme_blocks(app: dict) -> dict[str, str]:
     tail_m = (" The refund never exceeds the rebate the episode cost, is frozen while a new detection is under review, "
               "and any later attested detection cancels what is still unpaid.")
     b["mechanism"] = head_m + cure_full + tail_m + reach_full + fee
-    # README (25 KB budget, no slack): the same facts, tighter; the PDF keeps the full sentences
+    # README (size budget, no slack): the same facts, tighter; the PDF keeps the full sentences
     readme_mechanism = (head_m.replace(", wait a clean window open to challenge, and count.",
                                        " and count after a clean window open to challenge.")
                         .replace("passes, installments of ", "passes, ")
@@ -1038,10 +1084,10 @@ def readme_blocks(app: dict) -> dict[str, str]:
     tail = (f"On **TKM_S_276**, Carbon Mapper saw a plume on {pm['n_cm_detected']} of {pm['n_cm_passes']} passes within "
             f"{pm['radius_km']:g} km since {pm['since']}: {_status_since(tkm_cp['summary']['statusLabel'], tkm_ep)}. "
             "Why the refund is capped: ")
-    b["refund"] = head + look + tail + _lower_first(cr)
     if " That is why" not in cr:
         fail("data/derived/cleanruns.json card sentence no longer ends with its 'That is why' clause")
-    # README (25 KB budget): its problem bullet already gives TKM's facility-radius count, so the refund line skips it
+    b["refund"] = head + look + tail + _lower_first(cr.split(" That is why")[0])
+    # README (size budget): its problem bullet already gives TKM's facility-radius count, so the refund line skips it
     short_tail = (f"On **TKM_S_276**: {_status_since(tkm_cp['summary']['statusLabel'], tkm_ep)}. "
                   "Why the refund is capped: ")
     b[README_ONLY + "refund"] = head + short_tail + _lower_first(cr.split(" That is why")[0])
@@ -1051,44 +1097,52 @@ def readme_blocks(app: dict) -> dict[str, str]:
         f"| **DZA replay**, own chain from {_day(rp['clock']['genesis'])} [SIM clock] | covenant via a SuretyBond (operator's "
         f"withdraw fails `NotFunder`); the {dza_cp['episode']['detectedAtIso'][:10]} episode CONFIRMED; real passes "
         "counted, installments 1–2 released; MARS corroboration; a seeded [SIM] bad pass voided (`CLOUD_FLAG`); while "
-        "the relapse is PROPOSED, cancel and release fail `SourceUnderReview`; then `relapse()` cancels A (paid "
-        f"{_pct_bp(va['paidBp'])}) and B [SIM look-ahead] (pending final voided); refunds pulled to the surety | "
+        "the relapse is PROPOSED, cancel and release fail `SourceUnderReview`; then `relapse()` cancels the real "
+        f"claim (paid {_pct_bp(va['paidBp'])}) and a second claim built on today's origin points [SIM look-ahead], whose "
+        "scheduled final installment is voided before payment; refunds pulled to the surety | "
         f"{rp['checks']} checks, {rp['txs']} txs, {rp['status0']} status 0 |",
         f"| **v1**, TKM_S_276 | the {lead['sceneTimestamp'][:10]} plume → CONFIRMED → rebate withdrawn; `InvalidSignature`, "
         "`SelfAttestation`, `AttestationMismatch`, `NotCovered`, `Replay`, `DuplicateEvidence`, `RevokedKey`; `LINKED` | "
         f"{demo['checks']} checks |",
         "| **TKM verdict-only** [SIM importer] | no bond; the pool refuses ETH (`BadParams`); CONFIRMED is the verdict; "
-        f"Annex C hash read back; credit note round-trips | {ex['checks']} checks |",
+        f"model-clause Annex C hash read back; credit note round-trips | {ex['checks']} checks |",
         f"| **Portfolio**, set v3 | one covenant, {port['n']} facilities; a wrong-set proof fails `NotCovered`; an "
         f"episode proven by its {port['proofSteps']}-step path → CONFIRMED → claim | {port['checks']} checks |",
         "",
         "A fresh clone skips the DZA observer's Re-check step: no raw cache (`LIVE=1` or `METHANECLAUSE_RAW` enables "
         "it)."])
-    fwd = forward_card(load(DERIVED / "projection.json"))
     b["numbers"] = "\n".join([
-        f"- **AI vs the rule.** A gradient-boosted next-pass forecast measured against the frozen persistence rule on "
-        f"region- and time-held-out sets: BSS {_signed(m['test_a']['model']['bss_vs_B1'])} and "
-        f"**{_signed(m['test_b']['model']['bss_vs_B1'])}** → *the persistence rule is enough* "
-        f"([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)); held out, the rule called zero on passes that still showed a "
+        f"- **AI vs the rule.** We trained a gradient-boosted next-pass forecast; on region- and time-held-out sets it "
+        f"did not beat the frozen persistence rule (Brier skill score {_signed(m['test_a']['model']['bss_vs_B1'])} and "
+        f"{_signed(m['test_b']['model']['bss_vs_B1'])}), so *the persistence rule is enough* and the product uses it "
+        f"([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)). Held out, the rule called zero on passes that still showed a "
         f"plume {' / '.join(f'{100 * m[t]['B1_persistence']['false_zero_rate']:.1f} %' for t in ('test_a', 'test_b'))} of "
         "the time (the reason it is smoothed).",
         f"- **Bond of the v1 covenant:** {audit['bond_sizing']['recommended_bond_eth']} ETH, the P90 of simulated "
         "annual rebate exposure under the smoothed rule.",
         f"- **Backtest** over {SELECTION}:",
-        f"  - **Episodes.** {_without_selection(bt['episodesSentence'])}",
+        f"  - **Episodes.** {_without_selection(bt['episodesSentence'])} (Tier: the rebate size the attested leak rate "
+        "sets, tier 1 the largest; [model clause §4](docs/clause/model-clause.md#4-rebate-tiers).)",
         f"  - **Independent satellites.** {_without_selection(bt['l2Sentence'])}",
         f"  - **Refunds.** {_without_selection(bt['refundsSentence'])}",
         f"  - **Stake.** {_without_selection(bt['stakeSentence'])}",
         f"- {pf}",
-        # one headline line (the reviewed forward headline, its interval included), then four labelled sub-bullets
-        f"- {fwd['headlineSentence']}",
-        f"  - **Uncertainty.** {fwd['intervalSentence']}",
-        f"  - **Robustness.** {fwd['rollingSentence']}",
-        f"  - **Comparison.** {fwd['comparisonSentence']}",
+        # one number-first headline line (its interval included), the stake and the method; robustness and the
+        # whole-window comparison folded below
+        f"- {lead_fwd['numbers']}",
         f"  - **Stake.** {fwd['stakeSentence']}",
         "  - Method and output: [`pipeline/projection.py`](pipeline/projection.py), "
         "[`data/derived/projection.json`](data/derived/projection.json) (`forward`); what was fixed before computing, "
         "with its hashes: [`docs/preregistration.md`](docs/preregistration.md).",
+        "",
+        "<details><summary>The reviewed headline, robustness and the whole-window comparison</summary>",
+        "",
+        f"- **Reviewed headline.** {fwd['headlineSentence']}",
+        f"- **Robustness.** {_rolling(fwd['rollingSentence'])}",
+        f"- **Comparison.** {fwd['comparisonSentence']}",
+        "",
+        "</details>",
+        "",
         f"- **Footprint.** The model that lost to the rule: {fp['train_plus_inference_kgCO2e']} kg CO₂e; chain side: "
         "[`FOOTPRINT`](docs/FOOTPRINT.md)."])
     # Devpost's "What we learned": the README's model wording, the same generated values
@@ -1100,15 +1154,15 @@ def readme_blocks(app: dict) -> dict[str, str]:
                     "on both, so the product uses the rule ([`MODEL_CARD`](pipeline/model/MODEL_CARD.md)). The chain "
                     "earns its place only for the multi-party verdict and the money that follows it.")
     # the bond-sizing bullets (v1 covenant, portfolio) moved to docs/SCALING.md's scToday and scPays; README.md keeps
-    # the demo's portfolio row (25 KB budget)
+    # the demo's portfolio row (size budget)
     bond_line = next(x for x in b["numbers"].splitlines() if x.startswith("- **Bond of the v1 covenant:**"))
     b[README_ONLY + "numbers"] = b["numbers"].replace(f"\n- {pf}", "", 1).replace("\n" + bond_line, "", 1)
     if f"- {pf}" in b[README_ONLY + "numbers"] or bond_line in b[README_ONLY + "numbers"]:
         fail("README numbers block still carries a bond-sizing bullet")
-    # the footprint bullet stays in the PDF's footprint block; README.md links FOOTPRINT in its header (25 KB budget)
+    # the footprint bullet stays in the PDF's footprint block; README.md links FOOTPRINT in its header (size budget)
     fp_line = next(x for x in b["numbers"].splitlines() if x.startswith("- **Footprint.**"))
     b[README_ONLY + "numbers"] = b[README_ONLY + "numbers"].replace("\n" + fp_line, "")
-    b[README_ONLY + "mechanism"] = readme_mechanism  # no observer-fee or term sentence (25 KB budget; both in the PDF)
+    b[README_ONLY + "mechanism"] = readme_mechanism  # no observer-fee or term sentence (size budget; both in the PDF)
     b["chain"] = CHAIN_TABLE
     b["stake"] = bt["stakeSentence"]
     b["deploy"] = deploy_block(load(ROOT / "contracts" / "deployments" / "11155111.json"))
@@ -1120,8 +1174,14 @@ def readme_blocks(app: dict) -> dict[str, str]:
     # Devpost: the forward hold-out's headline, stake and interval, then the whole-window figure as context
     b["projectionHeadline"] = "\n\n".join([" ".join(fwd[k] for k in ("headlineSentence", "stakeSentence",
                                                                      "intervalSentence")), fwd["comparisonSentence"]])
-    # README Limits (said once; the PDF's Limits too): the forward hold-out's limits line, split in two
+    # the PDF's Limits: the forward hold-out's limits line, split in two; README Limits: one sentence and the pointer
     b["forwardLimit"] = f"- **Carbon projection, forward hold-out.** {_forward_limits(fwd['limitsSentence'])}"
+    if "Today's 'absent' label is decided inside the credit window" not in b["forwardLimit"]:
+        fail("forward limits line no longer names the label window: reword README Limits")
+    b[README_ONLY + "forwardLimit"] = (
+        "- **Carbon projection, forward hold-out.** Members and both catalogues are read as they stand today, so "
+        "today's 'absent' label is decided inside the credit window; the publication leaks and the controls that "
+        "bound this, with their figures, are in [`docs/preregistration.md`](docs/preregistration.md) and the paper.")
     v = load(DERIVED / "verification_time.json")
     t, mt = v["tool"], v["manual"]
     b["open"] = "\n".join([
@@ -1249,6 +1309,7 @@ def pdf_blocks(app: dict) -> dict[str, str]:
     import clause  # adoption: precedents and pilot, from docs/clause/clause_sources.json + the committed policy
 
     b.update(clause.pdf_blocks())
+    b["precedents"] = _precedents(b["precedents"])
     return b
 
 
@@ -1427,7 +1488,7 @@ def scaling_blocks(app: dict) -> dict[str, str]:
         "the product runs the rule, so routine operation trains nothing. Details and sources: "
         "[`FOOTPRINT.md`](FOOTPRINT.md).")
     cl = clause.pdf_blocks()
-    b["scPrecedents"] = _relink(cl["precedents"])
+    b["scPrecedents"] = _relink(_precedents(cl["precedents"]))
     pilot = cl["pilot"]
     for pdf_ref, here in ((" (rows above)", " (the precedents under “Who pays”)"),
                           ("the two ASSUMPTIONs of section 4", "the two ASSUMPTIONs of the carbon projection")):
@@ -1443,6 +1504,16 @@ def _two_sig(x: float) -> str:
     import math
 
     return f"{x:.{max(0, 1 - math.floor(math.log10(x)))}f}"
+
+
+PRECEDENT_CLAIM = ('so the claim is "no public precedent found", not "none exists".', "so no public precedent was found.")
+
+
+def _precedents(text: str) -> str:
+    """The precedents block's closing line, in plain words. Exit 1 if the source line changed its form."""
+    if text.count(PRECEDENT_CLAIM[0]) != 1:
+        fail("pipeline/clause.py precedents line changed its form: update the paper's rendering")
+    return text.replace(*PRECEDENT_CLAIM)
 
 
 PREREG_POINTER = ("What was fixed before computing, with its SHA-256 and commits: "
@@ -1461,8 +1532,8 @@ def projection_blocks() -> dict[str, str]:
     card, sc = pj["card"], pj["scopes"]
     fwd = forward_card(pj)
     names = {"portfolio_v3": "Portfolio [SIM]", "backtest_set": "Backtest set"}
-    # the table follows projection.json's headline kind: "central" (board T4d option d) prints the measured-hazard
-    # figure with the no-recurrence end in brackets; "range" (the reviewed interim) prints the two ends of the stop share
+    # the table follows projection.json's headline kind: "central" prints the measured-hazard
+    # figure with the no-recurrence end in brackets; "range" prints the two ends of the stop share
     central = pj["headline"]["kind"] == "central"
     if central:
         rows = ["| Scope | Stake low bound, kt CH₄/yr | Acted on "
@@ -1491,7 +1562,7 @@ def projection_blocks() -> dict[str, str]:
     ev = pj["evidence"]["line2"]
     labels = {"allNotified": "All notified", "joinNeighbourhood": "Committed join neighbourhood (absent today)"}
     es_rows = ["| Coverage | Proxy date | Window / gap, days | Min passes per side | Sources: Yes / No "
-               "| T0 before feedback tracking: Yes / No | Post window truncated: Yes / No "
+               "| Proxy date before feedback tracking: Yes / No | Post window truncated: Yes / No "
                "| Detection rate before → after: Yes; No | Difference in differences (CI) | Minimum detectable |",
                "|---|---|---|---|---|---|---|---|---|---|"]
     for key, lab in labels.items():
@@ -1506,32 +1577,36 @@ def projection_blocks() -> dict[str, str]:
                 f"| {g['Yes']['preRate']:.2f} → {g['Yes']['postRate']:.2f}; {g['No']['preRate']:.2f} → "
                 f"{g['No']['postRate']:.2f} | {d['yesMinusNo']:+.3f} ({d['ci'][0]:+.3f} to {d['ci'][1]:+.3f}) "
                 f"| {d['minimumDetectableEffect']:.3f} |")
+    # a numbered reference list, one line per source (deduplicated, in order of first use): title, date, tag, link and
+    # the parameters it serves; the verbatim quotes stay in projection_sources.json
     srcs = ps["sources"]
-    src_lines = []
+    used: dict[str, list[str]] = {}
     for n, p in ps["parameters"].items():
         for key, how in (("sources", ""), ("informedBy", " (ASSUMPTION, informed by)")):
             for sid in p.get(key) or []:
-                s = srcs[sid]
-                link = s["url"] if s["url"].startswith("http") else f"[`{s['url']}`]({s['url']})"
-                own = " (the source's wording, not a claim of ours)" if any("abat" in q for q in s["quotes"]) else ""
-                quotes = " · ".join(f"“{q}”" for q in s["quotes"])
-                src_lines.append(f"- `{n}`{how} — {s['title']} ({s['date']}) {s['tag']}: {quotes}{own} {link}")
+                if sid not in srcs:
+                    fail(f"projection_sources.json: parameter {n} names an unknown source {sid}")
+                used.setdefault(sid, []).append(f"`{n}`{how}")
     for sid, s in srcs.items():
         if s.get("context"):
-            src_lines.append(f"- Context — {s['title']} ({s['date']}) {s['tag']}: “{s['quotes'][-1]}” {s['url']}. "
-                             f"{s['context']}")
+            used.setdefault(sid, []).append("context")
+    src_lines = []
+    for i, (sid, roles) in enumerate(used.items(), 1):
+        s = srcs[sid]
+        link = s["url"] if s["url"].startswith("http") else f"[`{s['url']}`]({s['url']})"
+        src_lines.append(f"{i}. {s['title']} ({s['date']}) {s['tag']}, {link} — {', '.join(roles)}")
     return {
-        # vision first (user decision 2026-10-16): headline ([PROJECTION] once), scale, floor, cost, then the
+        # headline ([PROJECTION] once), scale, floor, cost, then the
         # ASSUMPTIONs, the null and "not a measured reduction" once, in the methods paragraph; the table last
-        # the pre-registered forward hold-out leads (B1, reviewed REWORD → P1c); the whole-window figures follow as the
+        # the pre-registered forward hold-out leads; the whole-window figures follow as the
         # comparison, with the ledger cost and the methods that both share, then the whole-window table
         "projection": "\n\n".join([fwd["headlineSentence"], f"{fwd['stakeSentence']} {fwd['intervalSentence']} "
                                    f"{fwd['rollingSentence']} {PREREG_POINTER}", fwd["comparisonSentence"],
-                                   f"{fwd['costSentence']} {_whole_window(card['costLineSentence'])}",
+                                   _whole_window(card["costLineSentence"]),
                                    _methods_with_forward(card["methodsSentence"], pj["forward"]),
                                    "Whole-window comparison (not the headline):\n\n" + "\n".join(rows)]),
         "projectionLimit": f"- **Carbon projection.** {card['limitSentence']}",
-        "projectionCost": _whole_window(card["costSentence"]),
+        "projectionCost": f"{fwd['costSentence']} {_whole_window(card['costSentence'])}",
         "projectionFinding": card["negativeFindingSentence"],
         "projectionEvidence": "\n\n".join([card["line1Sentence"], card["line2Sentence"], "\n".join(es_rows)]),
         "projectionAdoption": card["adoptionSentence"],
@@ -1539,7 +1614,7 @@ def projection_blocks() -> dict[str, str]:
             [f"Parameters and their sources ([`data/derived/projection_sources.json`]"
              f"(data/derived/projection_sources.json); [V] read at the source on the date recorded, [S] secondary; "
              f"the action scenarios and the {'time' if central else 'stop'} share are ASSUMPTION): formula "
-             f"`{pj['formula']}`."] + src_lines),
+             f"`{pj['formula']}`.", ""] + src_lines),
     }
 
 
@@ -1571,7 +1646,7 @@ def readme(write: bool) -> None:
     def pdf_doc(t: str) -> str:
         return _apply(_apply(t, blocks | dp_only, require=False), pdf_blocks(app), doc="docs/pdf/methaneclause.md")
 
-    # README.md (25 KB budget) quotes the backtest's short refunds sentence; Devpost and PDF keep the full one.
+    # README.md (size budget) quotes the backtest's short refunds sentence; Devpost and PDF keep the full one.
     bt = load(DERIVED / "backtest.json")["card"]
     full = f"  - **Refunds.** {_without_selection(bt['refundsSentence'])}"
     if full not in short["numbers"]:

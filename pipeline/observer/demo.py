@@ -959,7 +959,7 @@ def replay_main() -> None:
           f"{_pct(a_v['outcome']['forfeitedBp'])}; B [SIM look-ahead] cancelled a pending final. Log: out/demo/replay.json")
 
 
-# ============================================================================ TKM verdict-only covenant (spec-v2 §5, C4)
+# ============================================================================ TKM verdict-only covenant (spec-v2 §5)
 # Runs after v1's 33 checks on the same chain: a Türkiye-type importer [SIM] cannot be paid in crypto-assets (CBRT
 # 2021), so the covenant has tier amounts 0 and no bond: CONFIRMED *is* the verdict, settled off chain under the supply
 # contract by a credit note (the pipeline's export/credit_note.py). Its VERDICT_ONLY pool holds no ETH; amounts are policy
@@ -1094,7 +1094,7 @@ def verdict_main() -> None:
           f"note {note['amount']['display']} -> out/demo/{CASE}.credit_note.{{json,csv}}")
 
 
-# ============================================================================ portfolio covenant (spec-v2 §7, C4)
+# ============================================================================ portfolio covenant (spec-v2 §7)
 # One covenant over the pipeline's portfolio set v3 (every join candidate + the three cases, one Merkle root); bond and pool
 # from model/bond_sizing_v3.json [SIM, testnet-sized]. Mechanics only: the set's stake band and backtest totals are
 # not quoted here while their adversarial review runs.

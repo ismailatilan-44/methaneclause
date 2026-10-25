@@ -77,7 +77,7 @@ money made source- and event-level ([`docs/clause/clause_sources.json`](clause/c
 | Pavilion Energy with QatarEnergy (SPA 2020) and Chevron (SPA 2021); methodology 2021: LNG sale and purchase agreements | Disclosure only: a Statement of GHG Emissions for every cargo, third-party verified; no money term found | The first SPA-level methane term; a modelled cargo-chain estimate that nothing pays on | [S] [source](https://www.hydrocarbonengineering.com/the-environment/17112021/ghg-reporting-methodology-for-lng-cargoes-launched/), read 2026-10-15 |
 | European Commission, Recommendation (EU) 2026/1834 of 20 Jul 2026: Optional model clauses under Art. 28(3) of Regulation (EU) 2024/1787 | No remedy term: no price adjustment, rebate, termination, liquidated damages, audit right, satellite or super-emitter reference | Moves information down the chain and leaves the economic clause open; this clause is that economic clause | [V] [source](https://eur-lex.europa.eu/eli/reco/2026/1834/oj/eng), read 2026-10-15 |
 
-No public LNG contract with a methane-intensity price term was found; SPA price terms are usually confidential, so the claim is "no public precedent found", not "none exists".
+No public LNG contract with a methane-intensity price term was found; SPA price terms are usually confidential, so no public precedent was found.
 <!-- gen:scPrecedents:end -->
 
 ### The ledger's own footprint

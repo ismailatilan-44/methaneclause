@@ -1,7 +1,7 @@
 """Tracked per-transaction log of everything our scripts send on Ethereum Sepolia: data/derived/sepolia_txlog.jsonl.
 
-The scripts also write to out/ (untracked). The 15 Oct judge-sandbox logs lived only in out/ of a worktree that was later
-deleted, and with them the raw submit->receipt latency samples; this file is committed, so that cannot happen again.
+The scripts also write to out/ (untracked). Early judge-sandbox logs lived only in an untracked out/ directory that was
+later lost, and with them the raw submit->receipt latency samples; this file is committed, so that cannot happen again.
 Only chain 11155111 is logged here (Anvil runs stay in out/). One JSON object per line, one line per transaction hash.
 
     python txlog.py broadcast contracts/broadcast/<Script>.s.sol/11155111/run-latest.json [...]

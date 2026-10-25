@@ -1,5 +1,5 @@
-# Lane B fragment (spec-v2 §11; owned by lane B). Declare targets with a ## comment and list them here:
-.PHONY: cleanruns clean-passes floors floors-ipcc policy-v2 lane-b-numbers cleanpass exports data-quality backtest \
+# Data pipeline: clean runs, floors, policy hashes, backtest, projection, exports. Each target carries a ## comment for make help.
+.PHONY: cleanruns clean-passes floors floors-ipcc policy-v2 offline-numbers cleanpass exports data-quality backtest \
         projection fetch-published mars-notified cm-notified cm-not-mars-notified scenes-v1 sepolia-txs scale clause
 
 cleanruns:        ## clean runs after a 2nd detection + u(N) table -> data/derived/cleanruns.json (offline)
@@ -14,7 +14,7 @@ floors:           ## instrument floors + GWP with citations and status -> data/d
 policy-v2:        ## POLICY_V2 / replay / sandbox hashes + onchainParamsHash -> data/derived/policy_v2.json (offline)
 	$(RUN) policy.py --write
 
-lane-b-numbers: cleanruns floors policy-v2 data-quality   ## lane B step-1 numbers that need no network (clean-passes uses its cache)
+offline-numbers: cleanruns floors policy-v2 data-quality   ## clean runs, floors, policy hashes, data quality and cached clean passes (no network)
 	OFFLINE=1 $(RUN) clean_passes.py
 
 cleanpass:        ## clean-pass observer, five steps, on DZA's 2025-02-12 EMIT pass (offline; LIVE=1 re-checks against Carbon Mapper)

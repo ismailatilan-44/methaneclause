@@ -298,7 +298,7 @@ def version_problems(text: str, versions: dict[str, str]) -> list[str]:
     if f"slither-analyzer=={versions['slither']}" not in runs:
         out.append(f"Slither must be installed as slither-analyzer=={versions['slither']} (contracts/slither.md)")
     if re.search(r"playwright@|npx playwright install", runs):
-        out.append("Playwright is installed by make e2e-setup (pinned in mk/lane-c.mk), not by the workflow")
+        out.append("Playwright is installed by make e2e-setup (pinned in mk/app.mk), not by the workflow")
     pythons = [(s.get("with") or {}).get("python-version") for s in steps if "python-version" in (s.get("with") or {})]
     if not pythons or any(str(p) != "3.12" for p in pythons):
         out.append("Python must be 3.12 (make setup's uv venv --python 3.12)")

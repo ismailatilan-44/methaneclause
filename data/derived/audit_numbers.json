@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T20:37:48Z",
+ "generatedAt": "2026-10-25T12:11:55Z",
  "numbers": {
   "adversarial": {
    "by_layer": {
@@ -2250,9 +2250,9 @@
     "data/derived/projection_sources.json": "0d31ee3b3ad5d40caf0a962994a70baad039f1aeab6e7315a9b81ed4cec5f074",
     "data/derived/sourceset_v3.json": "e1246d74c3453f5876b2106bd4f6e680bde7b928ca8dae52acb5a62cb6e162c1",
     "pipeline/backtest.py": "12ab81651ab1f22a1879d1af640216f8f20b2273dd6d3ad73ec7e3029dd6206b",
-    "pipeline/projection.py": "edf17f52f3fc3a8846ddafbf3d98261501c026ecdcc03499e1bd3ad3be38a620",
+    "pipeline/projection.py": "f20b6cc13d2b1c4d5876bb4592d0aa2db82784ac9e86ad27860eccace3758b0a",
     "pipeline/projection_evidence.py": "0807fcc9d77b062a2f17915b9b67c13117f46239ad90a239da7013284584146e",
-    "pipeline/projection_time.py": "36ea10f0520ca7f1d17656269ffbae7d7d70fc15787fb3225022fd4f0ba29057"
+    "pipeline/projection_time.py": "366be72e27b0b66e125843f78ae4514c4066643458b30f3af47887e88d373340"
    },
    "label": "[PROJECTION] projection of what the clause could change if adopted, not a measured reduction; counterfactual inputs (the backtest), scenario parameters (ASSUMPTION) and published evidence (projection_sources.json)",
    "model": {

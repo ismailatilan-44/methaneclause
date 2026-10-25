@@ -12,19 +12,20 @@ Every number quoted in this repository comes from `make reproduce` outputs (`dat
 files it lists) or from a test; values below name the file they are read from. Real and simulated parts are labelled
 [SIM] where they appear.
 
-## 1. Name, track, pitch
+## 1. Summary
 
-- **Name:** MethaneClause — it names the object, a clause in a gas supply contract, not a platform.
-- **Track:** primary Track 4, Climate Data & Environmental Monitoring; secondary Track 1.
-- **One sentence:** a gas seller posts a bond under a methane clause for named sources; when independent satellites
-  re-detect a super-emitter there, k-of-n attested detections from distinct observer organisations rebate the buyer
-  from the bond after a challenge window — and nobody, the seller included, can ignore or delete the detection.
-- **Two-sided sentence:** satellite witnesses move the money in a gas contract without an operator — a rebate when they
-  confirm a leak, a cancellable refund while they keep not seeing one — and a judge can be a witness.
-- **Honesty line (core):** the chain enforces process and money; the truth of the data rests on independent observers
-  and open challenge. Non-detection never counts as repair, and no core function accepts "no plume".
-- **Honesty line (two-sided):** non-detection never cancels a rebate or counts as repair. It can release a capped
-  refund that the next attested detection cancels.
+MethaneClause is a methane clause in a gas supply contract: the seller posts a bond for named sources, and the buyer is
+rebated from it when independent satellites re-detect a super-emitter there. No one runs the payout: once enough
+independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond.
+The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.
+
+- **Witnesses:** k of n distinct observer organisations, neither the seller nor the buyer; a judge can sign as one.
+- **Two sides:** while qualified clean passes keep coming, a sponsor's pool earns the seller a capped refund that the
+  next attested detection cancels.
+- **Scope:** the chain enforces process and money; non-detection never counts as repair. The truth of the data rests on
+  independent observers and open challenge; no core function accepts "no plume", and non-detection never cancels a
+  rebate.
+- **Track:** IEEE ClimateChain Track 4, Climate Data & Environmental Monitoring; secondary Track 1.
 <!-- gen:specProblem:begin -->
 - **Problem:** two public datasets disagree about the same gas facility. UNEP IMEO MARS labels source TKM_S_276 (Turkmenistan) *absent* — no plume in its own six-month window. Carbon Mapper observed the sources within 1.5 km of TKM_S_276 on 9 passes since MARS's last plume (13 Jun 2025) and recorded a plume on 9, including 2,548 kg/h on 2026-06-11 (`cases.TKM_S_276` and `lead` in `data/derived/audit_numbers.json`; counting rule: `facility_post` in `pipeline/cases.py`). The union over all 5 linked Carbon Mapper sources (10 of 10) stays in the case file as `post_mars_last_plume_all_linked`, labelled secondary: it adds 2026-04-17, a date on which only linked sources centred beyond 1.5 km (1.774 km from the MARS point) recorded a plume.
 <!-- gen:specProblem:end -->
@@ -37,7 +38,7 @@ files it lists) or from a test; values below name the file they are read from. R
 
 **User:** the methane-compliance desk of an EU gas importer — the "importer" under Regulation (EU) 2024/1787 (MRV
 equivalence from 1 January 2027; first report due 31 May 2028). Article 31 gives the Commission a MARS-based
-super-emitter rapid-reaction mechanism; it notifies, it does not pay. Commission Recommendation (EU) 2026/1834 offers
+super-emitter rapid-reaction mechanism that notifies and moves no money. Commission Recommendation (EU) 2026/1834 offers
 four model clauses that pass information down the chain and leave the economic consequence open; MethaneClause is that
 missing clause. Article 2(62) defines a super-emitter as more than 100 kg CH₄/h, which is also the clause's `minRate`.
 
@@ -45,8 +46,8 @@ missing clause. Article 2(62) defines a super-emitter as more than 100 kg CH₄/
 what rebate is due from the seller's bond, and what do I file? At renewal: what bond do I ask for this source set?
 
 **Parties:** seller (exporter, posts the bond), buyer (importer, receives rebates), observer organisations (run their
-own fetchers over Carbon Mapper and UNEP MARS, sign attestations), challengers (anyone with a wallet); for the refund,
-sponsors (lender, programme or buyer) and optionally a surety. Seller, buyer, sponsor and surety are [SIM] in the demo;
+own fetchers over Carbon Mapper and UNEP MARS, sign attestations) and challengers (anyone with a wallet). The refund
+adds sponsors (lender, programme or buyer) and optionally a surety. Seller, buyer, sponsor and surety are [SIM] in the demo;
 the plumes, the MARS labels, the join, the signatures and the chain execution are real.
 
 **The operator gap (why a chain).** No operator exists for this function. Registries (MiQ, JOGMEC CLEAN, UNEP MARS)
@@ -54,18 +55,18 @@ certify and notify but cannot move a seller's money; a bank can move money but c
 court can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the
 other, so the decision has to come from k independent observers plus an open challenge window — which is what the
 contract executes. The registries stay inputs. A signed database owned by any one of these parties can drop a
-re-detection or hold the rebate; here a detection, once attested by k independent keys, cannot be suppressed; the
-seller can only appeal it, and then the independent witnesses must confirm it again; and no administrator can touch the
-funds.
+re-detection or hold the rebate. Here no one runs the payout: once enough independent witnesses sign the same sighting
+and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses
+must confirm it again — but cannot delete the sighting or hold the money, and no administrator can touch the funds.
 
 ## 3. Mechanism: the covenant
 
 **Covenant.** `createCovenant(buyer, sourceSetRoot, policyHash, start, term)` by a registered SELLER key, funded with a
 bond in testnet ETH. `sourceSetRoot` is the Merkle root of covered facilities (one leaf per facility,
 `keccak256(MARS source_name)`; the linked Carbon Mapper sources are metadata). `policyHash` is the SHA-256 of the
-canonical policy JSON (k, n, windows, `minRateKgH`, rebate schedule, `joinVersionHash`, forecaster, GWP-100) —
+canonical policy JSON (k, n, windows, `minRateKgH`, rebate schedule, `joinVersionHash`, forecaster, GWP-100); it is
 committed before any evidence. `start` may be backdated up to 365 days (Carbon Mapper publishes Tanager plumes weeks
-after the scene); the chain stores `createdAt`, so a backdated covenant is visible as such: such a run proves the
+after the scene). The chain stores `createdAt`, so a backdated covenant is visible as such; a backdated run proves the
 mechanism, not the absence of foreknowledge.
 
 **Episode = one positive re-detection at a covered facility.** Only positive detections are evidence. A seller may
@@ -80,7 +81,7 @@ PROPOSED ──(challenge window passes)─────────────�
                                                         └► EXPIRED (contest window passes; held rebate returns; nobody slashed)
 ```
 
-- **Proposal:** anyone submits `evidenceHash` + ≥ k attestations from distinct registered observer organisations and a
+- **Proposal:** anyone submits `evidenceHash`, ≥ k attestations from distinct registered observer organisations and a
   proposer bond. Checks: facility in the set (Merkle proof), `detectedAt` after the covenant start, signer
   organisations outside {seller, buyer}, signatures, nonces and expiry valid, all attestations equal.
 - **Linking:** a detection within `linkWindow` (30 days) of an open or confirmed episode at the same facility is
@@ -483,33 +484,42 @@ from it is shown with its registration transaction and never called "independent
 | D4 | Installment thresholds | 3 / 6 / 10, fixed, not tuned to any case |
 | D5 | Cross-provider check | MARS against every clean pass (refusal and challenge reason) and a k-of-n MARS corroboration before the final installment; L1 / L2 badges for detections; a gate on core payouts is roadmap |
 | D6 | Who pays the witnesses | an observer fee per counted clean pass; for core detections, roadmap |
-| D8 | AI-assistance disclosure | yes, one paragraph (README, [ETHICS.md](ETHICS.md)) |
-| D11 | Slashing observers of a withdrawn clean pass | no: slashing only on objective errors, organisational identity |
+| D7 | AI-assistance disclosure | yes, one paragraph (README, [ETHICS.md](ETHICS.md)) |
+| D8 | Slashing observers of a withdrawn clean pass | no: slashing only on objective errors, organisational identity |
 
 Recorded deviations from earlier text, with what they cost, are in the "Decisions that differ from the spec" sections of
 [`contracts/README.md`](../contracts/README.md), [`pipeline/README.md`](../pipeline/README.md),
 [`pipeline/observer/README.md`](../pipeline/observer/README.md) and [`pipeline/export/README.md`](../pipeline/export/README.md).
-Source comments that cite "spec-v2 §n" refer to the build-spec numbering; section 21 maps it.
+Source comments that cite "spec-v2 §n" or a decision by an earlier number refer to the build-spec numbering; section
+21 maps both.
 
-## 21. Section map (build-spec numbering → this document)
+## 21. Section map for code comments
 
-| Build spec | Here |
+Code comments cite an earlier internal numbering (`spec-v2 §n`, `v1 §n`); this table maps it to this document.
+
+| Cited as | Here |
 |---|---|
 | v1 §1–§8 | §1–§8 |
 | v1 §9 (storyboard) | §9 (demo runs) |
 | v1 §10 | §10 |
 | v2 §0 | §1, §11 |
+| v2 §1 (fixed decisions: core byte-identical, open observer slot, wording) | §6, §17, §20 |
 | v2 §2 | §12 |
 | v2 §3, §3.1 | §11 |
 | v2 §4 | §13 |
 | v2 §5 | §14 |
 | v2 §6 | §15 |
 | v2 §7 | §16 |
-| v2 §8 | §8 |
+| v2 §8, §8.1, §8.4, §8.9 | §8 |
 | v2 §8.8 | §19 |
 | v2 §9.1, §9.5 | §18 |
 | v2 §9.3 | §10, §18 |
 | v2 §9.4 | §17 |
+| v2 §9.6 (hostile-receiver tests) | §10 |
 | v2 §9.7 | §10 ([SECURITY.md](SECURITY.md) section 4) |
 | v2 §10 | §9 |
+| v2 §11 | build organisation; no public counterpart |
+| v2 §13 (open questions) | answered in place: §12 (scene queries), §18 |
+| v2 §15 (amendments) | §20 and the component READMEs' "Decisions that differ from the spec" |
 | v2 §16 | §20 |
+| decision D11 | D8 |

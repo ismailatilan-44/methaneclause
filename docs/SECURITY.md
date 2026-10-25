@@ -1,17 +1,17 @@
 # Security and data-integrity assessment
 
 MethaneClause is a methane clause for gas supply contracts that executes itself. The seller posts a bond for named
-sources; when k observer organisations independently attest a satellite re-detection at one of them, the buyer's
+sources. When k observer organisations independently attest a satellite re-detection at one of them, the buyer's
 rebate moves out of the bond after a challenge window (the core: `KeyRegistry`, `MethaneCovenant`). The two-sided
 extension (`IncentivePool`) pays the seller a capped, cancellable cure refund when k observer organisations attest a
-run of qualified clean passes after a confirmed episode; the next attested detection cancels what is still unpaid.
+run of qualified clean passes after a confirmed episode. The next attested detection cancels what is still unpaid.
 `SuretyBond` lets a surety post the bond; `KeyRegistryV2` (local chain only) lets observer organisations admit and
 remove members by majority vote.
 
 This document follows the ISSRM structure (asset → threat → vulnerability → risk treatment → control → test). Every
 control names the test that exercises it; every number names the file it was read from. Specification:
 [`docs/spec.md`](spec.md). Contract decisions and error choices: [`contracts/README.md`](../contracts/README.md).
-Wording rule: *tamper-evident*, never tamper-proof; the post-quantum boundary is stated in section 9.
+The post-quantum boundary is in section 9.
 
 **What the system vouches for.** Observers attest *what they received, from whom and when* — the provider response,
 its content hash, the derived fields — not what the satellite saw. A hash commits to data; it does not make the data
@@ -55,11 +55,11 @@ A judge can run it with a faucet drip and their own wallet.
 | `KeyRegistryV2` | not deployed (the main registry's admin is renounced; V2 is local only by design) | yes |
 | Browser wallet (`app/wallet.js`), not a contract | Sepolia judge sandbox only: the page derives the published [SIM] sandbox keys from their public strings; the judge's own key stays in their wallet (the page asks it to sign typed data and send transactions); without an explicit network override it refuses any chain but Sepolia and any sandbox address other than the three it pins | yes (`make wallet-local`) |
 
-Everything this document says about the surety and V2 is shown by tests and by the local runs, not by a public
-deployment; the pool's code is on Sepolia, and one clean pass was attested and counted on Sepolia (judge sandbox), while
-its release, freeze and relapse paths are exercised by tests and by the local runs. The same design maps to Hyperledger Fabric (organisations =
-seller, buyer, observers; endorsement policy = k-of-n observers); what changes there is that no native asset settles
-atomically, so the verdict stays on the ledger and settlement moves to a bank transfer (README, "Production path"; `docs/PRODUCTION.md`, "Chain choice").
+Everything this document says about the surety and V2 is shown by tests and by the local runs. The pool's code is on
+Sepolia, and one clean pass was attested and counted there (judge sandbox); its release, freeze and relapse paths are
+exercised by tests and by the local runs. The same design maps to Hyperledger Fabric (organisations = seller, buyer,
+observers; endorsement policy = k-of-n observers). There no native asset settles atomically, so the verdict stays on the
+ledger and settlement moves to a bank transfer (README, "Production path"; `docs/PRODUCTION.md`, "Chain choice").
 
 ### Signed database vs chain: what each party can do
 
@@ -68,7 +68,7 @@ A signed database proves what its owner inserted. It cannot prove what its owner
 | Action | Signed DB run by the seller | Signed DB run by the buyer | Escrow bank or registry | This contract |
 |---|---|---|---|---|
 | Drop a re-detection | Yes: never insert it, or delete the row | No motive | Yes, if persuaded; it cannot judge the evidence | **No.** Anyone holding k observer signatures calls `proposeEpisode`; no function deletes an episode (`invariant_I5_noStuckState`, `invariant_I6_mitigationClaimInert`) |
-| Withhold the rebate | Yes: payment is a separate act | — | Yes: it holds the money | **No.** After the window anyone calls `finalize`; the rebate is credited to the buyer (pull). What the seller can do hands the decision to independent observers: `contest` needs k + 1 of them to confirm (`test_contest_confirmedByKPlusOne`), and an objective `challenge` (open to anyone, with a bond that goes to the buyer when k confirm) needs k; the observers answer within the window, and the production quorum keeps a spare organisation for it (section 15) |
+| Withhold the rebate | Yes: payment is a separate act | — | Yes: it holds the money | **No.** After the window anyone calls `finalize`; the rebate is credited to the buyer (pull). What the seller can do hands the decision to independent observers. `contest` needs k + 1 of them to confirm (`test_contest_confirmedByKPlusOne`); an objective `challenge` (open to anyone, with a bond that goes to the buyer when k confirm) needs k. The observers answer within the window, and the production quorum keeps a spare organisation for it (section 15) |
 | Withhold a cure refund | — | Yes | Yes | **No.** `countPass` and `release` are permissionless; the refund is credited to the seller (`test_final_holdBranch_releasedEndToEnd`) |
 | Change the policy after the fact | Yes | Yes | Yes | **No.** `policyHash` is fixed at `createCovenant`, before any evidence; the pool's `paramsHash` is fixed by the first `fund` and every top-up must match it (`test_fund_laterMismatch_reverts`); no setter exists |
 | Rewrite a past acceptance | Yes | Yes | Yes | **No.** A later detection is LINKED or opens a new episode with `parentEpisode`; a CONFIRMED episode never changes (`test_detectionAfterLinkWindow_opensNewEpisodeWithParent`, `test_linkedDetection_paysNothing`) |
@@ -111,7 +111,7 @@ A signed database proves what its owner inserted. It cannot prove what its owner
    is the authoritative verifier (served copy of viem with its hash: PRODUCTION.md item 7)
 ```
 
-Satellite boundary sentence: *we attest what we received, from whom and when; not the space link, not the sensor.*
+*We attest what we received, from whom and when; not the space link, not the sensor.*
 That trust stays with Carbon Mapper and UNEP, who do not sign their data. Each bundle keeps the query URL, parameters
 and the SHA-256 of the provider response, so anyone can re-fetch and compare.
 
@@ -144,7 +144,7 @@ and the SHA-256 of the provider response, so anyone can re-fetch and compare.
 ## 4. ISSRM risk register (STRIDE-elicited)
 
 Severity is our own estimate (H / M / L), not a CVSS score. "Test" names exist in `contracts/test` (Foundry) or
-`pipeline/tests` (pytest); `make test` runs them all, `make demo` repeats the core rejections as real failed
+`pipeline/tests` (pytest). `make test` runs them all; `make demo` repeats the core rejections as real failed
 transactions (receipt status 0).
 
 ### Core (v1)

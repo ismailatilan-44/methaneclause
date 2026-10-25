@@ -328,6 +328,16 @@ section, h3[id] { scroll-margin-top: 64px; }
 .hero h1 .l { display: block; }
 .hero h1 .red { color: var(--red); }
 .hero h1 .green { color: var(--green); }
+.hero h1 .sub-l { font-size: 0.62em; font-weight: 500; line-height: 1.38; letter-spacing: 0; margin-top: 8px; }
+.jteaser { margin: 0 0 8px; font-size: 13.5px; color: var(--muted); max-width: 62ch; }
+.jteaser strong { color: var(--ink); }
+#bundle-table tr.extra { display: none; }
+#bundle-table.show-all tr.extra { display: table-row; }
+.btn.linkish { background: none; border: none; color: var(--accent); padding: 6px 0; text-decoration: underline; cursor: pointer; }
+details.tamper-more { margin-top: 14px; border-top: 1px solid var(--line, rgba(127,127,127,.3)); padding-top: 6px; }
+details.tamper-more > summary { cursor: pointer; list-style: revert; }
+details.tamper-more > summary .tamper-h { display: inline-flex; margin: 6px 0 2px; }
+details.tamper-more > summary .sub { display: block; margin: 0 0 4px; }
 .analogy { margin: 0 0 16px; font-size: 15.5px; max-width: 60ch; }
 .cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 .btn.big { font-size: 15px; padding: 10px 16px; border-radius: 8px; }

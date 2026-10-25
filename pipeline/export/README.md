@@ -1,4 +1,4 @@
-# Exports (spec-v2 §5, §6)
+# Exports (spec §14, §15)
 
 | File | What it writes | Round trip |
 |---|---|---|
@@ -25,7 +25,7 @@ cn.write(cn.register("TKM_S_276", [rebate, refund]))
 ```
 
 - A **rebate** note exists only for a CONFIRMED core episode (`NotDue` otherwise). Amount =
-  `POLICY_V2_VERDICT_ONLY.pool.unitTierAmounts[tier − 1]`, in policy units ×100 (spec-v2 §15): 300 = "3.00 policy
+  `POLICY_V2_VERDICT_ONLY.pool.unitTierAmounts[tier − 1]`, in policy units ×100 (spec §20): 300 = "3.00 policy
   units". Seller [SIM] → buyer [SIM].
 - A **refund** note follows the pool's `CreditNoteDue(claimId, installmentId, amount, ref)` log. The export re-derives
   `ref = keccak256(abi.encode(chainId, pool, installmentId))` and refuses a log whose ref is not that (another chain,
@@ -39,7 +39,7 @@ cn.write(cn.register("TKM_S_276", [rebate, refund]))
   `<case>.credit_note.{json,csv}`. Supersession needs two notes side by side.
 - **Rebate `ref` is derived off chain** (`keccak256(abi.encode(chainId, covenant, episodeId))`): the core emits no
   credit-note ref and stays unchanged. The note says so (`refSource`).
-- **Supersession is an off-chain export step** (spec-v2 §15 A3 audit (4)): `supersede` marks the old note
+- **Supersession is an off-chain export step** (a contract review finding): `supersede` marks the old note
   `superseded`, links `supersededBy` / `supersedes` and records `onChainEvent: null`. The on-chain
   `CreditNoteSuperseded` event is reserved and never emitted, and no note claims it.
 - **No committed credit note yet.** A note needs a verdict-only run (`make demo`). The Sepolia main covenant

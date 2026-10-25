@@ -41,7 +41,7 @@ ROW = re.compile(r"^\s*(\d+)\s+(\d{1,2})/(\d{1,2})/(\d{4})\s+(\d+)\s+(.+?)\s{2,}
                  re.I)
 # the five date columns of a row, left to right; a row's cells are placed by the page's column offsets (pdftotext
 # -layout keeps them) within DATE_TOLERANCE characters. Only the Type A rows keep dates (the time from first plume to
-# mitigation is what the projection's time factor needs, board T4c); kept: notification and mitigation
+# mitigation is what the projection's time factor needs, model.t4c); kept: notification and mitigation
 DATE = re.compile(r"\d{1,2}/\d{1,2}/\d{4}")
 DATE_COLUMNS = ("earliestPlume", "notified", "inspected", "mitigated", "replied")
 DATE_TOLERANCE = 3

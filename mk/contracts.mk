@@ -1,6 +1,6 @@
-# Lane A fragment (spec-v2 §11; owned by lane A). Declare targets with a ## comment and list them here:
+# Contracts: static analysis, symbolic proofs and IncentivePool deployment. Each target carries a ## comment for make help.
 .PHONY: deploy-pool-dryrun deploy-pool-anvil deploy-pool-sepolia deploy-sandbox-pool-sepolia slither halmos halmos-mutants
-LANE_CHECKS += deploy-pool-dryrun
+EXTRA_CHECKS += deploy-pool-dryrun
 
 slither: ## dev tool, not in make check (needs the slither-analyzer uv tool): Slither over contracts/src -> contracts/slither.md; fails on any finding not triaged in contracts/slither.triage.json
 	cd contracts && export PATH="$$HOME/.foundry/bin:$$PATH" && FOUNDRY_DYNAMIC_TEST_LINKING=false \
