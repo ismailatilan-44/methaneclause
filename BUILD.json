@@ -3,7 +3,7 @@
  "files": {
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "WALLET.md": "e164ca2e78565cd97e2662ea9551e3692541843222295c101efaddabd26f5e31",
-  "app.js": "83ff6127bf20b4337c119ae021dfb82a46e8280e25d610fe52e533317bbc6def",
+  "app.js": "335c3d96d4ba981cad637585199702e11c082f9e9fa6984a9ec5f404206ca159",
   "data/TKM_S_276.annex_c.example.csv": "ea92b46937152b45bcd605e3b318016545a92868046dd3da9f8fab1bd7f467ef",
   "data/TKM_S_276.annex_c.example.json": "6f4742cbe14e8c00b12317cf6ed5d7e1eabe0ea295fa6c9e79a650440cca1d32",
   "data/TKM_S_276.annex_d.csv": "3dae5f61d4b9688f1beaa8648b36870b3b2653b5eff10d62950059f85b2a080a",
@@ -20,12 +20,12 @@
   "data/vectors/v2_rfc8785_example.json": "495d6082445c97c4b30583d9035fa969e535730271ee1c53fbeb0c59ca605a05",
   "data/vectors/v3_unicode_nesting.json": "0c63f1bafe5260f05e472ebd4a9d7d95d7b065df5571d191e2ffdc669a59d433",
   "data/wallet.json": "2cae4c66a42660b974cf2033053e43efe98b481fa4b792df6b9e9df86052f33f",
-  "index.html": "f9db175edf4c1301caa0a814e2f98ef3d647236d6f9549eb284c0e0128321466",
-  "story.html": "9cb0e718332a40f1bf25f3363870533acc784462e78a573093cfac5569dda773",
-  "story.js": "0c5cb92fe4e711f4021d2d0d765b556ed45c5bc642c7a8dac592d0c2e3b9c61a",
-  "style.css": "fe1f3ceb65a42fe35119b1c3323afa221223dabe7ef8e37c27b3698718b91196",
+  "index.html": "939ed8462fe608ffbc9a77e4505b604c310de2d8457fcb1b02898536d4736cb3",
+  "story.html": "d95882f39f25e5e0a7bbe4b4fd55aae30b9b5fb387da7b0ff56017df14c8b1db",
+  "story.js": "9489ab9de0d607db698bac9eb908af62e62919900757e8cc560ab5a4972682c5",
+  "style.css": "9e444a8c02aca870b912c0356425fa138cc1895fcc65bdb71359ad639941bf56",
   "wallet.js": "b944fbbf1a119abc80240e20142864145b178c76b82e7251eaccef502a7b8679"
  },
- "sourceCommit": "9e46fe36283fb8d8dc2cc9629dd63e6a514ede6d",
+ "sourceCommit": "973829bf966534ba438d27c1a3768276e8191d24",
  "sourceDirty": false
 }
