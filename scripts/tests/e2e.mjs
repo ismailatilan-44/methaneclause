@@ -501,7 +501,7 @@ try {
     return ["#cheat-btn", "#witness-btn"].map((s) => { const cs = getComputedStyle(document.querySelector(s));
       const a = lum(cs.color), b = lum(cs.backgroundColor); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); });
   });
-  ok(ratios.every((r) => r >= 4.5), `dark mode: the cheat and witness buttons reach WCAG AA 4.5:1 (${ratios.map((r) => r.toFixed(2)).join(", ")})`);
+  ok(ratios.every((r) => r >= 4.5), `dark-scheme browser (the page keeps the story page's light theme): the cheat and witness buttons reach WCAG AA 4.5:1 (${ratios.map((r) => r.toFixed(2)).join(", ")})`);
   await dark.close();
   {  // own block: the names below do not collide with the main page checks
   console.log("== story page (story.html)");
