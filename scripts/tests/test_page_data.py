@@ -1,4 +1,4 @@
-"""The page's story data (make test-lane-c): every value the layered first screen, the story and the "Why you can trust
+"""The page's story data (make test-scripts): every value the layered first screen, the story and the "Why you can trust
 it" drawer state comes from app/data/app.json, written by scripts/build_app_data.py from committed files.
 
 The clean-look rule the drawer prints is POLICY_V2's pool part, read from data/derived/policy_v2.json; the builder must

@@ -557,6 +557,8 @@ details.more > .sub { max-width: 78ch; }
 @media (max-width: 560px) {
   .top-right { gap: 6px; }
   .top .pill { font-size: 11.5px; padding: 2px 8px; }
+  /* phone: brand on one line, legend + checks on the next; the live block reading stays in the page's own sections */
+  .brand .case, #net-pill { display: none; }
 }
 :root[data-theme="dark"] .arc-btn[aria-pressed="true"] { background: var(--card); }
 .cta-links { display: inline-flex; flex-wrap: wrap; gap: 0 14px; }

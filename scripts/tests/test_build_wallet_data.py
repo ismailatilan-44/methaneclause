@@ -1,6 +1,6 @@
 """app/data/wallet.json (the browser-wallet back end's data) is current, holds no key, and its builder fails closed.
 
-Offline, committed inputs only (make test-lane-c). The browser module itself is exercised end to end on Anvil by
+Offline, committed inputs only (make test-scripts). The browser module itself is exercised end to end on Anvil by
 `make wallet-local` (scripts/tests/wallet.test.mjs), which needs the Node tooling from `make wallet-setup`.
 """
 from __future__ import annotations

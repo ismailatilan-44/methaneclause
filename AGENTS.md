@@ -23,7 +23,7 @@ Hackathon 2026, Track 4. Human-facing overview: [`README.md`](README.md). Specif
 make setup          # Python venv with pinned deps (needs uv); Foundry must be on PATH
 make test           # pipeline (pytest) + contracts (forge unit, invariant, hostile-receiver and replay suites)
 make demo           # Anvil: deploy → covenant → observers sign → rejections → rebate; 33 checks, exits non-zero on any failure
-make check          # the "nothing broke" gate: test + demo + judge-local + STRICT audit + words + links + tree + secrets (offline, ~1 min)
+make check          # the "nothing broke" gate: test + demo + judge-local + STRICT audit + words + links + tree + secrets (offline, a few minutes)
 make help           # every target with its one-line purpose
 make reproduce      # fetch → join → cases → sourceset → baseline → model → bond → stake → audit (network, ~6 min)
 ```

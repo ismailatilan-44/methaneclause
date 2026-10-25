@@ -99,24 +99,23 @@ def render() -> str:
     sb = dep["sandbox"]
     pt = pool_txs(dep)
     tx_url = f"{SCAN}/tx/"
-    out = ["| Contract | Main (private keys) | Judge sandbox [SIM] (published keys) |", "|---|---|---|",
+    addrs = ["| Contract | Main (private keys) | Judge sandbox [SIM] (published keys) |", "|---|---|---|",
            f"| `MethaneCovenant` | {addr(dep['methaneCovenant'])} | {addr(sb['methaneCovenant'])} |",
            f"| `KeyRegistry` (admin renounced) | {addr(dep['keyRegistry'])} | {addr(sb['keyRegistry'])} |",
            f"| `IncentivePool` + {len(dep['incentivePoolLibraries'])} libraries | {addr(dep['incentivePool'])}, "
            f"buyer [SIM] funds {int(pt['fund']['valueWei']) / 1e18:g} ETH "
-           f"{short(tx_url + pt['fund']['tx'])} | {addr(sb['incentivePool'])} |",
-           "",
-           "**The operator's run, main deployment** (`make testnet-run`, `testnet-finalize`; record: "
+           f"{short(tx_url + pt['fund']['tx'])} | {addr(sb['incentivePool'])} |"]
+    out = ["**The operator's run, main deployment** (`make testnet-run`, `testnet-finalize`; record: "
            "[`data/derived/testnet_run.json`](data/derived/testnet_run.json)"
            f"{', rebuilt from the chain' if run.get('recoveredFromChain') else ''}"
            "):", "",
-           "| Step | Result (status 0: bond, episode count unchanged) | Transaction |", "|---|---|---|"]
+           "| Step | Result (status 0: nothing moves) | Transaction |", "|---|---|---|"]
     rejected = [s for s in run["steps"] if s["status"] == 0]
     for s in run["steps"]:
         if s["step"] == "withdraw_proposer":  # kept in testnet_run.json; omitted here for the README size budget
             continue
         if s["status"] == 0:
-            if s is rejected[0]:  # one row for every rejection, in run order, each linked by its reason (25 KB budget)
+            if s is rejected[0]:  # one row for every rejection, in run order, each linked by its reason (README size budget)
                 what = "; ".join(LABELS.get(x["step"], x["step"]) for x in rejected)
                 links = " ".join(f"[`{x.get('reason')}`]({x['tx']})" for x in rejected)
                 out.append(f"| Refused: {what} | status 0 | {links} |")
@@ -135,6 +134,8 @@ def render() -> str:
         modes = sorted({r["mode"] for r in run["observerReceipts"]})
         out += ["", f"Observer fetch mode in this run: {', '.join(modes)} (receipts in the record)."]
     out += ["", cure_arc.readme_line(cure_arc.arc(), policy.POLICY_V2_SANDBOX["pool"]["installments"][0][0])]
+    # addresses, measurements and gas are reference detail: folded, the run table above stays visible
+    out += ["", "<details><summary>Addresses, latency, gas</summary>", ""] + addrs
     # lead with the samples logged in the repository; a dated block whose raw samples are gone comes second
     lead, rest = latency_lead(m)
     more = "".join(f"; earlier, {latency_words(b)}: p50 {b['p50']} s" for b in rest)
@@ -154,7 +155,7 @@ def render() -> str:
     rest = len(set(m["functions"]) - set(FUNCS))
     out += ["", f"**Gas per call**, Sepolia median (USD at {usd['stated_gwei']:g} gwei and Chainlink's ETH "
             f"${usd['eth_usd']:,}): {', '.join(calls)}; Anvil gas and the "
-            f"{rest} other calls: [`FOOTPRINT`](docs/FOOTPRINT.md)."]
+            f"{rest} other calls: [`FOOTPRINT`](docs/FOOTPRINT.md).", "", "</details>"]
     return "\n".join(out)
 
 

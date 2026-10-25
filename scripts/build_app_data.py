@@ -26,8 +26,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-# README size budget: 32,000 bytes.
-README_BUDGET = 32_000
+# README size budget: 32,500 bytes (folded <details> blocks add bytes while cutting the visible text).
+README_BUDGET = 32_500
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 from common import DERIVED  # noqa: E402

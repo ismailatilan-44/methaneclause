@@ -1,4 +1,4 @@
-"""Offline tests for scripts/build_pages.py (make pages; part of make test-lane-c).
+"""Offline tests for scripts/build_pages.py (make pages; part of make test-scripts).
 
 The static export must work from any static host: only relative paths, every file the page loads present, CDN modules
 pinned to exact versions, a BUILD.json whose hashes match the bytes, and nothing internal in it. A bad source must stop

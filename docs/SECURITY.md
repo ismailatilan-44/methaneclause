@@ -13,6 +13,22 @@ control names the test that exercises it; every number names the file it was rea
 [`docs/spec.md`](spec.md). Contract decisions and error choices: [`contracts/README.md`](../contracts/README.md).
 The post-quantum boundary is in section 9.
 
+**At a glance.**
+- **Signatures:** EIP-712 typed data, secp256k1 ECDSA (65 bytes, low `s` only) checked on chain; hybrid observers
+  (algId 2) add ML-DSA-44 (FIPS 204), checked off chain against the key hash anchored in `KeyRegistry` (sections 6, 8,
+  9; `test_tamperedEvidenceHash_reverts`, `test_verify_bundle_rejects_foreign_mldsa_key`).
+- **Replay and freshness:** chainId + verifyingContract in the EIP-712 domain, a per-key nonce bitmap,
+  `now ≤ expiry ≤ now + 1 day`; one bad attestation reverts the whole call (section 7; `test_replay_reusedNonce_reverts`,
+  `test_crossChainReplay_reverts`, `test_crossContractReplay_reverts`, `test_expired_reverts`).
+- **Admin:** no contract has an owner, an upgrade path or a pause; the registry admin is renounced on Sepolia
+  (`registryAdmin` is the zero address in `contracts/deployments/11155111.json`; section 10;
+  `invariant_I7_noAdminPath`).
+- **Assurance:** Foundry stateful-fuzz invariants I1–I7 (core), P1–P9 (pool) and KeyRegistryV2's three, a Slither
+  triage with 0 High, bounded Halmos runs (section 13).
+- **Post-quantum boundary:** on-chain identity stays secp256k1 ECDSA; ML-DSA-44 protects the long-term authenticity of
+  bundles verified off chain (verbatim statement in section 9).
+- **Questions a reviewer asks first:** section 16.
+
 **What the system vouches for.** Observers attest *what they received, from whom and when* — the provider response,
 its content hash, the derived fields — not what the satellite saw. A hash commits to data; it does not make the data
 true. The chain enforces process and money; the truth of the data rests on independent observers and an open
@@ -206,7 +222,7 @@ transactions (receipt status 0).
 | Attestor authentication | ECDSA recovery against a registered OBSERVER key valid at `block.timestamp`; ML-DSA-44 verified off-chain against the registry's `pqPubKeyHash` for the signer | `test_unregisteredSigner_reverts`, `test_revokedKey_reverts`, `test_attestCleanPass_nonObserverKey_reverts`, `test_sign_and_verify_both_halves`, `test_verify_bundle_rejects_foreign_mldsa_key` |
 | Message integrity | the signature covers the full EIP-712 struct including `evidenceHash` / `sceneHash` | `test_tamperedEvidenceHash_reverts`, `test_cleanPass_tamperedCloud_reverts` |
 | Same-chain replay | per-key nonce bitmap (core and pool keep separate bitmaps) | `test_replay_reusedNonce_reverts`, `test_attestCleanPass_replay_reverts` |
-| Cross-domain replay | EIP-712 chainId + verifyingContract; distinct type hashes; FIPS 204 context string `MethaneClause/v1`. The ML-DSA-44 context binds the protocol, not the chain or the contract: the bundle names a `covenantId`, which is a per-deployment counter, so the chain binding of a hybrid signature comes from its ECDSA half today, the half section 9 assumes a quantum adversary can forge. Roadmap: ML-DSA-44 over JCS({bundle, chainId, verifyingContract}) under a new context version, an observer, verifier and page change with no contract change | `test_crossChainReplay_reverts`, `test_crossContractReplay_reverts`, `test_cleanPass_crossChain_reverts`, `test_pool_rejectsCoreAttestation`, `test_core_rejectsCleanPass`, `test_context_and_message_are_bound` |
+| Cross-domain replay | EIP-712 chainId + verifyingContract; distinct type hashes; FIPS 204 context string `MethaneClause/v1`. The ML-DSA-44 context binds the protocol, not the chain or the contract: the bundle names a `covenantId`, which is a per-deployment counter, so the chain binding of a hybrid signature comes from its ECDSA half today, the half section 9 assumes a quantum adversary can forge. Roadmap ([`PRODUCTION.md`](PRODUCTION.md) item 10): ML-DSA-44 over JCS({bundle, chainId, verifyingContract}) under a new context version, an observer, verifier and page change with no contract change | `test_crossChainReplay_reverts`, `test_crossContractReplay_reverts`, `test_cleanPass_crossChain_reverts`, `test_pool_rejectsCoreAttestation`, `test_core_rejectsCleanPass`, `test_context_and_message_are_bound` |
 | Freshness | `now ≤ expiry ≤ now + 1 day` | `test_expired_reverts`, `test_expiryTooFar_reverts`, `test_attestCleanPass_expired_reverts` |
 | Agreement | every attestation in a batch must carry the same fields, else `AttestationMismatch` | `test_observerDisagreement_reverts`, `test_attestCleanPass_attestationMismatch_reverts` |
 | Non-repudiation | signer, org and evidence hash recorded on chain in events | `test_happyPath_2of3_confirmed_buyerWithdraws`, `test_attestCleanPass_storesPendingPass_emits` |
@@ -250,8 +266,8 @@ not-covered and replay rejections with receipt status 0 ([`data/derived/testnet_
   and deterministic signing is opt-in and refused on any chain but 31337 (`test_opt_in_determinism_refused_off_anvil`).
 - **Controller equals first key (Sepolia main deployment).** `Deploy.s.sol` (`_org`) sets each organisation's
   controller to its first key, so a stolen observer key is also its organisation's controller and can rotate to an
-  attacker key before the victim revokes it. Production uses a separate, cold controller key per organisation; this
-  prototype does not.
+  attacker key before the victim revokes it. Production uses a separate, cold controller key per organisation, a
+  deployment-script change with no contract change ([`PRODUCTION.md`](PRODUCTION.md) item 3); this prototype does not.
 
 ## 9. Cryptography and the post-quantum boundary
 

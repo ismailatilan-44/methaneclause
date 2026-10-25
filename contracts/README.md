@@ -8,13 +8,20 @@ Foundry 1.8.5, solc 0.8.37. Spec: [`docs/spec.md`](../docs/spec.md) §3 (mechani
 | `src/lib/SigLib.sol` | ECDSA recovery (65-byte, low-s only) and sorted-pair Merkle proof |
 | `src/KeyRegistry.sol` | Org-scoped keys (OBSERVER / SELLER / BUYER) with full history, rotation, revocation; the admin renounces after setup |
 | `src/MethaneCovenant.sol` | Covenants, episodes, k-of-n distinct-org quorum, challenge / contest / finalize, pull payments, settle |
+| `src/lib/CleanPass.sol` | EIP-712 `CleanPass` and MARS `Corroboration` structs and hashing for the two-sided clause |
+| `src/IncentivePool.sol` | v2 two-sided clause: k-of-n qualified clean passes → capped, cancellable refund installments; reads the core, never writes it |
+| `src/lib/Pool{Setup,Verify,Episodes,Installments,Corroboration}.sol` | the pool's five external (linked) libraries: opening checks, attestation checks, reads of core episodes, installment scheduling, the MARS corroboration cycle |
+| `src/SuretyBond.sol` | A surety posts the seller's bond and receives everything the bond contract is paid (Anvil only) |
+| `src/KeyRegistryV2.sol` | Observer organisations admit and remove members by majority vote, no admin (Anvil only) |
 | `script/Deploy.s.sol` | Deploy + register keys + renounce the admin; writes `deployments/<chainId>.json` |
+| `script/DeployPool.s.sol`, `script/DeploySandbox.s.sol`, `script/SandboxBase.sol` | Deploy the pool and link its libraries; deploy the judge sandbox [SIM] pair with published keys |
 
 ```sh
 export PATH="$HOME/.foundry/bin:$PATH"
 forge build
-forge test -vv                                        # unit + invariants
-forge test --match-path 'test/invariants/*'           # I1–I7 only
+forge test -vv                                        # unit + invariants (what `make test-contracts` runs)
+forge test --match-path 'test/invariants/*'           # core I1–I7 + pool P1–P9
+forge test --match-contract KeyRegistryV2Invariants   # KeyRegistryV2 invariants (in test/unit/KeyRegistryV2.t.sol)
 forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast   # Anvil, uses the public test mnemonic
 ```
 
@@ -254,7 +261,7 @@ here claims that the contracts as a whole are formally verified.
 |---|---|---|---|
 | Unit tests | Each custom error is reachable and reverts with nothing written; events and state after each success | the cases written | `forge test` (in `make check`) |
 | Fuzz | A pool `CleanPass` signature never verifies under a foreign domain (chain id, contract) | 256 random inputs per run | `testFuzz_cleanPass_foreignDomain_neverVerifies` |
-| Stateful fuzz (invariants) | Core I1–I7; pool P1–P9 and `counted` bookkeeping; KeyRegistryV2 "no org joins without a majority" | random sequences: core and KeyRegistryV2 128 runs x depth 128 (16,384 calls); pool 64 runs x depth 512 (32,768 calls), `fail-on-revert`, every planted P1–P9 fault caught | `forge test --match-path 'test/invariants/*'` |
+| Stateful fuzz (invariants) | Core I1–I7; pool P1–P9 and `counted` bookkeeping; KeyRegistryV2 "no org joins without a majority" | random sequences: core and KeyRegistryV2 128 runs x depth 128 (16,384 calls); pool 64 runs x depth 512 (32,768 calls), `fail-on-revert`, every planted P1–P9 fault caught | `forge test --match-path 'test/invariants/*'`; KeyRegistryV2: `forge test --match-contract KeyRegistryV2Invariants` |
 | Halmos (symbolic) | For **all** inputs within the stated bounds, see below | any-order depth 2 (pool) and 1 (core), plus fixed short lifecycles; loops unrolled to 4 (32 for the share checks) | `make halmos` → `halmos/REPORT.md` |
 | Z3 (integers) | The installment rounding lemma, for every cap below 2^128 and every share vector | none (a proof over unbounded integers) | `halmos/rounding_lemma.py`, run by `make halmos` |
 | Slither (static) | No High finding; each Medium explained; every finding triaged (a wildcard entry pins its exact count of locations) | the 13 contracts of `src/` | `make slither` → `slither.md` |

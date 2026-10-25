@@ -1,5 +1,5 @@
 # Page, judge walk-through, browser tests, wallet and README rendering. Each target carries a ## comment for make help.
-.PHONY: readme judge-cure app-scenes measure-verification measure-verification-manual test-scripts test-lane-c e2e-setup e2e pages pages-e2e wallet-data wallet-setup wallet-local
+.PHONY: readme judge-cure app-scenes measure-verification measure-verification-manual test-scripts e2e-setup e2e pages pages-e2e wallet-data wallet-setup wallet-local
 
 judge-cure:       ## judge sandbox [SIM] on Sepolia (JUDGE_PK), after judge-finalize: real DZA relapse -> claim -> real 2026-07-13 pass signed by your key; rerun after each 10-minute window
 	./scripts/judge.sh cure
@@ -16,7 +16,6 @@ measure-verification-manual:  ## time the manual verification protocol step by s
 test-scripts:     ## offline script tests: build_app_data fail-closed paths, forward-only demo clock, wallet.json current (scripts/tests)
 	pipeline/.venv/bin/python -m pytest -q scripts/tests
 
-test-lane-c: test-scripts   # older name, kept for references in test docstrings
 
 # Browser e2e: network for the pinned CDN modules, so not in make check. Playwright lives in out/e2e-tools (gitignored);
 # it drives the installed Google Chrome (E2E_CHANNEL= uses Playwright's Chromium after `npx playwright install chromium`).
