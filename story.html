@@ -61,6 +61,7 @@ a{color:inherit}
 #sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 .maplibregl-marker.faclbl{z-index:3}   /* the facility name stays readable under a satellite's beam */
 .record, .record *{cursor:none!important}
+.maploading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;background:rgba(255,255,255,.92);border:1px solid var(--line-2);border-radius:8px;padding:8px 14px;font-size:12.5px;color:var(--ink-2);box-shadow:var(--shadow);pointer-events:none}
 .offline{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:8;background:#fff;border:1px solid var(--line-2);border-radius:8px;padding:6px 12px;font-size:12px;box-shadow:var(--shadow)}
 .err{margin:8px 12px;padding:8px 10px;border-radius:8px;background:var(--bad-soft);color:var(--bad);font-size:12px}
 .help{position:absolute;right:12px;top:12px;z-index:9;background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;box-shadow:var(--shadow);display:none;flex-direction:column;gap:5px;font-size:12px;max-width:300px}
@@ -173,12 +174,14 @@ kbd{font:11px var(--mono);background:var(--panel-2);border:1px solid var(--line-
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px}
 .card h3{margin:0;padding:10px 12px 6px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center}
 .card h3 .r{text-transform:none;letter-spacing:0;font-weight:600;color:var(--ink-2)}
+.card h3 .chip{font-size:10.5px;padding:1px 7px;margin-left:4px}
 .cast{list-style:none;margin:0;padding:0 6px 6px}
 .cast li{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;padding:7px 6px;border-radius:8px;transition:background .5s}
 .cast li.flash{background:var(--methane-soft)}
 .cast li.act{box-shadow:inset 3px 0 0 var(--ink);background:var(--panel-2)}
 .cast li.act.simr{box-shadow:inset 3px 0 0 var(--sim);background:var(--sim-soft)}
-.cast li.rest{opacity:.55}
+.cast li.rest .ico,.cast li.rest .light{opacity:.55}   /* only the icon dims: the text keeps its contrast (grey ink-3, purple stays purple) */
+.cast li.rest:not(.simr) .nm,.cast li.rest .st{color:var(--ink-3)}
 .ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--line)}
 .ico svg{width:17px;height:17px}
 .cast .nm{font-weight:600;font-size:12.5px}

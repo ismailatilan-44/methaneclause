@@ -41,7 +41,7 @@ strings (wei); times are unix seconds. The session (covenant, episodes, claim, p
 `app/data/wallet.json` is written by `make wallet-data` (`scripts/build_wallet_data.py`) from committed inputs: the
 sandbox deployment record, the observer's bundle templates (built and validated by `pipeline/observer` from the
 committed case files), the sandbox covenant and pool policies, the contract ABIs and a parity vector of Python's own
-hashes and digests. Tests: `make test-lane-c` (the file is current, holds no key, its builder fails closed),
+hashes and digests. Tests: `make test-scripts` (the file is current, holds no key, its builder fails closed),
 `make wallet-local` (end to end on Anvil with an injected provider that signs with MetaMask's own library; once
 `make wallet-setup`), `make e2e` (the module loads from the pinned CDN in Chrome and reproduces the digests).
 
