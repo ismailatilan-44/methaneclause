@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MethaneClause</title>
+  <!-- The bare address opens the story map on a desktop screen; index.html, any ?query or #hash, and phones stay here. -->
+  <script>if (/\/$/.test(location.pathname) && !location.search && !location.hash && matchMedia("(min-width: 901px)").matches) location.replace("story.html");</script>
   <meta name="description" content="A speed camera for methane, written into the gas contract. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later satellite passes → the seller earns money back in steps, never more than the rebate, from a sponsor's pool (for example its lender's). Once enough witnesses sign a sighting, no one — the seller included — can delete it; the seller can only appeal it, and then the independent witnesses must confirm it again.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
