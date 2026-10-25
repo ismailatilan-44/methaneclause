@@ -1,0 +1,21 @@
+{
+ "date": "2026-10-25",
+ "ecdsa_secp256k1": {
+  "library": "eth-account 0.14.0 (eth-keys 0.8.0, backend NativeECCBackend)",
+  "sign_ms": 2.404,
+  "signs": "the recorded demo Attestation: EIP-712 typed-data encoding plus the signature",
+  "verify": "EIP-712 encoding plus ecrecover, compared with the signer address",
+  "verify_ms": 3.735
+ },
+ "machine": "Darwin 27.0.0 arm64, Python 3.12.13",
+ "mldsa44": {
+  "library": "dilithium-py 1.5.1",
+  "sign_ms": 12.631,
+  "signs": "RFC 8785 bundle bytes (754 bytes), FIPS 204 context MethaneClause/v1, hedged",
+  "verify": "FIPS 204 ML-DSA.Verify with the same context",
+  "verify_ms": 3.056
+ },
+ "n": 200,
+ "note": "dilithium-py is a pure-Python reference implementation, not an optimised one",
+ "what": "median sign / verify time per signature, milliseconds, one process on one machine"
+}

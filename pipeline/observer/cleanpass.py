@@ -37,7 +37,7 @@ from cleanpass_rules import attestable_from, cloud_bp, qualify
 from common import DERIVED, RADIUS_KM
 from observer import attest, pq
 from observer.bundle import INSTRUMENTS, PROVIDER_CM
-from observer.service import observer_key, require_anvil_for_determinism
+from observer.service import observer_key, refuse_anvil_key_off_anvil, require_anvil_for_determinism
 
 SCHEMA_VERSION = "methaneclause.cleanpass/1"
 PROVIDER_MARS = "unep-mars"
@@ -216,6 +216,8 @@ def message(b: dict, *, nonce: int, expiry: int) -> dict:
 
 
 def _keys(org: str, chain_id: int, pk: str | None):
+    if pk:
+        refuse_anvil_key_off_anvil(pk, chain_id)
     key = pk or observer_key(org, chain_id)
     seed = pq.seed_for(org, chain_id) if org in pq.ORGS else None
     return key, Account.from_key(key).address, (pq.keypair(seed) if seed else None)

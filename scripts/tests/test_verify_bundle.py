@@ -136,6 +136,21 @@ def test_verify_bundle_rejects_key_revoked_before_proposal(tmp_path, recorded, c
         assert code == 1 and "RevokedKey" in out, out
 
 
+def test_verify_bundle_passes_after_signer_rotated_later(tmp_path, recorded, capsys):
+    """A bundle stays verifiable after its signer rotates: the registry keeps the old key's record with its validity
+    window (validUntil closed after the proposal, replacedBy set), and validity at the proposal is what counts."""
+    run, answers = recorded
+    later, successor = proposal_time(answers) + 30 * 86400, "0x" + "5e" * 20
+    for org in ("OBS_A", "OBS_B"):
+        fx = edit_key(answers, run, signer(run, org), validUntil=later, replacedBy=successor)
+        k = getkey_call(fx, run, signer(run, org))
+        (key,) = decode([KEY_T], bytes.fromhex(fx["calls"][k][2:]))
+        assert key[4] == later and key[6].lower() == successor  # the edit took
+        code, out = replay(tmp_path, run, fx, capsys)
+        assert code == 0, out
+        assert "distinct observer organisations" in out
+
+
 def test_verify_bundle_rejects_key_registered_after_proposal(tmp_path, recorded, capsys):
     run, answers = recorded
     fx = edit_key(answers, run, signer(run, "OBS_A"), validFrom=proposal_time(answers) + 1)

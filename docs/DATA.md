@@ -50,6 +50,7 @@ The demo depends on two public datasets with non-commercial terms: Carbon Mapper
 | `data/derived/adversarial.json` | `pipeline/observer/adversarial.py` | the adversarial input set and its detection rate |
 | `export/*` | `pipeline/export/` | IEA Annex D export (TKM_S_276) and Annex C seller-claim examples [SIM] |
 | `data/derived/measurements.json`, `data/derived/testnet_run.json`, `data/derived/demo_run.json`, `data/derived/verification_time.json` | `make measure`, the testnet and demo runs, `make measure-verification` | gas, latency, transaction outcomes, verification timing (author-measured) |
+| `data/derived/pq_bench.json` | `scripts/pq_bench.py` (`pipeline/.venv/bin/python scripts/pq_bench.py`) | median sign / verify time of secp256k1 ECDSA (eth-account) and ML-DSA-44 (dilithium-py, a pure-Python reference implementation), libraries, machine, date (author-measured) |
 | `data/derived/sepolia_txs.json`, `data/derived/sepolia_txlog.jsonl`, `data/derived/sepolia_latency_history.json` | `make sepolia-txs` (a keyless explorer index lists hashes, a public RPC supplies every field, each sender's count checked against its nonce); the scripts as they send; the 15 Oct latency block copied from `data/derived/measurements.json` at commit `4bb9782` | every Sepolia transaction our addresses sent, rebuilt from the chain; submit → receipt seconds; latency whose raw samples were lost from an untracked output directory |
 
 ## What is simulated [SIM]

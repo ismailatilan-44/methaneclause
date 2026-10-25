@@ -26,8 +26,9 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-# README size budget: 32,500 bytes (folded <details> blocks add bytes while cutting the visible text).
-README_BUDGET = 32_500
+# README size budget: 34,000 bytes (folded <details> blocks add bytes while cutting the visible text; the unit-of-impact
+# line, the Monday table and the projection-to-measurement path need room; the README is not cut for bytes).
+README_BUDGET = 34_000
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 from common import DERIVED  # noqa: E402
@@ -593,7 +594,8 @@ DEVPOST_ONLY = ("deploy", "stake", "loop", "cure", "projectionHeadline", "learne
 # (README.md's first screen folds the loop into its status-0 line: README_ONLY "status0")
 CHAIN_TABLE = "\n".join([  # the organizer's four-question blockchain test; README and Devpost share it
     "| Question | Answer |", "|---|---|",
-    "| Multiple parties? | Seller, buyer, a sponsor, ≥ 2 observer organisations, open challengers. |",
+    "| Multiple parties? | Seller, buyer, a sponsor, k of n observer organisations named in the clause (n ≥ k + 2; "
+    "none is the seller's or the buyer's), open challengers. |",
     "| No trusted operator? | None exists for this function. Registries (MiQ, JOGMEC CLEAN, UNEP MARS) certify and "
     "notify but cannot move a seller's money; a bank can move money but cannot adjudicate satellite evidence; a court "
     "can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the other, "
@@ -727,6 +729,67 @@ def _whole_window(sentence: str) -> str:
 
 
 ALERTS_SOURCE = "un-news-2026-07-23"  # data/derived/projection_sources.json: the newest MARS alert and response figures
+FORWARD_COST = "USD {} per t CO₂e projected at the central action share"  # as projection.json's forward card prints it
+
+
+def _forward_usd_per_tco2e(pj: dict) -> str:
+    """The forward hold-out's ledger cost per t CO₂e (projection.json forward.ledger, central action share, GWP-100),
+    at two significant digits. Exit 1 if it is missing or the forward card's cost sentence prints a different figure."""
+    usd = ((pj.get("forward") or {}).get("ledger") or {}).get("usdPerTco2eGwp100Central")
+    if not isinstance(usd, (int, float)) or usd <= 0:
+        fail("projection.json forward.ledger has no usdPerTco2eGwp100Central: run make projection")
+    if FORWARD_COST.format(_two_sig(usd)) not in forward_card(pj)["costSentence"]:
+        fail("projection.json forward costSentence no longer prints forward.ledger's cost per t CO₂e")
+    return _two_sig(usd)
+
+
+def _forward_cost_lead(pj: dict) -> str:
+    """The PDF section 4's first cost per tonne is the forward hold-out's; the whole-window cost line follows it."""
+    return f"On the forward basis the ledger costs {FORWARD_COST.format(_forward_usd_per_tco2e(pj))}."
+
+
+def event_study(pj: dict) -> dict:
+    """Our MARS event study's primary specification over all notified sources (projection.json): the difference in
+    differences of Carbon Mapper's detection rate, answered minus unanswered (`did`), its 95 % CI and the groups. Exit 1
+    if the interval no longer includes zero: every sentence that quotes it says answering changed nothing measurable."""
+    did = pj["evidence"]["line2"]["coverageSets"]["allNotified"]["primary"]
+    lo, hi = did["did"]["ci"]
+    if not lo < 0 < hi:
+        fail("projection.json: the event study's interval no longer includes zero; the problem's null sentence is wrong")
+    return did
+
+
+def unit_block(pj: dict) -> str:
+    """User, data and unit of impact in one line (README after whyNow, Devpost): the baseline is today's alert, quoted
+    with the event study's difference in differences (event_study, the same figures as alerts_block); the ledger cost
+    per t CO₂e is the forward hold-out's (_forward_usd_per_tco2e)."""
+    d = event_study(pj)["did"]
+    lo, hi = d["ci"]
+    return ("**User · data · unit of impact.** User: the methane desk of an EU gas importer. Data: Carbon Mapper plumes "
+            "and scenes joined with UNEP MARS labels. Unit: t CH₄/yr stopped at covered sources, against today's "
+            "baseline — an alert that pays no one and, where answered, changed Carbon Mapper's detection rate by "
+            f"{_pm3(d['yesMinusNo'])} against unanswered sources (95 % CI {_pm3(lo)} to {_pm3(hi)}: no measurable "
+            f"change) — at USD {_forward_usd_per_tco2e(pj)} of ledger calls per projected t CO₂e (forward basis).")
+
+
+ART27 = r"(Art\. \d+) and Annex IX: the importer's yearly report to its national competent authority"
+
+
+def monday_block(art27: dict) -> str:
+    """The Monday user's today-versus-clause table (README "Who uses it", the paper's section 5). The article of the
+    importer's yearly report comes from docs/clause/clause_sources.json (art27Report, [V]); exit 1 if its wording
+    changed."""
+    import re
+
+    m = re.fullmatch(ART27, art27["what"])
+    if not m:
+        fail("docs/clause/clause_sources.json art27Report changed its wording: reword the Monday table")
+    return "\n".join([
+        "| | Today | With the clause |", "|---|---|---|",
+        "| Signal | a MARS alert to the operator or government; the buyer is not in the loop | a CONFIRMED episode on a "
+        "contracted source, read on the page or with `make verify-evidence` |",
+        "| Remedy | none in the contract | the rebate withdrawn from the bond, or a credit note citing the verdict |",
+        f"| Filing | assembled by hand | the IEA Annex D record attached to the {m.group(1)} report |"])
 
 
 def alerts_block(ps: dict, pj: dict) -> str:
@@ -745,11 +808,9 @@ def alerts_block(ps: dict, pj: dict) -> str:
     resp = re.search(r"only (\d+) per cent of alerts currently receive a response", q)
     if not (alerts and repairs and resp):
         fail(f"{ALERTS_SOURCE}: the quoted alert, repair or response figure changed its wording")
-    did = pj["evidence"]["line2"]["coverageSets"]["allNotified"]["primary"]
+    did = event_study(pj)
     d, g = did["did"], did["groups"]
     lo, hi = d["ci"]
-    if not lo < 0 < hi:
-        fail("projection.json: the event study's interval no longer includes zero; the problem's null sentence is wrong")
     day = datetime.fromisoformat(src["date"]).strftime("%-d %b %Y")
     return (f"UNEP's Methane Alert and Response System has issued more than {alerts.group(1)} satellite alerts across "
             f"{alerts.group(2)} countries and helped trigger more than {repairs.group(1)} verified repairs, yet only "
@@ -999,6 +1060,7 @@ def readme_blocks(app: dict) -> dict[str, str]:
                    f"{_n(sb['facilitiesQuantified'])} of those sources (a Carbon Mapper plume any time after MARS's first "
                    "plume there; low bound; stake, not abatement).")
     b["alerts"] = alerts_block(load(DERIVED / "projection_sources.json"), load(DERIVED / "projection.json"))
+    b["unit"] = unit_block(pj)
     core = policy_mod.POLICY_V2["core"]
     b["paths"] = "\n".join([
         "- **Who.** The seller posts a bond for named sources; the buyer, an EU gas importer, gets the rebate; "
@@ -1017,6 +1079,7 @@ def readme_blocks(app: dict) -> dict[str, str]:
     a28, scope = eu["art28Applies"], eu["art28Scope"]
     if "producer-level MRV equivalent to the EU's" not in a28["what"] or "concluded or renewed" not in scope["what"]:
         fail("docs/clause/clause_sources.json art28Applies/art28Scope changed their wording: reword whySign")
+    b["monday"] = monday_block(eu["art27Report"])
     b["whySign"] = (f"**Why each side signs.** The buyer, an EU gas importer, must show from {a28['date']} that gas "
                     f"bought under contracts concluded or renewed since {scope['date']} is under producer-level "
                     "monitoring, reporting and verification equivalent to the EU's "
@@ -1602,7 +1665,7 @@ def projection_blocks() -> dict[str, str]:
         # comparison, with the ledger cost and the methods that both share, then the whole-window table
         "projection": "\n\n".join([fwd["headlineSentence"], f"{fwd['stakeSentence']} {fwd['intervalSentence']} "
                                    f"{fwd['rollingSentence']} {PREREG_POINTER}", fwd["comparisonSentence"],
-                                   _whole_window(card["costLineSentence"]),
+                                   f"{_forward_cost_lead(pj)} {_whole_window(card['costLineSentence'])}",
                                    _methods_with_forward(card["methodsSentence"], pj["forward"]),
                                    "Whole-window comparison (not the headline):\n\n" + "\n".join(rows)]),
         "projectionLimit": f"- **Carbon projection.** {card['limitSentence']}",

@@ -5,7 +5,8 @@ builds the canonical bundle, validates it, hashes it (RFC 8785 + SHA-256) and si
 It attests what it received, from whom and when; not what the satellite saw.
 
 Keys: OBSERVER_{A,B,C}_PK from the environment. On Anvil (chainId 31337) only, the public Anvil test mnemonic
-accounts 3-5 are used when no key is set; they are throwaway keys and are refused on any other chain.
+accounts 3-5 are used when no key is set; they are throwaway keys, and any key of that mnemonic (accounts 0-9) is refused
+on any other chain, whether it comes from the environment or as an argument.
 
 CLI (prints the signed attestation as JSON). Covenant start, minimum rate, chain id, contract and "now" are read from
 the chain (getCovenant + latest block), never typed by hand:
@@ -16,6 +17,7 @@ the chain (getCovenant + latest block), never typed by hand:
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import os
 import secrets
@@ -39,9 +41,22 @@ def anvil_key(index: int) -> str:
     return Account.from_mnemonic(ANVIL_MNEMONIC, account_path=f"m/44'/60'/0'/0/{index}").key.hex()
 
 
+@functools.cache
+def anvil_addresses() -> frozenset[str]:
+    """Addresses of the public Anvil test mnemonic, accounts 0-9 (everyone knows these private keys)."""
+    return frozenset(Account.from_key(anvil_key(i)).address for i in range(10))
+
+
+def refuse_anvil_key_off_anvil(pk: str, chain_id: int) -> None:
+    """A public Anvil test key is refused on any chain but 31337, wherever it came from (environment or argument)."""
+    if chain_id != 31337 and Account.from_key(pk).address in anvil_addresses():
+        raise SystemExit(f"a public Anvil test key (mnemonic accounts 0-9) is refused on chain {chain_id}")
+
+
 def observer_key(org: str, chain_id: int) -> str:
     pk = os.environ.get(f"OBSERVER_{org[-1]}_PK")
     if pk:
+        refuse_anvil_key_off_anvil(pk, chain_id)
         return pk
     if chain_id != 31337:
         raise SystemExit(f"OBSERVER_{org[-1]}_PK not set; Anvil test keys are refused on chain {chain_id}")
@@ -76,6 +91,7 @@ class Observer:
 
     def __post_init__(self):
         self._pk = self.pk or observer_key(self.org, self.chain_id)
+        refuse_anvil_key_off_anvil(self._pk, self.chain_id)
         self.pk = None
         self.address = Account.from_key(self._pk).address
         seed = pq.seed_for(self.org, self.chain_id) if self.org in pq.ORGS else None

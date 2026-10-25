@@ -160,7 +160,10 @@ try {
   ok((await page.locator("#fine-amounts").innerText()) === "Amounts are representative test values; a production clause sets them in euros in the parties' policy."
     && (await page.locator("#fine-oneperson").innerText()) === "In this demo one person runs every role; in production each witness is a separate organisation with its own keys.",
     "the two small lines");
-  const above = await page.evaluate(() => ["#hero-h", "#money-fig", "#cheat-btn"].every((s) => document.querySelector(s).getBoundingClientRect().top < innerHeight));
+  const storyPill = page.locator(".top-right a.pill", { hasText: "Story map" });
+  ok((await storyPill.count()) === 1 && (await storyPill.getAttribute("href")) === "story.html" && (await storyPill.isVisible()),
+    "the top bar links back to the story map (Story map → story.html)");
+  const above =await page.evaluate(() => ["#hero-h", "#money-fig", "#cheat-btn"].every((s) => document.querySelector(s).getBoundingClientRect().top < innerHeight));
   ok(above, "sentence, picture and the cheat button are in the first screen");
   const lead = D.hybrid.entries[0].bundle, tam = S.run.steps.find((x) => x.step === "reject_tamper");
   ok(!(await page.locator("#cheat-btn").isDisabled()), "the cheat button is enabled once the page is ready");
@@ -425,6 +428,13 @@ try {
     const dl = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const errs = await ready(dl, `${BASE}?tamper=${key}`);
     const red = await hasClass(dl, verdict, "bad"), fails = await dl.locator(`${checks} li.fail`).allInnerTexts();
+    await dl.waitForTimeout(300);  // the scroll runs in the next animation frame
+    const land = await dl.evaluate(([k]) => { const top = (s) => Math.round(document.querySelector(s).getBoundingClientRect().top);
+      return k === "A" ? [top("#moment"), document.querySelector("#moment-3").classList.contains("bad"), innerHeight]
+        : [top(`#tamper-${k.toLowerCase()}`), document.querySelector(`#tamper-${k.toLowerCase()}-box`).open, innerHeight]; }, [key]);
+    ok(land[0] >= 0 && land[0] < land[2] / 2 && land[1],
+      key === "A" ? `?tamper=A lands on the three-step proof strip (top ${land[0]} of ${land[2]} px) with its third step red`
+        : `?tamper=${key} opens its section and lands on it (top ${land[0]} of ${land[2]} px)`);
     ok(errs.length === 0 && red && fails.some((t) => expect.test(t)) && (await count(dl, "#self-checks li.fail")) === 0
       && (await dl.getAttribute("body", "data-tamper")) === key && !(await dl.locator("#deeplink-note").isHidden()),
       `?tamper=${key} opens red (${fails.length} checks fail, ${expect.source}) with 0 failed self-checks`);
@@ -465,9 +475,9 @@ try {
     const pa = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
     await ready(pa, `${BASE}?tamper=A`);
     await pa.waitForTimeout(1500);   // late layout (maps, tiles, fonts) must not push the tamper out of view
-    const pos = await pa.evaluate(() => { const r = document.querySelector("#tamper-a").getBoundingClientRect(); return [Math.round(r.top), innerHeight, Math.round(scrollY)]; });
-    ok(pos[2] > 0 && pos[0] >= -2 && pos[0] < pos[1] / 2 && (await hasClass(pa, "#tamper-verdict", "bad")),
-      `?tamper=A at 375 px scrolls to tamper A: its heading sits at ${pos[0]} px of ${pos[1]} (scrollY ${pos[2]}) and the verdict is red`);
+    const pos = await pa.evaluate(() => { const r = document.querySelector("#moment").getBoundingClientRect(); return [Math.round(r.top), innerHeight, Math.round(scrollY)]; });
+    ok(pos[2] > 0 && pos[0] >= -2 && pos[0] < pos[1] / 2 && (await hasClass(pa, "#moment-3", "bad")) && (await hasClass(pa, "#tamper-verdict", "bad")),
+      `?tamper=A at 375 px scrolls to the proof strip: its top sits at ${pos[0]} px of ${pos[1]} (scrollY ${pos[2]}) and the verdict is red`);
     await pa.close();
   }
   const phone = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
@@ -484,6 +494,19 @@ try {
     return Math.min(r.width, r.height) >= 28 && Math.max(r.width, r.height) >= 44 && r.height >= 44;
   }));
   ok(taps.every(Boolean), `tap targets at 375 px are at least 44 px tall (prev, next, chapter dots, tamper B checkboxes: ${taps})`);
+  const row = await phone.evaluate(() => {
+    const tops = [...document.querySelectorAll(".dot-btn")].map((b) => Math.round(b.getBoundingClientRect().top));
+    const box = (s) => document.querySelector(s).getBoundingClientRect();
+    const dots = [...document.querySelectorAll(".dot-btn")].map((b) => b.getBoundingClientRect());
+    const tabs = [...document.querySelectorAll(".arc-btn")].map((b) => Math.round(b.getBoundingClientRect().top));
+    const bar = [...document.querySelectorAll(".top .brand, .top-right > *")].filter((e) => e.offsetParent)
+      .map((e) => Math.round(e.getBoundingClientRect().top));
+    return { n: tops.length, rows: new Set(tops).size, between: dots[0].left >= box("#ds-prev").right && dots.at(-1).right <= box("#ds-next").left,
+      tabRows: new Set(tabs).size, barRows: 1 + bar.sort((a, b) => a - b).filter((t, i, a) => i > 0 && t - a[i - 1] > 10).length };
+  });
+  ok(row.n >= 7 && row.rows === 1 && row.between, `at 375 px the ${row.n} step dots sit on one row between the arrows`);
+  ok(row.tabRows === 1, "at 375 px the Penalty and Earn-back tabs share one row");
+  ok(row.barRows === 2, `at 375 px the top bar takes two rows with the Story map link (${row.barRows})`);
   await phone.evaluate(() => document.querySelector("#ds-next").scrollIntoView({ block: "end" }));
   await phone.locator("#ds-next").click();
   await phone.waitForTimeout(400);
@@ -578,6 +601,13 @@ try {
     ok(yt[0] === `#ch=${nCh}&view=verify` && yt[4] === "verify" && yt[1].includes(`chapter ${nCh} of ${nCh}`) && yt[1].includes(`Your turn: check the ${SJ.facility.country} case yourself`)
         && !yt[1].includes(yt[5]) && /check it yourself/i.test(yt[2]) && yt[3].includes(SJ.case),
       `story: "Your turn" stays on chapter ${nCh} (${yt[0]}) with an end card for the ${SJ.case} check, not chapter ${nCh - 1}'s text`);
+    const vt = await sp.evaluate(() => [document.getElementById("moneysrc").textContent, document.querySelector(".tl").innerText]);
+    ok(!vt[0].includes("replay") && !vt[1].includes(SJ.dza.source),
+      `story: the end card's money and timeline label are the ${SJ.case} case, not the DZA replay (${vt[0]})`);
+    const pr = await sp.evaluate(async () => { location.hash = "#prologue"; await new Promise((r) => setTimeout(r, 150)); return document.getElementById("side").innerText; });
+    const H = SJ.headline;
+    ok(pr.includes(`${H.n_cm_detected} of ${H.n_cm_passes}`) && pr.includes("(later)"),
+      `story: the problem view quotes the whole record (${H.n_cm_detected} of ${H.n_cm_passes}) and marks the lead plume "(later)"`);
     const op = await sp.evaluate(() => { window.story.goChapter(0); window.story.setView("incident"); return [...document.querySelectorAll(".cast li")].map((l) => getComputedStyle(l).opacity); });
     ok(op.length > 0 && op.every((o) => o === "1"), "story players: resting rows keep full-opacity text (only the icon dims), so purple names keep their contrast");
   }

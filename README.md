@@ -38,6 +38,10 @@ The bond is money the seller locks in up front: the ticket is prepaid.
 **Why now.** The UN's alert system (UNEP MARS) lists 1,122 oil and gas sources as quiet (*absent*: no MARS plume in six months); Carbon Mapper still saw a plume within 1.5 km of 203 of them ([`CRITERION`](pipeline/join/CRITERION.md)). A pre-registered forward test projects that a 220-facility clause portfolio [SIM] would stop ~3.4 kt CH₄/yr (~0.10 Mt CO₂e/yr; 95 % ~0.9–6.5 kt), against a stake of ~0.5 Mt CH₄/yr across 428 of those sources (a Carbon Mapper plume any time after MARS's first plume there; low bound; stake, not abatement).
 <!-- gen:whyNow:end -->
 
+<!-- gen:unit:begin -->
+**User · data · unit of impact.** User: the methane desk of an EU gas importer. Data: Carbon Mapper plumes and scenes joined with UNEP MARS labels. Unit: t CH₄/yr stopped at covered sources, against today's baseline — an alert that pays no one and, where answered, changed Carbon Mapper's detection rate by −0.020 against unanswered sources (95 % CI −0.105 to +0.066: no measurable change) — at USD 0.0055 of ledger calls per projected t CO₂e (forward basis).
+<!-- gen:unit:end -->
+
 *k of n: k of the n named witnesses must sign; an appeal needs k + 1. Stake: what those sources emit, not what the
 clause removes; low bound: the duty cycle's lower confidence limit and a low-percentile rate.*
 
@@ -97,6 +101,18 @@ arrives as the IEA Annex D JSON the page exports and the credit note `make demo`
 replaced (parallel run). Seller, buyer and sponsor are **[SIM]**; the plumes, MARS labels, scene records, signatures
 and chain execution are real.
 
+<details><summary>Monday, today and with the clause</summary>
+
+<!-- gen:monday:begin -->
+| | Today | With the clause |
+|---|---|---|
+| Signal | a MARS alert to the operator or government; the buyer is not in the loop | a CONFIRMED episode on a contracted source, read on the page or with `make verify-evidence` |
+| Remedy | none in the contract | the rebate withdrawn from the bond, or a credit note citing the verdict |
+| Filing | assembled by hand | the IEA Annex D record attached to the Art. 27 report |
+<!-- gen:monday:end -->
+
+</details>
+
 ## How the two-sided clause works
 
 - **Rebate (the core, unchanged since v1).** k distinct observer organisations sign the same evidence bundle for a
@@ -107,12 +123,10 @@ and chain execution are real.
 
 Each scene rule is a challenge reason anyone can raise in the clean window (`CLOUD_FLAG` … `FLOOR_MISMATCH`).
 
-*Code names: confirmed leak = CONFIRMED episode · clean pass = qualified clean pass · earn-back step = installment ·
-appeal window = challenge window · witness = observer organisation · clause = covenant; the spec, code and ABI use the
-right-hand terms.*
-
-*Also: sighting = episode · earn-back = refund (`IncentivePool`) · seller's appeal = `contest()` · anyone's
-objection = `challenge()` with a reason code.*
+*Front words → code names (spec, code, ABI): witness = observer organisation · sighting = episode · confirmed leak =
+CONFIRMED episode · appeal window = challenge window · the seller's appeal = `contest()` · anyone's objection =
+`challenge()` with a reason code · clean pass = qualified clean pass · earn-back = refund (`IncentivePool`) · earn-back
+step = installment · clause = covenant.*
 
 <!-- gen:refund:begin -->
 On **DZA_S_012** (Algeria) the replay counts **8 qualified clean passes (a lower bound)** after the 2024-09-29 episode; the relapse on 2026-02-01 cancels the claim: paid 60 %, forfeited 40 %. On **TKM_S_276**: no attestable clean pass since the 2026-06-11 episode yet. Why the refund is capped: a quiet run is weak evidence: in Carbon Mapper's catalogue (897 cells; all instruments, unqualified passes) the pass after three non-detections still saw a plume 22 % of the time (47/210, 95 % CI 17–29 %), and the passes after longer quiet runs saw one 19–24 % of the time.
@@ -123,7 +137,7 @@ On **DZA_S_012** (Algeria) the replay counts **8 qualified clean passes (a lower
 <!-- gen:chain:begin -->
 | Question | Answer |
 |---|---|
-| Multiple parties? | Seller, buyer, a sponsor, ≥ 2 observer organisations, open challengers. |
+| Multiple parties? | Seller, buyer, a sponsor, k of n observer organisations named in the clause (n ≥ k + 2; none is the seller's or the buyer's), open challengers. |
 | No trusted operator? | None exists for this function. Registries (MiQ, JOGMEC CLEAN, UNEP MARS) certify and notify but cannot move a seller's money; a bank can move money but cannot adjudicate satellite evidence; a court can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the other, so the decision has to come from k independent observers plus an open challenge window — which is what the contract executes. |
 | Outside verification? | Anyone can re-fetch Carbon Mapper, recompute the canonical bundle hash and challenge an episode or a clean pass with an objective reason code. |
 | Fits the ledger? | Only hashes, IDs and money: `evidenceHash`, `sceneHash`, `policyHash`, a Merkle root of covered facilities, the bond, the pool. Raw data stays with the providers and the observers. |
@@ -256,6 +270,10 @@ the DZA_S_012 relapse of 2026-02-01 (694 kg/h) CONFIRMED [`0x978213…`](https:/
 
 <!-- gen:numbers:end -->
 
+**From projection to measurement.** The pilot replaces both ASSUMPTIONs with its own record: the action share from
+CONFIRMED episodes followed by qualified clean passes, the time share from a confidence upper bound on how often the
+source still emits above the floor. Year one reports a measured stop share beside this projection.
+
 ## Not evaluated
 
 | Not evaluated | Why | Instead |
@@ -275,9 +293,9 @@ Python 3.12 + [uv](https://docs.astral.sh/uv/), [Foundry](https://getfoundry.sh)
 <!-- gen:counts:begin -->
 ```sh
 make setup   # Python venv with pinned deps
-make test    # in a fresh clone of the public export: pipeline 402 passed, 10 skipped; contracts (forge) 302 tests passed, 0 failed
+make test    # in a fresh clone of the public export: pipeline 413 passed, 10 skipped; contracts (forge) 308 tests passed, 0 failed
 make demo    # the four runs in the table above
-make check   # + judge-local, the strict audit, wording, links, secrets; page and builder tests: 168 passed, 7 skipped
+make check   # + judge-local, the strict audit, wording, links, secrets; page and builder tests: 174 passed, 7 skipped
 ```
 <!-- gen:counts:end -->
 
@@ -296,8 +314,10 @@ against `data/derived/audit_numbers.json`. Decisions: [`contracts/README.md`](co
   two instruments, a MARS corroboration and the cure term.
 - **Observers attest what they received**, from whom and when; Carbon Mapper and UNEP do not sign their data. The
   chain cannot see clouds, only that k organisations signed the same scene fields. A re-quantification never edits a
-  confirmed episode; scenes published after the covenant's end plus the publication lag and clean window are lost; a
-  relapse is read from the core's latest episode, so the sponsor watches and reports relapses.
+  confirmed episode; scenes published after the covenant's end plus the publication lag and clean window are lost;
+  detections published after the term plus the challenge window can miss the bond (the seller may then settle it) —
+  a tail covenant with a backdated start covers them, and a later core version waits out the publication lag before
+  settling; a relapse is read from the core's latest episode, so the sponsor watches and reports relapses.
 - **Prototype keys.** In this prototype the observer organisations are run by one person [SIM]; a judge's own
   wallet is designed to be the one signer we do not control. On the public record every signature so far is the
   author's — the judge walk-through was run with an author-generated test wallet; any judge can repeat it with their

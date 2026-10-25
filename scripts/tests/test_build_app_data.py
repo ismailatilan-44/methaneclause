@@ -539,6 +539,74 @@ def test_alerts_paragraph_fails_closed(what):
         bad.alerts_block(ps, pj)
 
 
+def test_unit_block_renders_the_event_study_and_the_forward_ledger_cost_from_data():
+    """The user / data / unit-of-impact line quotes the event study through the accessor the alerts paragraph uses and
+    the forward hold-out's ledger cost per t CO₂e; README (after whyNow) and Devpost carry it, the hand-typed join
+    counts are gone from Devpost; a missing forward figure or an interval that excludes zero stops the build."""
+    u = bad.unit_block(PROJECTION)
+    did = bad.event_study(PROJECTION)["did"]
+    assert did is PROJECTION["evidence"]["line2"]["coverageSets"]["allNotified"]["primary"]["did"]
+    for x in (did["yesMinusNo"], *did["ci"]):
+        assert bad._pm3(x) in u and bad._pm3(x) in _readme_blocks()["alerts"]
+    usd = PROJECTION["forward"]["ledger"]["usdPerTco2eGwp100Central"]
+    assert f"USD {bad._two_sig(usd)} of ledger calls per projected t CO₂e (forward basis)" in u
+    assert f"USD {bad._two_sig(usd)} per t CO₂e" in PROJECTION["forward"]["card"]["costSentence"]
+    assert "no measurable change" in u and "stake, not abatement" not in u
+    readme = (ROOT / "README.md").read_text()
+    assert readme.index("<!-- gen:whyNow:end -->") < readme.index("<!-- gen:unit:begin -->")
+    for path, t in _docs().items():
+        if path != "docs/pdf/methaneclause.md":
+            assert f"<!-- gen:unit:begin -->\n{u}\n<!-- gen:unit:end -->" in t, path
+        assert "For the judges: user, data, unit of impact" not in t, path
+    broken = copy.deepcopy(PROJECTION)
+    del broken["forward"]["ledger"]["usdPerTco2eGwp100Central"]
+    with pytest.raises(SystemExit):
+        bad.unit_block(broken)
+    broken = copy.deepcopy(PROJECTION)
+    broken["forward"]["ledger"]["usdPerTco2eGwp100Central"] = usd * 3  # no longer what the forward card prints
+    with pytest.raises(SystemExit):
+        bad.unit_block(broken)
+    broken = copy.deepcopy(PROJECTION)
+    broken["evidence"]["line2"]["coverageSets"]["allNotified"]["primary"]["did"]["ci"] = [0.01, 0.2]
+    with pytest.raises(SystemExit):
+        bad.unit_block(broken)
+
+
+def test_monday_table_names_the_report_article_from_the_clause_sources():
+    """README ("Who uses it", folded) and the paper (section 5) carry the Monday table; the article of the importer's
+    yearly report is read from docs/clause/clause_sources.json and a changed source wording stops the build."""
+    eu = {e["id"]: e for e in json.loads((ROOT / "docs" / "clause" / "clause_sources.json").read_text())["euDates"]}
+    t = bad.monday_block(eu["art27Report"])
+    art = re.match(r"Art\. \d+", eu["art27Report"]["what"]).group(0)
+    assert f"the IEA Annex D record attached to the {art} report |" in t and len(t.splitlines()) == 5
+    for path, doc in _docs().items():
+        if path != "docs/devpost.md":
+            assert f"<!-- gen:monday:begin -->\n{t}\n<!-- gen:monday:end -->" in doc, path
+    readme = (ROOT / "README.md").read_text()
+    assert readme.index("## Who uses it") < readme.index("<summary>Monday, today and with the clause</summary>") \
+        < readme.index("<!-- gen:monday:begin -->") < readme.index("## How the two-sided clause works")
+    with pytest.raises(SystemExit):
+        bad.monday_block({**eu["art27Report"], "what": "Art. 27: a report"})
+
+
+def test_chain_table_row_one_names_k_of_n_with_the_spare():
+    """The four-question table's first row agrees with the first screen's n ≥ k + 2 line (no "≥ 2 observers")."""
+    row = bad.CHAIN_TABLE.splitlines()[2]
+    assert "k of n observer organisations named in the clause (n ≥ k + 2; none is the seller's or the buyer's)" in row
+    assert "≥ 2 observer" not in bad.CHAIN_TABLE
+
+
+def test_paper_section_4_leads_the_cost_with_the_forward_basis():
+    """The paper's first cost per tonne (section 4 lead) is the forward hold-out's; the whole-window line follows."""
+    lead = bad.projection_blocks()["projection"]
+    usd = bad._two_sig(PROJECTION["forward"]["ledger"]["usdPerTco2eGwp100Central"])
+    fwd = f"On the forward basis the ledger costs USD {usd} per t CO₂e projected at the central action share."
+    whole = bad._whole_window(PROJECTION["card"]["costLineSentence"])
+    assert lead.index(fwd) < lead.index(whole)
+    first = lead.index("per t CO₂e")  # the first cost per tonne a reader meets is the forward one
+    assert lead.index(fwd) < first < lead.index(fwd) + len(fwd)
+
+
 def test_headline_and_contest_sentence_are_the_shared_wording():
     """README and Devpost carry the shared headline (the PDF's static text is edited separately); nothing still says
     the seller cannot hold back a rebate "on its own" (it can appeal: a challenge resolved by k witnesses or a contest

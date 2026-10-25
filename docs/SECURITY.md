@@ -20,8 +20,9 @@ The post-quantum boundary is in section 9.
 - **Replay and freshness:** chainId + verifyingContract in the EIP-712 domain, a per-key nonce bitmap,
   `now ≤ expiry ≤ now + 1 day`; one bad attestation reverts the whole call (section 7; `test_replay_reusedNonce_reverts`,
   `test_crossChainReplay_reverts`, `test_crossContractReplay_reverts`, `test_expired_reverts`).
-- **Admin:** no contract has an owner, an upgrade path or a pause; the registry admin is renounced on Sepolia
-  (`registryAdmin` is the zero address in `contracts/deployments/11155111.json`; section 10;
+- **Admin:** no contract has an owner, an upgrade path or a pause; the registry admin is renounced on Sepolia:
+  [`VERIFY`](VERIFY.md) step 4 reads `admin()` live, and the deployment record has `registryAdmin` = 0x0
+  (`contracts/deployments/11155111.json`); no function moves funds as an administrator (section 10;
   `invariant_I7_noAdminPath`).
 - **Assurance:** Foundry stateful-fuzz invariants I1–I7 (core), P1–P9 (pool) and KeyRegistryV2's three, a Slither
   triage with 0 High, bounded Halmos runs (section 13).
@@ -41,7 +42,7 @@ attested detection cancels.
 
 | Question | Answer |
 |---|---|
-| Multiple parties? | Seller, buyer, ≥ 2 observer organisations, open challengers; for the refund also sponsors and, optionally, a surety. |
+| Multiple parties? | Seller, buyer, a sponsor, k of n observer organisations named in the clause (n ≥ k + 2; none is the seller's or the buyer's), open challengers; for the refund also sponsors and, optionally, a surety. |
 | No trusted operator? | None exists for this function. Registries (MiQ, JOGMEC CLEAN, UNEP MARS) certify and notify but cannot move a seller's money; a bank can move money but cannot adjudicate satellite evidence; a court can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the other, so the decision has to come from k independent observers plus an open challenge window — which is what the contract executes. The registries stay inputs. |
 | Outside verification? | Anyone can re-fetch Carbon Mapper, recompute the canonical bundle hash (RFC 8785 JCS + SHA-256) and challenge an episode or a clean pass with an objective reason code. |
 | Fits the ledger? | Only hashes, identifiers and money: `evidenceHash`, `sceneHash`, `policyHash`, the Merkle root of covered facilities, bonds, rebates and refunds. Raw data stays with the providers and the observers. |
@@ -172,7 +173,7 @@ transactions (receipt status 0).
 | R3 | E | quorum | seller or buyer attests its own source; two keys of one org count twice | role confusion | H | Avoid: org ∉ {sellerOrg, buyerOrg}; quorum counts distinct `orgId`s | `invariant_I1_quorum`, `invariant_I2_noSelfAttestation`, `test_selfAttestation_sellerKey_reverts`, `test_selfAttestation_sellerOrgObserver_reverts`, `test_selfAttestation_buyerOrg_reverts`, `test_quorumNotMet_twoKeysSameOrg_reverts`, `test_attestorNotIndependent_nonObserverRole_reverts` |
 | R4 | D | timeliness | fetcher, provider or RPC outage; a retry duplicates a proposal | one fetcher, one node | M | Reduce + retain: windows run on chain time, not our uptime; any party finalizes after a deadline; identical resubmission rejected; HTTP retries with back-off (`pipeline/common.py`) | `invariant_I5_noStuckState`, `test_duplicateEvidence_isIdempotent`, `test_finalize_guards`; `make demo` "Resubmit" step |
 | R5 | S/T | input truth | spoofed or poisoned provider data; unit swap; slow drift | we cannot authenticate the sensor | H | Reduce + transfer: validation before signing, k distinct fetchers, provider re-fetch hash; residual trust stays with the provider | `test_bad_input_refused` (parametrised), `test_adversarial_set_all_caught_and_slow_drift_is_a_hash_catch`, `test_observer_disagreement_gives_different_hash`, `test_observerDisagreement_reverts`; detection rate in section 11 |
-| R6 | S | observer keys | key theft | key on a laptop | H | Reduce: one key per role and org, rotation with history, revocation by the controller or by the key itself, validity at submission, secrets scan | `test_revokedKey_reverts`, `test_revoke_bySelf_controller`, `test_rotate_keepsHistory`, `test_rotatedOldKey_reverts_newKeyAccepted`, `test_anvil_keys_refused_off_anvil`; `make secrets` (gitleaks) |
+| R6 | S | observer keys | key theft | key on a laptop | H | Reduce: one key per role and org, rotation with history, revocation by the controller or by the key itself, validity at submission, secrets scan | `test_revokedKey_reverts`, `test_revoke_bySelf_controller`, `test_rotate_keepsHistory`, `test_rotatedOldKey_reverts_newKeyAccepted`, `test_anvil_keys_refused_off_anvil`, `test_anvil_key_in_env_refused_off_anvil`, `test_revokedFirstKey_staysController_registersNewObserver`, `test_v2_removal_closesKeys`; `make secrets` (gitleaks) |
 | R7 | S | long-term authenticity | a future quantum computer forges ECDSA | secp256k1 falls to Shor | M (long-term) | Reduce + retain: ML-DSA-44 (FIPS 204) over the same JCS bytes, `pqPubKeyHash` anchored in the registry and checked against it; ECDSA transaction identity retained as a stated risk (section 9) | `test_sign_and_verify_both_halves`, `test_verify_bundle_rejects_foreign_mldsa_key`, `test_observer_signs_the_same_bytes_the_evidence_hash_commits_to`, `test_context_and_message_are_bound`, `test_pq_seed_is_not_derived_from_the_ecdsa_key` |
 | R8 | D/S | challenge process | griefing or Sybil challenges and proposals | free calls | M | Reduce: exact proposer and challenger bonds; objective reason codes only; failed challenger pays the buyer; unresolved → expired, bonds returned, nobody slashed. Residual (an unanswered challenge or contest expires the rebate) and the production quorum margin: section 15 | `test_badProposerBond_reverts`, `test_challenge_guards`, `test_challenge_confirm_challengerBondToBuyer`, `test_challengeHashMismatch_withdraw_void_challengerGetsProposerBond`, `test_challenge_unresolved_expires_bondsReturned` |
 | R9 | I | party confidentiality | commercial data leaks on a public chain | public state | L–M | Reduce: only hashes, ids, rates, timestamps and amounts on chain; raw responses never committed or posted | **design only** (no test proves the absence of a leak): the `Attestation` and `CleanPass` structs (section 6) carry no other fields; `test_extra_field_refused` keeps the off-chain bundle to the published schema |
@@ -225,7 +226,7 @@ transactions (receipt status 0).
 | Cross-domain replay | EIP-712 chainId + verifyingContract; distinct type hashes; FIPS 204 context string `MethaneClause/v1`. The ML-DSA-44 context binds the protocol, not the chain or the contract: the bundle names a `covenantId`, which is a per-deployment counter, so the chain binding of a hybrid signature comes from its ECDSA half today, the half section 9 assumes a quantum adversary can forge. Roadmap ([`PRODUCTION.md`](PRODUCTION.md) item 10): ML-DSA-44 over JCS({bundle, chainId, verifyingContract}) under a new context version, an observer, verifier and page change with no contract change | `test_crossChainReplay_reverts`, `test_crossContractReplay_reverts`, `test_cleanPass_crossChain_reverts`, `test_pool_rejectsCoreAttestation`, `test_core_rejectsCleanPass`, `test_context_and_message_are_bound` |
 | Freshness | `now ≤ expiry ≤ now + 1 day` | `test_expired_reverts`, `test_expiryTooFar_reverts`, `test_attestCleanPass_expired_reverts` |
 | Agreement | every attestation in a batch must carry the same fields, else `AttestationMismatch` | `test_observerDisagreement_reverts`, `test_attestCleanPass_attestationMismatch_reverts` |
-| Non-repudiation | signer, org and evidence hash recorded on chain in events | `test_happyPath_2of3_confirmed_buyerWithdraws`, `test_attestCleanPass_storesPendingPass_emits` |
+| Non-repudiation | evidence hash and organisation count in events; signer and organisation recovered from the calldata signatures (`make verify-evidence` row `eip712`, [`VERIFY`](VERIFY.md) step 2) | `test_happyPath_2of3_confirmed_buyerWithdraws`, `test_attestCleanPass_storesPendingPass_emits` |
 | Anonymity / privacy | **not claimed.** Keys are pseudonymous addresses; organisations are named in the registry | — |
 
 ## 7. Replay, nonce, chain id, expiry
@@ -233,9 +234,11 @@ transactions (receipt status 0).
 Signature format: 65 bytes `r ‖ s ‖ v`, `v ∈ {27, 28}`, low `s` only. Digest
 `keccak256(0x1901 ‖ domainSeparator ‖ hashStruct(...))` with domain `{name "MethaneClause", version "1", chainId,
 verifyingContract}`; the domain separator is cached and recomputed if the chain id changes (fork safety). Nonces are a
-per-key bitmap, so any unused `uint64` works and a nonce never reopens. A key's validity is checked when the batch is
-submitted, so a revoked key's attestations fail even if they were signed before the revocation. One bad attestation
-reverts the whole call: nothing is half-written. `make demo` repeats replay (`Replay`), revoked key (`RevokedKey`) and
+per-key bitmap, so any unused `uint64` works and a nonce never reopens. The signer chooses `expiry`; the contract
+accepts it only if `now ≤ expiry ≤ now + MAX_EXPIRY_HORIZON` (1 day, `contracts/src/MethaneCovenant.sol`), so a
+signature is usable only in the 24 h before its expiry (`test_expired_reverts`, `test_expiryTooFar_reverts`). A key's
+validity is checked when the batch is submitted, so a revoked key's attestations fail even if they were signed before
+the revocation. One bad attestation reverts the whole call: nothing is half-written. `make demo` repeats replay (`Replay`), revoked key (`RevokedKey`) and
 resubmission (`DuplicateEvidence`) as real failed transactions; the Sepolia run records tamper, self-attestation,
 not-covered and replay rejections with receipt status 0 ([`data/derived/testnet_run.json`](../data/derived/testnet_run.json)).
 
@@ -253,21 +256,30 @@ not-covered and replay rejections with receipt status 0 ([`data/derived/testnet_
 - **Rotation:** `rotateKey(old, new, algId, pqPubKeyHash)` closes the old key now and registers the new one for the
   same organisation and role; history is kept (`test_rotate_keepsHistory`, `test_rotatedOldKey_reverts_newKeyAccepted`).
   Bundles stay verifiable after rotation because the hash is over canonical JSON and the old key's validity window is
-  on chain.
+  on chain (`test_verify_bundle_passes_after_signer_rotated_later`).
 - **Revocation:** `revokeKey(key)` by the organisation's controller or by the key itself (a compromise report);
-  effective at once for every later submission (`test_revoke_bySelf_controller`; `make demo` revokes OBS_B and its next
-  attestation reverts `RevokedKey`).
+  effective at once for every later observer submission and every later `createCovenant`
+  (`test_revoke_bySelf_controller`, `test_revokedSellerKey_stillContests_andIsCreditedAtSettle`; `make demo` revokes
+  OBS_B and its next attestation reverts `RevokedKey`). A covenant's seller and buyer are addresses fixed at creation:
+  the registry gates who may create a covenant, and the covenant then pays and answers those addresses
+  (`test_rotatedBuyerKey_rebateStillCreditedToOldAddress`); a party rotates its keys inside a contract wallet
+  (section 15).
 - **`algId`:** 1 = secp256k1 ECDSA (checked on chain); 2 = hybrid ECDSA + ML-DSA-44, with `pqPubKeyHash = SHA-256` of
   the ML-DSA-44 public key anchored in the registry. The local demo registers its observers as algId 2; the Sepolia
   main observers predate the hybrid and are algId 1 (moving them is `rotateKey(old, new, 2, pqHash)`, not a redeploy).
   ML-DSA seeds are not derived from the ECDSA key (`test_pq_seed_is_not_derived_from_the_ecdsa_key`).
 - **Storage:** operator keys live in a local `.env` that is never committed (`.env.example` lists the names); `make
-  secrets` runs gitleaks over the history; Anvil test keys are refused off Anvil (`test_anvil_keys_refused_off_anvil`),
+  secrets` runs gitleaks over the history; Anvil test keys are refused off Anvil: an observer refuses any key of the
+  public Anvil mnemonic (accounts 0–9) on a chain other than 31337, whether it is set in the environment or passed in
+  (`test_anvil_keys_refused_off_anvil`, `test_anvil_key_in_env_refused_off_anvil`),
   and deterministic signing is opt-in and refused on any chain but 31337 (`test_opt_in_determinism_refused_off_anvil`).
-- **Controller equals first key (Sepolia main deployment).** `Deploy.s.sol` (`_org`) sets each organisation's
-  controller to its first key, so a stolen observer key is also its organisation's controller and can rotate to an
-  attacker key before the victim revokes it. Production uses a separate, cold controller key per organisation, a
-  deployment-script change with no contract change ([`PRODUCTION.md`](PRODUCTION.md) item 3); this prototype does not.
+- **Controller permanence.** In v1 an organisation's controller is fixed once the admin renounces: a stolen
+  controller key is answered by KeyRegistryV2's removal vote (`test_v2_removal_closesKeys`) or by the parties naming a
+  new registry; production uses a cold controller key per organisation, separate from its signing keys, a
+  deployment-script change with no contract change ([`PRODUCTION.md`](PRODUCTION.md) item 3). On the Sepolia main
+  deployment `Deploy.s.sol` (`_org`) makes each organisation's first key its controller, so revoking that key closes
+  it as a signer while the same address can still register a new OBSERVER key for the organisation
+  (`test_revokedFirstKey_staysController_registersNewObserver`).
 
 ## 9. Cryptography and the post-quantum boundary
 
@@ -278,7 +290,14 @@ not-covered and replay rejections with receipt status 0 ([`data/derived/testnet_
 | ML-DSA-44 (FIPS 204, level 2) | second signature over the same JCS bundle bytes, verified off-chain (`scripts/verify_bundle.py`, the page) | designed to resist | — |
 
 Sizes: ML-DSA-44 public key 1,312 bytes, signature 2,420 bytes (asserted in `test_sizes_and_deterministic_keygen`).
-Libraries, no custom cryptography: `dilithium-py` in the pipeline, `@noble/post-quantum` in the page.
+Time (median of 200 runs on one machine, [`data/derived/pq_bench.json`](../data/derived/pq_bench.json) from
+`scripts/pq_bench.py`): ML-DSA-44 signs the bundle in 12.6 ms and verifies it in 3.1 ms; secp256k1 ECDSA signs the
+EIP-712 attestation in 2.4 ms and recovers it in 3.7 ms. Both run in pure Python here: dilithium-py is a pure-Python
+reference implementation, not an optimised one, and eth-keys uses its native Python backend
+(`test_security_md_pq_timing_matches_the_json`).
+Libraries, no custom cryptography: `dilithium-py` in the pipeline (a reference implementation, not constant-time),
+`@noble/post-quantum` in the page (it only verifies; no secret key reaches it). A production signer uses a
+constant-time FIPS 204 library.
 
 **Anchoring.** An ML-DSA-44 signature counts only if SHA-256 of its public key equals the `pqPubKeyHash` that
 `KeyRegistry` holds for the signer's address (algId 2). The bundle's own `pkHash` field is informational only: a
@@ -519,7 +538,7 @@ chain only. The path from this prototype to production for each element: [`docs/
 | CH₄ map tiles and imagery | Loaded by the reader's browser from Carbon Mapper at view time | Yes, from the provider | No | None of ours: not attested, not stored | Not stored |
 | ECDSA signatures (EIP-712) | Chain calldata; signer and organisation in events | Yes | No | Recovery against an OBSERVER key valid at submission; nonce bitmap, domain, expiry (R2) | Chain: permanently |
 | ML-DSA-44 signatures and public keys | Off chain beside the bundle (local demo run record); the registry holds `pqPubKeyHash` | Yes | No | SHA-256 of the public key must equal the registry's `pqPubKeyHash` (section 9) | With the bundle |
-| Private keys and ML-DSA seeds | The holder's machine only: the operator's `.env` (never committed, never read by coding agents); a judge's key in their wallet or the `JUDGE_PK` environment variable, never written to disk by the scripts; Anvil accounts, the judge-sandbox keys and the demo's ML-DSA seeds are public test values on purpose | Secret, except the published test keys | No | `make secrets` (gitleaks over the history); Anvil keys refused off Anvil (`test_anvil_keys_refused_off_anvil`); a lost key is revoked or rotated in the registry (R6) | As long as the holder keeps them; a revoked key never counts again |
+| Private keys and ML-DSA seeds | The holder's machine only: the operator's `.env` (never committed, never read by coding agents); a judge's key in their wallet or the `JUDGE_PK` environment variable, never written to disk by the scripts; Anvil accounts, the judge-sandbox keys and the demo's ML-DSA seeds are public test values on purpose | Secret, except the published test keys | No | `make secrets` (gitleaks over the history); Anvil keys refused off Anvil, from the environment or passed in (`test_anvil_keys_refused_off_anvil`, `test_anvil_key_in_env_refused_off_anvil`); a lost key is revoked or rotated in the registry (R6) | As long as the holder keeps them; a revoked key never counts again |
 | Registered keys, roles, organisation ids and controllers | Chain (`KeyRegistry`) | Yes | No: pseudonymous organisation keys of named organisations | Written only by the admin before it renounces, then by each organisation's controller; full history kept (R6) | Chain: permanently; validity windows close, entries are never deleted |
 | A judge's wallet address (OBS_JUDGE) | Chain: an OBSERVER key in the judge-sandbox registry and the sender of the judge's transactions; `out/judge/<chainId>.json` on the judge's own machine (git-ignored) | Yes | Pseudonymous; it can be personal data if it can be linked to a person (GDPR Recital 26). The system asks for no name or contact; the walk-through asks for a fresh test wallet (`cast wallet new`) | Registry history; the key can be revoked by OBS_JUDGE's published controller or by itself | Chain: permanently (revocable as a key, not erasable); the local file until the judge deletes it |
 | Policy (`POLICY_V2`, `POLICY_V2_VERDICT_ONLY`, the v1 policy) | Repository (`data/derived/policy_v2.json`); chain: `policyHash` per covenant, `paramsHash` per pool | Yes | No | SHA-256 of the JCS form fixed at `createCovenant` before evidence; `paramsHash = keccak256(abi.encode(PoolParams))`, every top-up must match (R10, R18) | Repository and chain: permanently |
@@ -528,7 +547,7 @@ chain only. The path from this prototype to production for each element: [`docs/
 | Episode, claim, pass, corroboration and installment states | Chain | Yes | No | Permissionless transitions with deadlines; invariants I1–I7 and P1–P9 | Chain: permanently; no function deletes a record |
 | Exports: IEA Annex D, Annex C seller claims [SIM], the credit-note register | Repository (`data/derived/export/`); credit notes written by `make demo` to `out/demo/` (not committed); an Annex C claim reaches the chain only as its hash (`recordMitigationClaim`) | Yes for the committed files | No in this repository. A real seller's Annex C form has facility and corporate contact fields, which stay off chain with the parties; only the form's hash is on chain | JSON and CSV round trip to the same JCS hash; a credit note's `noteHash`, and an edited note is refused (`test_import_refuses_an_edited_note`) | Append-only: a correction is a new note that links the old one |
 | Transaction index and measurements | Repository (`data/derived/sepolia_txs.json`, `data/derived/sepolia_txlog.jsonl`, `data/derived/measurements.json`), rebuilt from the chain | Yes | No: our own addresses, including the author-generated judge test wallet | Each field read back from a public RPC; each sender's count checked against its nonce | Repository: its history |
-| What a page reader's browser sends | The page has no backend and keeps its state, wallet state included, in memory; the browser loads modules from cdn.jsdelivr.net, map tiles from tile.openstreetmap.org and CH₄ tiles from api.carbonmapper.org, and reads Sepolia through a public RPC | — | The reader's IP address reaches the page's host and those services under their own terms; the page collects nothing | Module versions pinned; subresource integrity is a production step (section 2) | Nothing kept by the page |
+| What a page reader's browser sends | The page has no backend and keeps its state, wallet state included, in memory; the browser loads modules from cdn.jsdelivr.net, map tiles from tile.openstreetmap.org and CH₄ tiles from api.carbonmapper.org, and reads Sepolia through a public RPC | — | The reader's IP address reaches the page's host and those services under their own terms; the page collects nothing | Module versions pinned; SRI on Leaflet, MapLibre and the ML-DSA-44 graph; viem is version-pinned without an integrity hash (section 2) | Nothing kept by the page |
 
 ## 15. Residual risk
 
@@ -579,8 +598,21 @@ chain only. The path from this prototype to production for each element: [`docs/
 > - **Observers are not bonded in v2.** A wrong clean pass or detection costs its submitter's bond (won by the
 >   challenger), not the signing organisations; an observer's stake is its registered identity, its revocable key and,
 >   on V2, removal by vote.
-> - **Controller equals first key** on the Sepolia main deployment: a stolen observer key can rotate before its
->   organisation revokes it (section 8).
+> - **Controller permanence.** In v1 an organisation's controller is fixed once the admin renounces: a stolen
+>   controller key is answered by KeyRegistryV2's removal vote (`test_v2_removal_closesKeys`) or by the parties naming
+>   a new registry; production uses a cold controller key per organisation, separate from its signing keys. On the
+>   Sepolia main deployment the controller is each organisation's first key (section 8,
+>   `test_revokedFirstKey_staysController_registersNewObserver`).
+> - **Parties rotate keys inside a contract wallet.** A covenant's seller and buyer are addresses fixed at creation
+>   (section 8), so a party keeps its address and rotates the keys behind it: a multisig does this for the buyer or
+>   the seller. `SuretyBond` already puts a contract at the seller address, so its operator key can create, contest
+>   and record claims but cannot move the bond's money (R25); an operator-rotation function is the remaining step
+>   (`test_revokedSellerKey_stillContests_andIsCreditedAtSettle`, `test_rotatedBuyerKey_rebateStillCreditedToOldAddress`).
+> - **Settlement tail.** Detections published after the term plus the challenge window are outside the bond: after
+>   `settle`, `proposeEpisode` reverts `WindowClosed` (`test_settle_thenLatePublishedDetection_reverts_WindowClosed`).
+>   A tail covenant with a backdated start (up to `MAX_LOOKBACK`, 365 days in `contracts/src/MethaneCovenant.sol`)
+>   covers them (`test_tailCovenant_backdatedStart_coversLatePublishedDetection`), and a later core version settles
+>   only after the publication lag (roadmap; the v1 core stays byte-identical).
 > - **An UNFUNDED installment** keeps its pool CLOSING until a top-up or a relapse; sponsors' remainder waits with it.
 >   The queue is first in, first out: an UNFUNDED installment at the head blocks later, smaller ones that the balance
 >   could already cover (head-of-line blocking), so no installment overtakes an older one.

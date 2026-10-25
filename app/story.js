@@ -98,6 +98,7 @@ let acc = 0;
 for (const c of CH) { c.x0 = acc; c.x1 = acc + USABLE * c.w / SUMW; acc = c.x1 + GAP; }
 const T0 = CH[0].from, T2 = CH.at(-1).to;
 const inZ9 = (t) => t >= CH.at(-1).from;
+const z9On = () => inZ9(T) && view !== "verify";   // the DZA replay in the timeline label, charts and money; Verify (the end card) is the TKM case
 const z9Real = (t) => Z9_R0 + Math.max(0, Math.min(1, (t - CH.at(-1).from) / (CH.at(-1).at - CH.at(-1).from))) * (Z9_R1 - Z9_R0);
 const chOf = (t) => Math.max(0, CH.findIndex(c => t < c.to) === -1 ? CH.length - 1 : CH.findIndex(c => t < c.to));
 const xOf = (t) => { const c = CH[chOf(t)]; const f = Math.max(0, Math.min(1, (t - c.from) / (c.to - c.from))); return c.x0 + f * (c.x1 - c.x0); };
@@ -508,7 +509,7 @@ function drawFlow() {
     <div class="tamper"><div class="ev ok"><small>The record as witnesses A and B signed it</small><b>${fmt.format(lead.rate)} kg/h</b><span>tier ${tierOf(lead.rate) + 1} → rebate ${ETH(S.policy.tierAmountsWei[tierOf(lead.rate)])} ETH</span><span class="sig">✓ both signatures match</span></div>
       <div class="arrow">→</div>
       <div class="ev bad"><small>The ${sim("seller")} edits one number, keeps the signatures</small><b>${fmt.format(TAMPER_RATE)} kg/h</b><span>tier ${tierOf(TAMPER_RATE) + 1} → rebate ${ETH(S.policy.tierAmountsWei[tierOf(TAMPER_RATE)])} ETH</span><span class="sig">✕ signatures no longer match the evidence</span></div></div>
-    <div class="verdict">The contract refused it: <b>${t.reason}</b>, status 0 · <a href="${t.tx}" target="_blank" rel="noopener">${tx(t).slice(0, 10)}…${tx(t).slice(-6)} on Sepolia ↗</a></div>`;
+    <div class="verdict">The contract refused it: <b>${t.reason}</b>, status 0 · <a href="${t.tx}" target="_blank" rel="noopener">${tx(t).slice(0, 10)}…${tx(t).slice(-6)} on Sepolia ↗</a> · <a href="index.html?tamper=A">recompute it in your browser →</a></div>`;
     return;
   }
   $("flow").innerHTML = `<div class="flowcap">Chapter ${ci + 1} · ${c.short} — who acts</div><svg viewBox="0 0 880 300">
@@ -583,11 +584,11 @@ function sideIncident() {
   <div class="card"><h3>Players <span class="r">${prologue ? "the problem" : `chapter ${chOf(T) + 1}`} · ${dfmt(T)}</span></h3><ul class="cast">${cast}</ul></div>
   <div class="card"><h3>Two records</h3>
     ${after("marslast") ? `<div class="vs"><div class="a"><small>UNEP IMEO MARS</small><div class="big">“${S.mars.persistency}”</div><small>last plume ${dfmt(marsLast.t)}</small></div>
-    <div class="b"><small>Carbon Mapper since then</small><div class="big">${(() => { const H = S.headline, ps = H.detections.map(D).filter(t => t <= T), dt = ps.length; return dt ? `${dt} of ${dt}` : "no pass yet"; })()}</div><small>passes over Carbon Mapper sources within ${S.headline.radius_km} km saw a plume</small></div></div>`
+    <div class="b"><small>Carbon Mapper since then${prologue ? "" : " · so far"}</small><div class="big">${(() => { const H = S.headline; if (prologue) return `${H.n_cm_detected} of ${H.n_cm_passes}`; const dt = H.detections.map(D).filter(t => t <= T).length; return dt ? `${dt} of ${dt}` : "no pass yet"; })()}</div><small>passes over Carbon Mapper sources within ${S.headline.radius_km} km saw a plume</small></div></div>`
     : `<div class="vs"><div class="a"><small>UNEP IMEO MARS</small><div class="big">${pl(marsPl.filter(p => p.t <= T).length, "plume")}</div><small>government notified</small></div>
     <div class="b"><small>Carbon Mapper so far</small><div class="big">${pl(days(plumes.filter(p => p.t <= T)), "day")}</div><small>with a plume within ${S.facility.radiusKm} km</small></div></div>`}
     <dl class="kv"><dt>Government notified</dt><dd>${S.mars.notified}</dd><dt>Operator reply to UNEP</dt><dd class="bad">${S.mars.operatorFeedback === "No" ? "None" : S.mars.operatorFeedback}</dd>
-    <dt>Lead plume</dt><dd class="good">${fmt.format(lead.rate)} kg/h · ${dfmt(lead.t)}</dd></dl></div>
+    <dt>Lead plume</dt><dd class="good">${fmt.format(lead.rate)} kg/h · ${dfmt(lead.t)}${lead.t > T ? " (later)" : ""}</dd></dl></div>
   ${prologue || chOf(T) >= 2 ? `<div class="card"><h3>At stake <span class="r">${S.stake.label}</span></h3>
     <div class="vs"><div class="b" style="grid-column:1/3"><small>Methane at stake if the duty cycle seen on passes holds</small><div class="big">${S.stake.kt_ch4_per_yr.low}–${S.stake.kt_ch4_per_yr.high} kt CH₄ / yr</div>
     <small>${fmt.format(Math.round(S.stake.kt_co2e_per_yr_gwp100.low))}–${fmt.format(Math.round(S.stake.kt_co2e_per_yr_gwp100.high))} kt CO₂e (GWP100 ${S.stake.gwp100}) · basis: ${S.stake.detected} of ${S.stake.passes} passes over Carbon Mapper sources within ${S.facility.radiusKm} km since ${dfmt(D(S.stake.since))}</small></div></div></div>` : ""}
@@ -638,7 +639,7 @@ function sideContract() {
     const eth = (w) => Number(BigInt(w)) / 1e18;
     return `<div class="card"><h3>Earn-back clause <span class="r">${Z9.source}</span></h3>
       <div class="kpis"><div><b>${z9Out.counted}</b><small>passes counted</small></div><div><b style="color:var(--money)">${eth(z9Sp.releasedWei)}</b><small>ETH back</small></div><div><b style="color:var(--bad)">${eth(z9Sp.forfeitedWei)}</b><small>ETH forfeited</small></div><div><b>${Z9.replayA.checks}</b><small>checks</small></div></div>
-      <p class="hint">Replayed on ${Z9.replayA.chain} with a ${sim("pinned clock")} (${simMark(Z9C.covenantLabel)}).</p></div>
+      <p class="hint"><span>Replayed on ${Z9.replayA.chain} with a ${sim("pinned clock")} (${simMark(Z9C.covenantLabel)}).</span></p></div>
       <div class="card"><h3>Earn-back steps</h3><dl class="kv">${Z9C.installments.map(([n, bp, two, corr]) => `<dt>at ${n} counted passes</dt><dd>${bp / 100} %${two ? " · 2 instruments" : ""}${corr ? " · MARS corroboration" : ""}</dd>`).join("")}</dl></div>
       <div class="card"><h3>On Sepolia <span class="r">judge sandbox</span></h3><ul class="txs">${Z9.sandbox.map(st => `<li><span class="v">✓</span><div><span style="color:var(--sim)">${noSim(st.step.replace("judge sandbox [SIM]: ", "")).replace(/observer/g, "witness")}</span><br><a class="h" href="${st.tx}" target="_blank" rel="noopener">${st.tx.split("/tx/")[1].slice(0, 10)}…</a></div><span class="h">${fmt.format(st.gasUsed)} gas</span></li>`).join("")}</ul></div>`;
   }
@@ -772,7 +773,7 @@ function trackSvg() {
   for (const z of z9Scenes) if (z.t >= Z9_R0) s += z.qualified ? `<circle cx="${X9(z.t)}" cy="44.5" r="3" fill="var(--money)" opacity="${inZ9(T) && z.t <= now9 ? 1 : .35}"/>`
     : `<circle cx="${X9(z.t)}" cy="44.5" r="2.6" fill="#fff" stroke="#736c62" stroke-width="1.2" opacity="${inZ9(T) && z.t <= now9 ? 1 : .45}"/>`;
   s += `<path d="M${X9(z9Relapse) - 4},48 L${X9(z9Relapse) + 4},48 L${X9(z9Relapse)},40 Z" fill="#e2590f"/>`;
-  const xh = X(T), lab = inZ9(T) ? `${dfmt(z9Real(T))} · ${Z9.source}` : dfmt(T, T > CH[5].from);
+  const xh = X(T), lab = z9On() ? `${dfmt(z9Real(T))} · ${Z9.source}` : dfmt(T, T > CH[5].from);
   const bw = lab.length * 6.2 + 14, bx = Math.max(bw / 2, Math.min(Wd - bw / 2, xh));
   s += `<line x1="${xh}" x2="${xh}" y1="11" y2="41" stroke="#e2590f" stroke-width="2.5"/><path d="M${xh - 5},10 L${xh + 5},10 L${xh},15 Z" fill="#e2590f"/>`;
   s += `<rect x="${bx - bw / 2}" y="-4" width="${bw}" height="16" rx="5" fill="#1d1b18"/><text x="${bx}" y="8" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">${lab}</text>`;
@@ -782,7 +783,7 @@ function trackSvg() {
 /* charts share the timeline's chapter geometry, so a point sits under its chapter */
 const bandLines = (Xs, top, bottom) => CH.slice(1).map(c => `<line x1="${Xs(c.from)}" x2="${Xs(c.from)}" y1="${top}" y2="${bottom}" stroke="#efe9df"/>`).join("");
 function chartRate() {
-  if (inZ9(T)) return chartZ9Rate();
+  if (z9On()) return chartZ9Rate();
   const svg = $("c1"), Wd = svg.clientWidth || 300, H = svg.clientHeight || 110, pad = { l: 34, r: 6, t: 16, b: 14 }, inset = 7;
   const Xs = (t) => pad.l + inset + xOf(t) * (Wd - pad.l - inset - pad.r);   // the first marker sits clear of the axis labels
   const ymax = 10500, Y = (v) => pad.t + (1 - Math.sqrt(v / ymax)) * (H - pad.t - pad.b);
@@ -828,7 +829,7 @@ function chartZ9Passes() {
   svg.innerHTML = s;
 }
 function chartRecords() {
-  if (inZ9(T)) return chartZ9Passes();
+  if (z9On()) return chartZ9Passes();
   $("c2t").textContent = "Two records, one facility"; $("c2u").textContent = "detections";
   const svg = $("c2"), Wd = svg.clientWidth || 300, H = svg.clientHeight || 110, pad = { l: 8, r: 8, t: 10, b: 12 };
   const Xs = (t) => pad.l + xOf(t) * (Wd - pad.l - pad.r);
@@ -847,10 +848,10 @@ function chartRecords() {
 }
 function chartMoney() {
   const svg = $("c3"), Wd = svg.clientWidth || 300, H = svg.clientHeight || 110;
-  $("moneysrc").textContent = inZ9(T) ? `${Z9.replayA.chain.replace(/ \(.*\)$/, "")} replay · test ETH` : "Sepolia test ETH";
+  $("moneysrc").textContent = z9On() ? `${Z9.replayA.chain.replace(/ \(.*\)$/, "")} replay · test ETH` : "Sepolia test ETH";
   const now9 = z9Real(T), eth9 = (w) => Number(BigInt(w)) / 1e18, cnt9 = z9Scenes.filter(z => z.qualified && !z.afterRelapse && z.t <= now9).length;
-  const rows = inZ9(T) ? [["Rebate (DZA leak)", eth9(z9Sp.openedByBuyerWei), true, "#1d1b18"], ["Back to the seller", eth9(z9Sp.releasedWei) * Math.min(1, Z9C.installments.filter(([k]) => cnt9 >= k).reduce((a, [, bp]) => a + bp, 0) / z9Out.paidBp), cnt9 >= Z9C.installments[0][0], "#157a42"], ["Forfeited", eth9(z9Sp.forfeitedWei), now9 >= z9Relapse, "#c33a2c"]] : [["Seller bond locked", bondEth, after("start"), "#1d1b18"], ["Rebate to buyer", rebateEth, after("paid"), "#157a42"], ["Proposer bond back", proposerEth, after("paid"), "#2457d6"]];
-  const max = inZ9(T) ? eth9(z9Sp.openedByBuyerWei) : bondEth, rh = (H - 8) / 3;
+  const rows = z9On() ? [["Rebate (DZA leak)", eth9(z9Sp.openedByBuyerWei), true, "#1d1b18"], ["Back to the seller", eth9(z9Sp.releasedWei) * Math.min(1, Z9C.installments.filter(([k]) => cnt9 >= k).reduce((a, [, bp]) => a + bp, 0) / z9Out.paidBp), cnt9 >= Z9C.installments[0][0], "#157a42"], ["Forfeited", eth9(z9Sp.forfeitedWei), now9 >= z9Relapse, "#c33a2c"]] : [["Seller bond locked", bondEth, after("start"), "#1d1b18"], ["Rebate to buyer", rebateEth, after("paid"), "#157a42"], ["Proposer bond back", proposerEth, after("paid"), "#2457d6"]];
+  const max = z9On() ? eth9(z9Sp.openedByBuyerWei) : bondEth, rh = (H - 8) / 3;
   const wide = Wd - 186 >= 48, bx = wide ? 118 : 0, bw = wide ? Wd - 186 : Wd;   // narrow chart: each bar runs full width under its label
   svg.innerHTML = rows.map(([l, v, on, c], i) => {
     const ty = wide ? 8 + i * rh + rh / 2 : 4 + i * rh + rh / 2 - 3, by = wide ? 4 + i * rh + rh / 2 - 6 : ty + 4;

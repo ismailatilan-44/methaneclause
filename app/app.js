@@ -1406,8 +1406,11 @@ async function applyDeepLink() {
   note.dataset.state = "applied";
   note.textContent = `Opened with ?tamper=${key}: tamper ${key} is applied below and its checks are red. The self-checks at the bottom ran first, on the untouched data. Reset restores it.`;
   const h = $(`tamper-${key.toLowerCase()}`);
-  (box || h).querySelector("summary") ? box.querySelector("summary").after(note) : h.after(note);  // the note sits under the tamper it describes, where the page scrolls to
-  requestAnimationFrame(() => h.scrollIntoView({ block: "start" }));
+  (box || h).querySelector("summary") ? box.querySelector("summary").after(note) : h.after(note);  // the note sits under the tamper it describes
+  // A lands on the three-step proof strip, whose red third step is tamper A's verdict (its heading and note follow it);
+  // B and C do not drive the strip, so they land on their own section, where their note and red verdict sit
+  const target = key === "A" ? $("moment") : h;
+  requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
 
 async function buildLine() {

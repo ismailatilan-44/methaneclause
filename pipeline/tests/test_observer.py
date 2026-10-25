@@ -124,6 +124,29 @@ def test_anvil_keys_refused_off_anvil(monkeypatch):
         Observer("OBS_A", 84532, CONTRACT)
 
 
+@pytest.mark.parametrize("index", range(10))
+def test_anvil_key_in_env_refused_off_anvil(monkeypatch, index):
+    """An Anvil mnemonic key set explicitly in the environment (or passed as an argument) is refused off chain 31337."""
+    from observer.service import anvil_key, observer_key
+
+    monkeypatch.setenv("OBSERVER_A_PK", anvil_key(index))
+    for chain_id in (11155111, 84532, 1):
+        with pytest.raises(SystemExit, match="Anvil"):
+            observer_key("OBS_A", chain_id)
+        with pytest.raises(SystemExit, match="Anvil"):
+            Observer("OBS_A", chain_id, CONTRACT)
+    with pytest.raises(SystemExit, match="Anvil"):
+        Observer("OBS_A", 11155111, CONTRACT, pk=anvil_key(index))
+    assert observer_key("OBS_A", 31337) == anvil_key(index)  # the same key stays usable on Anvil
+
+
+def test_non_anvil_key_in_env_accepted_off_anvil(monkeypatch):
+    from observer.service import observer_key
+
+    monkeypatch.setenv("OBSERVER_A_PK", "0x" + "11" * 32)
+    assert observer_key("OBS_A", 11155111) == "0x" + "11" * 32
+
+
 def test_only_facilities_are_leaves():
     """A Carbon Mapper twin source must not be coverable on its own (it would get its own linkWindow anchor)."""
     from common import DERIVED
