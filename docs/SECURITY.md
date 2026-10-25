@@ -42,7 +42,7 @@ attested detection cancels.
 
 | Question | Answer |
 |---|---|
-| Multiple parties? | Seller, buyer, a sponsor, k of n observer organisations named in the clause (n ≥ k + 2; none is the seller's or the buyer's), open challengers; for the refund also sponsors and, optionally, a surety. |
+| Multiple parties? | Seller, buyer, k of n observer organisations named in the clause (n ≥ k + 2; none is the seller's or the buyer's), open challengers; for the refund also sponsors and, optionally, a surety. |
 | No trusted operator? | None exists for this function. Registries (MiQ, JOGMEC CLEAN, UNEP MARS) certify and notify but cannot move a seller's money; a bank can move money but cannot adjudicate satellite evidence; a court can do both and takes years. Seller and buyer are counterparties: neither accepts an operator chosen by the other, so the decision has to come from k independent observers plus an open challenge window — which is what the contract executes. The registries stay inputs. |
 | Outside verification? | Anyone can re-fetch Carbon Mapper, recompute the canonical bundle hash (RFC 8785 JCS + SHA-256) and challenge an episode or a clean pass with an objective reason code. |
 | Fits the ledger? | Only hashes, identifiers and money: `evidenceHash`, `sceneHash`, `policyHash`, the Merkle root of covered facilities, bonds, rebates and refunds. Raw data stays with the providers and the observers. |

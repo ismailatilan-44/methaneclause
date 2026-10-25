@@ -316,8 +316,8 @@ against `data/derived/audit_numbers.json`. Decisions: [`contracts/README.md`](co
   chain cannot see clouds, only that k organisations signed the same scene fields. A re-quantification never edits a
   confirmed episode; scenes published after the covenant's end plus the publication lag and clean window are lost;
   detections published after the term plus the challenge window can miss the bond (the seller may then settle it) —
-  a tail covenant with a backdated start covers them, and a later core version waits out the publication lag before
-  settling; a relapse is read from the core's latest episode, so the sponsor watches and reports relapses.
+  a tail covenant with a backdated start covers them, and on the roadmap a later core version waits out the publication
+  lag before settling; a relapse is read from the core's latest episode, so the sponsor watches and reports relapses.
 - **Prototype keys.** In this prototype the observer organisations are run by one person [SIM]; a judge's own
   wallet is designed to be the one signer we do not control. On the public record every signature so far is the
   author's — the judge walk-through was run with an author-generated test wallet; any judge can repeat it with their

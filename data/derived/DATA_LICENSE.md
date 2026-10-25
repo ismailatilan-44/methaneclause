@@ -4,6 +4,9 @@ The **code** in this repository is MIT. The **data** in this folder is not: it i
 datasets and carries their terms. Raw provider responses are never committed (data/raw/ is gitignored); only
 derived fields and the SHA-256 of each raw response (`data/MANIFEST.json`) are kept.
 
+Our own measurements (`pq_bench.json`, `measurements.json`, `testnet_run.json`, `demo_run.json`,
+`verification_time.json`, `sepolia_*`) contain no third-party data and are MIT like the code.
+
 ## Carbon Mapper
 - Files: `cm_sources.csv`, `cm_timelines.json`, `cm_plumes.csv`, the Carbon Mapper parts of `join_v1.json`,
   `cases/*.json` (including `cases/*.clean_passes.json`), `scenes_v1/*.json`, `backtest.json`, `cleanruns.json`,

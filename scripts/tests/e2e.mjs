@@ -163,7 +163,7 @@ try {
   const storyPill = page.locator(".top-right a.pill", { hasText: "Story map" });
   ok((await storyPill.count()) === 1 && (await storyPill.getAttribute("href")) === "story.html" && (await storyPill.isVisible()),
     "the top bar links back to the story map (Story map → story.html)");
-  const above =await page.evaluate(() => ["#hero-h", "#money-fig", "#cheat-btn"].every((s) => document.querySelector(s).getBoundingClientRect().top < innerHeight));
+  const above = await page.evaluate(() => ["#hero-h", "#money-fig", "#cheat-btn"].every((s) => document.querySelector(s).getBoundingClientRect().top < innerHeight));
   ok(above, "sentence, picture and the cheat button are in the first screen");
   const lead = D.hybrid.entries[0].bundle, tam = S.run.steps.find((x) => x.step === "reject_tamper");
   ok(!(await page.locator("#cheat-btn").isDisabled()), "the cheat button is enabled once the page is ready");
