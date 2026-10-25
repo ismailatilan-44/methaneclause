@@ -43,6 +43,7 @@ const server = createServer(async (req, res) => {
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const BASE = `http://127.0.0.1:${server.address().port}/`;
+const FULL = BASE + "index.html";  // the bare address sends a desktop screen to story.html
 
 // Subresource integrity of the ML-DSA-44 verifier: app.js imports @noble/post-quantum as published package files (not a
 // CDN-generated +esm bundle, which jsDelivr does not keep byte-stable), the import map in index.html maps its bare
@@ -94,7 +95,7 @@ const eth = (wei) => { const w = BigInt(wei), f = (w % 10n ** 18n).toString().pa
   return `${w / 10n ** 18n}${f ? "." + f : ""} ETH`; };
 const fmt = new Intl.NumberFormat("en-US");
 
-async function ready(page, url = BASE) {
+async function ready(page, url = FULL) {
   const errors = [];
   page.on("pageerror", (e) => errors.push(String(e)));
   page.on("response", (r) => { if (r.url().startsWith(BASE) && r.status() >= 400) errors.push(`HTTP ${r.status()} ${r.url()}`); });
@@ -114,7 +115,7 @@ try {
   const cdnReqs = [];
   page.on("request", (r) => { if (r.url().startsWith("https://cdn.jsdelivr.net/")) cdnReqs.push(r.url()); });
   const errors = await ready(page);
-  console.log(`== desktop 1280 px (${BASE})`);
+  console.log(`== desktop 1280 px (${FULL})`);
   ok(errors.length === 0, `no uncaught page errors and no same-origin 4xx (BUILD.json included)${errors.length ? ": " + errors[0] : ""}`);
   ok((await count(page, "#self-checks li.fail")) === 0, "self-checks: 0 failed");
   ok((await count(page, "#self-checks li.pass")) >= 6, `self-checks: ${await count(page, "#self-checks li.pass")} passed`);
@@ -229,7 +230,7 @@ try {
       const r = await route.fetch();
       await route.fulfill({ response: r, body: (await r.text()) + "\n// one line more than the published file\n" });
     });
-    await sri.goto(BASE);
+    await sri.goto(FULL);
     const readyAnyway = await sri.waitForSelector("body[data-ready='1']", { timeout: 8_000 }).then(() => true, () => false);
     ok(!readyAnyway && msgs.some((x) => /integrity/i.test(x)),
       `an ML-DSA module edited in transit is refused by the browser (integrity), so the page claims no check: ${(msgs.find((x) => /integrity/i.test(x)) || "").slice(0, 90)}…`);
@@ -486,6 +487,17 @@ try {
   await dark.close();
   {  // own block: the names below do not collide with the main page checks
   console.log("== story page (story.html)");
+  for (const [w, to] of [[1280, "story.html"], [375, ""]]) {  // the bare address: the map on a desktop, the full page on a phone
+    const rp = await browser.newPage({ viewport: { width: w, height: 800 } });
+    await rp.goto(BASE); await rp.waitForLoadState("domcontentloaded");
+    const at = new URL(rp.url()).pathname.slice(1);
+    ok(at === to, `the bare address at ${w} px opens ${to || "the full page"} (${at || "/"})`);
+    if (w === 1280) {
+      await rp.click("a.back"); await rp.waitForSelector("body[data-ready='1']", { timeout: 90_000 });
+      ok(new URL(rp.url()).pathname === "/index.html", `"← Full page" opens the full page and stays there (${new URL(rp.url()).pathname})`);
+    }
+    await rp.close();
+  }
   const openStory = async (vp) => {
     const sp = await browser.newPage({ viewport: vp });
     const sErr = [];
