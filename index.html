@@ -8,12 +8,14 @@
   <script>if (/\/$/.test(location.pathname) && !location.search && !location.hash && matchMedia("(min-width: 901px)").matches) location.replace("story.html");</script>
   <meta name="description" content="A speed camera for methane, written into the gas contract between an EU gas importer and its supplier. Satellites confirm a leak → the seller's bond pays the buyer. No new leak on later passes → the seller earns money back in steps, up to the rebate, from a sponsor's pool (for example its lender's). No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <div class="brand"><strong>MethaneClause</strong> <span class="case" id="case-title">“Marked Absent” case</span></div>
+  <div class="brand"><svg class="logo" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2c3 4.5 6 8 6 11.5A6 6 0 0 1 6 13.5C6 10 9 6.5 12 2z" fill="#e2590f"/><path d="M9.5 14.5c.6 1.6 1.7 2.5 3.3 2.6" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg><strong>MethaneClause</strong> <span class="case" id="case-title">“Marked Absent” case</span></div>
   <div class="top-right">
     <div class="keyl" aria-label="Legend: real data, simulated">
       <span class="lchip real">Real data</span>
@@ -35,10 +37,24 @@
         <span class="l sub-l">No one runs the payout: once enough independent witnesses sign the same sighting and the appeal window passes, the contract pays the buyer from the bond. The seller can appeal — then the witnesses must confirm it again — but cannot delete the sighting or hold the money.</span>
       </h1>
       <div class="cta">
+        <a class="story-card" id="story-cta" href="story.html">
+          <svg class="story-mini" viewBox="0 0 320 120" aria-hidden="true" focusable="false">
+            <rect class="sm-land" x="0" y="0" width="320" height="120" rx="10"/>
+            <path class="sm-road" d="M0,92 C70,80 120,104 200,86 S300,70 320,76"/>
+            <path class="sm-orbit" d="M-6,40 Q160,-18 326,40"/>
+            <g class="sm-sat" transform="translate(96,20)"><rect x="-6" y="-6" width="12" height="12" rx="2"/><rect class="sm-panel" x="-21" y="-3" width="13" height="6"/><rect class="sm-panel" x="8" y="-3" width="13" height="6"/></g>
+            <polygon class="sm-beam" points="96,26 176,78 196,78"/>
+            <ellipse class="sm-plume" cx="196" cy="70" rx="30" ry="12"/>
+            <ellipse class="sm-plume" cx="214" cy="60" rx="16" ry="7"/>
+            <rect class="sm-site" x="178" y="72" width="16" height="10" rx="2"/>
+          </svg>
+          <span class="sc-text"><strong>Watch the story on the map</strong>
+            <span class="sc-sub">The leak, the witnesses and the payout, chapter by chapter on a 3D map.</span></span>
+          <span class="sc-go" aria-hidden="true">→</span>
+        </a>
         <button class="btn danger big" type="button" id="cheat-btn" disabled>Preparing checks…</button>
-        <a class="btn big" href="#story">Step through the penalty case</a>
-        <a class="btn big" href="story.html">Watch it on the map</a>
-        <a class="btn big" href="#witness">Become a witness</a>
+        <span class="cta-links"><a class="btn ghost" href="#story">Step through the penalty case</a>
+        <a class="btn ghost" href="#witness">Become a witness</a></span>
       </div>
       <p class="jteaser" id="judge-teaser"><strong>A judge's 10-minute path:</strong> read the clause live from Sepolia,
         break a signature (tamper A–C), open the reverted transactions on the explorer, sign with your own key.
@@ -105,6 +121,7 @@
   <!-- Layer 1: four actors, three paths, two real stories -->
   <section class="story wrap" id="story" aria-labelledby="story-h">
     <div class="sec-head">
+      <p class="eyebrow">Penalty and earn-back, step by step</p>
       <h2 id="story-h">Who pays whom, and when</h2>
       <p class="sub">Four parties and three paths. The sightings come from Carbon Mapper and UNEP MARS; the money moves in
         real transactions on Ethereum Sepolia and in a recorded local run.</p>
@@ -144,6 +161,7 @@
   <!-- the failure moment -->
   <section class="card wrap-card" id="tamper" aria-labelledby="tamper-h2">
     <div class="card-head">
+      <p class="eyebrow">The 60-second proof</p>
       <h2 id="tamper-h2">Try to cheat it</h2>
       <p class="sub">Three edits a seller might try. Every check runs in your browser (RFC 8785 + SHA-256, EIP-712 ECDSA,
         ML-DSA-44); a rebate and an earn-back fail the same way.</p>
@@ -237,11 +255,16 @@
   <!-- one person with a test wallet becomes a witness -->
   <section class="card wrap-card witness" id="witness" aria-labelledby="witness-h">
     <div class="card-head">
+      <p class="eyebrow">Your own key</p>
       <h2 id="witness-h">Become a witness</h2>
       <p class="sub">Sign the TKM_S_276 sighting with your own browser test wallet in the public judge sandbox on
-        Ethereum Sepolia. Your key joins the registry as witness organisation OBS_JUDGE, your signature is one of the two
-        the clause needs, and the contract — not this page — decides. The page asks your wallet to sign and to send;
-        it never sees your key.</p>
+        Ethereum Sepolia.</p>
+      <details class="more" id="witness-how">
+        <summary>How it works</summary>
+        <p class="sub">Your key joins the registry as witness organisation OBS_JUDGE, your signature is one of the two
+          the clause needs, and the contract — not this page — decides. The page asks your wallet to sign and to send;
+          it never sees your key.</p>
+      </details>
     </div>
     <div class="witness-grid">
       <div>

@@ -1560,7 +1560,7 @@ function moneyCard(arc, at, d) {
     const prop = steps.find((x) => x.step === "proposeEpisode"), wd = steps.find((x) => x.step === "withdraw_buyer");
     const bond = BigInt(create.bondWei), r = BigInt(prop.rebateWei);
     box.append(el("strong", {}, "Money in the clause"),
-      row("Seller's bond", at >= 1 ? ethOf(at >= 2 ? bond - r : bond) : "not posted yet"),
+      row(at >= 2 ? "Seller's bond left" : "Seller's bond", at >= 1 ? ethOf(at >= 2 ? bond - r : bond) : "not posted yet"),
       row("Rebate held", at === 2 ? ethOf(r) : "—", at === 2 ? "held" : ""),
       row("Paid to the buyer", at === 3 ? ethOf(wd.amountWei) : "—", at === 3 ? "paid" : ""));
   } else {
