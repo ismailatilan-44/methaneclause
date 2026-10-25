@@ -1,0 +1,2 @@
+# GitHub counts our own code in the language bar, not the vendored Foundry standard library.
+contracts/lib/** linguist-vendored
