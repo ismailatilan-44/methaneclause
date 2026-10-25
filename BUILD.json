@@ -23,9 +23,9 @@
   "index.html": "f9db175edf4c1301caa0a814e2f98ef3d647236d6f9549eb284c0e0128321466",
   "story.html": "9cb0e718332a40f1bf25f3363870533acc784462e78a573093cfac5569dda773",
   "story.js": "0c5cb92fe4e711f4021d2d0d765b556ed45c5bc642c7a8dac592d0c2e3b9c61a",
-  "style.css": "97e05f27b93ca1ae93e045f3c3de6856b483e40114db78518e3e5447d4611ac1",
+  "style.css": "fe1f3ceb65a42fe35119b1c3323afa221223dabe7ef8e37c27b3698718b91196",
   "wallet.js": "b944fbbf1a119abc80240e20142864145b178c76b82e7251eaccef502a7b8679"
  },
- "sourceCommit": "0d82346c579ff3c0f553ead5328ed48d09b3bca8",
+ "sourceCommit": "9e46fe36283fb8d8dc2cc9629dd63e6a514ede6d",
  "sourceDirty": false
 }
